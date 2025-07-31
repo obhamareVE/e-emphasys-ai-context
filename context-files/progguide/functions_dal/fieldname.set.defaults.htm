@@ -1,0 +1,172 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>fieldname.set.defaults()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="field.set.defaults field.set.defaults fieldname.set.defaults functions field.set.defaults ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">fieldname.set.defaults()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;field.set.defaults&nbsp;
+					(long&nbsp;has_changed)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this hook to set defaults based on a specified field. The
+                  function name is ppmmmvss.bbbb.check(), where pp is the package
+                  code, mmm is the module code, vss is the table number, and bbbb
+                  is the field name.
+               </p>
+               <p class="Paragraph">If this hook exists, it is executed only by B3 through a BOI
+                  in case of DAL_NEW or DAL_UPDATE.
+               </p>
+               <p class="Paragraph">A record will be created or modified in a specific order.
+                  This order should be defined in the table definition in the
+                  section default sequence.
+               </p>
+               <table border="0" width="100%" class="none">
+                  <tbody noTR="2" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">default mandatory</td>
+                        <td rowspan="1" colspan="1" class="none">
+                           <p class="Paragraph_firstAndNoTextBefore">Possible values are:</p>
+                           <ul class="List">
+                              <li class="ListItem"><i class="Emphasis">Always</i> this field should be passed by the BOI
+                                 (insert)
+                              </li>
+                              <li class="ListItem"><i class="Emphasis">Conditionally</i> this field can be set by defaults;
+                                 otherwise mandatory
+                              </li>
+                              <li class="ListItem"><i class="Emphasis">Not</i> this field is not really required; but
+                                 can be passed
+                              </li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr no="2" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">sequence</td>
+                        <td rowspan="1" colspan="1" class="none">This indicates the number in the sequence. The
+                           lowest number will be executed first (0 does not
+                           count). First the sequence for default mandatory <i class="Emphasis">Always</i> will be executed, followed by <i class="Emphasis">Conditionally</i> and <i class="Emphasis">Not</i>.
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>has_changed</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">This hook returns 0 if the value of the field is accepted. It
+               returns a negative value (DALHOOKERROR) if the value is not
+               accepted.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			DAL
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Points of Attention</div>
+            <ul class="List">
+               <li class="ListItem">The field order is very important and is hierarchically
+                  structured.
+                  The first element of the <i class="Emphasis">default mandatory</i> <i class="Emphasis">Always</i> is the most important. After all elements of
+                  that category have been checked the first element of the <i class="Emphasis">default mandatory</i> <i class="Emphasis">Conditionally</i> is most
+                  important. After all elements of that category have been
+                  checked the first element of the <i class="Emphasis">default mandatory</i> <i class="Emphasis">Not</i> is most important.
+                  If an element (table field) in one of the categories
+                  have been managed this field should not be updated (by
+                  defaults generated from other fields lower in the
+                  hierarchy).
+               </li>
+               <li class="ListItem">Mandatory fields cannot always automatically be derived
+                  from the table definitions. Check for instance tisfc001.pdno
+                  (Production Order). One should check both UI and DAL script
+                  in order to see which fields belong to what category ( <i class="Emphasis">Always / Conditionally / Not</i>).
+               </li>
+               <li class="ListItem">Hint: Use ttaad4100 with DAL for checking the quality of
+                  the DAL.
+               </li>
+               <li class="ListItem"><i class="Emphasis">Default mandatory</i> <i class="Emphasis">Always</i> fields should be
+                  controlled via domain or table field check.
+               </li>
+               <li class="ListItem"><i class="Emphasis">Default mandatory</i> <i class="Emphasis">Conditionally</i> fields
+                  should be checked via the DAL.
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">See also</div>
+            <p class="Paragraph"><a href="../../progguide/functions_dal/property_methods.htm" class="manualLink">Property methods</a></p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">This hook is not executed in case of <a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a>. It is therefore advised to
+                  replace this property hook by the new <a href="../../progguide/functions_dal/dal2_field_hooks.htm" class="manualLink">DAL2 Field hooks</a>.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+function extern long tisfc001.pdno.set.defaults(long has_changed)
+{
+    domain tclngt length.of.group   |* Length of Order Series Group
+    domain tcbool defaults.found    |* Defaults by Order Series Found
+
+    if has_changed = DAL_NEW then
+        tisfc001.rswc = tisfc000.rswc
+        get.and.fill.defaults.of.order.serie(tisfc000.ngpd,
+            get.sfc.serie.out.of.pdno(tisfc001.pdno,
+            length.of.group), defaults.found)
+    endif
+
+    return(0)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_glossary.htm" class="manualLink">DAL terminology</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_hooks.htm" class="manualLink">DAL hooks</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/fieldname.set.defaults, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

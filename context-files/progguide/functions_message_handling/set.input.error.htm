@@ -1,0 +1,124 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>set.input.error()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions set.input.error set.input.error set.input.error ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">set.input.error()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;set.input.error&nbsp;
+					(string&nbsp;mess.or.code [, void&nbsp;arg ...])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This causes the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> to display
+                  the specified error message and to force input again in the same
+                  input field. If you specify an empty string, no error message is
+                  displayed.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>mess.or.code</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies either the data dictionary code for the
+                           message or a literal string. In the latter case, the
+                           value of <i class="Emphasis">mess.or.code</i> must start with the at
+                           sign [@]. Note that using a literal string makes the
+                           script language dependent.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[void</td>
+                     <td class="none"><code>arg ...</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The literal string or message specified with <i class="Emphasis">mess.or.code</i> can contain format characters for
+                           parameter substitution. The values which must be
+                           substituted are specified in the 2nd, 3rd, ...
+                           arguments of the function. The number of these
+                           arguments is variable.
+                        </p>
+                        <p class="Paragraph">For details about formatting a string see the <a href="../../progguide/functions_formatting_io/sprintf.htm" class="manualLink">sprintf$()</a>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			4GL
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">See also</div>
+            <p class="Paragraph"><a href="../../progguide/functions_message_handling/dal.set.error.message.htm" class="manualLink">dal.set.error.message(), dal.set.warning.message(), dal.set.info.message()</a></p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">You can use <i class="Emphasis">set.input.error()</i> only in <i class="Emphasis">check.input</i> event sections of a 4GL script. The error
+                  message is displayed after the entire section has been executed.
+                  Consequently, you cannot display two error messages with this
+                  function. The predefined variable <i class="Emphasis">stp.check.input.error</i> (read-only) indicates whether <i class="Emphasis">set.input.error()</i> has been
+                  called.
+               </p>
+               <p class="Paragraph">Before a <i class="Emphasis">choice.update.db</i> (except at delete) section,
+                  all <i class="Emphasis">check.input</i> sections of all fields are executed. If
+                  one error is set with <i class="Emphasis">set.input.error()</i>, the remaining
+                  sections are not executed. In a type 4 program, which does not
+                  support <i class="Emphasis">choice.update.db</i>, you can call the function <a href="../../progguide/functions_form_and_form_field_operations/check.all.input.htm" class="manualLink">check.all.input()</a> in a <i class="Emphasis">before.choice</i> section. With
+                  the predefined variable <i class="Emphasis">before.update.check</i> (read-only),
+                  you can check whether the input check is executed before update
+                  or during input.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+field.pctst900.item:
+check.input:
+if before.update.check then
+        set.input.error("pctsts0001")      | before update
+else
+        set.input.error("pctsts0002", e)   | during input
+endif
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_message_handling/overview_and_synopsis.htm" class="manualLink">Message handling overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_message_handling/set.input.error, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

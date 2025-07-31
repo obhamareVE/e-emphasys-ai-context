@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>execute()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="execute execute functions execute ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">execute()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;execute&nbsp;
+					(long&nbsp;command)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This executes the specified standard command. Normally,
+                  standard commands are activated by the user. This function
+                  enables applications to execute standard commands without user
+                  intervention. This is useful, for example, if you want to
+                  display the first record of the main table when a session is
+                  started.
+               </p>
+               <p class="Paragraph">Infinite recursion is possible when using this command. For
+                  example, if you include execute(add.set) in the <i class="Emphasis">after.choice</i> subsection of <i class="Emphasis">choice.add.set</i>. So, never use this function to execute a
+                  standard command in its own choice sections.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>command</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">For a list of all standard commands and the program types in
+                  which you can use them, see <a href="../../progguide/4gl_features/4gl_choice_sections.htm#standard_commands" class="manualLink">Standard commands</a>.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+form.2:
+init.form:
+    execute( first.set )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/overview.htm" class="manualLink">Form and form field operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/synopsis.htm" class="manualLink">Form and form field operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_form_and_form_field_operations/execute, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

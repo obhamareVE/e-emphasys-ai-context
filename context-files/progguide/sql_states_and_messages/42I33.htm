@@ -1,0 +1,43 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42I33 - REFERS TO predicate in HAVING clause</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42I33 - REFERS TO predicate in HAVING clause</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">An SQL statement contains a REFERS TO predicate in a HAVING
+               clause.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+select max(salary)
+from   dbtst120, dbtst100
+group  by edlevel
+having workdept refers to dbtst100
+   </pre><p class="Paragraph">REFERS TO predicates are only allowed in the WHERE clause.
+               This query causes the error:
+            </p>
+            <p class="Paragraph">SQLState 42I33: REFERS TO
+               predicate in HAVING clause
+            </p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42I33, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

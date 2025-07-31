@@ -1,0 +1,114 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>client.download.file</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="client.download.file client.download.file functions client.download.file ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">client.download.file</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_desktop&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;client.download.file&nbsp;
+					(const string&nbsp;source [, string&nbsp;mime.type] [, string&nbsp;target])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Download the server file passed in the source argument to the client. 
+                  	  Calling this function will result in a download dialog in which the user can choose to select the file for download.
+                  	  This function will return when the user closes the download dialog.
+                  	  The mime.type can be used to indicate the file type such that the browser 
+                  	  has the option to start the client application which is associated with this mime.type.
+                  	  When the mime.type is not specified, the mime.type will be determined based on the 
+                  	  file extension of the file specified in the optional target argument. When the optional target argument is also not specified,
+                  
+                  	  the mime.type will be determined based on the file extension of the file specified in the source argument.
+                  	  Conversion of CRLF characters is only done for text files (file extension .txt or mime.type "text/plain").
+                  	  All other file types are copied in binary mode. This function is only supported for HTMLUI.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>source</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies the file on the server.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>mime.type</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional string representing the MIME Media type of the file. The official list can be found here: http://www.iana.org/assignments/media-types/index.html.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>target</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional string representing the proposed file name on the client</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">success</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;&gt;0</th>
+                     <td rowspan="1" colspan="1" class="none">when an error occurred (for instance invalid source path)</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1900.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_client_file_access/overview.htm" class="manualLink">Client file access overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_client_file_access/synopsis.htm" class="manualLink">Client file access synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_client_file_access/client.download.file, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

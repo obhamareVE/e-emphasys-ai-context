@@ -1,0 +1,247 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>The Call Graph Profile</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">The Call Graph Profile</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="Figure">
+               <div class="FigIntro">The Call Graph Profile starts with a header, a summary and
+                  		hyperlinks to the various sections (picture 1).
+               </div><img src="../images/call_graph_profiler_header.gif" alt="[...]" width="1071" height="621"></div>
+            <p class="Paragraph">The summary shows the total CPU time of the profile, the total
+               	  run time of the profile and the amount of time that was spent waiting on UI
+               	  events (waiting for the user to interact with the user interface). In the
+               	  example in picture 1 the total run time is 38.3 seconds, of which 8 seconds was
+               	  spent waiting on UI events.
+            </p>
+            <ul class="List">
+               <li class="ListItem"><i class="Emphasis">UI wait time</i> This is the run time a process waits for user
+                  	  interaction. It is called Evitable Wait Time because the run time is dependent on user interaction
+               </li>
+               <li class="ListItem"><i class="Emphasis">Interprocessing wait times</i> This includes 3GL process communication like BMS messaging
+               </li>
+               <li class="ListItem"><i class="Emphasis">Interprocess run time</i> This is the run a process waits for other
+                  3GL/4GL (zoom sessions etc.) It is called Inevitable wait time because the other processes execute on the behalf of
+                  this process. Also included are all Java related execution times and programs that are stated via run.prog or run.baan.prog
+               </li>
+               <li class="ListItem"><i class="Emphasis">Other waiting or processing times</i> This includes all other processing time not included in the
+                  	  categories mentioned above
+               </li>
+            </ul>
+            <p class="Paragraph">The header contains some details about the profile and about
+               	  the system and a summary of the Call Graph Profile. One important feature is the 
+               	  "system info" file which containts system settings which affect the environment.
+            </p>
+            <div class="Figure">
+               <div class="FigIntro">The System information header.</div><img src="../images/call_graph_profiler_system_info.gif" alt="[...]" width="379" height="288"></div>
+            <div class="Figure">
+               <div class="FigIntro">Example of Summary of various wait time.</div><img src="../images/call_graph_various_wait_times.gif" alt="[...]" width="1102" height="403"></div>
+            <p class="Paragraph">The items that are in blue can be selected and the Call Graph Profile where available will be shown.
+               	  Note that for example the Call Graph Profile of "ottstpstdlib" will be available after a bshell exits.
+               	  Additionally, sessions like "ttstpclose" never contain any relevant profile information.
+            </p>
+            <div class="Figure">
+               <div class="FigIntro">Example of empty profile output.</div><img src="../images/call_graph_profiler_empty.gif" alt="[...]" width="895" height="263"></div>
+            <p class="Paragraph">In this example</p>
+            <p class="Paragraph">The hyperlinks lead to the various sections of the Call Graph
+               	  Profile (Query Summary, Call Graph, Flat Profile). Normally there is only one
+               	  occurrence of each of these sections, sorted by CPU time. When the PROF_RTIME=1
+               	  variable is set there is another occurrence of these sections, sorted by run
+               	  time.
+            </p>
+            <div class="Figure">
+               <div class="FigIntro">The Query Summary (picture 2) shows the query IDs in the
+                  		profile, sorted by total run time (total run time of parse + total run time of
+                  		exec + total run time of fetch). The query ID hyperlink refers to the location
+                  		of the sql.parse() of this SQL statement including query text, and the location
+                  		hyperlink refers to the function in the Call Graph in which this sql.parse()
+                  		takes place.
+               </div><img src="../images/call_graph_profiler_query_summary.gif" alt="[...]" width="1200" height="449"></div>
+            <p class="Paragraph">For SQL statements some work is done in the bshell, some work
+               	  is done in the database driver and some work is done in the database. The run
+               	  time of SQL statements covers all of these processes and operating system
+               	  overhead. Therefore run time (rtime) is often the first indicator for the
+               	  performance of SQL statements. Note that run time also includes wait time for
+               	  other events that may not be related to the SQL statement itself (e.g. when the
+               	  system is just too busy with other processes).
+            </p>
+            <div class="Figure">
+               <div class="FigIntro">The Object Summary (picture 3) shows the CPU time
+                  		(utime+stime) that was spent in each object, including the percentage and the
+                  		cumulative percentage.
+               </div><img src="../images/call_graph_profiler_object_summary.gif" alt="[...]" width="710" height="412"></div>
+            <div class="Figure">
+               <div class="FigIntro">The hyperlinks in the Object Summary breakdown per function
+                  		(picture 3) refer to a top 90% breakdown per function (picture 4) of the CPU
+                  		time that was spent in the object. The hyperlinks on the function names refer
+                  		to the function in the Call Graph.
+               </div><img src="../images/call_graph_profiler_object_summary_breakdown.gif" alt="[...]" width="748" height="415"></div>
+            <p class="Paragraph">The breakdown per function (picture 4) shows how functions that
+               	  are called in a nested way (recursively) are represented in the call graph. The
+               	  statistics of each depth on which the function is called are kept separately, in case of
+               	  recursion as might happen with functions like dal.select(). (Not shown in example.)
+            </p>
+            <p class="Paragraph">In this example breakdown per function (fld.ondisplay) was used 115 times.</p>
+            <div class="Figure">
+               <div class="FigIntro">The Call Graph (picture 5) shows an entry (or node) per
+                  		function of the process. The entries are sorted by CPU time of the function
+                  		itself + CPU time of the descendents (child functions and their child
+                  		functions, etc). The first entry is an artificial 'top level entry' to connect
+                  		the 2 entry points of a process. The second entry is the main() function of the
+                  		process.
+               </div><img src="../images/call_graph_profiler_call_graph.gif" alt="[...]" width="866" height="423"></div>
+            <p class="Paragraph">Each entry (or node) on the Call Graph is about one specific
+               	  function which is printed in bold in the middle of the entry. The parent
+               	  functions (callers) are above it, and the child functions (callees) are below
+               	  it. Before the function names there are a couple of columns:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><i class="Emphasis">index</i>: a sequence number that indicates
+                  		the position of the entry in the list. This index is also printed after the
+                  		parent and child functions. The number is an indication of the relative
+                  		importance of a function and its descendents in the profile (high number =
+                  		relatively important, low number = relatively unimportant).
+               </li>
+               <li class="ListItem"><i class="Emphasis">%time</i>: this is the percentage of the
+                  		total CPU time taken by this function with its descendents.
+               </li>
+               <li class="ListItem"><i class="Emphasis">utime + stime</i>: the user time + system
+                  		time for the function itself and for the descendents. For the these numbers are
+                  		the part of the user time and system time of the function that this node is
+                  		about, when called from this particular parent function. For the these numbers
+                  		are the part of the user time and system time of the child function when called
+                  		from the function that this entry is about. The utime + stime is printed
+                  		separately for 'self' and for 'descendents'.
+               </li>
+               <li class="ListItem"><i class="Emphasis">rtime</i>: the run time for the function
+                  		itself and for its descendents. For the these numbers are the part of the run
+                  		time of the function that this node is about, when called from this particular
+                  		parent function. For the these numbers are the part of the run time of the
+                  		child function when called from the function that this entry is about. The
+                  		rtime is printed separately for 'self' and for 'descendents'.
+               </li>
+               <li class="ListItem"><i class="Emphasis">called</i>: the number of calls to the
+                  		function. For the this field contains the number of calls that this parent
+                  		makes to this function and after the slash the total number of calls to this
+                  		function. For the this field contains the number of calls that this function
+                  		makes to this child and after the slash the total number of calls to this child
+                  		function in this profile.
+               </li>
+            </ul>
+            <div class="Figure">
+               <div class="FigIntro">The self and descendents times of the function and the
+                  		parents/children have some relationships, which are explained in picture 6. The
+                  		relationships are indicated with colored boxes. Each open colored box surround
+                  		some numbers of which the total is in the solid box of the same
+                  		color.
+               </div><img src="../images/call_graph_profiler_relationships_between_numbers.gif" alt="[...]" width="700" height="132"></div>
+            <p class="Paragraph">SQL statements are included in the Call Graph because a large
+               	  portion of the time consumption on the server (both CPU time and run time) is
+               	  related to SQL statements. In the Call Graph this is best indicated by the run
+               	  time on SQL statements. The SQL statements are printed in the call graph after
+               	  the sql.parse() call for the statement.
+            </p>
+            <div class="Figure">
+               <div class="FigIntro">The sql.parse(), sql.exec(), and sql.fetch() calls for these
+                  		statements are in the call graph entry in the same way as 3GL child functions
+                  		(picture 7). Embedded SQL statements and dynamic SQL statements both look
+                  		similar in the Call Graph because embedded SQL statements are translated by the
+                  		compiler to a construction that is using the sql.parse(), sql.exec() and
+                  		sql.fetch() functions.
+               </div><img src="../images/call_graph_profiler_sql_statements.gif" alt="[...]" width="866" height="320"></div>
+            <p class="Paragraph"><i class="Emphasis">Next comment applies when BDB_ALWAYS_FLUSH has been set to '0'</i> Buffered updates/inserts/deletes are flushed to the database at
+               	  the next commit.transaction(), abort.transaction() or at the next SQL statement
+               	  (whichever comes first). The time (both CPU time and run time) that is spent
+               	  during execution of that statement will include the time that was required for
+               	  the flush of buffered updates/inserts/deletes. The Call Graph Profiler is
+               	  recording the time that is taken for flushing buffered updates separately. It
+               	  is shown as descendents time on the database-related bshell functions (db.*,
+               	  commit.transaction, abort.transaction, sql.fetch, etc)
+            </p>
+            <div class="Figure">
+               <div class="FigIntro">Picture 8 shows an SQL statement (query id 368) where some
+                  		flushing of buffered updates/inserts/deletes happens during the fetch. In this
+                  		example 141 milliseconds run time is due to flush of pending updates and 12
+                  		milliseconds run time is for the 2 sql.fetch() calls.
+               </div><img src="../images/call_graph_profiler_flush_buffered_updates_1.gif" alt="[...]" width="866" height="180"></div>
+            <div class="Figure">
+               <div class="FigIntro">The link on the sql.fetch() function of query id 368 in picture
+                  		8 leads to an entry about the sql.fetch() function for this object, where the
+                  		flush is shown as a child function (picture 9).
+               </div><img src="../images/call_graph_profiler_flush_buffered_updates_2.gif" alt="[...]" width="866" height="82"></div>
+            <div class="Figure">
+               <div class="FigIntro">Picture 10 shows the flat profile. The functions in the flat
+                  		profile are sorted by the total of the user time and the system time columns.
+                  		There are hyperlinks on the functions, which lead to the entry for the same
+                  		function in the Call Graph.
+               </div><img src="../images/call_graph_profiler_flat_profile.gif" alt="[...]" width="866" height="339"></div>
+            <p class="Paragraph">Note that the Flat Profile does not contain lines about
+               	  internal bshell functions (like db.*, sql.fetch, commit.transaction, etc)
+            </p>
+            <p class="Paragraph">The time consumption for these functions has been added to the
+               	  time consumption for the 3GL function in which these bshell functions are
+               	  called.
+            </p>
+            <p class="Paragraph">Descriptions of columns in the Flat Profile:</p>
+            <ul class="List">
+               <li class="ListItem"><i class="Emphasis">count</i>: number of times the function is
+                  		called
+               </li>
+               <li class="ListItem"><i class="Emphasis">utime</i>: user time in the
+                  		function
+               </li>
+               <li class="ListItem"><i class="Emphasis">stime</i>: system time in the
+                  		function
+               </li>
+               <li class="ListItem"><i class="Emphasis">rtime</i>: run time int the
+                  		function
+               </li>
+               <li class="ListItem"><i class="Emphasis">call</i>: time (user/system/run) per
+                  		call
+               </li>
+               <li class="ListItem"><i class="Emphasis">perc %</i>: percentage of the time
+                  		(user/system/run) in the function
+               </li>
+               <li class="ListItem"><i class="Emphasis">alloc</i>: number of bytes allocated in the
+                  		function
+               </li>
+               <li class="ListItem"><i class="Emphasis">free</i>: number of bytes freed in the
+                  		function
+               </li>
+               <li class="ListItem"><i class="Emphasis">ticks</i>: number of bshell ticks in the
+                  		function
+               </li>
+               <li class="ListItem"><i class="Emphasis">function</i>: the name of the
+                  		function
+               </li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/profiler/using.htm" class="manualLink">Using the Call Graph Profiler</a></li>
+               <li class="RelTopic"><a href="../../progguide/profiler/analyzing.htm" class="manualLink">Analyzing the Call Graph Profile</a></li>
+               <li class="RelTopic"><a href="../../progguide/profiler/example.htm" class="manualLink">Call Graph Profiler Example</a></li>
+               <li class="RelTopic"><a href="../../progguide/profiler/glossary.htm" class="manualLink">Call Graph Profiler Glossary</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/profiler/output, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>add.view.field()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="add.view.field add.view.field functions add.view.field ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">add.view.field()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;add.view.field&nbsp;
+					(long&nbsp;index.nr, const string&nbsp;fname)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This function is supported for compatibility
+                  reasons, do not use this function anymore but use for
+                  conditional view-fields <a href="../../progguide/functions_form_and_form_field_operations/remove.field.from.view.htm" class="manualLink">remove.field.from.view()</a>.
+               </p>
+               <p class="Paragraph">Standard use the field-property "View" instead. In case of
+                  dynamic index switching, use the View column in the Available
+                  Indices by Session session. For conditional view-fields it is
+                  possible to add viewfields with this function from <i class="Emphasis">before.program</i> or <i class="Emphasis">after.form.read</i> section.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>index.nr</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The index identifier. If this is 0, the field is not
+                           associated with any index. It is always a view
+                           field.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>fname</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the form field to be added. To specify a
+                           particular element of an array field, append the
+                           element number (in parentheses) to the field name. For
+                           example: "ttadv301.labl(2)".
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/overview.htm" class="manualLink">Form and form field operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/synopsis.htm" class="manualLink">Form and form field operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_form_and_form_field_operations/add.view.field, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Declarations</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="3GL declarations declarations 3GL ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Declarations</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">You can declare variables either within a function block or at
+               the start of the program. Variables declared in a function block
+               can be used within that function block only. Variables declared at
+               the start of the program can be used in each function described
+               below the declaration.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">General syntax</div>
+            <p class="Paragraph">You declare variables with the following syntax (parts
+               between [ ] are optional):
+            </p><pre class="CodeBlock">
+     [ special ] &lt;type&gt; &lt;variable&gt; [ option ] [, &lt;variable&gt; [ option ], ...]
+</pre><p class="Paragraph">The following are the possible values for the various
+               parts of a variable declaration:
+            </p><pre class="CodeBlock">
+     special    EXTERN                  | Not in function blocks
+                STATIC                  | Only in function block; see Functions 
+     type       LONG
+                DOUBLE
+                BOOLEAN
+                STRING
+                TABLE
+                DOMAIN domain &lt;name&gt;   | domain name is a domain 
+                                             | defined in the data dictionary
+     variable   The syntax for &lt;variable&gt; is:
+                &lt;name&gt;[(&lt;expression&gt;,...)]
+     option     BASED   | (only for arrays)
+                FIXED
+                MB      | (multibyte)
+</pre><p class="Paragraph">You can declare several variables of the same type in the
+               same statement. To do so, simply include commas between the
+               variable names.
+            </p>
+            <p class="Paragraph">If a variable is to be accessed by its symbolic name from
+               outside the program, it must be declared with the keyword
+               EXTERN, so that the variable name is stored in the symbol
+               table of the object.
+            </p>
+            <p class="Paragraph">You must declare a variable with the keyword EXTERN if
+               that variable is used within other programs, within forms
+               (field names and variables within expressions), or within the
+               function <a href="../../progguide/functions_expressions_runtime/expr.compile.htm" class="manualLink">expr.compile()</a>. If the functions <a href="../../progguide/functions_variables_interprocess_transfer/get.var.htm" class="manualLink">get.var()</a> and <a href="../../progguide/functions_variables_interprocess_transfer/put.var.htm" class="manualLink">put.var()</a> are used within the program, the variables in
+               the other program must be declared as EXTERN.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/variables.htm" class="manualLink">Variables</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/declarations, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

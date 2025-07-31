@@ -1,0 +1,72 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>_compnr predicate</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="company numbers _compnr predicate ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">_compnr predicate</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The _compnr predicate specifies the actual company number of
+               a table.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;compnr predicate&gt;
+    ::= &lt;compnr column reference&gt; = &lt;compnr value&gt;
+
+&lt;compnr column reference&gt;
+    ::= !! <i class="Emphasis">a <a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">Column reference</a> whose column name is _compnr</i>
+
+&lt;compnr value&gt;
+    ::= <a href="../../progguide/functions_database_handling/integer_constant.htm" class="manualLink">Integer constant</a>
+      | <a href="../../progguide/functions_database_handling/parameter.htm" class="manualLink">Parameter</a>
+      </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">The value of the integer constant must lie between 0 and 999,
+               all inclusive.
+            </p>
+            <p class="Paragraph">The parameter must be of type <i class="Emphasis">integer</i>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The _compnr predicate always evaluates to True.</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following _compnr predicate sets the actual company
+               number of table dbtst120 to 812.
+            </p><pre class="CodeBlock">
+dbtst120._compnr = 812
+</pre><p class="Paragraph">The following _compnr predicate sets the actual company
+               number of table dbtst120 to whatever value the parameter <i class="Emphasis">current.compnr</i> has at the time the containing SQL
+               statemtent is executed.
+            </p><pre class="CodeBlock">
+dbtst120._compnr = :current.compnr
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/from.htm" class="manualLink">FROM clause</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/compnr_pred, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

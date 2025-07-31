@@ -1,0 +1,89 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>uuid.format$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions uuid.format$ uuid.format$ uuid.format$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">uuid.format$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string &nbsp;uuid.format$&nbsp;
+					(string&nbsp;uuid.compact)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Computes the standard string representation, e.g.
+                  "17293b6c-4d4d-11d6-af08-080009da70ff", of a UUID which is
+                  supplied in compact string representation, e.g.
+                  "Fyk4JE1NEdaO4AgACdpw/w".
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>uuid.compact</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Input string with the compact string representation
+                           of a UUID, e.g. "Fyk4JE1NEdaO4AgACdpw/w".
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The standard string representation of the supplied UUID is
+               returned, e.g. "17293b6c-4d4d-11d6-af08-080009da70ff".
+            </p>
+            <p class="Paragraph">The size of the standard string representation of a UUID is
+               given by the predefined constant UUID.SIZE.STRING. Its value is
+               36.
+            </p>
+            <p class="Paragraph">When the supplied input is not a correct compact
+               representation of a UUID (i.e. when it does not consist of
+               exactly UUID.SIZE.COMPACT characters from the Base64 character
+               set, padded at the end with spaces only), then an empty string
+               "" is returned.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_uuid/uuid_overview.htm" class="manualLink">UUID overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_uuid/uuid_synopsis.htm" class="manualLink">UUID synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_uuid/uuid.format, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>rbhp.set.session()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions rbhp.set.session rbhp.set.session rbhp.set.session ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">rbhp.set.session()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#pragma used dll "ottstprbhp"</code></p>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;rbhp.set.session&nbsp;
+					(const string&nbsp;session.code, long&nbsp;mode, long&nbsp;company [, long&nbsp;session.index])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Set the session to be started, the mode of this session, the company number in which this session and the start index of the
+                  session.
+                  This function can only be called by either the application function: tcint.dll0001.drill.back() or the tools function icm.drillback()
+                  of the tticmdll0002 library.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>session.code</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The code of the session that must be started</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>mode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">SINGLE_OCC&nbsp; The session is started as a
+               single-occurrence (details) session.</p>
+                        <p class="Paragraph">MULTI_OCC&nbsp; The session is started as a multi occurrence
+            (overview) session.</p>
+                        <p class="Paragraph">MULTI_OCC+MODAL&nbsp;The session is started as a multi occurrence in zoom mode.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>company</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The company number in which the session must be started.</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>session.index</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional argument specifying the initial index of the started session.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			3GL
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_rbhp/overview.htm" class="manualLink">Role Based Home Pages overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_rbhp/synopsis.htm" class="manualLink">Role Based Home Pages synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_rbhp/rbhp.set.session, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

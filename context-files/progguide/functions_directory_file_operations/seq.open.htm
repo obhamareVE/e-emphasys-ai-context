@@ -1,0 +1,230 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>seq.open()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions seq.open seq.open seq.open ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">seq.open()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;seq.open&nbsp;
+					(string&nbsp;file, string&nbsp;openmode [, ref string&nbsp;pathnm])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This opens a specified file. It uses the file
+                  $BSE/lib/fd <i class="Emphasis">ver.pack_combination</i> to find the file. <i class="Emphasis">ver</i> refers to a particular release of the software; <i class="Emphasis">pack_combination</i> refers to a particular package
+                  combination (see <a href="../../progguide/functions_directory_file_operations/pathname.htm" class="manualLink">pathname()</a>).
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>file</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The file name.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>openmode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The mode in which the file must be opened. This
+                           can be one of the following options:
+                        </p>
+                        <table width="100%" class="default">
+                           <tbody noTR="11" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">"r"</td>
+                                 <td rowspan="1" colspan="1" class="default">Open for reading. The current file position
+                                    is placed at the <i class="Emphasis">start</i> of the file.
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">"w"</td>
+                                 <td rowspan="1" colspan="1" class="default">Open for writing. The file is created if it
+                                    does not already exist. The current file
+                                    position is placed at the <i class="Emphasis">start</i> of the
+                                    file.
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">"a"</td>
+                                 <td rowspan="1" colspan="1" class="default">
+                                    <p class="Paragraph_firstAndNoTextBefore">Open for writing. The file is created if it
+                                       does not already exist. The current file
+                                       position is placed at the <i class="Emphasis">end</i> of the
+                                       file.
+                                    </p>
+                                    <p class="Paragraph">The file position is placed at end of the
+                                       file before every write statement, even if the
+                                       previous file action was a <a href="../../progguide/functions_directory_file_operations/seq.seek.htm" class="manualLink">seq.seek()</a>.
+                                    </p>
+                                 </td>
+                              </tr>
+                              <tr no="4" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">"x"</td>
+                                 <td rowspan="1" colspan="1" class="default">Open for writing. This is the same as
+                                    "w", except that the function fails if the
+                                    file already exists.
+                                 </td>
+                              </tr>
+                              <tr no="5" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">"r+"</td>
+                                 <td rowspan="1" colspan="1" class="default">Same as "r", but the file can also be
+                                    written to.
+                                 </td>
+                              </tr>
+                              <tr no="6" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">"w+"</td>
+                                 <td rowspan="1" colspan="1" class="default">Same as "w", but the file can also be
+                                    read.
+                                 </td>
+                              </tr>
+                              <tr no="7" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">"a+"</td>
+                                 <td rowspan="1" colspan="1" class="default">Same as "a", but the file can also be
+                                    read.
+                                 </td>
+                              </tr>
+                              <tr no="8" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">"x+"</td>
+                                 <td rowspan="1" colspan="1" class="default">Same as "x", but the file can also be
+                                    read.
+                                 </td>
+                              </tr>
+                              <tr no="9" isLast="false" class="default">
+                                 <td colspan="2" rowspan="1" class="default">Use the following modes to indicate
+                                    whether the file is a binary or a text
+                                    file. You can combine one of these modes
+                                    with any one of the previous modes (for
+                                    example, "rt+").
+                                 </td>
+                              </tr>
+                              <tr no="10" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">"b"</td>
+                                 <td rowspan="1" colspan="1" class="default">Use for binary files. This is the
+                                    default mode and need not be specified.
+                                 </td>
+                              </tr>
+                              <tr no="11" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">"t"</td>
+                                 <td rowspan="1" colspan="1" class="default">
+                                    <p class="Paragraph_firstAndNoTextBefore">The line separator(s) for text-files are
+                                       different on Windows NT and UNIX systems. CRLF
+                                       on the former; LF only on the latter. In
+                                       addition, a Windows NT text file can include
+                                       an EOF-character (^Z) that indicates the end
+                                       of the file. This character should not be
+                                       returned to a program reading the file.
+                                    </p>
+                                    <p class="Paragraph">So, you <i class="Emphasis">must</i> specify the "t" option
+                                       when reading from or writing to a text file on
+                                       Windows NT systems (for example, "at+".) This
+                                       ensures that line separators and EOF
+                                       characters are handled correctly. Never use
+                                       the "t" option when opening a binary file;
+                                       on Windows NT systems this will corrupt the
+                                       file data. The "t" option has no effect on
+                                       UNIX systems.
+                                    </p>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[ref string</td>
+                     <td class="none"><code>pathnm</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the full path to the file.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&gt;= 1</th>
+                     <td rowspan="1" colspan="1" class="none">Success; File pointer returned for use in
+                        subsequent operations.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;1</th>
+                     <td rowspan="1" colspan="1" class="none">Error; that is, the negative value of the system
+                        error (for example, for a permission error, the
+                        system returns 13 and the function returns -13, or
+                        if the internal table is full, the function returns
+                        -EAGAIN).
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">When you open a file for reading and writing, you cannot
+                  follow an output operation directly by an input operation.
+                  You must call <a href="../../progguide/functions_directory_file_operations/seq.seek.htm" class="manualLink">seq.seek()</a> or <a href="../../progguide/functions_directory_file_operations/seq.rewind.htm" class="manualLink">seq.rewind()</a> to reset the
+                  current file position before the input operation.
+               </p>
+               <p class="Paragraph">Also, you cannot follow an input operation directly by an
+                  output operation, unless the input operation encounters the
+                  end-of-file indicator. You must call <a href="../../progguide/functions_directory_file_operations/seq.seek.htm" class="manualLink">seq.seek()</a> or <a href="../../progguide/functions_directory_file_operations/seq.rewind.htm" class="manualLink">seq.rewind()</a> to reset the
+                  current file position before the output operation.
+               </p>
+               <p class="Paragraph">The character <code class="Code">";"</code> is not supported in a file name. The <code class="Code">";"</code> is used as a path separator. <code class="Code">Seq.open("a;b","r")</code> means open file <code class="Code">"a"</code>,
+                  			and if this fails open file <code class="Code">"b"</code>.
+                  			(Note: this behavior is used in the Tools: <code class="Code">seq.open("${BSE}/lib/dtopt2;${BSE_REM}!${BSE}/lib/dtopt2","r"))</code>.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/overview.htm" class="manualLink">Directory and file operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/synopsis.htm" class="manualLink">Directory and file operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_directory_file_operations/seq.open, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

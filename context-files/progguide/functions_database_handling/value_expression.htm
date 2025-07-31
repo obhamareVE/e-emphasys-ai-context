@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Value expression</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Value expression ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Value expression</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The value expression defines a value.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;value expression&gt; 
+    ::= <a href="../../progguide/functions_database_handling/ve_add.htm" class="manualLink">Operator + (add)</a>
+      | <a href="../../progguide/functions_database_handling/ve_subtract.htm" class="manualLink">Operator - (subtract)</a>
+      | <a href="../../progguide/functions_database_handling/ve_multiply.htm" class="manualLink">Operator * (multiply)</a>
+      | <a href="../../progguide/functions_database_handling/ve_divide.htm" class="manualLink">Operator / (divide)</a>
+      | <a href="../../progguide/functions_database_handling/ve_modulo.htm" class="manualLink">Operator \ (modulo)</a>
+      | <a href="../../progguide/functions_database_handling/ve_concat.htm" class="manualLink">Operator &amp; (concatenation)</a>
+      | ( &lt;value expression&gt; )
+      | <a href="../../progguide/functions_database_handling/sub_query.htm" class="manualLink">Sub query</a>
+      | <a href="../../progguide/functions_database_handling/set_function_specification.htm" class="manualLink">Set function specification</a>
+      | <a href="../../progguide/functions_database_handling/substring_and_array_indexing.htm" class="manualLink">Substring and array indexing</a>
+      | <a href="../../progguide/functions_database_handling/searched_case.htm" class="manualLink">CASE expression (searched)</a>
+      | <a href="../../progguide/functions_database_handling/simple_case.htm" class="manualLink">CASE expression (simple)</a>
+      | <a href="../../progguide/functions_database_handling/cast_expression.htm" class="manualLink">CAST expression</a>
+      | <a href="../../progguide/functions_database_handling/trim_function.htm" class="manualLink">TRIM function</a>
+      | <a href="../../progguide/functions_database_handling/ml_one_lang_function.htm" class="manualLink">ml_one_lang function</a>
+      | <a href="../../progguide/functions_database_handling/enum_description_function.htm" class="manualLink">ENUM_DESCRIPTION function</a>
+      | <a href="../../progguide/functions_database_handling/text_content_function.htm" class="manualLink">TEXT_CONTENT function</a>
+               | <a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">Column reference</a>
+      | <a href="../../progguide/functions_database_handling/parameter.htm" class="manualLink">Parameter</a>
+      | <a href="../../progguide/functions_database_handling/integer_constant.htm" class="manualLink">Integer constant</a>
+      | <a href="../../progguide/functions_database_handling/real_constant.htm" class="manualLink">Real constant</a>
+      | <a href="../../progguide/functions_database_handling/string_constant.htm" class="manualLink">String constant</a>
+      | <a href="../../progguide/functions_database_handling/raw_constant.htm" class="manualLink">Raw constant</a>
+      | <a href="../../progguide/functions_database_handling/date_constant.htm" class="manualLink">Date constant</a>
+      | <a href="../../progguide/functions_database_handling/timestamp_constant.htm" class="manualLink">Timestamp constant</a>
+               | <a href="../../progguide/functions_database_handling/enumerate_constant.htm" class="manualLink">Enumerate constant</a>
+      | <a href="../../progguide/functions_database_handling/empty_constant.htm" class="manualLink">EMPTY constant</a>
+      | <a href="../../progguide/functions_database_handling/current_date.htm" class="manualLink">CURRENT_DATE</a>
+      | <a href="../../progguide/functions_database_handling/current_timestamp.htm" class="manualLink">CURRENT_TIMESTAMP</a>
+      </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph"><i class="Emphasis">I.</i> The <i class="Emphasis">&lt;column reference&gt;</i> shall not reference an array
+               column and its <i class="Emphasis">column name</i> shall not
+               
+               identify an index name (e.g. _index1), a combined column name
+               (e.g. cmba) or 
+               
+               be the identifier <code class="Code">_compnr</code>.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">II.</i> The <a href="../../progguide/functions_database_handling/sql_glossary.htm#Degree" class="glossaryLink">degree</a> and <a href="../../progguide/functions_database_handling/sql_glossary.htm#Cardinality" class="glossaryLink">cardinality</a> of the <i class="Emphasis">&lt;scalar subquery&gt;</i> both shall be 1.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following expression specifies the string 'City'.</p><pre class="CodeBlock">
+'City'
+</pre><p class="Paragraph">The following expression adds the integer constants 3 and 4.</p><pre class="CodeBlock">
+3 + 4
+</pre><p class="Paragraph">The following expression takes the substring of the string
+               'Big city' starting at position 6 and with length 2. The result is
+               the string 'it'.
+            </p><pre class="CodeBlock">
+'Big city'(6;2)
+</pre><p class="Paragraph">The following expression takes the first phone number of an
+               employee. The column dbtst120.phoneno is an array column
+               consisting of three strings.
+            </p><pre class="CodeBlock">
+dbtst120.phoneno(1)
+</pre><p class="Paragraph">The following expression multiplies the maximum of the salaries of all
+               employees with a factor 1.3.
+            </p><pre class="CodeBlock">
+1.3 * ( select max(salary) from dbtst120 )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/value_expression, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

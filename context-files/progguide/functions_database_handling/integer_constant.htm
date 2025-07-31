@@ -1,0 +1,74 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Integer constant</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Constants (literals) Integer Integer constant ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Integer constant</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The integer constant specifies an integer value.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;integer constant&gt;
+    ::= [-]&lt;digit&gt;...
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">The value of the integer constant must lie in the range [–2147483647..+2147483647].</p>
+            <p class="Paragraph">Values outside this range are promoted to a <a href="../../progguide/functions_database_handling/real_constant.htm" class="manualLink">Real constant</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The data type of an integer constant is <i class="Emphasis">integer</i>, <i class="Emphasis">date</i>, <i class="Emphasis">timestamp</i>, <i class="Emphasis">interval days</i> or <i class="Emphasis">interval seconds</i>. The data type depends on the context in
+               which the integer is used.
+            </p>
+            <p class="Paragraph">For example, in the following comparison the left value
+               expression ( <i class="Emphasis">hiredate</i>) is of type <i class="Emphasis">date</i> and hence
+               the integer constant is also of type <i class="Emphasis">date</i>, because this
+               is the only valid data type <a href="../../progguide/functions_database_handling/comparable_datatypes.htm" class="manualLink">comparable</a> to data type <i class="Emphasis">date</i>.
+            </p><pre class="CodeBlock">
+hiredate = 717337
+</pre><p class="Paragraph">As another example, in the following expression the <i class="Emphasis">hiredate</i> is of type <i class="Emphasis">date</i> and hence the integer
+               constant is of type <i class="Emphasis">interval days</i>, because this is the
+               only valid data type that can be combined with data type <i class="Emphasis">date</i> for the <a href="../../progguide/functions_database_handling/ve_add.htm" class="manualLink">Operator + (add)</a>.
+            </p><pre class="CodeBlock">
+hiredate + 1
+</pre><p class="Paragraph">This example shows that it is not always possible to derive
+               the correct type for an integer constant. In the following
+               expression the integer constant can be either of type <i class="Emphasis">date</i> or of type <i class="Emphasis">interval days</i>, because both types
+               are valid for the <a href="../../progguide/functions_database_handling/ve_subtract.htm" class="manualLink">Operator - (subtract)</a> when
+               the left value expression is of type <i class="Emphasis">date</i>.
+            </p><pre class="CodeBlock">
+hiredate - 1
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div><pre class="CodeBlock">
+123
+-47
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/integer_constant, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

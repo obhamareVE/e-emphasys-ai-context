@@ -1,0 +1,88 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Detach a JSon value from its Parent</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Json.detach Json.detach functions Json.detach ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Detach a JSon value from its Parent</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;Json.detach&nbsp;
+					(long&nbsp;json)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Detaches a JSON value from its parent JSON object or JSON array.
+                  	After calling this function, the JSON value is no longer a member of its parent.
+                  	The member of the parent JSON object or array is assigned the JSON null value.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>json</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">json</i> is a JSON value.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">Optional, the detached JSON value.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Preconditions</div>
+            <ul class="List">
+               <li class="ListItem">Parameter 'json' is a JSON value.</li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Postconditions</div>
+            <ul class="List">
+               <li class="ListItem">The passed JSON value is detached from its parent.</li>
+               <li class="ListItem">The parent JSON value's member is assigned the JSON null value.</li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_json/JSon_object_overview.htm" class="manualLink">JSON object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_json/synopsis.htm" class="manualLink">JSon object synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_json/Json_detach, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

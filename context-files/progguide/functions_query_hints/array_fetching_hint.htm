@@ -1,0 +1,62 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Array fetching hint</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="array fetching hint query hints array fetching hint ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Array fetching hint</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Some RDBMSs offer the possibility to fetch, with a single fetch
+               call, an array of rows in stead of just one row. This can be
+               beneficial for queries that select many rows because it reduces
+               network traffic between the driver and the RDBMS. You can enable
+               array fetching for a single query as follows:
+            </p><pre class="CodeBlock">
+select a.bpid
+from   tfgld106 a, tccom100 b
+where  a.bpid refers to b
+<i class="Emphasis">hint   array fetching</i>
+      </pre><p class="Paragraph">Just as buffering many rows, array fetching is not
+               advantageous in all cases. You can disable array fetching for
+               a single query as follows:
+            </p><pre class="CodeBlock">
+select a.bpid
+from   tfgld106 a, tccom100 b
+where  a.bpid refers to b
+<i class="Emphasis">hint   no array fetching</i>
+      </pre><p class="Paragraph">The array hint overrides the default behavior of the
+               driver. If by default the driver uses array fetching you can
+               override this with the disable hint and if by default the
+               driver does not use array fetching you can enable it.
+            </p>
+            <p class="Paragraph">If the RDBMS does not support array fetching at all then
+               the array hint is simply ignored. The array hint does not
+               affect the actual size of the array, see <a href="../../progguide/functions_query_hints/array_size_hint.htm" class="manualLink">Array size hint</a>.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/hint_types.htm" class="manualLink">Hint types</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/array_size_hint.htm" class="manualLink">Array size hint</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/overview.htm" class="manualLink">Query hints overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_query_hints/array_fetching_hint, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

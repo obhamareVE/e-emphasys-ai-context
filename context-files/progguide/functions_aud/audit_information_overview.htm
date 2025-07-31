@@ -1,0 +1,126 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Audit Information Overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="audit information overview ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Audit Information Overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Warning</div>
+            <p class="Paragraph"><i class="Emphasis">The functions and macros listed below must not be used
+                  anymore.</i> Using them in BaanERP 5.0c or higher releases
+               may result in less reliable data. Know that there is a new
+               set of functions that you can use for retrieval of audit
+               information. Refer to <a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Audit files</div>
+            <p class="Paragraph">For each table associated with a particular company
+               number, the audit server stores audit information in a set of
+               sequence files. You use the audit functions and macros to
+               access this information.
+            </p>
+            <p class="Paragraph">For each table in each company number, there is also an
+               info file. This stores information about all sequence files
+               for the table/company number combination, and control
+               information for creating and maintaining the sequence files
+               for that table/company number combination.
+            </p>
+            <p class="Paragraph">The following diagram illustrates the overall organization
+               of the audit files for a particular company number.
+            </p>
+            <p class="Paragraph">The following diagram illustrates the overall organization
+               of the audit files for a particular table.
+            </p>
+            <p class="Paragraph">The audit server uses sequence files in rotation. When the
+               last file is full, it starts writing to the first file again.
+               So, if the current sequence file is 200, then sequence file
+               201 (if it exists) is the oldest sequence file and all
+               sequence files &gt;200 are older than sequence files &lt;=
+               200.
+            </p>
+            <p class="Paragraph">For full details of audit file structure and management,
+               consult the Infor ERP Enterprise Server Technical Reference
+               Manual.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Location of audit files</div>
+            <p class="Paragraph">The file '$BSE/lib/auditdef <i class="Emphasis">x</i>. <i class="Emphasis">x'</i> specifies the
+               path to BAAN audit files. All 4GL audit routines use this file
+               to retrieve the path to the audit files.
+            </p>
+            <p class="Paragraph">You can override the default audit path by using the
+               AUDIT_FILE_PATH environment variable.
+            </p>
+            <p class="Paragraph">For example, take the case where directory
+               '/usr1/audit_data' contains the audit data for modules 'adv'
+               and 'aad' in the subdirectories 'attadv' and 'attaad'. These
+               audit files can be referred to by setting:
+            </p><pre class="CodeBlock">
+AUDIT_FILE_PATH=/usr1/audit_data
+</pre><p class="Paragraph">Do <i class="Emphasis">not</i> specify the final directory ('attadv' or
+               'attaad') in the audit path.
+            </p>
+            <p class="Paragraph">If the host name is not included in the pathname, use <a href="../../progguide/functions_aud/aud_select_host.htm" class="manualLink">aud_select_host()</a> to select
+               the required host.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Audit file locking</div>
+            <p class="Paragraph">Before reading information from an audit file, the audit
+               server locks the relevant portion of the file. Other
+               processes can read the information, but no process can write
+               to the locked portion of the file while the read lock is in
+               place. The read lock is released as soon as reading is
+               completed.
+            </p>
+            <p class="Paragraph">Before updating an audit file, the audit server locks the
+               relevant portion of the file with an exclusive type lock.
+               This prevents other processes both reading and writing to the
+               locked portion of the file. The exclusive lock is released as
+               soon as the update is completed.
+            </p>
+            <p class="Paragraph">When the info header is read from the info file, only the
+               info header part of the file is locked. When a sequence
+               header is read from the info file, the sequence header, and
+               the field specifying the header size, are locked.
+            </p>
+            <p class="Paragraph">When the header part of a sequence file is being updated,
+               the sequence header in the sequence file, and the
+               corresponding sequence header in the info file, are locked.
+               In the sequence file, the table name, company number, and
+               sequence header length fields are also locked.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_synopsis.htm" class="manualLink">Audit Information Synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/macros_info_header.htm" class="manualLink">Macros - info header</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/macros_sequence_header.htm" class="manualLink">Macros - sequence header</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/macros_transaction_header.htm" class="manualLink">Macros - transaction header</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/macros_transaction_record.htm" class="manualLink">Macros - transaction record</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/macros_transaction_dates_and_times.htm" class="manualLink">Macros - transaction dates and times</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/macros_dates_and_times.htm" class="manualLink">Macros - dates and times</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_sample_program.htm" class="manualLink">Audit Information Sample Program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_aud/audit_information_overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

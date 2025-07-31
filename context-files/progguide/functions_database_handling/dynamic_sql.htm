@@ -1,0 +1,155 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Dynamic SQL</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="SQL dynamic SQL dynamic sql ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Dynamic SQL</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Dynamic SQL enables a program to form an SQL statement during
+               execution, so that the contents of the statement can be
+               determined, for example, by user input.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Functions</div>
+            <p class="Paragraph">To use Dynamic SQL, the following functions are
+               available:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="8" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">Functions</th>
+                     <th rowspan="1" colspan="1" class="none">Description</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dynamic_sql_queries/sql.parse.htm" class="manualLink">sql.parse()</a></td>
+                     <td rowspan="1" colspan="1" class="none">Query definition.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dynamic_sql_queries/sql.set.rds.full.htm" class="manualLink">sql.set.rds.full()</a></td>
+                     <td rowspan="1" colspan="1" class="none">This sets the size of the RDBMS buffer.</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><a href="../../progguide/functions_dynamic_sql_queries/sql.select.bind.htm" class="manualLink">sql.select.bind()</a></p>
+                        <p class="Paragraph"><a href="../../progguide/functions_dynamic_sql_queries/sql.where.bind.htm" class="manualLink">sql.where.bind()</a></p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">These functions link program variables to the
+                        query's pseudo variable. In Dynamic SQL, all
+                        non-external program variables used in the query must
+                        be linked to a pseudo variable with these
+                        functions.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dynamic_sql_queries/sql.exec.htm" class="manualLink">sql.exec()</a></td>
+                     <td rowspan="1" colspan="1" class="none">This function initializes the query. It gives the
+                        variables their proper values.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dynamic_sql_queries/sql.fetch.htm" class="manualLink">sql.fetch()</a></td>
+                     <td rowspan="1" colspan="1" class="none">This function executes the query. It reads one
+                        result on which operations can be performed. This
+                        function must be invoked for each separate record from
+                        the selected set.
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dynamic_sql_queries/sql.break.htm" class="manualLink">sql.break()</a></td>
+                     <td rowspan="1" colspan="1" class="none">Stops execution of the query. Any interim results
+                        are cleared.
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dynamic_sql_queries/sql.close.htm" class="manualLink">sql.close()</a></td>
+                     <td rowspan="1" colspan="1" class="none">Deletes (all) internal information belonging to this
+                        query.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">See the <a href="../../progguide/functions_database_handling/dynamic_sql.htm" class="manualLink">Dynamic SQL</a> for more information and a description of the
+               syntax of these functions.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Sequence of actions</div>
+            <p class="Paragraph">By using these functions a query, once defined, can be reused
+               optimally. The sequence of the actions is then:
+            </p><pre class="CodeBlock">
+sql.parse, sql.bind, sql.exec, sql.fetch, sql.fetch, ..., sql.break
+           sql.bind, sql.exec, sql.fetch, sql.fetch, ..., sql.break, sql.close
+</pre><p class="Paragraph">In this way you can prevent expensive <i class="Emphasis">sql.parse()</i> calls, while still working with new arguments.
+            </p>
+            <p class="Paragraph">This flow is automatically generated from an embedded SQL
+               program by bic6.2. Usually, the programmer will therefore opt
+               for embedded SQL, the more so, since it automatically binds 4GL
+               variables.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+table           tppmod090
+long            sql
+long            total, m_val
+m_val = 25
+if ( not sql ) then
+        sql = sql.parse(
+                "select ppmod090.fld1, count(*):1 " &amp;
+                "from ppmod090, ppmod091 " &amp;
+                "where ppmod090.fld2 = ppmod091.fld5 AND " &amp;
+                                        "ppmod091.fld3 &gt; :2 " &amp;
+                "group by ppmod090.fld1 " &amp;
+                "order by 2")
+endif
+sql.select.bind(sql, 1, total)
+sql.where.bind(sql, 2, m_val)
+sql.exec(sql)
+while ( true )
+        on case ( sql.fetch(sql) )
+                case eendfile:
+                        break
+                case 0:
+                        print_info(ppmod090.fld1, total)
+                        continue
+                default:                                | error
+                        message("Error %d occurred", db.error)
+                endcase
+                break
+endwhile
+sql.break(sql)
+sql.close(sql)          | After sql.close, a new sql.parse must be
+sql  = 0                | executed to give sql a correct value. If the
+                        | last two lines are skipped, sql retains a
+                        | correct value.
+</pre><p class="Paragraph">See <a href="../../progguide/functions_database_handling/embedded_sql.htm" class="manualLink">Embedded SQL</a> for an
+               example of the same query executed using embedded SQL.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/dynamic_sql, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dal.set.array.field()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dal.set.array.field dal.set.array.field functions dal.set.array.field ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dal.set.array.field()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_dam&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;dal.set.array.field&nbsp;
+					(string&nbsp;fld.name, void&nbsp;value)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Sets the value of the given array field and informs the DAL that
+                  the field is changed. This function assigns a complete array at once. If you want to set only one or a few array elements,
+                  use
+                  	function <a href="../../progguide/functions_db_operations/dal.set.field.htm" class="manualLink">dal.set.field()</a>.
+               </p>
+               <p class="Paragraph">The number of elements to set will be equal to the minimum of the array depth and the field depth. Example:</p>
+               <ul class="List">
+                  <li class="ListItem">If the array depth is 2 and the field depth is 3, only the first 2 elements of the field will be assigned a value;</li>
+                  <li class="ListItem">If the array depth is 4 and the field depth is 3, the last element of the array will not be used.</li>
+               </ul>
+               <p class="Paragraph">This function is a shorthand for the following (pseudo) code:</p><pre class="CodeBlock">
+        long   i
+        long   depth
+
+        depth = &lt;the minimum value of the field depth and the array depth&gt;
+        if &lt;array type is STRING&gt; then
+                for i = 1 to depth
+                        dal.set.field(fld.name, value(1,i), i)
+                endfor
+        else
+                | Type is LONG or DOUBLE
+                for i = 1 to depth
+                        dal.set.field(fld.name, value(i), i)
+                endfor
+        endif
+</pre></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>fld.name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the name of the array field</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">an array containing the new values for the field</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1900.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Preconditions</div>
+            <ul class="List">
+               <li class="ListItem">When used in a DAL hook, other than the <a href="../../progguide/functions_dal/set.object.defaults.htm" class="manualLink">set.object.defaults()</a> hook, 
+                  it is only possible to set fields of other DALs. See <a href="../../progguide/functions_db_operations/dal.set.field.htm" class="manualLink">dal.set.field()</a> for more information.
+               </li>
+               <li class="ListItem">Argument <i class="Emphasis">fld.name</i> must be the name of an existing, valid array field
+               </li>
+               <li class="ListItem">Argument <i class="Emphasis">value</i> must be an array and memory must have been allocated. So passing a based array for which no 
+                  		alloc.mem() has been done yet, is not allowed.
+               </li>
+            </ul>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">This function does not update any dependent fields itself, nor does
+                  it check the field's value! These actions are done during a save.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/dal.set.field.htm" class="manualLink">dal.set.field()</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/dal.set.array.field, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

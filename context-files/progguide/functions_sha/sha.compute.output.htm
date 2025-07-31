@@ -1,0 +1,92 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>sha.compute.output()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions sha.compute.output sha.compute.output sha.compute.output ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">sha.compute.output()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;sha.compute.output&nbsp;
+					(long&nbsp;id, ref string&nbsp;data.out)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Adds some padding and a bit count to the message, as
+                  prescibed in the standard, and computes the resulting message
+                  digest. After this, the Secure Hash Algorithm state may be
+                  reused for hashing another message, by calling <a href="../../progguide/functions_sha/sha.initialize.htm" class="manualLink">sha.initialize()</a>, <a href="../../progguide/functions_sha/sha.add.data.htm" class="manualLink">sha.add.data()</a>, and <a href="../../progguide/functions_sha/sha.compute.output.htm" class="manualLink">sha.compute.output()</a> again.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Id of the Secure Hash Algorithm state, allocated by <a href="../../progguide/functions_sha/sha.create.htm" class="manualLink">sha.create()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>data.out</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">String which will receive the Secure Hash Algorithm
+                           output.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The size of the Secure Hash Algorithm output is returned. If
+               this value is greater than the size of data.out, then no output
+               at all is written to data.out, and sha.compute.output() may be
+               called again with a larger output buffer.
+            </p>
+            <p class="Paragraph">The size of the Secure Hash Algorithm output is in all cases
+               20 bytes.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_sha/sha_overview.htm" class="manualLink">Secure Hash Algorithm overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_sha/sha_synopsis.htm" class="manualLink">Secure Hash Algorithm synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_sha/sha.compute.output, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

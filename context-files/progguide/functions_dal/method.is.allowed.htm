@@ -1,0 +1,137 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>method.is.allowed()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions method.is.allowed method.is.allowed method.is.allowed ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">method.is.allowed()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean&nbsp;method.is.allowed&nbsp;
+					(long&nbsp;method)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This is a special hook for handling centralized
+                  authorizations. Use it to perform checks that determine whether
+                  certain Data Access Methods are permitted for an object. The <i class="Emphasis">method</i> argument specifies the method to check.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>method</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">TRUE if the method is permitted</p>
+            <p class="Paragraph">FALSE if the method is not permitted</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			DAL
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">When called</div>
+            <p class="Paragraph">The hook can be called from the UI script, but it is also
+               called from the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> to check if
+               certain operations are allowed.
+            </p>
+            <p class="Paragraph">For <a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a>, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will call
+               this hook also to determine whether the standard commands
+               ADD.SET, DUPL.OCCUR, MODIFY.SET and MARK.DELETE have to be
+               disabled. This is done just before calling the following UI
+               script sections:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><i class="Emphasis">before.display.object</i></li>
+               <li class="ListItem"><i class="Emphasis">when.field.changes</i></li>
+               <li class="ListItem"><i class="Emphasis">read.view</i> subevent of the <i class="Emphasis">main.table.io</i></li>
+               <li class="ListItem"><i class="Emphasis">after.choice</i> subevent of the <i class="Emphasis">choice.mark.occur</i></li>
+            </ul>
+            <p class="Paragraph">This hook is also called by the <a href="../../progguide/functions_db_operations/dal.save.object.htm" class="manualLink">dal.save.object()</a> and <a href="../../progguide/functions_db_operations/dal.destroy.object.htm" class="manualLink">dal.destroy.object()</a> functions.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">The DAL_NEW method</div>
+            <p class="Paragraph">When this hook is called for the DAL_UPDATE and DAL_DESTROY
+               methods, then you can check current record values to determine
+               whether these methods are permitted. However, when this hook is
+               called for the DAL_NEW method then you should <i class="Emphasis">not</i> check current record values, but e.g. parameter
+               settings or data from other tables, or a parent record. The
+               reason is that a record itself cannot tell whether records may
+               be added to the table.
+            </p>
+            <p class="Paragraph">It is however, perfectly allowed to check for a parent
+               record, no matter whether this parent record exists in another
+               table or the same table. An example would be to use the
+               method.is.allowed hook of a Order Lines table that asks its
+               related Header whether new Order Lines may be inserted.
+            </p>
+            <p class="Paragraph">Another example would be a hierarchy (like an Item BOM). A
+               child in the tree can ask its parent, to see whether that parent
+               allows more children being added to that parent.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+function extern boolean method.is.allowed(long method)
+{
+    on case method
+    case DAL_NEW:
+        if .... then
+            dal.set.error.message("error message")
+            return(false)
+        endif
+    break
+    case DAL_UPDATE:
+        ...
+        break
+    case DAL_DESTROY:
+        ...
+        break
+    endcase
+    return(true)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_glossary.htm" class="manualLink">DAL terminology</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/object_hooks.htm" class="manualLink">Object hooks</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/method.is.allowed, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

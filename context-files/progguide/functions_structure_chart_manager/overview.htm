@@ -1,0 +1,118 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Structure Chart Manager overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="structure chart manager ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Structure Chart Manager overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This API is only supported for Baan
+               Windows and its usage is therefore deprecated.
+            </p>
+            <p class="Paragraph">The Structure Chart Manager is a tool that displays graphical
+               tree structures. The functions described in this section enable
+               programmers to create tree structures and to subsequently change
+               their attributes.
+            </p>
+            <p class="Paragraph">A tree structure displays a list of items as an indented
+   outline that reflects the hierarchical relationship between the
+   items. The items in the tree structure are referred to as nodes.
+   The first node in the tree is referred to as the root node.
+   Nodes in a tree structure have a parent-child relationship. Each
+   node can have a number of child nodes, which are indented below
+   it in the tree structure. Every node, except the root node, has
+   a parent node – that is, the node under which it is
+   indented.</p>
+            <p class="Paragraph">Each node has a node ID, which is its sequence number in the
+               sequence of child nodes associated with a particular parent.
+               Each node, except the root node, also has a parent ID, which is
+               the ID of its parent node. The parent and node IDs of a node
+               determine where the item is positioned within the tree
+               structure.
+            </p>
+            <p class="Paragraph">Nodes must be created from the top down. That is, the parent
+               node must be present before you can create a child node for that
+               parent.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Interprocess communication (IPC)</div>
+            <p class="Paragraph">Communication between the client program and the Structure
+               Chart Manager is full-duplex. This means that the client can
+               send information to the server and the server can send
+               information to the client, simultaneously.
+            </p>
+            <p class="Paragraph">The Structure Chart Manager uses <a href="../../progguide/functions_interprocess_communication_bshell/receive.bucket.htm" class="manualLink">receive.bucket$()</a> for interprocess communication. When it
+               sends a bucket message to the client, the client receives an
+               event of type EVTBUCKETMESSAGE. So the client program must
+               contain a loop to handle these events.
+            </p>
+            <p class="Paragraph">You can retrieve the command parameter of an event by using
+               the following statement:
+            </p>
+            <p class="Paragraph"><code class="Code">command = evt.bms.command(event)</code></p>
+            <p class="Paragraph">The command parameter indicates the reason for the event. It
+               can have any of the following values:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">MSG.PUSH.BUTTON</td>
+                     <td rowspan="1" colspan="1" class="none">Indicates that the user has clicked on a button in
+                        the Structure Chart.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">MSG.NODE.PRESS</td>
+                     <td rowspan="1" colspan="1" class="none">Indicates that the user has clicked on a node of the
+                        Structure Chart.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">MSG.NODE.DPRESS</td>
+                     <td rowspan="1" colspan="1" class="none">Indicates that the user has double-clicked on a node
+                        of the Structure Chart.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">You use the following functions to retrieve data from the
+               Structure Chart Manager after a bucket message has been
+               received: <a href="../../progguide/functions_structure_chart_manager/get.tree.node.press.htm" class="manualLink">get.tree.node.press()</a>, <a href="../../progguide/functions_structure_chart_manager/get.tree.node.dpress.htm" class="manualLink">get.tree.node.dpress()</a>, <a href="../../progguide/functions_structure_chart_manager/get.tree.push.button.htm" class="manualLink">get.tree.push.button()</a>, <a href="../../progguide/functions_structure_chart_manager/get.tree.default.htm" class="manualLink">get.tree.default()</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Colors</div>
+            <p class="Paragraph">All colors must be composed by using the <a href="../../progguide/functions_color/rgb.htm" class="manualLink">rgb()</a> function. Or
+               you can use one of the following predefined colors:
+            </p>
+            <p class="Paragraph">RGB.BLACK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RGB.MAGENTA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RGB.RED</p>
+            <p class="Paragraph">RGB.BLUE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RGB.GREEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RGB.WHITE</p>
+            <p class="Paragraph">RGB.YELLOW&nbsp;&nbsp;&nbsp;&nbsp; RGB.GRAY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RGB.CYAN</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_structure_chart_manager/synopsis.htm" class="manualLink">Structure ChartManager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_structure_chart_manager/example.htm" class="manualLink">Tree structures: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_structure_chart_manager/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

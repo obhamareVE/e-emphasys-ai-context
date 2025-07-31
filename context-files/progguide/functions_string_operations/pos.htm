@@ -1,0 +1,133 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>pos()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions pos pos pos ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">pos()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;pos&nbsp;
+					(string&nbsp;source, string&nbsp;part [, long&nbsp;offset])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This returns the start position of a specified substring ( <i class="Emphasis">part</i>) in a specified string ( <i class="Emphasis">source</i>). <i class="Emphasis">source</i> and <i class="Emphasis">part</i> can be either strings or string expressions.
+               </p>
+               <p class="Paragraph"><i class="Emphasis">pos()</i> starts searching for the substring at the first position in the source string. It returns the start
+                  				position relative to the beginning of the source string. To start searching at the last position instead, use <a href="../../progguide/functions_string_operations/rpos.htm" class="manualLink">rpos()</a>.
+               </p>
+               <p class="Paragraph">As of <a href="../../progguide/tiv/tiv_1700.htm" class="manualLink">TIV 1700</a>, <i class="Emphasis">pos()</i> can start the search at the specified <i class="Emphasis">offset</i>. In this way it is possible to not only find the first
+                  				occurrence of a substring, but also the next one(s). The returned start position  is also in this case relative to the
+                  beginning of 
+                  				the source string. See the example below for how to use this optional parameter.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>source</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The string to search in</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>part</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The part to search</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>offset</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional search starting position; when not specified the search starts at position 1. Note that:</p>
+                        <ul class="List">
+                           <li class="ListItem">If <code class="Code">offset &lt;= 1</code>, then searching start at position 1.
+                           </li>
+                           <li class="ListItem">If <code class="Code">offset &gt; len(source)</code>, then 0 is returned.
+                           </li>
+                        </ul>
+                        <p class="Paragraph">This parameter can be used as of <a href="../../progguide/tiv/tiv_1700.htm" class="manualLink">TIV 1700</a>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The start position of the substring in the string. Or 0 if the substring is not found.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long index
+string source(50)
+
+|                  1         2         3         4
+| index   1234567890123456789012345678901234567890123
+source = "the quick brown fox jumps over the lazy dog"
+
+index = pos(source, "the")     | index contains 1
+index = rpos(source, "the")    | index contains 32
+
+index = pos(source, "fox")     | index contains 17
+
+| Optional offset parameter (as off TIV 1700)
+index = pos(source, "the", -1) | index contains 1
+index = pos(source, "the", 1)  | index contains 1
+index = pos(source, "the", 10) | index contains 32
+index = pos(source, "the", 50) | index contains 0
+
+| Now find all occurrences of the "o" using a loop
+index = pos(source, "o")
+while index &gt; 0
+	| do something with this index 
+	...
+	| get the next "o"
+	index = pos(source, "o", index + 1)
+endwhile
+| the following offsets have been found in this order: 13, 18, 27 and 42
+		</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/overview.htm" class="manualLink">String operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/synopsis.htm" class="manualLink">String operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_string_operations/pos, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>db.indexinfo()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="db.indexinfo db.indexinfo functions db.indexinfo ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">db.indexinfo()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;db.indexinfo&nbsp;
+					(long&nbsp;table_id, long&nbsp;index_nr, ref long&nbsp;index_info(32, 3), ref long&nbsp;indexparts, ref boolean&nbsp;indexdups, ref boolean&nbsp;indexactive)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This returns information about the parts of a specified
+                  index.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>table_id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The table ID, as returned by <a href="../../progguide/functions_db_operations/db.bind.htm" class="manualLink">db.bind()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>index_nr</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The index number.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>index_info(32, 3)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the start position, length, and type of
+                           the index parts (up to a maximum of 32 parts):
+                        </p>
+                        <p class="Paragraph">index_info(i,1) Start position in the logical record
+                           of part i of the index.
+                        </p>
+                        <p class="Paragraph">index_info(i,2) Length of part i.</p>
+                        <p class="Paragraph">index_info(i,3) Type of part i. The possible
+                           values are:
+                        </p>
+                        <p class="Paragraph">DB.BYTE DB.TIME</p>
+                        <p class="Paragraph">DB.INTEGER DB.TEXT</p>
+                        <p class="Paragraph">DB.LONG DB.MAIL</p>
+                        <p class="Paragraph">DB.FLOAT DB.ENUM</p>
+                        <p class="Paragraph">DB.DOUBLE DB.BITSET</p>
+                        <p class="Paragraph">DB.STRING DB.COMBINED</p>
+                        <p class="Paragraph">DB.DATE DB.MULTIBYTE</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>indexparts</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Returns the number of parts in the index.</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">ref boolean</td>
+                     <td class="none"><code>indexdups</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Indicates whether or not duplicate values are
+                           permitted.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <td class="none">ref boolean</td>
+                     <td class="none"><code>indexactive</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Indicates whether or not the index is active.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;&gt;0</th>
+                     <td rowspan="1" colspan="1" class="none">Error.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/db.indexinfo, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

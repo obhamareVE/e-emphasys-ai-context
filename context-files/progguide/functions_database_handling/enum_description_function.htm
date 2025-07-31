@@ -1,0 +1,68 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>ENUM_DESCRIPTION function</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="ENUM_DESCRIPTION function ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">ENUM_DESCRIPTION function</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">With the ENUM_DESCRIPTION function you can retrieve the description for
+               the enumeration value of a column.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;enum description function&gt;
+    ::= ENUM_DESCRIPTION ( <a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">Column reference</a> [ , <a href="../../progguide/functions_database_handling/string_constant.htm" class="manualLink">String constant</a> ] )
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">The <i class="Emphasis">&lt;column reference&gt;</i> shall identify a column that is an enumeration.
+            </p>
+            <p class="Paragraph">The length of the optional <i class="Emphasis">&lt;string constant&gt;</i> argument shall be 1.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The data type of the result of the ENUM_DESCRIPTION function is <i class="Emphasis">string</i>.
+            </p>
+            <p class="Paragraph">The optional <i class="Emphasis">&lt;string constant&gt;</i> argument 
+               identifies the language for the description.
+               If <i class="Emphasis">&lt;string constant&gt;</i> is omitted then
+               the current language of the user will be used.
+               If the description is not available in the specified
+               language then language code '2' (that is: English) is used.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following ENUM_DESCRIPTION function returns the description for the
+               value of the column <i class="Emphasis">dbtst120.sex</i>, which is either 'Male' or 'Female'.
+            </p><pre class="CodeBlock">
+ENUM_DESCRIPTION( dbtst120.sex, '2' )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">Column reference</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/enum_description_function, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Interprocess communication (OS level) synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="interprocess communication (os level) synopsis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Interprocess communication (OS level) synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Message queues</div>
+               <table border="1" class="default">
+                  <tbody noTR="4" class="default">
+                     <tr no="1" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+void
+</pre></td>
+                        <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_interprocess_communication_os_level/close.message.htm" class="manualLink">close.message()</a></td>
+                        <td rowspan="1" colspan="1" class="default"><code class="Code">( long key [, long fast] )</code></td>
+                     </tr>
+                     <tr no="2" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+long
+</pre></td>
+                        <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_interprocess_communication_os_level/open.message.htm" class="manualLink">open.message()</a></td>
+                        <td rowspan="1" colspan="1" class="default"><code class="Code">( long project, string name$, long action [, long fast] )</code></td>
+                     </tr>
+                     <tr no="3" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+long
+</pre></td>
+                        <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_interprocess_communication_os_level/recv.message.htm" class="manualLink">recv.message()</a></td>
+                        <td rowspan="1" colspan="1" class="default"><code class="Code">( long key, long sender.key, long time, ref string message$ [, long fast] )</code></td>
+                     </tr>
+                     <tr no="4" isLast="true" class="default">
+                        <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+long
+</pre></td>
+                        <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_interprocess_communication_os_level/send.message.htm" class="manualLink">send.message()</a></td>
+                        <td rowspan="1" colspan="1" class="default"><code class="Code">( long dest.key, long sender.key, string message$ [, long fast] )</code></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Pipes</div>
+               <table border="1" class="default">
+                  <tbody noTR="10" class="default">
+                     <tr no="1" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+long
+</pre></td>
+                        <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_interprocess_communication_os_level/pipe.clearerr.htm" class="manualLink">pipe.clearerr()</a></td>
+                        <td rowspan="1" colspan="1" class="default"><code class="Code">( long pipe_id )</code></td>
+                     </tr>
+                     <tr no="2" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+long
+</pre></td>
+                        <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_interprocess_communication_os_level/pipe.close.htm" class="manualLink">pipe.close()</a></td>
+                        <td rowspan="1" colspan="1" class="default"><code class="Code">( long pipe_id )</code></td>
+                     </tr>
+                     <tr no="3" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+long
+</pre></td>
+                        <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_interprocess_communication_os_level/pipe.eof.htm" class="manualLink">pipe.eof()</a></td>
+                        <td rowspan="1" colspan="1" class="default"><code class="Code">( long pipe_id )</code></td>
+                     </tr>
+                     <tr no="4" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+long
+</pre></td>
+                        <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_interprocess_communication_os_level/pipe.error.htm" class="manualLink">pipe.error()</a></td>
+                        <td rowspan="1" colspan="1" class="default"><code class="Code">( long pipe_id )</code></td>
+                     </tr>
+                     <tr no="5" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+long
+</pre></td>
+                        <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_interprocess_communication_os_level/pipe.flush.htm" class="manualLink">pipe.flush()</a></td>
+                        <td rowspan="1" colspan="1" class="default"><code class="Code">( long pipe_id )</code></td>
+                     </tr>
+                     <tr no="6" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+long
+</pre></td>
+                        <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_interprocess_communication_os_level/pipe.gets.htm" class="manualLink">pipe.gets()</a></td>
+                        <td rowspan="1" colspan="1" class="default"><code class="Code">( ref string line(80), long nr_of_bytes, long pipe_id )</code></td>
+                     </tr>
+                     <tr no="7" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+long
+</pre></td>
+                        <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_interprocess_communication_os_level/pipe.open.htm" class="manualLink">pipe.open()</a></td>
+                        <td rowspan="1" colspan="1" class="default"><code class="Code">( string pathnm(128), string openmode(2))</code></td>
+                     </tr>
+                     <tr no="8" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+long
+</pre></td>
+                        <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_interprocess_communication_os_level/pipe.puts.htm" class="manualLink">pipe.puts()</a></td>
+                        <td rowspan="1" colspan="1" class="default"><code class="Code">( string line(80), long pipe_id )</code></td>
+                     </tr>
+                     <tr no="9" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+long
+</pre></td>
+                        <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_interprocess_communication_os_level/pipe.read.htm" class="manualLink">pipe.read()</a></td>
+                        <td rowspan="1" colspan="1" class="default"><code class="Code">( ref string buffer(1024), long nr_of_bytes, long pipe_id )</code></td>
+                     </tr>
+                     <tr no="10" isLast="true" class="default">
+                        <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+long
+</pre></td>
+                        <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_interprocess_communication_os_level/pipe.write.htm" class="manualLink">pipe.write()</a></td>
+                        <td rowspan="1" colspan="1" class="default"><code class="Code">( string buffer(1024), long nr_of_bytes, long pipe_id)</code></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_interprocess_communication_os_level/overview.htm" class="manualLink">Interprocess communication (OS level) overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_interprocess_communication_os_level/synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

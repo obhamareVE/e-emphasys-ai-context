@@ -1,0 +1,103 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Put a JSon boolean object in a JSon array</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Json.putBoolean Json.putBoolean functions Json.putBoolean ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Put a JSon boolean object in a JSon array</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;Json.putBoolean&nbsp;
+					(long&nbsp;json, long&nbsp;idx, boolean&nbsp;value)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Convenience function for directly putting a 3GL boolean value at the specified index in a
+                  			JSON array. The 3GL boolean value is first converted to a JSON boolean value which is then
+                  			put into the array.
+                  			The function is a shorthand for:
+                  				Json.put(json, idx, Json.newBoolean(value))
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>json</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">json</i> is a JSON array.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>idx</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">idx</i> is the index to put the JSON boolean value in.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">boolean</td>
+                     <td class="none"><code>value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">value</i> is the 3GL boolean value for which a JSON boolean value 
+                           			is created, which is then put into the array.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">Optional, the new JSON boolean value which has been put into the JSON array.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Preconditions</div>
+            <ul class="List">
+               <li class="ListItem">Parameter 'json' is a JSON value of type JSON_TYPE_ARRAY.</li>
+               <li class="ListItem">Parameter 'idx' is greater than 0 and less than or equal to the 
+                  			number of values in the array.
+               </li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_json/JSon_object_overview.htm" class="manualLink">JSON object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_json/synopsis.htm" class="manualLink">JSon object synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_json/Json_putBoolean, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

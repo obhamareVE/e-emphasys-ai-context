@@ -1,0 +1,121 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Interface Conversion Protected Layer</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Interface Conversion Protected Layer</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">In this library the logic of the protected calculated fields
+               	  must be programmed in specific hooks:
+            </p>
+            <ul class="List">
+               <li class="ListItem">function long
+                  		&lt;component&gt;.{all|&lt;attribute&gt;}.map.to.{specific|&lt;attribute&gt;}()
+               </li>
+               <li class="ListItem">function long
+                  		&lt;component&gt;.&lt;attribute&gt;.map.from.{all|specific|&lt;attribute&gt;}()
+               </li>
+            </ul>
+            <p class="Paragraph">'all' will be used when more then one attribute has been mapped
+               	  to the current attribute. Normally the mapped attribute will be filled out in
+               	  &lt;attribute&gt;. If there is no mapping specified 'specific' will be used
+               	  instead.
+            </p>
+            <p class="Paragraph">The system will generate the library. The file can be divided
+               	  into two parts. The first part is read-only, while in the second part the
+               	  content of the hooks must be programmed (see the example below).
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example Read-only</div><pre class="CodeBlock">
+function extern long
+tlbct.bl750sm00.set.Line.localPriceIncludingVAT(
+                    const domain tlpro.amnt i.value)
+{
+    DllUsage
+    EndDllUsage
+
+    g.Line.localPriceIncludingVAT = i.value
+    g.Line.localPriceIncludingVAT.set = true
+
+    RETIFNOK(Line.localPriceIncludingVAT.map.to.specific())
+    return(0)
+}
+
+function extern long
+tlbct.bl750sm00.get.Line.localUnitPriceIncludingTaxAmount(
+                    ref domain tlpro.prip o.value)
+{
+    DllUsage
+    EndDllUsage
+
+    CALL_PROT_DYN("get.Line.localUnitPriceOfAmount",
+            g.Line.localUnitPriceOfAmount)
+    g.Line.localUnitPriceOfAmount.set = true
+    CALL_PROT_DYN("get.Line.taxAmount",
+            g.Line.taxAmount)
+    g.Line.taxAmount.set = true
+    RETIFNOK(Line.localUnitPriceIncludingTaxAmount.map.from.all())
+    o.value = g.Line.localUnitPriceIncludingTaxAmount
+    return(0)
+}
+</pre><p class="Paragraph">Between the read-only and the development part the following
+               	  'comment' lines are present. The code below these lines will not be overwritten
+               	  or removed during regeneration of the BOL.
+            </p><pre class="CodeBlock">
+|********** Below this line the specific function can be filled***************
+|********** These lines will not be overwritten by Generation tool************
+|********** REMARK : Changes above this line will be overwritten**************
+|||SPECIFIC PART||| |* Do not remove this line!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">To be filled by the developer</div><pre class="CodeBlock">
+function long Line.localPriceIncludingVAT.map.to.specific()
+{
+    return (0)
+}
+
+function long Line.localUnitPriceIncludingTaxAmount.map.from.all()
+{
+    g.Line.localUnitPriceIncludingTaxAmount =
+g.Line.localUnitPriceOfAmount
+        + g.Line.taxAmount
+    return (0)
+}
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Error Handling</div>
+            <p class="Paragraph">In the development part, it is possible to report problems. The
+               	  standard function 'dal.set.error.message' have to be used for setting an error
+               	  message, followed by 'return (DALHOOKERROR)'.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/bol/overview.htm" class="manualLink">Business Object Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/bol/sb_layer.htm" class="manualLink">Public Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/bol/sc_layer.htm" class="manualLink">Interface Conversion Public Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/bol/st_layer.htm" class="manualLink">Protected Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/bol/sf_layer.htm" class="manualLink">Specific Methods Library</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/bol/sm_layer, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

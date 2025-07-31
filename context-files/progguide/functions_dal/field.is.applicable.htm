@@ -1,0 +1,162 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>field.is.applicable()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="field.is.applicable field.is.applicable functions field.is.applicable ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">field.is.applicable()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean&nbsp;field.is.applicable&nbsp;
+					( [long&nbsp;mode] [, long&nbsp;element])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this hook to indicate whether the field is applicable. If a
+                  	  field is not applicable then the 4GL Engine disables the field and the field
+                  	  will be cleared. Depending on the data type of the field the field's value then
+                  	  becomes:
+               </p>
+               <table border="0" class="none">
+                  <tbody noTR="4" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">string</td>
+                        <td rowspan="1" colspan="1" class="none">""</td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">double</td>
+                        <td rowspan="1" colspan="1" class="none">0.0</td>
+                     </tr>
+                     <tr no="3" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">long</td>
+                        <td rowspan="1" colspan="1" class="none">0</td>
+                     </tr>
+                     <tr no="4" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">enum</td>
+                        <td rowspan="1" colspan="1" class="none">The default value as defined in the Data Dictionary</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>mode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional mode flag, one of { 0, DAL_NEW, DAL_UPDATE }</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>element</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional element number in case the field is an element of an array 
+                           (for non array fields this value is 1)
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The hook should return False in case the field is not
+               	  applicable. In that case the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will disable the field in the UI and the field will be cleared.
+               	  In any other case the hook should return True (i.e. the field is
+               	  applicable).
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			DAL
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">When called</div>
+            <ul class="List">
+               <li class="ListItem">At the time the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> determines whether fields need to be disabled cq. enabled: this
+                  		is done just before calling the <i class="Emphasis">before.display.object</i> and
+                  		the <i class="Emphasis">when.field.changes</i> sections
+               </li>
+               <li class="ListItem">At the time of checking the field's value, in case the field is
+                  		not empty and the field is not never applicable.
+               </li>
+               <li class="ListItem">In case the field is defined as a <a href="../../progguide/functions_dal/dal2_field_dependencies.htm" class="manualLink">DAL2 Field dependencies</a> of another field and that other field
+                  		changes. See also the <a href="../../progguide/functions_dal/field.update.htm" class="manualLink">field.update()</a> hook.
+               </li>
+            </ul>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">In this hook you should test on fields belonging to table of the
+                  	  DAL (current record values).
+               </p>
+               <p class="Paragraph">If this hook does not exist, it is assumed that the field is
+                  	  applicable. Note that the field can still be never applicable!
+               </p>
+               <p class="Paragraph">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will show the following message to the end-user in case the field
+                  	  has a value and it appears to be not applicable: The %1$s field must be
+                  	  empty.
+               </p>
+               <p class="Paragraph">It is advised to set an error message with <a href="../../progguide/functions_message_handling/dal.set.error.message.htm" class="manualLink">dal.set.error.message()</a> to indicate the reason why the
+                  	  field is not applicable.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+function extern boolean whinh200.sfit.is.applicable()
+{
+    if whinh200.ittp &lt;&gt; whinh.ittp.item.transfer then
+        dal.set.error.message("whinhs0239")
+        |* The Ship-from Item is not applicable in case the
+        |* Inventory transaction type is not set to Item Transfer.
+        return(false)
+    endif
+    ...
+    return(true)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/field.update.htm" class="manualLink">field.update()</a> hook
+               </li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_field_dependencies.htm" class="manualLink">DAL2 Field dependencies</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_4gle.htm" class="manualLink">DAL2 and the 4GL Engine</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_flow.htm" class="manualLink">DAL2 Flow of field hooks</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/field.is.applicable, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

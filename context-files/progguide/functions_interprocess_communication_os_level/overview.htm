@@ -1,0 +1,105 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Interprocess communication (OS level) overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="interprocess communication (os level) ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Interprocess communication (OS level) overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">These functions enable BAAN processes in different bshells to
+               communicate with each other. On UNIX platforms you can use both the
+               message queue and pipe mechanisms. On Windows NT platforms you can
+               currently use only message queues.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Message queues</div>
+            <p class="Paragraph">With the <i class="Emphasis">*.message</i> functions, BAAN processes in different
+               bshells can communicate with each other by means of UNIX
+               message queues or NT mailslots (referred to here as
+               mailboxes). A process can create new mailboxes, connect to
+               existing mailboxes, and read from and write to those
+               mailboxes.
+            </p>
+            <p class="Paragraph">Processes use the <a href="../../progguide/functions_interprocess_communication_os_level/open.message.htm" class="manualLink">open.message()</a> function both
+               to create a new mailbox and to connect to an existing
+               mailbox. The arguments of the <i class="Emphasis">open.message()</i> function include a project number and
+               the name of a file that is readable by all processes that
+               want to use the mailbox. The project number and some
+               attribute of the specified file are used internally to
+               generate a numeric key that uniquely identifies the mailbox.
+               All processes that want to use the same mailbox must generate
+               the same key, so they must call <i class="Emphasis">open.message()</i> with the same project number and file
+               name arguments.
+            </p>
+            <p class="Paragraph">Once a process has connected to a particular mailbox, it
+               can write to it and read from it by using the <a href="../../progguide/functions_interprocess_communication_os_level/send.message.htm" class="manualLink">send.message()</a> and <a href="../../progguide/functions_interprocess_communication_os_level/recv.message.htm" class="manualLink">recv.message()</a> functions. When
+               there is no further use for a particular message queue, you
+               must explicitly destroy it by calling <a href="../../progguide/functions_interprocess_communication_os_level/close.message.htm" class="manualLink">close.message()</a>.
+            </p>
+            <p class="Paragraph">On UNIX platforms, the mailbox functions can use the UNIX
+               message queue ID instead of the mailbox key to address a
+               particular mailbox. To do this, <i class="Emphasis">all</i> functions must
+               specify 1 in the optional <i class="Emphasis">fast</i> argument. Using the UNIX
+               message queue ID has both advantages and disadvantages. For
+               example:
+            </p>
+            <ul class="List">
+               <li class="ListItem">The UNIX system call to convert the mailbox key to a
+                  message queue ID ( <i class="Emphasis">msgget()</i>) is called only once – that is, during <i class="Emphasis">open.message()</i>. It is not called during <i class="Emphasis">send.message()</i>, <i class="Emphasis">recv.message()</i>, or <i class="Emphasis">close.message()</i>. So, the load on the UNIX system is
+                  reduced.
+               </li>
+               <li class="ListItem">You cannot use a message queue key that was not returned
+                  by <i class="Emphasis">open.message()</i>.
+               </li>
+               <li class="ListItem">Some errors, such as a removed message queue, can be
+                  difficult to detect.
+               </li>
+            </ul>
+            <p class="Paragraph">On Windows NT, only the bshell that created a certain
+               queue can read from this queue . So, multiple readers reading
+               messages from the same message queue does not work on Windows
+               NT, nor the situation where one process creates a queue and
+               tells another process to read from this queue.
+            </p>
+            <p class="Paragraph">There is no such restriction on the write-side (any
+               process can write to any queue).
+            </p>
+            <p class="Paragraph">Please use mailboxes in such a
+               way that it works on both UNIX and Windows NT!
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Pipes</div>
+            <p class="Paragraph">On UNIX platforms, the bshell can use unnamed pipes to
+               communicate with an external UNIX process started by the same
+               bshell.
+            </p>
+            <p class="Paragraph">On Windows NT, this has not been implemented in the
+               bshell.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_interprocess_communication_os_level/synopsis.htm" class="manualLink">Interprocess communication (OS level) synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_interprocess_communication_os_level/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

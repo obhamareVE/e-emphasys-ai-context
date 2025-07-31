@@ -1,0 +1,214 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>aud.get.field.status()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="aud.get.field.status aud.get.field.status functions aud.get.field.status ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">aud.get.field.status()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;aud.get.field.status&nbsp;
+					(long&nbsp;selection.id, long&nbsp;table.id, long&nbsp;field.id)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Retrieves the status of a field in a database action (insert,
+                  update or delete).
+               </p>
+               <p class="Paragraph">The status can be one of the following values:</p>
+               <table border="0" class="none">
+                  <tbody noTR="3" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">X</td>
+                        <td rowspan="1" colspan="1" class="none">
+                           <p class="Paragraph_firstAndNoTextBefore">Not available (insert, update or delete)</p>
+                           <p class="Paragraph">This either means the field does not exist, or it
+                              was not logged because this was specified in the data
+                              model, or (in case of an update) it was not logged
+                              because it has not changed
+                           </p>
+                        </td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">Y (changed)</td>
+                        <td rowspan="1" colspan="1" class="none">Depending on Action Type: old value available
+                           (delete), new value available (insert), both old and
+                           new value available, value has changed (update)
+                        </td>
+                     </tr>
+                     <tr no="3" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">N (not changed)</td>
+                        <td rowspan="1" colspan="1" class="none">Value has not changed, yet both old and new values
+                           are available (update).
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+               <p class="Paragraph">The following table shows the status in all cases that might
+                  occur:
+               </p>
+               <table border="0" width="100%" class="none">
+                  <tbody noTR="9" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <th rowspan="1" colspan="1" class="none">Action Type</th>
+                        <th rowspan="1" colspan="1" class="none">Field in Audit DD</th>
+                        <th rowspan="1" colspan="1" class="none">Field Changed</th>
+                        <th rowspan="1" colspan="1" class="none">Field Logged</th>
+                        <th rowspan="1" colspan="1" class="none">Status</th>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">I</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                        <td rowspan="1" colspan="1" class="none">Y</td>
+                     </tr>
+                     <tr no="3" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">I</td>
+                        <td rowspan="1" colspan="1" class="none">No</td>
+                        <td rowspan="1" colspan="1" class="none">-</td>
+                        <td rowspan="1" colspan="1" class="none">-</td>
+                        <td rowspan="1" colspan="1" class="none">X</td>
+                     </tr>
+                     <tr no="4" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">D</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                        <td rowspan="1" colspan="1" class="none">Y</td>
+                     </tr>
+                     <tr no="5" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">D</td>
+                        <td rowspan="1" colspan="1" class="none">No</td>
+                        <td rowspan="1" colspan="1" class="none">-</td>
+                        <td rowspan="1" colspan="1" class="none">-</td>
+                        <td rowspan="1" colspan="1" class="none">X</td>
+                     </tr>
+                     <tr no="6" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">U</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                        <td rowspan="1" colspan="1" class="none">Y</td>
+                     </tr>
+                     <tr no="7" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">U</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                        <td rowspan="1" colspan="1" class="none">No</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                        <td rowspan="1" colspan="1" class="none">N</td>
+                     </tr>
+                     <tr no="8" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">U</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                        <td rowspan="1" colspan="1" class="none">No</td>
+                        <td rowspan="1" colspan="1" class="none">No</td>
+                        <td rowspan="1" colspan="1" class="none">X</td>
+                     </tr>
+                     <tr no="9" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">U</td>
+                        <td rowspan="1" colspan="1" class="none">No</td>
+                        <td rowspan="1" colspan="1" class="none">-</td>
+                        <td rowspan="1" colspan="1" class="none">-</td>
+                        <td rowspan="1" colspan="1" class="none">X</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>selection.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Id of the selection, as provided by
+                           aud.select.transactions
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>table.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Id of the table on which the action occurred, which
+                           is used to retrieve the detailed action data using
+                           function <a href="../../progguide/functions_audtr/aud.get.field.status.htm" class="manualLink">aud.get.field.status()</a>, <a href="../../progguide/functions_audtr/aud.put.old.field.value.htm" class="manualLink">aud.put.old.field.value()</a>,
+                           and <a href="../../progguide/functions_audtr/aud.put.old.field.value.htm" class="manualLink">aud.put.new.field.value()</a>.
+                           This id is also used to get the meta data information,
+                           in case it has been changed.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>field.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Identifier for a field, as retrieved using the functions aud.get.field.ids() or aud.get.field.list().
+                           
+                           Note: if field.id = 0 (the field does not exist) status "X" is returned.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">See description.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Restrictions</div>
+            <p class="Paragraph">This function will not check the input, because of
+               performance reasons. Instead the combination of <i class="Emphasis">selection.id</i>, <i class="Emphasis">table.id</i>, <i class="Emphasis">field.id</i> is assumed
+               to refer to an existing field, as returned by <a href="../../progguide/functions_audtr/aud.get.field.ids.htm" class="manualLink">aud.get.field.ids()</a>. This
+               means that if the arguments are not valid, an error message will
+               be presented to the end user.
+            </p>
+            <p class="Paragraph">During the last aud.get.next.action for this selection, an <i class="Emphasis">action.type</i> must have been returned that is 'I', 'U' or
+               'D'. If the action is a table operation ('C', 'L' or 'R') the
+               status of a field has no meaning and therefore this function
+               cannot be used.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_synopsis.htm" class="manualLink">Audit management synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_examples.htm" class="manualLink">Audit management examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_audtr/aud.get.field.status, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

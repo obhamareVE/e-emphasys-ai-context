@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>with.object.set.do()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions with.object.set.do with.object.set.do with.object.set.do ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">with.object.set.do()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_dal&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;with.object.set.do&nbsp;
+					(string&nbsp;function_name [, &lt;type&gt;&nbsp;...])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">With this function you can perform actions on records in the
+                  DAL's table, without affecting the current record. First the
+                  current record is saved into a temporary record buffer, then the
+                  specified function is executed. Afterwards the current record is
+                  restored from the temporary buffer.
+               </p>
+               <p class="Paragraph">You can call this function in any DAL hook. It is the
+                  equivalent of the <a href="../../progguide/functions_db_operations/on.main.table.htm" class="manualLink">on.main.table()</a> function used in
+                  UI scripts.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>function_name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the function that must be executed. The
+                           function must be of type void.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[&lt;type&gt;</td>
+                     <td class="none"><code>...</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use these optional arguments to pass one or more
+                           arguments to the function.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			DAL and DB DLL
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">It is not supported to use this function in a nested way.</p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/with.object.set.do, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

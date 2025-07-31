@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>client.get.upload.file</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="client.get.upload.file client.get.upload.file functions client.get.upload.file ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">client.get.upload.file</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_desktop&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;client.get.upload.file&nbsp;
+					(long&nbsp;id, long&nbsp;index [, ref string&nbsp;client.filename] [, ref string&nbsp;mime.type])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Get the details about a file which is uploaded with function <a href="../../progguide/functions_client_file_access/client.upload.files.htm" class="manualLink">client.upload.files</a>.   
+                  This function is only supported for HTMLUI.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the id of the result object returned by <a href="../../progguide/functions_client_file_access/client.upload.files.htm" class="manualLink">client.upload.files</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>index</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">one-based index of the uploaded file for which the information is requested.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">[ref string</td>
+                     <td class="none"><code>client.filename</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the original name of this file on the client.</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">[ref string</td>
+                     <td class="none"><code>mime.type</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional string representing the MIME Media type of the file. The official list can be found here: http://www.iana.org/assignments/media-types/index.html.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The server path name of the uploaded file or empty when an error occurred</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1900.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_client_file_access/overview.htm" class="manualLink">Client file access overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_client_file_access/synopsis.htm" class="manualLink">Client file access synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_client_file_access/client.get.upload.file, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

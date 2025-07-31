@@ -1,0 +1,84 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Extended DAL (DAL2)</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Extended DAL (DAL2)</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">In Infor ERP Enterprise the DAL concept is introduced to centralize
+               integrity checks. One of the goals is to be able to re-use these
+               integrity checks rather than implementing them again and again.
+               In practice however, it appears that these integrity checks are
+               hard to re-use in the UI layer. As a result, a lot of business
+               logic is programmed in the UI scripts. Another problem is that
+               since developers often only test the application via the User
+               Interface, the DAL on its own is not well tested.
+            </p>
+            <p class="Paragraph">It also appeared that it is very hard to use the current DALs
+               for Integrations via Baan OpenWorld, because too often business
+               logic is spread across the DAL and the UI scripts.
+            </p>
+            <p class="Paragraph">The DAL2 concept is introduced to tackle these issues. With
+               DAL2 a number of new hooks is introduced that make it possible
+               to define the integrity checks in such a way that they are
+               easier to re-use. One of the major benefits is that the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> now re-uses
+               these hooks to perform automatic disabling/enabling of fields
+               and commands.
+            </p>
+            <p class="Paragraph">Another important improvement is that DAL2 makes it possible
+               to define field dependencies in such a way that they can be used
+               to determine correct values for fields that are not known by
+               other components. Until now (in the Corelli Release), this was
+               already possible for external products that Integrated with Infor
+               ERP Enterprise using Baan OpenWorld. The DAL2 concept now makes it
+               possible to re-use the field dependencies in the Infor ERP Enterprise
+               application as well. Also, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> makes use of
+               the defined field relations in order to determine default values
+               in the User Interface.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Include files</div>
+            <p class="Paragraph">You have to include <i class="Emphasis">bic_dal2</i> in your DAL to make it an Extended (DAL2)
+               DAL.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Testing DALs</div>
+            <p class="Paragraph">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> can be run
+               in 3 different modes that can be used to test an Extended (DAL2)
+               DAL. See <a href="../../progguide/functions_dal/dal2_test_mode.htm" class="manualLink">DAL2 Test Mode</a> for more
+               information.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_field_hooks.htm" class="manualLink">DAL2 Field hooks</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_bm_hooks.htm" class="manualLink">DAL2 Business method hooks</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_field_dependencies.htm" class="manualLink">DAL2 Field dependencies</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_4gle.htm" class="manualLink">DAL2 and the 4GL Engine</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_test_mode.htm" class="manualLink">DAL2 Test Mode</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_flow.htm" class="manualLink">DAL2 Flow of field hooks</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/dal2_overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

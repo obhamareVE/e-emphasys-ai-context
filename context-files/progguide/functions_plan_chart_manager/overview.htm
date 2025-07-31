@@ -1,0 +1,159 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Plan Chart Manager overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="plan chart manager overview ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Plan Chart Manager overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This API is only supported for Baan
+               Windows and its usage is therefore deprecated. Instead you
+               should use the "Gantt And Schedule Charts" API.
+            </p>
+            <p class="Paragraph">The Plan Chart Manager is a graphical planning
+               environment. You can use the Plan Chart Manager functions to
+               develop applications that create and manipulate plan charts
+               within this environment; the Plan Chart Manager acts as the
+               server for the applications.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Planning board</div>
+            <p class="Paragraph">The Plan Chart Manager provides a planning board, on which
+               you can build and maintain plan charts on line. Users can
+               open sessions in order to define and modify activities,
+               relations between activities, and so on. The planning board
+               consists of:
+            </p>
+            <ul class="List">
+               <li class="ListItem">A time scale.</li>
+               <li class="ListItem">Horizontal lines (the planning board lines), on which
+                  users can place activities.
+               </li>
+               <li class="ListItem">Columns that describe the activities.</li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Activities and relations</div>
+            <p class="Paragraph">Activities are the building blocks of a plan. An activity
+               is an event or series of actions, with a start and end time.
+               On the planning board, activities are displayed as horizontal
+               bars whose length represents the duration of the activity.
+               The relations between the activities constitute the planning
+               structure.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Time scale</div>
+            <p class="Paragraph">You can define a different time unit for each plan, to be
+               used in the time scale displayed at the top of the planning
+               board. In principle, you can use any time unit, from a second
+               to a year, as the base unit. In practice, day, week, and
+               month are normally used, the day being the base unit. If
+               required, you can define several time scales for each
+               plan.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Plan Chart Manager events</div>
+            <p class="Paragraph">The Plan Chart Manager communicates with a client
+               application by means of events. Each user action within the
+               Plan Chart manager generates an event. The client must
+               include a loop to handle these events.
+            </p>
+            <p class="Paragraph">The Plan Chart manager generates the following event
+               types:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">PCM_EVTMENUSELECT</td>
+                     <td rowspan="1" colspan="1" class="none">Occurs when the user selects a menu item of the
+                        planning board.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">PCM_EVTPUSHBUTTON</td>
+                     <td rowspan="1" colspan="1" class="none">Occurs when the user clicks on a button of the
+                        planning board.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">PCM_EVTOBJECTPRESS</td>
+                     <td rowspan="1" colspan="1" class="none">Occurs when the user clicks on an activity,
+                        relation, or marker on the planning board.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">PCM_EVTOBJECTDPRESS</td>
+                     <td rowspan="1" colspan="1" class="none">Occurs when the user double-clicks on an
+                        activity, relation, or marker.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">PCM_EVTOBJECTMOVE</td>
+                     <td rowspan="1" colspan="1" class="none">Occurs when the user moves an activity, relation,
+                        or marker.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">PCM_EVTCLOSED</td>
+                     <td rowspan="1" colspan="1" class="none">Occurs when the Plan Chart Manager is closed.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Colors</div>
+            <p class="Paragraph">All colors must be composed by using the <a href="../../progguide/functions_color/rgb.htm" class="manualLink">rgb()</a> function.
+               Or you can use one of the following predefined colors:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">RGB.BLACK</p>
+                        <p class="Paragraph">RGB.BLUE</p>
+                        <p class="Paragraph">RGB.YELLOW</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">RGB.MAGENTA</p>
+                        <p class="Paragraph">RGB.GREEN</p>
+                        <p class="Paragraph">RGB.GRAY</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">RGB.RED</p>
+                        <p class="Paragraph">RGB.WHITE</p>
+                        <p class="Paragraph">RGB.CYAN</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/overview.htm" class="manualLink">Plan Chart Manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/synopsis.htm" class="manualLink">Plan Chart Manager synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_plan_chart_manager/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

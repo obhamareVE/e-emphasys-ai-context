@@ -1,0 +1,55 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>CDF (Customer Defined Fields) handling overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="CDF handling ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">CDF (Customer Defined Fields) handling overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">In some areas of the application there is a requirement to add easy and for free 
+               	  Customer Defined Fields. These fields solve the business requirements of (a group of) customers, but 
+               	  their need is not generic enough for deployment in the standard.
+            </p>
+            <p class="Paragraph">Free Customer Defined Fields could help a customer to store specific data requirements
+               	  without having to customize the system. The information in the CDFs are, when possible, carried forward 
+               	  through the business process.
+               	  For instance, when customer specific data is stored on the requisition header, it should be
+               	  carried forward when the requisition is turned into a purchase order and finally into an invoice.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Restrictions</div>
+            <p class="Paragraph">The following restrictions on CDFs are imposed:</p>
+            <ul class="List">
+               <li class="ListItem">There cannot be references on a CDF</li>
+               <li class="ListItem">There cannot be permissions on a CDF</li>
+               <li class="ListItem">There cannot be indexes on a CDF</li>
+               <li class="ListItem">It is not possible to have an array column defined as a CDF.</li>
+               <li class="ListItem">A CDF can not be defined as a MLF (Multi-Language Field).</li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_cdf/synopsis.htm" class="manualLink">CDF (Customer Defined Fields) handling synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_cdf/copy.cdf.htm" class="manualLink">copy.cdf()</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_cdf/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

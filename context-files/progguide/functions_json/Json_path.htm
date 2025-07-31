@@ -1,0 +1,111 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>The JSon object at the end of the path</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Json.path Json.path functions Json.path ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">The JSon object at the end of the path</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;Json.path&nbsp;
+					(long&nbsp;json, ...&nbsp;...)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Returns the JSON value in a JSON object or array, which is located at the specified path.
+                  			The parameters passed to this function determine the path that is chosen to locate the
+                  			the JSON value.
+                  
+                  			Example:
+               </p><pre class="CodeBlock">
+{
+  "name": "John Doe",
+  "phone numbers": [ "06-12345678", "0342-428888" ],
+  "department": {
+	"id": "HR",
+    "name": "Human Resources",
+    "office days": ["Monday", "Wednesday", "Friday"]
+  }
+}
+
+To get the 2nd phone number:
+	phone2 = Json.path(obj, "phone numbers", 2)
+
+To get the department name:
+	depname = Json.path(obj, "department", "name")
+
+To get the value "Friday":
+	workday3 = Json.path(obj, "department", "office days", 3)
+			</pre></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>json</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">json</i> is a JSON object or array.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">...</td>
+                     <td class="none"><code>...</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The key names and/or array indices which together form the path to a
+                           	 		JSON value in the given JSON object or array.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The JSON value requested.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Preconditions</div>
+            <ul class="List">
+               <li class="ListItem">Parameter 'json' is a JSON value of type JSON_TYPE_OBJECT or JSON_TYPE_ARRAY.</li>
+               <li class="ListItem">The combined ... parameters are a valid path in the JSON object or array.</li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_json/JSon_object_overview.htm" class="manualLink">JSON object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_json/synopsis.htm" class="manualLink">JSon object synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_json/Json_path, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

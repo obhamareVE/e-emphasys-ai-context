@@ -1,0 +1,155 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Comparison predicate</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Comparison operator Search condition Comparision operator ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Comparison predicate</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The comparison predicate compares two row value
+               constructors.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;comparison predicate&gt;
+    ::= <a href="../../progguide/functions_database_handling/row_value_constructor.htm" class="manualLink">Row value constructor</a> &lt;comparison operator&gt; <a href="../../progguide/functions_database_handling/row_value_constructor.htm" class="manualLink">Row value constructor</a>
+
+&lt;comparison operator&gt;
+    ::= &lt; | &lt;= | = | &gt;= | &gt; | &lt;&gt; | != | #&lt; | #&lt;= | #&gt;= | #&gt;
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">If one of the <i class="Emphasis">&lt;row value constructor&gt;s</i> contains
+               a reference to an array column then the comparison operator
+               shall be one of =, &lt;&gt; or !=.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">In general, evaluation of a comparison predicate can be quite
+               complicated. This section explains the semantics of the more
+               complicated predicates in terms of the <a href="../../progguide/functions_database_handling/simplest_comparison_predicate.htm" class="manualLink">Simplest comparison predicate</a>.
+            </p>
+            <p class="Paragraph">The following equivalence rules allow a (general) predicate
+               to be rewritten into simpler predicates.
+            </p>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Equivalence rules</div>
+               <p class="Paragraph">The following rules apply to comparison predicates of which
+                  the two row value constructors have a different number of value
+                  expressions. It states that the longer row value constructor can
+                  be truncated to the length of the shorter row value
+                  constructor.
+               </p><pre class="CodeBlock">
+(1)   { A } &lt;op&gt; { B, ... }  &lt;=&gt;  { A } &lt;op&gt; { B }
+      { A, ... } &lt;op&gt; { B }  &lt;=&gt;  { A } &lt;op&gt; { B }
+</pre><p class="Paragraph">The following rule states that comparing two row value
+                  constructors that contain exactly one value expression, is
+                  equivalent to comparing the two value expressions.
+               </p><pre class="CodeBlock">
+(2)   { A } &lt;op&gt; { B }  &lt;=&gt;  A &lt;op&gt; B
+</pre><p class="Paragraph">The following rule defines the semantics of the =
+                  operator.
+               </p><pre class="CodeBlock">
+(3)   { A, A2, ... } = { B, B2, ... }  
+        &lt;=&gt;  A = B AND { A2, ... } = { B2, ... }
+</pre><p class="Paragraph">The following rule defines the semantics of the &lt;&gt; and
+                  != operator.
+               </p><pre class="CodeBlock">
+(4)   { A, A2, ... } &lt;&gt; { B, B2, ... }  
+        &lt;=&gt;  A &lt;&gt; B  OR  ( { A2, ... } &lt;&gt; { B2, ... } )
+</pre><p class="Paragraph">The following rules define the semantics of the &lt;, &lt;=,
+                  &gt; and &gt;= operator.
+               </p><pre class="CodeBlock">
+(5)   { A, A2, ... } &lt;[=] { B, B2, ... }  
+        &lt;=&gt;  A &lt; B  OR  ( A = B AND { A2, ... } &lt;[=] { B2, ... } )
+    { A, A2, ... } &gt;[=] { B, B2, ... }  
+        &lt;=&gt;  A &gt; B  OR  ( A = B AND { A2, ... } &gt;[=] { B2, ... } )
+</pre><p class="Paragraph">The following rule defines the semantics of the #&lt;,
+                  #&lt;=, #&gt; and #&gt;= operator.
+               </p><pre class="CodeBlock">
+(6a)  { A } #&lt;op&gt; { B }  &lt;=&gt;  A &lt;op&gt; B 
+(6b)  { A, A2, ... } #&lt;op&gt; { B, B2, ... }  
+            &lt;=&gt;  A &lt;op&gt; B AND { A2, ... } #&lt;op&gt; { B2, ... }
+</pre><p class="Paragraph"><i class="Emphasis">Example 1</i>:
+               </p><pre class="CodeBlock">
+{ salary, bonus } &gt; { 20000 }
+    =&gt; (rule 1)
+{ salary } &gt; { 20000 }
+    =&gt; (rule 2)
+salary &gt; 20000
+</pre><p class="Paragraph"><i class="Emphasis">Example 2</i>:
+               </p><pre class="CodeBlock">
+{ salary, bonus, sex } #&gt; { 20000, 1000 )
+    =&gt; (rule 6b)
+salary &gt; 20000 AND { bonus, sex } #&gt; { 1000 }
+    =&gt; (rule 1)
+salary &gt; 20000 AND { bonus } #&gt; { 1000 }
+    =&gt; (rule 6a)
+salary &gt; 20000 AND bonus &gt; 1000
+</pre></div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following comparison predicate evaluates to True if <i class="Emphasis">firstnme</i> equals 'CHRISTINE', possibly padded with spaces.
+               If <i class="Emphasis">firstnme</i> is NULL, then it evaluates to Unknown.
+               Otherwise it evaluates to False.
+            </p><pre class="CodeBlock">
+firstnme = 'CHRISTINE'
+</pre><p class="Paragraph">The following comparison predicate evaluates to True if both <i class="Emphasis">salary</i> is larger than 20000 and <i class="Emphasis">bonus</i> is larger than
+               1000. If <i class="Emphasis">salary</i> is NULL or <i class="Emphasis">bonus</i> is NULL then it
+               evaluates to Unknown or False.
+            </p><pre class="CodeBlock">
+{ salary, bonus } #&gt; { 20000, 1000 }
+</pre><p class="Paragraph">This predicate is equivalent with:</p><pre class="CodeBlock">
+salary &gt; 20000  AND  bonus &gt; 1000
+</pre><p class="Paragraph">The following comparison predicate evaluates to True if <i class="Emphasis">salary</i> is larger than 20000. If <i class="Emphasis">salary</i> is less than
+               20000 it evaluates to False. If <i class="Emphasis">salary</i> is NULL then it
+               evaluates to Unknown. If <i class="Emphasis">salary</i> equals 20000 then the
+               expression " <i class="Emphasis">bonus</i> &gt; 1000" determines the outcome.
+            </p><pre class="CodeBlock">
+{ salary, bonus } &gt; { 20000, 1000 }
+</pre><p class="Paragraph">This predicate is equivalent with:</p><pre class="CodeBlock">
+salary &gt; 20000  OR  ( salary = 20000 AND bonus &gt; 1000 )
+</pre><p class="Paragraph">The following comparison predicate evaluates to True if <i class="Emphasis">salary</i> is larger than 20000. If <i class="Emphasis">salary</i> is NULL then
+               it evaluates to Unknown. Otherwise it evaluates to False. Note
+               that <i class="Emphasis">bonus</i> is not used in the evaluation.
+            </p><pre class="CodeBlock">
+{ salary, bonus } &gt; 20000
+</pre><p class="Paragraph">This predicate is equivalent with:</p><pre class="CodeBlock">
+salary &gt; 20000
+</pre><p class="Paragraph">The following comparison predicate evaluates to True if <i class="Emphasis">salary</i> is larger than or equal to the maximum salary of
+               any employee.
+            </p><pre class="CodeBlock">
+{ salary } &gt;= ( select max( salary ) from dbtst120 )
+</pre><p class="Paragraph">The following comparison demonstrates the use of a scalar subquery in
+               a comparison.
+            </p><pre class="CodeBlock">
+{ lastname, firstnme } = { (select lastname from dbtst120 where empno = 10), 'CHRISTINE' }
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/simplest_comparison_predicate.htm" class="manualLink">Simplest comparison predicate</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/comparison_pred, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

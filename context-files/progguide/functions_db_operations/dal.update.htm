@@ -1,0 +1,133 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dal.update()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dal.update dal.update functions dal.update ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dal.update()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_dam&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;dal.update&nbsp;
+					(string&nbsp;class_name, long&nbsp;object_set, ref long&nbsp;retval, long&nbsp;prop_check [, long&nbsp;mode] [, long&nbsp;eflag])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this to update an existing database record. The function
+                  encapsulates the <a href="../../progguide/functions_db_operations/db.update.htm" class="manualLink">db.update()</a> function with the DAL
+                  hooks of the object set. If the <a href="../../progguide/functions_dal/before.save.object.htm" class="manualLink">before.save.object()</a> hook fails, the database operation is cancelled.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>class_name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A string containing the name of the DAL.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>object_set</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The ID of an open object set (if this ID is not
+                           known, use the table ID).
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>retval</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The return value of the object hooks (&lt;0), of the <a href="../../progguide/functions_db_operations/db.insert.htm" class="manualLink">db.insert()</a> function
+                           (&gt;0), or 0 if the function is successful.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>prop_check</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A boolean value that indicates whether or not
+                           property checks must be executed. If set to TRUE, the
+                           property checks are executed immediately before the <a href="../../progguide/functions_dal/before.save.object.htm" class="manualLink">before.save.object()</a> hook. If set to FALSE, the property checks are not
+                           executed.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>mode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Set this to DB.RETRY if retry points and the SELECT
+                           FOR UPDATE statement are being used. The actual
+                           database action is postponed until the transaction is
+                           committed.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>eflag</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">For some errors, it is possible to indicate the
+                           action the system must perform when the error occurs.
+                           You use this argument to specify the required
+                           action(s). See <a href="../../progguide/functions_database_handling/error_handling.htm" class="manualLink">Error handling</a>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">It is advised to use <a href="../../progguide/functions_db_operations/dal.change.object.htm" class="manualLink">dal.change.object()</a> and <a href="../../progguide/functions_db_operations/dal.save.object.htm" class="manualLink">dal.save.object()</a> when
+                  updating records for an Extended (DAL2) DAL. Only then field
+                  dependencies are taken into account. See <a href="../../progguide/functions_dal/dal2_field_dependencies.htm" class="manualLink">DAL2 Field dependencies</a> for more information.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/dal.update, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

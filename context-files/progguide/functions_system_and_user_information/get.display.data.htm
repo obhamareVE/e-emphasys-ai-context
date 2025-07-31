@@ -1,0 +1,127 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>get.display.data()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions get.display.data get.display.data get.display.data ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">get.display.data()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;get.display.data&nbsp;
+					(ref long&nbsp;server_data(SRVMAXSIZE))</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This retrieves information about the display server. It
+                  stores the information in the array <i class="Emphasis">server_data</i>. The
+                  predefined constant SRVMAXSIZE indicates the maximum size of the
+                  array.
+               </p>
+               <p class="Paragraph">You can retrieve the information using a set of predefined
+                  variables:
+               </p>
+               <table border="0" class="none">
+                  <tbody noTR="8" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <th rowspan="1" colspan="1" class="none">Information</th>
+                        <th rowspan="1" colspan="1" class="none">Variable</th>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">Server type</td>
+                        <td rowspan="1" colspan="1" class="none">
+                           <p class="Paragraph_firstAndNoTextBefore">typesrv.type(server_data)</p>
+                           <p class="Paragraph">DSNOSERVER</p>
+                           <p class="Paragraph">DSBX</p>
+                           <p class="Paragraph">DSBA</p>
+                           <p class="Paragraph">DSBW</p>
+                        </td>
+                     </tr>
+                     <tr no="3" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">Display width</td>
+                        <td rowspan="1" colspan="1" class="none">srv.display.width(server_data)</td>
+                     </tr>
+                     <tr no="4" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">Display height</td>
+                        <td rowspan="1" colspan="1" class="none">srv.display.height(server_data)</td>
+                     </tr>
+                     <tr no="5" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">Display width in millimeters</td>
+                        <td rowspan="1" colspan="1" class="none">srv.display.width.mm(server_data)</td>
+                     </tr>
+                     <tr no="6" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">Display height in millimeters</td>
+                        <td rowspan="1" colspan="1" class="none">srv.display.height.mm(server_data)</td>
+                     </tr>
+                     <tr no="7" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">Number of colors</td>
+                        <td rowspan="1" colspan="1" class="none">srv.display.colors(server_data)</td>
+                     </tr>
+                     <tr no="8" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">Microsoft operating system</td>
+                        <td rowspan="1" colspan="1" class="none">
+                           <p class="Paragraph_firstAndNoTextBefore">srv.display.os.type(server_data)</p>
+                           <p class="Paragraph">DSBW_WIN_311</p>
+                           <p class="Paragraph">DSBW_WIN_NT</p>
+                           <p class="Paragraph">DSBW_WIN_95</p>
+                           <p class="Paragraph">NT4</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>server_data(SRVMAXSIZE)</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">The above variables are valid only after a call to <i class="Emphasis">get.display.data()</i>.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_system_and_user_information/overview_and_synopsis.htm" class="manualLink">System and user information overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_system_and_user_information/get.display.data, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

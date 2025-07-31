@@ -1,0 +1,131 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>field.is.valid()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="field.is.valid field.is.valid functions field.is.valid ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">field.is.valid()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean&nbsp;field.is.valid&nbsp;
+					( [long&nbsp;mode] [, long&nbsp;element])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this hook to perform any checks not already defined in one
+                  	  of the other field hooks. Some examples:
+               </p>
+               <p class="Paragraph">Examples: whether a reference exists or whether the reference is
+                  	  valid. Whether a start date is less than an end date, etc.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>mode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional mode flag, one of { 0, DAL_NEW, DAL_UPDATE }</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>element</code>]
+                     </td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The hook should return True in case the field is valid. In case
+               	  the field is not valid it should return False.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			DAL
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <p class="Paragraph"></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">When called</div>
+            <ul class="List">
+               <li class="ListItem">At the time of checking the fields value, but ONLY for non-enum
+                  		fields and ONLY in case the field is not empty, otherwise the <a href="../../progguide/functions_dal/field.is.mandatory.htm" class="manualLink">field.is.mandatory()</a> hook is called
+               </li>
+            </ul>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">This hook is <i class="Emphasis">NOT</i> called for <i class="Emphasis">enum</i> fields. See <a href="../../progguide/functions_dal/field.enum.is.applicable.htm" class="manualLink">field.enum.is.applicable()</a> for checking enum
+                  	  values.
+               </p>
+               <p class="Paragraph">If this hook does not exist, it is assumed that the field is
+                  	  valid.
+               </p>
+               <p class="Paragraph">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will show the following message to the end-user in case the field
+                  	  is not valid: Change the value of the %1$s field.
+               </p>
+               <p class="Paragraph">It is advised to set an error message with <a href="../../progguide/functions_message_handling/dal.set.error.message.htm" class="manualLink">dal.set.error.message()</a> to indicate the reason why the
+                  	  field is not valid.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+function extern boolean whinh200.otyp.is.valid(long mode)
+{
+    if mode = 0 then
+        |* Not changed
+        return(true)
+    endif
+
+    if order.type.ok(whinh200.otyp, whinh200.ittp) &lt;&gt; 0 then
+        |* Error message is set in order.type.ok
+        return(false)
+    endif
+
+    return(true)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_4gle.htm" class="manualLink">DAL2 and the 4GL Engine</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_flow.htm" class="manualLink">DAL2 Flow of field hooks</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/field.is.valid, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

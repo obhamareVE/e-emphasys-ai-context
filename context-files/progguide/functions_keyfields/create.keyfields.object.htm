@@ -1,0 +1,94 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>create.keyfields.object()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="create.keyfields.object create.keyfields.object functions create.keyfields.object ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">create.keyfields.object()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;create.keyfields.object&nbsp;
+					(const string&nbsp;tablename [, long&nbsp;collection])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Create an object which can hold the key fields and the corresponding values referring to one 
+                  		record of the passed database table. The key fields of index 1 are used.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>tablename</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the name of the table for which the key fields will be stored</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>collection</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional id of a key fields collection to which this key field object will be added.
+                           A key fields collection must be created with the function: <a href="../../progguide/functions_keyfields/create.keyfields.collection.htm" class="manualLink">create.keyfields.collection()</a></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;&gt;0</th>
+                     <td rowspan="1" colspan="1" class="none">The id of the created key fields object</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">When this function fails</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_keyfields/overview.htm" class="manualLink">Key fields Object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_keyfields/synopsis.htm" class="manualLink">Key fields object synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_keyfields/create.keyfields.object, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

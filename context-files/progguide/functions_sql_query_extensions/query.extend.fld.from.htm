@@ -1,0 +1,106 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>query.extend.fld.from()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions query.extend.fld.from query.extend.fld.from query.extend.fld.from ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">query.extend.fld.from()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;query.extend.fld.from&nbsp;
+					(string&nbsp;select_column, string&nbsp;extension_string)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">With the query.extend.fld… interface the metadata is stored in the 4gl engine.
+The query.extend.fld… information is used to build the standard query for retrieving requested data, inclusive the application fields. The result is used for the display of the field. 
+The value of easy filter on the application field and the query.extend.fld… information is used to extend the WHERE clause of the standard query. The standard query is used to display the session.</p>
+               <p class="Paragraph">Use this to construct a query extension for the FROM clause of a database query. 
+                  This expression will be added to the standard query for retrieving the column as form field. 
+                  ( see <a href="../../progguide/functions_sql_query_extensions/query.extend.fld.select.htm" class="manualLink">query.extend.fld.select()</a> or <a href="../../progguide/functions_sql_query_extensions/query.extend.fld.where.htm" class="manualLink">query.extend.fld.where()</a>)
+               </p>
+               <p class="Paragraph">You can use this function in the section before.program.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>select_column</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Name of the form field in the form.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>extension_string</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A string containing the names of the tables to be included in the FROM statement. 
+                           Use commas [,] to separate the table names.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">On success.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;&gt; 0</th>
+                     <td rowspan="1" colspan="1" class="none">error</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			4GL
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">TIV</div>
+            <p class="Paragraph">This function is available from Enterprise Server TIV level 2100 and is only usable in LN-UI.</p>
+            <p class="Paragraph">Old query behaviour, this function is not working anymore, can be set with environment variable table_alias_enabled.</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/overview.htm" class="manualLink">SQL query extensions overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/synopsis.htm" class="manualLink">SQL query extensions synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/column_filtering.htm" class="manualLink">Column filtering</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/example.htm" class="manualLink">Query extensions sample program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_sql_query_extensions/query.extend.fld.from, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

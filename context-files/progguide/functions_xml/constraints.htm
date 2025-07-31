@@ -1,0 +1,105 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>XML object constraints</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="XML object constraints ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">XML object constraints</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The XML object is not meant to implement a full XML
+               parser/generator for building advanced XML document processing
+               applications. The purpose of the XML object is to allow 3GL/4GL
+               applications to exchange structured data using the XML format.
+               Therefore not the complete XML standard is supported by the
+               parser/generator, but only the sub-set needed to meet its
+               requirement. Below a list of restrictions with respect to
+               [XMLSTD] is given. This section should be read in conjunction
+               with [XMLSTD]. All references to XML production rules in the
+               [XMLSTD] are represented in italic.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">XML generator restrictions</div>
+            <ul class="List">
+               <li class="ListItem">A fixed XMLDecl is generated. This declaration is always: <code class="Code">&lt;?xml version="1.0"?&gt;</code></li>
+               <li class="ListItem">For generation of <code class="Code">doctypedecl</code> contents (e.g. <code class="Code">markupdecl</code> and <code class="Code">PEReference</code>) no XML
+                  tag generation support is given. Correct formatting of this
+                  contents is left to the application.
+               </li>
+               <li class="ListItem">For element <code class="Code">content</code> other than <code class="Code">element</code> and <code class="Code">PI</code> (e.g. <code class="Code">Chardata</code>, <code class="Code">Reference</code>, <code class="Code">CDSect</code>, <code class="Code">Comment</code>) no XML tag
+                  generation support is given. Correct formatting of this
+                  content is left to the application.
+               </li>
+               <li class="ListItem">The output encoding is always UTF-8.</li>
+               <li class="ListItem">A complete XML object must be constructed in Baan VM
+                  memory, before an XML document can be generated from it.
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">XML parser restrictions</div>
+            <ul class="List">
+               <li class="ListItem">The XML parser does not validate the document against its
+                  DTD. It only performs the well-formedness checks.
+               </li>
+               <li class="ListItem">The application does not have access to the document type
+                  definition (DTD).
+               </li>
+               <li class="ListItem">Default values for attributes defined in an external DTD
+                  are not passed to the application only default values defined
+                  in internal DTD sections are passed to the application.
+               </li>
+               <li class="ListItem">References to external parsed general entities are not
+                  processed by the parser but are ignored. So documents
+                  consisting out of multiple entities (modules) are not
+                  supported. References to internal entities are expanded
+                  before they are passed to the application.
+               </li>
+               <li class="ListItem">References to (external) unparsed entities (binary data)
+                  are ignored.
+               </li>
+               <li class="ListItem">The following document encodings are supported: 
+                  <ul class="List">
+                     <li class="ListItem">UTF-8</li>
+                     <li class="ListItem">UTF-16 (unicode)</li>
+                     <li class="ListItem">ISO-8859-1</li>
+                  </ul>
+               </li>
+               <li class="ListItem">Parsing of a document stops when an error is
+                  encountered.
+               </li>
+               <li class="ListItem">Only parsing of a complete XML document is supported,
+                  resulting in a complete XML object in Baan VM memory.
+               </li>
+               <li class="ListItem">A maximum XML element nesting depth of 256 is
+                  allowed.
+               </li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/overview.htm" class="manualLink">XML object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/glossary.htm" class="manualLink">XML object glossary</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis.htm" class="manualLink">XML object synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/api.htm" class="manualLink">XML object API</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_xml/constraints, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>SQL trace options</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="SQL trace options ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">SQL trace options</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">It is possible to monitor whether the SQL compiler and
+               optimizer are taking the right decisions. If the results
+               indicate that the design is incorrect, the query must be
+               changed. The optimizer can never emulate the programmer. The
+               Infor ERP Enterprise 3GL programming language therefore enables the programmer to
+               instruct the computer what it has to do to a considerable degree
+               of detail. You can define which index to use; also, a number of
+               special (non-standard SQL) functions have been built in.
+            </p>
+            <p class="Paragraph">You can use the environment variable BAAN_SQL_TRACE to trace
+               what happens inside the SQL processor. BAAN_SQL_TRACE is used to
+               trace SQL processing in the client (that is, bshell), as well as
+               in the server process (that is, the database driver). The
+               methods involved are different for client and server.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Client tracing</div>
+            <p class="Paragraph">When BAAN_SQL_TRACE is set, the output from the client
+               process is written to stderr. To keep this information, you must
+               call the bshell with the options "-keeplog" and "-logfile
+               &lt;log file name&gt;". This can be done by specifying the
+               following options in the bw configuration:
+            </p><pre class="Formula">
+    -- -keeplog -logfile mylogfile -set BAAN_SQL_TRACE=02000
+</pre><p class="Paragraph">This enables BAAN_SQL_TRACE with value 02000. The output is
+               written to the file "mylogfile" in the current working
+               directory.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Server tracing</div>
+            <p class="Paragraph">When BAAN_SQL_TRACE is set, the output is written to a file
+               named "dbs.log". This file is located in the current working
+               directory when the Database Server runs locally (on same host as
+               Display Server). When the database is remote, it is written in
+               the login directory of the corresponding user on that remote
+               system. To enable logging of BAAN_SQL_TRACE in the file
+               "dbs.log", you must also set the environment variable DBSLOG, as
+               follows:
+            </p>
+            <p class="Paragraph">DBSLOG=02000</p>
+            <p class="Paragraph">The "02000" is an octal value, and can be OR-ed with other
+               variables. The meaning of the other values is described in a
+               separate document (Logging Database Information (DBSLOG)).
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Query identification</div>
+            <p class="Paragraph">A QueryIdentifier (QID) identifies each query. This makes it
+               easy to find out which output in the Client log file is related
+               to the output of the Server log file.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Trace options</div>
+            <p class="Paragraph">The following values for BAAN_SQL_TRACE are available (C
+               indicates that an option can be used for the client; S indicates
+               that it can be used for the server):
+            </p>
+            <table width="80%" class="default">
+               <tbody noTR="8" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th width="10%" rowspan="1" colspan="1" class="default">BAAN_SQL_TRACE</th>
+                     <th width="0%" rowspan="1" colspan="1" class="default">C/S</th>
+                     <th rowspan="1" colspan="1" class="default">Explanation</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">1</td>
+                     <td rowspan="1" colspan="1" class="default">C</td>
+                     <td rowspan="1" colspan="1" class="default">Shows the initial parse tree of the SQL statement and
+                        the validated parse tree after resolving column names to
+                        column references, resolving enum constants to integers
+                        and defining the select targets.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">2</td>
+                     <td rowspan="1" colspan="1" class="default">C+S</td>
+                     <td rowspan="1" colspan="1" class="default">Shows the initial execution tree and the execution
+                        tree after optimization.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">4</td>
+                     <td rowspan="1" colspan="1" class="default">C+S</td>
+                     <td rowspan="1" colspan="1" class="default">Shows the evaluation of the execution tree.</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">100</td>
+                     <td rowspan="1" colspan="1" class="default">C</td>
+                     <td rowspan="1" colspan="1" class="default">Shows the efficiency of the statement cache.</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">200</td>
+                     <td rowspan="1" colspan="1" class="default">C+S</td>
+                     <td rowspan="1" colspan="1" class="default">Shows the network packets being transferred between
+                        the client and the server.
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">2000</td>
+                     <td rowspan="1" colspan="1" class="default">C</td>
+                     <td rowspan="1" colspan="1" class="default">Shows the interface calls on the statement.</td>
+                  </tr>
+                  <tr no="8" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">4000</td>
+                     <td rowspan="1" colspan="1" class="default">C</td>
+                     <td rowspan="1" colspan="1" class="default">Same as BAAN_SQL_TRACE=2000, but with extra detailed
+                        interface calls.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">You can combine trace options by adding the values. For
+               example:
+            </p><pre class="CodeBlock">
+BAAN_SQL_TRACE=02200
+</pre><p class="Paragraph">This produces the results of both options 02000 and 0200.</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/sql_trace_options, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Spooling overview and synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="spooling ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Spooling overview and synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">Use these functions to handle printer devices and
+               printing.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Synopsis</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_spooling/spool.buf.htm" class="manualLink">spool.buf()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string buffer(.), long length )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_spooling/spool.close.htm" class="manualLink">spool.close()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_spooling/spool.line.htm" class="manualLink">spool.line()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_spooling/spool.open.htm" class="manualLink">spool.open()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string reportname(15), string device(14), long mode )</code></td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_spooling/spool.restore.variables.htm" class="manualLink">spool.restore.variables()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( [long brp.id] )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Predefined variables</div>
+            <p class="Paragraph">The following predefined variables are available for use with
+               the spooler functions:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="22" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.date</td>
+                     <td rowspan="1" colspan="1" class="none">Date to print.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.fontnumber</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Font number:</p>
+                        <p class="Paragraph">1 LARGE</p>
+                        <p class="Paragraph">2 SMALL</p>
+                        <p class="Paragraph">3 MIDDLE</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.id</td>
+                     <td rowspan="1" colspan="1" class="none">Spooler ID.</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.left.mrg</td>
+                     <td rowspan="1" colspan="1" class="none">Left margin.</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.pr.copies</td>
+                     <td rowspan="1" colspan="1" class="none">Number of copies.</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.pg.length</td>
+                     <td rowspan="1" colspan="1" class="none">Length of page.</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.pg.width</td>
+                     <td rowspan="1" colspan="1" class="none">Width of page, including left margin.</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.time</td>
+                     <td rowspan="1" colspan="1" class="none">Time to print.</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.view.rtl</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies whether the report is in a bidirectional
+                           language:
+                        </p>
+                        <p class="Paragraph">true&nbsp; bidirectional language</p>
+                        <p class="Paragraph">false non-bidirectional language</p>
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.device(14)</td>
+                     <td rowspan="1" colspan="1" class="none">Name of spooler device.</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.fileout(100)</td>
+                     <td rowspan="1" colspan="1" class="none">Path name for spooler output file.</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.paper.type(6)</td>
+                     <td rowspan="1" colspan="1" class="none">Type of paper.</td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.pr.line(300)</td>
+                     <td rowspan="1" colspan="1" class="none">Line to print.</td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.report(20)</td>
+                     <td rowspan="1" colspan="1" class="none">Report to be printed.</td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.crn</td>
+                     <td rowspan="1" colspan="1" class="none">Print to Production Reporting Services (if not 0).</td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.docman</td>
+                     <td rowspan="1" colspan="1" class="none">Print to a Document Output Management device.</td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.orientation</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Orientation of the paper type:</p>
+                        <p class="Paragraph">1 Portrait</p>
+                        <p class="Paragraph">2 Landscape</p>
+                     </td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.pr.from</td>
+                     <td rowspan="1" colspan="1" class="none">Print from page.</td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.pr.to</td>
+                     <td rowspan="1" colspan="1" class="none">Print to page.</td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.preview</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Show a preview of the print:</p>
+                        <p class="Paragraph">1 yes</p>
+                        <p class="Paragraph">2 no</p>
+                     </td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.ssrs</td>
+                     <td rowspan="1" colspan="1" class="none">Print to Microsoft SQL Server for Reporting Services.</td>
+                  </tr>
+                  <tr no="22" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none">spool.xml</td>
+                     <td rowspan="1" colspan="1" class="none">Write an intermediate file in XML format (if not 0).</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">See also</div>
+            <p class="Paragraph"><a href="../../progguide/functions_reports/overview_and_synopsis.htm" class="manualLink">Reports overview and synopsis</a></p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_spooling/overview_and_synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

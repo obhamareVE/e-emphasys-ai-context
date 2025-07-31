@@ -1,0 +1,92 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>digest.initialize()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="digest.initialize digest.initialize functions digest.initialize ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">digest.initialize()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;digest.initialize&nbsp;
+					(long&nbsp;digest.type)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Initializes the state of the Secure Hash Algorithm and selects the apropriate
+                  Secure Hash algorithm.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>digest.type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the secure hash algorithm. This must be one of:</p>
+                        <ul class="List">
+                           <li class="ListItem">DIGEST_MD5</li>
+                           <li class="ListItem">DIGEST_SHA</li>
+                           <li class="ListItem">DIGEST_SHA1</li>
+                           <li class="ListItem">DIGEST_SHA224</li>
+                           <li class="ListItem">DIGEST_SHA256</li>
+                           <li class="ListItem">DIGEST_SHA512</li>
+                           <li class="ListItem">DIGEST_MDC2</li>
+                        </ul>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">A handle for this digest operation that must be used in subsequent calls to <a href="../../progguide/functions_digest/digest.update.htm" class="manualLink">digest.update()</a> and <a href="../../progguide/functions_digest/digest.finalize.htm" class="manualLink">digest.finalize())</a>.
+               The value -1 is returned upon error. Details of the error are logged by the bshell.
+               The returned <i class="Emphasis">Id</i> can only be used in the original process where digest.initialize was called,
+               and is useless in other processes in the same bshell.
+               The allocated memory is freed explicitly by passing the <i class="Emphasis">Id</i> to digest.finalize().
+               The allocated memory is freed implicitly when the process exits.
+               Any number of Secure Digest Algorithm states may be in use concurrently.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 2000.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_digest/digest_overview.htm" class="manualLink">Secure Digest Functions overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_digest/digest_synopsis.htm" class="manualLink">Secure Digest Functions synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_digest/digest.initialize, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

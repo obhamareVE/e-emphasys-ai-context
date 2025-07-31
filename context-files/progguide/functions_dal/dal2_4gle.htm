@@ -1,0 +1,225 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DAL2 and the 4GL Engine</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DAL2 and the 4GL Engine</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The following table gives an overview of what hooks the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> calls to
+               update the User Interface. For a number of UI event sections you
+               can see which hooks are called. Note that the actions performed
+               by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> are executed
+               just before the mentioned UI section is called. In this way it
+               is possible to e.g. disable a field based on other than DAL
+               constraints.
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="26" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">UI section</td>
+                     <td rowspan="1" colspan="1" class="none">DAL2 Hooks called</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">after.form.read:</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">- remove unused fields</p>
+                        <p class="Paragraph">- remove unused form commands</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">field.is.never.applicable()</p>
+                        <p class="Paragraph">business.method.is.never.allowed()</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">before.new.object:</p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">- set default object values</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">set.object.defaults()</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">before.display.object:</p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">- enable/disable maintable fields</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">field.is.applicable()</p>
+                        <p class="Paragraph">field.is.readonly()</p>
+                        <p class="Paragraph">field.is.derived()</p>
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">- determine enum values</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">field.enum.constant.is.applicable()</p>
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">- enable/disable standard commands</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">method.is.allowed()</p>
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">- enable/disable form commands</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">business.method.is.allowed()</p>
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">choice.mark.occur:after.choice:</p>
+                     </td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">- enable/disable standard commands</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">method.is.allowed()</p>
+                     </td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">- enable/disable form commands</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">business.method.is.allowed()</p>
+                     </td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">field.&lt;fieldname&gt;:check.input:</i></p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">field.is.never.applicable()</p>
+                        <p class="Paragraph">field.is.applicable()</p>
+                        <p class="Paragraph">field.is.readonly()</p>
+                        <p class="Paragraph">field.is.derived()</p>
+                        <p class="Paragraph">field.is.mandatory()</p>
+                        <p class="Paragraph">field.is.valid() /
+                           field.enum.constant.is.applicable()
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">field.&lt;fieldname&gt;:when.field.changes:</p>
+                        <p class="Paragraph">- trigger dependent fields</p>
+                        <p class="Paragraph">- enable/disable maintable fields</p>
+                        <p class="Paragraph">- determine enum values</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">field.is.applicable()</p>
+                        <p class="Paragraph">field.is.readonly()</p>
+                        <p class="Paragraph">field.update()</p>
+                        <p class="Paragraph">field.is.applicable()</p>
+                        <p class="Paragraph">field.is.readonly()</p>
+                        <p class="Paragraph">field.is.derived()</p>
+                        <p class="Paragraph">field.enum.constant.is.applicable()</p>
+                     </td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">- enable/disable standard commands</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">method.is.allowed()</p>
+                     </td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">- enable/disable form commands</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">business.method.is.allowed()</p>
+                     </td>
+                  </tr>
+                  <tr no="23" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="24" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">main.table.io:read.view:</p>
+                     </td>
+                  </tr>
+                  <tr no="25" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">- enable/disable standard commands</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">method.is.allowed()</p>
+                     </td>
+                  </tr>
+                  <tr no="26" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">- enable/disable form commands</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">business.method.is.allowed()</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/dal2_4gle, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

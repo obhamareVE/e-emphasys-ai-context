@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Query hints overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="query hints ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Query hints overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Introduction</div>
+            <p class="Paragraph">When a query is submitted to the query processor, it
+               determines an evaluation plan. It creates this plan
+               based on a fixed set of rules. An application developer may
+               have knowledge about the data that the query processor does not have,
+               and therefore he or she may be capable of determining a
+               more efficient execution plan. For this the application
+               developer can add hints to the query.
+            </p>
+            <p class="Paragraph">Hints can be added to each select query, including
+               subqueries. A hint is supplied to a query by adding a hint
+               clause to the query statement. The hint clause is the last
+               clause of the query.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;hint clause&gt; ::= hint &lt;hint list&gt;
+&lt;hint list&gt;   ::= &lt;hint&gt;
+              |   &lt;hint&gt; and &lt;hint list&gt;
+    
+&lt;hint&gt;      ::= use index &lt;nr list&gt; on &lt;table name&gt; [ asc | desc ]
+            |   array fetching
+            |   no array fetching
+            |   array size &lt;n&gt;
+            |   all rows
+            |   first rows
+            |   buffer &lt;n&gt; rows
+            |   &lt;string literal&gt;
+            |   ordered
+            |   no hints
+
+&lt;nr list&gt;   ::= &lt;n&gt;
+            |   &lt;n&gt; ',' &lt;nr_list&gt;
+
+&lt;n&gt;           ::= a positive integer
+
+&lt;table name&gt;     ::= the name of a table or a table name alias.
+&lt;string literal&gt; ::= string enclosed in double quotes
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">Before we go into the semantics of the hints let us first
+               give you some examples to illustrate the syntax.
+            </p><pre class="CodeBlock">
+select  tfacr200.*
+from    tfacr200
+where   _index2 = {"  1001"}
+and     {ttyp, ninv, line, tdoc, docn, lino} &gt;= {"",0,0,"",0,0}
+order   by _index2
+as prepared set
+hint    use index 2 on tfacr200
+and     array fetching
+
+select  a.cuno
+from    tccom010 a
+where   a.cuno in ( select b.cuno
+                    from   tfgld106 a, tccom010 b
+                    where  a.cuno = b.cuno
+                    hint   ordered )
+order   by cuno
+hint    buffer 100 rows
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/hint_types.htm" class="manualLink">Hint types</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_query_hints/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

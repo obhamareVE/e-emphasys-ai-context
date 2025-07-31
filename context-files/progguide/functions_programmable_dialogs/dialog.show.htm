@@ -1,0 +1,123 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dialog.show()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dialog.show dialog.show functions dialog.show ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dialog.show()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_dialog&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;dialog.show&nbsp;
+					(long&nbsp;dlg [, long&nbsp;previous_window] [, long&nbsp;load_defaults])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Displays the created dialog and start interaction with the
+                  user. This function returns when the user clicks the OK or
+                  Cancel button. Created dialogs can be used multiple
+                  times.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>dlg</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The identifier of the dialog. The identifier must be
+                           	         created with the function <a href="../../progguide/functions_programmable_dialogs/dialog.new.htm" class="manualLink">dialog.new()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>previous_window</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This can be used in wizards (see DSBUTTONWIZARD in <a href="../../progguide/functions_programmable_dialogs/dialog.new.htm" class="manualLink">dialog.new()</a>. It should be
+                           	            passed to dialog.show for every dialog. It contains
+                           	            information about the position and dimensions of the
+                           	            window which is passed from one dialog to the
+                           	            next.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>load_defaults</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">When load_defaults = 1 then the saved defaults are load when the dialog is started.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">END.PROGRAM</td>
+                     <td rowspan="1" colspan="1" class="none">The user pressed the <i class="Emphasis">OK</i> (or Finish) button
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">0</td>
+                     <td rowspan="1" colspan="1" class="none">The user pressed the <i class="Emphasis">Cancel</i> button
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">NEXT.FRM</td>
+                     <td rowspan="1" colspan="1" class="none">The user pressed the <i class="Emphasis">Next</i> button
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">PREV.FRM</td>
+                     <td rowspan="1" colspan="1" class="none">The user pressed the <i class="Emphasis">Back</i> button
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_programmable_dialogs/synopsis.htm" class="manualLink">Programmable dialogs synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_programmable_dialogs/example.htm" class="manualLink">Example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_programmable_dialogs/dialog.show, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

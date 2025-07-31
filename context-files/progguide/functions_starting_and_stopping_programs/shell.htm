@@ -1,0 +1,196 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>shell()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions shell shell shell ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">shell()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;shell&nbsp;
+					(string&nbsp;command, long&nbsp;mode)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This function is supported for
+                  	  backward compatibility only. In new applications, use <a href="../../progguide/functions_starting_and_stopping_programs/run.prog.htm" class="manualLink">run.prog()</a> and <a href="../../progguide/functions_starting_and_stopping_programs/run.baan.prog.htm" class="manualLink">run.baan.prog()</a> instead.
+               </p>
+               <p class="Paragraph">This starts the vt200 compatible terminal emulator to execute
+                  the command specified in the <i class="Emphasis">command</i> argument. The shell
+                  (UNIX only) process is connected with the
+                  bshell by means of a pseudo tty. Running a shell does not block
+                  the bshell. You can switch to another window and perform other
+                  tasks.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>command</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The command to be executed.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>mode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This can be a combination of the following
+                           			options:
+                        </p>
+                        <table border="0" class="none">
+                           <tbody noTR="8" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">0</td>
+                                 <td rowspan="1" colspan="1" class="none">No main window is created for the terminal emulator. This may
+                                    			result in starting a terminal emulator in the main window of the process that
+                                    			calls the shell function. The first status field displays "ottstpvtemul" while
+                                    			the shell process is running.
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none"></td>
+                                 <td rowspan="1" colspan="1" class="none">SHELL_BACKGROUND</td>
+                                 <td rowspan="1" colspan="1" class="none">Background processing. No main window is created and the process
+                                    			produces no output. This is similar to SHELL_NO_OUTPUT + SHELL_NO_WAIT.
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none"></td>
+                                 <td rowspan="1" colspan="1" class="none">SHELL_CLS</td>
+                                 <td rowspan="1" colspan="1" class="none">Current screen is cleared before the command is executed.</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none"></td>
+                                 <td rowspan="1" colspan="1" class="none">SHELL_CONFIRM</td>
+                                 <td rowspan="1" colspan="1" class="none">Displays the message "Press RETURN", or its local equivalent, in
+                                    			the right lower corner of the window after the shell process has finished.
+                                 </td>
+                              </tr>
+                              <tr no="5" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none"></td>
+                                 <td rowspan="1" colspan="1" class="none">SHELL_MAXWINSIZE</td>
+                                 <td rowspan="1" colspan="1" class="none">The terminal emulator sizes its main window to the maximum size.
+                                    			A new main window is created.
+                                 </td>
+                              </tr>
+                              <tr no="6" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none"></td>
+                                 <td rowspan="1" colspan="1" class="none">SHELL_NO_WAIT</td>
+                                 <td rowspan="1" colspan="1" class="none">The shell function does not wait for the emulator to end. This is
+                                    			useful for starting shell processes (such as an editor) while continuing
+                                    			processing. The variable <i class="Emphasis">shell.pid</i> is set to the process
+                                    			number of the activated terminal emulator process. A new main window is
+                                    			created.
+                                 </td>
+                              </tr>
+                              <tr no="7" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none"></td>
+                                 <td rowspan="1" colspan="1" class="none">SHELL_NO_OUTPUT</td>
+                                 <td rowspan="1" colspan="1" class="none">The terminal emulator does produce any output. This implies the
+                                    			SHELL_NO_MWINDOW option.
+                                 </td>
+                              </tr>
+                              <tr no="8" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none"></td>
+                                 <td rowspan="1" colspan="1" class="none">SHELL_MWINDOW</td>
+                                 <td rowspan="1" colspan="1" class="none">A main window is created. This displays the output of the shell
+                                    			command.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">&gt;0&nbsp; return code of <i class="Emphasis">command</i></p>
+            <p class="Paragraph">0&nbsp; success</p>
+            <p class="Paragraph">-1&nbsp; maximum number of pty's is reached; general error code</p>
+            <p class="Paragraph">-2&nbsp; cannot open the master pty</p>
+            <p class="Paragraph">-3&nbsp; pipe command failed</p>
+            <p class="Paragraph">-4&nbsp; fork of reader process or shell process failed</p>
+            <p class="Paragraph">-6&nbsp; cannot start terminal emulator</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">The function is available only for programs running under UNIX,
+                  	  and not for programs running under Windows NT.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div>
+            <p class="Paragraph">Run a shell command that creates no main window. Output can
+               	  appear on the current main window. The bshell process waits for the shell
+               	  command to end.
+            </p><pre class="CodeBlock">
+ret = shell("rm $BSE/tmp/file", 0)
+   </pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2</div>
+            <p class="Paragraph">Similar to example 1. The terminal emulator displays "Press
+               	  &lt;RETURN&gt;" and waits for confirmation after the shell process has
+               	  ended.
+            </p><pre class="CodeBlock">
+ret = shell("ls -l", SHELL_CONFIRM)
+   </pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 3</div>
+            <p class="Paragraph">Run a shell command in the background. Output is displayed in a
+               	  separate main window. The main window is stretched to its maximum possible size
+               	  on the terminal display.
+            </p><pre class="CodeBlock">
+ret = shell("vi helloworld.c", SHELL_NO_WAIT + SHELL_MAXWINSIZE)
+   </pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 4</div>
+            <p class="Paragraph">Run a shell command that produces no output. Errors can be
+               	  caught by checking the return value of the shell function.
+            </p><pre class="CodeBlock">
+ret = shell("cp /tmp/a /tmp/b", SHELL_NO_OUTPUT)
+   </pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_starting_and_stopping_programs/overview_and_synopsis.htm" class="manualLink">Starting and stopping programs: overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_starting_and_stopping_programs/shell, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

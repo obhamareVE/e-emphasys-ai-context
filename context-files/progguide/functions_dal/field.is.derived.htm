@@ -1,0 +1,232 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>field.is.derived()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="field.is.derived field.is.derived functions field.is.derived ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">field.is.derived()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean&nbsp;field.is.derived&nbsp;
+					( [long&nbsp;mode] [, long&nbsp;element])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this hook to indicate whether the field is derived. If a
+                  	  field is derived then the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> makes the field readonly in the UI. The field however, still can
+                  	  have a value.
+               </p>
+               <p class="Paragraph">The difference with the readonly hook is: the field's value can
+                  	  be modified, but <i class="Emphasis">only by the DAL to which the field
+                     	  belongs</i>. So the end-user is not allowed to change the field&#65533;s value.
+                  	  Often, derived fields are <i class="Emphasis">redundant</i> fields.
+               </p>
+               <div class="GeneralSection">
+                  <div class="subSectionTitle">Static vs. dynamic</div>
+                  <p class="Paragraph">Derived fields can be more or less static or
+                     		dynamic:
+                  </p>
+                  <table border="0" class="none">
+                     <tbody noTR="2" class="none">
+                        <tr no="1" isLast="false" class="none">
+                           <td rowspan="1" colspan="1" class="none">Static</td>
+                           <td rowspan="1" colspan="1" class="none">The field will have a value derived from fields
+                              			  not belonging to the DAL's table. Examples: 
+                              <ul class="List">
+                                 <li class="ListItem">The Business Partner from the Order Header is added
+                                    				  to the Order Lines for sorting purposes
+                                 </li>
+                                 <li class="ListItem">Fields like a Business Partner Balance, or a Quantity
+                                    				  Received on an Order Line
+                                 </li>
+                                 <li class="ListItem">A Total Order Amount field that is stored in the
+                                    				  database for performance reasons
+                                 </li>
+                              </ul>
+                           </td>
+                        </tr>
+                        <tr no="2" isLast="true" class="none">
+                           <td rowspan="1" colspan="1" class="none">Dynamic</td>
+                           <td rowspan="1" colspan="1" class="none">The field will have a value derived from fields
+                              				  belonging to the DAL's table. Examples: 
+                              <ul class="List">
+                                 <li class="ListItem">Home Currency Amounts on an Invoice which is stored
+                                    				  for performance reasons
+                                 </li>
+                                 <li class="ListItem">The start and end date that indicate the relation
+                                    				  between the NLG and the EUR currencies. This is a fixed period starting at
+                                    				  1999-01-01 and ending at 2002-06-30. However, for other relationships this
+                                    				  value does not have to be derived.
+                                 </li>
+                              </ul>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <p class="postspacer">&nbsp;</p>
+               </div>
+               <div class="GeneralSection">
+                  <div class="subSectionTitle">Public vs. private</div>
+                  <p class="Paragraph">Some derived fields are publicly known by other components,
+                     		like the Stock on Order of an Item. Others are more or less an internal field
+                     		(private fields).
+                  </p>
+                  <p class="Paragraph"><i class="Emphasis">Public derived fields</i> could have a
+                     		business method that allows other components to modify the field's value.
+                     		Example:
+                  </p><pre class="CodeBlock">
+function extern long update.stock.on.order(domain tegen.quan quantity)
+{
+        FunctionUsage
+        Updates the Stock on Order of the current Item. The Item record is not yet
+        written to the database.
+        
+        Preconditions
+                -
+        
+        Postconditions
+                the Stock on Order property is updated
+        
+        Parameters
+                In  quantity    the quantity to update the Stock on Order with
+                                if negative, the Stock on Order is decremented
+                                if positive, the Stock on Order is incremented
+        
+        Returns
+                0               on success
+        EndFunctionUsage
+        
+        teitm020.ostk = teitm020.ostk + quantity
+        return(0)
+}
+</pre><p class="Paragraph"><i class="Emphasis">Private derived fields</i> should be
+                     		modified by means of the <a href="../../progguide/functions_dal/field.update.htm" class="manualLink">field.update()</a> hook. Example:
+                  </p><pre class="CodeBlock">
+|* Updates the Start Date
+function extern void temmt020.sdat.update()
+{
+        |* In case the Parent Currency is the Euro, set the start date
+        |* to 1999-01-01.
+        if temmt020.prnt = temmt001.euro then
+                temmt020.sdat = date.to.num(1999, 01, 01)
+        endif
+}
+</pre></div>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>mode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional mode flag, one of { 0, DAL_NEW, DAL_UPDATE }</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>element</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional element number in case the field is an element of an array 
+                           (for non array fields this value is 1)
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The hook should return True in case the field is derived. In
+               	  that case the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will make the field appear readonly on the UI. In any other case
+               	  the hook should return False (i.e. the field is not derived).
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			DAL
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">When called</div>
+            <ul class="List">
+               <li class="ListItem">At the time the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> determines whether fields need to be disabled cq. enabled: this
+                  		is done just before calling the <i class="Emphasis">before.display.object</i> and
+                  		the <i class="Emphasis">when.field.changes</i> sections
+               </li>
+               <li class="ListItem">At the time of checking the field&#65533;s value, in case the field
+                  		was changed
+               </li>
+            </ul>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <ol class="ProcedureList">
+                  <li class="ProcedureListItem">Derived is defined as: the field's value is determined by the
+                     		application. The end-user is <i class="Emphasis">not</i> allowed to modify the
+                     		field.
+                  </li>
+                  <li class="ProcedureListItem">If this hook does not exist, it is assumed that the field is
+                     		not derived.
+                  </li>
+                  <li class="ProcedureListItem">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will show the following message to the end-user in case the field
+                     		is changed and it appears to be derived: It is not allowed to change the %1$s
+                     		field.
+                  </li>
+                  <li class="ProcedureListItem">It is advised to set an error message with <a href="../../progguide/functions_message_handling/dal.set.error.message.htm" class="manualLink">dal.set.error.message()</a> to indicate the reason why the
+                     		field is derived.
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+function extern boolean temmt020.sdat.is.derived()
+{
+        if temmt020.prnt = temmt001.euro then
+            dal.set.error.message("tecals0493")
+            |* Start date cannot be modified in case the Euro is
+            |* chosen as parent currency.
+            return(true)
+        endif
+        return(false)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_4gle.htm" class="manualLink">DAL2 and the 4GL Engine</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_flow.htm" class="manualLink">DAL2 Flow of field hooks</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_context.htm" class="manualLink">DAL Context</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/field.is.derived, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

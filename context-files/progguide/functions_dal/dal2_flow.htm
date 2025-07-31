@@ -1,0 +1,125 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DAL2 Flow of field hooks</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="hooks DAL2 Flow of field hooks ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DAL2 Flow of field hooks</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Flow for checking a field's value</div><pre class="CodeBlock">
+dal.validate.field(long mode)
+{
+    if field is empty ("", 0, 0.0 or empty) then
+        if not <a href="../../progguide/functions_dal/field.is.never.applicable.htm" class="manualLink">field.is.never.applicable()</a> and <a href="../../progguide/functions_dal/field.is.applicable.htm" class="manualLink">field.is.applicable()</a> then
+            if mode = DAL_UPDATE and <a href="../../progguide/functions_dal/field.is.readonly.htm" class="manualLink">field.is.readonly()</a> then
+                return(DALHOOKERROR)
+            endif
+            if <a href="../../progguide/functions_dal/field.is.derived.htm" class="manualLink">field.is.derived()</a> then
+                return(DALHOOKERROR)
+            endif
+            if <a href="../../progguide/functions_dal/field.is.mandatory.htm" class="manualLink">field.is.mandatory()</a> then
+                return(DALHOOKERROR)
+            endif
+        endif
+    else
+        if field is enum field then
+            if field value &lt;&gt; default value then
+                if <a href="../../progguide/functions_dal/field.is.never.applicable.htm" class="manualLink">field.is.never.applicable()</a> then
+                    return(DALHOOKERROR)
+                endif
+                if not <a href="../../progguide/functions_dal/field.is.applicable.htm" class="manualLink">field.is.applicable()</a> then
+                    return(DALHOOKERROR)
+                endif
+            endif
+            if mode = DAL_UPDATE and <a href="../../progguide/functions_dal/field.is.readonly.htm" class="manualLink">field.is.readonly()</a> then
+                return(DALHOOKERROR)
+            endif
+            if <a href="../../progguide/functions_dal/field.is.derived.htm" class="manualLink">field.is.derived()</a> then
+                return(DALHOOKERROR)
+            endif
+            if not <a href="../../progguide/functions_dal/field.enum.is.applicable.htm" class="manualLink">field.enum.is.applicable()</a> then
+                return(DALHOOKERROR)
+            endif
+        else
+            if mode = DAL_UPDATE and <a href="../../progguide/functions_dal/field.is.readonly.htm" class="manualLink">field.is.readonly()</a> then
+                return(DALHOOKERROR)
+            endif
+            if <a href="../../progguide/functions_dal/field.is.derived.htm" class="manualLink">field.is.derived()</a> then
+                return(DALHOOKERROR)
+            endif
+            if not <a href="../../progguide/functions_dal/field.is.valid.htm" class="manualLink">field.is.valid()</a> then
+                return(DALHOOKERROR)
+            endif
+        endif
+    endif
+    | Field is valid
+    return(0)
+}
+</pre><p class="Paragraph">Note that the <code class="Code"> <a href="../../progguide/functions_dal/field.is.derived.htm" class="manualLink">field.is.derived()</a></code> hook
+                  is only called in case:
+               </p>
+               <ul class="List">
+                  <li class="ListItem">the DAL is not a SUBDAL ( <code class="Code">SUBDAL = false</code>)
+                  </li>
+                  <li class="ListItem">the DAL is running in the Data Input or Integration
+                     context (See <a href="../../progguide/functions_dal/dal_context.htm" class="manualLink">DAL Context</a> for more info.
+                  </li>
+               </ul>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Flow for updating the field's value</div><pre class="CodeBlock">
+dal.update.field(long mode)
+{
+    if <a href="../../progguide/functions_dal/field.is.never.applicable.htm" class="manualLink">field.is.never.applicable()</a> or not <a href="../../progguide/functions_dal/field.is.applicable.htm" class="manualLink">field.is.applicable()</a> then
+        make field empty
+    else
+        if mode = DAL_NEW or not <a href="../../progguide/functions_dal/field.is.readonly.htm" class="manualLink">field.is.readonly()</a> then
+            call <a href="../../progguide/functions_dal/field.update.htm" class="manualLink">field.update()</a> 
+            call <a href="../../progguide/functions_dal/fieldname.make.valid.htm" class="manualLink">fieldname.make.valid()</a>
+        endif
+    endif
+}   
+</pre></div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Flow for getting the field's UI state</div><pre class="CodeBlock">
+dal.get.field.state(long mode)
+{
+    if not <a href="../../progguide/functions_dal/field.is.applicable.htm" class="manualLink">field.is.applicable()</a> then
+        return(DISABLED)
+    else
+        if (mode = DAL_UPDATE and <a href="../../progguide/functions_dal/field.is.readonly.htm" class="manualLink">field.is.readonly()</a>) or <a href="../../progguide/functions_dal/field.is.derived.htm" class="manualLink">field.is.derived()</a> then
+            return(READONLY)
+        else
+            return(ENABLED)
+        endif
+    endif
+}   
+</pre></div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_field_hooks.htm" class="manualLink">DAL2 Field hooks</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_4gle.htm" class="manualLink">DAL2 and the 4GL Engine</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/dal2_flow, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

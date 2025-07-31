@@ -1,0 +1,124 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>box()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="box box functions box ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">box()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;box&nbsp;
+					(long&nbsp;box_x, long&nbsp;box_y, long&nbsp;box_width, long&nbsp;box_height, long&nbsp;mode)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This function is only supported for
+                  character-based windows and its usage is therefore
+                  deprecated.
+               </p>
+               <p class="Paragraph">This draws a rectangle on the screen. If the specified box
+                  does not fit in the current window, only the part that does fit
+                  is displayed.
+               </p>
+               <p class="Paragraph">Changes become visible on screen only after calling <a href="../../progguide/functions_char_b_win/refresh.htm" class="manualLink">refresh()</a>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>box_x</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The screen  co-ordinates for the top left corner of
+                           the box.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>box_y</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>box_width</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The width and height respectively of the box.</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>box_height</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>mode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">0 only the box is drawn; no other screen
+                           modifications are made
+                        </p>
+                        <p class="Paragraph">1 the interior of the box is cleared</p>
+                        <p class="Paragraph">2 the box is drawn dimmed; no other screen
+                           modifications are made
+                        </p>
+                        <p class="Paragraph">3 the box is drawn dimmed and its interior is
+                           cleared
+                        </p>
+                        <p class="Paragraph">In addition to the above values, you can specify
+                           special effects such as reversed and blinking. For a
+                           list of possible attributes, see see <a href="../../progguide/functions_char_b_win/cf.htm" class="manualLink">cf$()</a>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div><pre class="CodeBlock">
+| This draws the largest possible box
+box( 1, 1, 80, 23, mode )
+refresh()
+| This draws a box with the reverse attribute
+cf_mode = 41      | attribute 4 (* 10) + mode 1
+box( 2, 2, 40, 13, cf_mode )
+refresh()
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_char_b_win/overview_and_synopsis.htm" class="manualLink">Character-based windows - overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_char_b_win/box, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

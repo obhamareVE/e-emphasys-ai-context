@@ -1,0 +1,169 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>xmlFindFirstMatchNs()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions xmlFindFirstMatchNs xmlFindFirstMatchNs xmlFindFirstMatchNs ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">xmlFindFirstMatchNs()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;xmlFindFirstMatchNs&nbsp;
+					(string&nbsp;pattern, const string&nbsp;namespaceList, long&nbsp;fromNode [, long&nbsp;toNode])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Search in a tree or a list of trees and return the first
+                  			XML_ELEMENT or XML_DTD, which matches with the string pattern.
+                  			The string pattern contains a search path relative to the
+                  			starting node. The starting node is the list of nodes indicated
+                  			by <i class="Emphasis">fromNode</i> to <i class="Emphasis">toNode</i>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>pattern</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The parameter <i class="Emphasis">pattern</i> is a string which should conform to the following syntax:
+                        </p>
+                        <div class="GeneralSection"><pre class="CodeBlock">
+Pattern        ::=   Part [ '.' Part ]*
+Part           ::=   DepthSearch | BreadthSearch | ParentSearch | Tag | 
+                     RightSibling | LeftSibling |  FirstChild | LastChild | Parent
+DepthSearch    ::=   '?' Tag
+BreadthSearch  ::=   '-' Tag
+ParentSearch   ::=   '^' Tag
+Tag            ::=   '&lt;' [Name] [Attribute]*  '&gt;' 
+Name           ::=   Element name, see for a definition:  [XMLSTD].
+Attribute      ::=   attname'='attvalue | attname | attname'=' | '='attvalue
+RightSibling   ::=   "right"
+LeftSibling    ::=   "left"
+FirstChild     ::=   "fChild"
+LastChild      ::=   "lChild"
+Parent         ::=   "parent"
+</pre></div>
+                        <p class="Paragraph">Both an element name and an attribute name can be <i class="Emphasis">qualified</i>.
+                           				The <i class="Emphasis">namespaceList</i> is then used to bind the prefix to the 
+                           				corresponding namespace name (URI). The URI of the element or attribute 
+                           				must match the specified URI in the <i class="Emphasis">namespaceList</i> for a
+                           				successful match.
+                        </p>
+                        <p class="Paragraph">Attribute values should be surrounded by double quotes. 
+                           				When the text inside a tag starts with a stand alone identifier (not followed by an equals sign '='), then, according
+                           to the above syntax, it is ambiguous whether it is an element name or an attribute name. In fact, it is interpreted as an
+                           element name. When an attribute name is meant, it should in this case be followed by an equals sign '='. This is not necessary
+                           for further attributes.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>namespaceList</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">namespaceList</i> is a string containing a list of prefix-URI
+                           				bindings. 
+                           				The string must have the form 
+                           				&lt;prefix&gt;="&lt;URI&gt;"[,&lt;prefix&gt;="&lt;URI&gt;"...], and
+                           				may be empty.
+                           				The function <a href="../../progguide/functions_xml/xmlBuildNamespaceList$.htm" class="manualLink">xmlBuildNamespaceList$()</a> can be used to build this list.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>fromNode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">fromNode</i> is a reference to an XML node.
+                           				See <a href="../../progguide/functions_xml/api.htm#fromnode_tonode" class="manualLink">Handling of fromNode and toNode arguments</a></p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>toNode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">toNode</i> is a reference to an XML node.
+                           				See <a href="../../progguide/functions_xml/api.htm#fromnode_tonode" class="manualLink">Handling of fromNode and toNode arguments</a></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;&gt;0</th>
+                     <td rowspan="1" colspan="1" class="none">Success; Reference to first matching Node.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Error or no match found.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long xml_envelope
+string error(100)
+xml_envelope = xmlReadFromStringNs( 
+  "&lt;soap:Envelope xmlns:soap=""http://www.w3.org/2001/12/soap-envelope"" " &amp;
+		 " soap:encodingStyle=""http://www.w3.org/2001/12/soap-encoding""&gt;" &amp;
+		 "&lt;soap:Body xmlns:m=""http://www.example.org/stock""&gt;" &amp;
+			 "&lt;m:GetStockPrice&gt;" &amp;
+				 "&lt;m:StockName&gt;IBM&lt;/m:StockName&gt;" &amp;
+			 "&lt;/m:GetStockPrice&gt;" &amp;
+		 "&lt;/soap:Body&gt;" &amp;
+  "&lt;/soap:Envelope&gt;"
+	, error )
+
+long xml_stockprice
+xml_stockprice = xmlFindFirstMatchNs( "?&lt;x:GetStockPrice&gt;", "x=""http://www.example.org/stock""", xml_envelope)
+| xml_stockprice now contains a reference to the "m:GetStockPrice" node
+
+xml_stockprice = xmlFindFirstMatchNs( "?&lt;x:GetStockPrice&gt;", xmlBuildNamespaceList$("x","http://www.example.org/stock"), xml_envelope)
+| xml_stockprice now contains a reference to the "m:GetStockPrice" node </pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/overview.htm" class="manualLink">XML object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis.htm" class="manualLink">XML object synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis_namespace.htm" class="manualLink">XML object synopsis (namespace support)</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_xml/xmlFindFirstMatchNs, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>ims.openfba()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions ims.openfba ims.openfba ims.openfba ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">ims.openfba()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;ims.openfba&nbsp;
+					(string&nbsp;buffer, long&nbsp;size, string&nbsp;type)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Opens a Fixed Byte Array (FBA).</p>
+               <p class="Paragraph">The following code fragment shows an example of how to create
+                  an FBA:
+               </p><pre class="CodeBlock">
+string  buffer(1)       based
+long    size
+long    stream.id
+
+size = 1024
+alloc.mem(buffer, size)
+stream.id = ims.openFBA(buffer, size, "r+")
+</pre></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>buffer</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Stores the byte array.</p>
+                        <p class="Paragraph">It may already contain information before the invocation
+                           of this function.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>size</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Size of the buffer.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The mode in which the byte array must be opened.
+                           This can be one of the following options:
+                        </p>
+                        <ul class="List">
+                           <li class="ListItem">"r": Open for reading.
+                              The current position is placed at the start of the
+                              byte array.
+                           </li>
+                           <li class="ListItem">"w": Open for writing.
+                              The byte array is created if it does not
+                              already exist. The current position is placed at the
+                              start of the byte array.
+                           </li>
+                           <li class="ListItem">"a": Open for writing.
+                              The byte array is created if it does not
+                              already exist. The current position is placed at the
+                              end of the byte array.
+                           </li>
+                           <li class="ListItem">"x": Open for writing.
+                              This is the same as "w", except that the
+                              function fails if the byte array already
+                              exists.
+                           </li>
+                           <li class="ListItem">"r+": Same as "r", but it can also be written to.</li>
+                           <li class="ListItem">"w+": Same as "w", but it can also be read.</li>
+                           <li class="ListItem">"a+": Same as "a", but it can also be read.</li>
+                           <li class="ListItem">"x+": Same as "x", but it can also be read.</li>
+                        </ul>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">Error, most probably <i class="Emphasis">buffer</i> is not a
+                        valid stream, the <i class="Emphasis">type</i> is invalid or
+                        		   the byte array is full.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&gt;0</th>
+                     <td rowspan="1" colspan="1" class="none">Success. A byte array identifier was returned..</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Important</div>
+            <p class="Paragraph">Do <i class="Emphasis">not</i> reallocate <i class="Emphasis">buffer</i> when it is already in
+               use by an FBA. This will cause the Bshell to crash. In the code
+               above, do not call an alloc.mem(buffer, newSize) after the FBA
+               has been opened.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_ims/byte_arrays_overview.htm" class="manualLink">Byte arrays overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_ims/byte_arrays_synopsis.htm" class="manualLink">Byte arrays synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_ims/ims.openfba, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>update.occ()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions update.occ update.occ update.occ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">update.occ()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;update.occ&nbsp;
+					()</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> automatically detects changes a user makes to a field. However,
+                  it cannot detect changes to field values made in the program
+                  script. When you modify a field of the main table in the program
+                  script, you must call <i class="Emphasis">update.occ()</i> to lock the record (delayed lock) and to
+                  switch on the <i class="Emphasis">update.status</i> flag of the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a>. This
+                  ensures when that the database is next updated, the
+                  modifications are saved to the database. The database update
+                  action can be initiated either by the user or within the script
+                  (use execute(update.db)).
+               </p>
+               <p class="Paragraph">Before the <i class="Emphasis">update.db</i> command is executed, the user can undo the
+                  changes with the <i class="Emphasis">recover.set</i> command. If you do not want users to be able
+                  to undo changes, you can force an immediate update by calling
+                  execute(update.db) in the script.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">See also</div>
+            <p class="Paragraph"><a href="../../progguide/functions_form_and_form_field_operations/do.occ.htm" class="manualLink">do.occ()</a></p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+functions:
+function extern void form.command.X()
+{
+    tiitm001.abcd = 9999
+    update.occ()              | Sets flag to indicate change
+    execute(update.db)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/overview.htm" class="manualLink">Form and form field operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/synopsis.htm" class="manualLink">Form and form field operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_form_and_form_field_operations/update.occ, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

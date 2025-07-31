@@ -1,0 +1,221 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DsCscrollbar</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dscscrollbar ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DsCscrollbar</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">Scroll bars enable users to scroll data that is too large to
+               fit in the viewing window. They can be either horizontal or
+               vertical. A scroll bar consists of the following components:
+            </p>
+            <ul class="List">
+               <li class="ListItem">A rectangular shaft (referred to as the scroll region).
+                  This represents the full amount of information available to
+                  the window.
+               </li>
+               <li class="ListItem">A scroll arrow at either end of the scroll region.
+                  Clicking on these scrolls the data by specified
+                  increments.
+               </li>
+               <li class="ListItem">A movable slider (also referred to as a scroll box). This
+                  indicates the relative position of the currently displayed
+                  data within the whole.
+               </li>
+            </ul>
+            <div class="Figure"><img src="../images/uio_015.gif" alt="[...]" height="140" width="119"></div>
+            <p class="Paragraph">To scroll the data, users can click on one of the scroll
+               arrows, click in the scroll region, or drag the slider.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Events</div>
+            <p class="Paragraph">A DsCscrollbar object can generate the following events:</p>
+            <p class="Paragraph">EVTKEYPRESS</p>
+            <p class="Paragraph">EVTCHANGEFOCUS</p>
+            <p class="Paragraph">EVTSETFOCUS</p>
+            <p class="Paragraph">EVTSCROLLBARSELECT</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" class="none">
+               <tbody noTR="14" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNeventMask</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies the events that the object can generate.
+                        See <a href="../../progguide/events/select.event.input.htm" class="manualLink">select.event.input()</a> for a list of possible masks.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNincrement</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The amount the slider value changes when the user
+                        moves the slider by one increment. Clicking on one of
+                        the scroll arrows moves the slider one increment
+                        towards the arrow. If a negative value is specified,
+                        the absolute value is used.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNmaximum</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The maximum value of the slider. This corresponds to
+                        the right or bottom position of the slider.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNminimum</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The minimum value of the slider. This corresponds to
+                        the left or top position of the slider. DsNmaximum can
+                        be less than DsNminimum.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNobjectType</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td rowspan="1" colspan="1" class="none">The object type.</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNorientation</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The orientation of the scroll bar. Possible values
+                           are:
+                        </p>
+                        <p class="Paragraph">DSHORIZONTAL</p>
+                        <p class="Paragraph">DSVERTICAL (default)</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DsNpageIncrement</td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The amount the slider value changes when the user
+                        moves the slider by one page increment. Clicking in the
+                        scroll region moves the slider one page increment in
+                        the direction of the click. If a negative value is
+                        specified, the absolute value is used.
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNparent</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of the parent object.</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsetState</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The state of the object. See <a href="../../progguide/functions_user_interface_objects/dscmwindow.htm" class="manualLink">DsCmwindow</a>.
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsize</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The size of the scroll bar control, in pixels. This
+                        specifies the width of horizontal scroll bars and the
+                        height of vertical scroll bars. The default value is
+                        100.
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsliderValue</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The value corresponding to one side of the
+                        slider.
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtemplate</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of a <a href="../../progguide/functions_user_interface_objects/dsctemplate.htm" class="manualLink">DsCtemplate</a> that defines a set of attributes to be
+                        applied to the object.
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNx</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The x-coordinate of the object's outer left edge, in
+                        pixels, relative to the inner left edge of its
+                        parent.
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNy</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The y-coordinate of the object's outer top edge, in
+                        pixels, relative to the inner top edge of its
+                        parent.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/dscscrollbar, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

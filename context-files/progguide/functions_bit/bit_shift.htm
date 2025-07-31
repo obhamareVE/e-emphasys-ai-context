@@ -1,0 +1,194 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>bit.shiftl(), bit.shiftr()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="bit.shiftl bit.shiftl bit.shiftr bit.shiftr functions bit.shiftl functions bit.shiftr ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">bit.shiftl(), bit.shiftr()</div>
+      <div class="body">
+         <div class="GeneralSection"><a name="bit_shiftl"></a><div class="subSectionTitle">bit.shiftl</div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;bit.shiftl&nbsp;
+					(long&nbsp;bitpattern, long&nbsp;no_of_bits)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Bitwise shift left function</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>bitpattern</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The value of which the bits of its two’s complement representation must be shifted.</p>
+                        <p class="Paragraph">Preferably, this value should not be negative.
+                           For negative values,
+                           the normal shift behavior can be expected for bits which remain in the result.
+                           However, the behavior with respect to bits shifted out at the left side of the bit pattern is declared to be unspecified.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>no_of_bits</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The number of positions to shift.</p>
+                        <p class="Paragraph">This value must not be negative.
+                           Do not expect any well-defined behavior for negative values.
+                           For example,
+                           shifting left over a negative number of bit positions
+                           is not specified as a right shift operation.
+                        </p>
+                        <p class="Paragraph">This value must be less than the width of the bitpattern,
+                           i.e. it must be less than <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>.
+                           Do not expect that shifting left over at least <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a> positions
+                           will result in value 0.
+                           Also, do not expect any other well-defined behavior.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The function bit.shiftl returns the value bitpattern * 2^no_of_bits.</p>
+            <p class="Paragraph">This is only specified for non-negative values of no_of_bits,
+               less than <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>.
+            </p>
+            <p class="Paragraph">If the exact result of this multiplication is not in the signed <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-bit
+               range,
+               then the result is unspecified.
+               In practice,
+               the same wrap around behavior can be expected as in normal arithmetic:
+               repeatedly add or subtract
+               2^ <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a> until the result is in the allowed range.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="bit_shiftr"></a><div class="subSectionTitle">bit.shiftr</div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;bit.shiftr&nbsp;
+					(long&nbsp;bitpattern, long&nbsp;no_of_bits)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Bitwise shift right function</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>bitpattern</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The value of which the bits of its two’s complement representation must be shifted.</p>
+                        <p class="Paragraph">Preferably, this value should not be negative.
+                           For negative values,
+                           the normal shift behavior can be expected for bits which remain in the result.
+                           However, the behavior with respect to bits shifted in at the left side of the bit pattern is declared to be unspecified.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>no_of_bits</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The number of positions to shift.</p>
+                        <p class="Paragraph">This value must not be negative.
+                           Do not expect any well-defined behavior for negative values.
+                           For example,
+                           shifting right over a negative number of bit positions
+                           is not specified as a left shift operation.
+                        </p>
+                        <p class="Paragraph">This value must be less than the width of the bitpattern,
+                           i.e. it must be less than <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>.
+                           Do not expect that shifting right over at least <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a> positions
+                           will result in value 0.
+                           Also, do not expect any other well-defined behavior.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The function bit.shiftr returns the value bitpattern / 2^no_of_bits.</p>
+            <p class="Paragraph">This is only specified for non-negative values of no_of_bits,
+               less than <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>.
+            </p>
+            <p class="Paragraph">Further,
+               this return value is only specified for non-negative values of bitpattern.
+               For negative values of bitpattern,
+               normal shift behavior can be expected for bits which remain in the result.
+               However,
+               the behavior with respect to bits shifted in at the left side of the bit pattern
+               is declared to be unspecified;
+               it depends on the platform on which the bshell runs:
+               fill vacated bits with zeroes
+               or with the sign bit of the original value.
+               Do not rely on it!
+               Different versions of the bshell may behave differently
+               and the same bshell version may behave differently on different platforms.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long result
+result = bit.shiftr( 0x63f, 2 )    
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_bit/bit_operations_overview_and_synopsis.htm" class="manualLink">Bit operations: overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_bit/bit_shift, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

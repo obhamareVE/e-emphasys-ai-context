@@ -1,0 +1,204 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>gbf.drag.drop()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions gbf.drag.drop gbf.drag.drop gbf.drag.drop ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">gbf.drag.drop()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_gbf&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;gbf.drag.drop&nbsp;
+					(long&nbsp;drag.obj, const string&nbsp;drag.key(), long&nbsp;drag.value, long&nbsp;drag.type, long&nbsp;drop.obj, const string&nbsp;drop.key(), long&nbsp;drop.value, long&nbsp;drop.type, long&nbsp;button.mode)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function will be called by the GBF when a drag and
+                  drop operation has been performed by the end-user. Note that
+                  in order to receive these function calls, the GBF must be
+                  configured for drag and drop (see <a href="../../progguide/functions_generic_browser_frameworkf/gbf.init.htm" class="manualLink">gbf.init()</a>), otherwise it will not
+                  support drag and drop. Also when the GBF is not configured
+                  for multiple select, then always only one object can be
+                  dragged and dropped.
+               </p>
+               <p class="Paragraph">The <i class="Emphasis">drag.obj</i> identifies the object(s) being dragged:
+               </p>
+               <table border="0" class="none">
+                  <tbody noTR="3" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">drag.obj.&lt; 0</td>
+                        <td rowspan="1" colspan="1" class="none">
+                           <p class="Paragraph_firstAndNoTextBefore">More that one object was currently selected when
+                              the drop was done and drag.obj contains the negative
+                              number of selected objects, that is: -drag.obj is
+                              the actual number of selected objects. So drag.obj
+                              in this case is NO valid object identification, but
+                              on the other hand drag.key, drag.value and drag.type
+                              contain the identification of the first selected
+                              object. All currently selected objects can be
+                              obtained using a
+                           </p>
+                           <p class="Paragraph">gbf.get.selected()</p>
+                           <p class="Paragraph">This case will only happen if the GBF is configured to
+                              support multiple select (see <a href="../../progguide/functions_generic_browser_frameworkf/gbf.init.htm" class="manualLink">gbf.init()</a>)
+                           </p>
+                        </td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">drag.obj = 0</td>
+                        <td rowspan="1" colspan="1" class="none">Cannot happen</td>
+                     </tr>
+                     <tr no="3" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">drag.obj &gt; 0</td>
+                        <td rowspan="1" colspan="1" class="none">Precisely one object was selected when the drop
+                           was done and that object is identified by drag.obj
+                           as well as by the object.key and object.value, which
+                           have been given to the GBF on a preceding <a href="../../progguide/functions_generic_browser_frameworkf/gbf.add.object.htm" class="manualLink">gbf.add.object()</a> call, that includes the drop.type, which indicates
+                           the type of drag.obj. The given drag.obj identifies
+                           the object for the GBF and should be used only as
+                           object identification for other GBF functions like <a href="../../progguide/functions_generic_browser_frameworkf/gbf.get.parent.htm" class="manualLink">gbf.get.parent()</a>, <a href="../../progguide/functions_generic_browser_frameworkf/gbf.get.first.child.htm" class="manualLink">gbf.get.first.child()</a>, <a href="../../progguide/functions_generic_browser_frameworkf/gbf.get.next.htm" class="manualLink">gbf.get.next()</a> and
+                           gbf.update.object().
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+               <p class="Paragraph">The drop target, that is the object on which the selected
+                  objects are dropped, is identified by the drop.obj, drop.key,
+                  drop.value and drop.type, which have been given to the GBF on
+                  a preceding <a href="../../progguide/functions_generic_browser_frameworkf/gbf.add.object.htm" class="manualLink">gbf.add.object()</a> call.
+               </p>
+               <p class="Paragraph">The GBF will prevent dragging and dropping on or off
+                  header objects. In other words drag.type and/or drop.type
+                  will never be GBF.HEADER.
+               </p>
+               <p class="Paragraph">Note that the application may have defined other fetch
+                  child functions, in stead of this function, see <a href="../../progguide/functions_generic_browser_frameworkf/gbf.set.child.function.htm" class="manualLink">gbf.set.child.function()</a>. Still the GBF assumes that the interface (incoming
+                  arguments as well as the return values) are exactly the same
+                  as defined here.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="9" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>drag.obj</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">See above.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>drag.key()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>drag.value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>drag.type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>drop.obj</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>drop.key()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>drop.value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>drop.type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>button.mode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The button.mode indicates which keys are hold
+                           down, possible values: EVTSHIFTMASK and/or
+                           EVTCONTROLMASK, indicating that the Shift key and/or
+                           Ctrl key are/were pushed down at the moment of the
+                           drop.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The return value is treated in the same way as with the <a href="../../progguide/functions_generic_browser_frameworkf/gbf.menu.selected.htm" class="manualLink">gbf.menu.selected()</a> function call and it applies to both the dragged objects as
+               well as to the drop object.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/overview.htm" class="manualLink">Generic Browser Framework (GBF) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/synopsis.htm" class="manualLink">Generic Browser Framework (GBF) synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/typical_usage.htm" class="manualLink">Typical usage</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/getting_started.htm" class="manualLink">Getting started</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/example.htm" class="manualLink">Example</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/error_codes_and_return_values.htm" class="manualLink">Generic Browser Framework error codes and return values</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/standard_menu_items_and_function_keys.htm" class="manualLink">standard menu items and function keys</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/messages_and_questions.htm" class="manualLink">Messages and questions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_generic_browser_frameworkf/gbf.drag.drop, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

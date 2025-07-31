@@ -1,0 +1,70 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Searching and sorting data overview and synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="searching and sorting data ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Searching and sorting data overview and synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">Use these functions for searching and sorting data. Use <i class="Emphasis">qss.search()</i> to search the data for a particular
+               value. Use <i class="Emphasis">qss.sort()</i> to sort the data. The data can be a string
+               or an array of type string, long, or double.
+            </p>
+            <p class="Paragraph">The <i class="Emphasis">qss.search()</i> function can perform either a linear or a
+               binary search. A binary search is faster than a linear
+               search, but the data must first be sorted by <i class="Emphasis">qss.sort()</i>. In practice, therefore, a binary search is
+               efficient only when the data does not often change and so
+               does not require repeated sorting. If the data is frequently
+               modified, use a linear search on unsorted data instead; this
+               avoids frequent calls to <i class="Emphasis">qss.sort()</i>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Synopsis</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_searching_sorting_data/qss.search.htm" class="manualLink">qss.search()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long flag, void search, ref void array,
+                &nbsp; ref long def [, long dept] )</code></td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_searching_sorting_data/qss.sort.htm" class="manualLink">qss.sort()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref void array, ref long def [, long dept]
+                           )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_searching_sorting_data/example.htm" class="manualLink">Table searching and sorting sample programs</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_searching_sorting_data/overview_and_synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

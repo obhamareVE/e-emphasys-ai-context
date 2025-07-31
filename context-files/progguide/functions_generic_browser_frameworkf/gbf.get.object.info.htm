@@ -1,0 +1,138 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>gbf.get.object.info()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions gbf.get.object.info gbf.get.object.info gbf.get.object.info ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">gbf.get.object.info()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;gbf.get.object.info&nbsp;
+					(long&nbsp;object.id, ref string&nbsp;key(), ref string&nbsp;description(), ref long&nbsp;value, ref long&nbsp;type)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function returns the information of the object <i class="Emphasis">obj.id</i>. The returned information is the information set
+                  at the call to <a href="../../progguide/functions_generic_browser_frameworkf/gbf.add.object.htm" class="manualLink">gbf.add.object()</a>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>object.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The unique object identification.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>key()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The key of the object by which it is known in the
+                           application.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>description()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The text that is displayed in the browser to
+                           describe the object.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The value of the object that is used to further
+                           identify this object (in case the object appears
+                           more than once in the tree).
+                        </p>
+                        <p class="Paragraph">Note that a value of 0 means something special,
+                           see <a href="../../progguide/functions_generic_browser_frameworkf/gbf.update.htm" class="manualLink">gbf.update.object() *</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specify the object type by choosing one of the
+                           following:
+                        </p>
+                        <ul class="List">
+                           <li class="ListItem">GBF.HEADER</li>
+                           <li class="ListItem">GBF.INTERIOR</li>
+                           <li class="ListItem">GBF.LEAF</li>
+                        </ul>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">0</td>
+                     <td rowspan="1" colspan="1" class="none">Successful completion</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.OBJECT</td>
+                     <td rowspan="1" colspan="1" class="none">GBF is not in the right state to deal with this
+                        function
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/overview.htm" class="manualLink">Generic Browser Framework (GBF) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/synopsis.htm" class="manualLink">Generic Browser Framework (GBF) synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/typical_usage.htm" class="manualLink">Typical usage</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/getting_started.htm" class="manualLink">Getting started</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/example.htm" class="manualLink">Example</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/error_codes_and_return_values.htm" class="manualLink">Generic Browser Framework error codes and return values</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/standard_menu_items_and_function_keys.htm" class="manualLink">standard menu items and function keys</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/messages_and_questions.htm" class="manualLink">Messages and questions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_generic_browser_frameworkf/gbf.get.object.info, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

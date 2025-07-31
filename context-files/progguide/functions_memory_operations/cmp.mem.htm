@@ -1,0 +1,116 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>cmp.mem()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="cmp.mem cmp.mem functions cmp.mem ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">cmp.mem()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;cmp.mem&nbsp;
+					(void&nbsp;var1, void&nbsp;var2 [, long&nbsp;count])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This compares the values of two variables or arrays. By
+                  default, the values are compared for the length of the shortest
+                  argument. If you specify the optional <i class="Emphasis">count</i> argument, the
+                  function compares the first <i class="Emphasis">count</i> digits or characters of
+                  both arguments.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>var1</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>var2</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>count</code>]
+                     </td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The return values depend on the types of the
+               variables.
+            </p>
+            <p class="Paragraph">Variables are of different
+               types:
+            </p>
+            <p class="Paragraph">1</p>
+            <p class="Paragraph">Variables are longs or
+               doubles:
+            </p>
+            <p class="Paragraph">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; values are equal</p>
+            <p class="Paragraph">1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; values are different</p>
+            <p class="Paragraph">Variables are strings or arrays
+               of type long, double, or string:
+            </p>
+            <p class="Paragraph">&lt;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; first argument is less than second</p>
+            <p class="Paragraph">=0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; arguments are equal</p>
+            <p class="Paragraph">&gt;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; first argument is greater than second</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long l_arr(2,2), lng_arr(3,5), ret
+fill_long_arrays()
+ret = cmp.mem( lng_arr, l_arr )  | The first 4 elements are checked
+if ret = 0 then
+        message( "values are equal" )
+else
+        if ret &gt; 0 then
+                message( "First array greater than second" )
+        else
+                message( "First array less than second" )
+        endif
+endif
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_memory_operations/overview_and_synopsis.htm" class="manualLink">Memory operations overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_memory_operations/cmp.mem, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

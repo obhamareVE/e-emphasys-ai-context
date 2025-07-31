@@ -1,0 +1,90 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Numeric constants</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="3GL numeric constants numeric constants 3GL ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Numeric constants</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The Baan 3GL programming language supports long and floating
+               point constants. Both types can be preceded by a '+' or a '-'
+               sign.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Long constants</div>
+            <p class="Paragraph">A long constant can be specified in decimal notation or in hexadecimal notation.
+               Only non-negative values can be specified.
+               A preceding minus sign is not part of the constant,
+               but is considered as a separate unary or binary minus operator.
+            </p>
+            <p class="Paragraph">Notice that the concept of constants is a feature of the bic compiler.
+               The compiler does not support long constants outside the signed 32-bit value range.
+               The object code produced by the compiler will be executed by the bshell.
+            </p>
+            <p class="Paragraph">When using the decimal notation,
+      the allowed value range is the non-negative signed 32-bit value range: [0 … 2^31 - 1].
+      When immediately preceded by a minus sign, also the value 2^31 is allowed.
+      For example:</p><pre class="CodeBlock">
+0
+1
+10
+2147483647
+2147483648	| Error: Long constant '2147483648' too large (MAX 2147483647).
+-2147483648
+-2147483649	| Error: Long constant '-2147483649' too large (MAX -2147483648).
+0 - 2147483648
+0 - 2147483649	| Error: Long constant '-2147483649' too large (MAX -2147483648).
+</pre><p class="Paragraph">When using the hexadecimal notation,
+               the allowed range is the same as when using the decimal notation,
+               but now there is no exception when immediately preceded by a minus sign.
+               For example:
+            </p><pre class="CodeBlock">
+0x0
+0X1
+0x7fffffff
+0x7FFFFFFFF
+0x800000000	| Error: Hexadecimal constant: '80000000' cannot be converted to long.
+-0x7FFFFFFFF
+-0x800000000	| Error: Hexadecimal constant: '80000000' cannot be converted to long.
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Floating point constants</div>
+            <p class="Paragraph">Floating point constants consist of the digits 0-9 and a
+               decimal point. You cannot end a constant with a decimal
+               point. An exponential part can be added to a constant by
+               including the letter 'e' followed by a long constant (maximum
+               307). You can have up to six digits after the decimal point
+               in a constant. For example:
+            </p><pre class="CodeBlock">
+123.56
+0.8743
+.8743
+123.5e-5
+-2.34e10
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/constants.htm" class="manualLink">Constants</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/numeric_constants, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Using program variables</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="database handling using program variables ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Using program variables</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">To use SQL statements in the Baan programming language it is
+               needed to transfer data from program variables to SQL statement
+               variables and to transfer output of SQL statements to program
+               variables.
+            </p>
+            <p class="Paragraph">The transfer of data to SQL statement variables takes place
+               before or during <i class="Emphasis">execution</i> time (if you use dynamic SQL
+               this is before or during the sql.exec() call). The <i class="Emphasis">execution</i> of the SQL statement freezes all statement
+               variables. So, a call to sql.where.bind() after a call to
+               sql.exec() will not take effect until the next call to
+               sql.exec().
+            </p>
+            <p class="Paragraph">Each time a row is fetched from the SQL statement, the values
+               of the columns are copied to the correponding <i class="Emphasis">select
+                  targets</i>. The <i class="Emphasis">select targets</i> are explicitly defined
+               using sql.select.bind() calls or SELECTBIND() statements or are
+               implicitely defined during <i class="Emphasis">execution</i> time.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Binding of input values to SQL statement variables</div>
+            <p class="Paragraph">To evaluate a SQL statement containing variables, the query
+               processor must retrieve the values of these variables from the
+               application.
+            </p>
+            <p class="Paragraph">There are two ways to bind values to the variables of a SQL
+               statement:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><i class="Emphasis">Using pseudo variables</i> Pseudo variables take the form
+                  ": <i class="Emphasis">&lt;number&gt;</i> ". The value of a pseudo variable
+                  must be <i class="Emphasis">explicitly</i> defined by either using the <a href="../../progguide/functions_dynamic_sql_queries/sql.where.bind.htm" class="manualLink">sql.where.bind()</a> call or by using the WHEREBIND()
+                  statement (see <a href="../../progguide/functions_database_handling/embedded_sql.htm" class="manualLink">Embedded SQL</a>).If a pseudo variable is not bound before <i class="Emphasis">exection</i> of the statement the following runtime
+                  error is given:
+                  SQLState HYL03: Pseudo variable '&lt;number&gt;' not
+                  bound before sql_exec
+               </li>
+               <li class="ListItem"><i class="Emphasis">Using program variables</i> Program variables take the form ": <i class="Emphasis">&lt;program
+                     variable name&gt;</i> ". The values of the program variable
+                  are automatically loaded into the query processor.When using <i class="Emphasis">dynamic SQL</i> the program variable must
+                  be declared <i class="Emphasis">extern</i>. If a program variable does not
+                  exist then the following runtime error is given:
+                  SQLState HYL04: External variable '&lt;program variable
+                  name&gt;' not found
+                  When using <i class="Emphasis">embedded SQL</i> the program can be
+                  declared local to the function in which the SQL statement
+                  is defined. If a program variable does not exist then the
+                  following compile time error is given:
+                  SQL host variable ':&lt;program variable name&gt;' not
+                  declared.
+               </li>
+            </ul>
+            <p class="Paragraph"><i class="Emphasis">Note</i>: Binding of input values is <i class="Emphasis">by value</i>, not <i class="Emphasis">by reference</i>. When using dynamic SQL this means that a
+               SQL statement variable keeps its value until another <code class="Code">sql.where.bind()</code> call is done.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Binding of output columns to program variables</div>
+            <p class="Paragraph">The query processor stores the result of a query into program
+               variables. In order to do so, it must know the relation between
+               each output column of the query and a program variable. Each
+               program variable that is used to store a result is called a <i class="Emphasis">select target</i>.
+            </p>
+            <p class="Paragraph">There are three ways to define the <i class="Emphasis">select target</i> of an
+               output column:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><i class="Emphasis">Using pseudo variables</i> <i class="Emphasis">Syntax</i>: <code class="Code">select
+                     firstnme:&lt;number&gt;</code> The pseudo variable must be <i class="Emphasis">explicitly</i> bound to
+                  a <i class="Emphasis">select target</i> by either using the <a href="../../progguide/functions_dynamic_sql_queries/sql.select.bind.htm" class="manualLink">sql.select.bind()</a> call or by using the SELECTBIND()
+                  statement (see <a href="../../progguide/functions_database_handling/embedded_sql.htm" class="manualLink">Embedded SQL</a>).If a pseudo variable is not bound before <i class="Emphasis">exection</i> of the statement the following runtime
+                  error is given:
+                  SQLState HYL03: Pseudo variable '&lt;number&gt;' not
+                  bound before sql_exec
+               </li>
+               <li class="ListItem"><i class="Emphasis">Using program variables</i> <i class="Emphasis">Syntax</i>: <code class="Code">select firstnme:&lt;program
+                     variable name&gt;</code> The output column is automatically bound to the program
+                  variable.When using <i class="Emphasis">dynamic SQL</i> the program variable must
+                  be declared <i class="Emphasis">extern</i>. If a program variable does not
+                  exist then the following runtime error is given:
+                  SQLState HYL04: External variable '&lt;program variable
+                  name&gt;' not found
+                  When using <i class="Emphasis">embedded SQL</i> the program can be
+                  declared local to the function in which the SQL statement
+                  is defined. If a program variable does not exist then the
+                  following compile time error is given:
+                  SQL host variable ':&lt;name&gt;' not declared.
+               </li>
+               <li class="ListItem"><i class="Emphasis">Using the implicitely derived select target</i> <i class="Emphasis">Syntax</i>: <code class="Code">select firstnme</code> This case behaves the same as the "Using program
+                  variables" case above, except for the fact that the
+                  &lt;program variable name&gt; is derived from the SQL
+                  statement by the query processor (see below).
+               </li>
+            </ul>
+            <p class="Paragraph">For each row that is fetched from the SQL statement, all
+               values of the output columns are copied into the <i class="Emphasis">select
+                  targets</i>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Implicitely derived select targets</div>
+            <p class="Paragraph">If an output column of a SQL statement is not explicitly
+               bound to a select target, then the query processor uses the
+               derived select target. If there is no derived select target then
+               the following error is given:
+            </p>
+            <p class="Paragraph">SQLState HYL06: select item &lt;number&gt; must be bound
+               explicitly
+            </p>
+            <p class="Paragraph">The query processor defines a derived select target for an
+               output column, if it is a column name. The name of the select
+               target is the qualified column name of the column in the related
+               table.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">Example</i>: The following query defines "dbtst120.empno" as the select
+               target for the first column, and "dbtst120.firstnme" for the
+               second column. It does <i class="Emphasis">not</i> define " <i class="Emphasis">alias</i>.empno" as
+               a select target.
+            </p><pre class="CodeBlock">
+SELECT alias.empno, firstnme FROM dbtst120 alias
+</pre><p class="Paragraph">For all other output columns, such as aggregate functions, no
+               select target is defined.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">Example</i>: The following query defines <i class="Emphasis">no</i> select target for the
+               second column.
+            </p><pre class="CodeBlock">
+SELECT edlevel, avg(salary) FROM dbtst120 alias
+</pre><p class="Paragraph">In case of a UNION, the SELECT in the first branch of the
+               UNION defines the name of the select target.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">Example</i>: The following query defines "dbtst120.empno" as the select
+               target for the first column, and "dbtst120.bonus" for the second
+               column.
+            </p><pre class="CodeBlock">
+SELECT empno, bonus 
+FROM dbtst120 alias
+
+UNION ALL 
+
+SELECT edlevel, avg(salary)
+FROM dbtst120
+</pre><p class="Paragraph"><i class="Emphasis">Example</i>: The following query defines "dbtst120.empno" as the select
+               target. Note that "dbtst180.empno" is <i class="Emphasis">not</i> a select
+               target.
+            </p><pre class="CodeBlock">
+SELECT empno
+FROM dbtst120 
+
+UNION ALL 
+
+SELECT empno
+FROM dbtst180
+</pre><p class="Paragraph">A subquery does not define any select
+               targets.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">Example</i>: The following query defines "dbtst120.empno" as the select
+               target. Note that "dbtst180.empno" is <i class="Emphasis">not</i> a select
+               target.
+            </p><pre class="CodeBlock">
+SELECT empno
+FROM dbtst120 a
+WHERE EXISTS (
+     SELECT projno
+     FROM dbtst180 s
+     WHERE s.empno = a.empno
+      )
+</pre><div class="Note">
+               <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+               <div class="NoteContent">
+                  <p class="Paragraph">A table field can be a program variable as well as a query
+                     variable. Note that the following query:
+                  </p><pre class="CodeBlock">
+SELECT tccom010.*
+WHERE tccom010.cuno = tccom010.cuno
+</pre><p class="Paragraph">has a different result from:</p><pre class="CodeBlock">
+SELECT tccom010.*
+WHERE tccom010.cuno = :tccom010.cuno
+</pre><p class="Paragraph">The latter selects one record; the former selects all records
+                     from the table tccom010, as tccom010.cuno by definition equals
+                     tccom010.cuno for each row.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/using_program_variables, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

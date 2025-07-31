@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Known limits</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="known limits ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Known limits</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Reports</div>
+            <ul class="List">
+               <li class="ListItem">sorting doubles correct to 6 decimal places</li>
+               <li class="ListItem">Report TIV &lt; 1101: maximum of 255 fields on a report (including array
+                  elements)
+               </li>
+               <li class="ListItem">Report TIV &gt;= 1101: maximum of 512 fields on a report (including array elements)</li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Bshell</div>
+            <ul class="List">
+               <li class="ListItem">maximum function stack depth is 500</li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Bic</div>
+            <ul class="List">
+               <li class="ListItem">maximum 255 arguments per function</li>
+               <li class="ListItem">maximum 32K variables per compilation</li>
+               <li class="ListItem">maximum BRANCH of 32K (BRANCH refers to the amount of
+                  generated code per function, including macros etc.)
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">SQL</div>
+            <ul class="List">
+               <li class="ListItem">The nesting level of subqueries is limited to 10.
+                  The nesting level is defined as follows. The nesting level of
+                  the main query is 1. The nesting level of a sub query
+                  immediately contained in the main query is 2. The nesting
+                  level of a sub query immediately contained in another sub
+                  query is the nesting level of that sub query plus 1.
+               </li>
+               <li class="ListItem">The number of index hints that can be given on a table is
+                  limited to 4.
+               </li>
+               <li class="ListItem">The SQL processor has no limit on the length of string
+                  	values. However, the databases may impose restrictions on
+                  	the length of string values. It is advised to keep the
+                  	length of string values (including string literals and
+                  	string values resulting from concatenation) below 4K.
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Tables</div>
+            <ul class="List">
+               <li class="ListItem">maximum record length is 3072 bytes (for multi-byte
+                  columns take a factor 2 into account. For example, a
+                  multi-byte string of 256 characters will be 512 bytes long in
+                  a multi-byte environment.)
+               </li>
+               <li class="ListItem">maximum number of fields is 1024</li>
+               <li class="ListItem">maximum field length is 3072 bytes</li>
+               <li class="ListItem">maximum number of indices per table is 20</li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Indexes</div>
+            <ul class="List">
+               <li class="ListItem">maximum index length is 500 bytes</li>
+               <li class="ListItem">maximum number of fields is 16 (each individual field in a combined field counts as 1). 
+                  		 This limit is not enforced by the porting set, but should be obeyed when developing standard
+                  		 software. The limit is raised by Microsoft SQL Server.
+               </li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/misc/known_limits, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

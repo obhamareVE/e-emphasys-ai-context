@@ -1,0 +1,222 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>XML object API</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="XML object API ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">XML object API</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The XML Object API defines the functions that can be used by any
+               	  3GL/4GL application to create, access and destroy an XML object.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Object structure</div>
+            <ul class="List">
+               <li class="ListItem">A node which describes an XML element (XML_ELEMENT).</li>
+               <li class="ListItem">A node which describes an XML DTD (XML_DTD).</li>
+               <li class="ListItem">A node which describes an XML data item (XML_DATA).
+                  		n
+               </li>
+               <li class="ListItem">A node which describes an XML Processing Instruction
+                  		(XML_PI).
+               </li>
+            </ul>
+            <p class="Paragraph">Nodes of type XML_ELEMENT and XML_DTD can be nodes or leaves in
+               	  the tree. So nodes of these types can have child nodes. Furthermore nodes of
+               	  these two types can have a list of attributes. An Attribute is always a
+               	  name-value pair.
+            </p>
+            <p class="Paragraph">Nodes of type XML_DATA and XML_PI are always leaf nodes and can
+               	  thus not have any child nodes.
+            </p>
+            <p class="Paragraph">Below a sample XML document is shown. In Figure 1 the
+               	  corresponding XML Object tree is shown.
+            </p><pre class="CodeBlock">
+&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE CMF SYSTEM "cmf1.dtd"&gt;
+&lt;CMF&gt;
+        &lt;IDENTIFICATION
+                MESSAGE-ID="34a98u0erirori"
+                CLASS="order"
+                SUBJECT="Subject string"
+        /&gt;
+        &lt;RECIPIENTS&gt;
+                &lt;FROM
+                        NAME="Jan Jansen"
+                        TYPE="SMTP"
+                        ADDRESS="jjansen@example.com"
+                /&gt;
+         &lt;/RECIPIENTS&gt;
+        &lt;MESSAGE&gt;The message text
+&lt;/CMF&gt;
+</pre><div class="subGeneralSection">
+               <div class="subSectionTitle">Figure 1 - XML Object tree corresponding with sample XML
+                  		document
+               </div>
+               <div class="Figure"><img src="../images/xml_object_xmltree.gif" alt="[...]" height="500" width="639"></div>
+               <p class="Paragraph">The XML functions access these nodes using unique id's. These
+                  		id's are unique within the scope of one instantiation of a Baan VM. So these
+                  		id's can be handed over to another 3GL processes running inside the same Baan
+                  		VM but cannot be passed to a process running in another Baan VM.
+               </p>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Multi-process issues</div>
+            <p class="Paragraph">For passing XML nodes to other Baan VM processes, the following
+               	  restrictions apply:
+            </p>
+            <ul class="List">
+               <li class="ListItem">There is always one owner process of an XML tree.</li>
+               <li class="ListItem">Only the owner process is allowed to change or delete (parts
+                  		of) an XML tree. Other processes in the same Baan VM only have read
+                  		access.
+               </li>
+               <li class="ListItem">When the process, which is an owner of an XML tree, exits, the
+                  		XML tree is implicitly deleted. This means that other processes, which might
+                  		still have a reference to this tree, are not allowed to use this reference
+                  		anymore.
+               </li>
+               <li class="ListItem">A process becomes the owner of an XML tree by calling one of
+                  		the following functions: 
+                  <ul class="List">
+                     <li class="ListItem"><a href="../../progguide/functions_xml/de_serialize_xml_object.htm" class="manualLink">De-serialize XML Object</a></li>
+                     <li class="ListItem"><a href="../../progguide/functions_xml/de_serialize_xml_object.htm" class="manualLink">De-serialize XML Object</a></li>
+                     <li class="ListItem"><a href="../../progguide/functions_xml/create_a_new_node.htm" class="manualLink">Create a new Node</a></li>
+                     <li class="ListItem"><a href="../../progguide/functions_xml/create_an_element_node_with_data_node.htm" class="manualLink">Create an Element Node with Data Node</a></li>
+                     <li class="ListItem"><a href="../../progguide/functions_xml/rewrite_data_element.htm" class="manualLink">Rewrite Data Element</a></li>
+                     <li class="ListItem"><a href="../../progguide/functions_xml/duplicate_nodes.htm" class="manualLink">Duplicate Nodes</a></li>
+                     <li class="ListItem"><a href="../../progguide/functions_xml/duplicate_and_insert_nodes.htm" class="manualLink">Duplicate and Insert Nodes</a></li>
+                     <li class="ListItem"><a href="../../progguide/functions_xml/duplicate_and_append_nodes.htm" class="manualLink">Duplicate and Append Nodes</a></li>
+                     <li class="ListItem"><a href="../../progguide/functions_xml/duplicate_and_insert_nodes_in_children.htm" class="manualLink">Duplicate and Insert Nodes in Children</a></li>
+                     <li class="ListItem"><a href="../../progguide/functions_xml/duplicate_and_append_nodes_to_children.htm" class="manualLink">Duplicate and Append Nodes to Children</a></li>
+                     <li class="ListItem"><a href="../../progguide/functions_xml/xmlduplicatetoprocess.htm" class="manualLink">Duplicate Nodes to Process</a> (with own pid as
+                        			argument).
+                     </li>
+                  </ul>
+               </li>
+               <li class="ListItem">A process can transfer owner ship of a copy of an XML tree to
+                  		another 3GL process by using <a href="../../progguide/functions_xml/xmlduplicatetoprocess.htm" class="manualLink">Duplicate Nodes to Process</a> with passing the pid of the 3GL
+                  		process which becomes the owner of this newly created XML tree.
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">White-space handling</div>
+            <p class="Paragraph">When parsing a document, white space is handled in one of three
+               	  ways, depending on the value of the argument of xmlRead or xmlReadFromString
+               	  and on the value of the xml:space attribute. Allowed values for this argument
+               	  are XmlWhiteSpaceLegacyMode, XmlPreserveWhiteSpace, and
+               	  XmlReplaceWhiteSpaceBySingleSpace. For a detailed description of the meaning of
+               	  these values, see <a href="../../progguide/functions_xml/de_serialize_xml_object.htm" class="manualLink">De-serialize XML Object</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Character Data escaping</div>
+            <p class="Paragraph">According to [XMLSTD], the ampersand character (&amp;) and the
+               	  left angle bracket (&lt;) may not appear in element content data nor in
+               	  attribute values. Furthermore an attribute value may not contain any
+               	  double-quote character ("). If these characters are needed, they must be
+               	  escaped using either numeric character references or the strings <code class="Code">&amp;amp;</code>, <code class="Code">&amp;lt;</code> and <code class="Code">&amp;quot;</code> respectively. The XML parser replaces these escape strings with the
+               	  corresponding literal representation. The XML generator escapes the ampersand,
+               	  left angle bracket and double-quote characters in node content and attribute
+               	  values before serializing this to the output stream. This relieves applications
+               	  from checking the data for these characters.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Allowed characters</div>
+            <p class="Paragraph">According to [XMLSTD], the following Unicode characters are
+               	  allowed in an XML document:
+            </p><pre class="Formula">
+  Char ::=  #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
+   </pre><p class="Paragraph">All other characters are forbidden. There is no possibility to
+               	  escape them. The forbidden characters are:
+            </p>
+            <ul class="List">
+               <li class="ListItem">ASCII control characters in the range [#x0-#x1F], except the
+                  		allowed characters #x9 (Horizontal Tab), #xA (Line Feed), and #xD (Carriage
+                  		Return);
+               </li>
+               <li class="ListItem">Unicode surrogate characters in the range
+                  		[#xD800-#xDFFF];
+               </li>
+               <li class="ListItem">The &lt;not a character&gt; Unicode values #xFFFE and
+                  		#xFFFF.
+               </li>
+            </ul>
+            <p class="Paragraph">The XML generator verifies that no forbidden characters are
+               	  produced. When a forbidden character is encountered, the serialization is
+               	  stopped and an error is returned.
+            </p>
+            <p class="Paragraph">It can be checked beforehand whether a string (after conversion
+               	  from TSS to UTF-8) contains valid characters only. See
+            </p>
+            <p class="Paragraph">xmlContainsValidCharactersOnly</p>
+            <p class="Paragraph">.</p>
+         </div>
+         <div class="GeneralSection"><a name="fromnode_tonode"></a><div class="subSectionTitle">Handling of fromNode and toNode arguments</div>
+            <p class="Paragraph">Several xml functions take as arguments <i class="Emphasis">long
+                  fromNode,[long toNode]</i>. These arguments are references to
+               XML nodes on which the operation must be performed. This
+               includes all children of these nodes.
+            </p>
+            <p class="Paragraph">When only <i class="Emphasis">fromNode</i> is specified, the operation is
+               performed on the tree for which <i class="Emphasis">fromNode</i> is the top node.
+               The default tree traversal order is depth first. In this order
+               the tree is traversed starting at the top node followed by the
+               first (left most) child. See <i class="Emphasis">Figure 2</i> for an example of
+               the depth first traversal order. The traversal order in this
+               tree corresponds with the attribute order value. In some cases a
+               breadth first traversal order is used. See <i class="Emphasis">Figure 3</i> for
+               an example.
+            </p>
+            <p class="Paragraph">When <i class="Emphasis">fromNode</i> and <i class="Emphasis">toNode</i> are specified, the
+               operation is performed on all nodes starting at <i class="Emphasis">fromNode</i> and all right siblings of <i class="Emphasis">fromNode</i> up to and including <i class="Emphasis">toNode</i>.
+            </p>
+            <p class="Paragraph">When <i class="Emphasis">fromNode</i> and <i class="Emphasis">toNode</i> are specified and <i class="Emphasis">toNode</i> has a value of zero, the operation is performed on
+               all nodes starting at <i class="Emphasis">fromNode</i> and all right siblings of <i class="Emphasis">fromNode</i> up to and including the last node in the
+               list.
+            </p>
+            <p class="Paragraph">When <i class="Emphasis">fromNode</i> and <i class="Emphasis">toNode</i> are specified and <i class="Emphasis">fromNode</i> has a value of zero, <i class="Emphasis">fromNode</i> is treated
+               as the beginning of a list. The operation is then performed on
+               all nodes starting at the beginning of the list up to and
+               including the node referenced by <i class="Emphasis">toNode</i>.
+            </p>
+            <div class="subGeneralSection"><a name="tree_traversal_order"></a><div class="subSectionTitle">Figure 2 - Depth first Tree traversal order</div>
+               <div class="Figure"><img src="../images/xml_2.gif" alt="[...]" height="525" width="706"></div>
+            </div>
+            <div class="subGeneralSection"><a name="breadth_first"></a><div class="subSectionTitle">Figure 3 - Breadth first Tree traversal
+                  		order
+               </div>
+               <div class="Figure"><img src="../images/xml_3.gif" alt="[...]" height="525" width="887"></div>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/overview.htm" class="manualLink">XML object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/constraints.htm" class="manualLink">XML object constraints</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/glossary.htm" class="manualLink">XML object glossary</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis.htm" class="manualLink">XML object synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_xml/api, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

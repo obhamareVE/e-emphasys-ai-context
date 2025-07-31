@@ -1,0 +1,61 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Row value constructor</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Row value constructor ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Row value constructor</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The row value constructor constructs a row value from a value
+               or a list of values.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;row value constructor&gt;
+    ::= <a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">Column reference</a>
+      | <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a>
+      | { <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a> [ , <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a> ]... }
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div><pre class="CodeBlock">
+3.14
+</pre><pre class="CodeBlock">
+{ salary * 2.20371 }
+</pre><pre class="CodeBlock">
+{ 'Hello ' &amp; 'World!' }
+</pre><pre class="CodeBlock">
+{ 'tt', 'adv', '101' }
+</pre><pre class="CodeBlock">
+{ firstnme, lastname }
+</pre><pre class="CodeBlock">
+{ AVG( salary ), AVG( bonus ) }
+</pre><pre class="CodeBlock">
+dbtst120._index1
+</pre><pre class="CodeBlock">
+dbtst120.phoneno
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/row_value_constructor, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

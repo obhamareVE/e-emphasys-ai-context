@@ -1,0 +1,102 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Process Change Manager overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Process Change Manager (PRCM) ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Process Change Manager overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The Process Change Manager (PRCM) offers a generic mechanism
+               that allows a 3GL process to notify one or more other 3GL
+               processes about a certain state change.
+            </p>
+            <p class="Paragraph">A good example would be one or more sessions that should
+               refresh their data as soon as another session has done updates
+               in a certain database table. The session that performs these
+               table updates, has to inform the others about this in one way or
+               another. PRCM allows you to do this.
+            </p>
+            <p class="Paragraph">PRCM is very usefull in the following cases:</p>
+            <ul class="List">
+               <li class="ListItem">A change in one process requires changing others, but you
+                  don't know how many processes need to be informed.
+               </li>
+               <li class="ListItem">When a process should be able to notify other processes
+                  without having to know these processes.
+               </li>
+            </ul>
+            <p class="Paragraph">In the example above, the session that notifies the other
+               sessions does not have to know which sessions should be
+               notified. It also does not have to know how many sessions have
+               to be notified.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Design and implementation</div>
+            <p class="Paragraph">PRCM is based on the so-called Observer Design Pattern (also
+               known as Publish-Subscribe). It works as follows:
+            </p>
+            <p class="Paragraph">Processes can have an Observer role, and/or a Subject role.
+               Observers register (i.e. subscribe) themselves for a certain
+               Subject. By registering themselves, Observers indicate that they
+               want to be informed about state changes in the Subject. If a
+               Subject changes, it will notify all interested Observers about
+               that change. Observers then decide whether and how they react on
+               the notification.
+            </p>
+            <p class="Paragraph">PRCM is implemented in such a way that Observers and Subjects
+               do not communicate with each other directly, but via a so-called
+               Change Manager. This Change Manager keeps track of all
+               registrations and peforms the notification of all Observers on
+               behalf of the Subject.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Automatic notification of maintable updates</div>
+            <p class="Paragraph">Informing other sessions about updates done on the maintable
+               is perhaps the most obvious application of the Process Change
+               Manager functionality. For this reason, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> automatically notifies sessions when the maintable has been
+               updated via choice UPDATE.DB. (In case the session performs
+               updates directly on the maintable then the session should notify
+               other session itself).
+            </p>
+            <p class="Paragraph">The 4GL engine notifies other sessions by calling <a href="../../progguide/functions_prcm/prcm.notify.htm" class="manualLink">prcm.notify()</a>, 
+               passing the main table code to it, e.g. prcm.notify("tccom100") for Business
+               Partners. Sessions that are interested in changes in the
+               maintable, have to register themselves in order to be notified.
+               For implementation details see the <a href="../../progguide/functions_prcm/examples.htm" class="manualLink">Process Change Manager Code Examples</a> section.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Note</div>
+            <div class="NoteContent">
+               <p class="Paragraph">Do not call <a href="../../progguide/functions_prcm/prcm.notify.htm" class="manualLink">prcm.notify()</a> for 
+                  the maintable in the <i class="Emphasis">after.update.db.commit</i> section or the <a href="../../progguide/functions_dal/after.commit.transaction.htm" class="manualLink">after.commit.transaction()</a> hook of the DAL of the maintable, as this interferes with the automatic notification of the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a>.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_prcm/synopsis.htm" class="manualLink">Process Change Manager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_prcm/examples.htm" class="manualLink">Process Change Manager Code Examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_prcm/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

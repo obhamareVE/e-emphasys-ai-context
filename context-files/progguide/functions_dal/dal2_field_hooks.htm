@@ -1,0 +1,68 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DAL2 Field hooks</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="hooks DAL2 field hooks ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DAL2 Field hooks</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">In the DAL2 concept the property check hook is replaced by a
+               number of field hooks.
+            </p>
+            <p class="Paragraph"></p>
+            <p class="Paragraph">DAL2 introduces the following field hooks for field
+               validation:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_dal/field.is.never.applicable.htm" class="manualLink">field.is.never.applicable()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/field.is.applicable.htm" class="manualLink">field.is.applicable()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/field.is.readonly.htm" class="manualLink">field.is.readonly()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/field.is.derived.htm" class="manualLink">field.is.derived()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/field.is.mandatory.htm" class="manualLink">field.is.mandatory()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/field.is.valid.htm" class="manualLink">field.is.valid()</a> (For
+                  non-enum fields)
+               </li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/field.enum.is.applicable.htm" class="manualLink">field.enum.is.applicable()</a> (For enum fields - one hook for each enum value)
+               </li>
+            </ul>
+            <p class="Paragraph">A number of these hooks is used by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> to perform
+               automatic disabling/enabling of maintable fields. E.g. if a
+               field is found to be readonly, that field is disabled in the
+               UI.
+            </p>
+            <p class="Paragraph">DAL2 also supports updating values of other fields after a
+               field change. See <a href="../../progguide/functions_dal/dal2_field_dependencies.htm" class="manualLink">DAL2 Field dependencies</a>. This allows the DAL to be used to update
+               dependent fields. As a result the UI script's <i class="Emphasis">when.field.changes</i> event section does not have to be used
+               anymore for maintable fields.
+            </p>
+            <p class="Paragraph">The following hook supports this:</p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_dal/field.update.htm" class="manualLink">field.update()</a></li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_4gle.htm" class="manualLink">DAL2 and the 4GL Engine</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_flow.htm" class="manualLink">DAL2 Flow of field hooks</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/dal2_field_hooks, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>IQueueListener Interface</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="IQueueListener Interface ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">IQueueListener Interface</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">This interface needs to be implemented by the developer which
+               	  wants to exchange buckets between Java and Infor ERP Enterprise. A listener needs to be
+               	  installed using the IBaanVM.installListener() method.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Interface methods</div>
+            <p class="Paragraph"><code class="Code">public void onReceive(IBucket p_bucket);</code></p>
+            <p class="Paragraph">Whenever a bucket arrives on a queue for which the listener is
+               	  installed, this method is called in a new Thread. p_bucket is the new message
+               	  which has been received. It is up to the Java class that implements this
+               	  interface what to do with the bucket
+            </p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_javavm/iqueuelistener_interface, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

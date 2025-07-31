@@ -1,0 +1,120 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>par.client.send.message()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions par.client.send.message par.client.send.message par.client.send.message ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">par.client.send.message()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean&nbsp;par.client.send.message&nbsp;
+					(long&nbsp;group.id [, string&nbsp;comm.string] [, long&nbsp;server.number])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Send a message to the indicated group or application server. 
+                  	When a server.number is passed, the message is sent to that particular server. 
+                  	Otherwise the message is sent to the first server in the group which is ready. 
+                  	This function will wait until the message has been sent to a server. 
+                  	This does however not mean that the message is already processed by this server when this function returns.
+               </p>
+               <p class="Paragraph">When not in CONTINUE_ON_SERVER_ERRORS mode, this function will return false when one or more servers are in error state.
+                  	   When in CONTINUE_ON_SERVER_ERRORS mode the following rules are applied:
+               </p>
+               <ul class="List">
+                  <li class="ListItem">When a specific server.number is supplied and this particular server is in an error state, this function will return false.</li>
+                  <li class="ListItem">When no server.number is supplied this function will return true as long as there is one server available to which this message
+                     can be sent.
+                  </li>
+               </ul>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>group.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">ID which is returned by a previous call to <a href="../../progguide/functions_parallel_processing/par.init.client.to.server.htm" class="manualLink">par.init.client.to.server()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>comm.string</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This string contains the message to be sent to the server. 
+                           	There is no maximum length for this string. 
+                           	The string must contain only textual data (so no binary data like a complete record buffer).
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>server.number</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional argument which can be used to sent a message to a specific server within a group. 
+                           	Server numbers start with number 1
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">true</th>
+                     <td rowspan="1" colspan="1" class="none">When message was sent successfully</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">false</th>
+                     <td rowspan="1" colspan="1" class="none">When sending the message failed</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			3GL
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/overview.htm" class="manualLink">Parallel Application Processing Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/synopsis.htm" class="manualLink">Parallel Application Processing synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/examples.htm" class="manualLink">Parallel Application Processing Examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_parallel_processing/par.client.send.message, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

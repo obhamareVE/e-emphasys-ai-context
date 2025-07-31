@@ -1,0 +1,72 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Transaction handling</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="transaction handling ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Transaction handling</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">With respect to database actions, a transaction is a sequence
+               of related actions that are treated as a unit. The actions that
+               make up a transaction are processed in their entirety, or not at
+               all.
+            </p>
+            <p class="Paragraph">A transaction ends with the function <a href="../../progguide/functions_db_operations/commit.transaction.htm" class="manualLink">commit.transaction()</a> (all changes made during the
+               transaction are stored in the database) or with the function <a href="../../progguide/functions_db_operations/abort.transaction.htm" class="manualLink">abort.transaction()</a> (no changes are stored in the database). A transaction starts
+               with the first database call after the beginning of a process,
+               or with the first database call after the preceding transaction
+               has ended.
+            </p>
+            <p class="Paragraph">A transaction is automatically rolled back (that is, it is
+               undone) when a process is canceled and if a program ends without
+               a <i class="Emphasis">commit.transaction()</i> or <i class="Emphasis">abort.transaction()</i> after the last database call.
+            </p>
+            <p class="Paragraph">Certain database actions cannot be placed within a
+               transaction, because they cannot be rolled back. These actions
+               are: <a href="../../progguide/functions_db_operations/db.create.table.htm" class="manualLink">db.create.table()</a>, <a href="../../progguide/functions_db_operations/db.drop.table.htm" class="manualLink">db.drop.table()</a>, <a href="../../progguide/functions_db_operations/db.clear.table.htm" class="manualLink">db.clear.table()</a> with the NO.ROLLBACK option, <a href="../../progguide/functions_db_operations/db.lock.table.htm" class="manualLink">db.lock.table()</a>,
+               and <a href="../../progguide/functions_db_operations/set.transaction.readonly.htm" class="manualLink">set.transaction.readonly()</a>.
+               These functions can be called only at the start of a program or
+               after the end of the preceding transaction. These functions will
+               not start a new transaction.
+            </p>
+            <p class="Paragraph">You can set a <a href="../../progguide/functions_database_handling/retry_points.htm" class="manualLink">retry point</a> immediately before a transaction. In case of an error, the
+               system returns to this point and re-executes the transaction
+               from there.
+            </p>
+            <p class="Paragraph">A read-only transaction is a transaction in which you are
+               permitted only to read records (without lock) from the database.
+               A read-only transaction starts with the function <i class="Emphasis">set.transaction.readonly()</i> (this must be called after
+               ending the preceding transaction or at the beginning of the
+               program) and ends with a <i class="Emphasis">commit.transaction()</i> or <i class="Emphasis">abort.transaction()</i>.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/overview.htm" class="manualLink">Database handling overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/locking.htm" class="manualLink">Locking</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/retry_points.htm" class="manualLink">Retry points</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/error_handling.htm" class="manualLink">Error handling</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/hints_for_using_sql.htm" class="manualLink">Hints for using SQL</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/hints_for_using_db.retry.point.htm" class="manualLink">Hints for using db.retry.point</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/transaction_handling, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

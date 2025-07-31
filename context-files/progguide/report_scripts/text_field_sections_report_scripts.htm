@@ -1,0 +1,71 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Text field sections (report scripts)</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="text field sections (report scripts) ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Text field sections (report scripts)</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">You use a text field section to apply certain actions to all
+               instances of a particular text field that are included in the
+               report. A text field section consists of a main section and a
+               subsection. The main section specifies the particular text field
+               to which the actions must be applied. The subsection specifies
+               that the actions are to be performed before the text field is
+               printed.
+            </p>
+            <p class="Paragraph">For example, you could include the <a href="../../progguide/report_scripts/functions_in_report_scripts.htm" class="manualLink">Report script functions</a>, <a href="../../progguide/report_scripts/functions_in_report_scripts.htm" class="manualLink">Report script functions</a>, and <a href="../../progguide/report_scripts/functions_in_report_scripts.htm" class="manualLink">Report script functions</a> functions
+               in a text field section to enforce a page break or to skip a
+               specified number of lines before the text field is printed. Or
+               you could set <i class="Emphasis">lattr.print</i> in the section in order to skip
+               one text line before printing the text field.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Main field</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">field.&lt;text_field&gt;:</div>
+               <p class="Paragraph">Actions programmed in this section are executed for all
+                  instances of the specified text field that are included in the
+                  report. The text field must have been defined as a report input
+                  field in the data dictionary.
+               </p>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Subsection</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.print:</div>
+               <p class="Paragraph">Actions programmed in this section are executed before the
+                  specified text field is printed.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/overview.htm" class="manualLink">Report scripts overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/sections.htm" class="manualLink">Report script sections</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/predefined_variables.htm" class="manualLink">Predefined variables</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/functions_in_report_scripts.htm" class="manualLink">Report script functions</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/expanding_text_variables.htm" class="manualLink">Expanding text variables</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/report_scripts/text_field_sections_report_scripts, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

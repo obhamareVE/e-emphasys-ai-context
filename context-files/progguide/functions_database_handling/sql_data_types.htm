@@ -1,0 +1,173 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>SQL data types</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="BitCountOfUtc SQL data types Data types SQL Data types date integer interval days interval seconds raw real string timestamp ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">SQL data types</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">This section describes the data types that are supported by
+               the SQL processor.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Data types</div>
+            <div class="subGeneralSection"><a name="integer"></a><div class="subSectionTitle">integer</div>
+               <p class="Paragraph">The data type <i class="Emphasis">integer</i> can hold integer
+                  values.
+               </p>
+               <p class="Paragraph">The supported value range is the signed 32-bit value range: [-2^31 … 2^31 - 1].</p>
+               <p class="Paragraph">In decimal notation, this is the range [-2,147,483,648 … 2,147,483,647].</p>
+               <p class="Paragraph">In hexadecimal notation, this is the range [-0x8000,0000 … 0x7fff,ffff].</p>
+            </div>
+            <div class="subGeneralSection"><a name="real"></a><div class="subSectionTitle">real</div>
+               <p class="Paragraph">The data type <i class="Emphasis">real</i> is used for <i class="Emphasis">approximate</i> numeric values.
+               </p>
+               <p class="Paragraph"><i class="Emphasis">Note</i>: Literals of type <i class="Emphasis">real</i> may not be exactly representable within the data type <i class="Emphasis">real</i>.
+                  For example, the literal "0.1" is not representable as a real. The same holds for
+                  operations on values of type <i class="Emphasis">real</i>. For example, the
+                  division of 1 and 10 yields a value that is not representable as
+                  a real. In such cases, a real value is chosen that is the
+                  closest approximation.
+               </p>
+            </div>
+            <div class="subGeneralSection"><a name="string"></a><div class="subSectionTitle">string</div>
+               <p class="Paragraph">The data type <i class="Emphasis">string</i> can hold a string of
+                  characters. The characters can be both single byte and multi byte (TSS)
+                  characters. The character set is defined by the current locale.
+               </p>
+            </div>
+            <div class="subGeneralSection"><a name="date"></a><div class="subSectionTitle">date</div>
+               <p class="Paragraph">The data type <i class="Emphasis">date</i> can hold values that
+                  represent a valid date according to the Gregorian calendar.
+               </p>
+               <p class="Paragraph">The minimum date is "0001-01-01", that is January 1, 0001. The
+                  maximum date is "9999-12-31", that is December 31, 9999.
+               </p>
+            </div>
+            <div class="subGeneralSection"><a name="timestamp"></a><div class="subSectionTitle">timestamp</div>
+               <p class="Paragraph">The data type <i class="Emphasis">timestamp</i> can hold values
+                  that represent a valid timestamp (date with time) according to the Gregorian
+                  calendar.
+               </p>
+               <p class="Paragraph">Timestamps are maintained in UTC, because the meaning of a
+                  timestamp differs from location to location on the surface of
+                  the earth.
+               </p>
+               <p class="Paragraph">The concept of UTC (Universal Coordinated Time) is further described in
+                  
+                  
+                  the <a href="../../progguide/functions_date_time_zones/overview.htm" class="manualLink">overview of bshell functions for dates, times and time zones</a>.
+               </p>
+               <p class="Paragraph">The minimum timestamp value in UTC is "1970-01-01 00:00:00".
+                  This corresponds to integer value 0 of the underlying integer representation of the UTC timestamp value.
+               </p>
+               <p class="Paragraph">The maximum timestamp value in UTC is "2038-01-19 03:14:07".
+                  This corresponds to integer value 2^31 - 1
+                  (i.e. the maximum signed 32-bit value)
+                  of the underlying integer representation of the UTC timestamp value.
+               </p>
+               <p class="Paragraph">For the minimum
+                  and maximum timestamp value in the local timezone, the local timezone displacement
+                  and daylight savings time must be taken into account.
+               </p>
+            </div>
+            <div class="subGeneralSection"><a name="interval_days"></a><div class="subSectionTitle">interval days</div>
+               <p class="Paragraph">The data type <i class="Emphasis">interval days</i> can hold
+                  values that represent the number of days between two dates.
+               </p>
+               <p class="Paragraph">The supported value range is the signed 32-bit value range: [-2^31 … 2^31 - 1].</p>
+               <p class="Paragraph">In decimal notation, this is the range [-2,147,483,648 … 2,147,483,647].</p>
+               <p class="Paragraph">In hexadecimal notation, this is the range [-0x8000,0000 … 0x7fff,ffff].</p>
+            </div>
+            <div class="subGeneralSection"><a name="interval_seconds"></a><div class="subSectionTitle">interval seconds</div>
+               <p class="Paragraph">The data type <i class="Emphasis">interval seconds</i> can hold
+                  values that represent the number of seconds between two timestamps.
+               </p>
+               <p class="Paragraph">The supported value range is the signed 32-bit value range: [-2^31 … 2^31 - 1].</p>
+               <p class="Paragraph">In decimal notation, this is the range [-2,147,483,648 … 2,147,483,647].</p>
+               <p class="Paragraph">In hexadecimal notation, this is the range [-0x8000,0000 … 0x7fff,ffff].</p>
+               <p class="Paragraph">In some implementations
+                  (depending on the underlying data base)
+                  the supported value range of the data type <i class="Emphasis">interval seconds</i> is the signed 64-bit value range: [-2^63 … 2^63 - 1].
+               </p>
+               <p class="Paragraph">In decimal notation, this is the range [-9,223,372,036,854,775,808 … 9,223,372,036,854,775,807].</p>
+               <p class="Paragraph">In hexadecimal notation, this is the range [-0x8000,0000,0000,0000 … 0x7fff,ffff,ffff,ffff].</p>
+            </div>
+            <div class="subGeneralSection"><a name="raw"></a><div class="subSectionTitle">raw</div>
+               <p class="Paragraph">The data type <i class="Emphasis">raw</i> can hold a string of
+                  unsigned bytes. The value of an unsigned byte lies in the range 0..255.
+               </p>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Correspondence of SQL data types with Infor ERP Enterprise
+               
+               3GL and
+               
+               database
+               data types
+            </div>
+            <p class="Paragraph">The following table shows which Infor ERP Enterprise
+               Baan 3GL/database type
+               corresponds with a certain SQL type:
+            </p>
+            <table class="default">
+               <tbody noTR="7" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">SQL type</th>
+                     <th rowspan="1" colspan="1" class="default">Infor ERP Enterprise 3GL/ Database type</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">integer</td>
+                     <td rowspan="1" colspan="1" class="default">char, int, long, enum, bitset, mail, text</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">real</td>
+                     <td rowspan="1" colspan="1" class="default">float, double</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">date</td>
+                     <td rowspan="1" colspan="1" class="default">date</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">timestamp</td>
+                     <td rowspan="1" colspan="1" class="default">time (UTC)</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">string</td>
+                     <td rowspan="1" colspan="1" class="default">string, multibyte string</td>
+                  </tr>
+                  <tr no="7" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">raw</td>
+                     <td rowspan="1" colspan="1" class="default">raw</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_date_time_zones/overview.htm" class="manualLink">Overview of bshell functions for dates, times and time zones</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/sql_data_types, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

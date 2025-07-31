@@ -1,0 +1,131 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Substring and array indexing</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Arrays Substring ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Substring and array indexing</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The substring function returns a portion of a string
+               argument.
+            </p>
+            <p class="Paragraph">The array indexing function returns an element of an array
+               column.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;substring and array indexing&gt;
+      | &lt;array column reference&gt; &lt;array indexing&gt;
+      | <a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">Column reference</a> &lt;substring&gt;
+      | &lt;array column reference&gt; &lt;array indexing with substring&gt;
+      | <a href="../../progguide/functions_database_handling/string_constant.htm" class="manualLink">String constant</a> &lt;substring&gt;
+      | <a href="../../progguide/functions_database_handling/raw_constant.htm" class="manualLink">Raw constant</a> &lt;substring&gt;
+      | <a href="../../progguide/functions_database_handling/parameter.htm" class="manualLink">Parameter</a> &lt;substring&gt;
+
+&lt;array column reference&gt;
+    ::= <a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">Column reference</a>
+
+&lt;substring&gt;
+    ::= ( &lt;start&gt; [; &lt;length&gt; ] )
+
+&lt;array indexing&gt;
+    ::= ( &lt;index&gt; )
+
+&lt;array indexing with substring&gt; 
+    ::= ( &lt;index&gt;, &lt;start&gt; [; &lt;length&gt; ] )
+
+&lt;start&gt;
+    ::= <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a>
+
+&lt;length&gt;
+    ::= <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a>
+
+&lt;index&gt;
+    ::= <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a>
+      </pre><p class="Paragraph"><i class="Emphasis">Note:</i> This grammar is ambiguous. The expression phoneno(1) can be
+               either the array indexing function or the substring function.
+               The type of the column reference is used to disambiguate the
+               expression. If the column is an array column then the expression
+               must be the array indexing function. Otherwise, it must be the
+               substring function.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">The type of <i class="Emphasis">&lt;start&gt;</i>, <i class="Emphasis">&lt;length&gt;</i> and <i class="Emphasis">&lt;index&gt;</i> shall be <i class="Emphasis">integer</i>. The type of <i class="Emphasis">&lt;parameter&gt;</i> shall be <i class="Emphasis">string</i> or <i class="Emphasis">raw</i>.
+               The type of <i class="Emphasis">&lt;column reference&gt;</i> shall be <i class="Emphasis">string</i> or <i class="Emphasis">raw</i> and may reference an array column.
+               An <i class="Emphasis">&lt;array column reference&gt;</i> shall reference an
+               array column.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The type of the array indexing function is the type of the
+               column reference to which it is applied. For example, if array
+               indexing is applied to an array column of type <i class="Emphasis">string</i> then the type is <i class="Emphasis">string</i>. The value of the array indexing
+               function is the value of the array column reference indexed by <i class="Emphasis">&lt;index&gt;</i>.
+            </p>
+            <p class="Paragraph">The type of the substring function is the same as the value
+               expression to which it is applied. The value of the substring
+               function is the string that starts at position <i class="Emphasis">&lt;start&gt;</i> and is <i class="Emphasis">&lt;length&gt;</i> (raw)
+               characters long. If <i class="Emphasis">&lt;start&gt;</i> is greater than the
+               length of the string then the result is the empty string. If the
+               sum of <i class="Emphasis">&lt;start&gt;</i> and <i class="Emphasis">&lt;length&gt;</i> is greater
+               then the length of the string then <i class="Emphasis">&lt;length&gt;</i> is
+               effectively decreased until the sum of <i class="Emphasis">&lt;start&gt;</i> and <i class="Emphasis">&lt;length&gt;</i> equals the length of the string.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Usage notes</div>
+            <p class="Paragraph"><i class="Emphasis">Note:</i> It is advised to keep <i class="Emphasis">&lt;index&gt;</i> in
+               the safe range from 1 to the length of the string. If <i class="Emphasis">&lt;index&gt;</i> is outside this range, the behaviour is <a href="../../progguide/functions_database_handling/sql_glossary.htm#ImplementationDefined" class="glossaryLink">implementation defined</a>.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">Note:</i> Each character of a <i class="Emphasis">raw</i> string takes two
+               characters in the literal representation. The substring operates
+               on the raw string and not on the literal representation. For
+               example, the following is True.
+            </p><pre class="CodeBlock">
+x'abcdef'(2;1) = x'cd'  AND  x'abcdef'(3;1) = x'ef'
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following expression takes the substring starting at
+               position 7 and of length 4 of the string. The result is
+               'dull'.
+            </p><pre class="CodeBlock">
+'Not a dull moment'(7;4)
+</pre><p class="Paragraph">The following expression takes the substring starting at
+               position 7. The result is 'a dull moment'.
+            </p><pre class="CodeBlock">
+'Never a dull moment'(7)
+</pre><p class="Paragraph">The following expression takes the substring starting at
+               position 3 and of length 2 of a raw string. The result is the
+               raw string x'beef'.
+            </p><pre class="CodeBlock">
+x'deadbeef'(3;2)
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/substring_and_array_indexing, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

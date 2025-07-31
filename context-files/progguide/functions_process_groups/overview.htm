@@ -1,0 +1,65 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Process groups overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="process groups ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Process groups overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Use these functions to handle process groups.</p>
+            <p class="Paragraph">A process group is a group of related, interdependent
+               processes. One process is the group leader. Child processes
+               are started by the leader or by one of its children. All
+               processes belong to a process group.
+            </p>
+            <p class="Paragraph">Process groups have the following characteristics:</p>
+            <ul class="List">
+               <li class="ListItem">Each process group has its own event queue. Events are
+                  sent to the process group, not to individual
+                  processes.
+               </li>
+               <li class="ListItem">When one process within a group starts another
+                  process, that process is automatically placed in the same
+                  process group.
+               </li>
+               <li class="ListItem">For the group leader, the predefined variable <i class="Emphasis">background</i> is set to zero, For child processes,
+                  this variable is set to 1.
+               </li>
+               <li class="ListItem">When a process is killed or ended, its parent is
+                  automatically awakened, unless the parent and child are in
+                  different groups.
+               </li>
+               <li class="ListItem">You use the <i class="Emphasis">grab.mwindow()</i> function to set the process group to
+                  which a main window sends its events. After calling this
+                  function, all events that occur in the main window are
+                  sent to the process group.
+               </li>
+            </ul>
+            <p class="Paragraph">See <a href="../../progguide/functions_processes/overview_and_synopsis.htm" class="manualLink">Processes overview and synopsis</a> for details of the functions available for
+               handling processes.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_process_groups/synopsis.htm" class="manualLink">Process groups synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_process_groups/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

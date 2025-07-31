@@ -1,0 +1,140 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>gbf.get.children()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions gbf.get.children gbf.get.children gbf.get.children ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">gbf.get.children()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_gbf&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;gbf.get.children&nbsp;
+					(const string&nbsp;object.key(), long&nbsp;object.value, long&nbsp;cur.level)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function will be called by the GBF whenever it has
+                  the need for the children of a specific parent, for example
+                  after a parent is opened or after a refresh.
+               </p>
+               <p class="Paragraph">Note that the application may have defined other fetch
+                  child functions, instead of this function, see <a href="../../progguide/functions_generic_browser_frameworkf/gbf.set.child.function.htm" class="manualLink">gbf.set.child.function()</a> Still the GBF assumes that the interface (incoming arguments
+                  as well as the return values) are exactly the same as defined
+                  here.
+               </p>
+               <p class="Paragraph">Using functions like <a href="../../progguide/functions_generic_browser_frameworkf/gbf.get.first.child.htm" class="manualLink">gbf.get.first.child()</a> and <a href="../../progguide/functions_generic_browser_frameworkf/gbf.get.next.htm" class="manualLink">gbf.get.next()</a> is dangerous
+                  and should be avoided, especially when the force.read is set
+                  to TRUE, since that may lead to recursive calls towards this <a href="../../progguide/functions_generic_browser_frameworkf/gbf.get.children.htm" class="manualLink">gbf.get.children()</a> function.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>object.key()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The parent is identified by the object.key and
+                           object.value, which have been given to the GBF on a
+                           preceding <a href="../../progguide/functions_generic_browser_frameworkf/gbf.add.object.htm" class="manualLink">gbf.add.object()</a> call. Note that in this particular call the obj.type
+                           argument must have been set to GBF.INTERIOR
+                           otherwise this function ( <a href="../../progguide/functions_generic_browser_frameworkf/gbf.get.children.htm" class="manualLink">gbf.get.children()</a>)
+                           would not have been called for this object.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>object.value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>cur.level</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The cur.level indicates the current level of the
+                           given object. The level is defined as:
+                        </p>
+                        <p class="Paragraph">1 for every object which is added to the GBF by a <a href="../../progguide/functions_generic_browser_frameworkf/gbf.add.object.htm" class="manualLink">gbf.add.object()</a> call when called from a <a href="../../progguide/functions_generic_browser_frameworkf/gbf.get.top.level.htm" class="manualLink">gbf.get.top.level()</a> function call
+                        </p>
+                        <p class="Paragraph">1 + cur.level for each child which is added to
+                           the GBF with <a href="../../progguide/functions_generic_browser_frameworkf/gbf.add.object.htm" class="manualLink">gbf.add.object()</a> when called from this gbf.get.children() call.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.CONTINUE or 0</td>
+                     <td rowspan="1" colspan="1" class="none">Successful completion, GBF will continue
+                        working
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.ABORT</td>
+                     <td rowspan="1" colspan="1" class="none">Abort GBF, which will end the GBF and return with
+                        an error, see <a href="../../progguide/functions_generic_browser_frameworkf/gbf.start.htm" class="manualLink">gbf.start()</a></td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.EXIT</td>
+                     <td rowspan="1" colspan="1" class="none">Finish GBF, which will end the GBF and return
+                        with 0, see <a href="../../progguide/functions_generic_browser_frameworkf/gbf.start.htm" class="manualLink">gbf.start()</a></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Any return other than these values will be treated as if
+               GBF.DO.ABORT has been returned
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/overview.htm" class="manualLink">Generic Browser Framework (GBF) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/synopsis.htm" class="manualLink">Generic Browser Framework (GBF) synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/typical_usage.htm" class="manualLink">Typical usage</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/getting_started.htm" class="manualLink">Getting started</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/example.htm" class="manualLink">Example</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/error_codes_and_return_values.htm" class="manualLink">Generic Browser Framework error codes and return values</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/standard_menu_items_and_function_keys.htm" class="manualLink">standard menu items and function keys</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/messages_and_questions.htm" class="manualLink">Messages and questions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_generic_browser_frameworkf/gbf.get.children, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Writes a JSON value object to a string as JSON text</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Json.writeString Json.writeString functions Json.writeString ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Writes a JSON value object to a string as JSON text</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;Json.writeString&nbsp;
+					(long&nbsp;json, ref string&nbsp;str [, long&nbsp;options])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Writes a JSON value object to a string as JSON text. By default:</p>
+               <ul class="List">
+                  <li class="ListItem">No UTF-8 conversion is done.</li>
+                  <li class="ListItem">No additional formatting is done.</li>
+               </ul>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>json</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">json</i> is a JSON value.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>str</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">str</i> is the string to write the JSON text to; 
+                           			this string should be large enough to contain the complete JSON text; 
+                           			in case it is hard to tell the size upfront, it is advised to use function Json.write() instead.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>options</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">options</i> are the optional options to use when writing the JSON text; 
+                           			the following options can be specified:
+                        </p>
+                        <ul class="List">
+                           <li class="ListItem">JSON_WRITE_UTF8 - converts the JSON text to UTF-8.</li>
+                           <li class="ListItem">JSON_WRITE_PRETTY - adds new-lines and indents to make the output human readable.</li>
+                           <li class="ListItem">JSON_WRITE_COMPACT - no whitespace is added between JSON tokens.</li>
+                        </ul>
+                        <p class="Paragraph">By default none of these options are enabled, meaning the JSON text is written in 
+                           			TSS encoding, not pretty and not compact.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">&gt;= 0 the number of bytes written to the string when successful</p>
+            <p class="Paragraph">&lt; 0 in case of a failure [e.g. when the string to write to is too small]</p>
+            <p class="Paragraph">variable 'e' contains an error code, [e.g. ENOSPC]</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Preconditions</div>
+            <ul class="List">
+               <li class="ListItem">Parameter 'json' is a JSON value.</li>
+               <li class="ListItem">Parameter 'str' has been allocated (either statically or dynamically).</li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_json/JSon_object_overview.htm" class="manualLink">JSON object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_json/synopsis.htm" class="manualLink">JSon object synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_json/Json_writeString, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

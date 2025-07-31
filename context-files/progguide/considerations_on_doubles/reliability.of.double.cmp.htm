@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Reliability of double.cmp()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Reliability of double.cmp()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Suppose the following variables:</p>
+            <table width="40%" border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">double1 = 1.0000</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">double2 = 1.0001</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">tolerance= 0.0001</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Question: are these doubles equal to each other? Expected
+               answer is 'No' because the difference between the doubles is
+               not less than the tolerance. However, this is not completely
+               reliable. You need knowledge about the internal format of a
+               double. Especially variable 'double2' will have some
+               "disturbance". Herewith the difference can become somewhat
+               less than 0.0001 or somewhat greater than 0.0001. Also the
+               tolerance itself will be "disturbed". Since the double.cmp
+               function has also used double comparison the result is
+               unpredictable.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <table border="1" width="100%" class="default">
+               <tbody noTR="5" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Variable</th>
+                     <th rowspan="1" colspan="1" class="default">Value</th>
+                     <th rowspan="1" colspan="1" class="default">Approximate 'real' value</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">double1</td>
+                     <td rowspan="1" colspan="1" class="default">1.1</td>
+                     <td rowspan="1" colspan="1" class="default">1.10000000000000010000</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">double2</td>
+                     <td rowspan="1" colspan="1" class="default">1.2</td>
+                     <td rowspan="1" colspan="1" class="default">1.20000000000000000000</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">difference</td>
+                     <td rowspan="1" colspan="1" class="default">0.1</td>
+                     <td rowspan="1" colspan="1" class="default">0.09999999999999986700</td>
+                  </tr>
+                  <tr no="5" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">tolerance</td>
+                     <td rowspan="1" colspan="1" class="default">0.1</td>
+                     <td rowspan="1" colspan="1" class="default">0.10000000000000000600</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Now according double.cmp() these two variables are equal !
+               Do we this again with the original values (so:
+               double.cmp(1.1, 1.2, 0.1) then the conclusion is that 1.1 is
+               less than 1.2 ! Another example: double.cmp(1.2, 1.3, 0.1) =
+               -1 (because 1.2 is less than 1.3).
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Conclusion</div>
+            <p class="Paragraph">When the difference between two doubles is (almost) equal
+               to the tolerance then double.cmp() gives unreliable
+               results.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/considerations_on_doubles/considerations.on.doubles.htm" class="manualLink">Considerations on doubles</a></li>
+               <li class="RelTopic"><a href="../../progguide/considerations_on_doubles/reliability.of.double.cmp.htm" class="manualLink">Reliability of double.cmp()</a></li>
+               <li class="RelTopic"><a href="../../progguide/considerations_on_doubles/comparison.of.doubles.in.queries.htm" class="manualLink">Comparison of doubles in queries</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/considerations_on_doubles/reliability.of.double.cmp, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

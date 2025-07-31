@@ -1,0 +1,59 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Function declarations</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dynamic-link libraries function declarations function declarations ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Function declarations</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">For functions programmed within a DLL to be accessible to other
+               programs, they must be declared as external functions, that is,
+               they must be declared with the keyword EXTERN. For example:
+            </p><pre class="CodeBlock">
+function extern long funct_a( long arg )
+{
+.....
+}
+</pre><p class="Paragraph">Functions declared without the EXTERN keyword are local
+               functions. They are accessible only within the program in
+               which they are declared. A DLL usually contains both local
+               and external functions.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Managed Execution</div>
+            <p class="Paragraph">Normally it will not be allowed for a function in a trusted dll, to be called from a not trusted object.
+               Using the '@trusted' keyword will allow a function to be called from any object. 
+               More about trusted and not trusted objects can be found in the section about <a href="../../progguide/misc/managed_execution.htm" class="manualLink">managed execution</a>.
+            </p><pre class="CodeBlock">
+function extern long funct_a( long arg ) @trusted
+{
+.....
+}
+</pre><p class="Paragraph">The '@trusted' keyword can only be used in combination with the 'extern' keyword and is available from TIV level 2000.</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/dynamic_link_libraries/overview.htm" class="manualLink">Dynamic-link libraries</a></li>
+               <li class="RelTopic"><a href="../../progguide/misc/managed_execution.htm" class="manualLink">Managed Execution</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/dynamic_link_libraries/function_declarations, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

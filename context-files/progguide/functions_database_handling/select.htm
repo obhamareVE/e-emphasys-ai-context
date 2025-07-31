@@ -1,0 +1,137 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>SELECT clause</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="SELECT clause SELECT statement SELECT clause ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">SELECT clause</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The SELECT clause specifies a table that is the result of
+               applying the expressions in it to the input table. The input
+               table may be a <a href="../../progguide/functions_database_handling/sql_glossary.htm#GroupedTable" class="glossaryLink">grouped table</a>, but the result table is never a grouped table.
+               The SELECT clause specifies which columns must be selected and
+               which functions must be applied to the columns. It operates on
+               the table that is the result of the FROM clause, after applying
+               the optional WHERE clause, the optional GROUP BY clause and the
+               optional HAVING clause.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;select clause&gt;
+    ::= SELECT [&lt;set quantifier&gt;] [FOR UPDATE] &lt;select list&gt;
+
+&lt;set quantifier&gt;
+    ::= DISTINCT | ALL
+
+&lt;select list&gt;
+    ::= *
+      | &lt;select item&gt; {, &lt;select item&gt; }...
+
+&lt;select item&gt;
+    ::= &lt;qualifier&gt;.*
+      | <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a> [ [AS] &lt;alias name&gt;]
+      | &lt;array column reference&gt; [ [AS] &lt;alias name&gt;]
+
+&lt;array column reference&gt;
+    ::= <a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">Column reference</a>
+
+&lt;qualifier&gt;
+    ::= &lt;table name&gt;
+      | &lt;correlation name&gt;
+
+&lt;table name&gt;
+    ::= !! <i class="Emphasis">a valid table name</i>
+
+&lt;correlation name&gt;
+    ::= <a href="../../progguide/functions_database_handling/identifier.htm" class="manualLink">Identifier</a>
+
+&lt;alias name&gt;
+    ::= <a href="../../progguide/functions_database_handling/identifier.htm" class="manualLink">Identifier</a>
+      </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">If the SELECT clause operates on a <a href="../../progguide/functions_database_handling/sql_glossary.htm#GroupedTable" class="glossaryLink">grouped table</a> then any <a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">column reference</a> contained in the <i class="Emphasis">&lt;value expression&gt;</i> shall reference a <a href="../../progguide/functions_database_handling/sql_glossary.htm#GroupingColumn" class="glossaryLink">grouping column</a>, unless the <a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">column reference</a> is contained in a <a href="../../progguide/functions_database_handling/set_function_specification.htm" class="manualLink">set function specification</a>.
+            </p>
+            <p class="Paragraph">The following example is <i class="Emphasis">not</i> correct, because <i class="Emphasis">salary</i> is not a grouping column.
+            </p><pre class="CodeBlock">
+SELECT salary
+FROM dbtst120
+GROUP BY edlevel
+</pre><p class="Paragraph">The following example <i class="Emphasis">is</i> correct, because <i class="Emphasis">edlevel</i> is a grouping column.
+            </p><pre class="CodeBlock">
+SELECT edlevel, AVG( salary )
+FROM dbtst120
+GROUP BY edlevel
+</pre><p class="Paragraph"><i class="Emphasis">Note:</i> if the SELECT clause contains a <i class="Emphasis">set function
+                  specification</i> and the SELECT statement does not contain a
+               GROUP BY clause then the table it operates on is regarded as a
+               grouped table, containing a single group containing all rows of
+               the table.
+            </p>
+            <p class="Paragraph"></p>
+            <p class="Paragraph">For example, the following SELECT statement returns the avarage
+               salary of <i class="Emphasis">all</i> employees.
+            </p><pre class="CodeBlock">
+SELECT AVG( salary )
+FROM dbtst120
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">If <i class="Emphasis">&lt;set quantifier&gt;</i> is not specified,
+               then ALL is implicit. If the <i class="Emphasis">&lt;set quantifier&gt;</i> DISTINCT
+               is specified, then any <a href="../../progguide/functions_database_handling/sql_glossary.htm#RedundantDuplicates" class="glossaryLink">redundant duplicate</a> rows are eliminated from the result.
+            </p>
+            <p class="Paragraph">If the keywords <i class="Emphasis">FOR UPDATE</i> are specified then the
+               containing SELECT statement is equivalent to the same statement,
+               but with the <i class="Emphasis">FOR UPDATE</i> keyword removed from the SELECT
+               clause and added to each <i class="Emphasis">table reference</i> in the <a href="../../progguide/functions_database_handling/from.htm" class="manualLink">FROM clause</a>. Note that in this case the
+               SELECT clause is expanded with all columns of the table on which
+               the SELECT clause operates.
+            </p>
+            <p class="Paragraph">The <i class="Emphasis">&lt;select list&gt;</i> "*" expands to all columns of
+               the table on which the SELECT clause operates, preserving the
+               order of the columns.
+            </p>
+            <p class="Paragraph">In the following example "*" expands to " <i class="Emphasis">a.deptno</i>, <i class="Emphasis">a.deptname</i>, <i class="Emphasis">a.mgrno</i>, <i class="Emphasis">a.location</i>, <i class="Emphasis">a.admrdept</i>, <i class="Emphasis">a._compnr</i> ", <i class="Emphasis">dbtst120.empno</i> and
+               all other columns of <i class="Emphasis">dbtst120</i>.
+            </p><pre class="CodeBlock">
+SELECT *
+FROM dbtst100 a, dbtst120
+</pre><p class="Paragraph">The <i class="Emphasis">&lt;select item&gt;</i> "&lt;qualifier&gt;.*" expands
+               to all columns of the table whose qualifier equals <i class="Emphasis">&lt;qualifier&gt;</i> (see <a href="../../progguide/functions_database_handling/sql_glossary.htm#QualifiedColumnName" class="glossaryLink">qualified column name</a>). The order
+               of the columns is preserved.
+            </p>
+            <p class="Paragraph">In the following example "a.*" expands to " <i class="Emphasis">a.deptno</i>, <i class="Emphasis">a.deptname</i>, <i class="Emphasis">a.mgrno</i>, <i class="Emphasis">a.location</i>, <i class="Emphasis">a.admrdept</i>, <i class="Emphasis">a._compnr</i> ", The expansion of "a.*"
+               does <i class="Emphasis">not</i> include any columns with qualifier <i class="Emphasis">dbtst120</i>.
+            </p><pre class="CodeBlock">
+SELECT a.*
+FROM dbtst100 a, dbtst120
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/from.htm" class="manualLink">FROM clause</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/group_by.htm" class="manualLink">GROUP BY clause</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/select, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

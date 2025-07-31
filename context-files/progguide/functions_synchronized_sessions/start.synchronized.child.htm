@@ -1,0 +1,121 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>start.synchronized.child()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions start.synchronized.child start.synchronized.child start.synchronized.child ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">start.synchronized.child()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;start.synchronized.child&nbsp;
+					(string&nbsp;sess_code [, string&nbsp;parent.var child.var] [, long&nbsp;start.mode])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this to synchronize two sessions that act on different
+                  main tables. The function starts the specified child session
+                  when the user chooses a particular form command in the
+                  multioccurrence parent session. The primary key of the parent's
+                  main table must be a subset of the primary key of the child's
+                  main table.
+               </p>
+               <p class="Paragraph">Although you normally use this function to synchronize
+                  sessions that act on different main tables, it is also possible
+                  to use it to synchronize sessions that act on the same main
+                  table.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>sess_code</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The session code of the child session.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>parent.var child.var</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">These are optional arguments. You use them to
+                           synchronize particular variables in the parent and
+                           child sessions. For example, to display in the child
+                           session only order lines for the order currently
+                           selected in the parent session.
+                        </p>
+                        <p class="Paragraph">For each variable to be synchronized, specify the
+            name of the relevant field in the parent's main table,
+            followed by the name of the corresponding field in the
+            child’s main table.</p>
+                        <p class="Paragraph">For each synchronization event
+                           ( <i class="Emphasis">start.synchronized.child()</i>, <a href="../../progguide/functions_synchronized_sessions/start.synchronized.child.with.htm" class="manualLink">start.synchronized.child.with()</a>,
+                           or <a href="../../progguide/functions_synchronized_sessions/synchronize.with.child.htm" class="manualLink">synchronize.with.child()</a>),
+                           the child session is refreshed, and the specified
+                           variables derive their values from the parent
+                           session.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>start.mode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">When SINGLE_OCC is specified behind the pairs of
+                           fields, the specified session will be started in,
+                           details mode. Default the session will be started in
+                           MULTI_OCC.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">&gt;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a unique identifier for the child process</p>
+            <p class="Paragraph">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cannot start child</p>
+            <p class="Paragraph">-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; argument error</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Related help topics</div>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_synchronized_sessions/overview.htm" class="manualLink">Synchronized sessions overview</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_synchronized_sessions/synopsis.htm" class="manualLink">Synchronized sessions synopsis</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_synchronized_sessions/example.htm" class="manualLink">Child synchronization sample program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_synchronized_sessions/start.synchronized.child, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

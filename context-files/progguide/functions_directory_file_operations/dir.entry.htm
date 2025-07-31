@@ -1,0 +1,159 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dir.entry()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dir.entry dir.entry functions dir.entry ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dir.entry()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string &nbsp;dir.entry&nbsp;
+					(long&nbsp;dfd, long&nbsp;read_type, ref long&nbsp;return_type, ref long&nbsp;filesize, ref long&nbsp;mode)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This retrieves entries from a previously opened directory.
+                  It retrieves the entries sequentially.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>dfd</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The pointer to the required directory, as
+                           returned when the directory was opened by <a href="../../progguide/functions_directory_file_operations/dir.open.htm" class="manualLink">dir.open()</a> or <a href="../../progguide/functions_directory_file_operations/dir.open.tree.htm" class="manualLink">dir.open.tree()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>read_type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies the type of entry to be retrieved.
+                           Possible values are:
+                        </p>
+                        <table width="100%" class="default">
+                           <tbody noTR="3" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">TDIR</td>
+                                 <td rowspan="1" colspan="1" class="default">directories</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">TFILE</td>
+                                 <td rowspan="1" colspan="1" class="default">files</td>
+                              </tr>
+                              <tr no="3" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">TDIR+TFILE</td>
+                                 <td rowspan="1" colspan="1" class="default">directories and files</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>return_type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Returns the type of entry retrieved. Possible
+                           values are:
+                        </p>
+                        <table width="100%" class="default">
+                           <tbody noTR="2" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">TDIR</td>
+                                 <td rowspan="1" colspan="1" class="default">directory</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">TFILE</td>
+                                 <td rowspan="1" colspan="1" class="default">file</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>filesize</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Returns the size of the entry retrieved.</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>mode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">If the user can access the entry, this argument
+                           returns the type of access the user has. Possible
+                           options (returned as a bitset) are:
+                        </p>
+                        <table width="100%" class="default">
+                           <tbody noTR="3" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">STAT_READABLE</td>
+                                 <td rowspan="1" colspan="1" class="default">read</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">STAT_WRITEABLE</td>
+                                 <td rowspan="1" colspan="1" class="default">read, write, and delete</td>
+                              </tr>
+                              <tr no="3" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">STAT_EXECUTABLE</td>
+                                 <td rowspan="1" colspan="1" class="default">run program</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The directory entry. Or an empty string if the end of the
+               entry list has been reached.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/overview.htm" class="manualLink">Directory and file operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/synopsis.htm" class="manualLink">Directory and file operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_directory_file_operations/dir.entry, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

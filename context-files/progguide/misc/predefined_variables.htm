@@ -1,0 +1,1513 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Predefined variables</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="predefined variables ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Predefined variables</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The following is a list of the predefined variables available
+               to programmers. Variables specific to a particular function or
+               group of functions are listed with those functions.
+            </p>
+            <p class="Paragraph">4 = 4GL only; R = Read-only; D = Deprecated (do not use
+               anymore)
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="147" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Type</td>
+                     <td rowspan="1" colspan="1" class="none">Name</td>
+                     <td rowspan="1" colspan="1" class="none">Attr.</td>
+                     <td rowspan="1" colspan="1" class="none">Description</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">actual.occ</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Occurrence currently selected on form.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.adju(1)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="3" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">"l"</td>
+                                 <td rowspan="1" colspan="1" class="none">align left</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">"r"</td>
+                                 <td rowspan="1" colspan="1" class="none">align right</td>
+                              </tr>
+                              <tr no="3" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">"c"</td>
+                                 <td rowspan="1" colspan="1" class="none">align center</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.bitset.mask</td>
+                     <td rowspan="1" colspan="1" class="none">4&nbsp;D</td>
+                     <td colspan="2" rowspan="1" class="none">In general: bitsets are deprecated in the UI. The
+                        available values for a bitset field (see also <a href="../../progguide/functions_enumerates/overview_and_synopsis.htm" class="manualLink">Enumerates overview and synopsis</a>).
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">attr.changed</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Indicates if the current field has changed.</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.conv(1)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">"u"</td>
+                                 <td rowspan="1" colspan="1" class="none">convert to upper case</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">"l"</td>
+                                 <td rowspan="1" colspan="1" class="none">convert to lower case</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.currency$(3)</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Current currency (see <a href="../../progguide/functions_currency_tables/set.currencies.htm" class="manualLink">set.currencies()</a>).
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">attr.currkey</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">true</td>
+                                 <td rowspan="1" colspan="1" class="none">current field is a key field</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">false</td>
+                                 <td rowspan="1" colspan="1" class="none">current field is not a key field</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">attr.dbase</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">true</td>
+                                 <td rowspan="1" colspan="1" class="none">current field is a database field</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">false</td>
+                                 <td rowspan="1" colspan="1" class="none">current field is not a database field</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.dbmaxlen</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Maximum length of database field.</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.deflt$(512)</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Default value of current field.
+                        When the <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level is less than <a href="../../progguide/tiv/tiv_2040.htm" class="manualLink">2040</a>,
+                        then the length of this string is 100.
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.descr$(60)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Description of current field.</td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.diga</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Number of digits after decimal sign. For strings,
+                        this is the maximum input length.
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.digv</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Number of digits before decimal sign.</td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.divf</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Division factor. (For entering numeric values
+                        without a decimal point.)
+                     </td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.domain$(16)</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Domain of the current field.</td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.domm$(14)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Domain message code of current field.</td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.dorp</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Fill field with default or previous value:</p>
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">DORP.PREVIOUS (0)</td>
+                                 <td rowspan="1" colspan="1" class="none">use the previous value</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">DORP.DEFAULT (1)</td>
+                                 <td rowspan="1" colspan="1" class="none">use the default value</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">boolean</p>
+                        <p class="Paragraph"></p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">attr.echo</td>
+                     <td rowspan="1" colspan="1" class="none">4&nbsp;D</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">true</td>
+                                 <td rowspan="1" colspan="1" class="none">display value on form</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">false</td>
+                                 <td rowspan="1" colspan="1" class="none">do not display value on form</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">This variable is supported for backward
+                           compatibility only. In preference, use the <a href="../../progguide/functions_form_and_form_field_operations/inputfield.visible.htm" class="manualLink">inputfield.visible()</a>, <a href="../../progguide/functions_form_and_form_field_operations/inputfield.invisible.htm" class="manualLink">inputfield.invisible()</a> and <a href="../../progguide/functions_form_and_form_field_operations/inputfield.password.htm" class="manualLink">inputfield.password()</a> functions.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.element</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Current array index (if field is an array
+                        element).
+                     </td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.enum.mask$(128)</td>
+                     <td rowspan="1" colspan="1" class="none">4&nbsp;D</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The values available for an enumerate field. Also
+                           the enumerate values available for the <a href="../../progguide/functions_enumerates/ask.enum.htm" class="manualLink">ask.enum()</a> function.
+                        </p>
+                        <p class="Paragraph">See also <a href="../../progguide/functions_enumerates/set.enum.values.for.field.htm" class="manualLink">set.enum.values.for.field()</a> function.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.format.addition$(3)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Currency to be used for an amount format. Language
+                        to be used for a date format.
+                     </td>
+                  </tr>
+                  <tr no="23" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.helpfile$(10)</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td colspan="2" rowspan="1" class="none">Help file of current field.</td>
+                  </tr>
+                  <tr no="24" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.ille$(30)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Illegal characters.</td>
+                  </tr>
+                  <tr no="25" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.imax</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Maximum input length.</td>
+                  </tr>
+                  <tr no="26" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.inpfld</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="4" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">0</td>
+                                 <td rowspan="1" colspan="1" class="none">display field</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">1</td>
+                                 <td rowspan="1" colspan="1" class="none">input field</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">2</td>
+                                 <td rowspan="1" colspan="1" class="none">input only field</td>
+                              </tr>
+                              <tr no="4" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">3</td>
+                                 <td rowspan="1" colspan="1" class="none">display only field</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="27" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">attr.input</td>
+                     <td rowspan="1" colspan="1" class="none">4&nbsp;D</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">false</td>
+                                 <td rowspan="1" colspan="1" class="none">input disabled</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">true</td>
+                                 <td rowspan="1" colspan="1" class="none">input enabled</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">This variable is supported for backward
+                           compatibility only. In preference, use <a href="../../progguide/functions_form_and_form_field_operations/disable.fields.htm" class="manualLink">disable.fields()</a> and <a href="../../progguide/functions_form_and_form_field_operations/enable.fields.htm" class="manualLink">enable.fields()</a> functions.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="28" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.lega$(30)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Legal characters.</td>
+                  </tr>
+                  <tr no="29" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">attr.mandatory</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Mandatory input (true or false).</td>
+                  </tr>
+                  <tr no="30" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.maxlen</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Maximum display length of current field.</td>
+                  </tr>
+                  <tr no="31" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.message$(132)</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td colspan="2" rowspan="1" class="none">Message to be displayed when a field is filled after
+                        a <i class="Emphasis">before.input</i> event.
+                     </td>
+                  </tr>
+                  <tr no="32" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.minlen</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Minimum length of current field.</td>
+                  </tr>
+                  <tr no="33" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">attr.multioccur</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">true</td>
+                                 <td rowspan="1" colspan="1" class="none">multioccurrence field</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">false</td>
+                                 <td rowspan="1" colspan="1" class="none">not multioccurrence field</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="34" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.nowait$(30)</td>
+                     <td rowspan="1" colspan="1" class="none">4RD</td>
+                     <td colspan="2" rowspan="1" class="none">Characters that start a field command. This variable
+                        is supported for backward compatibility only. In Infor
+                        ERP Enterprise, field command functionality is replaced by form
+                        commands.
+                     </td>
+                  </tr>
+                  <tr no="35" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.oformat$(30)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Output format of field.</td>
+                  </tr>
+                  <tr no="36" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.permission</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Permissions for current field:</p>
+                        <table border="0" class="none">
+                           <tbody noTR="8" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">NO.PERMISSION</td>
+                                 <td rowspan="1" colspan="1" class="none">1</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">PERM.READ</td>
+                                 <td rowspan="1" colspan="1" class="none">2</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">PERM.MODIFY</td>
+                                 <td rowspan="1" colspan="1" class="none">4</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">PERM.WRITE</td>
+                                 <td rowspan="1" colspan="1" class="none">8</td>
+                              </tr>
+                              <tr no="5" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">PERM.DELETE</td>
+                                 <td rowspan="1" colspan="1" class="none">16</td>
+                              </tr>
+                              <tr no="6" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">NO.RESTRICTION</td>
+                                 <td rowspan="1" colspan="1" class="none">30</td>
+                              </tr>
+                              <tr no="7" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">PERM.UNKNOWN</td>
+                                 <td rowspan="1" colspan="1" class="none">32</td>
+                              </tr>
+                              <tr no="8" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">NO.PERM.DEFINED</td>
+                                 <td rowspan="1" colspan="1" class="none">64</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">See also <a href="../../progguide/functions_db_operations/db.permission.htm" class="manualLink">db.permission()</a> function.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="37" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.previous$(30)</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Previous value of field.</td>
+                  </tr>
+                  <tr no="38" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.rang</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Compiled expression ID for <i class="Emphasis">attr.rang$</i>.
+                     </td>
+                  </tr>
+                  <tr no="39" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.rang$(100)</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Defines a range; values are automatically checked
+                        against this range.
+                     </td>
+                  </tr>
+                  <tr no="40" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.reallen</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Real database length of field.</td>
+                  </tr>
+                  <tr no="41" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.refpath(100)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Reference path.</td>
+                  </tr>
+                  <tr no="42" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.rndm</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Rounding method (see also <a href="../../progguide/functions_mathematical_operations/round.htm" class="manualLink">round()</a> function).
+                     </td>
+                  </tr>
+                  <tr no="43" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.rotate</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Current index in currency table (see <a href="../../progguide/functions_currency_tables/set.currencies.htm" class="manualLink">set.currencies()</a> function).
+                     </td>
+                  </tr>
+                  <tr no="44" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.sttp</td>
+                     <td rowspan="1" colspan="1" class="none">4&nbsp;D</td>
+                     <td colspan="2" rowspan="1" class="none">Start position in current field.</td>
+                  </tr>
+                  <tr no="45" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.textfield$(17)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Name of the text field. Used by the Text
+                        Manager.
+                     </td>
+                  </tr>
+                  <tr no="46" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.textkw1$(17) to attr.textkw4$(17)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Keywords of text. Used by the Text Manager. The output string is multibyte.</td>
+                  </tr>
+                  <tr no="47" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.textlang$(1)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Language for text editing. Used by the Text
+                        Manager.
+                     </td>
+                  </tr>
+                  <tr no="48" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.textmaxlines</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Maximum number of lines in the text editor. Used by
+                        the Text Manager.
+                     </td>
+                  </tr>
+                  <tr no="49" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.textmode</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">1</td>
+                                 <td rowspan="1" colspan="1" class="none">display mode</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">3</td>
+                                 <td rowspan="1" colspan="1" class="none">read/write mode</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">Used by the Text Manager.</p>
+                     </td>
+                  </tr>
+                  <tr no="50" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.textopt$(25)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Name of default option for editor window options.
+                        Used by the Text Manager.
+                     </td>
+                  </tr>
+                  <tr no="51" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">attr.textstart</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">true</td>
+                                 <td rowspan="1" colspan="1" class="none">When new text is created, start text manager
+                                    directly (default).
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">false</td>
+                                 <td rowspan="1" colspan="1" class="none">When new text is created, fill keywords
+                                    first.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">Used by the Text Manager.</p>
+                     </td>
+                  </tr>
+                  <tr no="52" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.textzoomsession$(18)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Session zoomed to by text editor zoom command. The
+                        default is "Display Texts" session. Used by the Text
+                        Manager.
+                     </td>
+                  </tr>
+                  <tr no="53" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.type</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Database type (DB.ENUM, DB.STRING, DB.TIME, DB.DATE,
+                        and so on)
+                     </td>
+                  </tr>
+                  <tr no="54" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.zoomcode</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Field zoomcode. Possible values are:</p>
+                        <table border="0" class="none">
+                           <tbody noTR="3" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">0</td>
+                                 <td rowspan="1" colspan="1" class="none">No zoom</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">Z.MENU (1)</td>
+                                 <td rowspan="1" colspan="1" class="none">Zoom to a menu</td>
+                              </tr>
+                              <tr no="3" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">Z.SESSION (2)</td>
+                                 <td rowspan="1" colspan="1" class="none">Zoom to a session</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="55" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.zoomreturn$(18)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Name of return field of zoom session on current
+                        field.
+                     </td>
+                  </tr>
+                  <tr no="56" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">attr.zoomsession$(18)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Session zoomed to from field.</td>
+                  </tr>
+                  <tr no="57" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">attr.zoomindex</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Number of table-index to start session zoomed to
+                        from a field.
+                     </td>
+                  </tr>
+                  <tr no="58" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">auto.nextform</td>
+                     <td rowspan="1" colspan="1" class="none">4&nbsp;D</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">true</td>
+                                 <td rowspan="1" colspan="1" class="none">When modifying form data, automatically
+                                    display next form when all occurrences on current
+                                    form have been filled.
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">false</td>
+                                 <td rowspan="1" colspan="1" class="none">When modifying form data, do not
+                                    automatically display next form when all
+                                    occurrences on current form have been filled
+                                    (default).
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">It is not good GUI practice to use this
+                           variable.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="59" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">background</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">true</td>
+                                 <td rowspan="1" colspan="1" class="none">current session is modal</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">false</td>
+                                 <td rowspan="1" colspan="1" class="none">current session is modeless</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="60" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">before.update.check</td>
+                     <td rowspan="1" colspan="1" class="none">4RD</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">true</td>
+                                 <td rowspan="1" colspan="1" class="none">field is checked during update</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">false</td>
+                                 <td rowspan="1" colspan="1" class="none">field is checked during input</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">Valid only in subsection <i class="Emphasis">check.input</i>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="61" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">break.view</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">When searching for records in type 3 forms, break to
+                        next view when no records found and group fields match
+                        with old values. (true or false).
+                     </td>
+                  </tr>
+                  <tr no="62" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">chartgrp</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td colspan="2" rowspan="1" class="none">Current chart group.</td>
+                  </tr>
+                  <tr no="63" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">chm.name(128)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Name of the current chart.</td>
+                  </tr>
+                  <tr no="64" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">chm.owner(14)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Owner/creator of current chart.</td>
+                  </tr>
+                  <tr no="65" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">chm.title(128)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Description of current chart.</td>
+                  </tr>
+                  <tr no="66" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">chm.user(14)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Name of user of current chart.</td>
+                  </tr>
+                  <tr no="67" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">choice</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Command ID of active command.</td>
+                  </tr>
+                  <tr no="68" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">curr.key</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Current key number of main table. Not available in
+                        before.program.
+                     </td>
+                  </tr>
+                  <tr no="69" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">curr.pacc$(8)</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">Current package combination.</td>
+                  </tr>
+                  <tr no="70" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">dal.error.file</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">The name of the source file where the last
+                        dal.set.error.message was called. This variable can be
+                        used in the debugger. If you trace this variable, the
+                        debugger will stop when the function <a href="../../progguide/functions_message_handling/dal.set.error.message.htm" class="manualLink">dal.set.error.message(), dal.set.warning.message(), dal.set.info.message()</a> has been called.
+                     </td>
+                  </tr>
+                  <tr no="71" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">dal.error.line</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">The line number in the code where the last
+                        dal.set.error.message was called. See dal.error.file
+                        above.
+                     </td>
+                  </tr>
+                  <tr no="72" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">date</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">Number of days since 01-01-0001 (local time).</td>
+                  </tr>
+                  <tr no="73" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">date$(6)</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">Current system date (DDMMYY).</td>
+                  </tr>
+                  <tr no="74" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">dis.restarted</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Indicates whether the session is restarted due to
+                        dynamic index switching (true or false).
+                     </td>
+                  </tr>
+                  <tr no="75" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">dynamic.index.switching</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Can be set in before.program for non-integrated
+                           sessions. Indicates the way the session should use
+                           	    dynamic index switching. Possible values:
+                        </p>
+                        <p class="Paragraph">This functionality is deprecated.
+                           		Dynamic index switching should be enabled in the session properties.
+                           		If a session only enables Dynamic Index Switching in the before.program section this will not work in WebTop.
+                        </p>
+                        <table border="0" class="none">
+                           <tbody noTR="3" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">0</td>
+                                 <td rowspan="1" colspan="1" class="none">No dynamic index switching.</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">-1</td>
+                                 <td rowspan="1" colspan="1" class="none">Restart when view fields differ.</td>
+                                 <td rowspan="1" colspan="1" class="none"></td>
+                              </tr>
+                              <tr no="3" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">-2</td>
+                                 <td rowspan="1" colspan="1" class="none">Always restart session when switching
+                                    indices.
+                                 </td>
+                                 <td rowspan="1" colspan="1" class="none"></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="76" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">e</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">Error code of last file action.</td>
+                  </tr>
+                  <tr no="77" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">error.bypass</td>
+                     <td rowspan="1" colspan="1" class="none">4&nbsp;D</td>
+                     <td colspan="2" rowspan="1" class="none">Indicates which database errors can be detected in
+                        your program script, see the <a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a> for a detailed description.
+                     </td>
+                  </tr>
+                  <tr no="78" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">exit.val$(80)</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">String returned to the called program at the end of
+                        the process.
+                     </td>
+                  </tr>
+                  <tr no="79" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">fattr.currfld$(30)</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Name of current field.</td>
+                  </tr>
+                  <tr no="80" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">fattr.descr$(60)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Description of current form.</td>
+                  </tr>
+                  <tr no="81" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">fattr.ftype</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Type of current form (1, 2, 3, or 4).</td>
+                  </tr>
+                  <tr no="82" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">fattr.helpfile$(14)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Name of help file for current form.</td>
+                  </tr>
+                  <tr no="83" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">fattr.horizontal</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">True for horizontal occurrences.</td>
+                  </tr>
+                  <tr no="84" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">fattr.init</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Indicates if the form has been initialized.</td>
+                  </tr>
+                  <tr no="85" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">fattr.nrtabs</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Number of tabs on current form (dynamic forms
+                        only).
+                     </td>
+                  </tr>
+                  <tr no="86" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">fattr.occurnr</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Number of occurrences on current form.</td>
+                  </tr>
+                  <tr no="87" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">fattr.seqno</td>
+                     <td rowspan="1" colspan="1" class="none">4RD</td>
+                     <td colspan="2" rowspan="1" class="none">Sequence number of current field in form.</td>
+                  </tr>
+                  <tr no="88" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">fattr.toplines</td>
+                     <td rowspan="1" colspan="1" class="none">4&nbsp;D</td>
+                     <td colspan="2" rowspan="1" class="none">The number of lines above the multioccurrence fields
+                        (default: 3). Set in the <i class="Emphasis">before.program</i> section.
+                     </td>
+                  </tr>
+                  <tr no="89" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">fattr.total.line</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">If set in <i class="Emphasis">before.program</i> section, this
+                        indicates that a total line must be displayed in the
+                        grid (see also <a href="../../progguide/functions_form_and_form_field_operations/display.total.fields.htm" class="manualLink">display.total.fields()</a>). Can have the values true
+                        or false.
+                     </td>
+                  </tr>
+                  <tr no="90" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">filename$(16)</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">Name of most-recently accessed table.</td>
+                  </tr>
+                  <tr no="91" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">filled.occ</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Number of filled occurrences.</td>
+                  </tr>
+                  <tr no="92" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">firstweek$(6)</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">Date of the first day in the first week of the
+                        current year.
+                     </td>
+                  </tr>
+                  <tr no="93" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">form.curr</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Current form number.</td>
+                  </tr>
+                  <tr no="94" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">form.next</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Next form number. -1 if no next form</td>
+                  </tr>
+                  <tr no="95" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">form.prev</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Previous form number. -1 if no previous form</td>
+                  </tr>
+                  <tr no="96" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">graphical.mode</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Indicates whether the 3GL program runs in graphical
+                        mode (true) or in character mode (false). Default is
+                        false.
+                     </td>
+                  </tr>
+                  <tr no="97" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">ignore.first.event</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Indicates whether the start command of the current
+                        session must be skipped. The start command is defined
+                        in the session data.
+                     </td>
+                  </tr>
+                  <tr no="98" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">job.device(14)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Default device used by job process.</td>
+                  </tr>
+                  <tr no="99" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">job.device.requested</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Indicates whether an output device must be specified
+                        when in job mode.
+                     </td>
+                  </tr>
+                  <tr no="100" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">job.process</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Indicates if process is started by a job.</td>
+                  </tr>
+                  <tr no="101" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">job.process.error</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Indicates if an error occurred during the run of a
+                        job.
+                     </td>
+                  </tr>
+                  <tr no="102" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">job.report(15)</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Report code of report to be used when in job
+                        mode.
+                     </td>
+                  </tr>
+                  <tr no="103" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">job.skip.date.question</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Indicates if the question "Consider the difference
+                        between entered date and system date?" must be
+                        skipped.
+                     </td>
+                  </tr>
+                  <tr no="104" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">job.change.data</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Indicates if the session has been started by the Change Job option</p>
+                        <p class="Paragraph">Available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">Tools Interface Version (TIV)</a> <a href="../../progguide/tiv/tiv_1900.htm" class="manualLink">TIV 1900</a></p>
+                     </td>
+                  </tr>
+                  <tr no="105" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">language$(1)</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">Current language code.</td>
+                  </tr>
+                  <tr no="106" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">lattr.*</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td colspan="2" rowspan="1" class="none">See <a href="../../progguide/report_scripts/predefined_variables.htm" class="manualLink">Report_scripts.</a></td>
+                  </tr>
+                  <tr no="107" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">logname$(8)</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">Current BAAN user name, which need not be identical to the OS user name.</td>
+                  </tr>
+                  <tr no="108" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">main.table$(9)</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Name of current main table.</td>
+                  </tr>
+                  <tr no="109" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">mark.table()</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This array indicates which occurences are
+                           			marked. The size of this array is set to <i class="Emphasis">fattr.occurnr</i>. For example, if records 3 and 8 are marked,
+                           			then:
+                        </p>
+                        <p class="Paragraph">mark.table(3) = true</p>
+                        <p class="Paragraph">mark.table(8) = true</p>
+                        <p class="Paragraph">and other elements in the array are false.</p>
+                        <p class="Paragraph"><i class="Emphasis">Note that from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">Tools Interface Version (TIV)</a> <a href="../../progguide/tiv/tiv_1075.htm" class="manualLink">TIV 1075</a> records outside the current window can be selected
+                              		as well. These are not indicated as selected in the
+                              		mark.table array. Read the <a href="../../progguide/functions_selection/overview.htm" class="manualLink">Record selection Overview</a> for more information.</i></p>
+                     </td>
+                  </tr>
+                  <tr no="110" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">marked</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Indicates the marked record. If multiple records
+                           			are marked then this indicates the first one
+                           			marked.
+                        </p>
+                        <p class="Paragraph">Deprecated from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">Tools Interface Version (TIV)</a> <a href="../../progguide/tiv/tiv_1075.htm" class="manualLink">TIV 1075</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="111" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">max.formtabs</td>
+                     <td rowspan="1" colspan="1" class="none">4&nbsp;D</td>
+                     <td colspan="2" rowspan="1" class="none">Defines the maximum number of form tabs to be
+                        displayed. Set in the <i class="Emphasis">before.program</i> section.
+                     </td>
+                  </tr>
+                  <tr no="112" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">double</td>
+                     <td rowspan="1" colspan="1" class="none">maxdouble</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">Maximum value of a double.</td>
+                  </tr>
+                  <tr no="113" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">modify.prim.key</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">true</td>
+                                 <td rowspan="1" colspan="1" class="none">Primary key can be modified during modify.
+                                    Set in programs of type 1, 2, and 3.
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">false</td>
+                                 <td rowspan="1" colspan="1" class="none">Primary key cannot be modified.</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="114" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">number.forms</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Number of forms within current session.</td>
+                  </tr>
+                  <tr no="115" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">number.of.marks</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Number of selected records in the grid.</p>
+                        <p class="Paragraph">Note that from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">Tools Interface Version (TIV)</a> <a href="../../progguide/tiv/tiv_1075.htm" class="manualLink">TIV 1075</a> you can also use <a href="../../progguide/functions_selection/sel.num.selected.htm" class="manualLink">sel.num.selected()</a></p>
+                     </td>
+                  </tr>
+                  <tr no="116" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">parent</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">Identification number of parent process.</td>
+                  </tr>
+                  <tr no="117" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">pid</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">Identification number of current process.</td>
+                  </tr>
+                  <tr no="118" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">previous.choice</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Possible values:</p>
+                        <table border="0" class="none">
+                           <tbody noTR="4" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">0</td>
+                                 <td rowspan="1" colspan="1" class="none"></td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">add.set</td>
+                                 <td rowspan="1" colspan="1" class="none">dupl.occur</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">modify.set</td>
+                                 <td rowspan="1" colspan="1" class="none">mark.delete</td>
+                              </tr>
+                              <tr no="4" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">global.copy</td>
+                                 <td rowspan="1" colspan="1" class="none">global.delete</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">Valid only in field sections and <i class="Emphasis">main.table.io</i>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="119" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">procesinfo$(200)</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td colspan="2" rowspan="1" class="none">Information passed to program at startup.</td>
+                  </tr>
+                  <tr no="120" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">prog.name$(16)</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">Name of current session.</td>
+                  </tr>
+                  <tr no="121" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">query.extension(512)</td>
+                     <td rowspan="1" colspan="1" class="none">4&nbsp;D</td>
+                     <td colspan="2" rowspan="1" class="none">A condition that is added to the WHERE clause of a
+                        query to be parsed by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> (using AND operator). Set in <i class="Emphasis">before.program</i> section. In preference, use the <i class="Emphasis">query.extend</i> functions.
+                     </td>
+                  </tr>
+                  <tr no="122" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">report$</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Current report code.</td>
+                  </tr>
+                  <tr no="123" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">reportgrp</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Current report group.</td>
+                  </tr>
+                  <tr no="124" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">reportno</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Reports are numbered (1..n) within a report group.
+                           This number indicates the <i class="Emphasis">sequence number</i> within
+                           the report group.
+                        </p>
+                        <p class="Paragraph">Note: The numbers (labeled "No.") in the session
+                           "Reports by Session" only match with reportno if these
+                           numbers are consecutive.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="125" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">sattr.descr$(80)</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Description of the session.</td>
+                  </tr>
+                  <tr no="126" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">select.only.fields.on.form</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">true</td>
+                                 <td rowspan="1" colspan="1" class="none">all reference tables are read (default)</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">false</td>
+                                 <td rowspan="1" colspan="1" class="none">only reference tables of fields on form are
+                                    read
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">Use in <i class="Emphasis">before.program</i> section.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="127" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">session.zoomindex</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Number of table-index to start session started with
+                        start.session or start.synchronized.child.
+                     </td>
+                  </tr>
+                  <tr no="128" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">session.nr.view.fields</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td colspan="2" rowspan="1" class="none">Dynamic index switching sessions only: number of
+                        view fields to show in started session started with
+                        start.session or start.synchronized.child. Use this in
+                        combination with session.zoomindex.
+                     </td>
+                  </tr>
+                  <tr no="129" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">shell.type</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">Exec_perm from user file.</td>
+                  </tr>
+                  <tr no="130" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">spool.*</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td colspan="2" rowspan="1" class="none">See <a href="../../progguide/functions_spooling/spool.open.htm" class="manualLink">spool.open()</a>.
+                     </td>
+                  </tr>
+                  <tr no="131" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">start.by.wfc</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Session was started by workflow.</td>
+                  </tr>
+                  <tr no="132" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">ssi.import.running</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Boolean indicating if an Import from Excel is currently running.</td>
+                  </tr>
+                  <tr no="133" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">ssi.export.running</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Boolean indicating if an Export to Excel is currently running.</td>
+                  </tr>
+                  <tr no="134" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">stp.abort.error</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Boolean indicating if the function <a href="../../progguide/functions_db_operations/abort.io.htm" class="manualLink">abort.io()</a> has been called.
+                     </td>
+                  </tr>
+                  <tr no="135" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">stp.check.input.error</td>
+                     <td rowspan="1" colspan="1" class="none">4RD</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Boolean indicating if the function <a href="../../progguide/functions_message_handling/set.input.error.htm" class="manualLink">set.input.error()</a> has been called.
+                        </p>
+                        <p class="Paragraph">Valid only in <i class="Emphasis">check.input</i> section.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="136" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">stp.skip.error</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Boolean indicating if the function <a href="../../progguide/functions_db_operations/skip.io.htm" class="manualLink">skip.io()</a> has been called.
+                     </td>
+                  </tr>
+                  <tr no="137" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">subdal</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Indicates if the invocation of this <a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a> was caused by another DAL. Note that subdal is true does not necessarily mean that its table is a child table of the invoking
+                        DAL's table.
+                     </td>
+                  </tr>
+                  <tr no="138" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">synchronized.reason</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">This indicates the command that started the dialog
+                        synchronization. In case of MMT the satelites react on the synchronized reason of 
+                        the parent to startup in the same mode ()including dis/enabling commands)
+                     </td>
+                  </tr>
+                  <tr no="139" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td colspan="1" rowspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="7" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">0</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">DISPLAY.SET</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">ADD.SET</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">MODIFY.SET</td>
+                              </tr>
+                              <tr no="5" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">DUPL.OCCUR</td>
+                              </tr>
+                              <tr no="6" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">END.PROGRAM</td>
+                              </tr>
+                              <tr no="7" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">ABORT.PROGRAM</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="140" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">update.status</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="4" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">0</td>
+                                 <td rowspan="1" colspan="1" class="none">no update</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">ADD.SET</td>
+                                 <td rowspan="1" colspan="1" class="none">during add</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">MODIFY.SET</td>
+                                 <td rowspan="1" colspan="1" class="none">during modify</td>
+                              </tr>
+                              <tr no="4" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">MARK.DELETE</td>
+                                 <td rowspan="1" colspan="1" class="none">during delete</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="141" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none">text.updated.in.edit</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Boolean indicating that the text is updated during the edit</td>
+                  </tr>
+                  <tr no="142" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">user.locale$(14)</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">Locale from user file.</td>
+                  </tr>
+                  <tr no="143" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">user.timer</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td colspan="2" rowspan="1" class="none">Timer from user file.</td>
+                  </tr>
+                  <tr no="144" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">user.type$(1)</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Current type of user. Possible values are:</p>
+                        <p class="Paragraph">S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; super user</p>
+                        <p class="Paragraph">N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; normal user</p>
+                     </td>
+                  </tr>
+                  <tr no="145" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none">win.*</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">See <a href="../../progguide/functions_char_b_win/get.window.attrs.htm" class="manualLink">get.window.attrs()</a>.
+                     </td>
+                  </tr>
+                  <tr no="146" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">zoomfield$(18)</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Variable set in the zoom session, indicating which
+                        field in the parent session was zoomed from.
+                     </td>
+                  </tr>
+                  <tr no="147" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">string</td>
+                     <td rowspan="1" colspan="1" class="none">zoomreturn$(18)</td>
+                     <td rowspan="1" colspan="1" class="none">4R</td>
+                     <td colspan="2" rowspan="1" class="none">Variable set in the zoom session, indicating which
+                        field's value is to be returned. In the parent session,
+                        the variable <i class="Emphasis">attr.zoomreturn$</i> has the same
+                        value.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/misc/predefined_variables, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

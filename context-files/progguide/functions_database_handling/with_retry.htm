@@ -1,0 +1,144 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>WITH RETRY clause</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="SELECT statement WITH RETRY clause WITH RETRY clause ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">WITH RETRY clause</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The WITH RETRY clause offers a facility to retry only a part
+               of the table that is specified by a SELECT statement after a
+               jump to a <a href="../../progguide/functions_db_operations/db.retry.point.htm" class="manualLink">db.retry.point()</a>.
+               It can only be used in combination with the <a href="../../progguide/functions_database_handling/order_by.htm" class="manualLink">ORDER BY clause</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;with retry clause&gt;
+    ::= WITH RETRY [ REPEAT LAST ROW ]
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following example is a Baan 3GL program that demonstrates
+               the use of the WITH RETRY clause.
+            </p><pre class="CodeBlock">
+    table tdbtst120
+
+    function main()
+    {
+        long edlev
+        string name(20)
+
+1)      db.retry.point()
+
+2)      SELECT edlevel:edlev, firstnme:name
+        FROM dbtst120 FOR UPDATE
+        ORDER BY edlevel, firstnme DESC
+        WITH RETRY
+        SELECTDO
+            message("Fetched edlevel = %d, firstnme = '%s'", edlev, name )
+3)          IF ( name = "THEODORE" OR name = "SYBIL" )
+            THEN
+4)              commit.transaction()
+5)              db.insert( tdbtst120, db.retry )  | Will fail, EDUPL
+            ENDIF
+        SELECTEOS
+6)          commit.transaction()
+        ENDSELECT
+    }
+</pre><p class="Paragraph">The following table shows the result of the SELECT statement
+               at line 2.
+            </p><pre class="CodeBlock">
+    edlevel    firstnme            
+    ---------- --------------------
+1)  12         MAUDE               
+2)  12         JOHN                
+3)  14         WING                
+4)  14         THEODORE            
+5)  14         SEAN                
+6)  14         PHILIP              
+7)  14         JAMES               
+8)  15         MARIA               
+9)  15         DANIEL              
+10) 16         SYBIL               
+11) 16         RAMLAL              
+    ...        ...
+</pre><p class="Paragraph">The execution of the program is as follows:</p>
+            <p class="Paragraph">Rows 1, 2, 3 and 4 are fetched. Then a commit.transaction()
+               (line 4) is performed and the current values of the columns in
+               the ORDER BY clause ( 14, "THEODORE" ) are saved. An insert that
+               will fail is buffered (line 5).
+            </p>
+            <p class="Paragraph">Next, rows 5, 6, 7, 8, 9 and 10 are fetched. The
+               commit.transaction() (line 4) fails, because flushing the
+               buffered insert fails. This results in a jump to the
+               db.retry.point() (line 1).
+            </p>
+            <p class="Paragraph">The SELECT statement is executed from the saved retry values
+               ( 14, "THEODORE" ). The rows 5, 6, 7, 8, 9 and 10 are fetched
+               again. The commit.transaction() now succeeds and the current
+               values ( 16, "SYBIL" ) are saved. An insert that will fail is
+               buffered (line 5).
+            </p>
+            <p class="Paragraph">All remaining rows are fetched. The commit.transaction() in
+               the SELECTEOS section (line 6) fails because flushing the
+               buffered insert fails. This results in a jump to the
+               db.retry.point() (line 1).
+            </p>
+            <p class="Paragraph">The SELECT statement is executed from the saved retry values
+               ( 16, "SYBIL" ). The row 11, 12, ... are fetched again. The
+               commit.transaction() at line 6 now succeeds.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">If a SELECT statement contains a WITH RETRY clause, then a
+               commit.transaction() call will save the retry values. The retry
+               values are the values of the columns in the ORDER BY clause at
+               the time of the commit.transaction(). If a jump to the
+               db.retry.point() occurs then the statement is retried from the
+               saved retry values. To achieve this a "retry clause" is added to
+               the WHERE clause of the SELECT statement and the saved retry
+               values are bound to the parameters of the retry clause.
+            </p>
+            <p class="Paragraph">If the ORDER BY clause is as follows</p><pre class="CodeBlock">
+ORDER BY c1, c2, c3 WITH RETRY
+</pre><p class="Paragraph">Then the following retry clause is generated</p><pre class="CodeBlock">
+{ c1, c2, c3 } &gt; { :v1, :v2, :v3 }
+</pre><p class="Paragraph">If the ORDER BY clause is as follows.</p><pre class="CodeBlock">
+ORDER BY c1, c2, c3 WITH RETRY REPEAT LAST ROWS
+</pre><p class="Paragraph">Then the following retry clause is generated</p><pre class="CodeBlock">
+{ c1, c2, c3 } &gt;= { :v1, :v2, :v3 }
+</pre><p class="Paragraph">If the ORDER BY clause is as follows.</p><pre class="CodeBlock">
+ORDER BY c1, c2 DESC WITH RETRY
+</pre><p class="Paragraph">Then the following retry clause is generated</p><pre class="CodeBlock">
+c1 &gt; :v1 OR ( c1 = :v1 AND c2 &lt; :v2 )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/where.htm" class="manualLink">WHERE clause</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/order_by.htm" class="manualLink">ORDER BY clause</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/retry_points.htm" class="manualLink">Retry points</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/hints_for_using_db.retry.point.htm" class="manualLink">Hints for using db.retry.point</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/with_retry, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

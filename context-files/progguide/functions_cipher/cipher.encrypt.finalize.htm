@@ -1,0 +1,110 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>cipher.encrypt.finalize()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="cipher.encrypt.finalize cipher.encrypt.finalize functions cipher.encrypt.finalize ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">cipher.encrypt.finalize()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;cipher.encrypt.finalize&nbsp;
+					(long&nbsp;handle, string&nbsp;data.out, long&nbsp;data.out.length)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Most cipher algorithms operate in block mode, which means the output is always a multiple
+                  of the block size. Because the input is not necessarily a multiple of that block size, this function
+                  returns the last (partial) block. It also frees up the resources that are used by the encryption and invalidates (closes)
+                  the <i class="Emphasis">handle</i>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>handle</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A valid handle obtained from a previous call to <a href="../../progguide/functions_cipher/cipher.encrypt.initialize.htm" class="manualLink">cipher.encrypt.initialize()</a>.
+                           Also, some data should have been encrypted using <a href="../../progguide/functions_cipher/cipher.encrypt.update.htm" class="manualLink">cipher.encrypt.update()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>data.out</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The output buffer. This buffer must be big enough to hold the result.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>data.out.length</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The number of bytes written to the <i class="Emphasis">data.out</i> buffer.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">Error. The specifics of the error are logged by the Bshell.
+                        The problem can be caused by the underlying OpenSSL function, an invalid buffer length
+                        or an invalid handle.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 2000.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_cipher/cipher_overview.htm" class="manualLink">Cipher Functions overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_cipher/cipher_synopsis.htm" class="manualLink">Cipher Function synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_cipher/cipher.encrypt.finalize, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>set.synchronized.dialog()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions set.synchronized.dialog set.synchronized.dialog set.synchronized.dialog ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">set.synchronized.dialog()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;set.synchronized.dialog&nbsp;
+					(string&nbsp;sess_code [, boolean&nbsp;editable.grid] [, boolean&nbsp;use.dialog.for.insert])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This defines for the current session the dialog to
+                  synchronize with. Both sessions act on the same maintable.
+               </p>
+               <p class="Paragraph">When the user double-clicks on an occurrence in the parent
+                  session, the synchronized dialog is updated with information
+                  from the selected record. The synchronized dialog also
+                  automatically opens when the user initiates any of the following
+                  actions: insert record, edit record or duplicate record. When a
+                  record is saved in the synchronized dialog, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> updates the
+                  occurrence in the parent window.
+               </p>
+               <p class="Paragraph">When the synchronized dialog is opened or updated, the <i class="Emphasis">synchronized.reason</i> variable (read-only) is set. This
+                  indicates the command that caused the synchronization. The
+                  possible values are: ADD.SET, DUPL.OCCUR, MODIFY.SET, and
+                  DISPLAY.SET. This variable is available in all sections in the
+                  synchronized dialog session.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>sess_code</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The session code of the single-occurrence dialog
+                           session.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">[boolean</td>
+                     <td class="none"><code>editable.grid</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies whether or not this parent session should
+                           allow an editable grid. The default is <code class="Code">false</code>. This parameter is irrelevant in
+                           case this parent session is a MMT controller.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[boolean</td>
+                     <td class="none"><code>use.dialog.for.insert</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies whether or not the dialog should be
+                           started for inserting or duplicating records. The
+                           default is <code class="Code">false</code>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <ul class="List">
+                  <li class="ListItem">If this function is used, then, by default, the overview
+                     session will automatically become read-only.
+                  </li>
+                  <li class="ListItem">If you want to combine a synchronized dialog with an
+                     editable grid, then you must set the <code class="Code">editable.grid</code> argument to <code class="Code">true</code>.
+                  </li>
+                  <li class="ListItem">As of <a href="../../progguide/tiv/tiv_1000.htm" class="manualLink">TIV 1000</a>,
+                     by default, an insert or duplicate in an editable grid or MMT
+                     controller session with a synchronized dialog will <i class="Emphasis">not</i> start the dialog.
+                     This can be overriden by specifying <code class="Code">true</code> for the <code class="Code">use.dialog.for.insert</code> argument.
+                  </li>
+                  <li class="ListItem">Preferably fill the 'Synchronized Dialog' property of the
+                     session, use this function only when the synchronized dialog
+                     is conditionally.
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_synchronized_sessions/overview.htm" class="manualLink">Synchronized sessions overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_synchronized_sessions/synopsis.htm" class="manualLink">Synchronized sessions synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_synchronized_sessions/example.htm" class="manualLink">Child synchronization sample program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_synchronized_sessions/set.synchronized.dialog, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

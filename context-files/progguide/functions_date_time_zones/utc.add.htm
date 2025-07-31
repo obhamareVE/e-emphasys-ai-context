@@ -1,0 +1,178 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>utc.add()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions utc.add utc.add utc.add ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">utc.add()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;utc.add&nbsp;
+					(long&nbsp;i.utc, long&nbsp;year, long&nbsp;month, long&nbsp;day, long&nbsp;hour, long&nbsp;minute, long&nbsp;second, long&nbsp;o.utc)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This adds years, months, days, hours, minutes, seconds to the
+                  input <a href="../../progguide/functions_date_time_zones/overview.htm#utc" class="commandLink">UTC</a> value and makes corrections if necessary.
+               </p>
+               <p class="Paragraph">It processes the parameters from bigger to smaller
+                  units:
+               </p>
+               <ul class="List">
+                  <li class="ListItem">First adds only years and the date is corrected (if
+                     started from a leap year)
+                  </li>
+                  <li class="ListItem">Than the months are added and the date is corrected to an
+                     existing one.
+                  </li>
+                  <li class="ListItem">The addition of days follow, and the result is so far the
+                     same hour, minutes, as it was in the beginning in the actual
+                     time-zone.
+                  </li>
+                  <li class="ListItem">Finally the hours, minutes, seconds are added.</li>
+               </ul>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="8" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>i.utc</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>year</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>month</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>day</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>hour</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>minute</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>second</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="8" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>o.utc</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">1</th>
+                     <td rowspan="1" colspan="1" class="none">Best guess.</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">2</th>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Failure. For example:</p>
+                        <ul class="List">
+                           <li class="ListItem">Any intermediate result involves a date before the year 1 or past the year 9999.</li>
+                           <li class="ListItem">Any intermediate result or the final result of the addition is negative or greater than the maximum value
+                              2^( <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-1) - 1
+                              of the signed <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-bit
+                              range.
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">This example shows the addition of days and hours across
+               winter/summertime change
+            </p><pre class="CodeBlock">
+    in_utc = date.to.utc(2002,3,29,13,30,0)
+
+    res = utc.add( in_utc, 0, 0, 1, 24, 0, 0, ou_utc )
+</pre><p class="Paragraph">The result in timezone "Europe/Amsterdam" is:
+               ou_utc=1017577800, res = 0 (that is 2002.3.31 14:30:00)
+            </p>
+            <p class="Paragraph">This example shows the addition of days across
+               winter/summertime change
+            </p><pre class="CodeBlock">
+    in_utc = date.to.utc(2002,3,29,13,30,0)
+
+    res = utc.add( in_utc, 0, 0, 2, 0, 0, 0, ou_utc )
+</pre><p class="Paragraph">The result in timezone "Europe/Amsterdam" is:
+               ou_utc=1017574200, res = 0 (that is 2002.3.31 13:30:00)
+            </p>
+            <p class="Paragraph">This example shows the substraction of 1 month from March
+               31st, 2000.
+            </p><pre class="CodeBlock">
+        in_utc = date.to.utc(2000,3,31,9,0,0)
+
+        res = utc.add( in_utc, 0, -1, 0, 0, 0, 0, ou_utc )
+</pre><p class="Paragraph">The result in timezone "Europe/Amsterdam" is:
+               ou_utc=951811200, res = 1 (that is 2000.2.29 9:0:0)
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_date_time_zones/synopsis.htm" class="manualLink">Dates, times, time zones synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_date_time_zones/overview.htm" class="manualLink">Dates, times, time zones overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_date_time_zones/utc.add, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Starting a browse list session</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="browsing starting a browse list session zooming starting a browse list session ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Starting a browse list session</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">In order to understand how to start browse list sessions from
+               	  the application directly, it is good to see how the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> does this.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Using the 4GL engine</div>
+            <p class="Paragraph">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> uses the following predefined variables while starting a browse
+               	  list session:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">Variable</th>
+                     <th rowspan="1" colspan="1" class="none">Description</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">attr.zoomcode</td>
+                     <td rowspan="1" colspan="1" class="none">Defines whether a session or a menu should be started. Possible
+                        			values: 0, Z.MENU, Z.SESSION
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">attr.zoomreturn$</td>
+                     <td rowspan="1" colspan="1" class="none">Name of the field of the browse list session to return. In case
+                        			an index is specified all fields of this index are returned.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">attr.zoomsession$</td>
+                     <td rowspan="1" colspan="1" class="none">Name of the session or menu to start.</td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">attr.zoomindex</td>
+                     <td rowspan="1" colspan="1" class="none">The index to start the browse list session with.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Based on these variables the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> basically performs the following:
+            </p>
+            <p class="Paragraph">Parent session:</p><pre class="CodeBlock">
+    &lt;attr.* variables get their values from corresponding DFE properties&gt;
+    &lt;call before.zoom section&gt;
+    | attr.* variables may have changed by application
+
+    if attr.zoomcode = 0 or do.input.again then
+        return
+    endif
+
+    value.after = start.session(
+        MODAL,                       | MODAL for browse lists
+        attr.zoomsession$,           | session to start
+        fattr.currfld$,              | current field name
+        attr.zoomreturn$             | the return field
+    )
+    if not isspace(value.after) then
+        | A value is selected
+        put.indexed.var(
+            pid,
+            fattr.currfld$,
+            val.after,
+            attr.element
+        )
+    endif
+
+    &lt;call after.zoom section&gt;
+</pre><p class="Paragraph">Note: Here you can see that the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> is not able to handle the situation where a complete index should
+               	  be returned. Function <i class="Emphasis">start.session()</i> will return e.g.
+               	  "tccom100._index2" and this value is stored in the current field. The
+               	  application has to correct this in the <i class="Emphasis">after.zoom</i> section.
+               	  See <a href="../../progguide/4gl_features/browsing_exporting.htm" class="manualLink">Exporting variables</a> for more information.
+            </p>
+            <p class="Paragraph">Browse list session:</p>
+            <p class="Paragraph">When the browse list session starts the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> imports the <i class="Emphasis">attr.zoomindex</i> variable. Based
+               	  on that variable values, the session starts up with the correct
+               	  key.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Using start.session directly</div>
+            <p class="Paragraph">Based on how the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> starts a browse session, the application can do this generally as
+               	  follows:
+            </p>
+            <p class="Paragraph">Parent session:</p><pre class="CodeBlock">
+field.ppmmm999.bpid:
+before.zoom:
+        tccom100.prbp = ppmmm999.prbp
+        tccom100.bpid = ppmmm999.bpid
+        session.zoomindex = 2
+        exit.val$ = start.session(        | exit.val$ is a predefined 4gl var
+                MODAL,                    | start as browse list
+                "tccom4500m000",          | the session code
+                prog.name$,               | just a default value
+                "tccom100._index2"        | fields to return
+        )
+        if not isspace(exit.val$) then
+                ppmmm999.prbp = tccom100.prbp
+                ppmmm999.bpid = tccom100.bpid
+        endif
+        input.again()                     | Skip automatic zoom
+</pre><p class="Paragraph">For purposes of re-use this part can be implemented in a
+               	  separate DLL:
+            </p>
+            <p class="Paragraph">Parent session:</p><pre class="CodeBlock">
+field.ppmmm999.bpid:
+before.zoom:
+        tccom.dll4500.browse.bus.partners.by.parent(
+                ppmmm999.prbp,
+                ppmmm999.bpid
+        )
+        input.again()
+
+</pre><p class="Paragraph">tccom DLL:</p><pre class="CodeBlock">
+        table   ttcom100
+
+        string  ret$
+
+function extern void tccom.dll4500.browse.bus.partners.by.parent(
+ref     domain  tccom.bpid      io.parent,
+ref     domain  tccom.bpid      io.bus.partner
+)
+{
+        tccom100.prbp = io.parent
+        tccom100.bpid = io.bus.partner
+        session.zoomindex = 2
+        ret$ = start.session(
+                MODAL,
+                "tccom4500m000",
+                prog.name$,
+                "tccom100._index2"
+        )
+        if not isspace(ret$) then
+                io.parent = tccom100.prbp
+                io.bus.partner = tccom100.bpid
+        endif
+}
+</pre><p class="Paragraph">Notes on the zoomname argument of start.session():</p>
+            <ul class="List">
+               <li class="ListItem">This argument should not be an empty string, otherwise the
+                  		browse list session will not call the <i class="Emphasis">zoom.from.*</i> sections, nor will it export the return field(s) when the browse list session
+                  		ends.
+               </li>
+               <li class="ListItem">You can also pass <i class="Emphasis">fattr.currfld$</i> as the
+                  		zoomname argument of <i class="Emphasis">start.session()</i>, but then you should
+                  		use <i class="Emphasis">attr.zoomindex</i> instead of <i class="Emphasis">session.zoomindex</i>, like this:It is recommended to pass <i class="Emphasis">prog.name$</i> by default.
+               </li>
+            </ul><pre class="CodeBlock">
+        attr.zoomindex = 2
+        ret$ = start.session(
+                MODAL,
+                "tccom4500m000",
+                fattr.currfld$,
+                "tccom100._index2"
+        )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/browsing_definition.htm" class="manualLink">Definition</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/browsing_overview.htm" class="manualLink">Overview of browsing</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/browsing_importing.htm" class="manualLink">Importing variables</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/browsing_exporting.htm" class="manualLink">Exporting variables</a></li>
+               <li class="RelTopic"><a href="../../progguide/misc/predefined_variables.htm" class="manualLink">Predefined variables</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_starting_and_stopping_programs/start.session.htm" class="manualLink">start.session()</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/4gl_features/browsing_starting, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

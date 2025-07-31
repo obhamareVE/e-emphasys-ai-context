@@ -1,0 +1,126 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>create.progress.indicator()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="create.progress.indicator create.progress.indicator functions create.progress.indicator ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">create.progress.indicator()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;create.progress.indicator&nbsp;
+					(string&nbsp;title [, long&nbsp;mode])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This creates a progress indicator with the specified title displayed in its title bar. 
+                  			The progress indicator is activated after the first update 
+                  			(using <a href="../../progguide/functions_progress_indicators/change.progress.indicator.htm" class="manualLink">change.progress.indicator()</a>). 
+                  			It is removed again using <a href="../../progguide/functions_progress_indicators/destroy.progress.indicator.htm" class="manualLink">destroy.progress.indicator()</a>, 
+                  			or automatically if PROGRESS.NOAUTODESTROY is not specified.
+               </p>
+               <p class="Paragraph">Only one progress indicator can be active at the same time. If this function is not successful, then it is not
+                  			allowed to change or destroy the progress indicator.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>title</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The title for the progress indicator window.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>mode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This optional argument can specify a combination of the following values:</p>
+                        <table border="0" class="none">
+                           <tbody noTR="4" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">PROGRESS.BAR</td>
+                                 <td rowspan="1" colspan="1" class="none">Create a progress bar.</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">PROGRESS.STOP</td>
+                                 <td rowspan="1" colspan="1" class="none">Add a Stop button to the progress bar window. The user can click on this button to 
+                                    							stop the operation; changes already made are not canceled.
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">PROGRESS.CANCEL</td>
+                                 <td rowspan="1" colspan="1" class="none">Add a Cancel button to the progress bar window. The user can click on this button to 
+                                    							stop the operation; any changes already made are canceled.
+                                 </td>
+                              </tr>
+                              <tr no="4" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">PROGRESS.NOAUTODESTROY</td>
+                                 <td rowspan="1" colspan="1" class="none">The progress bar window is not automatically destroyed when the progress bar value changes 
+                                    							to 100%, or when the user clicks Stop or Cancel, or closes the indicator.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">0</td>
+                     <td rowspan="1" colspan="1" class="none">Success</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">-1</td>
+                     <td rowspan="1" colspan="1" class="none">Error</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_progress_indicators/overview_and_synopsis.htm" class="manualLink">Progress indicators overview and synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_progress_indicators/example.htm" class="manualLink">Progress indicators sample program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_progress_indicators/create.progress.indicator, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

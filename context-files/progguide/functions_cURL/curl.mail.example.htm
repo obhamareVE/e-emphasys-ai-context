@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>cURL email example</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="cURL cURL email example ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">cURL email example</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">This example shows how an email can be sent to multiple recipients and arbitrary "from" address using cURL.
+               Error handling is not fully handled in this example. 
+               The return value of all functions need to be checked when similar code is used in production environments.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Main routine</div>
+            <p class="Paragraph">The basic cURL functions as used in the example below are available starting at bshell TIV level 2001.</p><pre class="CodeBlock">
+function main()
+{
+        long status
+        string url(100)
+        long ListId, fp
+
+        | This must be the name of your SMTP server.
+        url = "smtp://mail.infor.com."
+        status = curl.setopt.url(url)
+
+        curl.setopt.mail_from("&lt;sender.name@example.org&gt;")
+
+        | This string will be used to specify the authentication address (identity)
+        | of a submitted message that is being relayed to another server.
+        curl.setopt.mail_auth("sender.name@example.org")
+
+        | Add all mail recipients here.
+        ListId = 0
+        ListId = curl.slist.append(ListId,"&lt;recipient1@some.place.org&gt;"))
+        ListId = curl.slist.append(ListId,"&lt;recipient2@some.other.org&gt;"))
+        curl.setopt.mail_rcpt(ListId))
+
+        | There are various ways to provide the body of the mail. This uses a file.
+        | The contents of the file should at least have a "Subject: " followed
+        | by an empty line, followed by the body of the mail.
+        fp = seq.open("body_of_mail.txt", "r")
+        curl.setopt.readdata(fp)
+        curl.setopt.upload(1)
+
+        | actually send the mail
+        status = curl.perform()
+
+        seq.close(fp)
+}
+</pre></div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_cURL/curl.mail.example, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

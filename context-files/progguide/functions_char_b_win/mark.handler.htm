@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>mark.handler()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions mark.handler mark.handler mark.handler ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">mark.handler()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;mark.handler&nbsp;
+					(ref long&nbsp;mark.table())</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This function is only supported for
+                  character-based windows and its usage is therefore
+                  deprecated.
+               </p>
+               <p class="Paragraph">This enables a user to mark one or more records on an ASCII
+                  form. On return, the <i class="Emphasis">mark.table</i> argument indicates which
+                  records are marked. Each element in the <i class="Emphasis">mark.table</i> array
+                  corresponds to a record on the form. If an array element is set
+                  to 1, the corresponding record is marked. If it set to 0, the
+                  corresponding array element is not marked.
+               </p>
+               <p class="Paragraph">The predefined variables <i class="Emphasis">marked</i> and <i class="Emphasis">mark.status</i> are not affected by this function.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>mark.table()</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">0 no records marked</p>
+            <p class="Paragraph">1 one or more records marked</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			4GL
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+| if records 3 and 8 are marked, the following is true
+| mark.table(3) = 1
+| mark.table(8) = 1
+| other elements are 0 (false)
+
+for i=1 to filled.occ
+                if mark.table(i) then
+                                do.occ(i, some_function)
+                endif
+endfor
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_char_b_win/overview_and_synopsis.htm" class="manualLink">Character-based windows - overview and synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/mark.occ.htm" class="manualLink">mark.occ()</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_char_b_win/mark.handler, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>int()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions int int int ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">int()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;int&nbsp;
+					(double&nbsp;x)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">The function int() performs explicit <a href="../../progguide/3gl_features/type_conversions.htm#double_to_long_type_conversion" class="manualLink">double to long type conversion</a>.
+               </p>
+               <p class="Paragraph">If the supplied double value is positive,
+                  it is incremented by 0.0000001
+                  as the first step of the conversion.
+                  If the supplied value is negative,
+                  it is decremented by 0.0000001
+                  as the first step of the conversion.
+                  This is done to avoid rounding problems.
+               </p>
+               <p class="Paragraph">The next step of the explicit conversion
+                  uses the same algorithm as implicit double to long type conversion:
+                  discarding the fractional part of the double value,
+                  leaving only its integer part.
+               </p>
+               <p class="Paragraph">If the exact resulting integer value is outside the signed <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-bit
+                  range of the long data type,
+                  then the result is undefined.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">double</td>
+                     <td class="none"><code>x</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The long value resulting from the described explicit <a href="../../progguide/3gl_features/type_conversions.htm#double_to_long_type_conversion" class="manualLink">double to long type conversion</a> applied to the supplied input value.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">Straightforward <a href="../../progguide/3gl_features/assignment_operator.htm" class="manualLink">assignment</a> of a floating point value to a variable of type long
+                  is allowed.
+                  The implicit type conversion performed during such an assignment
+                  does not include the additional rounding applied beforehand
+                  by the explicit type conversion performed by the function int().
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_mathematical_operations/overview.htm" class="manualLink">Mathematical operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_mathematical_operations/synopsis.htm" class="manualLink">Mathematical operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_mathematical_operations/int, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Filter Hooks</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Filter Hooks</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">In several cases data from the Database must be hidden. In Baan
+               ERP UI this can be programmed via specific query extends in the
+               UI-script or in the DAL. This means that an end-user will never see
+               certain data.
+            </p>
+            <p class="Paragraph">This mechanism is also present for retrival methods like
+               List and Show, where objects or parts of objects can be hidden
+               for end-users or a client application.
+            </p>
+            <p class="Paragraph">This is called BO filtering.</p>
+            <p class="Paragraph">Since BO filters are application specific, the filters are
+               part of the specific hooks in the Protected Layer of the BOL.
+               The hooks for object filters must be specified per BO
+               component.
+            </p>
+            <p class="Paragraph">Each filter hook has to be created manually in the
+               development part of the script.
+            </p>
+            <p class="Paragraph">The name of the hook is built as follows:</p>
+            <ul class="List">
+               <li class="ListItem">&lt;dll name&gt;.&lt;component
+                  name&gt;.object.filter()
+               </li>
+               <li class="ListItem">example: gaadv.bl090sf00.Header.object.filter()</li>
+               <li class="ListItem">example without component:
+                  gaadv.bl091sf00.object.filter()
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Typical example</div>
+            <p class="Paragraph">When a List or Show is executed on BO 'SalesOrder'
+               (tdsls040), objects that are canceled will never be shown.
+            </p><pre class="CodeBlock">
+tdsls.bl040sf00.Header.object.filter(
+                    ref string  oComponentFilter)
+{
+    |* Do not allowed reading canceled Sales Orders
+    oComponentFilter = "tdsls400.clyn &lt;&gt; tcyesno.yes"
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/bol/specific_methods.htm" class="manualLink">Specific Methods</a></li>
+               <li class="RelTopic"><a href="../../progguide/bol/before_hooks.htm" class="manualLink">Before and After Method Hooks</a></li>
+               <li class="RelTopic"><a href="../../progguide/bol/st_layer.htm" class="manualLink">Protected Layer</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/bol/filter_hooks, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

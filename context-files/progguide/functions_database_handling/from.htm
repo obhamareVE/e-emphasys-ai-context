@@ -1,0 +1,149 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>FROM clause</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="FROM SELECT statement FROM clause ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">FROM clause</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The FROM clause specifies a table derived from one or more
+               tables. It forms the basis row set for the WHERE clause, GROUP
+               BY clause, HAVING clause and SELECT clause.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;from clause&gt;
+    ::= FROM &lt;table reference&gt; [{, &lt;table reference&gt;}...]
+
+&lt;table reference&gt;
+    ::= &lt;table name&gt; [[AS] &lt;correlation name&gt;] [FOR UPDATE]
+      | &lt;joined table&gt;
+      | &lt;derived table&gt;
+
+&lt;joined table&gt;
+    ::= &lt;table reference&gt; LEFT [OUTER] JOIN &lt;table reference&gt;
+           ON <a href="../../progguide/functions_database_handling/search_condition.htm" class="manualLink">Search condition</a>
+      | &lt;table reference&gt; RIGHT [OUTER] JOIN &lt;table reference&gt;
+           ON <a href="../../progguide/functions_database_handling/search_condition.htm" class="manualLink">Search condition</a>
+      | &lt;table reference&gt; [INNER] JOIN &lt;table reference&gt;
+           ON <a href="../../progguide/functions_database_handling/search_condition.htm" class="manualLink">Search condition</a>
+      | ( &lt;joined table&gt; )
+
+&lt;table name&gt;
+    ::= !! <i class="Emphasis">a valid table name</i>
+    
+&lt;derived table&gt;
+    ::= ( <a href="../../progguide/functions_database_handling/query_expression.htm" class="manualLink">Query expression</a> ) [AS] &lt;correlation name&gt;
+
+&lt;correlation name&gt;
+    ::= <a href="../../progguide/functions_database_handling/identifier.htm" class="manualLink">Identifier</a>
+      </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph"><i class="Emphasis">I.</i> The <i class="Emphasis">&lt;correlation name&gt;</i> shall not
+               contain a period (.).
+            </p>
+            <p class="Paragraph">The following example is incorrect, because the correlation
+               name <i class="Emphasis">all.employees</i> contains a period.
+            </p><pre class="CodeBlock">
+FROM dbtst120 all.employees
+</pre><p class="Paragraph"><i class="Emphasis">II.</i> The FROM clause shall not contain duplicate
+               correlation names or table names without correlation names.
+            </p>
+            <p class="Paragraph">The following example is incorrect, because the table name <i class="Emphasis">dbtst120</i> appears twice in the FROM clause.
+            </p><pre class="CodeBlock">
+FROM dbtst120, dbtst120
+</pre><p class="Paragraph">The following example is incorrect, because the correlation
+               name <i class="Emphasis">table</i> appears twice in the FROM clause.
+            </p><pre class="CodeBlock">
+FROM dbtst120 table, dbtst100 table
+</pre><p class="Paragraph">The following example is incorrect, because <i class="Emphasis">dbtst100</i> is used both as a table name and a correlation name.
+            </p><pre class="CodeBlock">
+FROM dbtst120 dbtst100, dbtst100
+</pre><p class="Paragraph"><i class="Emphasis">III.</i> If a JOIN is used in the FROM clause, then <a href="../../progguide/functions_database_handling/refers_to_pred.htm" class="manualLink">REFERS TO predicate</a> clauses are not
+               allowed in the <a href="../../progguide/functions_database_handling/where.htm" class="manualLink">WHERE clause</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">If the containing SELECT statement does not contain a WHERE
+               clause that contains REFERS TO predicates, the FROM clause
+               specifies a table that is the Cartesian product of all tables in
+               the FROM clause. If it does contain a WHERE clause containing
+               REFERS TO predicates then the tables in the FROM clause are
+               joined as described in the section on <a href="../../progguide/functions_database_handling/refers_to_pred.htm" class="manualLink">REFERS TO predicate</a>.
+            </p>
+            <p class="Paragraph">If a <i class="Emphasis">&lt;table reference&gt;</i> contains the <i class="Emphasis">FOR
+                  UPDATE</i> keywords, then the SELECT clause of the containing
+               SELECT statement is effectively expanded with all columns of the
+               table. For example, consider the folowing statement.
+            </p><pre class="CodeBlock">
+SELECT edlevel
+FROM dbtst120 employees FOR UPDATE
+</pre><p class="Paragraph">The above statement is equivalent with the following
+               statement.
+            </p><pre class="CodeBlock">
+SELECT edlevel, employees.*
+FROM dbtst120 employees FOR UPDATE
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following example specifies a table that has the same
+               rows as table dbtst100 and has column names <i class="Emphasis">dbtst100.deptno</i>, <i class="Emphasis">dbtst100.deptname</i>, <i class="Emphasis">dbtst100.mgrno</i>, <i class="Emphasis">dbtst100.location</i>, <i class="Emphasis">dbtst100.admrdept</i> and <i class="Emphasis">dbtst100._compnr</i>.
+            </p><pre class="CodeBlock">
+FROM dbtst100
+</pre><p class="Paragraph">The following example specifies a table that has the same
+               rows as table dbtst100 and has column names <i class="Emphasis">depts.deptno</i>,
+               ...
+            </p><pre class="CodeBlock">
+FROM dbtst100 depts
+</pre><p class="Paragraph">The following example specifies a table that is the Cartesian
+               product of table dbtst100 with itself 
+               
+               (unless the WHERE clause
+               has a REFERS TO predicate on these tables, then it is an outer
+               join) 
+               
+               and has column names <i class="Emphasis">depts.deptno</i>, <i class="Emphasis">depts.deptname</i>, ..., <i class="Emphasis">admin_depts.deptno</i>, <i class="Emphasis">admin_depts.deptname</i>, ...
+            </p><pre class="CodeBlock">
+FROM dbtst100 depts, dbtst100 admin_depts
+</pre><p class="Paragraph">(Note that this is not a violation of restriction II above,
+               since both occurrences of table name dbtst100 are hidden by the
+               correlation names.)
+            </p>
+            <p class="Paragraph">The following example demonstrates the use of a <i class="Emphasis">derived table</i> and an INNER JOIN.
+            </p><pre class="CodeBlock">FROM ( SELECT edlevel, MAX( salary ) AS max_salary
+       FROM dbtst120
+       GROUP BY edlevel ) max_salary_by_edlevel
+     INNER JOIN 
+     dbtst120 AS employees 
+     ON max_salary_by_edlevel.max_salary = employees.salary</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/select.htm" class="manualLink">SELECT clause</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/refers_to_pred.htm" class="manualLink">REFERS TO predicate</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/compnr_pred.htm" class="manualLink">_compnr predicate</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/sql_and_delayed_locks.htm" class="manualLink">SQL and delayed locks</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/from, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

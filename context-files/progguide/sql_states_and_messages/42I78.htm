@@ -1,0 +1,40 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42I78 - Invalid timestamp string</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42I78 - Invalid timestamp string</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">An invalid timestamp string literal is specified.</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+select TIMESTAMP 'Tue Nov 28 11:49:17 NFT 2006'
+from   dbtst120
+</pre><p class="Paragraph">The format of the timestamp string literal is not correct. This query causes
+               the error:
+            </p>
+            <p class="Paragraph">SQLState 42I78: Invalid timestamp string Tue Nov 28 11:49:17 NFT 2006</p>
+            <p class="Paragraph">The proper format is 'YYYY-MM-DD hh:mm:ss':</p><pre class="CodeBlock">
+select TIMESTAMP '2006-11-28 11:49:17'
+from   dbtst120
+</pre></div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42I78, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

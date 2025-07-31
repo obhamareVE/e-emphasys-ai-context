@@ -1,0 +1,68 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>TEXT_CONTENT function</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="TEXT_CONTENT function ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">TEXT_CONTENT function</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">With the TEXT_CONTENT function you can retrieve the text content for
+               a column that is a text reference.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;text content function&gt;
+    ::= TEXT_CONTENT ( <a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">Column reference</a> [ , <a href="../../progguide/functions_database_handling/string_constant.htm" class="manualLink">String constant</a> ] )
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">The <i class="Emphasis">&lt;column reference&gt;</i> shall identify a column that is a text reference.
+            </p>
+            <p class="Paragraph">The length of the optional <i class="Emphasis">&lt;string constant&gt;</i> argument shall be 1.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The data type of the result of the TEXT_CONTENT function is <i class="Emphasis">string</i>.
+            </p>
+            <p class="Paragraph">The optional <i class="Emphasis">&lt;string const&gt;</i> argument identifies the
+               language for the text content. If <i class="Emphasis">&lt;string const&gt;</i> is omitted then
+               the current language of the user will be used.
+            </p>
+            <p class="Paragraph">If a text description does not exist (so the text number is for the specified language 
+               not available in the text table) then the result is a NULL value.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following TEXT_CONTENT function returns the text content for the
+               text reference column <i class="Emphasis">dbtst107.text</i>.
+            </p><pre class="CodeBlock">
+TEXT_CONTENT( dbtst107.text )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">Column reference</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/text_content_function, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

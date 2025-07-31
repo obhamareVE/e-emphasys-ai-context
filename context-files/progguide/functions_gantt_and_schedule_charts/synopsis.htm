@@ -1,0 +1,312 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <table border="0" class="none">
+               <tbody noTR="36" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_init.htm" class="manualLink">plcm.init</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string title, long initial.types [,long
+                           options])</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_add_root_activity.htm" class="manualLink">plcm.add.root.activity</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string root.activity.id, string
+                           root.activity.name)</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_add_root_resource.htm" class="manualLink">plcm.add.root.resource</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string root.resource.id, string
+                           root.resource.name)</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_add_activity.htm" class="manualLink">plcm.add.activity</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string parent.activity.id, string activity.id,
+                           string activity.name, [long start.date, long end.date],
+                           [long completion.percentage])</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_add_resource.htm" class="manualLink">plcm.add.resource</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string parent.resource.id, string resource.id,
+                           string resource.name, [long quantity])</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_add_constraint.htm" class="manualLink">plcm.add.constraint</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string activity.id.from, string activity.id.to,
+                           long constraint.type)</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_add_reservation.htm" class="manualLink">plcm.add.reservation</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string activity.id, string
+                           resource.id)</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_add_activity_property.htm" class="manualLink">plcm.add.activity.property</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string property.id, string
+                           property.label)</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_set_activity_property_value.htm" class="manualLink">plcm.set.activity.property.value</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string activity.id, string property.id, string
+                           property.value)</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_add_resource_property.htm" class="manualLink">plcm.add.resource.property</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string property.id, string
+                           property.label)</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_set_resource_property_value.htm" class="manualLink">plcm.set.resource.property.value</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string resource.id, string property.id, [string
+                           property.value])</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_delete_activity.htm" class="manualLink">plcm.delete.activity</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string activity.id)</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_delete_resource.htm" class="manualLink">plcm.delete.resource</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string resource.id)</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_delete_constraint.htm" class="manualLink">plcm.delete.constraint</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string activity.id.from, string activity.id.to,
+                           long constraint.type)</code></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_delete_reservation.htm" class="manualLink">plcm.delete.reservation</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string activity.id , string
+                           resource.id)</code></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_move_activity.htm" class="manualLink">plcm.move.activity</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string activity.id, long start.date, long
+                           end.date)</code></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_create_legend_entry.htm" class="manualLink">plcm.create.legend.entry</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string legend.id, long color, string
+                           description)</code></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_set_legend_for_activity.htm" class="manualLink">plcm.set.legend.for.activity</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string activity.id, string
+                           legend.id)</code></td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_set_legend_for_activity_division.htm" class="manualLink">plcm.set.legend.for.activity.division</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string activity.id, string legend.id, long
+                           start.percentage, long end.percentage)</code></td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_set_activity_name.htm" class="manualLink">plcm.set.activity.name</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string activity.id, string name)</code></td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_set_activity_start_date.htm" class="manualLink">plcm.set.activity.start.date</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string activity.id, long
+                           start.date)</code></td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_set_activity_end_date.htm" class="manualLink">plcm.set.activity.end.date</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string activity.id, long end.date)</code></td>
+                  </tr>
+                  <tr no="23" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_set_activity_completion_percentage.htm" class="manualLink">plcm.set.activity.completion.percentage</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string activity.id, long
+                           completion.percentage)</code></td>
+                  </tr>
+                  <tr no="24" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_set_resource_name.htm" class="manualLink">plcm.set.resource.name</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string resource.id, string name)</code></td>
+                  </tr>
+                  <tr no="25" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_set_resource_quantity.htm" class="manualLink">plcm.set.resource.quantity</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string resource.id, long quantity)</code></td>
+                  </tr>
+                  <tr no="26" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_add_command.htm" class="manualLink">plcm.add.command</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string command.id, const string
+                           command.text())</code></td>
+                  </tr>
+                  <tr no="27" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_start.htm" class="manualLink">plcm.start</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">()</code></td>
+                  </tr>
+                  <tr no="28" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_clear.htm" class="manualLink">plcm.clear</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">()</code></td>
+                  </tr>
+                  <tr no="29" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_command_performed.htm" class="manualLink">plcm.command.performed</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string command.id, const long
+                           activities.context.count, const string
+                           activities.context(,), const long resources.context.count,
+                           const string resources.context(,))</code></td>
+                  </tr>
+                  <tr no="30" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_activity_moved.htm" class="manualLink">plcm.activity.moved</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string activity.id, long start.date, long
+                           end.date)</code></td>
+                  </tr>
+                  <tr no="31" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_activity_deleted.htm" class="manualLink">plcm.activity.deleted</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(const string activity.id)</code></td>
+                  </tr>
+                  <tr no="32" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_activity_action_performed.htm" class="manualLink">plcm.activity.action.performed</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(const string activity.id)</code></td>
+                  </tr>
+                  <tr no="33" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_resource_deleted.htm" class="manualLink">plcm.resource.deleted</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(const string resource.id)</code></td>
+                  </tr>
+                  <tr no="34" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_constraint_deleted.htm" class="manualLink">plcm.constraint.deleted</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(const string activity.id.from, const string
+                           activity.id.to, const long constraint.type)</code></td>
+                  </tr>
+                  <tr no="35" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_reservation_changed.htm" class="manualLink">plcm.reservation.changed</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(const string activity.id, const string
+                           old.resource.id, const new.resource.id)</code></td>
+                  </tr>
+                  <tr no="36" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_gantt_and_schedule_charts/plcm_reservation_deleted.htm" class="manualLink">plcm.reservation.deleted</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(const string activity.id, const string
+                           resource.id)</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_gantt_and_schedule_charts/synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

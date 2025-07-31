@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>PCM_OT_DELAY – delay time object</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="pcm_ot_delay delay time object ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">PCM_OT_DELAY – delay time object</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">Delay time is a span of time characterized as non-working
+      time – for example, weekends and holidays. It can be
+      indicated in a chart by hatched lines. You must create a
+      PCM_OT_DELAY object for each delay time period you want to
+      include in the chart. The same delay time object can be
+      repeated at regular intervals – to indicate weekends, for
+      example.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmDelayStart</p>
+                        <p class="Paragraph">(double)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">The starting point of the delay time on the time
+                        scale.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmDelayFinish</p>
+                        <p class="Paragraph">(double)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">The end point of the delay time on the time
+                        scale.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmDelayRepeat</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This indicates whether or not the delay time is
+                           repeated. The possible values are:
+                        </p>
+                        <p class="Paragraph">true&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay time is repeated</p>
+                        <p class="Paragraph">false&nbsp;&nbsp;&nbsp; delay time occurs only once</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmDelayInterval</p>
+                        <p class="Paragraph">(double)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">If PcmDelayRepeat = true, use this flag to
+                        specify the interval at which the delay time must be
+                        repeated. The format depends on the division of the
+                        time scale.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/overview.htm" class="manualLink">Plan Chart Manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/synopsis.htm" class="manualLink">Plan Chart Manager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/example.htm" class="manualLink">Plan Chart Manager: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_plan_chart_manager/delay_time_object, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

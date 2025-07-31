@@ -1,0 +1,102 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>before.save.object()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="before.save.object before.save.object functions before.save.object ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">before.save.object()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;function extern long&nbsp;before.save.object&nbsp;
+					(long&nbsp;mode)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this to program checks that determine whether saving a
+                  record is permitted. The <i class="Emphasis">mode</i> argument is set by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="manualLink">4GL engine</a>. The
+                  possible values are:
+               </p>
+               <p class="Paragraph">DAL_NEW indicates a new record</p>
+               <p class="Paragraph">DAL_UPDATE indicates a record being updated</p>
+               <p class="Paragraph"><i class="Emphasis">This object hook replaces the</i> before.write and <i class="Emphasis">before.rewrite</i> subsections of the <i class="Emphasis">main.table.io</i> event section in a UI script. If there is a
+                  DAL for an object set, this hook is called to perform the
+                  necessary checks. Any <i class="Emphasis">before.write</i> and <i class="Emphasis">before.rewrite</i> sections in the UI script are ignored. So,
+                  if a UI script contains <i class="Emphasis">before.write</i> and <i class="Emphasis">before.rewrite</i> sections for the main table, you must
+                  replace these by <i class="Emphasis">before.save.object()</i> hooks in the DAL.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>mode</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			DAL
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return value</div>
+            <p class="Paragraph">The hook returns 0 if saving the record is permitted. If the
+               hook returns a negative value (DALHOOKERROR), the transaction
+               should be canceled.
+            </p>
+            <p class="Paragraph">If the hook was called directly by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a>, the
+               transaction is canceled automatically. If the hook was not
+               called by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a>, the
+               transaction must be canceled by calling <a href="../../progguide/functions_db_operations/abort.transaction.htm" class="manualLink">abort.transaction()</a> or <a href="../../progguide/functions_db_operations/abort.io.htm" class="manualLink">abort.io()</a>,
+               typically in the UI script.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+function extern long before.save.object(long mode)
+{
+    if mode = DAL_NEW then
+        | this is code from before.write subsection
+    else
+        | this is code from before.rewrite subsection
+    endif
+    return(0)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_glossary.htm" class="manualLink">DAL terminology</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/object_hooks.htm" class="manualLink">Object hooks</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/before.save.object, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Array size hint</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="array size hint query hints array size hint ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Array size hint</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The array size hint specifies the size of the array to be used
+               for array fetching (see also <a href="../../progguide/functions_query_hints/array_fetching_hint.htm" class="manualLink">Array fetching hint</a>).
+            </p>
+            <p class="Paragraph">It specifies the maximum number of records that the array
+               can hold. It only specifies the size, it does not actually
+               enable array fetching. If the driver does not perform array
+               fetching by default then you need to enable it with an array
+               fetching hint. For example:
+            </p><pre class="CodeBlock">
+select a.bpid
+from   tfgld106 a, tccom100 b
+where  a.bpid refers to b
+hint   array fetching
+and    array size 1000
+</pre><p class="Paragraph">The size specified will override the default array size
+               (for this particular query). The size must be at least 1. If
+               the database does not support array fetching this hint is
+               simply ignored.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/hint_types.htm" class="manualLink">Hint types</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/array_fetching_hint.htm" class="manualLink">Array fetching hint</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/overview.htm" class="manualLink">Query hints overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_query_hints/array_size_hint, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

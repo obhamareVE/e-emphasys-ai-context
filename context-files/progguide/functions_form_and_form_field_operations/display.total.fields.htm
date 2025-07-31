@@ -1,0 +1,135 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>display.total.fields()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="display.total.fields display.total.fields functions display.total.fields ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">display.total.fields()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;display.total.fields&nbsp;
+					(string&nbsp;fieldname1, void&nbsp;value1, string&nbsp;fieldname2,..., void&nbsp;value2,...)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">When a total line is included in a form, this function
+                  displays total values for specified fields in the grid. The
+                  function takes one or more pairs of arguments. In each pair, the
+                  first argument is the field name; the second argument is the
+                  total value for that field.
+               </p>
+               <p class="Paragraph">The fields must be defined on the form as multioccurrence
+                  form fields. They must also be declared in the UI script.
+                  Alternately, the fields can be table fields.
+               </p>
+               <p class="Paragraph">To add a total line to a grid, add the following code to the
+                  UI script:
+               </p><pre class="CodeBlock">
+before.program:
+    fattr.total.line = true
+</pre><p class="Paragraph">Preferably call this function from the program section <a href="../../progguide/4gl_features/4gl_program_sections.htm" class="manualLink">on.display.total.line</a>.
+                  Alternatively for every update that effects the total fields, call <i class="Emphasis">display.total.fields()</i> to display the new totals.
+               </p>
+               <p class="Paragraph">The total line can display an enum value. To do this, the
+                  description of the enum must be passed using <a href="../../progguide/functions_enumerates/enum.descr.htm" class="manualLink">enum.descr$()</a>. For example:
+               </p><pre class="CodeBlock">
+display.total.fields( "tffbs.dbcr", 
+                      enum.descr$( "tfgld.dbcr", tfgld.dbcr.debit ) )
+</pre></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>fieldname1</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>value1</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>fieldname2,...</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>value2,...</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">Total fields are always read-only. They cannot be disabled or
+                  enabled.
+               </p>
+               <p class="Paragraph">Total fields have the same display properties as the fields
+                  above them.
+               </p>
+               <p class="Paragraph">If a field specified by the function is an array field, the
+                  total value is displayed in the first field of the array.
+                  Subsequent fields in the array cannot be addressed by the
+                  function.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+before.program:
+    fattr.total.line = true
+
+on.display.total.line:
+    display.total.fields( "whwmd000.amnt1", tot_1, 
+                          "whwmd000.amnt2", tot_2 )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/overview.htm" class="manualLink">Form and form field operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/synopsis.htm" class="manualLink">Form and form field operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_form_and_form_field_operations/display.total.fields, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

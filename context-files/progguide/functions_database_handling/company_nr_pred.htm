@@ -1,0 +1,124 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>company_nr predicate</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="company numbers company_nr predicate ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">company_nr predicate</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The company_nr predicate is used to restrict the set of possible values for
+               the company_nr column. In that respect a company_nr predicate is just the same 
+               as any other search condition involving an arbitrary column reference.
+            </p>
+            <p class="Paragraph">One aspect in which the company_nr predicate deviates is that when no company_nr
+               predicate is specified, then the set of possible values for the company_nr column
+               is restricted to just one company number: the current company number of the user.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;company_nr predicate&gt;
+    ::= &lt;company_nr column reference&gt; = &lt;company value&gt;
+      | &lt;company_nr column reference&gt; IN &lt;company number set&gt;
+      
+
+&lt;company_nr column reference&gt;
+    ::= !! <i class="Emphasis">a <a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">Column reference</a> whose column name is company_nr</i>
+
+&lt;company value&gt;
+    ::= &lt;company number&gt;
+      | &lt;company_nr column reference&gt;
+      | <a href="../../progguide/functions_database_handling/parameter.htm" class="manualLink">Parameter</a>
+
+&lt;company number set&gt;
+    ::= ( &lt;company number&gt; [{, &lt;company number&gt;}...] )
+      
+&lt;company number&gt;
+    ::= <a href="../../progguide/functions_database_handling/integer_constant.htm" class="manualLink">Integer constant</a>      
+      </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph"><i class="Emphasis">I.</i> The value of the <i class="Emphasis">&lt;company number&gt;</i> must lie between 0 and 999,
+               all inclusive.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">II.</i> The <i class="Emphasis">&lt;parameter&gt;</i> must be of type <i class="Emphasis">integer</i>.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">III.</i> A <i class="Emphasis">&lt;company_nr predicate&gt;</i> shall neither be contained
+               in an <a href="../../progguide/functions_database_handling/or_sc.htm" class="manualLink">OR condition</a> nor be contained in a <a href="../../progguide/functions_database_handling/not_sc.htm" class="manualLink">NOT condition</a>.
+            </p>
+            <p class="Paragraph">The following example demonstrates the incorrect use of a <i class="Emphasis">&lt;company_nr predicate&gt;</i> in a .
+            </p><pre class="CodeBlock">
+SELECT * FROM dbtst120
+WHERE dbtst120.company_nr IN (100,200) OR empno = 10
+</pre><p class="Paragraph"><i class="Emphasis">IV.</i> A  shall contain at most one <i class="Emphasis">&lt;company number set&gt;</i>.
+            </p>
+            <p class="Paragraph">The following example demonstrates the incorrect use of more than one <i class="Emphasis">&lt;company number set&gt;</i> in one .
+            </p><pre class="CodeBlock">
+SELECT * FROM dbtst120, dbtst100
+WHERE dbtst120.company_nr IN (100,200) AND dbtst100.company_nr IN (200,300)
+</pre><p class="Paragraph"><i class="Emphasis">V.</i> At most one <i class="Emphasis">&lt;company_nr predicate&gt;</i> shall reference any one .
+            </p>
+            <p class="Paragraph">The following example demonstrates the incorrect use of more than one <i class="Emphasis">&lt;company_nr predicate&gt;</i> referencing the same .
+            </p><pre class="CodeBlock">
+SELECT * FROM dbtst120
+WHERE company_nr = 100 AND company_nr = 200
+</pre><p class="Paragraph"><i class="Emphasis">VI.</i> If a company number set of any  is restricted with a <i class="Emphasis">&lt;company_nr predicate&gt;</i> then
+               the company number set of <i class="Emphasis">every</i>  shall be restricted with a <i class="Emphasis">&lt;company_nr predicate&gt;</i>.
+            </p>
+            <p class="Paragraph">The following example demonstrates the incorrect use of more than one <i class="Emphasis">&lt;company_nr predicate&gt;</i> referencing the same .
+            </p><pre class="CodeBlock">
+SELECT * FROM dbtst120 AS "emps" LEFT JOIN dbtst100 ON workdept = deptno
+WHERE "emps".company_nr = 100
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The company_nr predicate always evaluates to True.</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following company_nr predicate restricts the set of
+               possible company numbers of table dbtst120 to the single-element set containing
+               the value 812.
+            </p><pre class="CodeBlock">
+dbtst120.company_nr = 812
+</pre><p class="Paragraph">The following company_nr predicate restricts the set of
+               possible company numbers of table dbtst120 to the single-element set containing
+               the value of the parameter <i class="Emphasis">current.compnr</i> at the time the containing SQL statemtent is executed.
+            </p><pre class="CodeBlock">
+dbtst120.company_nr = :current.compnr
+</pre><p class="Paragraph">The following example restricts table dbtst120 ("emps") to company numbers
+               100 and 200, and because of the join condition on the company_nr column, also
+               restricts table dbtst100 ("depts") to company number 100 and 200. Note that the
+               data of the tables is joined only within a single company number, as requested
+               by the ON condition of the join.
+            </p><pre class="CodeBlock">
+SELECT "emps".firstnme, "depts".deptname
+FROM dbtst120 AS "emps" LEFT JOIN dbtst100 AS "depts" 
+        ON workdept = deptno AND "emps".company_nr = "depts".company_nr
+WHERE "emps".company_nr IN (100,200)
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/from.htm" class="manualLink">FROM clause</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/company_nr_pred, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

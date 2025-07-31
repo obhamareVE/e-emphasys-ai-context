@@ -1,0 +1,108 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>User Exit DLL Overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="User Exit DLL UEDLL ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">User Exit DLL Overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">A User Exit DLL (UEDLL) is a DLL that will reside outside the standard software. 
+               It will have the same name as a standard DAL with the extension 'ue' (for 'user exit'). 
+               E.g. 'whinh200ue' for table whinh200. 
+               Customers can implement a UEDLL in order to be able to define extra business logic before and 
+               after the standard 'before' and 'after' handling of saves and deletes, by means of specific hooks 
+               that will be executed by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> and/or DAL Engine. Stand-alone database operations (not triggered by saves and deletes of the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> or DAL Engine) are also 
+               extended to perform the extra business logic before and after performing the actual database operation. In this way it is
+               possible to e.g. conditionally publish data changes to the outside world.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Interaction with 4GL Engine / DAL Engine</div>
+            <p class="Paragraph">When present, the User Exit DLL for a certain table will be loaded by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a>/DAL Engine by the time the 
+               	  DAL for this particular table will be loaded. In situations where no DAL is present this will be the moment at which a
+               
+               	  DAL would be loaded if it existed. This means that there is no need to have a DAL in order to make use of the UEDLL.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Interaction with db operations</div>
+            <p class="Paragraph">When one of the following database operations is executed stand-alone (so not as part of the standard save/deletes of the
+               4GL Engine or DAL Engine):
+            </p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_db_operations/db.insert.htm" class="manualLink">db.insert()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_db_operations/db.update.htm" class="manualLink">db.update()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_db_operations/db.delete.htm" class="manualLink">db.delete()</a></li>
+            </ul>
+            <p class="Paragraph">and the User Exit DLL for the related table is present, the UEDLL will be loaded prior the database operation. This means
+               that there is no need to have a DAL or a session in order to make use of the UEDLL.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Preconditions</div>
+            <p class="Paragraph">A DLL becomes a UEDLL when it meets the following conditions:</p>
+            <ul class="List">
+               <li class="ListItem">Its name is consisting of the table code with 'ue' as suffix, like whinh200ue</li>
+               <li class="ListItem">It includes bic_dal, as follows: <code class="Code">#include &lt;bic_dal&gt;</code></li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Restrictions</div>
+            <p class="Paragraph">A UEDLL is treated like a regular DAL. This means all kind of DAL related functionality can be used, like:</p>
+            <ul class="List">
+               <li class="ListItem">Function <code class="Code"> <a href="../../progguide/functions_db_operations/with.old.object.values.do.htm" class="manualLink">with.old.object.values.do()</a></code></li>
+               <li class="ListItem">Function <code class="Code"> <a href="../../progguide/functions_db_operations/with.object.set.do.htm" class="manualLink">with.object.set.do()</a></code></li>
+               <li class="ListItem">Pre-defined variable <code class="Code">subdal</code></li>
+            </ul>
+            <p class="Paragraph">Note however that the following restrictions apply:</p>
+            <ul class="List">
+               <li class="ListItem">Business methods cannot be implemented in a UEDLL Instead the business logic should be programmed in another 
+                  				(separate) general DLL.
+               </li>
+               <li class="ListItem">It is strongly discouraged to define other external functions in a UEDLL and link the UEDLL directly to 
+                  				other scripts. Instead, use a normal general DLL. (This also applies to regular DALs).
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">User Exit Hooks</div>
+            <p class="Paragraph">A UEDLL script can contain the following hooks:</p>
+            <ul class="List">
+               <li class="ListItem"><code class="Code"> <a href="../../progguide/functions_uedll/ue.before.before.save.object.htm" class="manualLink">ue.before.before.save.object()</a></code></li>
+               <li class="ListItem"><code class="Code"> <a href="../../progguide/functions_uedll/ue.after.before.save.object.htm" class="manualLink">ue.after.before.save.object()</a></code></li>
+               <li class="ListItem"><code class="Code"> <a href="../../progguide/functions_uedll/ue.before.after.save.object.htm" class="manualLink">ue.before.after.save.object()</a></code></li>
+               <li class="ListItem"><code class="Code"> <a href="../../progguide/functions_uedll/ue.after.after.save.object.htm" class="manualLink">ue.after.after.save.object()</a></code></li>
+               <li class="ListItem"><code class="Code"> <a href="../../progguide/functions_uedll/ue.before.before.destroy.object.htm" class="manualLink">ue.before.before.destroy.object()</a></code></li>
+               <li class="ListItem"><code class="Code"> <a href="../../progguide/functions_uedll/ue.after.before.destroy.object.htm" class="manualLink">ue.after.before.destroy.object()</a></code></li>
+               <li class="ListItem"><code class="Code"> <a href="../../progguide/functions_uedll/ue.before.after.destroy.object.htm" class="manualLink">ue.before.after.destroy.object()</a></code></li>
+               <li class="ListItem"><code class="Code"> <a href="../../progguide/functions_uedll/ue.after.after.destroy.object.htm" class="manualLink">ue.after.after.destroy.object()</a></code></li>
+               <li class="ListItem"><code class="Code"> <a href="../../progguide/functions_uedll/disable.ue.dll.htm" class="manualLink">disable.ue.dll()</a></code></li>
+               <li class="ListItem"><code class="Code"> <a href="../../progguide/functions_uedll/enable.ue.dll.htm" class="manualLink">enable.ue.dll()</a></code></li>
+               <li class="ListItem"><code class="Code"> <a href="../../progguide/functions_uedll/ue.get.origin.htm" class="manualLink">ue.get.origin()</a></code></li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_uedll/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>seq.putc$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions seq.putc$ seq.putc$ seq.putc$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">seq.putc$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string &nbsp;seq.putc$&nbsp;
+					(string&nbsp;char, long&nbsp;fp)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This writes a specified character to a specified file. <i class="Emphasis">fp</i> is the file pointer returned by <a href="../../progguide/functions_directory_file_operations/seq.open.htm" class="manualLink">seq.open()</a> when the particular file
+                  was opened.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>char</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">character</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>fp</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">fp is the file pointer returned by seq.open() when the particular file was opened.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The character written to the file. Or an empty string (a string of length 0) if the
+               end-of-file was reached or an error occurred.
+            </p>
+            <p class="Paragraph">The last system error is available in the <i class="Emphasis">e</i> variable –
+   for example, for file system full, <i class="Emphasis">e</i> will be ENOSPC (that
+   is, 28) – for a list of error codes, see <a href="../../progguide/errors/overview.htm" class="manualLink">Infor ES errors and messages</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/overview.htm" class="manualLink">Directory and file operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/synopsis.htm" class="manualLink">Directory and file operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_directory_file_operations/seq.putc, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

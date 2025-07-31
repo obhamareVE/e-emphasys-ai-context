@@ -1,0 +1,94 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>path.separator()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions path.separator path.separator path.separator ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">path.separator()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;path.separator&nbsp;
+					( [long&nbsp;os.type])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Returns a platform-specific separator character (":" or ";") used to separate path strings in environment variables.</p>
+               <p class="Paragraph">Do not confuse this function with <code class="Code"> <a href="../../progguide/functions_directory_file_operations/path.dir.separator.htm" class="manualLink">path.dir.separator()</a></code>.
+               </p>
+               <p class="Paragraph">If ERP Enterprise is running on UNIX, the returned separator is the colon (:); if ERP Enterprise is running on Windows, the
+                  returned separator is the semi-colon (;).
+                  				By supplying the OS type this function will return the separator for the given OS type.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>os.type</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">when specified, the separator returned is the one for the given OS type; 
+                           					specify one of the following values: <code class="Code">OS_WINDOWS_NT</code>, <code class="Code">OS_UNIX</code></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">On Windows-based platforms, the value returned is the semicolon (;). On Unix platforms the value returned is the colon (:).</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1700.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+string separator(1)
+
+| Suppose ERP Enterprise is running on Unix
+separator = path.separator()
+| separator = ":"
+
+| Get the Windows path separator
+separator = path.separator(OS_WINDOWS_NT)
+| separator = ";"
+		</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/overview.htm" class="manualLink">Directory and file operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/synopsis.htm" class="manualLink">Directory and file operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_directory_file_operations/path.separator, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

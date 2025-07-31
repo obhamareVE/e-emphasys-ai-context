@@ -1,0 +1,122 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>xmlNewNamespace()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions xmlNewNamespace xmlNewNamespace xmlNewNamespace ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">xmlNewNamespace()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;xmlNewNamespace&nbsp;
+					(long&nbsp;node, const string&nbsp;prefix, const string&nbsp;URI)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Create a new namespace with the specified prefix and URI.
+                  		The specified node becomes the <i class="Emphasis">carrier</i> of the namespace,
+                  		but the node itself is not yet <i class="Emphasis">in</i> the namespace.
+               </p>
+               <p class="Paragraph">Various restrictions apply to the specified prefix and the URI. For example,
+                  		when the prefix equals "xml", then the URI <i class="Emphasis">must</i> equal 
+                  		"http://www.w3.org/XML/1998/namespace". For this and other restrictions, see <a href="../..http://www.w3.org/TR/REC-xml-names/.htm#ns-decl" class="wwwlinkLink">Declaring Namespaces</a>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>node</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The XML node identified by <i class="Emphasis">node</i> becomes the <i class="Emphasis">carrier</i> of the newly created namespace. If the XML node is not of type XML_ELEMENT then
+                           	the function fails.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>prefix</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">prefix</i> contains the prefix, for example "soap".
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>URI</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">URI</i> contains the URI, for example "http://www.w3.org/2001/12/soap-envelope".
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;&gt;0</th>
+                     <td rowspan="1" colspan="1" class="none">Success; A reference to the new namespace when
+                        						successful. This value can be used in many functions with a <i class="Emphasis">namespace</i> argument, such as <a href="../../progguide/functions_xml/xmlNewNodeNs.htm" class="manualLink">xmlNewNodeNs()</a>.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Error.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1700.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long xml_envelope, xml_body, xmlns_soap
+xml_envelope = xmlNewNode("Envelope")
+xmlns_soap = xmlNewNamespace( xml_envelope, "soap", "http://www.w3.org/2001/12/soap-envelope" )
+xml_body = xmlNewNodeNs(xmlns_soap, "Body", XML_ELEMENT, xml_envelope) </pre><p class="Paragraph">The <i class="Emphasis">xml_envelope</i> node would serialize to the following XML. Note that the <i class="Emphasis">Envelope</i> node has no prefix, and is not in any namespace.
+            </p><pre class="CodeBlock">
+&lt;Envelope xmlns:soap="http://www.w3.org/2001/12/soap-envelope"&gt;&lt;soap:Body/&gt;&lt;/Envelope&gt; </pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/overview.htm" class="manualLink">XML object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis.htm" class="manualLink">XML object synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis_namespace.htm" class="manualLink">XML object synopsis (namespace support)</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_xml/xmlNewNamespace, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

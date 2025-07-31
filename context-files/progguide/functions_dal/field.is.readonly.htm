@@ -1,0 +1,135 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>field.is.readonly()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="field.is.readonly field.is.readonly (DAL2) functions field.is.readonly ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">field.is.readonly()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean&nbsp;field.is.readonly&nbsp;
+					( [long&nbsp;mode] [, long&nbsp;element])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this hook to indicate whether the field is readonly. If a
+                  	  field is readonly then the 4GL Engine makes the field readonly in the UI. The
+                  	  field however, still can have a value.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>mode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional mode flag, one of { 0, DAL_UPDATE }</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>element</code>]
+                     </td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The hook should return True in case the field is readonly. In
+               	  that case the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will make the field appear readonly on the UI. In any other case
+               	  the hook should return False (i.e. the field is not readonly).
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			DAL
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">When called</div>
+            <ul class="List">
+               <li class="ListItem">At the time the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> determines whether fields need to be disabled cq. enabled: this
+                  		is done just before calling the <i class="Emphasis">before.display.object</i> and
+                  		the <i class="Emphasis">when.field.changes</i> sections
+               </li>
+               <li class="ListItem">At the time of checking the fields value, in case the record is
+                  		being modified (DAL_UPDATE)
+               </li>
+               <li class="ListItem">In case the field is defined as a <a href="../../progguide/functions_dal/dal2_field_dependencies.htm" class="manualLink">DAL2 Field dependencies</a> of another field and that other field
+                  		changes. See also the <a href="../../progguide/functions_dal/field.update.htm" class="manualLink">field.update()</a> hook.
+               </li>
+            </ul>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">Readonly is defined as: the field's value cannot be modified,
+                  	  even not by the application.
+               </p>
+               <p class="Paragraph">If this hook does not exist, it is assumed that the field not
+                  	  readonly.
+               </p>
+               <p class="Paragraph">Note that this hook is NEVER called in <i class="Emphasis">mode</i> DAL_NEW!
+               </p>
+               <p class="Paragraph">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="manualLink">4GL engine</a> will
+                  show the following message to the end-user in case the field is
+                  changed and it appears to be readonly: <i class="Emphasis">It is not allowed to change the %1$s field.</i></p>
+               <p class="Paragraph">It is advised to set an error message with <a href="../../progguide/functions_message_handling/dal.set.error.message.htm" class="manualLink">dal.set.error.message()</a> to indicate the reason why the
+                  	  field is readonly.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+function extern boolean whinh200.otyp.is.readonly()
+{
+    if not MANUAL.WHINH200 then
+        dal.set.error.message("whinhs2359")
+        |* The Order Type can only be changed for Manual Orders.
+        return(true)
+    endif
+    ...
+    return(false)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/field.update.htm" class="manualLink">field.update()</a> hook
+               </li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_field_dependencies.htm" class="manualLink">DAL2 Field dependencies</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_4gle.htm" class="manualLink">DAL2 and the 4GL Engine</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_flow.htm" class="manualLink">DAL2 Flow of field hooks</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/field.is.readonly, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

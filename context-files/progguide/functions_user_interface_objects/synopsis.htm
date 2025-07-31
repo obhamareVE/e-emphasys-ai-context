@@ -1,0 +1,225 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>User interface objects synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="user interface objects synopsis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">User interface objects synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This API is only supported for Baan
+               Windows and its usage is therefore deprecated. The Programmable
+               Dialogs API can be used as an alternative.
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="23" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/change.object.htm" class="manualLink">change.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object_id [, long attribute, value
+         &nbsp; [, size] ] ... )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/change.sub.object.htm" class="manualLink">change.sub.object</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object, long sub_object_id [, long
+         &nbsp; attribute, value [, size] ] ... )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/compress.pixmap.htm" class="manualLink">compress.pixmap()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long colormap(), long num_colors,
+          &nbsp; string pixmap(), long width,
+          &nbsp; long height, ref string buffer(),
+          &nbsp; ref long buffer_length )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/create.object.htm" class="manualLink">create.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long type, long parent_object [, long
+          &nbsp; attribute, value [, size] ] ... )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/create.sub.object.htm" class="manualLink">create.sub.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object, long type, [, long
+          &nbsp; attribute, value [, size] ] ... )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/create.sub.object.by.id.htm" class="manualLink">create.sub.object.by.id()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object, long sub_object_id,
+          &nbsp; long type [, long attribute, value
+          &nbsp; [, size] ] ... )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/decompress.pixmap.htm" class="manualLink">decompress.pixmap()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string buffer(), ref long colormap(),
+         &nbsp;&nbsp;ref string pixmap() )</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/destroy.object.htm" class="manualLink">destroy.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object_id )</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/destroy.sub.object.htm" class="manualLink">destroy.sub.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object, long sub_object_id )</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/get.object.htm" class="manualLink">get.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object_id [, long attribute,
+          &nbsp; ref value [, ref value] ] ... )</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/get.pixmap.info.htm" class="manualLink">get.pixmap.info()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string buffer(), ref long
+         num_colors,
+         &nbsp; ref long width, ref long height )</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/get.sub.object.htm" class="manualLink">get.sub.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object, long sub_object_id
+          &nbsp; [, long attribute, ref value
+          &nbsp; [, ref size] ] ... )</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/inherit.object.htm" class="manualLink">inherit.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long process_nr, long object_id )</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/lower.object.htm" class="manualLink">lower.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object_id )</code></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/map.object.htm" class="manualLink">map.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object_id )</code></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/query.object.htm" class="manualLink">query.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object_id [, long attribute, value
+          &nbsp; [, size] ] ... [, long attribute,
+          &nbsp; ref value [, ref size] ] ... )</code></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/query.sub.object.htm" class="manualLink">query.sub.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object_id, long sub_object_id
+          &nbsp; [, long attribute, value [, size] ] ...
+         &nbsp; [, long attribute, ref value
+          &nbsp; [, ref size] ] ... )</code></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/raise.object.htm" class="manualLink">raise.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object_id )</code></td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/set.focus.htm" class="manualLink">set.focus()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object_id )</code></td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/set.sensitive.htm" class="manualLink">set.sensitive()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object_id, long status )</code></td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/unmap.object.htm" class="manualLink">unmap.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object_id )</code></td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/unset.focus.htm" class="manualLink">unset.focus()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object_id )</code></td>
+                  </tr>
+                  <tr no="23" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_user_interface_objects/update.object.htm" class="manualLink">update.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long object_id )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

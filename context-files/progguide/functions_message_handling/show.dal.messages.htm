@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>show.dal.messages()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions show.dal.messages show.dal.messages show.dal.messages ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">show.dal.messages()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;show.dal.messages&nbsp;
+					( [long&nbsp;i.type])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Displays messages that are currently on the DAL message stack.
+                  	  Depending on the specified message type, you can display error, warning or info
+                  	  messages, or all messages. If no message type is specified, only error messages
+                  	  will be displayed.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>i.type</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A message type. If not specified, only error messages
+                           			are displayed.
+                        </p>
+                        <p class="Paragraph">Parameter i.type should be one of the following values:</p>
+                        <p class="Paragraph">MSG.ALL, MSG.ERROR, MSG.WARNING, MSG.INFO</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection"></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Notes</div>
+            <p class="Paragraph">The presentation of these messages depends on:</p>
+            <ul class="List">
+               <li class="ListItem">the specified Message Type, one of <code class="Code">MSG.ALL, MSG.ERROR, MSG.WARNING, MSG.INFO</code>.
+               </li>
+               <li class="ListItem">the Message Mode setting of the user - Interactive or
+                  		Non-interrupting (this can be set in the User Data session)
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Modal Dialog</div>
+            <p class="Paragraph">In Interactive Mode when message type <code class="Code">MSG.ERROR</code> is specified, or no message type is specified at all, DAL messages are
+               	  presented in a modal dialog. In this way the user is forced to take notice of
+               	  the messages as the application will be blocked until the dialog
+               	  closes.
+            </p>
+            <p class="Paragraph">The most recent (ie. the last added) message is shown at the top
+               	  of the Error dialog. Any subsequent message is displayed on a separate line,
+               	  prefixed by the word Reason, like this (example):
+            </p>
+            <div class="Figure"><img src="../images/modal_message_window.gif" alt="[...]" height="129" width="479"></div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Modeless Window</div>
+            <p class="Paragraph">In Non-Interrupting mode, but also when <code class="Code">MSG.ALL</code>, <code class="Code">MSG.WARNING</code> or <code class="Code">MSG.INFO</code> is specified, all messages are displayed in a separate modeless window.
+               	  Each message is displayed on a new line.
+            </p>
+            <div class="Figure"><img src="../images/modeless_message_window.gif" alt="[...]" height="207" width="636"></div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_message_handling/overview_and_synopsis.htm" class="manualLink">Message handling overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_message_handling/show.dal.messages, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

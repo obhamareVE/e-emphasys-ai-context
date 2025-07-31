@@ -1,0 +1,98 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>rdi.date.input.format$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions rdi.date.input.format$ rdi.date.input.format$ rdi.date.input.format$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">rdi.date.input.format$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;rdi.date.input.format$&nbsp;
+					(string&nbsp;date_format(7) [, ref string&nbsp;display_format()])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This returns the input format defined in the data dictionary
+                  for a specified date format. The input format can be any
+                  combination of day-in-week (D), week-in-year (W), and year (Y),
+                  or any combination of day-in-month (D), month-in-year (M), and
+                  year (Y). For example, if the function returns MDY, the input
+                  format on a form field must be month, day-in-month, and year
+                  (for example, 12311998).
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>date_format(7)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A date format defined in the data dictionary. This
+                           must be specified as %D <i class="Emphasis">n</i> [, <i class="Emphasis">lang</i>], where <i class="Emphasis">n</i> is the date format code and <i class="Emphasis">lang</i> is the
+                           language code. See sprintf$()sprintf.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[ref string</td>
+                     <td class="none"><code>display_format()</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional argument which returns the display format
+                           for the specified date format.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The input format defined in the data dictionary for the
+               specified date format.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">string inpformat(3)</p>
+            <p class="Paragraph">inpformat = rdi.date.input.format$( "D002,3" )</p>
+            <p class="Paragraph">| inpformat e.g. now contains DWY.</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_runtime_dictionary_information/overview_and_synopsis.htm" class="manualLink">Runtime dictionary information overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_runtime_dictionary_information/rdi.date.input.format, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

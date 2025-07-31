@@ -1,0 +1,241 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Transition issues (BAAN IV to Infor ERP Enterprise)</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="data access layer transition issues (baan iv to baanerp) ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Transition issues (BAAN IV to Infor ERP Enterprise)</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">4GL event sections</div>
+            <p class="Paragraph">This table lists the 4GL event sections that have been moved
+               to the DAL in Infor ERP Enterprise. It also lists the DAL methods that
+               replace these sections.
+            </p>
+            <p class="Paragraph">If a DAL script exists for a particular table, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> calls the
+               methods in the DAL to perform the relevant integrity checks. Any
+               corresponding 4GL event sections in the UI script are ignored.
+               If there is no DAL for the table, the 4GL event sections are
+               executed.
+            </p>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="10" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">4GL event sections</th>
+                     <th rowspan="1" colspan="1" class="none">DAL methods</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">field.&lt; <i class="Emphasis">x</i> &gt;:
+                        </p>
+                        <p class="Paragraph">check.input:</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">function extern long &lt; <i class="Emphasis">x</i> &gt;.check()
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">main.table.io:</p>
+                        <p class="Paragraph">before.read:</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">function extern long before.get.object()</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">main.table.io:</p>
+                        <p class="Paragraph">after.read:</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">function extern long after.get.object()</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">main.table.io:</p>
+                        <p class="Paragraph">before.write:</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">function extern long before.save.object()</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">main.table.io:</p>
+                        <p class="Paragraph">after.write:</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">function extern long after.save.object()</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">main.table.io:</p>
+                        <p class="Paragraph">before.rewrite:</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">function extern long before.save.object()</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">main.table.io:</p>
+                        <p class="Paragraph">after.rewrite:</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">function extern long after.save.object()</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">main.table.io:</p>
+                        <p class="Paragraph">before.delete:</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">function extern long before.destroy.object()</td>
+                  </tr>
+                  <tr no="10" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">main.table.io:</p>
+                        <p class="Paragraph">after.delete:</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">function extern long after.destroy.object()</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">4GL functions</div>
+            <p class="Paragraph">This table lists those 4GL UI functions that have DAL
+               equivalents. If a DAL exists for a particular table, it is
+               preferable to use the DAL functions instead of the 4GL UI
+               functions.
+            </p>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="9" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">4GL function</th>
+                     <th rowspan="1" colspan="1" class="none">DAL function</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">on.main.table()</td>
+                     <td rowspan="1" colspan="1" class="none">with.object.set.do()</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">on.old.occ()</td>
+                     <td rowspan="1" colspan="1" class="none">with.old.object.values.do()</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">set.input.error()</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">dal.set.error.message()</p>
+                        <p class="Paragraph">return(DALHOOKERROR)</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">skip.io()</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">dal.set.error.message()</p>
+                        <p class="Paragraph">return(DALHOOKERROR)</p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">abort.io()</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">dal.set.error.message()</p>
+                        <p class="Paragraph">return(DALHOOKERROR)</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">db.update()</td>
+                     <td rowspan="1" colspan="1" class="none">dal.update()</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">db.delete()</td>
+                     <td rowspan="1" colspan="1" class="none">dal.destroy()</td>
+                  </tr>
+                  <tr no="9" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">db.insert()</td>
+                     <td rowspan="1" colspan="1" class="none">dal.new()</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">If a function is used only in the DAL, you should move it to
+               the DAL. If a function is used in both the DAL and the UI, you
+               can move it to the DAL (the UI can call functions in the DAL but
+               not vice versa). Alternately, you can store the function in a
+               separate DLL that is linked to both the UI and the DAL.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Session codes</div>
+            <p class="Paragraph">The DAL does not recognize session codes ( <i class="Emphasis">prog.name$</i>) and so cannot evaluate them. However, in the
+               case where integrity checks must be session dependent, a
+               solution is to evaluate properties instead of session codes. For
+               example, you could identify a field or a combination of fields
+               whose value(s) uniquely identify the session. Or you could add a
+               property to the object set and give this property a value that
+               is unique to the session.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Predefined variables</div>
+            <p class="Paragraph">The predefined variable <i class="Emphasis">previous.choice</i> is not supported in the DAL, as the DAL
+               does not recognize standard commands. Instead, the first
+               argument in the <i class="Emphasis">before.save.object()</i> and <i class="Emphasis">after.save.object()</i> hooks indicates if an insert or
+               update operation caused the save operation. Note that for the
+               DAL, the copy command is an insert operation.
+            </p>
+            <p class="Paragraph">The predefined variable <i class="Emphasis">before.update.check</i> is not supported in the DAL. In Infor
+               ERP Enterprise, field checks are executed both after field input and
+               before the database operation. The programmer cannot influence
+               when these checks are performed. Note that in the CDAS, checking
+               is programmed in the <i class="Emphasis">dal.set.property()</i> hook and not in the <i class="Emphasis">dal.after.save.object()</i> hook.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Questions</div>
+            <p class="Paragraph">It is not possible to ask for user input during the execution
+               of DAL hooks. If hooks contain conditions that depend on user
+               input, set the condition before the hook is called. Alternately,
+               handle the user input and check the conditions after completion
+               of the database operations.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Messages</div>
+            <p class="Paragraph">The DAL cannot display error messages directly. However, you
+               can set an error message in the DAL with the <i class="Emphasis">dal.set.error.message()</i> method. The DAL can notify the
+               calling process of an error by returning the value DALHOOKERROR.
+               The process can then display the error message. Messages can be
+               stacked before they are retrieved by the UI.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Non-table fields</div>
+            <p class="Paragraph">Only table fields are checked in the DAL. Checks for
+               non-database fields must still be programmed in the UI
+               script.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Include files</div>
+            <p class="Paragraph">When writing a Data Access Layer, you must include bic_dal.
+               To use progress indicators and Data Access Methods in your UI,
+               you must include bic_dam.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_glossary.htm" class="manualLink">DAL terminology</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/transition_issues_baan_iv_to_baanerp, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

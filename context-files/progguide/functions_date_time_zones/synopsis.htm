@@ -1,0 +1,251 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Dates, times, time zones synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dates, times, time zones synopsis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Dates, times, time zones synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Local dates/times</div>
+            <table border="0" class="none">
+               <tbody noTR="10" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/date.num.htm" class="manualLink">date.num()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/date.to.inputstr.htm" class="manualLink">date.to.inputstr$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long dayno, string format(7), &nbsp; long length
+            )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/date.to.num.htm" class="manualLink">date.to.num()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long yearno, long monthno, &nbsp; long month_dayno
+            )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/dte.htm" class="manualLink">dte$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/inputstr.to.date.htm" class="manualLink">inputstr.to.date()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string inputstr(.), string format(7) )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/num.to.date.htm" class="manualLink">num.to.date()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long dayno, ref long yearno, &nbsp; ref long
+            monthno, ref long month_dayno )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/num.to.dates.htm" class="manualLink">num.to.date$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long dayno, long mode )</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/num.to.week.htm" class="manualLink">num.to.week()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long dayno, ref long week_dayno, &nbsp; ref long
+            year_dayno, ref long weekno &nbsp; [, ref long yearno]
+            )</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/time.num.htm" class="manualLink">time.num()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="10" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/week.to.num.htm" class="manualLink">week.to.num()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long weekno, long yearno, &nbsp; long week_dayno
+            )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">UTC conversion</div>
+            <table border="0" class="none">
+               <tbody noTR="18" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/date.to.utc.htm" class="manualLink">date.to.utc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long yearno, long monthno, &nbsp; long month_dayno,
+            long hours, &nbsp; long minutes, long seconds )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/date.with.timezone.info.to.utc.htm" class="manualLink">date.with.timezone.info.to.utc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long yearno, long monthno, &nbsp; long month_dayno,
+            long hours, &nbsp; long minutes, long seconds, &nbsp; long
+            utcdiff )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/input.to.utc.htm" class="manualLink">input.to.utc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string value(), &nbsp;&nbsp;const string format()
+            )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/inputstr.to.utc.htm" class="manualLink">inputstr.to.utc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string date.inputstr(), &nbsp; string
+            date.format(7), &nbsp; const string time.inputstr(), &nbsp;
+            string time.format(7) )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/local.to.utc.htm" class="manualLink">local.to.utc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long local_days, long local_time, &nbsp; ref long
+            utc [, string local_dst] )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/local.with.timezone.info.to.utc.htm" class="manualLink">local.with.timezone.info.to.utc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long local_days, long local_time, &nbsp; long
+            utcdiff, &nbsp; ref long utc )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/utc.num.htm" class="manualLink">utc.num()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/utc.add.htm" class="manualLink">utc.add()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long i.utc, long year, &nbsp; long month, long day,
+            &nbsp; long hour, long minutes, &nbsp; long second, ref long
+            o.utc )</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/utc.to.date.htm" class="manualLink">utc.to.date()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long utc, ref long yearno, &nbsp; ref long monthno,
+            ref long month_dayno, &nbsp; ref long hours, ref long
+            minutes, &nbsp; ref long seconds )</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/utc.to.date.with.timezone.info.htm" class="manualLink">utc.to.date.with.timezone.info()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long utc, ref long yearno, &nbsp; ref long monthno,
+            ref long month_dayno, &nbsp; ref long hours, ref long
+            minutes, &nbsp; ref long seconds, &nbsp; ref long utcdiff
+            )</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/utc.to.input.htm" class="manualLink">utc.to.input()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long lvalue, const string format() )</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/utc.to.inputstr.htm" class="manualLink">utc.to.inputstr$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long utc, string date.format(7), &nbsp; string
+            time.format(7), &nbsp; ref string local.date(), &nbsp; ref string
+            local.time() )</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/utc.to.local.htm" class="manualLink">utc.to.local()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long utc, ref long local_days, &nbsp; ref long
+            local_time [, ref string local_dst] )</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/utc.to.local.with.timezone.info.htm" class="manualLink">utc.to.local.with.timezone.info()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long utc, &nbsp; ref long local_days, ref long
+            local_time, &nbsp; ref long utcdiff )</code></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/utc.to.week.htm" class="manualLink">utc.to.week()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long utc, ref long week_dayno, &nbsp; ref long
+            year_dayno, ref long weekno, &nbsp; ref long hours, ref long
+            minutes, &nbsp; ref long seconds [, ref long yearno]
+            )</code></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/week.to.utc.htm" class="manualLink">week.to.utc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long weekno, long yearno, &nbsp; long week_dayno,
+            long hours, &nbsp; long minutes, long seconds )</code></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/utc.to.iso.htm" class="manualLink">utc.to.iso()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long utc, long format )</code></td>
+                  </tr>
+                  <tr no="18" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/iso.to.utc.htm" class="manualLink">iso.to.utc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string iso.string )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Time zones</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/choose.time.zone.from.list.htm" class="manualLink">choose.time.zone.from.list()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code"> <a href="../../progguide/functions_date_time_zones/date.to.date.htm" class="manualLink">date.to.date()</a></code></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long in_date, long in_time, &nbsp; const string
+            in_zone(), &nbsp; const string out_zone(), &nbsp; ref long
+            out_date, ref long out_time )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/get.time.zone.htm" class="manualLink">get.time.zone()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string time_zone() )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/set.time.zone.htm" class="manualLink">set.time.zone()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string time_zone(50) )</code></td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_date_time_zones/timezone.exists.htm" class="manualLink">timezone.exists()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string time_zone(50) )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_date_time_zones/overview.htm" class="manualLink">Dates, times, time zones overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_date_time_zones/synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

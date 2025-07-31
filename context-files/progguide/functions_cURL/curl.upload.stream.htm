@@ -1,0 +1,171 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>curl.upload.stream()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="curl.upload.stream curl.upload.stream functions curl.upload.stream ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">curl.upload.stream()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_curl&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;curl.upload.stream&nbsp;
+					(const string&nbsp;url, long&nbsp;request.stream, long&nbsp;data.size, long&nbsp;response.stream [, long&nbsp;header.list] [, const string&nbsp;method])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Uploads data from a stream (a file or a memory stream) to the specified url.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>url</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the url to where the data must be uploaded; this can be an http(s) or an ftp(s) address.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>request.stream</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the stream data to upload</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>data.size</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the size of the data to upload, in bytes; specify -1 to enforce sending the request in chunks</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>response.stream</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the stream (file or memory stream) to which the response of the upload must be written to</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>header.list</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional cURL slist handle containing HTTP headers; this can be created by <code class="Code"> <a href="../../progguide/functions_cURL/curl.slist.append.htm" class="manualLink">curl.slist.append()</a></code>.
+                           					Specify 0 if no headers must be sent.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <td class="none">[const string</td>
+                     <td class="none"><code>method</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional HTTP method, specify "PUT" or "POST". "POST" is the default method.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Ok</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt; 0</th>
+                     <td rowspan="1" colspan="1" class="none">Stream IO error</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&gt; 0</th>
+                     <td rowspan="1" colspan="1" class="none">A cURL code; use <code class="Code"> <a href="../../progguide/functions_cURL/curl.strerror$.htm" class="manualLink">curl.strerror$()</a></code> to get a descriptive message
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1700.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long ret
+long xmlrequest
+long xmlresponse
+long data.size
+long request
+long response
+string response.data(128)
+string err.msg(256)
+
+| construct an xml tree
+xmlrequest = xmlNewNode("Root")
+| add nodes and attributes ...
+
+| open a request stream buffer
+request = ims.openvba("w+")
+| write the xml tree to the request stream 
+data.size = xmlWrite(request, xmlrequest)
+| open a response stream buffer
+response = ims.openvba("w+)
+| upload using the HTTP POST method
+ret = curl.upload.data("http://www.example.com/upload/info.txt", request, data.size, response)
+if ret = 0 then
+	ims.rewind(response)
+	xmlresponse = xmlRead(response, err.msg)
+	if xmlresponse &lt;&gt; 0 then
+		| do something with the xml response tree
+	else
+		| handle error
+	endif
+else
+	| handle the curl error
+	err.msg = curl.strerror$(ret)
+endif
+| cleanup
+ims.close(request)
+ims.close(response)
+xmlDelete(xmlrequest)
+xmlDelete(xmlresponse)
+		</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_cURL/overview.htm" class="manualLink">cURL handling overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_cURL/curl.upload.stream, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

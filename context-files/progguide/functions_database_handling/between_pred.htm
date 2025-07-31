@@ -1,0 +1,74 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>BETWEEN predicate</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="BETWEEN Search condition BETWEEN ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">BETWEEN predicate</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The BETWEEN predicate evaluates to True if the value of the
+               first expression lies between the values of the second
+               expression and the third expression.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;between predicate&gt;
+    ::= <a href="../../progguide/functions_database_handling/row_value_constructor.htm" class="manualLink">Row value constructor</a> [NOT] BETWEEN
+           <a href="../../progguide/functions_database_handling/row_value_constructor.htm" class="manualLink">Row value constructor</a> AND <a href="../../progguide/functions_database_handling/row_value_constructor.htm" class="manualLink">Row value constructor</a>
+      </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">No <i class="Emphasis">&lt;row value constructor&gt;</i> shall contain a
+               reference to an array column.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The following equivalences hold:</p><pre class="CodeBlock">
+expr NOT BETWEEN lower AND upper  &lt;=&gt;  NOT ( expr BETWEEN upper AND lower )
+</pre><pre class="CodeBlock">
+expr BETWEEN lower AND upper  &lt;=&gt;  expr &gt;= lower AND expr &lt;= upper
+</pre><p class="Paragraph">For the exact semantics see <a href="../../progguide/functions_database_handling/comparison_pred.htm" class="manualLink">Comparison predicate</a>, <a href="../../progguide/functions_database_handling/not_sc.htm" class="manualLink">NOT boolean operator</a> and <a href="../../progguide/functions_database_handling/and_sc.htm" class="manualLink">AND boolean operator</a>.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following predicate evaluates to True if <i class="Emphasis">empno</i> is
+               in the interval [10..20]. It evaluates to Unknown if <i class="Emphasis">empno</i> is NULL. Otherwise, it evaluates to False.
+            </p><pre class="CodeBlock">
+empno BETWEEN 10 AND 20
+</pre><p class="Paragraph">The following predicate evaluates to True if <i class="Emphasis">salary</i> is
+               in the interval [20000.00 .. 50000.00].
+            </p><pre class="CodeBlock">
+{ salary } BETWEEN 20000.00 AND 50000.00
+</pre><p class="Paragraph">The following predicate evaluates to True if <i class="Emphasis">lastname</i> lies between 'HAAS' and 'LUCCHESSI', but if <i class="Emphasis">lastname</i> equals 'HAAS' then <i class="Emphasis">firstnme</i> must be larger
+               than or equal to 'CHRISTINE'.
+            </p><pre class="CodeBlock">
+{ lastname, firstnme } BETWEEN { 'HAAS', 'CHRISTINE' } and { 'LUCCHESSI' }
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/inrange_pred.htm" class="manualLink">INRANGE predicate</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/between_pred, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

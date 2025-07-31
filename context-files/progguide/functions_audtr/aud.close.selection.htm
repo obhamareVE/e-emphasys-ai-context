@@ -1,0 +1,118 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>aud.close.selection()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="aud.close.selection aud.close.selection functions aud.close.selection ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">aud.close.selection()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;aud.close.selection&nbsp;
+					(long&nbsp;selection.id)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">The opening of the audit trail is not done explicitly in
+                  comparison to the low-level audit library functions. To close
+                  the opened files again, the developer must use the
+                  aud.close.selection. During the invocation of <a href="../../progguide/functions_audtr/aud.select.transactions.htm" class="manualLink">aud.select.transactions()</a> and all functions beginning with aud.get.next, each file that is
+                  opened but not closed will be registered within the Infor ERP Enterprise
+                  Audit Management. The function aud.close.selection() will use
+                  this information to close the files that are registered as being
+                  open. The function also closes the selection of transactions
+                  that have been created using the aud.select.transactions
+                  function.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>selection.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Id of the selection, as provided by <a href="../../progguide/functions_audtr/aud.select.transactions.htm" class="manualLink">aud.select.transactions()</a>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_OK</th>
+                     <td rowspan="1" colspan="1" class="none">All files are closed successfully and the dynamic
+                        SQL selection is also closed successfully
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_INCORRECT_SELECTION_ID</th>
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">Selection.id</i> is invalid.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_FAIL</th>
+                     <td rowspan="1" colspan="1" class="none">Not all files could be closed or the dynamic SQL
+                        statement is not closed successfully.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">State</div>
+            <p class="Paragraph">The internal state on the <i class="Emphasis">selection.id</i> is removed, so
+               after running this function <i class="Emphasis">selection.id</i> cannot be used
+               anymore.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Restrictions</div>
+            <p class="Paragraph">The function <a href="../../progguide/functions_audtr/aud.select.transactions.htm" class="manualLink">aud.select.transactions()</a> has to be called prior to this function. After executing
+               aud.close.selection, the <i class="Emphasis">selection.id</i> cannot be used
+               anymore in any other Infor ERP Enterprise Audit Management functions.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_synopsis.htm" class="manualLink">Audit management synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_examples.htm" class="manualLink">Audit management examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_audtr/aud.close.selection, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>textfield.to.database()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions textfield.to.database textfield.to.database textfield.to.database ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">textfield.to.database()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;textfield.to.database&nbsp;
+					(string&nbsp;text_field)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Gets the text from the text part of the specified field, and
+                  writes it into the texttable. If the text does not exist yet in
+                  the texttable, a new texttable record is created. This is only
+                  relevant for multiline text formfields in a non-maintable
+                  session.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>text_field</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the multiline text formfield that must
+                           be stored. (Should be a table field) See <a href="../../progguide/functions_text_fields/overview.htm" class="manualLink">Text fields overview</a>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">&lt;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; error occurred; e.g. field is not a multiline text formfield on the form</p>
+            <p class="Paragraph">-2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; can not create a tmp file.</p>
+            <p class="Paragraph">-3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the variabele text_field.text does not exist.</p>
+            <p class="Paragraph">&gt;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; textfield-id saved in texttable.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_text_fields/overview.htm" class="manualLink">Text fields overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_text_fields/synopsis.htm" class="manualLink">Text fields synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_text_fields/textfield.to.database, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

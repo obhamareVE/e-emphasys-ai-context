@@ -1,0 +1,125 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>path.extension()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions path.extension path.extension path.extension ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">path.extension()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;path.extension&nbsp;
+					(const string&nbsp;path [, long&nbsp;os.type])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Returns the extension of the specified path string.</p>
+               <p class="Paragraph">If ERP Enterprise is running on UNIX, the given path is interpreted as a Unix path; if ERP Enterprise is running on Windows,
+                  the path is interpreted as a Windows path.
+                  				Optionally, this can be overridden, by supplying the OS type. When dealing with paths for the client 
+                  				(e.g. when using <a href="../../progguide/functions_client_file_access/seq.open.local.htm" class="manualLink">seq.open.local()</a>, 
+                  				it is advised to always specify <code class="Code">OS_WINDOWS_NT</code>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>path</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the path string from which to get the extension</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>os.type</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">when specified, the path is interpreted according to the given OS type; 
+                           					specify one of the following values: <code class="Code">OS_WINDOWS_NT</code>, <code class="Code">OS_UNIX</code></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The extension of the specified path (including the period "."), or an empty string.
+               					If path is an empty string, or if path does not have extension information, this function returns an empty string.
+            </p>
+            <p class="Paragraph">The extension of path is obtained by searching path for a period (.), starting with the last character in path and 
+               					continuing toward the start of path. If a period is found before a <code class="Code"> <a href="../../progguide/functions_directory_file_operations/path.dir.separator.htm" class="manualLink">path.dir.separator()</a></code> character, the returned string contains the period 
+               					and the characters after it; otherwise, an empty string is returned.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1700.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+string ext(10)
+
+| Suppose ERP Enterprise is running on Unix
+ext = path.extension("/home/user/test.txt")
+| ext = ".txt"
+
+ext = path.extension("/home/user/test.")
+| ext = ""
+
+ext = path.extension("/home/user/test.dir/test")
+| ext = ""
+
+ext = path.extension("/home/user/testdir/test")
+| ext  = ""
+
+| Dealing with Windows paths
+ext  = path.extension("c:\temp\testdir\test.txt", OS_WINDOWS_NT)
+| ext = ".txt"
+
+ext = path.extension("c:\temp\testdir\test.", OS_WINDOWS_NT)
+| ext = ""
+
+ext = path.extension("c:\temp\testdir\test.dir\test", OS_WINDOWS_NT)
+| ext = ""
+
+ext = path.extension("c:\temp\testdir\test", OS_WINDOWS_NT)
+| ext = ""
+		</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/overview.htm" class="manualLink">Directory and file operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/synopsis.htm" class="manualLink">Directory and file operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_directory_file_operations/path.extension, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

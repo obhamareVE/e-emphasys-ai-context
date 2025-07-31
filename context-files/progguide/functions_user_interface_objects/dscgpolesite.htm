@@ -1,0 +1,276 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DsCgpOleSite</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dscgpolesite ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DsCgpOleSite</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">A DsCgpOleSite subobject defines a rectangle that can embed
+               an OLE object. The parent window is always a DsCgwindow
+               object.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Events</div>
+            <p class="Paragraph">A DsCgpOleSite subobject does not generate events.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" class="none">
+               <tbody noTR="18" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNappName</p>
+                        <p class="Paragraph">(string)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The name of the application in which the OLE object
+                        is embedded.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNattribute</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The status of the subobject. Possible values
+                           are:
+                        </p>
+                        <p class="Paragraph">GPNORMAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Detectable and
+            visible.</p>
+                        <p class="Paragraph">GPUNDETECTABLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Cannot be detected with <i class="Emphasis">query.object()</i>.
+                        </p>
+                        <p class="Paragraph">GPINVISIBLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subobject is
+            hidden.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNdata</p>
+                        <p class="Paragraph">(void)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSGQ]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies the binary data that contains the OLE
+                        object.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNdocName</p>
+                        <p class="Paragraph">(string)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The name of the document in which the OLE object is
+                        embedded.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNerror</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies the error code returned when a <i class="Emphasis">change.object()</i> request fails.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNformat</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CQ]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The format of the data in DsNdata. Possible values
+                           are:
+                        </p>
+                        <p class="Paragraph">DSFORMATNATIVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Native object format</p>
+                        <p class="Paragraph">defined by server</p>
+                        <p class="Paragraph">application (default).</p>
+                        <p class="Paragraph">DSFORMATTEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ASCII text format.</p>
+                        <p class="Paragraph">DSFORMATBITMAP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Bitmap format.</p>
+                        <p class="Paragraph">DSFORMATMETAFILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Metafile format.</p>
+                        <p class="Paragraph">DSFORMATDIB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Device independent</p>
+                        <p class="Paragraph">bitmap format.</p>
+                        <p class="Paragraph">DSFORMATWAVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Wave file format.</p>
+                        <p class="Paragraph">DSFORMATUNICODETEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unicode
+            text format.</p>
+                        <p class="Paragraph">DSFORMATENHANCEDMETAFILE&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enhanced metafile
+            format.</p>
+                        <p class="Paragraph">DSFORMATRICHTEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RTF
+            format</p>
+                        <p class="Paragraph">DSFORMATEMBEDSOURCE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Embedded
+            source format.</p>
+                        <p class="Paragraph">DSFORMATEMBEDDEDOBJECT&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Embedded object
+            format.</p>
+                        <p class="Paragraph">DSFORMATLINKSOURCE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Link
+            source format.</p>
+                        <p class="Paragraph">DSFORMATOBJECTDESCRIPTOR&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Object description
+            format.</p>
+                        <p class="Paragraph">DSFORMATLINKSOURCEDESCRIPTOR&nbsp; Link source
+            description</p>
+                        <p class="Paragraph">format.</p>
+                        <p class="Paragraph">DSFORMATOWNERLINK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Owner
+            link format.</p>
+                        <p class="Paragraph">DSFORMATFILENAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; File
+            name format.</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNheight</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The height of the object, in pixels.</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNname</p>
+                        <p class="Paragraph">(string)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The name of the local file that contains the OLE
+                        object.
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNobjectType</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td rowspan="1" colspan="1" class="none">The subobject type.</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNprogId</p>
+                        <p class="Paragraph">(string)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">OLE objects are registered with a unique program
+                        identifier. This attribute specifies that ID.
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNrefSubObject</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of the subobject used as a reference by
+                        DsNsequence.
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsequence</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The position of the object relative to the reference
+                           subobject. Possible values are:
+                        </p>
+                        <p class="Paragraph">GPMKFIRST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Part is drawn above all other
+            parts.</p>
+                        <p class="Paragraph">GPMKLAST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Part is drawn under all other
+            parts.</p>
+                        <p class="Paragraph">GPMKNEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Part is drawn under
+            DsNrefSubObject.</p>
+                        <p class="Paragraph">GPMKPREV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Part is drawn above
+            DsNrefSubObject</p>
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsize</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[GQ]</td>
+                     <td rowspan="1" colspan="1" class="none">The size of the data in DsNdata.</td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DsNtemplate</td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of a <a href="../../progguide/functions_user_interface_objects/dsctemplate.htm" class="manualLink">DsCtemplate</a> that defines a set of attributes to be
+                        applied to the object.
+                     </td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNverb</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[S]</td>
+                     <td rowspan="1" colspan="1" class="none">The action to be performed on the OLE object.</td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNwidth</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The width of the subobject, in pixels.</td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNx</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The x-coordinate of the subobject's outer left edge,
+                        in pixels, relative to the inner left edge of its
+                        parent.
+                     </td>
+                  </tr>
+                  <tr no="18" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNy</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The y-coordinate of the subobject's outer top edge,
+                        in pixels, relative to the inner top edge of its
+                        parent.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/dscgpolesite, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

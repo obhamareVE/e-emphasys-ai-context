@@ -1,0 +1,130 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>str.replace$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions str.replace$ str.replace$ str.replace$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">str.replace$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;str.replace$&nbsp;
+					(const string&nbsp;string$, const string&nbsp;oldstr$, const string&nbsp;newstr$)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Returns a (null terminated) copy of <code class="Code">string$</code> that will have all instances of <code class="Code">oldstr$</code> replaced with <code class="Code">newstr$</code>.
+               </p>
+               <p class="Paragraph">As this function returns a string value that can become larger than the input string, you have to use a variable that is large
+                  enough to store the result.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>string$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">a string</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>oldstr$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the part to replace</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>newstr$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the part to replace <code class="Code">oldstr$</code> with
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1700.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Preconditions</div>
+            <ul class="List">
+               <li class="ListItem">In case one of the variables passed to <code class="Code">string$</code>, <code class="Code">oldstr$</code>, or <code class="Code">newstr$</code> is declared as a multibyte string, 
+                  				then the variable passed to <code class="Code">result$</code> must be declared as a multibyte string as well.
+               </li>
+            </ul>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+string source(50)
+string target(100)
+string temp(10)
+
+|                  1         2         3         4         5
+| pos     12345678901234567890123456789012345678901234567890
+source = "the quick brown fox jumps over the lazy dog"
+
+target = str.replace$(source, "dog", "cat")
+| target now contains "the quick brown fox jumps over the lazy cat"
+
+target = str.replace$(source, "the", "a")
+| target now contains "a quick brown fox jumps over a lazy cat"
+
+target = str.replace$(source, "o", "O")
+| target now contains "the quick brOwn fOx jumps Over the lazy dOg"
+
+target = str.replace$(source, " ", "  ")
+| target now contains "the  quick  brown  fox  jumps  over  the  lazy  dog"
+
+target = str.replace$(source, "the", "")
+| target now contains "quick brown fox jumps over lazy dog"
+
+temp = str.replace$(source, "", "the")
+| nothing replaced
+| target now contains "the quick brown fox jumps over the lazy dog"
+
+temp = str.replace$(source, "the", "")
+| temp now contains "quick brow" as temp can contain only 10 chars
+		</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/str.replace.htm" class="manualLink">str.replace()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/overview.htm" class="manualLink">String operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/synopsis.htm" class="manualLink">String operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_string_operations/str.replace$, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

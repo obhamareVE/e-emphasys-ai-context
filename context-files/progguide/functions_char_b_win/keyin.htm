@@ -1,0 +1,139 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>keyin$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions keyin$ keyin$ keyin$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">keyin$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;keyin$&nbsp;
+					( [long&nbsp;flag])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This function is only supported for
+                  character-based windows and its usage is therefore
+                  deprecated.
+               </p>
+               <p class="Paragraph">This reads the first character from the keyboard buffer. If
+                  there is no character in the buffer, the function waits until
+                  one is entered.
+               </p>
+               <p class="Paragraph">If you include the optional argument, the function performs a
+                  non-blocking read. If there is no character in the buffer, the
+                  function returns immediately with an empty string. This form of
+                  the function is used for interrupting a batch process when the
+                  user presses a key.
+               </p>
+               <p class="Paragraph">The function converts the following function keys to ASCII
+                  characters:
+               </p>
+               <table border="0" width="50%" class="none">
+                  <tbody noTR="6" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <th rowspan="1" colspan="1" class="none">Key</th>
+                        <th rowspan="1" colspan="1" class="none">Ascii</th>
+                        <th rowspan="1" colspan="1" class="none"></th>
+                        <th rowspan="1" colspan="1" class="none"></th>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">LEFT ARROW</td>
+                        <td rowspan="1" colspan="1" class="none">BS</td>
+                        <td rowspan="1" colspan="1" class="none">8</td>
+                        <td rowspan="1" colspan="1" class="none">^H</td>
+                     </tr>
+                     <tr no="3" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">RIGHT ARROW</td>
+                        <td rowspan="1" colspan="1" class="none">FF</td>
+                        <td rowspan="1" colspan="1" class="none">12</td>
+                        <td rowspan="1" colspan="1" class="none">^L</td>
+                     </tr>
+                     <tr no="4" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">UP ARROW</td>
+                        <td rowspan="1" colspan="1" class="none">VT</td>
+                        <td rowspan="1" colspan="1" class="none">11</td>
+                        <td rowspan="1" colspan="1" class="none">^K</td>
+                     </tr>
+                     <tr no="5" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">DOWN ARROW</td>
+                        <td rowspan="1" colspan="1" class="none">LF</td>
+                        <td rowspan="1" colspan="1" class="none">10</td>
+                        <td rowspan="1" colspan="1" class="none">^J</td>
+                     </tr>
+                     <tr no="6" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">INSERT</td>
+                        <td rowspan="1" colspan="1" class="none">EM</td>
+                        <td rowspan="1" colspan="1" class="none">25</td>
+                        <td rowspan="1" colspan="1" class="none">^Y</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>flag</code>]
+                     </td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The character read from the event queue. If the returned
+               string contains multiple bytes, the character is s multibyte
+               character. If the character is a function that cannot be
+               converted, the function returns an empty string.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+repeat
+  ...
+until (keyin$(99)=chr$(27)) | until &lt;Esc&gt; is pressed
+</pre><p class="Paragraph">Note that the above example is very time consuming.</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_char_b_win/overview_and_synopsis.htm" class="manualLink">Character-based windows - overview and synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_char_b_win/data.input.htm" class="manualLink">data.input()</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/overview.htm" class="manualLink">Events overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_char_b_win/keyin, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

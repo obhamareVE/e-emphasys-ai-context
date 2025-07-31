@@ -1,0 +1,100 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>BMS messages: sample programs</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="bms messages: sample programs ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">BMS messages: sample programs</div>
+      <div class="body">
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div><pre class="CodeBlock">
+| process 1
+ret = bms.send("do_action_1", 0, "tfgld1201s000", 0)
+
+| background process "tfgld1201s000"
+bms.add.mask("bms.shutdown")            | to detect the shutdown
+event
+                                        | which is sent by the
+system
+....
+bucket = bms.receive$()
+if bucket = "bms.shutdown" then
+        end.process()           | contains del.window command
+else
+        if bucket = "do_action_1" then
+                action_1()
+        endif
+endif
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2</div><pre class="CodeBlock">
+long    event(EVTMAXSIZE)
+string  bms.ret(2048)
+
+while true
+        next.event(event)
+        on case evt.type(event)
+        case EVTBUCKETMESSAGE:
+                bms.ret = bms.receive$()
+                handle.bucket.message( bms.ret )
+                break
+        case EVTKEYPRESS:
+                ....
+        case EVTBUTTONPRESS:
+                ....
+        endcase
+endwhile
+
+function handle.bucket.message( const string bms.str() )
+{
+        string  key.of.record(100)
+
+        on case bms.str
+        case "first":
+                key.of.record = get.first.record()
+                bms.send(key.of.record, event, "",
+evt.bms.sender(event))
+                break
+        case "last":
+                key.of.record = get.last.record()
+                bms.send(key.of.record, event, "",
+evt.bms.sender(event))
+                break
+        case "next":
+                key.of.record = get.next.record()
+                bms.send(key.of.record, event, "",
+evt.bms.sender(event))
+                break
+        case "prev":
+                key.of.record = get.prev.record()
+                bms.send(key.of.record, event, "",
+evt.bms.sender(event))
+                break
+        endcase
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_interprocess_communication_os_level/overview.htm" class="manualLink">Interprocess communication (OS level) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_interprocess_communication_bshell/overview.htm" class="manualLink">Interprocess communication (bshell) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_interprocess_communication_bshell/synopsis.htm" class="manualLink">Interprocess communication (bshell) synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_interprocess_communication_bshell/bms_messages_sample_programs, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

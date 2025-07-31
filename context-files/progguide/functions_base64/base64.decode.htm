@@ -1,0 +1,94 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>base64.decode()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="base64.decode base64.decode functions base64.decode ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">base64.decode()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;base64.decode&nbsp;
+					(string&nbsp;data.in, ref string&nbsp;data.out)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Decodes the Base64 encoded input to binary output.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>data.in</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">String with Base64 encoded input. All non-Base64
+                           characters are skipped, including null-characters and
+                           unexpected padding characters (=).
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>data.out</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">String which will receive the binary output.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The size of the binary output is returned. If this value is
+               greater than the size of data.out, then the output is completely
+               filled with binary output, but that is less than the complete
+               decoded version of the Base64 encoded input.
+            </p>
+            <p class="Paragraph">To compute the size of the binary output, it is not enough to
+               know the size of the Base64 encoded input, because all
+               unexpected input characters are skipped. For each four not
+               skipped Base64 encoded input characters, normally three binary
+               output bytes are produced. However, when these four characters
+               end with a single padding character (=), then two output bytes
+               are produced, and when they end with two padding characters
+               (==), then one output byte is produced.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_base64/base64_overview.htm" class="manualLink">Base64 overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_base64/base64_synopsis.htm" class="manualLink">Base64 synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_base64/base64.decode, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

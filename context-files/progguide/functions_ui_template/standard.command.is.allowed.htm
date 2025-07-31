@@ -1,0 +1,151 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>standard.command.is.allowed()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="UI template Standard command hooks add.set.is.allowed dupl.occur.is.allowed functions standard.command.is.allowed global.delete.is.allowed mark.delete.is.allowed modify.set.is.allowed standard.command.is.allowed standard.command.is.allowed text.manager.is.allowed ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">standard.command.is.allowed()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean&nbsp;standard.command.is.allowed&nbsp;
+					()</code><code>function&nbsp;boolean&nbsp;add.set.is.allowed&nbsp;
+					()</code><code>function&nbsp;boolean&nbsp;dupl.occur.is.allowed&nbsp;
+					()</code><code>function&nbsp;boolean&nbsp;modify.set.is.allowed&nbsp;
+					()</code><code>function&nbsp;boolean&nbsp;mark.delete.is.allowed&nbsp;
+					()</code><code>function&nbsp;boolean&nbsp;global.delete.is.allowed&nbsp;
+					()</code><code>function&nbsp;boolean&nbsp;text.manager.is.allowed&nbsp;
+					()</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">You can use these hooks in your UI script to define the
+                  	  conditions under which the specific standard command should become enabled in
+                  	  the UI. The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will use these hooks to determine whether the
+                  	  standard commands must be enabled or disabled.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The hook should return TRUE in case the standard command is
+               	  allowed. In that case the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will enable the standard command on the UI. In
+               	  any other case the hook should return FALSE.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">When called</div>
+            <p class="Paragraph">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will call one or more of these hooks just
+               	  before the following event sections are executed:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><i class="Emphasis">before.display.object</i></li>
+               <li class="ListItem">
+                  <p class="Paragraph">Here commands are handled whose enabling depends on values
+                     		  of the whole occurrence. E.g. based on a status field the occurrence should be
+                     		  disabled and may not be deleted.
+                  </p>
+                  <p class="Paragraph">For editable overview sessions the MODIFY.SET command is
+                     		  handled.
+                  </p>
+                  <p class="Paragraph">For details session the MODIFY.SET, MARK.DELETE and
+                     		  TEXT.MANAGER commands are handled.
+                  </p>
+                  <p class="Paragraph">(MODIFY.SET influences whether the whole occurrence will be
+                     		  disabled).
+                  </p>
+               </li>
+               <li class="ListItem"><i class="Emphasis">read.view</i> subevent of the <i class="Emphasis">main.table.io</i> event
+               </li>
+               <li class="ListItem">
+                  <p class="Paragraph">Here commands are handled whose enabling depends on the
+                     		  current view. E.g. a closed order does not allow lines to be added, or deleted.
+                     		  The order number field can be in the view.
+                  </p>
+                  <p class="Paragraph">For overview sessions the ADD.SET and GLOBAL.DELETE commands
+                     		  are handled.
+                  </p>
+                  <p class="Paragraph">For details sessions the ADD.SET command is
+                     		  handled.
+                  </p>
+                  <p class="Paragraph">For both types of sessions, the disabling of the DUPL.OCCUR
+                     		  command will be based the ADD.SET command, since DUPL.OCCUR is actually adding
+                     		  a record with default values.
+                  </p>
+               </li>
+               <li class="ListItem"><i class="Emphasis">after.choice</i> subevent of the <i class="Emphasis">choice.mark.occur</i> event
+               </li>
+               <li class="ListItem">Here commands are handled whose enabling depends on whether
+                  		records are marked. If one record is marked the DUPL.OCCUR, MARK.DELETE and
+                  		TEXT.MANAGER commands are handled. DUPL.OCCUR is only handled in case the
+                  		session has view fields, because the view may forbid lines to be
+                  		added.
+               </li>
+            </ul>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <ul class="List">
+                  <li class="ListItem">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will also use the DAL <a href="../../progguide/functions_dal/method.is.allowed.htm" class="manualLink">method.is.allowed()</a> hook to determine whether the standard commands must be enabled or disabled:
+                  </li>
+                  <li class="ListItem">First, the UI hook will be called. If this returns FALSE, the command will be disabled, if it returns 
+                     		TRUE (or if it does not exist), the <a href="../../progguide/functions_dal/method.is.allowed.htm" class="manualLink">method.is.allowed()</a> hook will be called. If this returns FALSE, the command will be disabled, else it will be enabled.
+                  </li>
+                  <li class="ListItem">The disabling of the standard commands UPDATE.DB and RECOVER.SET is based on the 
+                     		command MODIFY.SET. This is because when the user is not allowed to modify data, the Save 
+                     		and Revert To Saved can also be disabled.
+                  </li>
+                  <li class="ListItem">As off TIV 1075 the standard command global.delete is no longer supported. See the <a href="../../progguide/functions_selection/cookbook.htm" class="manualLink">Improved Record selection Cookbook</a> for more information.
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+function extern boolean mark.delete.is.allowed()
+{
+    domain  fmfoc.oorg  origin.of.order
+
+    fmfoc.dll0100.get.origin.of.order(fmfoc200.orno, origin.of.order)
+    if origin.of.order &lt;&gt; fmfoc.oorg.man then
+        return(false)
+    endif
+
+    return(true)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_ui_template/overview.htm" class="manualLink">UI Template</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_ui_template/form.command.is.allowed.htm" class="manualLink">form.command.is.allowed()</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_ui_template/standard.command.is.allowed, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

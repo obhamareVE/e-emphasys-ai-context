@@ -1,0 +1,175 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>SQL glossary</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Cardinality (of a collection) Correlated subquery Degree Grouped query Grouped table Grouping column Implementation defined Outer column reference Qualified column name Redundant duplicates Select target Undefined ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">SQL glossary</div>
+      <div class="body">
+         <div class="GlossaryEntry" id="Cardinality">
+            <div class="Term">Cardinality (of a collection)</div>
+            <div class="GlossaryEntryRemainder">
+               <div class="SimpleSection">
+                  <p class="Paragraph">The number of objects in that collection.
+                     Those objects need not necessarily be distinct values.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="GlossaryEntry" id="CorrelatedSubquery">
+            <div class="Term">Correlated subquery</div>
+            <div class="GlossaryEntryRemainder">
+               <div class="SimpleSection">
+                  <p class="Paragraph">A correlated sub query is a sub query that contains an
+                     outer column reference.
+                  </p>
+                  <p class="Paragraph">For example, the sub query "select * from dbtst120 where
+                     emnpo = employee.empno" is correlated because it constains
+                     the outer column reference "employee.empno".
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="GlossaryEntry" id="Degree">
+            <div class="Term">Degree</div>
+            <div class="GlossaryEntryRemainder">
+               <div class="SimpleSection">
+                  <p class="Paragraph">The degree of a table is the number of columns that
+                     table has. In this an array column counts as 1 column. 
+                     The _compnr 
+                     column also counts as a column. Other pseudo
+                     columns (e.g. _index1) expand to there underlying
+                     column(s), each counting for 1 column.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="GlossaryEntry" id="GroupedQuery">
+            <div class="Term">Grouped query</div>
+            <div class="GlossaryEntryRemainder">
+               <div class="SimpleSection">
+                  <p class="Paragraph">A grouped query is a query that has an explicit GROUP
+                     BY clause or that has a set function specification
+                     (aggregate function) in the SELECT clause.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="GlossaryEntry" id="GroupedTable">
+            <div class="Term">Grouped table</div>
+            <div class="GlossaryEntryRemainder">
+               <div class="SimpleSection">
+                  <p class="Paragraph">A grouped table is a set of groups derived during
+                     evaluation of the <a href="../../progguide/functions_database_handling/group_by.htm" class="manualLink">GROUP BY clause</a>. A group of the grouped table is a multiset of
+                     rows. If for any two rows of the grouped table, the values
+                     of the grouping columns are identical or are both NULL,
+                     then the rows are in the same group. Otherwise, the rows
+                     are in different groups.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="GlossaryEntry" id="GroupingColumn">
+            <div class="Term">Grouping column</div>
+            <div class="GlossaryEntryRemainder">
+               <div class="SimpleSection">
+                  <p class="Paragraph">A column reference specified in the <a href="../../progguide/functions_database_handling/group_by.htm" class="manualLink">GROUP BY clause</a>.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="GlossaryEntry" id="ImplementationDefined">
+            <div class="Term">Implementation defined</div>
+            <div class="GlossaryEntryRemainder">
+               <div class="SimpleSection">
+                  <p class="Paragraph">Possibly differing between SQL-implementations, but
+                     specified by the implementor for each particular
+                     SQL-implementation.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="GlossaryEntry" id="OuterColumnReference">
+            <div class="Term">Outer column reference</div>
+            <div class="GlossaryEntryRemainder">
+               <div class="SimpleSection">
+                  <p class="Paragraph">An <i class="Emphasis">outer column reference</i> is a column reference
+                     that references a table that is defined outside the
+                     current sub query.
+                  </p>
+                  <p class="Paragraph">For example, in the sub query "select * from dbtst120
+                     where emnpo = employee.empno" the column reference
+                     "employee.empno" is an outer column reference.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="GlossaryEntry" id="QualifiedColumnName">
+            <div class="Term">Qualified column name</div>
+            <div class="GlossaryEntryRemainder">
+               <div class="SimpleSection">
+                  <p class="Paragraph">A qualified column name is a column name with a
+                     qualifier. The qualifier is either a table name or an
+                     alias (correlation name). A column name without a
+                     qualifier is called an <i class="Emphasis">unqualified</i> column
+                     name.
+                  </p>
+                  <p class="Paragraph">For example, "dbtst120.empno" and "a.firstnme" are
+                     qualified column names, with qualifiers "dbtst120" and
+                     "a" respectively.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="GlossaryEntry" id="RedundantDuplicates">
+            <div class="Term">Redundant duplicates</div>
+            <div class="GlossaryEntryRemainder">
+               <div class="SimpleSection">
+                  <p class="Paragraph">All except one of any multiset of duplicate values.</p>
+               </div>
+            </div>
+         </div>
+         <div class="GlossaryEntry" id="SelectTarget">
+            <div class="Term">Select target</div>
+            <div class="GlossaryEntryRemainder">
+               <div class="SimpleSection">
+                  <p class="Paragraph">A select target is the program variable that is used
+                     to store the result value of a column of a SQL
+                     statement.
+                  </p>
+                  <p class="Paragraph">For example, in the query "select empno, firstnme
+                     :my.name from dbtst120", the select targets are
+                     "dbtst120.empno" and "my.name".
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="GlossaryEntry" id="Undefined">
+            <div class="Term">Undefined</div>
+            <div class="GlossaryEntryRemainder">
+               <div class="SimpleSection">
+                  <p class="Paragraph">Really means <i class="Emphasis">undefined</i>. No assumption
+                     can be made about what is being undefined. For example, if
+                     the documentation says "the order of the rows if <i class="Emphasis">undefined</i> ", then really no assumption can be made
+                     about the actual order in which the rows are.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/sql_glossary, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

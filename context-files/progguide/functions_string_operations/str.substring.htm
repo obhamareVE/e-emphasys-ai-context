@@ -1,0 +1,144 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>str.substring$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions str.substring$ str.substring$ str.substring$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">str.substring$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;str.substring$&nbsp;
+					(const string&nbsp;string$, long&nbsp;beginpos [, long&nbsp;endpos])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Returns a substring from the specified string. The substring starts at the specified begin position. 
+                  				When an end position is specified, the substring extends to the character at position <code class="Code">endpos - 1</code>.
+               </p>
+               <p class="Paragraph">Note that when using the <code class="Code">var(x;y)</code> construction, the <code class="Code">y</code> is the size of the substring, but when calling <code class="Code">str.substring$(var, x, y)</code>, the <code class="Code">y</code> is the end position in <code class="Code">var</code>. See the example code below 
+                  				to see the difference.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>string$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">a string</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>beginpos</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the begin position, inclusive; note that:</p>
+                        <ul class="List">
+                           <li class="ListItem">if <code class="Code">beginpos &lt;= 0</code>, <code class="Code">beginpos</code> is set to 1
+                           </li>
+                           <li class="ListItem">if <code class="Code">beginpos &gt; len(string$)</code>, then an empty string is returned
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>endpos</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional, the end position, exclusive; note that:</p>
+                        <ul class="List">
+                           <li class="ListItem">if <code class="Code">endpos &lt;= beginpos</code>, an empty string is returned
+                           </li>
+                           <li class="ListItem">if <code class="Code">endpos &gt; len(string$)</code>, then <code class="Code">endpos</code> is not taken into account
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1700.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+string source(50)
+string substr(50)
+long p1, p2
+
+|                  1         2         3         4         5
+| pos     12345678901234567890123456789012345678901234567890
+source = "the quick brown fox jumps over the lazy dog"
+
+substr = str.substring$(source, 41)
+| substr now contains "dog"
+
+substr = str.substring$(source, 5, 10)
+| substr now contains "quick" and contains 5 chars
+
+| see the difference with the sub string operator (;)
+substr = source(5;10)
+| substr now contains "quick brow" and contains 10 chars
+
+substr = str.substring$(source, -1, 4)
+| substr now contains "the"
+
+substr = str.substring$(source, 36, 50)
+| substr now contains "lazy dog"
+
+substr = str.substring$(source, 1, 1)
+| substr now contains ""
+
+substr = str.substring$(source, 50)
+| substr now contains ""
+
+|                  1         2         3         4         5
+| pos     12345678901234567890123456789012345678901234567890
+source = "Once upon a time, there was a ..."
+p1 = pos(source, "time")
+| p1 equals 13
+p2 = pos(source, ",")
+| p2 equals 17
+substr = str.substring$(source, p1, p2)
+| substr now contains "time"
+		</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/overview.htm" class="manualLink">String operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/synopsis.htm" class="manualLink">String operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_string_operations/str.substring, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

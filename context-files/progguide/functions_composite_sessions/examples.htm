@@ -1,0 +1,365 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Composite Sessions Code Examples</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Composite Sessions examples ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Composite Sessions Code Examples</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Composite Session Controller</div>
+            <p class="Paragraph">Below an example script is shown of a Composite Session Controller session.
+               This session is linked to a 3GL-Session script
+            </p><pre class="CodeBlock">
+#include &lt;bic_cps&gt;
+
+function void main()
+{
+	long retval
+	long pane1
+	long pane2
+	
+	retval = cps.init()
+	
+	pane1 = cps.create.splitpane(CPS.VERTICAL, 50)
+	pane2 = cps.create.splitpane(CPS.HORIZONTAL, 30, pane1)
+	
+	cps.add.child("tewhr6501m000", CPS.MENUBAR+CPS.TOOLBAR,
+   				  "Title 1", pane2)
+	cps.add.child("tewhr6502m000", CPS.TOOLBAR, "Title 2", pane2)
+	cps.add.child("tewhr6602m000", CPS.TOOLBAR, "Title 3", pane1)
+	
+	cps.start()
+}
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Composite Child 4GL-Session</div>
+            <p class="Paragraph">Below some specific parts in a Composite Child 4GL-Session script are shown.
+               The code constructions which are directly related with Composite Child sessions are shown in italic.
+            </p><pre class="CodeBlock">
+after.form.read:
+	|For data-synchronization create a keyfields object.
+	<i class="Emphasis">keyfields = create.keyfields.object("tewhr602")</i>
+
+choice.mark.occur:
+after.choice:
+	|Use PRCM for data synchronization between composite child
+	|sessions
+	if hold.record &lt;&gt; tewhr602.uuid and
+	    sel.num.selected() = 1 then
+		hold.record = tewhr602.uuid
+		<i class="Emphasis">
+		keyfields.to.object(keyfields)
+		prcm.notify("tewhr602:" &amp; str$(parent), "", keyfields)
+		</i>
+	endif
+
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Composite Child GBF-Session</div>
+            <p class="Paragraph">Below some specific parts in a Composite Child GBF-Session script are shown.
+               The code constructions which are directly related with Composite Child sessions are shown in italic
+            </p><pre class="CodeBlock">
+#include &lt;bic_gbf&gt;				| GBF defines
+<i class="Emphasis">long keyobject</i>
+
+function void main()
+{
+	long	retval			|to test return values
+
+	|Register with PRCM for data synchronization with another
+	|Composite child session.	
+	<i class="Emphasis">prcm.register("tewhr602:" &amp; str$(parent))</i>
+
+	retval = gbf.init(gbf.current.library(), "", 
+			GBF.MENU.ALL + GBF.MENU.FILE.OPEN + GBF.MENU.FILE.READ,
+			GBF.BUTTON.ALL, GBF.OPT.DEFAULT + GBF.OPT.DEBUG)
+	if retval &lt; 0 then
+		exit(retval)
+	endif
+	if gbf.set.sort.strategy( GBF.SORT.DESC
+				+ GBF.SORT.ASCENDING
+				+ GBF.SORT.INSENSITIVE) then
+		message("Cannot change sort strategy")
+	endif
+	exit(gbf.start(2, 2))		|Show and read the first level
+}
+
+function extern long gbf.get.top.level()
+{
+	long	retval	
+
+<i class="Emphasis">
+	if keyobject &lt; 0 then
+		object.to.keyfields(keyobject)
+</i>
+		select	tewhr602.*
+		from	tewhr602
+		where	tewhr602.uuid = :tewhr602.uuid
+		selectdo
+			retval = gbf.add.interior(strip$(tewhr602.uuid), 
+				get.part.descr(strip$(tewhr602.item)), 
+				0)
+			if retval &lt; 0 then
+				return (GBF.DO.EXIT)
+			endif
+		endselect
+	endif
+	return (0)
+}
+
+function extern long gbf.bms.received(long sender.id, const string mask(), const string mss(), long length)
+{
+<i class="Emphasis">
+	if prcm.bms.is.notification() then
+		keyobject = prcm.get.data()
+		return(GBF.DO.RESTART.TREE)		|Force GBF to call gbf.get.top.level() again
+	endif	
+</i>
+	return(GBF.DO.CONTINUE)
+}
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Drag from 4GL-Session</div>
+            <p class="Paragraph">Below some parts of a 4GL-UI scripts are shown which are specific for the implementation of dragging records 
+               from a 4GL-multi-occurrence session.
+            </p><pre class="CodeBlock">
+before.program:
+	enable.drag()
+	prcm.register("tewhr601") |For updating the UI when table changed in other session
+
+choice.bms:
+on.choice:
+	if prcm.bms.is.notification() then
+		|* Refresh all data on the screen (for instance after a drop on another session)
+		refresh.all.occs()
+	endif
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Drag to GBF-Session</div>
+            <p class="Paragraph">Below some parts of a GBF session script are shown which are specific for the implementation of dropping objects
+               from another session onto a GBF node
+            </p><pre class="CodeBlock">
+function void main()
+{
+	long	retval			|to test return values
+
+	retval = gbf.init(…)
+	if retval &lt; 0 then
+		exit(retval)
+	endif
+
+	retval = gbf.enable.drop("tewhr6501m000", gbf.current.library(), "gbf.on.drop")
+	if retval &lt; 0 then
+		exit(retval)
+	endif
+	exit(gbf.start()
+}
+
+function extern long gbf.on.drop(long from.pid, long collection, long drop.obj, const string drop.key,
+		 long drop.value, long drop.type, boolean copy)
+{
+	long keyfields.object
+	boolean updates.done
+	long retval
+	
+	db.retry.point()
+	
+	keyfields.object = get.first.keyfields.object(collection)
+	
+	updates.done = false
+	
+	while keyfields.object &lt;&gt; 0
+		object.to.keyfields(keyfields.object)
+		
+		|Check and decrement stock in tewhr601
+		select tewhr601.item
+		from tewhr601 FOR UPDATE
+		where tewhr601.item = :tewhr601.item
+		selectdo
+			if tewhr601.stock &gt; 0 then
+				DEC(tewhr601.stock)
+				db.update(ttewhr601, DB.RETRY)
+				
+				| Insert new record in tewhr602
+				tewhr602.uuid = uuid.generate$()
+				tewhr602.item = tewhr601.item
+				tewhr602.pare = drop.key
+				db.insert(ttewhr602, DB.RETRY)
+				updates.done = true
+			else
+				message("No stock available for item: " &amp; tewhr601.item)
+			endif
+		endselect
+		
+		keyfields.object = get.next.keyfields.object(keyfields.object)
+	endwhile
+	
+	commit.transaction()
+	
+	retval = GBF.DO.CONTINUE
+
+	if updates.done then
+		|Make sure current object is refreshed.
+		retval = GBF.DO.RESTART.CURRENT
+		
+		|Update the session from which the record(s) were dragged.
+		prcm.notify("tewhr601")
+	endif
+	
+	return(retval)
+}
+ </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Drag from a GBF session</div>
+            <p class="Paragraph">Below some parts of a GBF session script are shown which are specific for the implementation 
+               of dragging objects from a GBF session onto another session.
+            </p><pre class="CodeBlock">
+function void main()
+{
+	long	retval			|to test return values
+
+	|Register with PRCM for drop synchronization.
+	prcm.register("tewhr602")
+
+	retval = gbf.init(gbf.current.library(), "", 
+			GBF.MENU.ALL + GBF.MENU.FILE.OPEN + GBF.MENU.FILE.READ,
+			GBF.BUTTON.ALL, GBF.OPT.DEFAULT + GBF.OPT.SESSION.DRAG)
+	if retval &lt; 0 then
+		exit(retval)
+	endif
+	exit(gbf.start()	
+}
+
+function extern long gbf.on.drag(long to.pid, const string to.session, long drag.obj, 
+	const string drag.key, long drag.value, long drag.type, reference long collection)
+{
+	collection = create.keyfields.collection()
+	long numSelected
+	long i
+	long retval
+	domain teuuid keyvalue
+
+	if drag.obj &gt; 0 then
+		|Only one object selected.
+		add.key.object(drag.key, collection)
+	else
+		|More than one object selected.
+		numSelected = -drag.obj
+		for i = 1 to numSelected
+			if gbf.get.selected(i, drag.obj, keyvalue, drag.value, drag.type) = 0 then
+				add.key.object(keyvalue, collection)
+			endif
+		endfor
+	endif
+	
+	if get.num.keyfields.object(collection) &gt; 0 then
+		retval = GBF.DO.CONTINUE
+	else
+		|No objects added to collection. Abort drag operation.
+		delete.keyfields.collection(collection)
+		collection = 0
+		retval = GBF.DO.ABORT
+	endif
+	return(retval)
+}
+
+function void add.key.object(const domain teuuid keyvalue, long collection)
+{
+	long keyfields.object
+
+	select	tewhr602.*
+	from	tewhr602
+	where	tewhr602.uuid = :keyvalue
+	selectdo
+		keyfields.object = create.keyfields.object("tewhr602", collection)
+		keyfields.to.object(keyfields.object)
+	endselect
+}
+
+function extern long gbf.bms.received(long sender.id, const string mask(), const string mss(), long length)
+{
+	if prcm.bms.is.notification() then
+		return(GBF.DO.RESTART.TREE)
+	endif
+	return(GBF.DO.CONTINUE)
+}
+ </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Drop on a 4GL session</div>
+            <p class="Paragraph">Below some parts of a 4GL-UI scripts are shown which are specific for the implementation of dropping records from another
+               session.
+            </p><pre class="CodeBlock">
+before.program:
+	enable.drop("tewhr6602m000", "on.drop")
+
+function extern void on.drop(long from.pid, long collection, boolean copy)
+{
+	long keyfields.object
+	boolean updates.done
+	
+	db.retry.point()
+	
+	keyfields.object = get.first.keyfields.object(collection)
+	
+	updates.done = false
+	
+	while keyfields.object &lt;&gt; 0
+		object.to.keyfields(keyfields.object)
+		
+		|Remove record from tewhr602
+		select tewhr602.*
+		from tewhr602 for UPDATE
+		where tewhr602.uuid = :tewhr602.uuid
+		selectdo
+			|Increment related stock in tewhr601		
+			select tewhr601.*
+			from tewhr601 FOR UPDATE
+			where tewhr601.item = :tewhr602.item
+			selectdo
+				INC(tewhr601.stock)
+				db.update(ttewhr601, DB.RETRY)
+			endselect
+		
+			db.delete(ttewhr602, DB.RETRY)
+			updates.done = true
+		endselect
+		
+		keyfields.object = get.next.keyfields.object(keyfields.object)
+	endwhile
+	
+	commit.transaction()
+	
+	if updates.done then
+		|Make sure last record which was modified becomes visible.
+		execute(find.data)
+		
+		|Update the session from which the record(s) were dragged.
+		prcm.notify("tewhr602")
+	endif
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_composite_sessions/overview.htm" class="manualLink">Composite Sessions overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_composite_sessions/synopsis.htm" class="manualLink">Composite Sessions synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_composite_sessions/examples, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

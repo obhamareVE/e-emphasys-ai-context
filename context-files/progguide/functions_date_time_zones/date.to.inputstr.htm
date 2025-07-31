@@ -1,0 +1,113 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>date.to.inputstr$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="date.to.inputstr$ date.to.inputstr$ functions date.to.inputstr$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">date.to.inputstr$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;date.to.inputstr$&nbsp;
+					(long&nbsp;dayno, string&nbsp;format(7), long&nbsp;length)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This converts a specified number of days since 01-01-0001 to
+                  a date input string.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>dayno</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A number of days since 01-01-0001.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>format(7)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The format for the date string, specified by using the substitution symbols %Dxxx[,lang]</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>length</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The length of the date string:</p>
+                        <p class="Paragraph">6: year represented by 2 characters (century not included)</p>
+                        <p class="Paragraph">8: year represented by 4 characters (century included)</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none"></th>
+                     <td rowspan="1" colspan="1" class="none">The formatted input string.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none"></th>
+                     <td rowspan="1" colspan="1" class="none">An empty string if an error occurs.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">This example creates a default input string for the <a href="../../progguide/functions_char_b_win/data.input.htm" class="manualLink">data.input()</a> function.
+            </p><pre class="CodeBlock">
+string inpstring(8)
+inpstring = date.to.inputstr$( 727000, "%D002,3", 8 )
+</pre><p class="Paragraph">If the %D002 format for language 3 is MDY, the string
+               returned is "06171991" (that is, June 17, 1991). If it is DWY,
+               and the first day of the week is Sunday, the string returned is
+               "2251991" (that is, day 2, week 25, 1991).
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_date_time_zones/synopsis.htm" class="manualLink">Dates, times, time zones synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_date_time_zones/overview.htm" class="manualLink">Dates, times, time zones overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_date_time_zones/date.to.inputstr, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

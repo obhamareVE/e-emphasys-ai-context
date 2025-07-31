@@ -1,0 +1,72 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>IS NULL predicate</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="IS NULL Search condition IS NULL ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">IS NULL predicate</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The IS NULL predicate evaluates to True if the value
+               expression evaluates to NULL.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;is null predicate&gt;
+    ::= <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a> IS [NOT] NULL
+      | <a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">Column reference</a> IS [NOT] NULL
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">If the <i class="Emphasis">&lt;value expression&gt;</i> is NULL, then the result of the
+               IS NULL predicate is True and the result of the IS NOT NULL
+               predicate is False. Otherwise, the result of the IS NULL
+               predicate is False and the result of the IS NOT NULL predicate
+               is True.
+            </p>
+            <p class="Paragraph">An array value is never NULL. So, the expression "phoneno IS
+               NULL" always evaluates to False, because the column <i class="Emphasis">phoneno</i> is an array column. The individual values of an
+               array value may be NULL. So, the expression "phoneno(1) IS NULL"
+               can evaluate to False or True.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following predicate evaluates to True if <i class="Emphasis">firstnme</i> is NULL. Otherwise, it evaluates to False.
+            </p><pre class="CodeBlock">
+firstnme IS NULL
+</pre><p class="Paragraph">The following predicate evaluates to True if <i class="Emphasis">firstnme</i> is NULL. Otherwise, it evaluates to False.
+            </p><pre class="CodeBlock">
+firstnme &amp; 'abc' IS NULL
+</pre><p class="Paragraph">The following predicate evaluates to True if both <i class="Emphasis">salary</i> and <i class="Emphasis">bonus</i> are NOT NULL.
+            </p><pre class="CodeBlock">
+salary + bonus IS NOT NULL
+</pre><p class="Paragraph">The above predicate is equivalent with the following
+               predicate.
+            </p><pre class="CodeBlock">
+salary IS NOT NULL  AND  bonus IS NOT NULL
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/is_null_pred, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

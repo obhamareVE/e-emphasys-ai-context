@@ -1,0 +1,66 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Common variables</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="common variables 3GL ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Common variables</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Unlike other variables, which can be used only within the
+               program in which they are declared, common variables can be used in
+               more than one program. Only string variables can be declared as
+               COMMON.
+            </p>
+            <p class="Paragraph">Common variables are automatically based on a common
+               memory part that can be used by several programs. For this
+               reason they must be declared as BASED. The fact that they are
+               common must be indicated with the reserved word COMMON.
+            </p>
+            <p class="Paragraph">Declaration of common variables must be located outside
+               every function. So they must be declared as global
+               variables.
+            </p>
+            <div class="subExampleSection">
+               <div class="subSectionTitle">Example</div>
+               <p class="Paragraph">In program 1 and program 2, the same memory space is used
+                  for variables com_1 and com_2.
+               </p><pre class="CodeBlock">
+Within program 1:
+        STRING      com_1(10) BASED, com_2(15) BASED
+        COMMON      com_1, com_2
+  &lt;functions which use com_1 and com_2&gt;
+
+Within program 2:
+        STRING      com_1(10) BASED, com_2(15) BASED
+        COMMON      com_1, com_2
+  &lt;functions which use com_1 and com_2&gt;
+</pre><p class="Paragraph">As an alternative to using common variables, you can use <a href="../../progguide/functions_variables_interprocess_transfer/import.htm" class="manualLink">import()</a>, <a href="../../progguide/functions_variables_interprocess_transfer/export.htm" class="manualLink">export()</a>, <a href="../../progguide/functions_variables_interprocess_transfer/get.var.htm" class="manualLink">get.var()</a> and <a href="../../progguide/functions_variables_interprocess_transfer/put.var.htm" class="manualLink">put.var()</a> to transport the values of variables between
+                  processes.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/variables.htm" class="manualLink">Variables</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/common_variables, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

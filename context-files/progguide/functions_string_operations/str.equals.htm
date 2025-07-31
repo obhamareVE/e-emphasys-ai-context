@@ -1,0 +1,132 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>str.equals()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions str.equals str.equals str.equals ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">str.equals()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean&nbsp;str.equals&nbsp;
+					(const string&nbsp;a$, const string&nbsp;b$ [, boolean&nbsp;ignorecase])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Tests two strings on equality. By default the test is done in a case sensitive way, e.g. "A" is not equal to "a". 
+                  				Optionally the test can be done case insensitive.
+               </p>
+               <p class="Paragraph">This function is a shorthand for <code class="Code">(str.compare(a$, b$) = 0)</code>.
+               </p>
+               <p class="Paragraph">Note that contrary to function <a href="../../progguide/functions_memory_operations/cmp.mem.htm" class="manualLink">cmp.mem()</a>, 
+                  				this function compares the two strings using the length the of the <i class="Emphasis">largest</i> string.
+               </p>
+               <ul class="List">
+                  <li class="ListItem">According to <a href="../../progguide/functions_memory_operations/cmp.mem.htm" class="manualLink">cmp.mem()</a>, "ab" and "abc" are equal,
+                     						as <a href="../../progguide/functions_memory_operations/cmp.mem.htm" class="manualLink">cmp.mem()</a> tests the two strings using the shortest length.
+                  </li>
+                  <li class="ListItem">According to <a href="../../progguide/functions_string_operations/str.equals.htm" class="manualLink">str.equals()</a>, "ab" and "abc" are not equal.
+                  </li>
+               </ul>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>a$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">a string</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>b$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">another string</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[boolean</td>
+                     <td class="none"><code>ignorecase</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">when <code class="Code">true</code> is specified the test on equality is done case-insensitive; when this argument is not specified the test is case sensitive
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">true</th>
+                     <td rowspan="1" colspan="1" class="none">the value of <code class="Code">a$</code> is equal to the value of <code class="Code">b$</code></td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">false</th>
+                     <td rowspan="1" colspan="1" class="none">the value of <code class="Code">a$</code> is different from the value of <code class="Code">b$</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1700.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+boolean ret
+
+ret = str.equals("ab", "ab")
+| ret = true
+
+ret = str.equals("a", "A")
+| ret = false
+
+ret = str.equals("a", "A", true)
+| ret = true
+
+ret = str.equals("ab", "abcd")
+| ret = false
+		</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/overview.htm" class="manualLink">String operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/synopsis.htm" class="manualLink">String operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_string_operations/str.equals, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

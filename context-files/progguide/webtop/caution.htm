@@ -1,0 +1,59 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Functions that should be used with caution</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Functions that should be used with caution</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The following functions should be used with caution. Wrong
+               use of them might cause the 4GL Engine not to respond when
+               running in WebTop mode.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">run.prog()</div>
+            <p class="Paragraph">Only use this function when the program requires no
+               user-interaction.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">sleep()</div>
+            <p class="Paragraph">If the sleep function is used in order to create a modal
+               overview session (which does not look as a zoom session) then
+               use the function start.session(MODAL_OVERVIEW, ). This works for
+               both WebTop and BW. You can also create a form command starting
+               a session, and specify the start mode of this session as:"Modal
+               Overview".
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">start.application.local()</div>
+            <p class="Paragraph">Don't use this function to start applications that might not
+               be present on each desktop (like BW.exe).
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">wait() and reactivate()</div>
+            <p class="Paragraph">Only use these functions if you have in-depth knowledge of
+               the 4GL Engine.
+            </p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/webtop/caution, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

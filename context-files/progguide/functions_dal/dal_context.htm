@@ -1,0 +1,113 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DAL Context</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DAL Context</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">The Data Access Layer can be used in different contexts. E.g.
+               it can be used by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> in a more or
+               less interactive mode. But it can also be used in a process
+               session or the Business Object Layer (BOL). Depending on whether
+               the Data Access Layer is used by the 4GL engine or a BOL, the
+               Data Access Layer has to behave slightly different. This is why
+               the concept of a DAL context has been introduced.
+            </p>
+            <p class="Paragraph">A DAL runs in one of the following contexts:</p>
+            <ul class="List">
+               <li class="ListItem">Data Input</li>
+               <li class="ListItem">Data Check</li>
+               <li class="ListItem">Process</li>
+               <li class="ListItem">Integration</li>
+            </ul>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Context</td>
+                     <td rowspan="1" colspan="1" class="none">Explanation</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Data Input</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This context is set by the 4GL engine when an
+                           end-user is entering data on a form.
+                        </p>
+                        <p class="Paragraph">The Data Access Layer will:</p>
+                        <p class="Paragraph">- Provide error messages that are focussed to
+                           the end-user.
+                        </p>
+                        <p class="Paragraph">- Check derived fields whether they may be
+                           changed by the end-user.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Data Check</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This context is set by the 4GL engine when an
+                           end-user does an action, like pressing save or
+                           executing a form command.
+                        </p>
+                        <p class="Paragraph">The Data Access Layer will:</p>
+                        <p class="Paragraph">- Provide error messages that are focussed to
+                           the end-user.
+                        </p>
+                        <p class="Paragraph">- Not check any derived fields so that the
+                           application can assign values to these fields.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Process</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This context is the default context. It is used for
+                           process and print sessions, but also for 3GL programs.
+                        </p>
+                        <p class="Paragraph">The Data Access Layer will:</p>
+                        <p class="Paragraph">- Provide error messages that are better suited
+                           to be printed on a report.
+                        </p>
+                        <p class="Paragraph">- Not check any derived fields so that the
+                           application can assign values to these fields.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">Integration</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This context is set when the DAL is used via the
+                           BOL.
+                        </p>
+                        <p class="Paragraph">The Data Access Layer will:</p>
+                        <p class="Paragraph">- Provide error messages that are better suited
+                           to be printed on a report.
+                        </p>
+                        <p class="Paragraph">- Check derived fields whether they may be
+                           changed by the end-user.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/dal_context, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

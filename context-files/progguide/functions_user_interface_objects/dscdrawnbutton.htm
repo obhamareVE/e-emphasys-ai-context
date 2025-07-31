@@ -1,0 +1,160 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DsCdrawnButton</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dscdrawnbutton ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DsCdrawnButton</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">A DsCdrawnButton object has the same functionality as a <a href="../../progguide/functions_user_interface_objects/dscpushbutton.htm" class="manualLink">DsCpushButton</a> object except that
+               it displays a graphical image instead of a text label.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Events</div>
+            <p class="Paragraph">A DsCdrawnButton object can generate the following
+               events:
+            </p>
+            <p class="Paragraph">EVTKEYPRESS</p>
+            <p class="Paragraph">EVTCHANGEFOCUS</p>
+            <p class="Paragraph">EVTSETFOCUS</p>
+            <p class="Paragraph">EVTBUTTONSELECT</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" class="none">
+               <tbody noTR="11" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNeventMask</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies the events that the object can generate.
+                        See <a href="../../progguide/events/select.event.input.htm" class="manualLink">select.event.input()</a> for a list of possible masks.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNheight</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The height of the object, in pixels.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNobjectType</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td rowspan="1" colspan="1" class="none">The object type.</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNparent</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of the parent object.</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNpixmap</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of the <a href="../../progguide/functions_user_interface_objects/dscpixmap.htm" class="manualLink">DsCpixmap</a> object to be displayed on the button.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNreturnValue</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The value that will be returned when the button is
+                        selected. The return value must be handled as an event.
+                        See <a href="../../progguide/events/overview.htm" class="manualLink">Events overview</a>.
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsetState</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The state of the object. See <a href="../../progguide/functions_user_interface_objects/dscmwindow.htm" class="manualLink">DsCmwindow</a>.
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtemplate</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of a <a href="../../progguide/functions_user_interface_objects/dsctemplate.htm" class="manualLink">DsCtemplate</a> that defines a set of attributes to be
+                        applied to the object.
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNwidth</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The width of the object, in pixels.</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNx</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The x-coordinate of the object's outer left edge, in
+                        pixels, relative to the inner left edge of its
+                        parent.
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNy</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The y-coordinate of the object's outer top edge, in
+                        pixels, relative to the inner top edge of its
+                        parent.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/dscdrawnbutton, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

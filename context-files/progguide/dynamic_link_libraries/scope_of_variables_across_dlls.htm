@@ -1,0 +1,60 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Scope of variables across DLLs</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dynamic-link libraries scope of variables across dlls scope of variables across dlls ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Scope of variables across DLLs</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Global variables</div>
+            <p class="Paragraph">Global variables are declared outside the functions in a
+               script, without the EXTERN keyword. They are only known
+               within the DLL in which they are declared. For example:
+            </p>
+            <p class="Paragraph"><code class="Code">long var_1</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">External variables</div>
+            <p class="Paragraph">External variables are declared outside the functions in a
+               script, with the EXTERN keyword. They are known within all
+               DLLs in the process in which they are declared. For
+               example:
+            </p>
+            <p class="Paragraph"><code class="Code">extern long var_2</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Database fields</div>
+            <p class="Paragraph">Database tables are declared as follows:</p>
+            <p class="Paragraph"><code class="Code">table&nbsp; t&lt;table_name&gt;</code></p>
+            <p class="Paragraph">Declaration of a table implies declaration of all its
+               fields also. Though a table declaration does not include the
+               EXTERN keyword, tables fields are known within all DLLs in
+               the process in which they are declared. When one DLL in a
+               process reads a record, the values of the record fields are
+               shared by all DLLs in the same process.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/dynamic_link_libraries/overview.htm" class="manualLink">Dynamic-link libraries</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/dynamic_link_libraries/scope_of_variables_across_dlls, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

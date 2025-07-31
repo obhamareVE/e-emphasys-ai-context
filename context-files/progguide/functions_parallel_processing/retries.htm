@@ -1,0 +1,46 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Parallel Application Processing Database Retries</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Parallel Application Processing Database Retries ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Parallel Application Processing Database Retries</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The functions par.server.retry.point() and par.server.retry.hit() are meant to report excessive 
+               database retries in the server back to the client.
+               If MAX_RETRY is set to 10 (this is default), only a maximum of 9 retries will be done per server.
+               When this is reached by one of the servers, that specific server sends an abort message to the client, 
+               which stops all servers and the communication.
+               		  Next example shows a fragment of the source code of a the server process which uses these functions.
+            </p><pre class="CodeBlock">
+par.server.retry.point()
+db.retry.point()
+if db.retry.hit() then
+   par.server.retry.hit()
+endif
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/overview.htm" class="manualLink">Parallel Application Processing Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/synopsis.htm" class="manualLink">Parallel Application Processing synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_parallel_processing/retries, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

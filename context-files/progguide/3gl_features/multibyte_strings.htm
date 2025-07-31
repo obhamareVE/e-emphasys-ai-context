@@ -1,0 +1,137 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Multibyte strings</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="multibyte strings 3GL ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Multibyte strings</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">By means of the keyword MB, a string variable can be declared
+               as a multibyte string, in order to handle non-ASCII characters.
+               For example:
+            </p><pre class="CodeBlock">
+STRING mb_str(10,5)  MB      | 5 multibyte strings of 10 characters
+</pre><p class="Paragraph">In a single-byte string, each byte contains a single
+               (ASCII-)character. But in a multibyte string, characters can
+               occupy from one to four bytes.
+            </p>
+            <div class="subExampleSection">
+               <div class="subSectionTitle">Example</div>
+               <table border="1" class="default">
+                  <tbody noTR="3" class="default">
+                     <tr no="1" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default">str_1</td>
+                     </tr>
+                     <tr no="2" isLast="false" class="default">
+                        <td width="30" rowspan="1" colspan="1" class="default">1</td>
+                        <td width="30" rowspan="1" colspan="1" class="default">2</td>
+                        <td width="30" rowspan="1" colspan="1" class="default">3</td>
+                        <td width="30" rowspan="1" colspan="1" class="default">4</td>
+                        <td width="30" rowspan="1" colspan="1" class="default"></td>
+                        <td width="30" rowspan="1" colspan="1" class="default"></td>
+                        <td width="30" rowspan="1" colspan="1" class="default"></td>
+                        <td width="30" rowspan="1" colspan="1" class="default">5</td>
+                        <td width="30" rowspan="1" colspan="1" class="default">6</td>
+                     </tr>
+                     <tr no="3" isLast="true" class="default">
+                        <td rowspan="1" colspan="1" class="default">a</td>
+                        <td rowspan="1" colspan="1" class="default">b</td>
+                        <td rowspan="1" colspan="1" class="default">c</td>
+                        <td rowspan="1" colspan="1" class="default">9b</td>
+                        <td rowspan="1" colspan="1" class="default">x</td>
+                        <td rowspan="1" colspan="1" class="default">x</td>
+                        <td rowspan="1" colspan="1" class="default">x</td>
+                        <td rowspan="1" colspan="1" class="default">d</td>
+                        <td rowspan="1" colspan="1" class="default">e</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+               <p class="Paragraph">This multibyte string contains six characters. The fourth
+                  character is a TSS (that is, multibyte) character containing 4
+                  bytes. Note that all TSS characters are prefixed with hex
+                  9b.
+               </p>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Encoding of characters</div>
+            <p class="Paragraph">A single byte string or multibyte string is a sequence of
+               bytes used to represent a sequence of characters. There are many
+               ways to encode the sequence of characters into the sequence of
+               bytes.
+            </p>
+            <p class="Paragraph">In the 3GL language, the default encoding is <a href="../../progguide/misc/tss.htm" class="manualLink">TSS Encoding</a>.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <ul class="List">
+                  <li class="ListItem">In program scripts, it is not possible to assign a
+                     multibyte character (for example, Chinese) to a multibyte
+                     string.
+                  </li>
+                  <li class="ListItem">When the string <i class="Emphasis">str</i> is declared as: <code class="Code">STRING
+                        str(x) MB | x is the number of display positions</code> then
+                     enough memory is reserved for it to contain any reasonable
+                     TSS string which needs at most x positions to be displayed.
+                     One TSS character occupies 1 or 4 bytes of memory and needs
+                     0, 1, or 2 positions to be displayed. The interpretation of
+                     when a TSS string is 'reasonable' differs, dependent on the
+                     system configuration.
+                  </li>
+                  <li class="ListItem">The string <code class="Code">str(x;1)</code> contains one character,
+                     and a size of one or four bytes. If the character has a size
+                     of 4 bytes, it is a TSS character.
+                  </li>
+                  <li class="ListItem">It is not advisable to assign a multibyte string to a
+                     normal string, as this can cause problems regarding storage
+                     space and special manipulations like indexing.
+                  </li>
+                  <li class="ListItem">You cannot use multibyte strings in combination with the
+                     BASED mechanism.
+                  </li>
+                  <li class="ListItem">Multibyte strings are not only meant for the support of
+                     typical multibyte scripts like Japanese, Chinese, and Korean,
+                     but also for the support of 'foreign' single byte scripts,
+                     like Greek, Cyrillic, Hebrew, Arabic, and Thai.
+                  </li>
+                  <li class="ListItem">All supported scripts contain the <a href="../../progguide/misc/ascii_table.htm" class="manualLink">ASCII table (C0 Controls and Basic Latin)</a> character
+                     set as a subset. Notice that ASCII is a 7-bit character set
+                     (ranging from 0 to 127). The remaining single byte characters
+                     (ranging from 128 to 255, i.e. above the ASCII range) are
+                     ambiguous: their meaning differs in each script.
+                  </li>
+                  <li class="ListItem">Strings not declared as multibyte should only be used for
+                     characters which are available in all scripts. This means
+                     that only ASCII characters should be used.
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/variables.htm" class="manualLink">Variables</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/multibyte_strings, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

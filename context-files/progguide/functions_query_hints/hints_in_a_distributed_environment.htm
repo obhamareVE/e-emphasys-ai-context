@@ -1,0 +1,87 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Hints in a distributed environment</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Hints in a distributed environment</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">If a query is distributed, it is executed using multiple database
+               drivers. In this case a driver may not receive all hints because
+               the client distributes the hints over the database drivers. The
+               client distributes the hints according to the following two simple
+               rules:
+            </p>
+            <ol class="ProcedureList">
+               <li class="ProcedureListItem">An index hint is only sent to the driver if it handles
+                  the corresponding table.
+               </li>
+               <li class="ProcedureListItem">All other hints are sent to all drivers.</li>
+            </ol><pre class="CodeBlock">
+select tppdm740.cuno, tccom010.cuno
+from   tppdm740, tccom010
+where  tppdm740.cuno refers to tccom010
+hint   use index 1 on tccom010
+and    buffer 10 rows
+</pre><p class="Paragraph">Assume for the above query that the table tppdm740 is
+               stored in database 1 and table tccom010 in database 2. In
+               this case the following queries are sent:
+            </p>
+            <p class="Paragraph">To driver 1:</p><pre class="CodeBlock">
+select tppdm740.cuno
+from   tppdm740
+hint   buffer 10 rows
+</pre><p class="Paragraph">To driver 2:</p><pre class="CodeBlock">
+select tccom010.cuno
+from   tccom010
+where  cuno = &lt;variable&gt;
+hint   use index 1 on tccom010
+and    buffer 10 rows
+</pre><p class="Paragraph">The buffer hint is sent to both drivers but the index hint
+               is only sent to driver 2. As a result of this driver 1 does
+               not receive any execution plan hints and generates default
+               hints. If you do not want driver 1 to generate default hints
+               you can add the hint 'no hints':
+            </p><pre class="CodeBlock">
+select tppdm740.cuno, tccom010.cuno
+from   tppdm740, tccom010
+where  tppdm740.cuno refers to tccom010
+hint   use index 1 on tccom010
+and    buffer 10 rows
+and    no hints
+</pre><p class="Paragraph">The hint 'no hints' is sent to both drivers. For driver 2
+               this makes no difference. The index hint takes precedence
+               over the 'no hints' hint and therefore the 'no hints' hint is
+               ignored. Driver 1 receives the following query:
+            </p><pre class="CodeBlock">
+select tppdm740.cuno
+from   tppdm740
+hint   buffer 10 rows
+and    no hints
+</pre><p class="Paragraph">Driver 1 will not generate default hints.</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/hint_types.htm" class="manualLink">Hint types</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/overview.htm" class="manualLink">Query hints overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_query_hints/hints_in_a_distributed_environment, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

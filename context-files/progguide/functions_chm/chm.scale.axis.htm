@@ -1,0 +1,121 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>chm.scale.axis()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="chm.scale.axis chm.scale.axis functions chm.scale.axis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">chm.scale.axis()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;chm.scale.axis&nbsp;
+					(double&nbsp;from_value, double&nbsp;to_value, long&nbsp;divisions, double&nbsp;factor, ref double&nbsp;domain_from_value, ref double&nbsp;domain_to_value, ref double&nbsp;divisionstep)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This function is only supported for Baan
+                  Windows and its usage is therefore deprecated.
+               </p>
+               <p class="Paragraph">This generates a scaling based on the minimum and maximum
+                  data values to be presented by the graph and on the number of
+                  divisions required. You can use the returned <i class="Emphasis">domain_from_value</i>, <i class="Emphasis">domain_to_value</i>, and <i class="Emphasis">divisionstep</i> as inputs to <a href="../../progguide/functions_chm/chm.domain.in.htm" class="manualLink">chm.domain.in()</a> and <a href="../../progguide/functions_chm/chm.axis.in.htm" class="manualLink">chm.axis.in()</a>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">double</td>
+                     <td class="none"><code>from_value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use these to specify the minimum and maximum data
+                           values to be presented by the graph.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">double</td>
+                     <td class="none"><code>to_value</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>divisions</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use this to specify the number of divisions
+                           required. The axis will be divided into the specified
+                           number of divisions.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">double</td>
+                     <td class="none"><code>factor</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">ref double</td>
+                     <td class="none"><code>domain_from_value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The function calculates and returns these values,
+                           which are the minimum and maximum values of the domain.
+                           These will be the start and end points of the axis.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">ref double</td>
+                     <td class="none"><code>domain_to_value</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td class="none">ref double</td>
+                     <td class="none"><code>divisionstep</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the size of the steps that separate the
+                           divisions on the axis.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/overview.htm" class="manualLink">Chart manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/synopsis.htm" class="manualLink">Chart manager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/creating_a_chart_manager_client_application.htm" class="manualLink">Creating a chart manager client application</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/example.htm" class="manualLink">Chart manager example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_chm/chm.scale.axis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

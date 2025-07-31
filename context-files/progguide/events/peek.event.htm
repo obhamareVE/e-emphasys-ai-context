@@ -1,0 +1,92 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>peek.event()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions peek.event peek.event peek.event ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">peek.event()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;peek.event&nbsp;
+					( [ref long&nbsp;event(EVTMAXSIZE)])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This reads the event at the top of the event queue and stores
+                  it in <i class="Emphasis">event</i>. It does not remove the event from the queue.
+                  If the event queue is empty, the function waits (that is, it is
+                  blocked) until an event arrives. To time out the <i class="Emphasis">peek.event()</i> function, use set.timer()set.timer.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">[ref long</td>
+                     <td class="none"><code>event(EVTMAXSIZE)</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional reference argument containing a long array in which the peek.event() function will write the <a href="../../progguide/events/event_array_parameters.htm" class="manualLink">event array parameters</a>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The event type. See <a href="../../progguide/events/event_types.htm" class="manualLink">Event types</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long event(EVTMAXSIZE), object_id
+select.event.input( object_id, EVTBUTTONPRESSMASK +
+                EVTBUTTONRELEASEMASK + EVTKEYPRESSMASK +
+EVTBUTTONMOTIONMASK )
+while peek.event() = EVTBUTTONMOTION
+                next.event( event )
+                ....
+endwhile
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/events/overview.htm" class="manualLink">Events overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/synopsis.htm" class="manualLink">Events synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/event_types.htm" class="manualLink">Event types</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/event_array_parameters.htm" class="manualLink">Event array parameters</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/sample_program.htm" class="manualLink">Events sample program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/events/peek.event, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

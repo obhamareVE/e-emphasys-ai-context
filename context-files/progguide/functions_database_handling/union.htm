@@ -1,0 +1,212 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>UNION operator</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="UNION ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">UNION operator</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The UNION operator joins the result sets of two SELECT
+               statements. If the ALL keyword is <i class="Emphasis">not</i> specified then all <a href="../../progguide/functions_database_handling/sql_glossary.htm#RedundantDuplicates" class="glossaryLink">redundant duplicates</a> are removed from the resulting row set.
+               The order in which the rows of the two row sets are
+               joined is <a href="../../progguide/functions_database_handling/sql_glossary.htm#Undefined" class="glossaryLink">undefined</a>. If needed
+               the order of the complete row set can be defined as usual by
+               using an ORDER BY clause in the containing statement.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;UNION operator&gt;
+    ::= <a href="../../progguide/functions_database_handling/query_expression.htm" class="manualLink">Query expression</a> UNION [ALL] <a href="../../progguide/functions_database_handling/query_expression.htm" class="manualLink">Query expression</a>
+      </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph"><i class="Emphasis">Degree</i></p>
+            <p class="Paragraph">The two <i class="Emphasis">&lt;query expressions&gt;</i> must have the same <a href="../../progguide/functions_database_handling/sql_glossary.htm#Degree" class="glossaryLink">degree</a>.
+               
+               Note that some columns ( <i class="Emphasis">e.g. _index1</i>)
+               may expand to multiple columns. 
+               
+               If this restriction is not
+               met, the following parse error is given:
+            </p><pre class="Formula">SQLState 42I71: Queries in UNION have different number of result columns</pre><p class="Paragraph"><i class="Emphasis">Comparable data types</i></p>
+            <p class="Paragraph">The data types of every corresponding column must
+               be <a href="../../progguide/functions_database_handling/comparable_datatypes.htm" class="manualLink">comparable</a>. If
+               this restriction is not met, the following parse error is
+               given:
+            </p><pre class="Formula">SQLState 42T21: Incompatible types for UNION column &lt;n&gt;</pre><p class="Paragraph"><i class="Emphasis">Select targets</i></p>
+            <p class="Paragraph">Only the first branch of the UNION shall contain <a href="../../progguide/functions_database_handling/sql_glossary.htm#SelectTarget" class="glossaryLink">select targets</a> in the
+               SELECT clause. If this restriction is not met, the
+               following parse error is given:
+            </p><pre class="Formula">SqlState 42I73: Unexpected select target '&lt;name&gt;'</pre><p class="Paragraph"><i class="Emphasis">Not FOR UPDATE</i></p>
+            <p class="Paragraph">The SELECT statement containing a UNION shall not
+               contain the FOR UPDATE clause. If this restriction is
+               violated, the following parse error is given:
+            </p><pre class="Formula">SqlState 42I72: A query in a UNION cannot be a FOR UPDATE query</pre><p class="Paragraph"><i class="Emphasis">Not WITH RETRY</i></p>
+            <p class="Paragraph">The SELECT statement containing a UNION shall not
+               contain the WITH RETRY clause. If this restriction is
+               violated, the following parse error is given:
+            </p><pre class="Formula">SqlState 42I74: A RETRY clause cannot be used in a UNION query</pre><p class="Paragraph"><i class="Emphasis">Pseudo columns not exposed</i></p>
+            <p class="Paragraph">Pseudo columns, such as <i class="Emphasis">_index1</i> or a combined column <i class="Emphasis">cmba</i>, are not 
+               		exposed by the UNION operator. This means that they cannot be used outside the scope of the UNION 
+               		operator (for example in the ORDER BY clause).
+               		For example the following SQL statement will result in an error, because the ORDER BY attempts to use
+               		the pseudo column <i class="Emphasis">_index1</i>, which is not exposed by the UNION operator.
+            </p><pre class="CodeBlock">SELECT _index1 FROM dbtst120 a
+UNION ALL
+SELECT _index1 FROM dbtst120 b
+ORDER BY _index1
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph"><i class="Emphasis">Data type of result columns</i></p>
+            <p class="Paragraph">The data type of a result column of a UNION statement
+               is the smallest data type in which fits all values of the
+               data types of the corresponding columns of the two
+               branches.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">Example</i>: The data type of the output column of
+               the following query is <i class="Emphasis">integer</i>, because both
+               columns of the SELECT statements have type <i class="Emphasis">integer</i>.
+               There exists another type that can hold all values of type <i class="Emphasis">integer</i>: type <i class="Emphasis">real</i>, but of these two types <i class="Emphasis">integer</i> is the smallest.
+            </p><pre class="CodeBlock">SELECT empno FROM dbtst120 a
+UNION ALL
+SELECT empno FROM dbtst120 b
+</pre><p class="Paragraph"><i class="Emphasis">Example</i>: The data type of the output column of
+               the following query is <i class="Emphasis">real</i>, because this is the
+               smallest data type that can hold all values of type <i class="Emphasis">integer</i> and <i class="Emphasis">real</i>.
+            </p><pre class="CodeBlock">SELECT empno FROM dbtst120 a
+UNION ALL
+SELECT salary FROM dbtst120 b
+</pre><p class="Paragraph"><i class="Emphasis">Example</i>: The data type of the output column of
+               the following query is <i class="Emphasis">string of length 20</i>, because
+               this is the smallest data type that can hold all values of
+               type <i class="Emphasis">string of length 6</i> ( <code class="Code">dbtst120.workdept</code>) and <i class="Emphasis">string of length
+                  20</i> ( <code class="Code">dbtst120.firstnme</code>).
+            </p><pre class="CodeBlock">SELECT workdept FROM dbtst120 a
+UNION ALL
+SELECT firstnme FROM dbtst120 b
+</pre><p class="Paragraph"><i class="Emphasis">Note</i>: To make columns of type <i class="Emphasis">string</i> of
+               the same length, <i class="Emphasis">space padding</i> is used. So, each
+               work department is padded with 14 spaces in the UNION
+               above.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">Note</i>: To make columns of type <i class="Emphasis">raw</i> of the
+               same length, <i class="Emphasis">zero padding</i> is used.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">Name of result columns</i></p>
+            <p class="Paragraph">If the <a href="../../progguide/functions_database_handling/sql_glossary.htm#QualifiedColumnName" class="glossaryLink">unqualified column names</a> of two corresponding columns are the same, then
+               the name of the result column is this name. Otherwise the
+               name of the result column is an <a href="../../progguide/functions_database_handling/sql_glossary.htm#ImplementationDefined" class="glossaryLink">implementation defined</a> name, which is not visible outside this UNION.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">Example</i>: The output column name of the following
+               query is "empno", because both output columns have the
+               unqualified column name "empno". Notice that the qualified
+               column names actually are different.
+            </p><pre class="CodeBlock">SELECT empno FROM dbtst120 a
+UNION ALL
+SELECT empno FROM dbtst180 b
+</pre><p class="Paragraph"><i class="Emphasis">Example</i>: The output column name of the following query
+               is <i class="Emphasis">implementation defined</i>, because the unqualified column
+               name of the first SELECT statement is "edlevel", while the
+               unqualified column name of the second SELECT statement is "empno".
+            </p><pre class="CodeBlock">SELECT a.edlevel FROM dbtst120 a
+UNION ALL
+SELECT b.empno FROM dbtst120 b
+</pre><p class="Paragraph"><i class="Emphasis">Note</i>: the name and visibility of the columns of
+               a UNION is important when using an ORDER BY clause. If the
+               ORDER BY references columns of the UNION <i class="Emphasis">by name</i> then the name must match the columns name and the column
+               must be visible.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">Binding of result columns</i></p>
+            <p class="Paragraph">See <a href="../../progguide/functions_database_handling/using_program_variables.htm" class="manualLink">Using program variables</a>.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following example joins the first names of all employees
+               with a salary bigger than 50000 with the first names of all
+               employees with a bonus less than 350.
+            </p><pre class="CodeBlock">
+SELECT firstnme FROM dbtst120 WHERE bonus &lt; 350
+UNION ALL
+SELECT firstnme FROM dbtst120 where salary &gt; 50000
+</pre><p class="Paragraph">The following example joins the department number and the
+               last name of the responsible manager of all departments, with
+               the project number and the last name of the responsible manager
+               of all projects.
+            </p><pre class="CodeBlock">
+SELECT deptno, lastname FROM dbtst100, dbtst120
+WHERE mgrno REFERS TO dbtst120.empno
+UNION ALL
+SELECT projno, lastname  FROM dbtst160, dbtst120
+WHERE respemp REFERS TO dbtst120.empno
+</pre><p class="Paragraph">The following example joins the employee number and salary of
+               each employee having a bonus bigger than 950, with the education
+               level and average salary of all employees. The result is sorted
+               in descending order on the second column of the UNION.
+            </p><pre class="CodeBlock">
+SELECT empno, salary
+FROM dbtst120
+WHERE bonus &gt; 950
+
+UNION ALL
+
+SELECT edlevel, avg( salary )
+FROM dbtst120
+GROUP BY edlevel
+
+ORDER BY 2 DESC
+</pre><p class="Paragraph">Note that it is not possible to sort on the column <i class="Emphasis">by
+                  name</i>. This would also be true for the first column of the
+               UNION, because the column names in the individual SELECT
+               statements are different. See the section Semantics above.
+            </p>
+            <p class="Paragraph">The following example joins the names of all employees in
+               companies 000 and 001 having a salary bigger than 40000. The
+               result is sorted by company.
+            </p><pre class="CodeBlock">
+SELECT _compnr, firstnme, lastname
+FROM dbtst120
+WHERE salary &gt; 40000
+   AND _compnr = 000
+
+UNION ALL
+
+SELECT _compnr, firstnme, lastname
+FROM dbtst120
+WHERE salary &gt; 40000
+   AND _compnr = 001
+
+ORDER BY _compnr
+</pre><p class="Paragraph">Note that in this case it is possible to sort <i class="Emphasis">by name</i>,
+               since both SELECT statements share the column name for the first
+               column.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/using_program_variables.htm" class="manualLink">Using program variables</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/comparable_datatypes.htm" class="manualLink">Comparable data types in Infor ERP Enterprise SQL</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/union, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

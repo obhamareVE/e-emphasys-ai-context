@@ -1,0 +1,102 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>load.short()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions load.short load.short load.short ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">load.short()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;load.short&nbsp;
+					(string&nbsp;record$ [, long&nbsp;endian])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">The function load.short()
+         treats the supplied string merely as a
+         sequence of bytes.
+         The 2 bytes read from the string are
+         interpreted as the 16-bit two’s complement representation of a signed integer value.</p>
+               <p class="Paragraph">The load.short() function is machine independent and can be used (for
+                  example) in network communications.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>record$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">String value of which the first 2 bytes are used as input bit pattern.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>endian</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional argument indicating the byte order (big endian or little endian) to be used.</p>
+                        <p class="Paragraph">Value 1 indicates that little endian byte order must be used.</p>
+                        <p class="Paragraph">Any other value indicates that big endian byte order must be used.</p>
+                        <p class="Paragraph">Default behavior is to use big endian byte order.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The numerical value of the first 2 bytes of the supplied string.
+      This is a value in the signed 16-bit range
+      [-2^15 … 2^15 - 1] (i.e. [-32,768 … 32,767]).</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+| Load a short from a string
+string tmp(2)
+long value
+tmp = "S5"
+value = load.short( tmp )
+| The variable value contains now the value 21301
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic">Related operations: <a href="../../progguide/functions_string_operations/load.byte.htm" class="manualLink">load.byte()</a>, <a href="../../progguide/functions_string_operations/load.double.htm" class="manualLink">load.double()</a>, <a href="../../progguide/functions_string_operations/load.float.htm" class="manualLink">load.float()</a>, <a href="../../progguide/functions_string_operations/load.long.htm" class="manualLink">load.long()</a></li>
+               <li class="RelTopic">Inverse operations: <a href="../../progguide/functions_string_operations/store.byte.htm" class="manualLink">store.byte()</a>, <a href="../../progguide/functions_string_operations/store.double.htm" class="manualLink">store.double()</a>, <a href="../../progguide/functions_string_operations/store.float.htm" class="manualLink">store.float()</a>, <a href="../../progguide/functions_string_operations/store.long.htm" class="manualLink">store.long()</a>, <a href="../../progguide/functions_string_operations/store.short.htm" class="manualLink">store.short()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/overview.htm" class="manualLink">String operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/synopsis.htm" class="manualLink">String operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_string_operations/load.short, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

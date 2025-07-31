@@ -1,0 +1,169 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>text.read()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions text.read text.read text.read ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">text.read()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;text.read&nbsp;
+					(string&nbsp;text_field, string&nbsp;lang, string&nbsp;kw1, string&nbsp;kw2, string&nbsp;kw3, string&nbsp;kw4, ref string&nbsp;tgroup, ref string&nbsp;edit_opt, string&nbsp;tmp_file, long&nbsp;lock [, string&nbsp;rtf_file])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This reads a specified text and stores it in a temporary
+                  file.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="11" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>text_field</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the text field that must be read. See <a href="../../progguide/functions_text_fields/overview.htm" class="manualLink">Text fields overview</a>.
+                        </p>
+                        <p class="Paragraph">If the text number of the specified field is 0, a
+                           subprocess is started, which lists the texts associated
+                           with the current company and enables the user to select
+                           the text to be read.
+                        </p>
+                        <p class="Paragraph">If no text is found, or if you abort the subprocess, <i class="Emphasis">text_field</i> returns 0. Otherwise, it returns the
+                           text number of the retrieved text.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>lang</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The language for which the text must be
+                           retrieved.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>kw1</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">These return the key words associated with the
+                           specified text.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>kw2</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>kw3</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>kw4</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>tgroup</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the name of the text group to which the
+                           text is assigned.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>edit_opt</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the default window type for the
+                           text.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>tmp_file</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the file in which the text must be
+                           stored. If this is an empty string, no text is
+                           retrieved and the function returns 0.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>lock</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">By default, a lock is applied to the text field when
+                           it is read. To read the field without lock, set this
+                           argument to 0.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="true" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>rtf_file</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the file in which the RTF version of the
+                           text must be stored. This is an optional argument. The
+                           usage of this argument depends on the settings of the
+                           text group as defined in the tgroup argument. If this
+                           is an empty string, no text is retrieved and the
+                           function returns 0.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">&gt;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; success; returns the number of lines read</p>
+            <p class="Paragraph">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; no text found or subprocess aborted</p>
+            <p class="Paragraph">-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; no permission</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_text_fields/overview.htm" class="manualLink">Text fields overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_text_fields/synopsis.htm" class="manualLink">Text fields synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_text_fields/text.read, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

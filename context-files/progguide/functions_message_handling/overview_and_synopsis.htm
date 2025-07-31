@@ -1,0 +1,298 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Message handling overview and synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="message handling ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Message handling overview and synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">Use these functions for handling status messages, error
+               messages, and other messages that are output to the screen or to
+               a log file.
+            </p>
+            <p class="Paragraph">4GL programs (except type 4 programs) usually display a
+               status area consisting of several status fields. 4GL programs
+               can display messages in the first field (see the <i class="Emphasis">status.mess()</i> function below).
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Synopsis</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Statusfield messages</div>
+               <p class="Paragraph">Use these functions to handle message display in the first
+                  status field of the statusbar.
+               </p>
+               <table border="0" class="none">
+                  <tbody noTR="2" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/status.del.htm" class="manualLink">status.del()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                     </tr>
+                     <tr no="2" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/status.mess.htm" class="manualLink">status.mess()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( string strg(15) )</code></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Statusbar messages</div>
+               <p class="Paragraph">Use these functions to handle message display in the
+                  statusbar.
+               </p>
+               <table border="0" class="none">
+                  <tbody noTR="2" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/clean.mess.htm" class="manualLink">clean.mess()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                     </tr>
+                     <tr no="2" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/mess.htm" class="manualLink">mess()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( string messcode(14), long separate_window&nbsp;
+             &nbsp; [, arg, ...] )</code></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Displaying messages</div>
+               <p class="Paragraph">Use these functions to display messages in a separate
+                  window.
+               </p>
+               <table border="0" class="none">
+                  <tbody noTR="4" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/mess.htm" class="manualLink">mess()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( string messcode(14), long separate_window&nbsp;
+             &nbsp; [, arg, ...] )</code></td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/message.htm" class="manualLink">message()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( string mess_str [, arg, ...] )</code></td>
+                     </tr>
+                     <tr no="3" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void 
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/set.input.error.htm" class="manualLink">set.input.error()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( string mess.or.code [, ...] )</code></td>
+                     </tr>
+                     <tr no="4" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/show.dal.messages.htm" class="manualLink">show.dal.messages()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( [long i.type] )</code></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Dal messages</div>
+               <p class="Paragraph">Use these functions to set and retrieve DAL messages.</p>
+               <table border="0" class="none">
+                  <tbody noTR="20" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.clear.messages.htm" class="manualLink">dal.clear.messages()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( long i.type )</code></td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.count.messages.htm" class="manualLink">dal.count.messages()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( long i.type )</code></td>
+                     </tr>
+                     <tr no="3" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.get.last.message.htm" class="manualLink">dal.get.last.message()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( long i.type, ref string o.code, ref string
+                              o.text, [ref long o.type] )</code></td>
+                     </tr>
+                     <tr no="4" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.get.first.message.htm" class="manualLink">dal.get.first.message()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( long i.type, ref string o.code, ref string
+                              o.text, [ref long o.type] )</code></td>
+                     </tr>
+                     <tr no="5" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long 
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.peek.message.htm" class="manualLink">dal.peek.message()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( long i.type, long i.index, ref string o.code,
+                              ref string o.text, [ref long o.type] )</code></td>
+                     </tr>
+                     <tr no="6" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.reset.messages.htm" class="manualLink">dal.reset.messages()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( long i.type, long i.count )</code></td>
+                     </tr>
+                     <tr no="7" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">void</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.set.message.htm" class="manualLink">dal.set.message()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( long type, const string i.mess.or.code [, arg, ...]  )</code></td>
+                     </tr>
+                     <tr no="8" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">void</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.set.messages.off.htm" class="manualLink">dal.set.messages.off()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                     </tr>
+                     <tr no="9" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">void</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.set.messages.on.htm" class="manualLink">dal.set.messages.on()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                     </tr>
+                     <tr no="10" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.clear.error.messages.htm" class="manualLink">dal.clear.error.messages()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                     </tr>
+                     <tr no="11" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.count.error.messages.htm" class="manualLink">dal.count.error.messages()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                     </tr>
+                     <tr no="12" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long 
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.get.error.message.htm" class="manualLink">dal.get.error.message()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string o.text )</code></td>
+                     </tr>
+                     <tr no="13" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string 
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.get.error.msgcode.htm" class="manualLink">dal.get.error.msgcode()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                     </tr>
+                     <tr no="14" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.get.first.error.message.htm" class="manualLink">dal.get.first.error.message()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string o.text, ref string o.code )</code></td>
+                     </tr>
+                     <tr no="15" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long 
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.peek.error.message.htm" class="manualLink">dal.peek.error.message()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( long i.index )</code></td>
+                     </tr>
+                     <tr no="16" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string 
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.peek.error.msgcode.htm" class="manualLink">dal.peek.error.msgcode()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( long i.index )</code></td>
+                     </tr>
+                     <tr no="17" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.reset.error.messages.htm" class="manualLink">dal.reset.error.messages()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( long i.count )</code></td>
+                     </tr>
+                     <tr no="18" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.set.error.message.htm" class="manualLink">dal.set.error.message(), dal.set.warning.message(), dal.set.info.message()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( const string i.mess.or.code [, arg ...]
+                              )</code></td>
+                     </tr>
+                     <tr no="19" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.set.error.message.htm" class="manualLink">dal.set.error.message(), dal.set.warning.message(), dal.set.info.message()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( const string i.mess.or.code [, arg ...]
+                              )</code></td>
+                     </tr>
+                     <tr no="20" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/dal.set.error.message.htm" class="manualLink">dal.set.error.message(), dal.set.warning.message(), dal.set.info.message()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( const string i.mess.or.code [, arg ...]
+                              )</code></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">General</div>
+               <p class="Paragraph">Use this function to retrieve a message from the Data
+                  Dictionary.
+               </p>
+               <table border="0" class="none">
+                  <tbody noTR="1" class="none">
+                     <tr no="1" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                        <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_message_handling/form.text.htm" class="manualLink">form.text$()</a></td>
+                        <td rowspan="1" colspan="1" class="none"><code class="Code">( string messcode(14) [, string
+             &nbsp; language code] )</code></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </div>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_message_handling/overview_and_synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

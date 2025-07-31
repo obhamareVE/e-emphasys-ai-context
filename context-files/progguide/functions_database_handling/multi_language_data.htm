@@ -1,0 +1,57 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Multi Language Data</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Multi Language Data ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Multi Language Data</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Infor ERP Enterprise provides support to store multibyte strings - like descriptions - in multiple languages.
+               		   For columns that are defined to be MLF (Multi Language Field) the database contains values in
+               		   each defined data language.
+            </p>
+            <p class="Paragraph">A process that performs SQL has a 'current data language'. 
+               		   All SQL operations (such as MAX, MIN, GROUP BY, ORDER BY, ...) work with the current data language, 
+               		   except selection of columns. When a column is selected from the database the value is retrieved in all data languages.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">function ml_one_lang</div>
+            <p class="Paragraph">If you want to select the value in the current data language only (this may occur in situations
+               		   that are known to be very performance-critical) or if you want to select the value in a different
+               		   data language than the 'current data language' the function <a href="../../progguide/functions_database_handling/ml_one_lang_function.htm" class="manualLink">ml_one_lang function</a> can be used.
+            </p>
+            <div class="Note">
+               <div class="NoteSectionTitle">Note</div>
+               <div class="NoteContent">
+                  <p class="Paragraph">If you use this function and the selected data is later inserted into a database table
+                     		   the data will be inserted in the language that was selected only (other translations are lost).
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_mle/overview.htm" class="manualLink">Multi Language Data overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/multi_language_data, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>XML object synopsis (namespace support)</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="XML object (namespace support) synopsis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">XML object synopsis (namespace support)</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div>
+            <table border="0" class="none">
+               <tbody noTR="53" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">[long]</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_blob/db.blob.read.xml.ns.htm" class="manualLink">db.blob.read.xml.ns</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(const string blob.locator, long offset, ref long num.bytes, ref long xml.node, ref string error, [ long whitespacehandling
+                           ] )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlAllocAttributeNs.htm" class="manualLink">xmlAllocAttributeNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref string basedString(), long node, void namespaceOrURI, const string attributeName, [ const string default.value ] )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlAllocAttributePrefix.htm" class="manualLink">xmlAllocAttributePrefix</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref string basedString(), long node, long attributeNr, [ const string default.value ] )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlAllocAttributeQualifiedName.htm" class="manualLink">xmlAllocAttributeQualifiedName</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref string basedString(), long node, long attributeNr, [ const string default.value ] )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlAllocAttributeURI.htm" class="manualLink">xmlAllocAttributeURI</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref string basedString(), long node, long attributeNr, [ const string default.value ] )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlAllocDataElementNs.htm" class="manualLink">xmlAllocDataElementNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref string basedString(), long node, void namespaceOrURI, const string name, [ const string default.value ] )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlAllocPrefix.htm" class="manualLink">xmlAllocPrefix</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref string basedString(), long node, [ const string default.value ] )</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlAllocQualifiedName.htm" class="manualLink">xmlAllocQualifiedName</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref string basedString(), long node, [ const string default.value ] )</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlAllocURI.htm" class="manualLink">xmlAllocURI</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref string basedString(), long node, [ const string default.value ] )</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlAttributeNs$.htm" class="manualLink">xmlAttributeNs$</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, void namespaceOrURI, const string attributeName, [ const string default.value ] )</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlAttributePrefix$.htm" class="manualLink">xmlAttributePrefix$</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long node, long attributeNr, [ const string default.value ] )</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlAttributeQualifiedName$.htm" class="manualLink">xmlAttributeQualifiedName$</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long node, long attributeNr, [ const string default.value ] )</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlAttributeURI$.htm" class="manualLink">xmlAttributeURI$</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long node, long attributeNr, [ const string default.value ] )</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlBuildNamespaceList$.htm" class="manualLink">xmlBuildNamespaceList$</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string prefix, const string URI, ... )</code></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlDataElementNs$.htm" class="manualLink">xmlDataElementNs$</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, void namespaceOrURI, const string name, [ const string default.value ] )</code></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlDeleteAttributeNs.htm" class="manualLink">xmlDeleteAttributeNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, void namespaceOrURI, const string name )</code></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlFindFirstMatchNs.htm" class="manualLink">xmlFindFirstMatchNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(const string pattern, const string namespaceList, long fromNode, [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlFindFirstNs.htm" class="manualLink">xmlFindFirstNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(void namespaceOrURI, const string localName, long fromNode, [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlFindMatchNs.htm" class="manualLink">xmlFindMatchNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string pattern, const string namespaceList, long fromNode, [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlFindNamespace.htm" class="manualLink">xmlFindNamespace</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, const string URI)</code></td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlFindNodesNs.htm" class="manualLink">xmlFindNodesNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, void namespaceOrURI, const string localName, long maxFound, [ref long numFound] )</code></td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlFirstNamespaceDecl.htm" class="manualLink">xmlFirstNamespaceDecl</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node)</code></td>
+                  </tr>
+                  <tr no="23" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetAttributeLengthNs.htm" class="manualLink">xmlGetAttributeLengthNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, void namespaceOrURI, string attributeName)</code></td>
+                  </tr>
+                  <tr no="24" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetAttributeNs.htm" class="manualLink">xmlGetAttributeNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, void namespaceOrURI, const string attributeName, ref string attributeValue )</code></td>
+                  </tr>
+                  <tr no="25" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetAttributePrefix.htm" class="manualLink">xmlGetAttributePrefix</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, long attributeNr, ref string attributeName)</code></td>
+                  </tr>
+                  <tr no="26" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetAttributePrefixLength.htm" class="manualLink">xmlGetAttributePrefixLength</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, long attributeNr)</code></td>
+                  </tr>
+                  <tr no="27" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetAttributeQualifiedName.htm" class="manualLink">xmlGetAttributeQualifiedName</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, long attributeNr, ref string attributeName)</code></td>
+                  </tr>
+                  <tr no="28" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetAttributeQualifiedNameLength.htm" class="manualLink">xmlGetAttributeQualifiedNameLength</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, long attributeNr)</code></td>
+                  </tr>
+                  <tr no="29" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetAttributeURI.htm" class="manualLink">xmlGetAttributeURI</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, long attributeNr, ref string attributeName)</code></td>
+                  </tr>
+                  <tr no="30" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetAttributeURILength.htm" class="manualLink">xmlGetAttributeURILength</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, long attributeNr)</code></td>
+                  </tr>
+                  <tr no="31" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetDataElementLengthNs.htm" class="manualLink">xmlGetDataElementLengthNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, void namespaceOrURI, const string name)</code></td>
+                  </tr>
+                  <tr no="32" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetDataElementNs.htm" class="manualLink">xmlGetDataElementNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, void namespaceOrURI, string name, ref void data)</code></td>
+                  </tr>
+                  <tr no="33" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetNamespace.htm" class="manualLink">xmlGetNamespace</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node)</code></td>
+                  </tr>
+                  <tr no="34" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetPrefix.htm" class="manualLink">xmlGetPrefix</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, ref string prefix )</code></td>
+                  </tr>
+                  <tr no="35" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetPrefixLength.htm" class="manualLink">xmlGetPrefixLength</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node)</code></td>
+                  </tr>
+                  <tr no="36" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetQualifiedName.htm" class="manualLink">xmlGetQualifiedName</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, ref string name)</code></td>
+                  </tr>
+                  <tr no="37" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetQualifiedNameLength.htm" class="manualLink">xmlGetQualifiedNameLength</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node)</code></td>
+                  </tr>
+                  <tr no="38" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetURI.htm" class="manualLink">xmlGetURI</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, ref string URI )</code></td>
+                  </tr>
+                  <tr no="39" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlGetURILength.htm" class="manualLink">xmlGetURILength</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node )</code></td>
+                  </tr>
+                  <tr no="40" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlNamespacePrefix$.htm" class="manualLink">xmlNamespacePrefix$</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long namespace)</code></td>
+                  </tr>
+                  <tr no="41" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlNamespaceURI$.htm" class="manualLink">xmlNamespaceURI$</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long namespace)</code></td>
+                  </tr>
+                  <tr no="42" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlNewDataElementNs.htm" class="manualLink">xmlNewDataElementNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long namespace, const string name, void data, [ long parentNode ])</code></td>
+                  </tr>
+                  <tr no="43" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlNewNamespace.htm" class="manualLink">xmlNewNamespace</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, const string prefix, const string URI)</code></td>
+                  </tr>
+                  <tr no="44" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlNewNodeNs.htm" class="manualLink">xmlNewNodeNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long namespace, const string name, [long type, long parentNode ])</code></td>
+                  </tr>
+                  <tr no="45" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlNextNamespaceDecl.htm" class="manualLink">xmlNextNamespaceDecl</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long namespace)</code></td>
+                  </tr>
+                  <tr no="46" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlPrefix$.htm" class="manualLink">xmlPrefix$</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, [ const string default.value ] )</code></td>
+                  </tr>
+                  <tr no="47" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlQualifiedName$.htm" class="manualLink">xmlQualifiedName$</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, [ const string default.value ] )</code></td>
+                  </tr>
+                  <tr no="48" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlReadFromStringNs.htm" class="manualLink">xmlReadFromStringNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(const string xmlString, ref string error, [ long whitespacehandling ] )</code></td>
+                  </tr>
+                  <tr no="49" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlReadNs.htm" class="manualLink">xmlReadNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long fp, ref string error, [ long whitespacehandling ] )</code></td>
+                  </tr>
+                  <tr no="50" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlRewriteDataElementNs.htm" class="manualLink">xmlRewriteDataElementNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, void namespaceOrURI, string localName, void data)</code></td>
+                  </tr>
+                  <tr no="51" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlSetAttributeNs.htm" class="manualLink">xmlSetAttributeNs</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, long namespace, const string name, void value)</code></td>
+                  </tr>
+                  <tr no="52" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlSetNamespace.htm" class="manualLink">xmlSetNamespace</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, long namespace)</code></td>
+                  </tr>
+                  <tr no="53" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_xml/xmlURI$.htm" class="manualLink">xmlURI$</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long node, [ const string default.value ] )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/overview.htm" class="manualLink">XML object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/constraints.htm" class="manualLink">XML object constraints</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/glossary.htm" class="manualLink">XML object glossary</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/api.htm" class="manualLink">XML object API</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_xml/synopsis_namespace, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

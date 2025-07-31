@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>copy.mem()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="copy.mem copy.mem functions copy.mem ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">copy.mem()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;copy.mem&nbsp;
+					(ref void&nbsp;destination, void&nbsp;source [, long&nbsp;count])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This copies the memory space from the <i class="Emphasis">source</i> argument
+                  to the <i class="Emphasis">destination</i> argument. By default, the total length
+                  of <i class="Emphasis">source</i> is copied. But, if the <i class="Emphasis">destination</i> argument is shorter than the <i class="Emphasis">source</i> argument, then <i class="Emphasis">source</i> is truncated. Use the optional <i class="Emphasis">count</i> argument to copy a specified number of array elements only.
+               </p>
+               <p class="Paragraph">You can use this function to copy single variables or entire
+                  arrays. You cannot copy variables of different types. It you
+                  attempt to do this, the <i class="Emphasis">destination</i> argument remains
+                  unchanged.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">ref void</td>
+                     <td class="none"><code>destination</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>source</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>count</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional argument for the specification of the number of array elements to be copied.
+                           Default value is the minimum of the element counts of the destination and source arguments.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long i,j
+long src(5,5)
+long des(3,3)
+for i=1 to 5
+        for j=1 to 5
+                src(i,j)=i*j
+        endfor
+endfor
+copy.mem(des,src)    | des contains the first 9 elements of src
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_memory_operations/overview_and_synopsis.htm" class="manualLink">Memory operations overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_memory_operations/copy.mem, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

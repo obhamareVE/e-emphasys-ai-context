@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>db.record.changed()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="db.record.changed db.record.changed functions db.record.changed ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">db.record.changed()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean&nbsp;db.record.changed&nbsp;
+					(long&nbsp;table_id)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Tests whether the current value of the record buffer belonging to the given table id has changed since the last call
+                  of <a href="../../progguide/functions_db_operations/db.store.record.htm" class="manualLink">db.store.record()</a>.
+               </p>
+               <p class="Paragraph">First, a <a href="../../progguide/functions_db_operations/db.columns.to.record.htm" class="manualLink">db.columns.to.record()</a> is
+                  done in order to copy the table field values to the record buffer. Then this record buffer is compared to the one stored with
+                  <a href="../../progguide/functions_db_operations/db.store.record.htm" class="manualLink">db.store.record()</a>.
+               </p>
+               <div class="Note">
+                  <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+                  <div class="NoteContent">
+                     <p class="Paragraph">Note that, because of performance reasons, <code class="Code">db.record.changed()</code> is implemented as a macro. This is the actual implementation:
+                     </p><pre class="CodeBlock">
+#define db.record.changed(tbl)
+^       (db.columns.to.record(tbl) &lt;&gt; 0 or changed(rcd.##tbl, KEEP.CHANGED.FLAG.RAISED))
+</pre></div>
+               </div>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>table_id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The table ID in the format <code class="Code">tppmmmxxx</code>. E.g. <code class="Code">twhinh200</code></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">true</td>
+                     <td rowspan="1" colspan="1" class="none">Record was changed since the last call to <a href="../../progguide/functions_db_operations/db.store.record.htm" class="manualLink">db.store.record()</a></td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">false</td>
+                     <td rowspan="1" colspan="1" class="none">Record was not changed</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">If <a href="../../progguide/functions_db_operations/db.store.record.htm" class="manualLink">db.store.record()</a> has not been
+                  called before, this function returns TRUE.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/store.restore.examples.htm" class="manualLink">Storing, restoring record buffers - Examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/db.record.changed, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

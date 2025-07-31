@@ -1,0 +1,97 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Comparable data types in Infor ERP Enterprise SQL</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Data types Comparable data types ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Comparable data types in Infor ERP Enterprise SQL</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Certain constructions within the Infor ERP Enterprise SQL language
+               require that the data types of two entities are <i class="Emphasis">comparable</i>. Such constructions include:
+            </p>
+            <ul class="List">
+               <li class="ListItem">Comparison predicates</li>
+               <li class="ListItem">UNION</li>
+            </ul>
+            <p class="Paragraph">The following list shows which data types are comparable. Two
+               data types are comparable if they are on the same line.
+            </p>
+            <ul class="List">
+               <li class="ListItem">integer, real</li>
+               <li class="ListItem">string, multi byte string</li>
+               <li class="ListItem">date</li>
+               <li class="ListItem">interval days</li>
+               <li class="ListItem">datetime (UTC)</li>
+               <li class="ListItem">interval seconds</li>
+               <li class="ListItem">raw</li>
+            </ul>
+            <p class="Paragraph">Note: the types <i class="Emphasis">interval days</i> and <i class="Emphasis">interval
+                  seconds</i> are not types that can be defined in the Data
+               Dictionary, but that can only occur during evalution of an
+               expression. A value that is the result of the subtraction of two
+               values of type <i class="Emphasis">date</i> is of type <i class="Emphasis">interval days</i>. A
+               value that is the result of the subtraction of two values of
+               type <i class="Emphasis">datetime</i> is of type <i class="Emphasis">interval seconds</i>.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following constructions are allowed:</p>
+            <p class="Paragraph">The data types <i class="Emphasis">integer</i> and <i class="Emphasis">real</i> are
+               comparable.
+            </p><pre class="CodeBlock">
+3 &lt; 3.25
+</pre><p class="Paragraph">The data type <i class="Emphasis">integer</i> is comparable with itself. The
+               type of <i class="Emphasis">dbtst120.sex</i> is <i class="Emphasis">integer</i> (in the data
+               dictionary it is DB.ENUM, see section Correspondence of SQL data
+               types with database data types in <a href="../../progguide/functions_database_handling/sql_data_types.htm" class="manualLink">SQL data types</a>).
+            </p><pre class="CodeBlock">
+dbtst120.sex &gt; 0
+</pre><p class="Paragraph">In the following example, the data type <i class="Emphasis">integer</i> ( <i class="Emphasis">dbtst120.sex</i>), <i class="Emphasis">integer</i> ( <i class="Emphasis">dbtst120.edlevel</i>)
+               and <i class="Emphasis">real</i> ( <i class="Emphasis">dbtst120.salary</i>) are all comparable.
+            </p><pre class="CodeBlock">
+SELECT sex FROM dbtst120
+UNION ALL
+SELECT edlevel FROM dbtst120
+UNION ALL
+SELECT salary FROM dbtst120
+</pre><p class="Paragraph">The following constructions are <i class="Emphasis">not</i> allowed:
+            </p>
+            <p class="Paragraph">The data types <i class="Emphasis">integer</i> and <i class="Emphasis">string</i> are not
+               comparable.
+            </p><pre class="CodeBlock">
+3 &lt; "Hello world"
+</pre><p class="Paragraph">The data types <i class="Emphasis">date</i> ( <i class="Emphasis">hiredate</i>) and <i class="Emphasis">interval
+                  days</i> ( <i class="Emphasis">hiredate - birthdte</i>) are not comparable.
+            </p><pre class="CodeBlock">
+hiredate = hiredate - birthdte
+</pre><p class="Paragraph">The data types <i class="Emphasis">string</i> ( <i class="Emphasis">dbtst120.firstnme</i>) and <i class="Emphasis">real</i> ( <i class="Emphasis">dbtst120.salary</i>) are not comparable.
+            </p><pre class="CodeBlock">
+SELECT firstnme FROM dbtst120
+UNION ALL
+SELECT salary FROM dbtst120
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/comparable_datatypes, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dbcm.select.object.instance()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dbcm.select.object.instance dbcm.select.object.instance functions dbcm.select.object.instance ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dbcm.select.object.instance()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;dbcm.select.object.instance&nbsp;
+					(const string&nbsp;toid$)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Selects the specified Object instance.</p>
+               <p class="Paragraph">When a particular Object instance is selected, only that particular checked-out object is taken into account
+                  				when the database is accessed. Other checked-out instances of the same Object Type or checked-out instances 
+                  				of other Object Types are not taken into account.
+               </p>
+               <div class="Note">
+                  <div class="NoteSectionTitle">Important Note</div>
+                  <div class="NoteContent">
+                     <p class="Paragraph">The selected object instance remains selected until the end of the function in which <code class="Code">dbcm.select.object.instance()</code> is called. See the examples below for how this works.
+                     </p>
+                  </div>
+               </div>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>toid$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A Typed Object Id, which identifies a specific checked-out business object.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">In case of success.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;&gt; 0</th>
+                     <td rowspan="1" colspan="1" class="none">In case of an error; variable <i class="Emphasis">e</i> contains the error code. 
+                        								See <a href="../../progguide/functions_dbcm/error_codes.htm" class="manualLink">Database Change Management (DBCM) error codes</a> for more information about the error codes and their meaning.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1800.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example code</div>
+            <p class="Paragraph">The example below shows that the scope of the selected object instance is limited to the function in which <code class="Code">dbcm.select.object.instance()</code> is called and any child functions. (Note that this can be done in a stacked way.)
+               			In case a function has selected an object instance, then on return from the function, 
+               			the previous selected object instance becomes the current one again.
+            </p>
+            <p class="Paragraph">In this way there is no need for the application to reset the selected object instance before returning from a function.</p><pre class="CodeBlock">
+domain tttoid toid$
+
+function main()
+{
+	toid$ = dbcm.get.object.id$()
+	| toid$ = "" (no object instance has been selected yet)
+	
+	| select object instance "001   xxx"
+	dbcm.select.object.instance("001    xxx")
+
+	toid$ = dbcm.get.object.id$()
+	| toid$ = "001    xxx"
+
+	| now call some_function(), which will select object type "001    yyy"
+	some_function()
+
+	| show that the object type is "001    xxx" again
+	toid$ = dbcm.get.object.id$()
+	| toid$ = "001    xxx"
+}
+
+function some_function()
+{
+	toid$ = dbcm.get.object.id$()
+	| toid$ = "001    xxx"
+
+	| now select object type "001    yyy"
+	dbcm.select.object.instance("001    yyy")
+
+	toid$ = dbcm.get.object.id$()
+	| toid$ = "001    yyy"
+}
+		</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dbcm/overview.htm" class="manualLink">Database Change Management (DBCM) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dbcm/synopsis.htm" class="manualLink">Database Change Management operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dbcm/dbcm.select.object.instance, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

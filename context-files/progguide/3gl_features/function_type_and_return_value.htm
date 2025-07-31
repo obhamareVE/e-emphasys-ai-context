@@ -1,0 +1,104 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Function type and return value</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="function type and return value ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Function type and return value</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The type declaration in a function declaration indicates the type of the function.
+               Functions can be of the following types:
+            </p>
+            <ul class="List">
+               <li class="ListItem">long</li>
+               <li class="ListItem">double</li>
+               <li class="ListItem">string</li>
+               <li class="ListItem">domain</li>
+               <li class="ListItem">void (this means that no value is returned)</li>
+            </ul>
+            <p class="Paragraph">If you do not specify a type, the function is of type void by default.</p>
+            <p class="Paragraph">The type of a function indicates the (compile time) type of its return value.</p>
+            <p class="Paragraph">A function of type void does not have a return value.
+               Any return statement in such a function must not have any argument.
+            </p>
+            <p class="Paragraph">For a non-void function,
+               the type of the return value must be equal to the type of the function.
+            </p>
+            <p class="Paragraph">Apart from the general rule above,
+               it is allowed to return a value of type long from a function of type double.
+               No conversion is done,
+               so the run time type of the return value is long,
+               which differs from the double compile time type.
+            </p>
+            <p class="Paragraph">Apart from the general rule above,
+               it is allowed to return a value of type double from a function of type long.
+               No conversion is done,
+               so the run time type of the return value is double,
+               which differs from the long compile time type.
+            </p>
+            <p class="Paragraph"></p>
+            <p class="Paragraph">Some examples:</p><pre class="CodeBlock">
+function f()   | function without return type is of type void
+{
+        return | no value is returned
+}
+
+function long  return.as.long(   | function of type long
+   boolean  aConvert,
+   double   aDouble
+)
+{
+   if aConvert then
+      long  lLong
+      
+      lLong = aDouble   | assignment of double value to long variable.
+                        | implicit <a href="../../progguide/3gl_features/type_conversions.htm#double_to_long_type_conversion" class="manualLink">double to long type conversion</a> is done.
+
+      return(lLong)     | long value returned from long function
+   else
+      return(aDouble)   | double value returned from long function
+   endif
+}
+
+function double  return.as.double(   | function of type double
+   boolean  aConvert,
+   long     aLong
+)
+{
+   if aConvert then
+      double   lDouble
+      
+      lDouble  = aLong  | assignment of long value to double variable.
+                        | implicit <a href="../../progguide/3gl_features/type_conversions.htm#long_to_double_type_conversion" class="manualLink">long to double type conversion</a> is done.
+
+      return(lDouble)   | double value returned from double function
+   else
+      return(aLong)     | long value returned from double function
+   endif
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/functions.htm" class="manualLink">Functions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/function_type_and_return_value, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

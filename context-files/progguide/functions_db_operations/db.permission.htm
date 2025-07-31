@@ -1,0 +1,132 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>db.permission()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="db.permission db.permission functions db.permission ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">db.permission()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;db.permission&nbsp;
+					(long&nbsp;table_id, string&nbsp;field [, ref string&nbsp;buffer])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this to check the access permissions that a user has to a
+                  specified table or table field.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>table_id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The table ID, as returned by <a href="../../progguide/functions_db_operations/db.bind.htm" class="manualLink">db.bind()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>field</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">To check the permissions for a particular field,
+                           enter the field name here. If you do not specify a
+                           field here, or if you specify an empty string, the
+                           function returns the permissions for the table.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[ref string</td>
+                     <td class="none"><code>buffer</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A user's permissions for a table or table field can
+                           depend on the contents of a record. In this case, you
+                           must specify the record buffer of the table in the <i class="Emphasis">buffer</i> argument. The function returns the user's
+                           permissions for the record in the record buffer. If a
+                           user's permissions depend on the contents of a record,
+                           and you do not specify the buffer argument, the
+                           function returns PERM.UNKNOWN.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The function returns a long that indicates the permissions
+               that the user has on the table or on a specified field of that
+               table. The return value consists of one of, or a combination of,
+               the following codes:
+            </p>
+            <p class="Paragraph">NO.PERMISSION 1</p>
+            <p class="Paragraph">PERM.READ 2</p>
+            <p class="Paragraph">PERM.MODIFY 4</p>
+            <p class="Paragraph">PERM.WRITE 8</p>
+            <p class="Paragraph">PERM.DELETE 16</p>
+            <p class="Paragraph">NO.RESTRICTION
+               (PERM.READ+PERM.MODIFY+PERM.WRITE+PERM.DELETE)
+            </p>
+            <p class="Paragraph">PERM.UNKNOWN 32</p>
+            <p class="Paragraph">So, if the value 6 is returned, the user is permitted to both
+               read and modify the specified table or table field.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long p
+string buffer(18)
+
+if attr.permission = PERM.UNKNOWN then
+                p = db.permission(ttccom001, "", buffer)
+else
+                p = attr.permission
+endif
+if p &gt; PERM.READ then
+                ....
+else
+                | modifications not allowed in table tccom001 for this user
+endif
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/db.permission, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

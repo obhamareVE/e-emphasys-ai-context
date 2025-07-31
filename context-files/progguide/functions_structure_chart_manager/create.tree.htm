@@ -1,0 +1,98 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>create.tree()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="create.tree create.tree functions create.tree ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">create.tree()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;create.tree&nbsp;
+					(string&nbsp;tree_name, string&nbsp;tree_title)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This function is only supported for Baan
+                  Windows and its usage is therefore deprecated.
+               </p>
+               <p class="Paragraph">This starts the Structure Chart Manager for a specified tree.
+                  It returns the process ID of the tree. If there is more than one
+                  tree with the same name, you can specify the process ID in the
+                  other functions in order to identify a particular tree. The
+                  process ID is the unique identifier of a tree.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>tree_name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the tree to be started.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>tree_title</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The title of the tree. This is displayed in the main
+                           window.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">&gt;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; success; returns the process ID of the new
+   tree</p>
+            <p class="Paragraph">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; error</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			4GL
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">The tree structure is displayed only after you have called <a href="../../progguide/functions_structure_chart_manager/view.tree.htm" class="manualLink">view.tree()</a>.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_structure_chart_manager/overview.htm" class="manualLink">Structure Chart Manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_structure_chart_manager/synopsis.htm" class="manualLink">Structure ChartManager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_structure_chart_manager/example.htm" class="manualLink">Tree structures: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_structure_chart_manager/create.tree, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

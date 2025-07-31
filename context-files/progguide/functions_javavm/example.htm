@@ -1,0 +1,132 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Example</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Java VM integration example ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Example</div>
+      <div class="body">
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example of a custom implementation using the Java interfaces</div>
+            <p class="Paragraph">Below is an example of a custom listener. The listener is
+               installed from within the Infor ERP Enterprise program using the
+               following program fragment (for clarity, all checks on return
+               codes are omitted. This is not recommended in a real-life
+               program!):
+            </p><pre class="CodeBlock">
+    long queue.fromJava
+    long queue.toJava
+    long ret
+
+    queue.fromJava = java.new.queue()
+    queue.toJava = java.new.queue()
+
+    | install a listener within baanERP; whenever a message arrives
+    | on the queue.fromJava, this program will receive a
+    | EVT_CHANNEL_EVENT event
+    | Note: listeners are optional, without a listener one will not
+    | be automatically informed about arriving buckets
+
+    ret = java.install.listener(queue.fromJava)
+
+    | install a listener at the Java side; whenever a message arrives 
+    | on the queue.toJava the listener's onReceive() method will be
+
+    | called
+
+    ret = java.execute.static.method.async(
+                             "com.baan.baanvm.test.TestListener",
+                             "installListener", 
+                             queue.fromJava, queue.toJava)
+</pre><p class="Paragraph">The Java listener implementation in this case will look
+               like:
+            </p><pre class="CodeBlock">
+package com.baan.baanvm.test;   // package name
+import com.baan.baanvm.*;   // import the interface definitions
+
+/** Test class which installs a listener on a java queue created in
+ * Infor ERP Enterprise. 
+ */                                
+
+public class TestListener <i class="Emphasis">implements IQueueListener</i>
+{
+    private int     m_queueFromERP;
+    private int     m_queueToERP;
+    private static IBaanVM  s_iBaanVm = new BaanVMImpl();
+
+    /** constructor of an instance of the listener */
+    public TestListener (int p_idIn, int p_idOut)
+    {
+        m_queueFromERP = p_idIn;
+        m_queueToERP = p_idOut;
+    }
+    
+      /** Called by Infor ERP Enterprise (java.execute.static.method.async). Its 
+       * main function is to install an instance of the listener on the 
+       * queue, and to initialize all variables */
+<i class="Emphasis">     public static void installListener (int queueToERP, 
+                                          int queueFromERP)</i>
+      {
+        try
+        {
+            /* install an instance of the listener */
+            s_iBaanVm.installListener(queueFromERP, 
+                  new QueuePinger(queueFrom4GL,queueTo4GL));
+        }
+        catch ( Exception e )
+        {
+            /* failed to install listener, log error message */
+            s_iBaanVm.logMessage(e.toString(), 0);
+        }
+    }
+    
+    
+    /** This listener method will be called whenever a new bucket 
+     * appears on the m_queueFromERP queue */
+<i class="Emphasis">public void onReceive(IBucket p_bucket)</i>
+    {
+        if ( p_bucket != null )
+        {
+            /* we have received data, do something (using the 
+             * IBucket interface to set and retrieve the 
+             * contents) ! 
+             */
+
+            /* for this example, just bounce the bucket back */
+            
+            /* place bucket on the queue m_queueToERP */
+            if ( (ret = 
+                  s_iBaanVm.putBucket(m_queueToERP,p_bucket)) &lt; 0 ) 
+            {
+                /* failed to place bucket on queue to Infor ERP Enterprise*/
+                s_iBaanVm.logMessage("Failed to bounce bucket,
+                                        ret = " + ret, 0);
+            }
+         }
+        else
+        {
+            /* no bucket received, log a debug message */
+            s_iBaanVm.logMessage("QueuePinger(" + m_queueFrom4GL 
+                    + ") received: NULL bucket!!!", 0);
+        }
+    }
+}
+
+</pre></div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_javavm/example, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

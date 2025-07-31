@@ -1,0 +1,66 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Token pasting (preprocessor)</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="token pasting (preprocessor) ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Token pasting (preprocessor)</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">In the macro, you can enter a part of a variable as a macro
+               argument. The symbol '##' is used to distinguish macro arguments
+               and the rest of the macro. This is omitted in the macro call. You
+               can paste more macro arguments together as one identifier. This
+               principle is called token pasting. It is used to reuse parts of the
+               source code, where using functions is impossible or difficult.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div><pre class="CodeBlock">
+#define p(x)            message("%d", var##x)
+#define q(x,y)          message("%d", x##y)
+#define r(x,y,z)        message("%d", x##y##z)
+
+long var1a, var1b
+p(1a)                   | becomes: message("%d", var1a)
+p(1b)                   | becomes: message("%d", var1b)
+q(var, 1a)              | becomes: message("%d", var1a)
+q(var, 1b)              | becomes: message("%d", var1b)
+r(var, 1, a)            | becomes: message("%d", var1a)
+r(var, 1, b)            | becomes: message("%d", var1b)
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2</div><pre class="CodeBlock">
+#define VRC(table,v,r,c)
+^       tt##table##.vers = v
+^       tt##table##.rele = r
+^       tt##table##.cust = c
+
+VRC(adv100, "6.2", "a", "")
+VRC(adv200, "6.2", "a", "")
+VRC(adv300, "6.2", "a", "")
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/preprocessor.htm" class="manualLink">Preprocessor</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/token_pasting_preprocessor, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Bshell command line options</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="bshell command line options ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Bshell command line options</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The following (incomplete) list shows some of the bshell command line options.</p>
+            <table class="default">
+               <tbody noTR="41" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Command line option</th>
+                     <th rowspan="1" colspan="1" class="default">Synopsis</th>
+                     <th rowspan="1" colspan="1" class="default">Explanation</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">v, V</th>
+                     <td rowspan="1" colspan="1" class="default">
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">-v</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">-V</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">Print bshell version information to standard output.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">?, u</th>
+                     <td rowspan="1" colspan="1" class="default">
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">-?</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">-u</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Print bshell usage information to standard output.
+                           Use this option to find many other bshell command line options.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">logfile</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-logfile &lt;file&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">Redirect stdout and stderr output to file &lt;file&gt;.
+                        In the supplied file name,
+                        the pattern %h will be substituted with the current hostname,
+                        the pattern %p will be substituted with the OS process ID of the bshell,
+                        and the pattern %u will be substituted with the current (short) baan user name.
+                        Default value for the supplied file name is
+                        bshell.%h.%p
+                        in some directory,
+                        typically ${BSE_TMP} or ${BSE}/log.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">keeplog</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-keeplog</code></td>
+                     <td rowspan="1" colspan="1" class="default">Do not remove the logfile after ending the bshell.</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">appendlog</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-appendlog</code></td>
+                     <td rowspan="1" colspan="1" class="default">Append to logfile instead of overwriting it
+                        (only useful with -logfile option).
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">logtag</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-logtag &lt;tag&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">The &lt;tag&gt; is used in the messages logged into the logfile
+                        and is especially useful when logging from multiple bshells
+                        to the same file
+                        (only useful with -logfile and -appendlog option).
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">nolog</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-nolog</code></td>
+                     <td rowspan="1" colspan="1" class="default">Do not redirect stdout and stderr to a log file;
+                        they will go to the controlling terminal
+                        (if possible - on remote connection no output will appear).
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgams</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgams</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the DEBUG_AMS flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgbdbact</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgbdbact</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the BDB_ACTIONS flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgcolor</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgcolor</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the DEBUG_MEM flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgcpu</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgcpu</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the BCPU_DEBUG flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgdata</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgdata</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the DATA_AKTIE flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgenums</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgenums</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the PRINT_ENUMS flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="15" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgfdev</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgfdev</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the DEBUG_FILEDEV flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="16" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgfile</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgfile</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the DEBUG_FILE flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="17" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgflow</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgflow</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the SHOW_FLOW flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="18" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgfun</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgfun</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the FUN_DEBUG flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="19" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbggpvar</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbggpvar</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the GET_PUT_VAR flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="20" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbggraphs</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbggraphs</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the DEBUG_GRAPHS flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="21" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbginstr</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbginstr</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the INSTR_DEBUG flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="22" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgjvmi</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgjvmi</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the DEBUG_JVMI flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="23" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbglck</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbglck</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the BDB_DELAY_LOCK flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="24" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbglts</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbglts</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the DEBUG_LTS flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="25" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgmesg</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgmesg</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the DEBUG_MESG flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="26" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgmulact</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgmulact</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the MUL_ACTION flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="27" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgobj</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgobj</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the OBJ_SIZE flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="28" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgpty</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgpty</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the PTY_DEBUG flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="29" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgref</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgref</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the REF_PATH flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="30" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgrefer</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgrefer</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the BDB_REFER flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="31" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgres</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgres</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the RESOURCE_DBG flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="32" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgsched</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgsched</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the SCHED_DEBUG flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="33" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgsock</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgsock</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the SOCK_DEBUG flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="34" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgsrdduse</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgsrdduse</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the SRDD_USAGE flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="35" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgsrv</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgsrv</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the BDB_SERVER_TYPE flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="36" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgstack</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgstack</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the SHOW_TRACE flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="37" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgsym</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgsym</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the SYM_DEBUG flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="38" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgtss</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgtss</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the DEBUG_TSS flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="39" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">dbgyy</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-dbgyy</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the DEBUG_YY flag in the <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">debug_level resource</a>.
+                     </td>
+                  </tr>
+                  <tr no="40" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">nodebug</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-nodebug</code></td>
+                     <td rowspan="1" colspan="1" class="default">Prevent the debug window to be displayed on the monitor.</td>
+                  </tr>
+                  <tr no="41" isLast="true" class="default">
+                     <th rowspan="1" colspan="1" class="default">set</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-set var=val</code></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Set environment variable 'var' to value 'val'.</p>
+                        <p class="Paragraph">See this <a href="../../progguide/misc/bshell_environment_variables.htm" class="manualLink">list of bshell environment variables</a>.
+                        </p>
+                        <p class="Paragraph">Notice that it is possible to set the value of a <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">resource</a> via its corresponding environment variable.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/misc/bshell_environment_variables.htm" class="manualLink">Bshell environment variables</a></li>
+               <li class="RelTopic"><a href="../../progguide/misc/bshell_resources.htm" class="manualLink">Bshell resources</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/misc/bshell_command_line_options, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

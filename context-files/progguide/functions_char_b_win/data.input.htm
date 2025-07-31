@@ -1,0 +1,348 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>data.input()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="data.input data.input functions data.input ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">data.input()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;data.input&nbsp;
+					(string&nbsp;options(.), ref string&nbsp;result(.), string&nbsp;default(.), ref long&nbsp;event(EVTMAXSIZE), ref long&nbsp;char_value)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This function is only supported for
+                  character-based windows and its usage is therefore
+                  deprecated.
+               </p>
+               <p class="Paragraph">This reads data from the keyboard.</p>
+               <p class="Paragraph">If the function specifies a default value, that value is
+                  displayed on screen. The value is accepted when the user presses
+                  ENTER. However, if the user enters a character at the first
+                  position in the field, the default value is deleted.
+               </p>
+               <p class="Paragraph">Normally, characters typed by the user are inserted before
+                  the current cursor position. However, if option 'C' is included
+                  in the <i class="Emphasis">options</i> argument, characters typed by the user are
+                  inserted at the current cursor position.
+               </p>
+               <p class="Paragraph">Users can edit the default value or make minor corrections to
+                  the string entered (before they press ENTER) by using the
+                  following keys:
+               </p>
+               <table border="0" class="none">
+                  <tbody noTR="5" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">RIGHT ARROW</td>
+                        <td rowspan="1" colspan="1" class="none">Scroll right.</td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">LEFT ARROW</td>
+                        <td rowspan="1" colspan="1" class="none">Scroll left.</td>
+                     </tr>
+                     <tr no="3" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">DEL</td>
+                        <td rowspan="1" colspan="1" class="none">Delete character at cursor position. Characters to
+                           the right of the deleted character are moved one
+                           position to the left. If the cursor is positioned
+                           beyond the last character, this character is deleted
+                           and the cursor moves one position to the left. Pressing
+                           DEL in an empty field redisplays the default value.
+                        </td>
+                     </tr>
+                     <tr no="4" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">CTRL+X</td>
+                        <td rowspan="1" colspan="1" class="none">Clear field.</td>
+                     </tr>
+                     <tr no="5" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">TAB</td>
+                        <td rowspan="1" colspan="1" class="none">Delete all characters from the cursor position to
+                           the end of the field.
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>options(.)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This argument must either be empty or it must
+                           contain 5 parts separated by one or more spaces.
+                        </p>
+                        <p class="Paragraph">If it is empty, the following input characteristics
+                           apply:
+                        </p>
+                        <ul class="List">
+                           <li class="ListItem">no fill characters are displayed</li>
+                           <li class="ListItem">input starts at the current cursor position</li>
+                           <li class="ListItem">all characters are permitted</li>
+                           <li class="ListItem">the maximum number of characters that can be
+                              input is 132
+                           </li>
+                        </ul>
+                        <p class="Paragraph">If it is not empty, it must include the following
+                           five items:
+                        </p>
+                        <ul class="List">
+                           <li class="ListItem">the starting column</li>
+                           <li class="ListItem">the starting row</li>
+                           <li class="ListItem">the minimum length of the string to be read</li>
+                           <li class="ListItem">the maximum length of the string to be read</li>
+                           <li class="ListItem">zero or more options</li>
+                        </ul>
+                        <p class="Paragraph">The following options are available. You can specify
+                           them with or without separating spaces.
+                        </p>
+                        <table width="100%" border="0" class="none">
+                           <tbody noTR="19" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">+ABIDI</td>
+                                 <td rowspan="1" colspan="1" class="none">Supports input of bidirectional data.</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">B</td>
+                                 <td rowspan="1" colspan="1" class="none">Empty result not permitted.</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">C</td>
+                                 <td rowspan="1" colspan="1" class="none">Overwrite mode.</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">E</td>
+                                 <td rowspan="1" colspan="1" class="none">E and e permitted as input; always
+                                    converted to capital letter.
+                                 </td>
+                              </tr>
+                              <tr no="5" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">F</td>
+                                 <td rowspan="1" colspan="1" class="none">Effect of '.' (moving cursor to previous
+                                    field) is switched off.
+                                 </td>
+                              </tr>
+                              <tr no="6" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">FILL='.'</td>
+                                 <td rowspan="1" colspan="1" class="none">The specified character is used as the fill
+                                    character for the field. By default, the fill
+                                    character defined for the user is used.
+                                 </td>
+                              </tr>
+                              <tr no="7" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">G</td>
+                                 <td rowspan="1" colspan="1" class="none">A floating-point number is expected.</td>
+                              </tr>
+                              <tr no="8" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">K</td>
+                                 <td rowspan="1" colspan="1" class="none">Converts all uppercase characters to lower
+                                    case.
+                                 </td>
+                              </tr>
+                              <tr no="9" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">L='..'</td>
+                                 <td rowspan="1" colspan="1" class="none">
+                                    <p class="Paragraph_firstAndNoTextBefore">Characters specified by this option are
+                                       interpreted as the end of input. When the user
+                                       enters one of these characters, <i class="Emphasis">data.input()</i> returns immediately without
+                                       waiting for the user to press ENTER. The <i class="Emphasis">char_value</i> argument returns the decimal
+                                       value of the character that was typed.
+                                    </p>
+                                    <p class="Paragraph">You can specify any combination of the
+                                       following characters with this option:
+                                    </p>
+                                    <ul class="List">
+                                       <li class="ListItem">ASCII characters A - Z, a - z, and
+                                          others such as % &amp; ! ?.
+                                       </li>
+                                       <li class="ListItem">Octal representation of characters;
+                                          these must start with '\0'. For example:
+                                          \01 and \012.
+                                       </li>
+                                       <li class="ListItem">Decimal representation of characters;
+                                          these must start '\'. For example: \1 and
+                                          \12.
+                                       </li>
+                                       <li class="ListItem">Hexadecimal representation of
+                                          characters; these must start with '\0x'.
+                                          For example: \0x1and \0x12.
+                                       </li>
+                                       <li class="ListItem">Control characters. For example: ^B and
+                                          ^F.
+                                       </li>
+                                       <li class="ListItem">Backslash (\\).</li>
+                                       <li class="ListItem">Circumflex (\^).</li>
+                                       <li class="ListItem">Escape (\E or \e).</li>
+                                       <li class="ListItem">Space (\s).</li>
+                                       <li class="ListItem">New line,(\n).</li>
+                                       <li class="ListItem">Return (\r).</li>
+                                       <li class="ListItem">Form feed (\f).</li>
+                                       <li class="ListItem">Previous line (\v).</li>
+                                       <li class="ListItem">Backspace (\b).</li>
+                                    </ul>
+                                    <p class="Paragraph">The following example specifies the
+                                       following characters: A, B, C, octal 13,
+                                       Control+N, Control+P, Esc, new line, and
+                                       backslash.
+                                    </p><pre class="CodeBlock">
+            L='ABC\013^N^P\E\n\\'
+          
+</pre></td>
+                              </tr>
+                              <tr no="10" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">LEN='..'</td>
+                                 <td rowspan="1" colspan="1" class="none">This specifies the available space on the
+                                    terminal screen. If the cursor is at the
+                                    beginning or end of the available space, the
+                                    field scrolls horizontally.
+                                 </td>
+                              </tr>
+                              <tr no="11" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">N</td>
+                                 <td rowspan="1" colspan="1" class="none">An integer number is expected.</td>
+                              </tr>
+                              <tr no="12" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">P</td>
+                                 <td rowspan="1" colspan="1" class="none">Entered characters are suppressed. No
+                                    default value or fill characters are displayed
+                                    on screen.
+                                 </td>
+                              </tr>
+                              <tr no="13" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">R</td>
+                                 <td rowspan="1" colspan="1" class="none">An automatic carriage return is executed
+                                    when the last character is entered (that is,
+                                    when the string is full).
+                                 </td>
+                              </tr>
+                              <tr no="14" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">T='..'</td>
+                                 <td rowspan="1" colspan="1" class="none">A string specifying all valid input
+                                    characters. All other characters are
+                                    invalid.
+                                 </td>
+                              </tr>
+                              <tr no="15" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">U</td>
+                                 <td rowspan="1" colspan="1" class="none">Converts all lowercase characters to
+                                    uppercase.
+                                 </td>
+                              </tr>
+                              <tr no="16" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">V='..'</td>
+                                 <td rowspan="1" colspan="1" class="none">A string specifying all invalid characters.
+                                    All other characters are valid.
+                                 </td>
+                              </tr>
+                              <tr no="17" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">Y</td>
+                                 <td rowspan="1" colspan="1" class="none">Result must be 'Y' or 'N'. Lowercase
+                                    characters are converted to uppercase, so 'y'
+                                    and 'n' are also permitted. If these
+                                    characters are not specified with T='YyNn',
+                                    other characters are also permitted. But after
+                                    the user presses ENTER, the message 'Only Y/N
+                                    allowed' is displayed.
+                                 </td>
+                              </tr>
+                              <tr no="18" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">&gt;</td>
+                                 <td rowspan="1" colspan="1" class="none">After the user presses ENTER, the input
+                                    string is right justified.
+                                 </td>
+                              </tr>
+                              <tr no="19" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">&lt;</td>
+                                 <td rowspan="1" colspan="1" class="none">After the user presses ENTER, the input
+                                    string is left justified.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>result(.)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the value typed by the user. The
+                           argument must be declared as a one-dimensional
+                           string.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>default(.)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A default string that is displayed on screen.</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>event(EVTMAXSIZE)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">If the function is stopped as a result of an event,
+                           that event is stored in this argument. See <a href="../../progguide/events/overview.htm" class="manualLink">Events.</a></p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>char_value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">If the function is stopped by input of a special
+                           character, the character typed is stored in this
+                           argument.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+string result(1)
+data.input("0 0 1 1 UE T='YN'", result, "")
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_char_b_win/overview_and_synopsis.htm" class="manualLink">Character-based windows - overview and synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_char_b_win/keyin.htm" class="manualLink">keyin$()</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_char_b_win/data.input, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

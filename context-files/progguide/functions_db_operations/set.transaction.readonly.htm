@@ -1,0 +1,73 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>set.transaction.readonly()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions set.transaction.readonly set.transaction.readonly set.transaction.readonly ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">set.transaction.readonly()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;set.transaction.readonly&nbsp;
+					()</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This defines a transaction as read only. The transaction can only read records (without
+                  locks) from the database; it cannot update the database.
+               </p>
+               <p class="Paragraph">When included, this function must be the first command of a
+                  transaction. So, you must include it either at the start of the
+                  program or immediately following a <a href="../../progguide/functions_db_operations/commit.transaction.htm" class="manualLink">commit.transaction()</a> or <a href="../../progguide/functions_db_operations/abort.transaction.htm" class="manualLink">abort.transaction()</a> call.
+               </p>
+               <p class="Paragraph">Because it is not possible to update the database in a
+                  read-only transaction, you can use only the following database
+                  calls in the transaction:
+               </p>
+               <p class="Paragraph">db.first() db.lt()</p>
+               <p class="Paragraph">db.last() db.le()</p>
+               <p class="Paragraph">db.next() db.set.to.default()</p>
+               <p class="Paragraph">db.prev() db.change.order()</p>
+               <p class="Paragraph">db.gt() db.indexinfo()</p>
+               <p class="Paragraph">db.ge() db.nr.indices()</p>
+               <p class="Paragraph">db.eq() db.nr.rows()</p>
+               <p class="Paragraph">db.cur() db.row.length()</p>
+               <p class="Paragraph">db.bind() db.record.to.columns()</p>
+               <p class="Paragraph">db.unbind() db.columns.to.record()</p>
+               <p class="Paragraph">db.error()</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/set.transaction.readonly, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

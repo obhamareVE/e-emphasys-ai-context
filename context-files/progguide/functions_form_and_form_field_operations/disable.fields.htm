@@ -1,0 +1,142 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>disable.fields()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="disable.fields disable.fields functions disable.fields ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">disable.fields()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;disable.fields&nbsp;
+					( [long&nbsp;mode], string&nbsp;field [,occurrence],...)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This disables single-occurrence and multi-occurrence fields
+                  on a form.
+               </p>
+               <p class="Paragraph">To disable all fields of a group, see <a href="../../progguide/functions_form_and_form_field_operations/disable.group.htm" class="manualLink">disable.group()</a>.
+               </p>
+               <p class="Paragraph">Because the information is not available, you can not use
+                  this function in the before.program section.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>mode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This is an optional argument. It has two possible
+                           values:
+                        </p>
+                        <p class="Paragraph">DISABLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This is the default mode and does
+            not need to be specified.</p>
+                        <p class="Paragraph">READONLY&nbsp;&nbsp;&nbsp; The field(s) become read-only fields
+            that cannot be edited by the user.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>field [,occurrence],...</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This identifies the field to be disabled.</p>
+                        <p class="Paragraph">For a single-occurrence field, this is the field
+                           name. For a multioccurrence field, this can be either
+                           the field name or the field name followed by an
+                           occurrence number (depending on whether you wish to
+                           disable all occurrences of the field or only one
+                           particular occurrence).
+                        </p>
+                        <p class="Paragraph">For array fields, UTC fields, and segmented fields,
+                           you can append suffixes to the field name to indicate
+                           the particular element or segment to be disabled. If
+                           you omit these suffixes, all elements/segments are
+                           disabled.
+                        </p>
+                        <ul class="List">
+                           <li class="ListItem">To disable a particular element of an array
+                              field, append the element number (in parentheses) to
+                              the field name. The element number must be an
+                              integer, formatted as a string. It cannot be a
+                              variable. For example: "tfmod100.perd(10)".
+                           </li>
+                           <li class="ListItem">To disable only the date or time element of a
+                              UTC field, append either .date or .time to the field
+                              name. For example: "ttadv300.cdat.time".
+                           </li>
+                           <li class="ListItem">To disable a particular segment of a segmented
+                              field, append <i class="Emphasis">.segment.segment_id</i> to the field name. For
+                              example: "tiitm001.item.segment.1".
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div><pre class="CodeBlock">
+| Disable two named single-occurrence fields
+disable.fields( "tccom010.beca", "tccom010.dsca" )
+
+| Change to read-only fields the current occurrences of the multi-
+| occurrence fields tccom010beca and tcccom101.dsca
+disable.fields( READONLY, "tccom010.beca", actual.occ, "tccom010.dsca",
+                actual.occ )
+
+| Disable element number 10 of an array field
+disable.fields( "tfmod100.perd(10)" )
+
+| Disable elements 1 to 12 of an array field
+for i  = start to 12
+                disable.fields( "month(" &amp; str$(i) &amp; ")" )
+endfor
+
+| Disable the date element of a UTC field
+ttaad500.fidt = 0
+disable.fields( "ttaad500.fidt.date" )
+
+| Disable the first and second segments of a segmented field
+disable.fields( "tcibd001.dfit.segment.1", "tcibd001.dfit.segment.2" )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/overview.htm" class="manualLink">Form and form field operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/synopsis.htm" class="manualLink">Form and form field operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_form_and_form_field_operations/disable.fields, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

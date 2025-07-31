@@ -1,0 +1,133 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>java.execute.static.method.sync</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions java.execute.static.method.sync java.execute.static.method.sync java.execute.static.method.sync ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">java.execute.static.method.sync</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;java.execute.static.method.sync&nbsp;
+					(string&nbsp;class.name, string&nbsp;method.name [, void&nbsp;...])</code><code>function&nbsp;long&nbsp;java.execute.static.method.async&nbsp;
+					(string&nbsp;class.name, string&nbsp;method.name [, void&nbsp;...])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Executes a Java static method, with no return type, within the JavaVM.</p>
+               <p class="Paragraph">java.execute.static.method.sync() returns to the caller AFTER completion of the Java method.</p>
+               <p class="Paragraph">java.execute.static.method.async() returns to the caller BEFORE completion of the Java method.</p>
+               <p class="Paragraph">See also <a href="../../progguide/functions_javavm/java.execute.static.application.method.htm" class="manualLink">java.execute.static.application.method</a> for an alternative Java interface that allows a result to be returned from the Java method.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>class.name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">name of the Java class to call (e.g.: com.baan.baanvm.Test)</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>method.name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">name of the static Java method in that class to call (e.g.: runMe).</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[void</td>
+                     <td class="none"><code>...</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional parameters for that method.
+                           			  All BaanC types at this time (string, long, double) are supported.
+                        </p>
+                        <p class="Paragraph">The 3GL type BOOLEAN is supported, but it maps to an int in Java.
+                           			 Also, it is worthwhile noting that the 3GL type LONG maps to the int type in Java.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return codes</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">JavaVM not supported on this platform; or
+                        unable to locate Java class and method at the Java end.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-2</th>
+                     <td rowspan="1" colspan="1" class="none">JavaVM integration not available (not supported on this OS)</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-3</th>
+                     <td rowspan="1" colspan="1" class="none">JavaVM integration not available (Java VM not properly configured).</td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-4</th>
+                     <td rowspan="1" colspan="1" class="none">Invalid method argument.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+    long retval
+    long longArg
+    string stringArg(30)
+
+    | fill longArg and stringArg here...
+
+    | This will call the "runMe" method in the given class that has a
+    | signature of "runMe(int, string)" 
+    retval = java.execute.static.method.async("com.baan.baanvm.Test", "runMe", longArg, stringArg)
+  </pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_javavm/overview.htm" class="manualLink">Java VM integration - Infor ERP Enterprise Server 3GL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_javavm/java.execute.static.method.sync, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

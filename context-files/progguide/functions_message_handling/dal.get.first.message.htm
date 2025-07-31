@@ -1,0 +1,117 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dal.get.first.message()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dal.get.first.message dal.get.first.message functions dal.get.first.message ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dal.get.first.message()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean &nbsp;dal.get.first.message&nbsp;
+					(long&nbsp;i.type, ref string&nbsp;o.code, ref string&nbsp;o.text [, ref long&nbsp;o.type])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Returns the code and text of the oldest message of the given
+                  type. In case <code class="Code">MSG.ALL</code> is passed as the type, then the type of the
+                  message is returned in the 4th argument.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>i.type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A message type.</p>
+                        <p class="Paragraph">Parameter i.type should be one of the following values:</p>
+                        <p class="Paragraph"><code class="Code">MSG.ALL, MSG.ERROR, MSG.WARNING, MSG.INFO</code>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>o.code</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The returned code of the message.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>o.text</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The returned text of the message.</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">[ref long</td>
+                     <td class="none"><code>o.type</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional, the returned type of the message, in case <code class="Code">MSG.ALL</code> was passed as the first
+                           argument.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">This function returns TRUE if a message could be retrieved,
+               else FALSE is returned.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			DAL
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection"></div>
+         <div class="GeneralSection"></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">Suppose you want to retrieve only warning messages from the
+               DAL buffer and write them to a file in FIFO order:
+            </p><pre class="CodeBlock">
+string  msg.code(14)
+string  msg.text(132) mb
+
+while dal.get.first.message(MSG.WARNING, msg.code, msg.text)
+    | Write the message code and text to a file...
+    ...
+endwhile
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_message_handling/overview_and_synopsis.htm" class="manualLink">Message handling overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_message_handling/dal.get.first.message, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

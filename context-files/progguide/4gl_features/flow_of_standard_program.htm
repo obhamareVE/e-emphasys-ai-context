@@ -1,0 +1,300 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Flow of 4GL engine</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="4GL flow of 4GL engine sections flow of 4GL engine ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Flow of 4GL engine</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">This section presents the general flow of the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a>. It is not
+               complete, but the most important actions are included. The flow
+               is similar for programs of types 1, 2, 3, and 4. Any differences
+               are indicated by comments.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Main routine</div>
+            <p class="Paragraph">The main routine displays the first form on the screen and
+               waits for a command.
+            </p><pre class="CodeBlock">
+ function main()
+    {
+            before.program
+            read.form()
+        after.form.read
+            init.references
+            create.sql.queries
+            if background then
+                get.ref.var(parent)
+                    read record
+            endif
+            db.bind(tmain)                | Not in type 4
+            if job.process then           | Only type 4
+                        before.choice.run.job
+                        execute(cont.process) or on.choice.run.job
+                        after.choice.run.job
+                        execute(end.program)
+            endif
+            zoom.from.on.entry
+            for each field on form
+                        init.field
+                        put.attributes()
+            endfor
+            change to start index               | Not in type 4
+            init.form
+            execute start event
+            before.form
+
+            while true
+                input.choice()
+                    if update.status and choice &lt;&gt; ... then   | Not in type 4
+                                on.update.db()
+                                        | See "update database" section
+                    endif
+                        on case choice
+                        case &lt;choice.option&gt;
+                            before.&lt;choice.option&gt;
+                            on.&lt;choice.option&gt;
+                            after.&lt;choice.option&gt;
+                            break
+                         case ...
+                         ....
+                     endcase
+             endwhile
+
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Choice sections</div>
+            <p class="Paragraph">The choice sections above are given as
+               before. <i class="Emphasis">choice.option</i> and after. <i class="Emphasis">choice.option</i>. In a
+               4GL program, a choice section consists of the main section
+               choice. <i class="Emphasis">choice.option</i> and one of the subsections
+               before.choice, on.choice, or after.choice.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Field sections</div>
+            <p class="Paragraph">There are two groups of field sections:</p>
+            <ul class="List">
+               <li class="ListItem">sections for which the field.all section is executed
+                  first: 
+                  <ul class="List">
+                     <li class="ListItem">init.field</li>
+                     <li class="ListItem">before.field</li>
+                     <li class="ListItem">before.input</li>
+                     <li class="ListItem">before.display</li>
+                     <li class="ListItem">before.checks</li>
+                     <li class="ListItem">selection.filter</li>
+                     <li class="ListItem">before.zoom</li>
+                     <li class="ListItem">check.input | if not in DAL</li>
+                     <li class="ListItem">on.input</li>
+                  </ul>
+               </li>
+               <li class="ListItem">sections for which field.all is executed after
+                  field.&lt;field name&gt; or field.other: 
+                  <ul class="List">
+                     <li class="ListItem">after.input</li>
+                     <li class="ListItem">after.display</li>
+                     <li class="ListItem">after.zoom</li>
+                     <li class="ListItem">ref.input</li>
+                     <li class="ListItem">ref.display</li>
+                     <li class="ListItem">domain.error</li>
+                     <li class="ListItem">when.field.changes</li>
+                     <li class="ListItem">after.field</li>
+                  </ul>
+               </li>
+            </ul>
+            <p class="Paragraph">The general flow of input fields is as follows:</p><pre class="CodeBlock">
+Field.input:
+                before.field
+                if not input.field then
+                        read.reference
+                        if error.reference then
+                                ref.display
+                        else
+                                before.display
+                                display.field()
+                                after.display
+                        endif
+                        return
+                endif
+                before.input
+                if input disabled then
+                        read.reference
+                        if error.reference then
+                                ref.display
+                        else
+                                before.display
+                                display.field()
+                                after.display
+                        endif
+                        return
+                endif
+
+zoom.ret:
+                do.input.field()
+                if in.ret = ZOOM then
+            selection.filter
+                        before.zoom
+                        zoom.to ...
+                        after.zoom
+                        goto zoom.ret
+                endif
+                if choice = f.to.choice or
+                                in.ret = arrow.up/down/left/right/tab then
+                        goto after.field
+                endif
+                before.checks
+                check.domain()
+
+                if domain.error then
+                        domain.error
+                        error.message
+                        goto field.input
+                endif
+                check.reference
+
+                if reference.error then
+                        ref.input
+                        error.message
+                        goto field.input
+                endif
+                check.input | DAL section
+                if check.input.error then
+                        error.message
+                        goto field.input
+                endif
+                on.input
+                ....
+                ....
+                when.field.changes
+                after.input
+                after.field
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">End of program</div>
+            <p class="Paragraph">The flow of the end of the program is as follows. The
+               function <i class="Emphasis">end.of.program()</i> is called when executing the standard
+               command END.PROGRAM.
+            </p><pre class="CodeBlock">
+function end.of.program()
+        {
+                before.end.program
+                if e then
+                        on.error
+                endif
+                after.form
+                after.program
+                if zoomfield  = "" then
+                        fill.zoomreturn
+                        zoom.from.on.exit
+                        if record.marked then
+                                commit.transaction()   | Not in type 4
+                                exit(exit.val)
+                        endif
+                endif
+                commit.transaction()                   | Not in type 4
+                exit()
+ }
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Zoom.from sections</div>
+            <p class="Paragraph">The zoom.from.on.entry and zoom.from.on.exit sections are
+               used in the main routine and in the <i class="Emphasis">end.of.program()</i> function. In a 4GL program, a zoom.from section consists of a
+               main section (zoom.from.all, zoom.from.&lt;zoomname&gt;, or
+               zoom.from.other) and a subsection (on.entry or on.exit).
+            </p>
+            <p class="Paragraph">The sequences in which the sections are executed differ for
+               on.entry and on.exit. For on.entry, zoom.from.all is executed
+               first and then zoom.from.&lt;zoomname&gt; or zoom.from.other.
+               For on exit, it is the other way around.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Update database</div>
+            <p class="Paragraph">An update of the database is necessary if a record is added,
+               changed or deleted. The actual update is executed if one of the
+               following actions is activated after a record has been added,
+               changed or deleted: start.set, def.find, find.data, first.set,
+               next.set, prev.set, last.set, change.order and form commands
+               that save data.
+            </p>
+            <p class="Paragraph">All these actions first call <i class="Emphasis">on.update.db()</i> if a record is added, changed or deleted.
+               The general flow of the <i class="Emphasis">on.update.db()</i> is as follows. Note that this function is
+               not relevant to programs of type 4.
+            </p><pre class="CodeBlock">
+on.update.db()
+{
+    if update.status = add.set or modify.set then
+        for all occurrences
+            check.domains()
+            if domain.error then
+                domain.error
+                error.message
+                return
+            endif
+            check.references
+            if reference.error then
+                ref.input
+                error.message
+                return
+            endif
+            for each field of occurrence
+                check.input
+                if check.input.error then
+                    error.message
+                    return
+                endif
+            endfor
+        endfor
+    endif
+    before.update.db
+    db.retry.point()
+    for all occurrences
+        before.save.object / before.destroy.object
+        if not skip then
+            insert / update / delete record
+            after.save.object / after.destroy.object
+        endif
+    endfor
+    back.to.old.key
+    after.update.db
+    commit.transaction()
+    after.update.db.commit
+}
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Main table i/o section</div>
+            <p class="Paragraph">Most of the main table i/o are mentioned above. They are not
+               available in programs of type 4.
+            </p>
+            <p class="Paragraph">The read.view section is executed immediately after any view
+               action on the main table (only in type 3 programs). The function <i class="Emphasis">skip.io("messcode")</i> can be used in this section. This
+               implies that the next or previous view is read.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/overview.htm" class="manualLink">Programming a UI Script overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/4gl_event_sections.htm" class="manualLink">4GL event sections</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/4gl_features/flow_of_standard_program, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>cmf.addObjectToMessage()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="cmf.addobjecttomessage cmf.addobjecttomessage functions cmf.addobjecttomessage ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">cmf.addObjectToMessage()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_cmf&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;cmf.addobjecttomessage&nbsp;
+					(long&nbsp;oid, long&nbsp;mid, string&nbsp;class(100))</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">The object identified by <i class="Emphasis">oid</i> is added to the message
+                  object identified by <i class="Emphasis">mid</i>. The class of this message is
+                  set to the <i class="Emphasis">string class</i> (mandatory attribute for a
+                  message: for example CMF.TASK for tasks, CMF.APPOINTMENT for
+                  appointments and so on). The object is written to a temporary
+                  file with extension .xml, which is placed in the current working
+                  directory. This file is added as an attachment to the message
+                  object. The body attribute of this attachment is set to true,
+                  the mimetype is set to application/xml and the delete attribute
+                  is set to true. All attachments currently attached to the task
+                  are also attached to the message object. Finally the object
+                  identified by <i class="Emphasis">oid</i> is deleted (because changes in this
+                  object are not reflected anymore in the message object).
+               </p>
+               <p class="Paragraph">Note: If an error is returned, the object identified by oid
+                  is not deleted
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>oid</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Object identification.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>mid</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Message object identification.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>class(100)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Mandatory attribute for a message: for example
+                           CMF.TASK for tasks, CMF.APPOINTMENT for appointments
+                           and so on. For more information see
+                           cmf.setClasscmf.setClass .
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">General error (check logfiles) .</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-2</th>
+                     <td rowspan="1" colspan="1" class="none">Oid or mid are not valid xml object id's.</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-3</th>
+                     <td rowspan="1" colspan="1" class="none">Class argument empty.</td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-4</th>
+                     <td rowspan="1" colspan="1" class="none">Object could not be written to file.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/emessage_connector/overview.htm" class="manualLink">eMessage Connector overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/emessage_connector/synopsis.htm" class="manualLink">eMessage Connector synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/emessage_connector/examples.htm" class="manualLink">eMessage Connector examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/emessage_connector/cmf.addobjecttomessage, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

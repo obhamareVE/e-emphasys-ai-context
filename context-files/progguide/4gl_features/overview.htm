@@ -1,0 +1,79 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Programming a UI Script overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="4GL ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Programming a UI Script overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">This section describes how to program a BAAN UI script.</p>
+            <p class="Paragraph">When you create a session, the default behavior of that
+               session is handled by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a>. If
+               additional functionality is needed or default functionality
+               needs to be by-passed, this should be programmed in a UI
+               script.
+            </p>
+            <p class="Paragraph">In Infor ERP Enterprise Server, user interface actions are
+               programmed in the UI script and application logic for a table,
+               table fields and relations between tables should be programmed
+               in the <a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a> (DAL). Programmers create a user interface (UI) script
+               to change the default behavior of a session. They create a DAL
+               script to program all the logical integrity rules for a
+               particular table. This section discusses UI scripts.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">4GL script types</div>
+            <p class="Paragraph">There are two types of UI scripts:</p>
+            <ul class="List">
+               <li class="ListItem">UI scripts that offer a direct view on a table in the
+                  database (previously known as type 1, 2 or 3).
+               </li>
+               <li class="ListItem">UI scripts that have no direct view an a table in the
+                  database (previously known as type 4 sessions). Typically,
+                  this is a session where you enter a selection range for
+                  printing or processing data in the database
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Event-driven programming</div>
+            <p class="Paragraph">4GL scripts are event oriented. They consist of one or more
+               event sections in which you program actions to be performed at
+               particular states of execution of the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> – for
+   example, when a session is started, before a group of fields is
+   activated, when the value of a field changes, and so on. It is
+   not necessary to program all sections, only those for which the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> does not
+               provide the required functionality.
+            </p>
+            <p class="Paragraph">The statements programmed in a section can be a combination
+               of 3GL/4GL functions and 3GL statements. For information about
+               the 3GL programming language, see <a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a>.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/4gl_event_sections.htm" class="manualLink">4GL event sections</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/flow_of_standard_program.htm" class="manualLink">Flow of 4GL engine</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/browsing.htm" class="manualLink">Guidelines on browsing/zooming</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/4gl_features/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

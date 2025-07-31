@@ -1,0 +1,189 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>gbf.start()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions gbf.start gbf.start gbf.start ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">gbf.start()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;gbf.start&nbsp;
+					(long&nbsp;read.levels, long&nbsp;show.levels)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Activates the GBF,in other words it takes over control
+                  from the application. See also <a href="../../progguide/functions_generic_browser_frameworkf/gbf.init.htm" class="manualLink">gbf.init()</a> for more
+                  information.
+               </p>
+               <p class="Paragraph">read.levels</p>
+               <p class="Paragraph">The <a href="../../progguide/functions_generic_browser_frameworkf/gbf.start.htm" class="manualLink">gbf.start()</a> function will first
+                  try to read the number of levels of the tree as specified
+                  with the read.levels argument. If the read.levels argument is
+                  not given, it is set to 1. The possibilities for read.levels
+                  and the actions are:
+               </p>
+               <table border="0" class="none">
+                  <tbody noTR="5" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">read.levels</td>
+                        <td rowspan="1" colspan="1" class="none">description</td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">&lt; 0</td>
+                        <td rowspan="1" colspan="1" class="none">return an error, GBF is not activated</td>
+                     </tr>
+                     <tr no="3" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">GBF.READ.ALL</td>
+                        <td rowspan="1" colspan="1" class="none">read all levels</td>
+                     </tr>
+                     <tr no="4" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">1</td>
+                        <td rowspan="1" colspan="1" class="none">read only top level</td>
+                     </tr>
+                     <tr no="5" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">&gt; 1</td>
+                        <td rowspan="1" colspan="1" class="none">read up to the given number of levels</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+               <p class="Paragraph">It is not considered an error when the specified
+                  read.levels cannot be read from the tree, thus when
+                  specifying too many levels which are not present in the
+                  actual tree.
+               </p>
+               <p class="Paragraph">show.levels</p>
+               <p class="Paragraph">After this the number of levels contained in show.levels
+                  is displayed in the window. If the show.levels argument is
+                  not given, it is set to the value of read.levels. The
+                  possibilities for show.levels and the actions are:
+               </p>
+               <table border="0" class="none">
+                  <tbody noTR="5" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">show.levels</td>
+                        <td rowspan="1" colspan="1" class="none">description</td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">&lt; 0</td>
+                        <td rowspan="1" colspan="1" class="none">return an error, GBF is not activated</td>
+                     </tr>
+                     <tr no="3" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">GBF.SHOW.ALL</td>
+                        <td rowspan="1" colspan="1" class="none">show all levels which are read</td>
+                     </tr>
+                     <tr no="4" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">&lt;= read.levels</td>
+                        <td rowspan="1" colspan="1" class="none">show up to the given number of levels</td>
+                     </tr>
+                     <tr no="5" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">&gt; read.levels</td>
+                        <td rowspan="1" colspan="1" class="none">show up to read.levels</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+               <p class="Paragraph">After this the main event loop is activated, effectively
+                  meaning that the GBF is now in control.
+               </p>
+               <p class="Paragraph">When the GBF is done it will return to the calling
+                  application, returning control to the main application.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>read.levels</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">See above.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>show.levels</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">See above.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">0</td>
+                     <td rowspan="1" colspan="1" class="none">Successful completion</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.NO.MEMORY</td>
+                     <td rowspan="1" colspan="1" class="none">Not enough memory</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.LEVEL</td>
+                     <td rowspan="1" colspan="1" class="none">Illegal read.levels or show.levels given</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.STATE</td>
+                     <td rowspan="1" colspan="1" class="none">GBF is not in the right state to deal with this
+                        function
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.CHILD.ABORT</td>
+                     <td rowspan="1" colspan="1" class="none">Exited on a child request, see
+                        gbf.menu.action()
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/overview.htm" class="manualLink">Generic Browser Framework (GBF) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/synopsis.htm" class="manualLink">Generic Browser Framework (GBF) synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/typical_usage.htm" class="manualLink">Typical usage</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/getting_started.htm" class="manualLink">Getting started</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/example.htm" class="manualLink">Example</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/error_codes_and_return_values.htm" class="manualLink">Generic Browser Framework error codes and return values</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/standard_menu_items_and_function_keys.htm" class="manualLink">standard menu items and function keys</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/messages_and_questions.htm" class="manualLink">Messages and questions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_generic_browser_frameworkf/gbf.start, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

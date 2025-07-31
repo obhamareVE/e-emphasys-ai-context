@@ -1,0 +1,56 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>HY010 - Function sequence error</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">HY010 - Function sequence error</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The SQL CLI (Call Level Interface) dictates a certain order
+               of interface calls. This error is issued when this constraint is
+               violated.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+table tdbtst120
+
+function main()
+{
+   long id
+
+   id = sql.parse("select firstnme from dbtst120 where empno = 10")
+   sql.fetch(id)
+   sql.close(id)
+}
+</pre><p class="Paragraph">The sql.fetch() call may only be done after a sql.exec()
+               call. This program will cause the error:
+            </p>
+            <p class="Paragraph">SQLState HY010: Function
+               sequence error - Fetch called out of sequence
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/dynamic_sql.htm" class="manualLink">Dynamic SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/HY010, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

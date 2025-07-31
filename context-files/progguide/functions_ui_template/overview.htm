@@ -1,0 +1,58 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>UI Template</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="UI template Overview hooks UI template hooks ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">UI Template</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> supports automatic disabling of fields and commands. Instead of
+               using functions like <a href="../../progguide/functions_form_and_form_field_operations/disable.fields.htm" class="manualLink">disable.fields()</a> and <a href="../../progguide/functions_form_and_form_field_operations/disable.fields.htm" class="manualLink">disable.fields()</a>, a set of so-called hooks can be used that
+               describe under which conditions a field or command is enabled.
+               The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will
+               call these hooks at the right moment and based on the outcome,
+               the corresponding field or command will be disabled or
+               enabled.
+            </p>
+            <p class="Paragraph">The following UI template topics are supported by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a>:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_ui_template/field.is.readonly.htm" class="manualLink">field.is.readonly()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_ui_template/standard.command.is.allowed.htm" class="manualLink">standard.command.is.allowed()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_ui_template/form.command.is.allowed.htm" class="manualLink">form.command.is.allowed()</a></li>
+            </ul>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">In order to enable automatic disabling of fields and
+                  commands, you must #include &lt;bic_4gl2&gt; in your UI
+                  script.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_ui_template/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

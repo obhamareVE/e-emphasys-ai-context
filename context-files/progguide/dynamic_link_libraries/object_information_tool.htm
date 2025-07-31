@@ -1,0 +1,194 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Object information tool</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dynamic-link libraries object information tool object information tool ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Object information tool</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">To display information about an object, use the object
+               information tool bic_info6.2. Note that maximum information is
+               displayed when the object has been compiled with the debug
+               option.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+bic_info6.2 [-aidshwcV] [-eu] [-f[flags]] object
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Options</div>
+            <table border="1" class="default">
+               <tbody noTR="12" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+-a
+</pre></td>
+                     <td rowspan="1" colspan="1" class="default">Show all available object information
+                        (default).
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+-I
+</pre></td>
+                     <td rowspan="1" colspan="1" class="default">Show instructions in object (Disassembler). This
+                        is only possible when the object is compiled with
+                        the debug option.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+-d
+</pre></td>
+                     <td rowspan="1" colspan="1" class="default">Show used DLLs and where the external functions
+                        used are defined.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+-s
+</pre></td>
+                     <td rowspan="1" colspan="1" class="default">Show list of used variables, (global) functions,
+                        string constants, and double constants.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+-h
+</pre></td>
+                     <td rowspan="1" colspan="1" class="default">Show Object header.</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+-w
+</pre></td>
+                     <td rowspan="1" colspan="1" class="default">Show #ident &lt;strings&gt;.</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+-c
+</pre></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Check checksum.</p>
+                        <p class="Paragraph">exit(0)&nbsp;&nbsp;&nbsp;&nbsp; ok</p>
+                        <p class="Paragraph">exit(1)&nbsp;&nbsp;&nbsp;&nbsp; corrupted</p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+-V
+</pre></td>
+                     <td rowspan="1" colspan="1" class="default">Show version/release and portings information of
+                        bic_info6.2.
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+-e
+</pre></td>
+                     <td rowspan="1" colspan="1" class="default">Show prototypes of all external functions defined
+                        in the object.
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+-u
+</pre></td>
+                     <td rowspan="1" colspan="1" class="default">Show the general usage of the library (see
+                        below).
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+-f
+</pre></td>
+                     <td rowspan="1" colspan="1" class="default">Show flags.</td>
+                  </tr>
+                  <tr no="12" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+-f&lt;flag&gt;
+</pre></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Check flags. When this options is used, all other
+                           options are ignored. &lt;flag&gt; can be a
+                           combination of the following:
+                        </p>
+                        <p class="Paragraph">1&nbsp;&nbsp;&nbsp; NOTRANSACTION</p>
+                        <p class="Paragraph">2&nbsp;&nbsp;&nbsp; DEBUG</p>
+                        <p class="Paragraph">4&nbsp;&nbsp;&nbsp; PROFILE</p>
+                        <p class="Paragraph">8&nbsp;&nbsp;&nbsp; DLL</p>
+                        <p class="Paragraph">exit(0)&nbsp;&nbsp;&nbsp;&nbsp; flag(combination) is in object</p>
+                        <p class="Paragraph">exit(1)&nbsp;&nbsp;&nbsp;&nbsp; flag(combination) is not in
+               object</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Combining -e and -u displays the description of the object
+               and the descriptions and prototypes of all external functions
+               within the object (see below).
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Object and function descriptions</div>
+            <p class="Paragraph">You specify the object description between the keywords
+               DLLUSAGE and ENDDLLUSAGE in the program script. You place the
+               information outside all functions so that it is global for
+               the entire program. The description should explain the
+               general usage of the object. The description is added to the
+               object and you can retrieve it with the command <code class="Code">&lt;bic_info6.2 -u &lt;object&gt;</code>.
+            </p>
+            <p class="Paragraph">You also specify a function's description between the
+               keywords FUNCTIONUSAGE and ENDFUNCTIONUSAGE in the program script.
+               However, you place the information within the body of the
+               function, between the { and } characters. The description
+               should explain the general usage of the object, its
+               arguments, and its return value, for example. You can
+               retrieve function descriptions and prototypes with the
+               command bic_info6.2 -eu &lt;object&gt;.
+            </p>
+            <div class="subExampleSection">
+               <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+DllUsage
+This is the object description.
+EndDllUsage
+
+function extern long abs( long arg )
+{
+        FunctionUsage
+        This function returns the absolute value of the specified argument.
+        Input:  ARG     The value for which the absolute value is to be returned.
+        Output: -
+        Return: the positive value of ARG.
+        EndFunctionUsage
+
+        return ( arg &gt;= 0 ? arg : -arg )
+}
+</pre></div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/dynamic_link_libraries/overview.htm" class="manualLink">Dynamic-link libraries</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/dynamic_link_libraries/object_information_tool, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

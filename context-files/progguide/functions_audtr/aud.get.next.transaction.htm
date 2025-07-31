@@ -1,0 +1,160 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>aud.get.next.transaction()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="aud.get.next.transaction aud.get.next.transaction functions aud.get.next.transaction ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">aud.get.next.transaction()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;aud.get.next.transaction&nbsp;
+					(long&nbsp;selection.id, long&nbsp;number.of.retries, long&nbsp;retry.interval, ref string&nbsp;transaction.id, ref long&nbsp;commit.time, ref string&nbsp;session, ref string&nbsp;user)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">After the transactions to be selected have been specified
+                  using <a href="../../progguide/functions_audtr/aud.select.transactions.htm" class="manualLink">aud.select.transactions()</a> the next step is to retrieve the audit data from the audit
+                  trail. The retrieved audit data can be processed in combination
+                  with the acquired meta data. The aud.get.next.transaction
+                  function fetches the next transaction data based on the
+                  selection defined with the <a href="../../progguide/functions_audtr/aud.select.transactions.htm" class="manualLink">aud.select.transactions()</a> function. When a transaction is read successfully, the function
+                  returns the transaction header, consisting of <i class="Emphasis">transaction.id</i>, <i class="Emphasis">commit.time</i>, <i class="Emphasis">session</i> and <i class="Emphasis">user</i>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>selection.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Id of the selected transactions returned by <a href="../../progguide/functions_audtr/aud.select.transactions.htm" class="manualLink">aud.select.transactions()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>number.of.retries</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>retry.interval</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Number of milliseconds to wait before doing a retry
+                           to retrieve the data.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>transaction.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Id of the transaction, as read from the audit
+                           trail.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>commit.time</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The commit date and time of the next transaction
+                           (UTC format).
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>session</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The code of the session that is responsible for the
+                           transaction.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>user</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The Infor ERP Enterprise user code of the user who is
+                           responsible for the transaction.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_OK</th>
+                     <td rowspan="1" colspan="1" class="none">Next transaction could be determined and transaction
+                        header data is retrieved successfully
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_FAIL</th>
+                     <td rowspan="1" colspan="1" class="none">An error occured when trying to retrieve the
+                        transaction data
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_NO_MORE_TRANSACTIONS</th>
+                     <td rowspan="1" colspan="1" class="none">If there are no more transactions that meet the
+                        selection criteria defined, using function
+                        aud.select.transactions, the function returns
+                        NO_MORE_TRANSACTIONS.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Restrictions</div>
+            <p class="Paragraph">Aud.select.transactions has to be called successfully prior
+               to this function. The <i class="Emphasis">selection.id</i> must be equal to the <i class="Emphasis">selection.id</i> returned by <a href="../../progguide/functions_audtr/aud.select.transactions.htm" class="manualLink">aud.select.transactions()</a>.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_synopsis.htm" class="manualLink">Audit management synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_examples.htm" class="manualLink">Audit management examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_audtr/aud.get.next.transaction, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

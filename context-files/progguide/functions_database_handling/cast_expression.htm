@@ -1,0 +1,85 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>CAST expression</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="CAST expression ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">CAST expression</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">With the CAST expression you can
+               assign a type to a parameter.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;cast expression&gt;
+    ::= CAST ( <a href="../../progguide/functions_database_handling/parameter.htm" class="manualLink">Parameter</a> AS &lt;parameter cast type&gt; )
+
+&lt;parameter cast type&gt;
+    ::= INTEGER | REAL | DATE | TIMESTAMP | STRING | RAW
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">The value of <i class="Emphasis">Parameter</i> is restricted to the name of a column.
+               	 A syntax error will result when any other type of expression is used.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The cast operator 
+               assigns the type <i class="Emphasis">&lt;parameter cast type&gt;</i> to the <i class="Emphasis">&lt;parameter&gt;</i>. The cast expression itself will also be of
+               type <i class="Emphasis">&lt;parameter cast type&gt;</i>.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following CAST expression assigns the type <i class="Emphasis">integer</i> to the parameter <i class="Emphasis">param</i>.
+            </p><pre class="CodeBlock">
+CAST ( :param AS INTEGER )
+</pre><p class="Paragraph">The following CAST expression assigns the type <i class="Emphasis">raw</i> to
+               	  the parameter <i class="Emphasis">param</i>.
+            </p><pre class="CodeBlock">
+CAST ( :param AS RAW )
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Resolving type conflicts on parameters</div>
+            <p class="Paragraph">The cast operator is used to properly type parameters in case
+               	   of ambiguities or in case of possible type conflicts.
+            </p>
+            <p class="Paragraph">In the following example, both <i class="Emphasis">param1</i> and <i class="Emphasis">param2</i> cannot be typed, because each type is comparable
+               to itself.
+            </p><pre class="CodeBlock">
+:param1 = :param2
+</pre><p class="Paragraph">This problem can be resolved using the CAST expression.</p><pre class="CodeBlock">
+:param1 = CAST( :param2 AS STRING )
+</pre><p class="Paragraph">In the following example the first comparison types <i class="Emphasis">param</i> as <i class="Emphasis">date</i>, while the second comparison types
+               it as <i class="Emphasis">real</i>.
+            </p><pre class="CodeBlock">
+:param = hiredate  or  :param = 0
+</pre><p class="Paragraph">Using the CAST expression this can be resolved.</p><pre class="CodeBlock">
+:param = hiredate  or  CAST( :param AS DATE ) = 0
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/cast_expression, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>set.list.values.for.field()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions set.list.values.for.field set.list.values.for.field set.list.values.for.field ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">set.list.values.for.field()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;set.list.values.for.field&nbsp;
+					(const string&nbsp;field.name.string, string&nbsp;no.list.values, const string&nbsp;list.values(,))</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This fills a listbox field or a combobox field with a
+                  specified set of values. The field must be a string type field,
+                  and the appearance must be set to Dropdown Listbox or Dropdown
+                  Combobox in the DFE.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>field.name.string</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the string field. For example,
+                           "prog.code". For an array field, include the array
+                           element. For example, "prog.code(5)".
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>no.list.values</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Number of values present in the list.values array</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>list.values(,)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A string array that contains all values that need to
+                           be placed in the listbox field. It should contain the
+                           number of entries as indicated by the no.list.values
+                           argument.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">This function cannot be used in the before.program or
+                  after.form.read section, and cannot be used on fields in a
+                  grid.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+declaration:
+    extern  domain  ttadv.cpac  package | Form field
+
+group.1:
+init.group:
+        long    i
+        string  list.values(1, 1)       based
+
+        i = 0
+        select  cpac
+    from    ttadv100
+    selectdo
+        if certain_condition() then
+            i = i + 1
+            alloc.mem(list.values, 30, i)
+            list.values(1, i) = ttadv100.cpac
+        endif
+    endselect
+
+    set.list.values.for.field("package", i, list.values)
+
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/overview.htm" class="manualLink">Form and form field operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/synopsis.htm" class="manualLink">Form and form field operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_form_and_form_field_operations/set.list.values.for.field, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

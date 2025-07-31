@@ -1,0 +1,70 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Dynamic SQL queries overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dynamic sql queries ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Dynamic SQL queries overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Dynamic SQL enables programs to compose and execute SQL
+               statements at runtime. This is necessary, for example, when SQL
+               statements are composed in response to user input.
+            </p>
+            <p class="Paragraph">You use the functions described in this section to handle
+               dynamic SQL queries. Use <a href="../../progguide/functions_dynamic_sql_queries/sql.parse.htm" class="manualLink">sql.parse()</a> to define the query.
+               Once the query has been defined, use the other functions to
+               bind variables in the SQL statement to BAAN 4GL variables, to
+               execute the query, to fetch the results, and to end and
+               delete the query. Note that there is no need to bind external
+               variables. Once you have defined a query using <a href="../../progguide/functions_dynamic_sql_queries/sql.parse.htm" class="manualLink">sql.parse()</a>, you can execute it
+               any number of times, using different variables, without
+               redefining it.
+            </p>
+            <p class="Paragraph">The sequence in which you use the functions is as
+               follows:
+            </p><pre class="CodeBlock">
+sql.parse() 
+                sql.select.bind()
+                sql.where.bind() 
+                                sql.exec() 
+                                sql.fetch() 
+                                sql.fetch() 
+                                ... 
+                                sql.break()
+          
+                sql.select.bind()
+                sql.where.bind()
+                                sql.exec()
+                                sql.fetch()
+                                sql.fetch()
+                                ... 
+                                sql.break()
+sql.close    
+</pre><p class="Paragraph">For a general discussion of database handling, and
+               embedded and dynamic SQL, see <a href="../../progguide/functions_database_handling/overview.htm" class="manualLink">Database handling overview</a>.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dynamic_sql_queries/synopsis.htm" class="manualLink">Dynamic SQL queries synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dynamic_sql_queries/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

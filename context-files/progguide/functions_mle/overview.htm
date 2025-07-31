@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Multi Language Data overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Multi Language Data overview ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Multi Language Data overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Infor ERP Enterprise provides support to store multibyte strings - like descriptions - in multiple languages. 
+               	System Administrators can define the Data Languages that can be used by end-users, as well as for which 
+               	table fields it must be possible to enter the value in different languages. Note that the list of Data 
+               	Languages is global and not per defined field.
+            </p>
+            <p class="Paragraph">E.g. if the item description field is defined as a Multi Language field in the database, and the Data Languages 
+               	"eng" (English), "dut" (Dutch) and "ger" (German) have been defined, then an English user may create a new 
+               	item with description "Bike", which can then be translated by a Dutch user to "Fiets", and by a German user 
+               	to "Fahrrad". In this way English, Dutch and German users will see the item description in their own language.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Concepts and Definitions</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">ISO 639 Language</i></td>
+                     <td rowspan="1" colspan="1" class="none">A 2 or 3 letter language code according to the ISO 639 standards. 
+                        					    See <a href="http://www.loc.gov/standards/iso639-2/" class="wwwlinkLink">http://www.loc.gov/standards/iso639-2/</a> for more information and
+                        					    a list of ISO 639 languages.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">Data Language</i></td>
+                     <td rowspan="1" colspan="1" class="none">A Data Language is an ISO 639-2 Language like "eng" or a combination of an ISO 639.1 Language and ISO 3266.1 Country code
+                        like "en_US" which is actually used in the Infor ERP Enterprise environment.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">Base Language</i></td>
+                     <td rowspan="1" colspan="1" class="none">A Base Language is a special Data Language. Only one Base Language can be defined in the Infor ERP Enterprise environent.
+                        					    It is used to determine the language of the user: if no Data Language is defined for the user, and no Data Language
+                        					    is defined for the Software Language of the user, then the Base Language is used. It is also used to support a 
+                        					    'fallback' mechanism in case a Multi Language value has not yet been translated into other languages.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">Multi Language Field (MLF)</i></td>
+                     <td rowspan="1" colspan="1" class="none">A Multi Language Field is a database field of type Multibyte string which can contain values in several Data Languages.
+                        					    Multi Language Fields are defined in sessions ttadv4137m000 Registered Table with Multi Language Fields and ttadv4138m000
+                        					    Registered Multi Language Fields.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">Multi Language Value (MLV)</i></td>
+                     <td rowspan="1" colspan="1" class="none">A Multi Language Value denotes the contents of a Multibyte string variable. When Multi Language is enabled for the Infor ERP
+                        Enterprise
+                        					    environment, conceptually <i class="Emphasis">all</i> Multibyte string variables (whether defined as MLF or not), 
+                        					    will be treated as MLVs. This means that some of these variables conceptually will hold different translations (in
+                        case the 
+                        					    contents is from a real Multi Language Field in the database) and some will hold the same translation for all defined
+                        
+                        					    Data Languages (in case the contents is from a single language field in the database).
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Change Data Language</div>
+            <p class="Paragraph">A user can switch to another Data Language (if he is authorized to do so), via the Worktop/Webtop Change Data Language option.
+               
+               	This starts session ttdsk2006m000 Change Data Language. Changing a Data Language works similar to Changing a Company.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_mle/synopsis.htm" class="manualLink">Multi Language Data synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_mle/examples.htm" class="manualLink">Multi Language Data support code examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_mle/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

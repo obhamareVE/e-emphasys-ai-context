@@ -1,0 +1,65 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42I25 - SELECT clause of subquery contains more than 1 item</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42I25 - SELECT clause of subquery contains more than 1 item</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">An SQL statement contains a subquery that selects more than
+               one column where it is expected to select just a single
+               column.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div><pre class="CodeBlock">
+select firstnme
+from   dbtst120
+where  empno = ( select mgrno, deptname
+                 from   dbtst100
+                 where  deptno = "A01" )
+   </pre><p class="Paragraph">A subquery in a comparison predicate may only select one
+               column. This query causes the error:
+            </p>
+            <p class="Paragraph">SQLState 42I25: SELECT clause
+               of scalar subquery contains more than 1 item
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2</div><pre class="CodeBlock">
+select firstnme
+from   dbtst120
+where  empno IN ( select mgrno, deptname
+                  from   dbtst100 )
+   </pre><p class="Paragraph">The subquery of an IN predicate may only select one column.
+               This query causes the error:
+            </p>
+            <p class="Paragraph">SQLState 42I25: Select clause
+               of subquery in IN predicate contains more than 1 item
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/comparison_pred.htm" class="manualLink">Comparison predicate</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/in_pred.htm" class="manualLink">IN predicate</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42I25, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>soap.newMessage()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions soap.newMessage soap.newMessage soap.newMessage ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">soap.newMessage()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;soap.newMessage&nbsp;
+					(const string&nbsp;soapNsURI)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Creates a new SOAP Message, including a new SOAP Envelope and returns a handle to
+                  				the new SOAP Message. The new SOAP Envelope will be created based on the specified
+                  				SOAP namespace URI.
+               </p>
+               <p class="Paragraph">The newly created SOAP Envelope will have the following layout:</p><pre class="CodeBlock">
+	&lt;?xml version="1.0"?&gt;
+	&lt;soap:Envelope&gt;
+		xmlns:soap="&lt;soapNsURI&gt;"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"&gt;
+		&lt;soap:Header/&gt;
+		&lt;soap:Body/&gt;
+	&lt;/soap:Envelope&gt;
+</pre><p class="Paragraph">The specified <code class="Code">soapNsURI</code> will be used to fill in the <code class="Code">xmlns:soap</code> namespace declaration.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>soapNsURI</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the soap namespace URI; 
+                           					use <code class="Code">URI_SOAP11</code> for a SOAP 1.1 Envelope; 
+                           					use <code class="Code">URI_SOAP12</code> for a SOAP 1.2 Envelope.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;&gt; 0</th>
+                     <td rowspan="1" colspan="1" class="none">a handle to the created SOAP Message object; 
+                        						this SOAP Message contains the created SOAP Envelope XML document
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">in case of an error</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Preconditions</div>
+            <p class="Paragraph">The specified <code class="Code">soapNsURI</code> must be one of the following strings:
+            </p>
+            <ul class="List">
+               <li class="ListItem">"http://schemas.xmlsoap.org/soap/envelope/" (defined as <code class="Code">URI_SOAP11</code> in <code class="Code">bic_soap</code>).
+               </li>
+               <li class="ListItem">"http://www.w3.org/2003/05/soap-envelope" (defined as <code class="Code">URI_SOAP12</code> in <code class="Code">bic_soap</code>).
+               </li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_soap/overview.htm" class="manualLink">SOAP client overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_soap/synopsis.htm" class="manualLink">SOAP client synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_soap/soap.newMessage, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

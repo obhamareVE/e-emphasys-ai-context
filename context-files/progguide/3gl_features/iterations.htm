@@ -1,0 +1,121 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Iterations</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="FOR statement REPEAT ... UNTIL statement WHILE statement iterations ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Iterations</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Iterative statements repeat the associated statements until a
+               specified condition becomes FALSE.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">WHILE statement</div>
+            <p class="Paragraph">This statement has the following form:</p><pre class="CodeBlock">
+WHILE expression
+        statement(s)
+ENDWHILE
+</pre><p class="Paragraph">The expression is evaluated. If the result is TRUE (that
+               is, non-zero), the statements between WHILE and ENDWHILE are
+               executed. The process is then repeated until the expression
+               is FALSE (that is, zero). When the expression evaluates to
+               FALSE, control passes to the statement after ENDWHILE. For
+               example:
+            </p><pre class="CodeBlock">
+LONG counter
+counter = 1
+WHILE counter &lt;= 10000
+        counter = counter + 1
+ENDWHILE
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">FOR statement</div>
+            <p class="Paragraph">This statement has the following form:</p><pre class="CodeBlock">
+FOR num_var = num_expr_1 TO num_expr_2 [STEP num_expr_3]
+        statement(s)
+ENDFOR
+</pre><p class="Paragraph">The <i class="Emphasis">num_var</i> variable is referred to as the loop
+               variable. <i class="Emphasis">Num_expr_1</i> specifies the initialization of the
+               loop variable. <i class="Emphasis">Num_expr_2</i> specifies the end value of the
+               loop variable. <i class="Emphasis">Num_expr_3</i> specifies the step size for
+               each iteration. The latter variable is optional; the default
+               step size is 1. It is possible to use a negative step size.
+            </p>
+            <p class="Paragraph">After execution of the statements within the loop, <i class="Emphasis">num_expr_3</i> is added to the loop variable. The <i class="Emphasis">num_expr_2</i> expression is then evaluated. If the loop
+               variable does not pass <i class="Emphasis">num_expr_2</i>, the statements are
+               executed again. This process continues until the loop variable
+               passes its end value. For example:
+            </p><pre class="CodeBlock">
+LONG total, i
+FOR i = 1 TO 100 STEP 2
+        total = total + i
+ENDFOR
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">REPEAT ... UNTIL statement</div>
+            <p class="Paragraph">The REPEAT ... UNTIL differs from the WHILE statement, in
+               that the REPEAT ... UNTIL statement tests the condition after
+               execution of the loop statements instead of before execution of
+               the loop statements. Consequently the statement(s) within a
+               REPEAT ... UNTIL statements are executed at least once.
+            </p>
+            <p class="Paragraph">The syntax of this statement is:</p><pre class="CodeBlock">
+REPEAT
+        statement(s)
+UNTIL expression
+</pre><p class="Paragraph">The loop iterates until the result of the expression becomes
+               non-zero.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Using BREAK and CONTINUE (iterations)</div>
+            <p class="Paragraph">You can use the BREAK command in an iterative statement in
+               order to cancel the loop, regardless of the value of the loop
+               condition. After a BREAK, control passes to the statement
+               following the terminated loop. It is important to note that with
+               nested loops the BREAK statement cancels the innermost loop
+               only.
+            </p>
+            <p class="Paragraph">The CONTINUE command also interrupts an iteration loop. But,
+               in this case, the expression is immediately evaluated again for
+               the next iteration. For example:
+            </p><pre class="CodeBlock">
+LONG numbers(100), i
+FOR i = 1 TO 100
+        IF numbers(i) &lt;= 0 THEN
+                CONTINUE                     | Next iteration
+        ENDIF
+        IF NOT process(numbers(i)) THEN
+                BREAK                        | Exit FOR statement
+        ENDIF
+ENDFOR
+</pre><p class="Paragraph">The BREAK and CONTINUE commands can be very useful in a
+               program, but you should take great care when using them.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/transfer_of_control.htm" class="manualLink">Transfer of control</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/iterations, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

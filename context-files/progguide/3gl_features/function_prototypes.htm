@@ -1,0 +1,87 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Function prototypes</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="function prototypes ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Function prototypes</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">A function consists of three parts:</p>
+            <ul class="List">
+               <li class="ListItem">Function prototype</li>
+               <li class="ListItem">Function definition (function block)</li>
+               <li class="ListItem">Function call</li>
+            </ul>
+            <p class="Paragraph">The function prototype must be exactly the same as the
+               function header in the function definition. The prototype of
+               a function is not always necessary. For example, it is not
+               necessary in the following situations:
+            </p>
+            <ul class="List">
+               <li class="ListItem">if the function is of type void and has no
+                  arguments
+               </li>
+               <li class="ListItem">if the definition of the function occurs before any
+                  call of that function
+               </li>
+            </ul>
+            <p class="Paragraph">In all other situations the prototype of the function must
+               occur before the function call. For example:
+            </p><pre class="CodeBlock">
+prototype
+        FUNCTION LONG compnr_check( LONG new_compnr )
+
+function call
+        IF compnr_check( 999 ) THEN
+                . . . .
+        ELSE
+                mess("pcgen00016", 999)
+                    | Comp. number %d not present
+        ENDIF
+
+definition
+        FUNCTION LONG compnr_check( LONG new_compnr )
+        {
+                TABLE tpctst999
+
+                SELECT pctst999.*
+                FROM pctst999
+                WHERE pctst999.compnr = :new_compnr
+                ORDER BY pctst999.compnr
+                SELECTDO
+                        compnr = pctst999.compnr
+                SELECTEMPTY
+                        RETURN(FALSE)
+                ENDSELECT
+                RETURN(TRUE)
+        }
+</pre><p class="Paragraph">From compiler version bic6.1 onwards, it is not necessary
+               to use function prototypes within the same source as the
+               function definition.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/functions.htm" class="manualLink">Functions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/function_prototypes, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

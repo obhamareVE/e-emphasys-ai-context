@@ -1,0 +1,756 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Event array parameters</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="events array parameters ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Event array parameters</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The event argument included in <a href="../../progguide/events/next.event.htm" class="manualLink">next.event()</a>, <a href="../../progguide/events/peek.event.htm" class="manualLink">peek.event()</a>, and <a href="../../progguide/events/send.event.htm" class="manualLink">send.event()</a> consists of an array of type long
+               	  containing a list of signed 32-bit integer values.
+               	  Each value represents a detail of the incoming or outgoing event.
+               	  You retrieve the contents of an
+               	  event array by using the set of parameters defined for the particular event
+               	  type. These parameters are listed below, by event type.
+            </p>
+            <ul class="List">
+               <li class="ListItem"><a href="#all_events" class="internalLink">All events</a></li>
+               <li class="ListItem"><a href="#mouse_button_events" class="internalLink">Mouse button events:</a></li>
+               <li class="ListItem"><a href="#mouse_motion_events" class="internalLink">Mouse motion events</a></li>
+               <li class="ListItem"><a href="#window_resize_events" class="internalLink">Window resize events</a></li>
+               <li class="ListItem"><a href="#control_button_events" class="internalLink">Control button events</a></li>
+               <li class="ListItem"><a href="#field_select_events" class="internalLink">Field select events</a></li>
+               <li class="ListItem"><a href="#grid_events" class="internalLink">Grid events</a></li>
+               <li class="ListItem"><a href="#list_box_item_select_events" class="internalLink">List box item select events</a></li>
+               <li class="ListItem"><a href="#menu_item_select_events" class="internalLink">Menu item select events</a></li>
+               <li class="ListItem"><a href="#scrollbar_events" class="internalLink">Scrollbar select events</a></li>
+               <li class="ListItem"><a href="#tab_frame_events" class="internalLink">Tab frame events</a></li>
+               <li class="ListItem"><a href="#tree_events" class="internalLink">Tree events</a></li>
+               <li class="ListItem"><a href="#change_focus_events" class="internalLink">Change focus events</a></li>
+               <li class="ListItem"><a href="#i_o_events" class="internalLink">I/O events</a></li>
+               <li class="ListItem"><a href="#ole_events" class="internalLink">OLE events</a></li>
+               <li class="ListItem"><a href="#application_termination_events" class="internalLink">Application termination events</a></li>
+               <li class="ListItem"><a href="#events" class="internalLink">Help events</a></li>
+               <li class="ListItem"><a href="#client_events" class="internalLink">Client events</a></li>
+               <li class="ListItem"><a href="#bucket_message_events" class="internalLink">Bucket message events</a></li>
+               <li class="ListItem"><a href="#timer_events" class="internalLink">Timer events</a></li>
+            </ul>
+         </div>
+         <div class="GeneralSection"><a name="all_events"></a><div class="subSectionTitle">All events</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.type( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">The <a href="../../progguide/events/event_types.htm" class="manualLink">Event types</a>.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.window( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">The ID of the object that generated the event.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="mouse_button_events"></a><div class="subSectionTitle">Mouse button events:</div>
+            <p class="Paragraph">EVTBUTTONPRESS, EVTBUTTONDPRESS, and
+               	  EVTBUTTONRELEASE
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.button.x( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">X-position of mouse action in window.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.button.y( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Y-position of mouse action in window.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.button.state( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Indicates which modifier keys are held down when the
+                           			  mouse button is pressed. Possible values are:
+                        </p>
+                        <p class="Paragraph">EVTSHIFTMASK</p>
+                        <p class="Paragraph">EVTCONTROLMASK</p>
+                        <p class="Paragraph">EVTBUTTON1MASK</p>
+                        <p class="Paragraph">EVTBUTTON2MASK</p>
+                        <p class="Paragraph">EVTBUTTON3MASK</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.button.button( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Indicates which mouse button is pressed. Possible values
+                           			  are:
+                        </p>
+                        <p class="Paragraph">EVTBUTTON1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; left mouse button</p>
+                        <p class="Paragraph">EVTBUTTON2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; middle mouse button</p>
+                        <p class="Paragraph">EVTBUTTON3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; right mouse button</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.button.rootx( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Absolute x-position of mouse action on desktop.</td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.button.rooty( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Absolute y-position of mouse action on desktop.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="mouse_motion_events"></a><div class="subSectionTitle">Mouse motion events</div>
+            <p class="Paragraph">EVTBUTTONMOTION</p>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.motion.x( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">X-position of mouse pointer in window during
+                        motion.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.motion.y( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Y-position of mouse pointer in window during
+                        motion.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.motion.state( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Indicates which modifier keys are held down while the
+                           			  mouse pointer is moved. Possible values are:
+                        </p>
+                        <p class="Paragraph">EVTSHIFTMASK</p>
+                        <p class="Paragraph">EVTCONTROLMASK</p>
+                        <p class="Paragraph">EVTBUTTON1MASK</p>
+                        <p class="Paragraph">EVTBUTTON2MASK</p>
+                        <p class="Paragraph">EVTBUTTON3MASK</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.motion.rootx( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Absolute x-position of mouse pointer on desktop
+                        during motion.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.motion.rooty( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Absolute y-position of mouse pointer on desktop
+                        during motion.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="key_press_events"></a><div class="subSectionTitle">Keypress events</div>
+            <p class="Paragraph">EVTKEYPRESS</p>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.keypress.key( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">ASCII or TSS value of pressed key.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.keypress.state( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Indicates which modifier keys are held down while the
+                           			  key is being pressed. Possible values are:
+                        </p>
+                        <p class="Paragraph">MOD_CTRL</p>
+                        <p class="Paragraph">MOD_SHIFT</p>
+                        <p class="Paragraph">MOD_ALT</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="window_resize_events"></a><div class="subSectionTitle">Window resize events</div>
+            <p class="Paragraph">EVTRESIZEWINDOW</p>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.resize.columns( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">New width in number of columns (character
+                        window).
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.resize.rows( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">New height in number of rows (character window).</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.resize.width( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">New width in pixels (graphical window).</td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.resize.height( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">New height in pixels (graphical window).</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="control_button_events"></a><div class="subSectionTitle">Control button events</div>
+            <p class="Paragraph">EVTBUTTONSELECT</p>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.button.return( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Return value of the button, where relevant.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.button.checkstate( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The state of toolbar buttons, check boxes and option
+                           			  buttons. Possible values are:
+                        </p>
+                        <p class="Paragraph">EVTBUTTONCHECKED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; button pressed or
+			  checked EVTBUTTONUNCHECKED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; button released or
+			  unchecked</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="field_select_events"></a><div class="subSectionTitle">Field select events</div>
+            <p class="Paragraph">EVTFIELDSELECT</p>
+            <p class="Paragraph">There are no parameters specific to these event types. See <a href="#all_events" class="internalLink">All events</a>.
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="grid_events"></a><div class="subSectionTitle">Grid events</div>
+            <p class="Paragraph">EVTGRIDEVENT</p>
+            <table border="0" class="none">
+               <tbody noTR="10" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.grid.row( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Row index (1-based index).</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.grid.column( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Column index (1-based index).</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.grid.width( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Column width.</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.grid.height( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Row height.</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.grid.range.left( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Index of leftmost column of range.</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.grid.range.top( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Index of topmost row of range.</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.grid.range.right( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Index of rightmost column of range.</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.grid.range.bottom( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Index of bottommost row of range.</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.grid.selmark( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Mark state of a selection. Possible values
+                           			  are:
+                        </p>
+                        <p class="Paragraph">DSGRIDMARKNONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nothing marked</p>
+                        <p class="Paragraph">DSGRIDMARKNEW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; new mark</p>
+                        <p class="Paragraph">DSGRIDUNMARKunmark</p>
+                        <p class="Paragraph">DSGRIDADDMARK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; add mark</p>
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.grid.reason( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The action that caused the event. Possible values
+                           			  are:
+                        </p>
+                        <p class="Paragraph">EVTGRIDCHANGEDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data changed</p>
+                        <p class="Paragraph">EVTGRIDCHANGEFOCUSinternal focus moved to another cell</p>
+                        <p class="Paragraph">EVTGRIDACTIVATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; selection
+			  activated by double-click</p>
+                        <p class="Paragraph">EVTGRIDFOCUSCHANGEDBYMOUSE&nbsp;&nbsp; internal focus moved to</p>
+                        <p class="Paragraph">another cell by mouse click</p>
+                        <p class="Paragraph">EVTGRIDMARKRANGE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; range selected</p>
+                        <p class="Paragraph">EVTGRIDMARKCELL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cell selected</p>
+                        <p class="Paragraph">EVTGRIDMARKROW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; row selected</p>
+                        <p class="Paragraph">EVTGRIDMARKCOLUMN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; column selected</p>
+                        <p class="Paragraph">EVTGRIDRESIZEROW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; row height
+			  changed</p>
+                        <p class="Paragraph">EVTGRIDRESIZECOLUMNcolumn width changed</p>
+                        <p class="Paragraph">EVTGRIDMOVEROW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; row moved</p>
+                        <p class="Paragraph">EVTGRIDMOVECOLUMN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; column moved</p>
+                        <p class="Paragraph">EVTGRIDBUTTONPRESS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; control button
+			  pressed</p>
+                        <p class="Paragraph">EVTGRIDLISTBOXSELECT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; item selected in list
+			  box</p>
+                        <p class="Paragraph">EVTGRIDRESETSELECTION&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; all rows, columns,
+			  cells unselected</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">The value of the <i class="Emphasis">evt.grid.reason</i> parameter
+               	  determines which of the other parameters are included as part of the event. For
+               	  example, if the event reason is EVTGRIDRESIZEROW, then <i class="Emphasis">evt.grid.row</i> and <i class="Emphasis">evt.grid.height</i> must
+               	  be included in the event. Similarly, if the event reason is EVTGRIDMARKRANGE,
+               	  then <i class="Emphasis">evt.grid.range.left</i>, <i class="Emphasis">evt.grid.range.top</i>, <i class="Emphasis">evt.grid.range.right</i>, and <i class="Emphasis">evt.grid.range.bottom</i> must be included in the
+               	  event.
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="list_box_item_select_events"></a><div class="subSectionTitle">List box item select events</div>
+            <p class="Paragraph">EVTLISTBOXSELECT</p>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.listbox.item_id( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">ID of the selected list-box item.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.listbox.reason( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The action that caused the event. Possible values
+                           			  are:
+                        </p>
+                        <p class="Paragraph">EVTLISTBOXREASONTEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; text typed in edit
+			  field of combo box</p>
+                        <p class="Paragraph">EVTLISTBOXREASONACTIVATE&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; item double-clicked</p>
+                        <p class="Paragraph">EVTLISTBOXREASONSELECTION&nbsp; selection
+			  changed</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.listbox.selcount( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Number of selected items.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="menu_item_select_events"></a><div class="subSectionTitle">Menu item select events</div>
+            <p class="Paragraph">EVTMENUSELECT</p>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.menu.return( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">ID of the selected menu item.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="scrollbar_events"></a><div class="subSectionTitle">Scrollbar select events</div>
+            <p class="Paragraph">EVTSCROLLBARSELECT</p>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.scrollbar.action( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The action that caused the event. Possible values
+                           			  are:
+                        </p>
+                        <p class="Paragraph">SBUP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SBDOWN</p>
+                        <p class="Paragraph">SBPRESS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SBMOVE</p>
+                        <p class="Paragraph">SBRELEASE</p>
+                        <p class="Paragraph">SBPGUP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SBPGDOWN</p>
+                        <p class="Paragraph">SBHOME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SBEND</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.scrollbar.value( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Current position in scrollbar.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="tab_frame_events"></a><div class="subSectionTitle">Tab frame events</div>
+            <p class="Paragraph">EVTTABSELECT</p>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.tab.index( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Index of selected tab (1-based index)</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="tree_events"></a><div class="subSectionTitle">Tree events</div>
+            <p class="Paragraph">EVTTREESELECT</p>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.tree.item_id( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">ID of the tree item that caused the event.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.tree.reason( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The action that caused the event. Possible values
+                           			  are:
+                        </p>
+                        <p class="Paragraph">EVTTREEREASONACTIVATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; leaf in tree activated</p>
+                        <p class="Paragraph">EVTTREEREASONEXPAND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tree node expanded</p>
+                        <p class="Paragraph">EVTTREEREASONCOLLAPSE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tree node collapsed</p>
+                        <p class="Paragraph">EVTTREEREASONSELECT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tree item
+			  selected</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="change_focus_events"></a><div class="subSectionTitle">Change focus events</div>
+            <p class="Paragraph">EVTCHANGEFOCUS and EVTSETFOCUS</p>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.focus.object( event )</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The object that currently has keyboard focus
+                           			  (EVTCHANGEFOCUS).
+                        </p>
+                        <p class="Paragraph">The object that has received keyboard focus
+                           			  (EVTSETFOCUS).
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.focus.key( event )</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Indicates the key that caused an EVTCHANGEFOCUS event.
+                           			  Possible values are:
+                        </p>
+                        <p class="Paragraph">KEY_TAB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; KEY_BACKTAB</p>
+                        <p class="Paragraph">KEY_UP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; KEY_DOWN</p>
+                        <p class="Paragraph">KEY_RIGHT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; KEY_LEFT</p>
+                        <p class="Paragraph">KEY_HOME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; KEY_END</p>
+                        <p class="Paragraph">KEY_PGUP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; KEY_PGDOWN</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="i_o_events"></a><div class="subSectionTitle">I/O events</div>
+            <p class="Paragraph">EVTIOEVENT</p>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">event.array(1)</td>
+                     <td rowspan="1" colspan="1" class="none">The event type. This is always EVTIOEVENT.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">event.array(2)</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The reason that the event was sent. Possible values
+                           			  are:
+                        </p>
+                        <p class="Paragraph">EVTSOCKHASDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data is available on the
+			  socket specified in</p>
+                        <p class="Paragraph">event.array(3)</p>
+                        <p class="Paragraph">EVTSOCKIOERROR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; error occurred on
+			  the socket specified in</p>
+                        <p class="Paragraph">event.array(3)</p>
+                        <p class="Paragraph">EVTCONNECTREQUEST&nbsp;&nbsp;&nbsp; connection request is pending on
+			  the</p>
+                        <p class="Paragraph">socket
+                           			  specified in event.array(3)
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">event.array(3)</td>
+                     <td rowspan="1" colspan="1" class="none">The file pointer of the relevant socket.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="ole_events"></a><div class="subSectionTitle">OLE events</div>
+            <p class="Paragraph">EVTOLEEVENT</p>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td colspan="2" rowspan="1" class="none">evt.ole.event( <i class="Emphasis">event</i>)
+                     </td>
+                     <td colspan="3" rowspan="1" class="none">The OLE event type. Possible values are:</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td colspan="2" rowspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">EVTOLECREATEINSTANCE</p>
+                        <p class="Paragraph">EVTOLESETHOSTNAMES</p>
+                        <p class="Paragraph">EVTOLESHOWWINDOW</p>
+                        <p class="Paragraph">EVTOLEHIDEWINDOW</p>
+                        <p class="Paragraph">EVTOLELOADDATA</p>
+                        <p class="Paragraph">EVTOLESAVEDATA</p>
+                        <p class="Paragraph">EVTOLECLOSE</p>
+                        <p class="Paragraph">EVTOLELOCKSERVER</p>
+                        <p class="Paragraph">EVTOLEUNLOCKSERVER</p>
+                        <p class="Paragraph">EVTOLEDATACHANGED</p>
+                        <p class="Paragraph">EVTOLERELEASED</p>
+                        <p class="Paragraph">EVTOLEAUTOMATION</p>
+                        <p class="Paragraph">EVTOLESHOWOBJECT</p>
+                        <p class="Paragraph">EVTOLEOBJECTWINDOWVISIBLE</p>
+                        <p class="Paragraph">EVTOLEOBJECTWINDOWINVISIBLE</p>
+                     </td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">class factory wants to create an object</p>
+                        <p class="Paragraph">request hostnames</p>
+                        <p class="Paragraph">request to make object visible</p>
+                        <p class="Paragraph">request to make object invisible</p>
+                        <p class="Paragraph">request to load an embedded object with data</p>
+                        <p class="Paragraph">request to save an embedded object</p>
+                        <p class="Paragraph">server closes embedded object</p>
+                        <p class="Paragraph">set lock to keep application running</p>
+                        <p class="Paragraph">reset lock</p>
+                        <p class="Paragraph">embedded object data has changed</p>
+                        <p class="Paragraph">all references to object released</p>
+                        <p class="Paragraph">automation request to call DLL function</p>
+                        <p class="Paragraph">request to scroll embedded object in view</p>
+                        <p class="Paragraph">object in running mode</p>
+                        <p class="Paragraph">object not in running mode</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td colspan="2" rowspan="1" class="none">evt.ole.size( <i class="Emphasis">event</i>)
+                     </td>
+                     <td colspan="3" rowspan="1" class="none">For a data change or data save event, this stores
+                        the size of the data.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td colspan="2" rowspan="1" class="none">evt.ole.subobject( <i class="Emphasis">event</i>)
+                     </td>
+                     <td colspan="3" rowspan="1" class="none">If the OLE object is an embedded object, displayed
+                        in a graphical window (DsCgwindow), this indicates the
+                        ID of the graphical subobject in the gwindow.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="application_termination_events"></a><div class="subSectionTitle">Application termination events</div>
+            <p class="Paragraph">EVTTERMINATION</p>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.termination.reason( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The action that caused the event. Possible values
+                           			  are:
+                        </p>
+                        <p class="Paragraph">DSTerminationSetDir</p>
+                        <p class="Paragraph">DSTerminationOpenStdin</p>
+                        <p class="Paragraph">DSTerminationOpenStdout</p>
+                        <p class="Paragraph">DSTerminationOpenStderr</p>
+                        <p class="Paragraph">DSTerminationCreateProcess</p>
+                        <p class="Paragraph">DSTerminationCreateThread</p>
+                        <p class="Paragraph">DSTerminationNormalExit</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.termination.exitcode( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">The application’s exit code.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="events"></a><div class="subSectionTitle">Help events</div>
+            <p class="Paragraph">EVTHELPEVENT</p>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.help.return( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Return value of the control button, toolbar button,
+                        or menu option for which help is requested. This is -1
+                        for all other object types.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.help.row( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Grid row index if help requested for a grid object.
+                        This is -1 for all other object types.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.help.column( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Grid column index if help requested for a grid
+                        object. This is -1 for all other object types.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.help.reason( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">EVTHELPCOMMAND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; help requested using F1</p>
+                        <p class="Paragraph">EVTHELPCONTEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; help in context-sensitive help
+			  mode</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="client_events"></a><div class="subSectionTitle">Client events</div>
+            <p class="Paragraph">EVTCLIENTMESSAGE</p>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.client.sender( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Process ID of sender.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.client.command( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Application-specific command code.</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.client.argument( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Application-specific argument.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="bucket_message_events"></a><div class="subSectionTitle">Bucket message events</div>
+            <p class="Paragraph">EVTBUCKETMESSAGE</p>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.bms.sender( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Process ID of sender.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.bms.command( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Application-specific command code.</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.bms.argument( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Application-specific argument.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="timer_events"></a><div class="subSectionTitle">Timer events</div>
+            <p class="Paragraph">EVTTIMEREVENT</p>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">evt.timer.id( <i class="Emphasis">event</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">ID of timer that sent the event.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/events/overview.htm" class="manualLink">Events overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/synopsis.htm" class="manualLink">Events synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/event_types.htm" class="manualLink">Event types</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/event_array_parameters.htm" class="manualLink">Event array parameters</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/sample_program.htm" class="manualLink">Events sample program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/events/event_array_parameters, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

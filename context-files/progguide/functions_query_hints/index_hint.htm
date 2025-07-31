@@ -1,0 +1,77 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Index hint</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="index hint query hints index hint ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Index hint</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">An index hint advises the query processor to scan a table with
+               the specified index. For example:
+            </p><pre class="CodeBlock">
+select bpid, nama
+from   tccom100
+where  bpid &gt; '  1000' and nama &gt;= 'Z'
+hint   use index 2 on tccom100
+</pre><p class="Paragraph">This index hint suggests to the query processor to scan
+               table tccom100 using index 2. Optionally, you can specify the
+               mode, ascending or descending, of the index. For example:
+            </p><pre class="CodeBlock">
+select bpid, nama
+from   tccom100
+where  bpid &gt; '  1000' and nama &gt;= 'Z'
+hint   use index 2 on tccom100 desc
+</pre><p class="Paragraph">Table tccom100 must be accessed using index 2 in
+               descending order. With one index hint you can hint more than
+               1 index for the table. There is a maximum of 10 indexes you
+               can specify per index hint. If you specify more than one
+               index hint the query processor may use one of these indexes
+               to scan the table or it may use a combination of the indexes.
+               Consider for example the following query:
+            </p><pre class="CodeBlock">
+select  iscn, bpid
+from    tccom100
+where   (iscn = 570 or cadr = 'J10000001') and nama &gt;= 'A'
+hint    use index 1,2 on tccom100
+</pre><p class="Paragraph">Assume index 1 is on column iscn and index 2 is on column
+               cadr, furthermore assume there is an index 3 on column nama.
+               By hinting on both index 1 and index 2 this query can be
+               solved by firing two index scans.
+            </p>
+            <p class="Paragraph">Index scan 1 on index 1:</p><pre class="CodeBlock">
+select  iscn, bpid
+from    tccom100
+where   iscn = 570 and nama &gt;= 'A'
+</pre><p class="Paragraph">Index scan 2 on index 2:</p><pre class="CodeBlock">
+select  iscn, bpid
+from    tccom100
+where   cadr = 'J10000001' and nama &gt;= 'A'
+</pre><p class="Paragraph">Performing these two index scans may be faster than
+               executing one index scan on index 3.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/hint_types.htm" class="manualLink">Hint types</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/overview.htm" class="manualLink">Query hints overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_query_hints/index_hint, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

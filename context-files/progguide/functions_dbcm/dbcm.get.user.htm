@@ -1,0 +1,100 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dbcm.get.user()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dbcm.get.user dbcm.get.user functions dbcm.get.user ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dbcm.get.user()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;dbcm.get.user&nbsp;
+					(const string&nbsp;toid$, ref string&nbsp;user$)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Retrieves the user who last 'touched' the Business object which is identified by the specified type object id.</p>
+               <p class="Paragraph">In case the Business Object is Draft, this is the user who caused the check-out of this Object.</p>
+               <p class="Paragraph">Once the Business Object is Submitted, this is the user who did Submit the changes.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>toid$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A Typed Object Id.</p>
+                        <p class="Paragraph">A Typed Object Id is a string of 34 characters identifying a checked-out business object.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>user$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The returned user code. In case of an error this parameter is not reset.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">The user code is retrieved successfully.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">ENOREC</th>
+                     <td rowspan="1" colspan="1" class="none">The object cannot be found; probably the object is not checked-out.</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;&gt; 0</th>
+                     <td rowspan="1" colspan="1" class="none">Any other database error.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1800.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dbcm/overview.htm" class="manualLink">Database Change Management (DBCM) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dbcm/synopsis.htm" class="manualLink">Database Change Management operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dbcm/dbcm.get.user, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

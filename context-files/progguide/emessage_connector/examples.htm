@@ -1,0 +1,593 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>eMessage Connector examples</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="eMessage connector examples ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">eMessage Connector examples</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subExampleSection">
+               <div class="subSectionTitle">Examples:</div>
+               <ul class="List">
+                  <li class="ListItem"><a href="#1" class="internalLink">How to use the eMessage Connector API to construct and send a message</a></li>
+                  <li class="ListItem"><a href="#2" class="internalLink">How to use function cmf.sendToPerson</a></li>
+                  <li class="ListItem"><a href="#3" class="internalLink">How to use the message dialog</a></li>
+                  <li class="ListItem"><a href="#4" class="internalLink">How to use the Infor ERP Enterprise eMessage Connector API to construct and send an meeting request over SMTP</a></li>
+               </ul>
+               <p class="Paragraph">Tip: Maximize the help window for a good view of the
+                  		examples.
+               </p>
+            </div>
+            <div class="subGeneralSection"><a name="1"></a><div class="subSectionTitle">How to use the eMessage Connector API to construct and send
+                  		a message
+               </div>
+               <p class="Paragraph">In this example function cmf.send is used to send the message.
+                  		The main difference with cmf.sendToPerson (see next section for an example) is
+                  		that when using cmf.send only the message id is suplied as an argument, while
+                  		cmf.sendToPerson needs both a message- and an addresslist id. This means
+                  		cmf.send sends the message to the recipients in the message object, while
+                  		cmf.sendToPerson sends the message to the recipients in the addresslist
+                  		object.
+               </p><pre class="CodeBlock">
+|******************************************************************************
+|* CMF Sample Code
+|******************************************************************************
+|* Script Type: 0
+|******************************************************************************
+
+DLLUSAGE
+Desc:   This code sample demonstrates the use of some of the 
+        Infor ERP Enterprise eMessage Connector commands described in the 
+        CMF 4GL Functional Design. 
+        It accepts a filename (which points to an RTF document), 
+        Infor ERP Enterprise eMessage Connector service name, 
+        recipient name and recipient address (SMTP only) 
+        as input arguments. 
+        It then uses the Infor ERP Enterprise eMessage Connector commands 
+        to construct a message then send it to the indicated
+        recipients.
+Pre:    None.
+Post:   The file is sent to the appropriate Infor ERP Enterprise eMessage
+        Connector service.
+In:     The four program arguments accepted are:
+        sourcefile:	The name of the file (RTF format) to be sent.
+        service:    This is the name of the service that will
+                    be used to send the message. 
+                    This must be name of a valid Infor ERP Enterprise 
+                    eMessage Connector service
+        name:       This is the (human readable) name of the recipient.
+        address:    This the address where the file should be sent. 
+                    This could be an email address, a fax number, 
+                    etc.
+Out:    None.
+ENDDLLUSAGE
+
+        string recipient.address(80)    |Recipient address
+        string recipient.name(80)       
+                        | Human readable name of the recipient
+        string sourcefile(256)          
+                        |Filename of the source file
+
+function main()
+{
+        domain ttcmf.prov service       
+                        |Infor ERP Enterprise eMessage Connector service for 
+                        |transporting messages
+        long stat       |Variable to hold return values
+        long mid        |CMF message id
+
+        |Switch to company 0
+        compnr.check(0)
+        
+        |Get program arguments
+        sourcefile = strip$(argv$(1))
+        service = strip$(argv$(2))
+        recipient.name = strip$(argv$(3))
+        recipient.address = strip$(argv$(4))
+        
+        |Build message XML header
+        mid = create.xml.header()       
+        
+        |Send message
+        if mid &lt;&gt;0 then
+                stat = cmf.startService(service,2)
+                if stat&lt;&gt;0 then
+                        message("Message could not be sent "&amp;
+                        	"(Infor ERP Enterprise eMessage Connector"&amp;
+                        	" service did not start)")
+                        exit()
+                endif
+                stat = cmf.send(mid,service)
+                if stat&lt;&gt;0 then
+                        message("Message could not be sent "&amp;
+                        	(Infor ERP Enterprise eMessage Connector "&amp;
+                        	"service refused message)")
+                        cmf.stopService(service,2)
+                        exit()
+                endif
+                stat = cmf.stopService(service,2)
+        endif
+}
+
+function long create.xml.header() 
+{
+        long    message.ID
+        long    from.ID
+        long    to.ID
+        long    attachment.ID
+        long    ret
+        
+        message.ID = cmf.create()
+        
+        ret = cmf.setClass(message.ID, "CMF.NOTE")
+        ret = cmf.setSubject(message.ID, "Sample CMF Message")
+
+        |Set FROM recipient
+        from.ID = cmf.createRecipient(message.ID, ttcmf.role.from)
+        ret = cmf.setRecipientName(from.ID, "John Doe")
+        ret = cmf.setRecipientAddress(from.ID,"jdoe@example.com")
+        ret = cmf.setRecipientType(from.ID, "SMTP")
+        |In reality of course the from address could be filled from
+		|the Address book.
+
+        |Set TO recipient 
+        to.ID = cmf.createRecipient(message.ID, ttcmf.role.to)  
+        ret = cmf.setRecipientName(to.ID, recipient.name)
+        ret = cmf.setRecipientAddress(to.ID, recipient.address)
+        ret = cmf.setRecipientType(to.ID, "SMTP")
+        ret = cmf.setRecipientResponsibility(to.ID, "TRUE")
+
+        |Set attachment 
+        attachment.ID = cmf.createAttachment(message.ID)
+        ret = cmf.setAttachmentBody(attachment.ID, "TRUE")
+        ret = cmf.setAttachmentMIME(attachment.ID,
+				"application/rtf"
+        ret = cmf.setAttachmentFileName(attachment.ID,sourcefile,
+				"Sample Attachment")
+
+        return(message.ID)
+}
+</pre></div>
+            <div class="subGeneralSection"><a name="2"></a><div class="subSectionTitle">How to use function cmf.sendToPerson</div>
+               <p class="Paragraph">Use cmf.sendToPerson if the same message has to be send to
+                  		multiple recipients and when using the Message Dialog to construct message- and
+                  		addresslist objects. As arguments a message-id of a message object and an
+                  		addresslist-id of an addresslist object (among others) have to be supplied.
+                  		Cmf.sendToPerson delivers the message to all recipients on the addresslist.
+                  		Message- and addresslist objects can be constructed in two ways:
+               </p>
+               <ul class="List">
+                  <li class="ListItem">With user interface: use the Message Dialog. Using this
+		  session the user can determine some message characteristics and construct an
+		  addresslist. After exiting the Message Dialog, the id’s of the message- and
+		  addresslist objects are available in the variables cmf.MessageObject and
+		  cmf.AddressList (defined in global include file bic_global).</li>
+                  <li class="ListItem">Without user interface: use the eMessage Connector API to
+                     		  build a message- and addresslist object. But watch out: using cmf.sendToPerson
+                     		  the message will solely be delivered to recipients in the addresslist object.
+                     		  Any recipients in the message object will NOT be reached.
+                  </li>
+               </ul><pre class="CodeBlock">
+|******************************************************************************
+|* Example of usage of cmf.sendToPerson
+|******************************************************************************
+|* Script Type: 0
+|******************************************************************************
+
+table   tttcmf200       |Address Book
+table   tttaad200       |User Data
+
+function main()
+{
+        compnr.check(0)
+        sendMessage()
+}
+
+function sendMessage()
+{
+        long    ret     |return value of various functions
+        long    show.progress   
+                        |if true, progress indicator will be 
+                        |shown to user. If false, no indicator 
+                        |is shown
+        string  message.str(250)        
+                        |success or error message set by 
+                        |cmf.sendToPerson.
+        string  addresstype(30) 
+                        |string representation of message type 
+                        |used to send message
+        string  role.str(6)     
+                        |string representaton of role of 
+                        |recipient
+        string  address(80) mb  |address of recipient
+        domain  ttaad.user user |key of table ttaad200 User Data
+        domain  ttcmf.catg catg 
+                        |category of a recipient in Address Book
+                        |(for example: BAAN USER, EMPLOYEE etc.)
+        domain  ttcmf.catg akey |key of recipient: must uniquely 
+                        |identify entry in Address Book within 
+                        |a category
+        domain  ttcmf.role role |role of a recipient (from/to etc.)
+
+        show.progress   = 0
+        message.str     = ""
+        addresstype     = ""
+        catg    = ""
+        akey    = ""
+        role.str        = ""
+        user    = ""
+        role    = empty
+
+        |create message- and addresslist objects
+        cmf.MessageObject = cmf.create()
+        cmf.AddressList = cmf.createAddressList()
+        
+        |fill addresslist with data from Address Book: first select
+        |baan users from User Data table (ttaad200), then select for 
+        |each user their address data from the Address Book (ttcmf200). 
+        |Then add user as entry to the addressslist object 
+        |NOTE: in this example only one user is selected from the
+        |      User Data table. Also, role of recipient is always "to".              
+        |NOTE: in this example the default addresstype is used to
+        |      resolve the address.                               
+        role = ttcmf.role.to
+        user = "skalma"
+        
+        catg = "BAAN USER"
+        akey = toupper$(strip$(user))
+        
+        select	ttcmf200.*
+        from	ttcmf200
+        where	ttcmf200._index1 = {:catg, :akey}
+        as set with 1 rows
+        selectdo
+                ret = convert.enum.to.string.role(     
+                                role, 
+                                role.str) 
+                                |ttdllcmf
+
+                ret = convert.enum.to.string.addresstype(
+                                ttcmf200.defa,
+                                ttcmf200.type,
+                                addresstype)
+                                |ttdllcmf
+                ret = cmf.resolveAddress(       
+                                catg, 
+                                akey, 
+                                ttcmf200.defa,
+                                address,
+                                ttcmf200.name,
+                                true) 
+                                |ttdllcmf
+
+                ret = cmf.addAddressEntry(     
+                                cmf.AddressList,
+                                role.str,       |role
+                                ttcmf200.name,  |name
+                                ttcmf200.mail,  |address
+                                addresstype)    |message type
+                                |ttdllcmf
+        endselect
+
+        |set identification attributes
+        ret = cmf.setClass(cmf.MessageObject, "CMF.NOTE")
+        ret = cmf.setSubject(cmf.MessageObject, "Message to" &amp;
+                             strip$(ttcmf200.name))
+        
+        |set delivery attributes
+        ret = cmf.setPriority(cmf.MessageObject, ttcmf.prio.high)
+        ret = cmf.setSensitivity(cmf.MessageObject,
+                             ttcmf.sens.secret)
+        ret = cmf.setNotification(cmf.MessageObject,
+                             ttcmf.noti.nondelivery)
+
+        |set cmf.ShowMessage: indicates whether cmf.sendToPerson
+        |must try to start up a user
+        |interface based service (for example Outlook) to send this
+        |message: 1 means yes, 0 means no.
+        cmf.ShowMessage = 1
+        
+        |set show.progress to false: no indicator shown to user
+        show.progress = false
+       
+        |send message   
+        ret = cmf.sendToPerson( cmf.MessageObject,
+                cmf.AddressList,
+                cmf.ShowMessage,
+                show.progress,
+                message.str)
+        
+        |show message.str
+        if not isspace(message.str) then
+                if ret &lt; 0 then
+                        mess("ttcmf01303", 1, message.str)
+                        |* %s (warning)
+                else
+                        mess("ttstpsplclose2", 1, message.str)
+                        |* %s (information)
+                endif
+        endif
+
+        |stop all started services that were started by
+        |cmf.sendToPerson
+        cmf.stopAllServices()
+        
+        |destroy objects
+        ret = cmf.destroy(cmf.MessageObject)
+        ret = cmf.destroy(cmf.AddressList)
+}
+</pre></div>
+            <div class="subGeneralSection"><a name="3"></a><div class="subSectionTitle">How to use the message dialog</div>
+               <p class="Paragraph">Here one report is created and send to multiple recipients
+                  		using cmf.sendToPerson. The message dialog is used to construct the message and
+                  		addresslist objects.
+               </p><pre class="CodeBlock">
+|******************************************************************************
+|* Send Same Report to Multiple Recipients
+|******************************************************************************
+|* Script Type: 0
+|******************************************************************************
+|tables
+table   tttadv002       | Infor ERP Enterprise Server Parameters
+table   tttaad100       | Companies
+table   tttaad110       | Languages
+table   tttaad120       | Packages
+table   tttaad200       | User Data
+table   tttadv111       | Package VRC's
+table   tttadv360       | Menus
+table   tttams200       | Role Data
+table   tttaad121       | Package Combinations Packages
+        
+|defines
+#define OK              0
+#define NOT.FOUND       1
+#define EXPIRED         2       
+
+function main()
+{
+        |form variables
+        extern  domain  ttaad.user      user.f  fixed   
+        		|on form: from Baan user
+        extern  domain  ttaad.user      user.t  fixed   
+        		|on form: to Baan user
+        extern  domain  ttdsca  		pacc.desc       
+        		|package combination description
+        extern  domain  ttdsca  		comp.desc       
+        		|company description
+        extern  domain  ttdsca  		lang.desc       
+        		|language description
+        extern  domain  ttdesc60        stmn.desc
+        extern  domain  ttdsca  		role.desc       
+        		|role description
+        extern  domain  ttams.crol      role    |role of user
+
+        |report variable
+        extern  domain  ttst30 			docu.id          
+        |used to determine which parts of report 
+				|will be written to the report file
+
+        compnr.check(0)
+        send.user.data()
+}
+
+function send.user.data()
+{
+        long    ret     |return vales of various functions
+        long    brp_id  |id of report
+        domain  ttdesc200 message.str   
+        |contains error message. set by cmf.sendToPerson
+        
+        ret     = 0
+        brp_id  = 0
+        message.str     = ""
+        
+        |open spooler and activate report without user interface
+        spool.fileout = "${BSE}/tmp/user_data_report"
+        brp_id = brp.open("rttams140111000", "ASCIF", 0)        
+        on case brp_id
+        case 0:
+                |Error in opening report
+                return
+        case -1:
+                |Printing cancelled
+                return
+        endcase
+
+        |user.f and user.t normally set on form
+        user.f  = "gmurre"
+        user.t  = "gmurre"
+
+        | data in range is send to opened report
+        select	ttaad200.user
+        from	ttaad200
+        where	ttaad200.user inrange :user.f and :user.t
+        selectdo
+                | send User
+                docu.id = "user" 
+                brp.ready(brp_id)
+
+                | send system-data              
+                docu.id = "sysd.header" 
+                brp.ready(brp_id)
+                systemdata.to.report( ttaad200.user, brp_id)
+                docu.id = "sysd.footer"
+                brp.ready(brp_id)
+
+                | send defaults
+                docu.id = "def.header" 
+                brp.ready(brp_id)
+                defaults.to.report( ttaad200.user, brp_id)
+                docu.id = "def.footer" 
+                brp.ready(brp_id)
+
+                | send authorizations
+                docu.id = "auth.header" 
+                brp.ready(brp_id)
+                auth.to.report( ttaad200.user, brp_id)
+                docu.id = "auth.footer"
+                brp.ready(brp_id)
+                
+                | send empty line
+                docu.id = "empty"       
+                brp.ready(brp_id)
+        endselect
+        | stops report writer for the report 
+        brp.close(brp_id)       
+        
+        |activate Message Dialog with only Message 
+        |Formtab: user can set some
+        |message characteristics and construct a recipient list
+        ret = cmf.messageDialog(2, CMF.MESSAGE)
+        on case ret
+        case -1:
+                |error launcing Message Dialog
+                return
+        case -2:
+                |invalid argument values
+                return
+        endcase
+
+        |send message: after Message Dialog is closed, 
+        |message object- and addresslist object id's are available 
+        |in variables cmf.MessageObject and cmf.AddressList. 
+        |Also, the user can determine if a user interface
+        |based service has to be started by checking the checkbox
+        |'Show Message before Sending (if possible)'. 
+        |If checked, cmf.ShowMessage will be 1, else 0.
+        ret = cmf.sendToPerson( cmf.MessageObject, cmf.AddressList,
+                cmf.ShowMessage, true, message.str, true,
+                spool.fileout)
+
+        |display message
+        if not isspace(message.str) then
+                if ret &lt; 0 then
+                        |error message 
+                        mess("ttcmf01303", 1, message.str)
+                        |* %s (warning)
+                else    
+                        |succes message
+                        mess("ttstpsplclose2", 1, message.str) 
+                        |* %s (information)
+                endif
+        endif
+                
+        |stop all the services started up by cmf.sendToPerson
+        cmf.stopAllServices()      
+        
+        |delete xml-objects
+        if cmf.MessageObject &lt;&gt; 0 then
+                ret = xml.deleteNode(cmf.MessageObject)
+        endif
+        if cmf.AddressList &lt;&gt; 0 then
+                ret = xml.deleteNode(cmf.AddressList)
+        endif
+} 
+</pre></div>
+            <div class="subGeneralSection"><a name="4"></a><div class="subSectionTitle">How to use the Infor ERP Enterprise eMessage Connector API to construct and send an meeting request over SMTP</div>
+               <p class="Paragraph">In this example function cmf.send is used how to send an iCalendar meeting request over SMTP.</p><pre class="CodeBlock">
+|******************************************************************************
+|* CMF Sample Code
+|******************************************************************************
+|* Script Type: 0
+|******************************************************************************
+function string createAndSendAppointment(const string a_uuid, boolean cancel)
+{
+        long    messageObject
+        long    appointmentObject
+        long    from.Id
+        long    to.Id
+        string  uuid(100)
+
+        string service(20)
+
+        service = "SMTP"
+
+        |create message object
+        messageObject = cmf.create()
+
+        |Set originator details
+        from.ID = cmf.createRecipient(messageObject, ttcmf.role.from)
+        ret = cmf.setRecipientName(from.ID, "John Doe")
+        ret = cmf.setRecipientAddress(from.ID,"john.doe@example.com")
+        ret = cmf.setRecipientType(from.ID, "SMTP")
+
+        |Set the attendee details
+        to.ID = cmf.createRecipient(messageObject, ttcmf.role.to)
+        ret = cmf.setRecipientName(to.ID, "Jane Doe")
+        ret = cmf.setRecipientAddress(to.ID, "jane.doe@example.com")
+
+        |Create appointment object and attach it to the messageObject
+        appointmentObject = cmf.createAppointment(messageObject)
+
+        |Set the appointment details
+        ret = cmf.setAppointmentSubject(appointmentObject,
+                        "Example meeting subject" )
+        if cancel then
+                ret=cmf.setAppointmentMethod(appointmentObject, ttcmf.mth.cancel)
+                ret = cmf.setAppointmentDescription(appointmentObject,
+                        "The meeting has been canceled for good reasons")
+        else
+                ret = cmf.setAppointmentDescription(appointmentObject,
+                        "Here goes the appointment description." &amp; lf$() &amp;
+                        "The description is  more than one line and is intended to provide " &amp;
+                        "additional information about the meeting.")
+        endif
+        ret = cmf.setAppointmentLocation(appointmentObject,
+                        "Room: 1")
+
+        ret = cmf.setappointmentStartTime(appointmentObject, utc.num() + 60*60) | now + 1 hour
+        ret = cmf.setappointmentEndTime(appointmentObject, utc.num() + 2*60*60) | now + 2 hours
+
+        if not isspace(a_uuid) then
+                ret=cmf.setAppointmentUUID(appointmentObject, a_uuid)
+        endif
+
+        |Now send this message over the SMTP service.
+        ret = cmf.startService(service, 2)
+        if ret &lt;&gt; 0 then
+                message("Cannot start service)")
+                return("")
+        endif
+
+        ret = cmf.send(messageObject, service)
+        if ret &lt;&gt; 0 then
+                message("Failed to send the message")
+        endif
+
+        ret = cmf.getappointmentUUID(appointmentObject, uuid)
+
+        ret=cmf.stopService(service, 2)
+
+        |Cleanup all created objects.
+        ret=cmf.destroy(messageObject)
+
+        |Return the uuid for sending updates.
+        return(uuid)
+}
+</pre></div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/emessage_connector/overview.htm" class="manualLink">eMessage Connector overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/emessage_connector/synopsis.htm" class="manualLink">eMessage Connector synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/emessage_connector/examples, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

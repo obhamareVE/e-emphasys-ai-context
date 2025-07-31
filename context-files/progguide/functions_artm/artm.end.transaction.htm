@@ -1,0 +1,160 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>artm.end.transaction()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="artm.end.transaction artm.end.transaction functions artm.end.transaction ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">artm.end.transaction()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;artm.end.transaction&nbsp;
+					(long&nbsp;artm.transaction.id, long&nbsp;tran.status [, long&nbsp;metric.type] [, void&nbsp;metric.value])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Marks the end of a transaction instance that was started
+                  with artm.begin.transaction(). artm.end.transaction () should
+                  be called from the application program just after each
+                  transaction instance ends.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>artm.transaction.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The unique handle from the artm.begin.transaction
+                           () call that marked the start of this transaction
+                           instance. Artm.transaction.id must be passed in each
+                           artm.end.transaction() call. Many transaction
+                           instances may be carried out at the same time from
+                           this and other applications, so this handle is
+                           essential for the measurement agent to identify
+                           which transaction instance is stopping. If
+                           artm.transaction.id is less than zero, this
+                           artm.end.transaction () call will be treated as a
+                           NULL operation, and a negative value is
+                           returned.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>tran.status</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The completion code of the transaction, as
+                           determined by the application:
+                        </p>
+                        <ul class="List">
+                           <li class="ListItem">ARTM.TRANSACTION.SUCCESS
+                              Use this value when the operation is
+                              completed normally and as expected.
+                           </li>
+                           <li class="ListItem">ARTM.TRANSACTION.ABORTED
+                              Use this value when there was a
+                              fundamental failure in the system.
+                           </li>
+                           <li class="ListItem">ARTM.TRANSACTION.FAILED
+                              Use this value in application where the
+                              transaction worked properly, but no result was
+                              generated.
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>metric.type</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The metrics, as defined in
+                           artm.define.transaction.class(), can be updated
+                           here. Each metric consists of an id, which
+                           determines the type of metric, and its current
+                           value. The value must be of the correct type.
+                        </p>
+                        <p class="Paragraph">See artm.define.transaction.class() for the
+                           types.
+                        </p>
+                        <p class="Paragraph">The amount of metrics must not exceed the amount
+               as defined in artm.define.transaction.class(). The
+               metrics must also be passed in the same sequence. It
+               is possible to skip the metrics you don’t want to
+               pass. In that case, pass ARTM.METRIC.SKIP as the
+               metric type, and omit the metric value. If the last
+               metrics are of this type, you don’t need to pass
+               them at all.</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">[void</td>
+                     <td class="none"><code>metric.value</code>]
+                     </td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&gt;= 0</th>
+                     <td rowspan="1" colspan="1" class="none">Success</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt; 0</th>
+                     <td rowspan="1" colspan="1" class="none">An error occurred in communicating with the
+                        measurement agent, or ARTM is switched off. The most
+                        likely cause is passing an invalid value for
+                        artm.transaction.id.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_overview.htm" class="manualLink">Application Response Time Measurement (ARTM) Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_synopsis.htm" class="manualLink">Application Response Time Measurement (ARTM) Synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_debugging.htm" class="manualLink">Application Response Time Measurement (ARTM) Debugging</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_error_codes.htm" class="manualLink">Application Response Time Measurement (ARTM) Error Codes</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_examples.htm" class="manualLink">Application Response Time Measurement (ARTM) Examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_artm/artm.end.transaction, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

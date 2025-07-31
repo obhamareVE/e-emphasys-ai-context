@@ -1,0 +1,143 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>text.edit()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions text.edit text.edit text.edit ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">text.edit()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;text.edit&nbsp;
+					(string&nbsp;text_field, string&nbsp;lang, string&nbsp;kw1, string&nbsp;kw2, string&nbsp;kw3, string&nbsp;kw4, string&nbsp;tgroup, string&nbsp;edit_opt, long&nbsp;mode)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This opens an edit window in which the specified text can be
+                  edited. If the text number associated with the specified text
+                  (i.e., the value of the field with name <i class="Emphasis">text_field</i>) is 0,
+                  the text manager prompts the user to confirm whether or not a
+                  new text must be created. After editing, the text number is
+                  stored in the field with name <i class="Emphasis">text_field</i>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="9" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>text_field</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the text field. See <a href="../../progguide/functions_text_fields/overview.htm" class="manualLink">Text fields overview</a>. The
+                           text number is read from this field, and if that number
+                           is 0, the new text number is stored in this field.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>lang</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The language for which the text is to be edited.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>kw1</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use these arguments to specify the key words for the
+                           text.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>kw2</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>kw3</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>kw4</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>tgroup</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This specifies the name of the text group to which
+                           the new text must be assigned. If you specify an empty
+                           string here, the text is assigned to the user's default
+                           group.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>edit_opt</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This specifies the type of window in which the text
+                           must be displayed.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>mode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This species the text mode. Possible values are:</p>
+                        <p class="Paragraph">1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read-only</p>
+                        <p class="Paragraph">3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read and write</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The text number (0 if there was no text, and the user did not
+               create a new one). Or &lt;0 if an error occured (-1 means 'no
+               permission').
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_text_fields/overview.htm" class="manualLink">Text fields overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_text_fields/synopsis.htm" class="manualLink">Text fields synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_text_fields/text.edit, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

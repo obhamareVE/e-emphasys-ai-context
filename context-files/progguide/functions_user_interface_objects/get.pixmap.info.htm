@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>get.pixmap.info()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions get.pixmap.info get.pixmap.info get.pixmap.info ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">get.pixmap.info()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;get.pixmap.info&nbsp;
+					(ref string&nbsp;buffer, ref long&nbsp;num_colors, ref long&nbsp;width, ref long&nbsp;height)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This retrieves information about a picture, in .gif format,
+                  that has been read with the <a href="../../progguide/functions_directory_file_operations/seq.read.htm" class="manualLink">seq.read()</a> function. It returns the number of colors in the
+                  picture and the picture's width and height. When a picture is
+                  used in an object, the width and height values are necessary for
+                  determining the amount of memory that must be allocated for the
+                  picture.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>buffer</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The buffer containing the data retrieved by <i class="Emphasis">seq.read()</i>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>num_colors</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the number of colors used in the
+                           picture.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>width</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the width of the picture, in
+                           pixels.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>height</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the height of the picture, in
+                           pixels.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">TRUE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; success</p>
+            <p class="Paragraph">FALSE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; error</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/get.pixmap.info, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

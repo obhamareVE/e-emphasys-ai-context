@@ -1,0 +1,68 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Events overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="events ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Events overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Use these functions for handling events.</p>
+            <p class="Paragraph">Event-driven programs, such as BAAN 3GL scripts, are
+               designed to respond to events. Usually, they consist of a
+               main loop that waits for events to occur. When an event
+               occurs, the program performs the appropriate actions to
+               process the event. It then returns to its waiting state.
+            </p>
+            <p class="Paragraph">Most of the events that occur in a BAAN application relate
+               to user interaction. When a user performs an action in the
+               user interface (for example, clicking the mouse or pressing a
+               keyboard key), this generates an event. The event consists of
+               a package of information about the particular action. It is
+               delivered to the event queue of the relevant process group
+               and from there to the individual process that will handle the
+               event. When the process retrieves the event from the event
+               queue, it executes the piece of code appropriate for
+               processing the particular type of event received.
+            </p>
+            <p class="Paragraph">Note that the event package takes the form of an array of
+               signed 32-bit integer values,
+               the so-called <a href="../../progguide/events/event_array_parameters.htm" class="manualLink">event array parameters</a>.
+               You retrieve the individual items of information in
+               the array by using a set of parameters specific to the event
+               type.
+            </p>
+            <p class="Paragraph">The event paradigm is used in both ASCII and graphical
+               programming environments. But some events are relevant only
+               in graphical environments (for example, mouse events).
+            </p>
+            <p class="Paragraph">For further information on user interface controls and
+               process groups, see <a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a> and <a href="../../progguide/multitasking/processes_process_groups_and_main_windows.htm" class="manualLink">Processes, process groups, and main windows</a>.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/events/synopsis.htm" class="manualLink">Events synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/event_types.htm" class="manualLink">Event types</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/event_array_parameters.htm" class="manualLink">Event array parameters</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/sample_program.htm" class="manualLink">Events sample program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/events/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

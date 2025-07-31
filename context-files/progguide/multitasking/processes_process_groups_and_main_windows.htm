@@ -1,0 +1,225 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Processes, process groups, and main windows</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="processes, process groups, and main windows ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Processes, process groups, and main windows</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Processes</div>
+            <p class="Paragraph">A process consists of a program object, a date, and a state.
+               A process that has been started can be in any one of the
+               following states:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><i class="Emphasis">Running.</i> The process is in the running queue. It has been
+                  scheduled to run, or is ready to be scheduled.
+               </li>
+               <li class="ListItem"><i class="Emphasis">Blocking.</i> The process is in the blocking queue. It is waiting for
+                  input.
+               </li>
+               <li class="ListItem"><i class="Emphasis">Sleeping.</i> The process is in the sleeping queue. It has been
+                  suspended and requires an external action to wake it up
+                  again.
+               </li>
+               <li class="ListItem"><i class="Emphasis">Terminating.</i> The process is in the terminating queue. It has ended
+                  but not all its resources have yet been removed.
+               </li>
+            </ul>
+            <p class="Paragraph">Each process stores information about the current main
+               window, the current menu, and current character window. Other
+               information about display objects is not directly available to
+               it.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Process groups</div>
+            <p class="Paragraph">A process group is a group of related, interdependent
+               processes. One process is the group leader. Child processes are
+               started by the leader or by one of its children. All processes
+               belong to a process group.
+            </p>
+            <p class="Paragraph">The following are some of the characteristics of process
+               groups:
+            </p>
+            <ul class="List">
+               <li class="ListItem">Each process group has its own event queue. Events are
+                  sent to the process group, not to individual processes.
+               </li>
+               <li class="ListItem">When one process within a group starts a child process,
+                  the child process is automatically placed in the same process
+                  group as its parent. However, you can use the function <a href="../../progguide/functions_process_groups/set.pgrp.htm" class="manualLink">set.pgrp()</a> to place the process in a different process group.
+               </li>
+               <li class="ListItem">When a process is killed or ended, its parent is
+                  automatically awakened, unless the parent and child are in
+                  different groups.
+               </li>
+               <li class="ListItem">You use the <a href="../../progguide/functions_process_groups/grab.mwindow.htm" class="manualLink">grab.mwindow()</a> function to set the process group to which a main window
+                  sends its events. After calling this function, all events
+                  that occur in the main window are sent to the specified
+                  process group.
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Main windows</div>
+            <p class="Paragraph">A main window acts as the frame window for both sessions and
+               3GL applications. It is used for starting processes and for
+               creating graphical and character windows. It is not used
+               directly for handling user input or displaying program output.
+               Usually, a main window consists of a border, title bar, menu
+               bar, status area, control menu box, sizing controls, and a work
+               area. The objects used by an application for user interaction
+               are created within the work area of a main window and are
+               managed by that main window.
+            </p>
+            <p class="Paragraph">Each process can have zero, one, or more main windows.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Process groups and main windows</div>
+            <p class="Paragraph">Process groups and main windows are used:</p>
+            <ul class="List">
+               <li class="ListItem">to ensure unambiguity of input focus</li>
+               <li class="ListItem">to keep related processes dependent</li>
+               <li class="ListItem">to enable parent and child processes to be independent of
+                  each other
+               </li>
+            </ul>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Unambiguity of input focus</div>
+               <p class="Paragraph">To ensure that there is never any ambiguity as to where the
+                  events generated by a particular window are sent, when you
+                  create a main window, you define a single process group to which
+                  that main window sends its events. You do this with the <a href="../../progguide/functions_process_groups/grab.mwindow.htm" class="manualLink">grab.mwindow()</a> function. After calling this function for a main window, all
+                  events that occur in that window are sent to the specified
+                  process group. In principle, there is only one running process
+                  in a process group at any time; so the events are sent to that
+                  process.
+               </p>
+               <p class="Paragraph">In principle, each process could have its own event queue.
+                  However, there are a number of situations where this would cause
+                  problems. For example:
+               </p>
+               <ul class="List">
+                  <li class="ListItem">When the input focus is on an input field and the user
+                     zooms to another process to select a value. In this case,
+                     the parent process is moved to the sleeping queue and will
+                     be awakened when the child process ends. 
+                     
+                     However, if the user types in the input field after the
+                     zoom process has started but before the zoom process has
+                     created its own windows, the characters typed are sent to
+                     the sleeping process and not to the zoom process for which
+                     they were intended. When the windows of the zoom process
+                     appear, the user must then restart the selection. However,
+                     when the zoom process exits, the characters sent to the
+                     parent process are displayed in the input field and not
+                     those entered in the zoom process. This is because, when
+                     awakened, the parent process finds those characters in its
+                     process queue.
+                  </li>
+                  <li class="ListItem">A similar problem can arise when a uses ends a number of
+                     nested processes by repeatedly pressing the EXIT key and
+                     also when processes are synchronized by using bucket
+                     functions. 
+                     
+                     These problems are avoided by enabling related,
+                     interdependent processes to share the same process group
+                     (and so the same event queue).
+                  </li>
+               </ul>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Keeping related processes dependent</div>
+               <p class="Paragraph">When a process is started by the functions <a href="../../progguide/functions_processes/activate.htm" class="manualLink">activate()</a>, <a href="../../progguide/functions_processes/act.and.sleep.htm" class="manualLink">act.and.sleep()</a>,
+                  or <a href="../../progguide/functions_processes/wait.and.activate.htm" class="manualLink">wait.and.activate()</a>,
+                  by default the new process inherits the process group and main
+                  window of its parent. The parent process is moved to the
+                  sleeping queue will be awakened automatically when the child
+                  process ends.
+               </p>
+               <p class="Paragraph">The following diagram illustrates this.</p>
+               <div class="Figure"><img src="../images/multitasking_002.gif" alt="[...]" height="199" width="281"></div>
+               <p class="Paragraph">A process with the same ID as its process group is referred
+                  to as the group leader. For the group leader, the predefined
+                  variable <i class="Emphasis">background</i> is set to FALSE, For child processes,
+                  this variable is set to TRUE.
+               </p>
+               <p class="Paragraph">A process group keeps track of the number of processes that
+                  belong to it. When no processes remain in the group, the group
+                  is automatically destroyed. You can destroy all processes in a
+                  particular group simultaneously by calling <a href="../../progguide/functions_process_groups/kill.pgrp.htm" class="manualLink">kill.pgrp()</a>.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Making related processes independent</div>
+               <p class="Paragraph">When a process starts a child process, by default the child
+                  process inherits the process group and main window of its
+                  parent, and the parent is suspended until the child exits.
+                  However, it is possible to create a new process group and main
+                  window for the child process and so keep the parent and child
+                  processes independent. The following diagram illustrates
+                  this.
+               </p>
+               <div class="Figure"><img src="../images/multitasking_003.gif" alt="[...]" height="216" width="400"></div>
+               <p class="Paragraph">The code for disconnecting a child process from its parent
+                  can be included either in the parent process or in the child
+                  process. In the following example, it is included in the parent
+                  process.
+               </p><pre class="CodeBlock">
+old.mwindow = current.mwindow()
+new.mwindow = create.mwindow( title, mode, flags)
+change.mwindow( new.mwindow )
+child.pid = act.and.sleep( program.name, arglist )
+if child.pid then
+        set.pgrp( child.pid, child.pid )
+        grab.mwidow( new.mwindow, child.pid )
+        reactivate( child.pid )
+endif
+change.mwindow ( old.mwindow )
+destroy.mwindow( new.mwindow )
+</pre><p class="Paragraph">In this example, the parent process first creates a new main
+                  window for the child process. It then starts the child process
+                  and calls <a href="../../progguide/functions_process_groups/set.pgrp.htm" class="manualLink">set.pgrp()</a> to place the child process in a different process group. By
+                  specifying the same ID for the process and the process group in
+                  the <i class="Emphasis">set.pgrp()</i> call, a new process group is automatically
+                  created with the same ID as the process. The process becomes the
+                  leader of the new process group. The parent process then calls <a href="../../progguide/functions_process_groups/grab.mwindow.htm" class="manualLink">grab.mwindow()</a> to link the new process group to the new main window.
+               </p>
+               <p class="Paragraph">In this example, it is important to start the child process
+                  with <a href="../../progguide/functions_processes/act.and.sleep.htm" class="manualLink">act.and.sleep()</a> and to reactivate the process only after it has been placed in
+                  the new process group. If the process is started with <a href="../../progguide/functions_processes/activate.htm" class="manualLink">activate()</a>,
+                  and a context switch occurs immediately after the child process
+                  is started, then the process would be scheduled with the
+                  incorrect process group.
+               </p>
+               <p class="Paragraph">Note that if a process is moved to another process group, it
+                  will be impossible to switch it back to the original group if
+                  that group is destroyed in the meantime.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/multitasking/multitasking_and_the_gui.htm" class="manualLink">Multitasking and the GUI</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/multitasking/processes_process_groups_and_main_windows, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

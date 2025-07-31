@@ -1,0 +1,126 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>compress.pixmap()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="compress.pixmap compress.pixmap functions compress.pixmap ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">compress.pixmap()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;compress.pixmap&nbsp;
+					(long&nbsp;colormap, long&nbsp;num_colors, string&nbsp;pixmap(), long&nbsp;width, long&nbsp;height, ref string&nbsp;buffer, ref long&nbsp;buffer_length)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This converts a specified colormap and pixmap to a picture in
+                  .gif format.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>colormap</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The ID of the DsCcolormap object that must be
+                           converted.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>num_colors</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The number of colors defined by the specified
+                           colormap object.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>pixmap()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The ID of the DsCpixmap object that must be
+                           converted.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>width</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The width of the pixmap, in pixels.</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>height</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The height of the pixmap, in pixels.</p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>buffer</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the data for the .gif picture. To
+                           access the .gif picture, you must write the buffer data
+                           to a file by calling <a href="../../progguide/functions_directory_file_operations/seq.write.htm" class="manualLink">seq.write()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>buffer_length</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the length of the buffer.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">TRUE (!=0)&nbsp;&nbsp;&nbsp;&nbsp; success</p>
+            <p class="Paragraph">FALSE (=0)&nbsp;&nbsp;&nbsp;&nbsp; error</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/compress.pixmap, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

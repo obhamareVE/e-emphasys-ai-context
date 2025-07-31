@@ -1,0 +1,118 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Data types</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="32-bit bshell mode Data types 3GL data types 64-bit bshell mode Data types BitCountOfLong Data types data types 3GL ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Data types</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">There are six types of variables:</p>
+            <ul class="List">
+               <li class="ListItem"><a href="#long" class="internalLink">Long variables</a></li>
+               <li class="ListItem"><a href="#double" class="internalLink">Double variables</a></li>
+               <li class="ListItem"><a href="#boolean" class="internalLink">Boolean variables</a></li>
+               <li class="ListItem"><a href="#string" class="internalLink">String variables</a></li>
+               <li class="ListItem"><a href="#table" class="internalLink">Table variables</a></li>
+               <li class="ListItem"><a href="#domain" class="internalLink">Domain variables</a></li>
+            </ul>
+         </div>
+         <div class="GeneralSection"><a name="long"></a><div class="subSectionTitle">Long variables</div>
+            <p class="Paragraph"><i class="Emphasis">Long</i> variables can contain integer values.
+            </p>
+            <p class="Paragraph">The supported value range is the signed 32-bit value range: [-2^31 … 2^31 - 1].</p>
+            <p class="Paragraph">In decimal notation, this is the range [-2,147,483,648 … 2,147,483,647].</p>
+            <p class="Paragraph">In hexadecimal notation, this is the range [-0x8000,0000 … 0x7fff,ffff].</p>
+            <p class="Paragraph">Physically, 4 bytes are used for each long variable.</p>
+            <p class="Paragraph">Using the term <a href="#BitCountOfLong" class="internalLink">BitCountOfLong</a> described below,
+               we can abstract from its actual value 32
+               and say that the supported value range of long variables is
+               the signed <i class="Emphasis">BitCountOfLong</i>-bit value range:
+         [-2^(BitCountOfLong-1) … 2^(BitCountOfLong-1) - 1]
+         and that
+         BitCountOfLong / 8 bytes are used for each long variable.
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="double"></a><div class="subSectionTitle">Double variables</div>
+            <p class="Paragraph"><i class="Emphasis">Double</i> variables are used for any number containing
+               a decimal point, with a maximum of 15 significant decimal digits
+               (8 bytes).
+            </p>
+            <p class="Paragraph">3GL variables of type double typically use the IEEE 64-bit floating point representation, which uses a 52-bit mantissa.</p>
+            <p class="Paragraph">The distance between neighboring floating point values depends on their size.</p>
+            <p class="Paragraph">E.g. the floating point neighboring values of 1 are 1 - 2^-53 and 1 + 2^-52,
+               whereas the floating point neighboring values of 2 are 2 - 2^-52 and 2 + 2^-51.
+            </p>
+            <p class="Paragraph">The smallest integer value which cannot be represented exactly in a floating point variable is 2^53 + 1.</p>
+            <p class="Paragraph">The floating point neighbors of 2^53 are 2^53 - 1 and 2^53 + 2.</p>
+            <p class="Paragraph">In decimal notation:
+               the smallest integer value which cannot be represented exactly in a floating point variable is 9,007,199,254,740,993;
+               the floating point neighbors of 9,007,199,254,740,992 are 9,007,199,254,740,991 and 9,007,199,254,740,994.
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="boolean"></a><div class="subSectionTitle">Boolean variables</div>
+            <p class="Paragraph"><i class="Emphasis">Boolean</i> variables can have two values: true or
+               false.
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="string"></a><div class="subSectionTitle">String variables</div>
+            <p class="Paragraph">A <i class="Emphasis">string</i> variable contains a string constant. The
+               maximum length of a string is 1024 characters.
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="table"></a><div class="subSectionTitle">Table variables</div>
+            <p class="Paragraph">A <i class="Emphasis">table</i> variable is used for database tables in your
+               program. The table must be defined in the data
+               dictionary.
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="domain"></a><div class="subSectionTitle">Domain variables</div>
+            <p class="Paragraph">A <i class="Emphasis">domain</i> variable is a variable of a certain type
+               that is defined in the data dictionary. Each of the
+               following types are possible: long, byte, integer, date,
+               enumerate, set, float, double, string, text. Each domain
+               defined in the data dictionary can be used in a
+               declaration of your program. See also <a href="../../progguide/3gl_features/domains.htm" class="manualLink">Domains</a>.
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="BitCountOfLong"></a><div class="subSectionTitle">BitCountOfLong</div>
+            <p class="Paragraph">In this manual,
+               the term BitCountOfLong is used to refer to the amount of bits
+               used for a long variable.
+            </p>
+            <p class="Paragraph">Using this term,
+               we can abstract from its actual value.
+            </p>
+            <p class="Paragraph">This way,
+               we can say that the supported value range of long variables is
+               the signed <i class="Emphasis">BitCountOfLong</i>-bit value range:
+         [-2^(BitCountOfLong-1) … 2^(BitCountOfLong-1) - 1].
+            </p>
+            <p class="Paragraph">Furthermore we can say that
+               BitCountOfLong / 8 bytes are used for each long variable.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/variables.htm" class="manualLink">Variables</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/data_types, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

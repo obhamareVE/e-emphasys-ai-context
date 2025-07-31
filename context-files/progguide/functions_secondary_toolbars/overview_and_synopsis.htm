@@ -1,0 +1,64 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Secondary toolbars overview and synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="secondary toolbars ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Secondary toolbars overview and synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">Use the <i class="Emphasis">create.extra.toolbar()</i> function to add a
+               secondary toolbar to a session. Buttons on the toolbar represent
+               form commands; they provide an alternative means of executing
+               those commands.
+            </p>
+            <p class="Paragraph">You can create the button images yourself (as .gif files) or
+               you can reuse existing images, where appropriate. Before you can
+               add buttons to a secondary toolbar, you must import the .gif
+               files with session "Addtional Files (ttadv2570m000)". This
+               session will put the .gif files in the dictionary according the
+               specified package and module.
+            </p>
+            <p class="Paragraph">A Button image (.gif file) must default be present as additional file in the same package/module combination as used 
+               by the session, unless the following syntax for the "gif_file" argument is used: [package][module]:gif_file.
+            </p>
+            <p class="Paragraph">Buttons on secondary toolbars are automatically disabled or
+               enabled when the corresponding form commands are disabled or
+               enabled (see <a href="../../progguide/functions_form_and_form_field_operations/disable.commands.htm" class="manualLink">disable.commands()</a>).
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Synopsis</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_secondary_toolbars/create.extra.toolbar.htm" class="manualLink">create.extra.toolbar()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string form_command, string gif_file
+          &nbsp; [, string form_command, string gif_file ...]
+         )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_secondary_toolbars/overview_and_synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

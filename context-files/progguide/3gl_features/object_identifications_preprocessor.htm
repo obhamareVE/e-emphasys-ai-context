@@ -1,0 +1,47 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Object identifications (preprocessor)</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="object identifications (preprocessor) ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Object identifications (preprocessor)</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The compiler always places a default identification in an
+               object, but you can include you own if you wish. You can use the
+               UNIX command <i class="Emphasis">what</i> to write all object lines that begin with '@(#)'
+               on standard output.
+            </p>
+            <p class="Paragraph">The default identification has the following content:</p><pre class="CodeBlock">
+#ident "@(#)&lt;source name&gt;, YY/MM/DD, [HH/MM], From ${logname}"
+</pre><p class="Paragraph">To set you own identification use the following
+               statement:
+            </p><pre class="CodeBlock">
+#ident "@(#)Identification of object"
+</pre><p class="Paragraph">For example:</p><pre class="CodeBlock">
+#ident "@(#)&lt;progname&gt;, YY/MM/DD [HH/MM], version, author"
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/preprocessor.htm" class="manualLink">Preprocessor</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/object_identifications_preprocessor, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

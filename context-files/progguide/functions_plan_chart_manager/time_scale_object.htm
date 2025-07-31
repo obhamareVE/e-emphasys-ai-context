@@ -1,0 +1,160 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>PCM_OT_TIMESCALE – time scale object</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="pcm_ot_timescale time scale object ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">PCM_OT_TIMESCALE – time scale object</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">A plan chart represents a projection of activities on a
+               time scale. An efficient time scale is essential in order to
+               make the chart as clear as possible. To divide the time
+               scale, you require a base unit. In the Plan Chart Manager,
+               any time unit, from seconds to years, can be used as the base
+               unit. In practice, the base unit is usually one day.
+            </p>
+            <p class="Paragraph">You can define several time scales for each plan chart.
+               You must create a PCM_OT_TIMESCALE object for each of the
+               time scales included in the chart. You specify start and end
+               dates for the time scale with the function <a href="../../progguide/functions_plan_chart_manager/pcm.create.htm" class="manualLink">pcm.create()</a>. These can, for
+               example, be specified as the number of days since
+               01-01-0001.
+            </p>
+            <p class="Paragraph">The following predefined variables are available for
+               PCM_OT_TIMESCALE objects.
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">PCM_DAYNO</td>
+                     <td rowspan="1" colspan="1" class="none">The number of days since 01-01-0001.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">PCM_WEEKDAYNO</td>
+                     <td rowspan="1" colspan="1" class="none">The day number in the week (1 to 7).</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">PCM_WEEKNO</td>
+                     <td rowspan="1" colspan="1" class="none">The week number in the year (0 to 53).</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">PCM_MONTHDAYNO</td>
+                     <td rowspan="1" colspan="1" class="none">The day number in the month (1 to 31).</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">PCM_MONTHNO</td>
+                     <td rowspan="1" colspan="1" class="none">The month number in the year (1 to 12).</td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">PCM_YEARNO</td>
+                     <td rowspan="1" colspan="1" class="none">The day number in the year (1 to 366).</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmTimescaleVisible</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">This flag indicates if the time scale must be
+                        visible on the planning board. The possible values
+                        are true and false.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmTimescaleDesc</p>
+                        <p class="Paragraph">(string)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">The format of the description on the time scale –
+               for example, month numbers, day numbers, and so on.
+               See <a href="../../progguide/functions_formatting_io/sprintf.htm" class="manualLink">sprintf$()</a>.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmTimescaleExprV</p>
+                        <p class="Paragraph">(string)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">This expression determines how the time scale
+                        must be divided and where the ticks indicating the
+                        divisions must be placed.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmTimescaleExprD</p>
+                        <p class="Paragraph">(string)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">This expression determines the value by which the
+               substitution symbol specified in PcmTimescaleDesc
+               must be replaced – for example, a day number.</td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmTimescaleInterval</p>
+                        <p class="Paragraph">(double)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">The interval for the time scale division.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+Base Unit: Day
+Time Scale Division: Week Numbers
+
+pcm.create.object ( plan_id, PCM_OT_TIMESCALE,
+    PcmTimescaleVisible, TRUE,
+    PcmTimescaleDesc, "Week %D(%w)",
+          PcmTimescaleExprV, "PCM_WEEKDAYNO = 1",
+    PcmTimescaleExprD, "PCM_DAYNO",
+    PcmTimescaleInterval, 1 )
+</pre><p class="Paragraph">In this example, the starting point of the time scale is a
+               number representing the number of days since 01-01-0001. At
+               each division, the Plan Chart Manager increments this value
+               (ExprD) by 1 (Interval) and checks if this day coincides with
+               the start date of a week (ExprV). If the latter expression is
+               true, a mark is placed on the time scale containing a week
+               number. In fact, if ExprV is true, the following statement is
+               executed:
+            </p><pre class="CodeBlock">
+sprintf$(PcmTimescaleDesc, PcmTimescaleExprD)
+</pre><p class="Paragraph">that is,</p><pre class="CodeBlock">
+sprintf$("Week %D(%wer)", PCM_DAYNO)
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/overview.htm" class="manualLink">Plan Chart Manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/synopsis.htm" class="manualLink">Plan Chart Manager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/example.htm" class="manualLink">Plan Chart Manager: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_plan_chart_manager/time_scale_object, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Plan Chart Manager: example</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="plan chart manager overview example ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Plan Chart Manager: example</div>
+      <div class="body">
+         <div class="GeneralSection"><pre class="CodeBlock">
+#include   &lt;bic_pcm&gt;
+#define    MI_MENU1        100
+#define    MI_MENU2        101
+#define    MI_BUTTON1      200
+
+long plan_id
+long time_start
+long time_finish
+long actv1
+
+function main()
+{
+        | check if display server supports graphics
+        if is.graphical.server() then
+                start.planboard()    | start pcm server; create
+objects
+                handle.event.loop()  | handle pcm events
+        endif
+}
+
+function long is.graphical.server()
+{
+        long  srv_type, srv_data(SRVMAXSIZE)
+
+        srv_type = get.display.data(srv_data)
+        return( srv_type = DSBW )
+}
+
+function handle.event.loop()
+{
+        string    data list(256)
+        long      event(EVTMAXSIZE)
+
+        while next.event(event)
+                on case evt.type(event)
+                case EVTBUCKETMESSAGE:
+                        data list = bms.receive$()
+
+                        on case evt.bms.sender(event)
+                        case plan_id:
+                                on case evt.bms.command(event)
+                                case PCM_EVTMENUSELECT:
+                                        handle.evtmenuselect(data
+list)
+                                        break
+                                case PCM_EVTPUSHBUTTON:
+                                        handle.evtpushbutton(data
+list)
+                                        break
+                                case PCM_EVTOBJECTPRESS:
+                                        handle.evtobjectpress(data
+list)
+                                        break
+                                case PCM_EVTOBJECTDPRESS:
+                                        handle.evtobjectdpress(data
+list)
+                                        break
+                                case PCM_EVTOBJECTMOVE:
+                                        handle.evtobjectmove(data
+list)
+                                        break
+                                case PCM_EVTCLOSED:
+                                        handle.evtclosed()
+                                        break
+                                endcase
+                                break
+                        endcase
+                        break
+                endcase
+        endwhile
+}
+
+function handle.evtmenuselect( ref string data list() )
+{
+        long  menu_id         | selected menu
+        long  object_type     | type of selected object
+        long  object_id       | selected object
+
+        pcm.get.data( PCM_EVTMENUSELECT, data list,
+                        menu_id, object_type, object_id )
+        on case menu_id
+        case MI_MENU1:
+                ....
+                break
+        .
+        .
+        endcase
+}
+
+function handle.evtobjectdpress( ref string data list() )
+{
+        long  object_type     | type of selected object
+        long  object_id       | selected object
+        double time           | time of selected object
+
+        pcm.get.data( PCM_EVTOBJECTDPRESS, data list,
+                   object_type, object_id, time )
+        on case object_type
+        case PCM_OT_ACTIVITY:
+                pcm.change.object( plan_id, object_id,
+                        PcmActivityExpand, PCM_EM_TOGGLE )
+                pcm.refresh(plan_id)
+                break
+        case PCM_OT_RELATION:
+                ....
+                break
+        case PCM_OT_MARKER:
+                ....
+                break
+        endcase
+}
+
+function handle.evtobjectmove()
+{
+        long  object_type     | type of selected object
+        long  object_id       | selected object
+        double start          | new start time
+        double finish         | new finish time
+
+        pcm.get.data( PCM_EVTOBJECTMOVE, data list,
+                   object_type, object_id, start, finish )
+        on case object_type
+        case PCM_OT_ACTIVITY:
+                move.activity( object_id, start, finish )
+                break
+        .
+        .
+        endcase
+}
+
+function move.activity( long actv_id, double strt, double fnsh )
+{
+        pcm.change.object( plan_id, actv_id,
+                PcmActivityStart, strt,
+                PcmActivityFinish, fnsh,
+                PcmActivityFreeStart, strt - 1,
+                PcmActivityFreeFinish, fnsh + 2 )
+        pcm.refresh( plan_id )
+}
+
+function handle.evtclosed()
+{
+        close.planboard()
+        exit(0)
+}
+
+function start.planboard()
+{
+        long  par_menu, menu2, butt1
+
+        time_start = date.num()
+        time_finish = time_start + 100
+
+        plan_id = pcm.create(PcmPlanName, "Project 1993",
+                PcmPlanFontHeight,        15,
+                PcmPlanLineHeight,        2.0,
+                PcmPlanBackgroundColor,   RGB.WHITE,
+                PcmPlanForegroundColor,   RGB.BLACK,
+                PcmPlanTimescaleStart,    time_start,
+                PcmPlanTimescaleFinish,   time_finish,
+                PcmPlanTimescaleWidth,    3.0,
+                .
+                .
+                PcmPlanMarkersVisible,    TRUE )
+
+        | -- create objects
+
+        par_menu = pcm.create.object( plan_id, PCM_OT_MENU,
+                PcmMenuParent, 0,
+                PcmMenuId, MI_MENU1,
+                PcmMenuName, "File" )
+
+        menu2 = pcm.create.object( plan_id, PCM_OT_MENU,
+                PcmMenuParent, par_menu,
+                PcmMenuId, MI_MENU2,
+                PcmMenuName, "open" )
+
+        butt1 = pcm.create.object( plan_id, PCM_OT_BUTTON,
+                PcmButtonId, MI_BUTTON1,
+                PcmButtonName, "Close" )
+
+        pcm.create.object( plan_id, PCM_OT_TIMESCALE,
+                PcmTimescaleVisible, TRUE,
+                PcmTimescaleDesc, "%D(%H)",
+                PcmTimescaleExprV, "PCM_MONTHDAYNO = 1",
+                PcmTimescaleExprD, "PCM_DAYNO",
+                PcmTimescaleInterval, 1 )
+
+        pcm.create.object( plan_id, PCM_OT_TIMESCALE,
+                PcmTimescaleVisible, TRUE,
+                PcmTimescaleDesc, "%D(%d)",
+                PcmTimescaleExprV, "TRUE",
+                PcmTimescaleExprD, "PCM_DAYNO",
+                PcmTimescaleInterval, 1 )
+
+        pcm.create.object( plan_id, PCM_OT_COLUMN,
+                PcmColumnVisible, TRUE,
+                PcmColumnName, "Id",
+                PcmColumnWidth, 10,
+                PcmColumnIndent, FALSE )
+
+        actv1 = pcm.create.object( plan_id, PCM_OT_ACTIVITY,
+                PcmActivityParent, 0,
+                PcmActivityStart, time_start + 5,
+                PcmActivityFinish, time_start + 20,
+                PcmActivityProgress, 0,
+                PcmActivityFreeStart, time_start + 4,
+                PcmActivityFreeFinish, time_start + 22,
+                PcmActivityText1, "Activity 1",
+                PcmActivityCritical, TRUE,
+                PcmActivityExpand, PCM_EM_EXPAND,
+                PcmActivityEdit, PCM_ED_START +
+                                                                   
+                                     PCM_ED_FINISH )
+}
+
+function close.planboard()
+{
+        pcm.destroy(plan_id)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/overview.htm" class="manualLink">Plan Chart Manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/synopsis.htm" class="manualLink">Plan Chart Manager synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_plan_chart_manager/example, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

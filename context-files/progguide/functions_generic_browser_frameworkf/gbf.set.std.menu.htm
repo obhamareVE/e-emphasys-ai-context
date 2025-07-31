@@ -1,0 +1,227 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>gbf.set.std.menu() *</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions gbf.set.std.menu gbf.set.std.menu gbf.set.std.menu ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">gbf.set.std.menu() *</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;gbf.set.std.menu&nbsp;
+					(long&nbsp;menu.pattern, long&nbsp;disabled, checked&nbsp;Parameter)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">The following functions are actual defines and they are
+                  defined as:
+               </p>
+               <table border="0" class="none">
+                  <tbody noTR="4" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">gbf.set.std.menu.checked(menu.pattern):</td>
+                        <td rowspan="1" colspan="1" class="none">gbf.set.std.menu(menu.pattern, false, true)</td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">gbf.set.std.menu.disabled(menu.pattern):</td>
+                        <td rowspan="1" colspan="1" class="none">gbf.set.std.menu(menu.pattern, true, false)</td>
+                     </tr>
+                     <tr no="3" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">gbf.set.std.menu.enabled(menu.pattern):</td>
+                        <td rowspan="1" colspan="1" class="none">gbf.set.std.menu(menu.pattern, false, false)</td>
+                     </tr>
+                     <tr no="4" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">gbf.set.std.menu.not.checked(menu.pattern):</td>
+                        <td rowspan="1" colspan="1" class="none">gbf.set.std.menu(menu.pattern, false, false)</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+               <p class="Paragraph">This function can disable standard GBF menu headings
+                  and/or menu items and place or remove a ticmark on a menu
+                  item, which has been created using the <a href="../../progguide/functions_generic_browser_frameworkf/gbf.init.htm" class="manualLink">gbf.init()</a> function. For changing
+                  of the customized menu headings and items see function:
+                  gbf.set.menu.state().
+               </p>
+               <p class="Paragraph">The menu.pattern holds the pattern of all standard menu
+                  items which should be updated. The pattern is build the same
+                  way as the 
+                  argument in the <a href="../../progguide/functions_generic_browser_frameworkf/gbf.init.htm" class="manualLink">gbf.init()</a> function. So for
+                  example to disable all menu items one could use:
+               </p>
+               <p class="Paragraph">gbf.set.std.menu.disabled(GBF.MENU.ALL)</p>
+               <p class="Paragraph">to disable the “Read All” and “Using Session”:</p>
+               <p class="Paragraph">gbf.set.std.menu.disabled(GBF.MENU.FILE.READ +
+                  GBF.MENU.HELP.SESS)
+               </p>
+               <p class="Paragraph">When disable is set to true then all of the specified
+                  standard GBF menu items and headings will become insensitive,
+                  that is white, which does not allow the end-user to select
+                  it. Also the associated keystroke with this menu.pattern is
+                  NOT usable as long as these menu items are disabled. These
+                  standard GBF menu items can become selectable again by using
+                  false for disable.
+               </p>
+               <p class="Paragraph">When checked is true a ticmark will be added in front of
+                  all of the specified standard GBF menu items and headings.
+                  When checked is false these ticmarks will be removed
+                  again.
+               </p>
+               <p class="Paragraph">You can change a menu heading and/or menu item which has
+                  not been created during the <a href="../../progguide/functions_generic_browser_frameworkf/gbf.init.htm" class="manualLink">gbf.init()</a>. In this case no error
+                  will be returned, but of course nothing will be changed. Also
+                  all other created menu headings and items which are not
+                  specified in this menu.pattern will be left unchanged.
+               </p>
+               <p class="Paragraph">Note</p>
+               <p class="Paragraph">It is strongly discouraged to manipulate menu entries that
+                  are otherwise dealt with by the GBF. These menu items are:
+                  all of the GBF.MENU.SRCH and GBF.MENU.SORT, as well as
+                  GBF.MENU.PRINT.
+               </p>
+               <div class="GeneralSection">
+                  <div class="subSectionTitle">Arguments:gbf.set.std.menu</div>
+                  <table border="0" class="none">
+                     <tbody noTR="3" class="none">
+                        <tr no="1" isLast="false" class="none">
+                           <td rowspan="1" colspan="1" class="none">menu.pattern</td>
+                           <td rowspan="1" colspan="1" class="none">The menu.pattern holds the pattern of all
+                              standard menu items which should be updated.
+                           </td>
+                        </tr>
+                        <tr no="2" isLast="false" class="none">
+                           <td rowspan="1" colspan="1" class="none">disabled</td>
+                           <td rowspan="1" colspan="1" class="none">When disable is set to true all of the specified
+                              standard GBF menu items and headings will be
+                              disabled. Also the associated keystroke with this
+                              menu.pattern is not usable as long as these menu
+                              items are disabled. These standard GBF menu items
+                              can become selectable again by setting this
+                              parameter to false.
+                           </td>
+                        </tr>
+                        <tr no="3" isLast="true" class="none">
+                           <td rowspan="1" colspan="1" class="none">checked</td>
+                           <td rowspan="1" colspan="1" class="none">If true a ticmark will be added in front of all
+                              of the specified standard GBF menu items and
+                              headings. When checked is set to false these
+                              ticmarks will be removed again.
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <p class="postspacer">&nbsp;</p>
+               </div>
+               <div class="GeneralSection">
+                  <div class="subSectionTitle">Arguments:gbf.set.std.menu.checked, gbf.set.std.menu.not.checked, gbf.set.std.menu.enabled,gbf.set.std.menu.disabled</div>
+                  <table border="0" class="none">
+                     <tbody noTR="1" class="none">
+                        <tr no="1" isLast="true" class="none">
+                           <td rowspan="1" colspan="1" class="none">menu.pattern</td>
+                           <td rowspan="1" colspan="1" class="none">The menu.pattern holds the pattern of all
+                              standard menu items which should be updated.
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <p class="postspacer">&nbsp;</p>
+               </div>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>menu.pattern</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The menu.pattern holds the pattern of all standard menu items which should be updated.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>disabled</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">When disable is set to true all of the specified standard GBF menu items and headings will be disabled. Also the associated
+                           keystroke with this menu.pattern is not usable as long as these menu items are disabled. These standard GBF menu items can
+                           become selectable again by setting this parameter to false.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">checked</td>
+                     <td class="none"><code>Parameter</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">If true a ticmark will be added in front of all of the specified standard GBF menu items and headings. When checked is set
+                           to false these ticmarks will be removed again.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">0</td>
+                     <td rowspan="1" colspan="1" class="none">Successful completion</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.STATE</td>
+                     <td rowspan="1" colspan="1" class="none">GBF is not in the right state to deal with this
+                        function
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">gbf.set.std.menu.checked(), gbf.set.std.menu.not.checked(),gbf.set.std.menu.enabled(), gbf.set.std.menu.disabled()</div>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/overview.htm" class="manualLink">Generic Browser Framework (GBF) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/synopsis.htm" class="manualLink">Generic Browser Framework (GBF) synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/typical_usage.htm" class="manualLink">Typical usage</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/getting_started.htm" class="manualLink">Getting started</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/example.htm" class="manualLink">Example</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/error_codes_and_return_values.htm" class="manualLink">Generic Browser Framework error codes and return values</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/standard_menu_items_and_function_keys.htm" class="manualLink">standard menu items and function keys</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/messages_and_questions.htm" class="manualLink">Messages and questions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_generic_browser_frameworkf/gbf.set.std.menu, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

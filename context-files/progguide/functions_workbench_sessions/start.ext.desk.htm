@@ -1,0 +1,140 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>start.ext.desk()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions start.ext.desk start.ext.desk start.ext.desk ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">start.ext.desk()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;start.ext.desk&nbsp;
+					(string&nbsp;application [, long&nbsp;options] [, string&nbsp;title])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Start the Workbench (desk) application. This function will return when the Workbench application is closed by the user.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>application</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This is the Web application name which implements the Workbench application. 
+                           In case of a Silverlight based Workbench, this is the final part of the Web application on the Web server. For example: "BuyerDesk.aspx".
+                           In case of a HTML based Workbench, this is always fixed to the string: "workbench".  
+                           This function will construct the complete URL to start the Workbench application as follows:
+                        </p><pre class="CodeBlock">
+&lt;serverurl&gt;/&lt;sessioncode&gt;_&lt;version&gt;_&lt;release&gt;[_&lt;customer&gt;]/&lt;application&gt;
+</pre><div class="GeneralSection">
+                           <div class="subSectionTitle">serverurl</div>
+                           <p class="Paragraph">This is the URL configured in session "Workbench Web Server (ttaad7530m000)"</p>
+                        </div>
+                        <div class="GeneralSection">
+                           <div class="subSectionTitle">sessioncode</div>
+                           <p class="Paragraph">This is the code of the current (3GL) Workbench session"</p>
+                        </div>
+                        <div class="GeneralSection">
+                           <div class="subSectionTitle">version</div>
+                           <p class="Paragraph">This is the version part of the VRC of the additional file related to the current (3GL) Workbench session"</p>
+                        </div>
+                        <div class="GeneralSection">
+                           <div class="subSectionTitle">customer</div>
+                           <p class="Paragraph">This is the customer part of the VRC of the additional file related to the current (3GL) Workbench session (may be empty)"</p>
+                        </div>
+                        <p class="Paragraph">So for example a complete URL might look like:</p><pre class="CodeBlock">
+https://nlbavwtech5.infor.com:8442/tdpur8350m000_B60_a_sy59/BuyerDesk.aspx
+</pre></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>options</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional argument in which Workbench startup options can be specified. The options which can be specified here are:</p>
+                        <div class="GeneralSection">
+                           <div class="subSectionTitle">DSK.STATUSBAR</div>
+                           <p class="Paragraph">This means that a standard status bar should be shown for this session.
+                              		   When this option is not passed, no status bar will be shown for this session.
+                           </p>
+                        </div>
+                        <div class="GeneralSection">
+                           <div class="subSectionTitle">DSK.SINGLEINSTANCE</div>
+                           <p class="Paragraph">This means that only one instance of this application can be started per user per Bshell.</p>
+                        </div>
+                        <div class="GeneralSection">
+                           <div class="subSectionTitle">DSK.HTML</div>
+                           <p class="Paragraph">This means that this is a HTML based Workbench which is based on the Workbench SDK.</p>
+                        </div>
+                        <p class="Paragraph">The default value (so when this option is not present) is: DSK.STATUSBAR + DSK.SINGLEINSTANCE</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>title</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional argument in which a non-standard title of the Workbench session can be specified.
+                           When this argument is not present, the session description is used as the Workbench title. This argument can
+                           be usefull when the same workbench application should have a different title which can only be determined at runtime.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">on success</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">when this function fails</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			3GL
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_workbench_sessions/overview.htm" class="manualLink">Workbench Sessions overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_workbench_sessions/synopsis.htm" class="manualLink">Workbench Sessions synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_workbench_sessions/start.ext.desk, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

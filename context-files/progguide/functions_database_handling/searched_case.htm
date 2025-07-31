@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>CASE expression (searched)</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="CASE (searched) ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">CASE expression (searched)</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The searched CASE expression specifies a conditional value.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;searched case expression&gt;
+    ::= CASE
+             WHEN <a href="../../progguide/functions_database_handling/search_condition.htm" class="manualLink">Search condition</a> THEN &lt;result&gt;
+             [{ WHEN <a href="../../progguide/functions_database_handling/search_condition.htm" class="manualLink">Search condition</a> THEN &lt;result&gt; }...]
+             [ ELSE &lt;result&gt; ]
+        END
+
+&lt;result&gt;
+    ::= <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a>
+      | NULL
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The searched CASE expression evaluates the first <i class="Emphasis">&lt;search condition&gt;</i> and if it evaluates to TRUE then the result is the value of the first <i class="Emphasis">&lt;result&gt;</i>.
+               Otherwise, the searched CASE expression evaluates the second <i class="Emphasis">&lt;search condition&gt;</i> and if it evaluates to TRUE then the result is the value of the second <i class="Emphasis">&lt;result&gt;</i>.
+               And so on.
+               If every <i class="Emphasis">&lt;search condition&gt;</i> evaluates to FALSE or UNKNOWN, then the result is the 
+               value of the <i class="Emphasis">&lt;result&gt;</i> specified in the ELSE clause. If the
+               ELSE clause is missing then the result is the NULL value.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following searched CASE expression returns 'yes':</p><pre class="CodeBlock">
+CASE WHEN 2&gt;1 THEN 'yes' END
+</pre><p class="Paragraph">The following searched CASE expression results in 'Male' if the column <code class="Code">sex</code> equals <code class="Code">dbsex.male</code>; it results in 'Female' if column <code class="Code">sex</code> equals <code class="Code">dbsex.female</code>; otherwise it results in the NULL value.
+            </p><pre class="CodeBlock">
+CASE
+	WHEN sex = dbsex.male THEN 'Male'
+	WHEN sex = dbsex.female THEN 'Female'
+END
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/simple_case.htm" class="manualLink">CASE expression (simple)</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/searched_case, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>gbf.set.menu.item()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions gbf.set.menu.item gbf.set.menu.item gbf.set.menu.item ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">gbf.set.menu.item()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;gbf.set.menu.item&nbsp;
+					(long&nbsp;menu.id, const string&nbsp;menu.text(), const string&nbsp;keystroke() [, long&nbsp;is.default] [, long&nbsp;menu.function.id], long&nbsp;maskbit [, long&nbsp;multi.mask], long&nbsp;std.button)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Adds a menu item to the set of menu items under the
+                  heading as identified by menu.id, as well as it allows to
+                  assign a keystroke combination (such as &lt;Ctrl&gt;+A and so
+                  on.) and connect it to a standard GBF button which the GBF
+                  does not service itself.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="8" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>menu.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The menu identification.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>menu.text()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Both menu.text and keystroke should be messages. In this
+      case the message is first translated to its actual value. So
+      for example when menu.text is “ttgbfl0006” then this value
+      will be: “File”. The reason why messages are preferred over
+      (hard coded) text is that help associated to that message
+      will be called when the context help is asked for for this
+      menu or keystroke. The rest of this section keeps using the
+      menu.text and keystroke as if these are the actual menu texts
+      and keystrokes.</p>
+                        <p class="Paragraph">At least menu.text or keystroke must be specified:</p>
+                        <p class="Paragraph">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; · If the menu.text is “---” (3 minutes) then only
+      a menu separator line is drawn in the menu which can never be
+      selected and will generate a 0 return value. Note that the
+      keystroke&nbsp; should be empty in this case. Also only BW
+      supports these menu separator lines, but no error is
+      generated when using this under BX.</p>
+                        <p class="Paragraph">Note that for these menu separator also the function
+                           gbf.set.menu.seperator() should be used.
+                        </p>
+                        <p class="Paragraph">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; · If the menu.text is non empty then the menu.id
+      must be a value returned by a preceding</p>
+                        <p class="Paragraph">gbf.set.menu.head()</p>
+                        <p class="Paragraph">call.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>keystroke()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The keystroke may be empty, in which case no special
+                           keystroke recognition is done for this menu item. The
+                           keystroke will be added to the menu on the right hand side of
+                           the menu entry.
+                        </p>
+                        <p class="Paragraph">The first character in the menu.id which is preceded
+      by an ‘&amp;’ will become underscored which allows you to
+      select that menu item by typing that underscored character at
+      the moment the menu is dropped down. This however is not
+      considered to be a keystroke in this manual.</p>
+                        <p class="Paragraph">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; · If the menu.text is empty, then the keystroke
+      is added to an anonymous menu (menu.id is ignored in this
+      case).</p>
+                        <p class="Paragraph">The return value of this function (if &gt; 0) will be the
+                           value which is used when the menu is activated or the
+                           keystroke is recognized. The GBF does not check whether this
+                           keystroke is already in use (when the specified keystroke is
+                           not empty), and it is left undetermined which value will be
+                           given when the keystroke is recognized, in this ambiguous
+                           case.
+                        </p>
+                        <p class="Paragraph">The format of the keystroke is:</p>
+                        <p class="Paragraph">[Ctrl+][Shift+][Alt+](&lt;single
+                           char&gt;|F&lt;nr&gt;|&lt;special key&gt;)
+                        </p>
+                        <p class="Paragraph">where:</p>
+                        <table border="0" class="none">
+                           <tbody noTR="6" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">Ctrl</td>
+                                 <td rowspan="1" colspan="1" class="none">indicates that the Control key should be
+                                    pressed
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">Shift</td>
+                                 <td rowspan="1" colspan="1" class="none">indicates that the Shift key should be
+                                    pressed
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">Alt</td>
+                                 <td rowspan="1" colspan="1" class="none">indicates that the Alt key should be pressed</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">&lt;single char&gt;</td>
+                                 <td rowspan="1" colspan="1" class="none">is the single character to be pressed</td>
+                              </tr>
+                              <tr no="5" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">F&lt;nr&gt;</td>
+                                 <td rowspan="1" colspan="1" class="none">denominates the function key with number
+                                    &lt;nr&gt;, where 1 &lt;= nr &lt;= 12 on most
+                                    keyboards.
+                                 </td>
+                              </tr>
+                              <tr no="6" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">&lt;special key&gt;</td>
+                                 <td rowspan="1" colspan="1" class="none">indicates a special key on the keyboard</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">So to make a Keystroke for &lt;control&gt;&lt;shift&gt;F1
+                           use: Ctrl+Shift+F1.
+                        </p>
+                        <p class="Paragraph">Note that the Shift should only be used for special keys
+      or in combination with other modifiers, for example:
+      Ctrl+F&lt;nr&gt; and Ctrl+Shift+A, not with single
+      characters, as for example GBF cannot differentiate between ‘
+      A’ and ‘Shift+A’ (but of course GBF differentiates between ‘a’;
+      ; ; ; and ‘A’). These ‘Shift+a’ and ‘Shift+A’ are both
+      converted to ‘A’. In debug mode (see <a href="../../progguide/functions_generic_browser_frameworkf/gbf.init.htm" class="manualLink">gbf.init()</a>, using GBF.OPT.DEBUG)
+                           these changes will be noted with a debug pop-up message.
+                        </p>
+                        <p class="Paragraph">The supported special keys are:</p>
+                        <table border="0" class="none">
+                           <tbody noTR="12" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">Special key</td>
+                                 <td rowspan="1" colspan="1" class="none">Key on keyboard</td>
+                                 <td rowspan="1" colspan="1" class="none">Needs modifier</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">Backspace</td>
+                                 <td rowspan="1" colspan="1" class="none">Backspace</td>
+                                 <td rowspan="1" colspan="1" class="none">yes</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">DEL or Delete</td>
+                                 <td rowspan="1" colspan="1" class="none">DEL or Delete</td>
+                                 <td rowspan="1" colspan="1" class="none">no</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">END</td>
+                                 <td rowspan="1" colspan="1" class="none">END</td>
+                                 <td rowspan="1" colspan="1" class="none">yes</td>
+                              </tr>
+                              <tr no="5" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">ESC</td>
+                                 <td rowspan="1" colspan="1" class="none">ESC or ESCAPE</td>
+                                 <td rowspan="1" colspan="1" class="none">no</td>
+                              </tr>
+                              <tr no="6" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">HOME</td>
+                                 <td rowspan="1" colspan="1" class="none">HOME</td>
+                                 <td rowspan="1" colspan="1" class="none">yes</td>
+                              </tr>
+                              <tr no="7" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">INS</td>
+                                 <td rowspan="1" colspan="1" class="none">INS or Insert</td>
+                                 <td rowspan="1" colspan="1" class="none">no</td>
+                              </tr>
+                              <tr no="8" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">PgDn</td>
+                                 <td rowspan="1" colspan="1" class="none">Page Down</td>
+                                 <td rowspan="1" colspan="1" class="none">yes</td>
+                              </tr>
+                              <tr no="9" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">PgUp</td>
+                                 <td rowspan="1" colspan="1" class="none">Page Up</td>
+                                 <td rowspan="1" colspan="1" class="none">yes</td>
+                              </tr>
+                              <tr no="10" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">Return or Enter</td>
+                                 <td rowspan="1" colspan="1" class="none">Return or Enter</td>
+                                 <td rowspan="1" colspan="1" class="none">yes</td>
+                              </tr>
+                              <tr no="11" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">Space</td>
+                                 <td rowspan="1" colspan="1" class="none">space bar</td>
+                                 <td rowspan="1" colspan="1" class="none">no</td>
+                              </tr>
+                              <tr no="12" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">TAB</td>
+                                 <td rowspan="1" colspan="1" class="none">Tab</td>
+                                 <td rowspan="1" colspan="1" class="none">no</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">The last column of the above table tells whether this key
+      can be used by itself, for example ESC, or whether it needs a
+      modifier, for example PgDn, since the standard key is already
+   defined by the GBF. These modifiers are Ctrl, Shift, Alt or any
+   combination of these. The denotations ‘Return’ and ‘Enter’ are
+   two different names for the same key.</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>is.default</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The is.default argument indicates whether (if the value is
+                           true) or not (if the value is false) to use this menu item as
+                           the default action. That is when double clicking on a leaf
+                           node or selecting and &lt;Enter&gt; (if it could successfully
+                           be added) as the default leaf node icon set. The default
+                           value is false.
+                        </p>
+                        <p class="Paragraph">When a menu item is selected or the keystroke is
+                           recognized, the following application function will be called
+                           by default:
+                        </p>
+                        <p class="Paragraph">gbf.menu.selected(string object.key, long object.value,
+                           long menu.option)
+                        </p>
+                        <p class="Paragraph">Where menu.option is the return value from the <a href="../../progguide/functions_generic_browser_frameworkf/gbf.set.menu.item.htm" class="manualLink">gbf.set.menu.item()</a> function call. For further details about this function see <a href="../../progguide/functions_generic_browser_frameworkf/gbf.menu.selected.htm" class="manualLink">gbf.menu.selected()</a>.
+                           When another function has been defined to be called, that
+                           function will be called instead, but the arguments will be
+                           the same.
+                        </p>
+                        <p class="Paragraph"></p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>menu.function.id</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The menu.function.id indicates, if &gt; 0, the function to
+                           be called when the menu item is selected or keystroke is
+                           recognized, instead of the default function. This
+                           menu.function.id must be a value returned by a preceding
+                           gbf.set.menu.function() call. The default value is 0.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>maskbit</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">If the maskbit is used in the menumask of the currently
+                           selected item the menu item will be disabled. The default
+                           value is 0.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>multi.mask</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The multi.mask is used to indicate what should happen when
+                           zero or more than one objects are selected. The lsb is used
+                           to indicate whether the menu item should be disabled when no
+                           objects are selected. The second bit is used to indicate
+                           whether the menu item should be disabled when more than one
+                           objects are selected. The default value is GBF.ZERO.ENABLE +
+                           GBF.MULTI.ENABLE. The following defines should be used:
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>std.button</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The optional argument std.button should no longer be used.
+                           It is only here for compatibility reasons with older versions
+                           of the GBF. It is strongly advised to use the new mechanism
+                           (see flag standard.button of <a href="../../progguide/functions_generic_browser_frameworkf/gbf.init.htm" class="manualLink">gbf.init()</a>):
+                        </p>
+                        <table border="0" class="none">
+                           <tbody noTR="7" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">GBF mnemonic</td>
+                                 <td rowspan="1" colspan="1" class="none">GBF menu text</td>
+                                 <td rowspan="1" colspan="1" class="none">GBF keystroke</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">GBF.BUTTON.UNDO</td>
+                                 <td rowspan="1" colspan="1" class="none">Undo or Redo</td>
+                                 <td rowspan="1" colspan="1" class="none">Ctrl+Z</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">GBF.BUTTON.INSERT</td>
+                                 <td rowspan="1" colspan="1" class="none">Insert</td>
+                                 <td rowspan="1" colspan="1" class="none">Insert</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">GBF.BUTTON.COPY</td>
+                                 <td rowspan="1" colspan="1" class="none">Copy</td>
+                                 <td rowspan="1" colspan="1" class="none">Ctrl+C</td>
+                              </tr>
+                              <tr no="5" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">GBF.BUTTON.DELETE</td>
+                                 <td rowspan="1" colspan="1" class="none">Delete</td>
+                                 <td rowspan="1" colspan="1" class="none">Delete</td>
+                              </tr>
+                              <tr no="6" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">GBF.BUTTON.TEXT</td>
+                                 <td rowspan="1" colspan="1" class="none">Text</td>
+                                 <td rowspan="1" colspan="1" class="none">Ctrl+T</td>
+                              </tr>
+                              <tr no="7" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">GBF.BUTTON.GRP.NEW</td>
+                                 <td rowspan="1" colspan="1" class="none"></td>
+                                 <td rowspan="1" colspan="1" class="none">Ctrl+Shift+N</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" class="none">
+               <tbody noTR="9" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">&gt; 1</td>
+                     <td rowspan="1" colspan="1" class="none">The identification of this new menu entry</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">= 1</td>
+                     <td rowspan="1" colspan="1" class="none">Should never be returned, as 1 is the GBF
+                        default
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">0</td>
+                     <td rowspan="1" colspan="1" class="none">Menu separator line added</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.NO.MEMORY</td>
+                     <td rowspan="1" colspan="1" class="none">Not enough memory</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.MENU.EMPTY</td>
+                     <td rowspan="1" colspan="1" class="none">Empty menu text is not allowed</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.MENU.ID</td>
+                     <td rowspan="1" colspan="1" class="none">Illegal menu.id value</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.FUNCTION</td>
+                     <td rowspan="1" colspan="1" class="none">Illegal menu.function.id value</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.STATE</td>
+                     <td rowspan="1" colspan="1" class="none">GBF is not in the right state to deal with this
+                        function
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.MAX.MENU</td>
+                     <td rowspan="1" colspan="1" class="none">Too many submenus for this menu defined</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/overview.htm" class="manualLink">Generic Browser Framework (GBF) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/synopsis.htm" class="manualLink">Generic Browser Framework (GBF) synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/typical_usage.htm" class="manualLink">Typical usage</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/getting_started.htm" class="manualLink">Getting started</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/example.htm" class="manualLink">Example</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/error_codes_and_return_values.htm" class="manualLink">Generic Browser Framework error codes and return values</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/standard_menu_items_and_function_keys.htm" class="manualLink">standard menu items and function keys</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/messages_and_questions.htm" class="manualLink">Messages and questions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_generic_browser_frameworkf/gbf.set.menu.item, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

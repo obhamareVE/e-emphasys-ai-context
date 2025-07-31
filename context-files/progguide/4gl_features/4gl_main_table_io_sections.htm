@@ -1,0 +1,134 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>4GL main table i/o sections</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="4GL main table I/O sections sections main table I/O sections ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">4GL main table i/o sections</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Note that main.table.io sections (except the <i class="Emphasis">read.view</i> subsection) are ignored when the corresponding <a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a> hooks are
+               programmed in a DAL script. For conversion see related topics.
+            </p>
+            <p class="Paragraph">You use main table i/o sections to program actions that you
+               want to be executed when read or write actions occur on the main
+               table. These sections are not relevant to type 4 programs, as
+               such programs do not have a main table. Main table i/o sections
+               consist of a main section and a subsection. The main section is
+               always <i class="Emphasis">main.table.io</i>. The subsection indicates when the actions
+               must be executed.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Main section</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">main.table.io:</div>
+               <p class="Paragraph">The subsections associated with this main section are
+                  executed either before or after input to or output from the main
+                  table. The main table for the current session is defined in the
+                  data dictionary.
+               </p>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Subsections</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">read.view:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed
+                  immediately after a view action on the main table (start.set,
+                  first.view, next.view, prev.view or last.view). You can use this subsection to call <a href="../../progguide/functions_form_and_form_field_operations/disable.commands.htm" class="manualLink">disable.commands()</a></p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.read:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed
+                  immediately before each read action on the main table.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.read:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed after
+                  each read action on the main table.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.write: and before.rewrite:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed before
+                  each (re)write action on the main table. A write action occurs
+                  when a record is inserted. A rewrite action occurs when a record
+                  is changed.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.write: and after.rewrite:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed after
+                  each (re)write action on the main table. A write action occurs
+                  when a record is inserted. A rewrite action occurs when a record
+                  is changed. You can use this subsection, for example, to write
+                  data to tables other than the main table.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.skip.write: and after.skip.rewrite:</div>
+               <p class="Paragraph">The actions programmed in these subsection are executed if a
+                  (re)write action on the main table has been skipped as a result
+                  of actions programmed in the <i class="Emphasis">before.(re)write</i> subsection. The actions are executed
+                  immediately after the skip action.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.delete:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed
+                  immediately before each delete action on the main table.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.delete:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed
+                  immediately after each delete action on the main table. You can
+                  use this subsection, for example, for deleting references, if
+                  this is not done automatically.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.skip.delete:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed if a
+                  delete action on the main table has been skipped as a result of
+                  actions programmed in the <i class="Emphasis">before.delete</i> subsection. The actions are executed
+                  immediately after the skip action.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+main.table.io:
+read.view:
+    if strip$(pctst099.cprj) = "" then
+        skip.io("")
+    endif
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/overview.htm" class="manualLink">Programming a UI Script overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/4gl_event_sections.htm" class="manualLink">4GL event sections</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/flow_of_standard_program.htm" class="manualLink">Flow of 4GL engine</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/transition_issues_baan_iv_to_baanerp.htm" class="manualLink">Transition issues (BAAN IV to Infor ERP Enterprise)</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/4gl_features/4gl_main_table_io_sections, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

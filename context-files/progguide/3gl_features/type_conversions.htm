@@ -1,0 +1,583 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Type conversions</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="3GL type conversions explicit type conversion Type conversions implicit type conversion Type conversions type conversions 3GL ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Type conversions</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">A value of a certain type can be converted to a value of a different type.</p>
+            <p class="Paragraph">For example, integer value 6 of type long can be converted to its decimal representation "6" of type string (and vice versa).</p>
+         </div>
+         <div class="GeneralSection"><a name="explicit_type_conversion"></a><div class="subSectionTitle">Explicit type conversion</div>
+            <p class="Paragraph">When a specific function is used to perform the type conversion,
+               then this is called <i class="Emphasis">explicit type conversion</i>.
+            </p>
+            <p class="Paragraph">For example,
+               the function <a href="../../progguide/functions_string_operations/str.htm" class="manualLink">str$()</a> can be used to convert a value of type long
+               to its decimal representation of type string.
+            </p>
+            <p class="Paragraph">The documentation of such a  function should carefully describe the conversion process.</p>
+            <p class="Paragraph">Such a function may have additional arguments which can be used to control certain details of the conversion process.</p>
+         </div>
+         <div class="GeneralSection"><a name="implicit_type_conversion"></a><div class="subSectionTitle">Implicit type conversion</div>
+            <p class="Paragraph">When no specific function is used to perform the type conversion,
+               then this is called <i class="Emphasis">implicit type conversion</i>.
+            </p>
+            <p class="Paragraph">For example,
+               the function <a href="../../progguide/functions_variables_interprocess_transfer/get.var.htm" class="manualLink">get.var()</a> can be used to retrieve the value of a certain variable
+               and store that value into a different variable of a possibly different type.
+            </p>
+            <p class="Paragraph">Such an implicit conversion cannot be controlled by additional function arguments.</p>
+            <p class="Paragraph">It is important to use the same implicit conversion mechanism as much as possible in all circumstances.
+               This allows to describe the conversion mechanism in a single central place
+               and to refer to it by a phrase like "the usual implicit type conversion is done where applicable".
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Specific type conversions</div>
+            <p class="Paragraph">In the sections below,
+               several (not all!)
+               type conversions are described in more detail.
+            </p>
+            <p class="Paragraph">For each type conversion,
+               first a list of functions is given where the type conversion is explicit.
+            </p>
+            <p class="Paragraph">Then,
+               a list of functions is given where the type conversion is implicit.
+            </p>
+            <p class="Paragraph">Finally,
+               the implicit type conversion algorithm is described in detail.
+            </p>
+            <ul class="List">
+               <li class="ListItem"><a href="#long_to_string_type_conversion" class="internalLink">Long to string type conversion</a></li>
+               <li class="ListItem"><a href="#string_to_long_type_conversion" class="internalLink">String to long type conversion</a></li>
+               <li class="ListItem"><a href="#long_to_double_type_conversion" class="internalLink">Long to double type conversion</a></li>
+               <li class="ListItem"><a href="#double_to_long_type_conversion" class="internalLink">Double to long type conversion</a></li>
+            </ul>
+         </div>
+         <div class="GeneralSection"><a name="long_to_string_type_conversion"></a><div class="subSectionTitle">Long to string type conversion</div>
+            <p class="Paragraph"><a href="#explicit_type_conversion" class="internalLink">Explicit</a> long to string type conversion is performed or may be performed during the execution of the following functions.
+            </p>
+            <p class="Paragraph">The resulting string value is the formatted decimal, octal, or hexadecimal representation of the long value.</p>
+            <table class="default">
+               <tbody noTR="3" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Function</th>
+                     <th rowspan="1" colspan="1" class="default">Remark</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_formatting_io/sprintf.htm" class="manualLink">sprintf$()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when using a format with one of the following type conversion specifiers:
+                        'd', 'o', 'lo', 'x', 'lx'
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_formatting_io/vsprintf.htm" class="manualLink">vsprintf$()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when using a format with one of the following type conversion specifiers:
+                        'd', 'o', 'lo', 'x', 'lx'
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph"><a href="#implicit_type_conversion" class="internalLink">Implicit</a> long to string type conversion may occur during the execution of the following functions.
+               The list may be incomplete.
+            </p>
+            <table class="default">
+               <tbody noTR="15" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Function</th>
+                     <th rowspan="1" colspan="1" class="default">Remark</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_formatting_io/edit.htm" class="manualLink">edit$()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when supplying a long value</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_dll/exec_dll_function.htm" class="manualLink">exec_dll_function()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when receiving a long return value in a string variable</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_dll/exec_function.htm" class="manualLink">exec_function()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when receiving a long return value in a string variable</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_starting_and_stopping_programs/exit.htm" class="manualLink">exit()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when supplying a long exit value</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_variables_interprocess_transfer/get.indexed.var.htm" class="manualLink">get.indexed.var()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when getting a value from a long array and storing it in a string variable</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_varying_arguments/get.string.arg.htm" class="manualLink">get.string.arg()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when getting a long argument</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_variables_interprocess_transfer/get.var.htm" class="manualLink">get.var()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when getting a long variable and storing it in a string variable</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_dll/parse_and_exec_function.htm" class="manualLink">parse_and_exec_function()</a></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">when receiving the value of a long argument in the return call string,</p>
+                        <p class="Paragraph">and when receiving a long return value in a string variable</p>
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_variables_interprocess_transfer/put.indexed.var.htm" class="manualLink">put.indexed.var()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when putting a long value in a string array</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_varying_arguments/put.long.arg.htm" class="manualLink">put.long.arg()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when putting into a string argument</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_variables_interprocess_transfer/put.var.htm" class="manualLink">put.var()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when putting a long value in a string variable</td>
+                  </tr>
+                  <tr no="13" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_formatting_io/sprintf.htm" class="manualLink">sprintf$()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when a long value is supplied where according to the type conversion specifier
+                        ("%s" or "%@&lt;format&gt;@")
+                        a string value is expected
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_string_operations/str.htm" class="manualLink">str$()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when supplying a long input value</td>
+                  </tr>
+                  <tr no="15" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_formatting_io/vsprintf.htm" class="manualLink">vsprintf$()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when a long value is supplied where according to the type conversion specifier
+                        ("%s" or "%@&lt;format&gt;@")
+                        a string value is expected
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">When implicit long to string type conversion occurs,
+               the resulting string value is the unformatted decimal representation of the long value,
+               determined according to the following algorithm.
+            </p>
+            <table class="default">
+               <tbody noTR="4" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Integer input value i</th>
+                     <th rowspan="1" colspan="1" class="default">Decimal representation</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">i &lt; 0</td>
+                     <td rowspan="1" colspan="1" class="default">a minus sign '-', followed by the decimal representation of the absolute value of i.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">0 &#8804; i &lt; 10</td>
+                     <td rowspan="1" colspan="1" class="default">the single digit character from the range '0' … '9', corresponding to i.</td>
+                  </tr>
+                  <tr no="4" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">10^n &#8804; i &lt; 10^(n+1) for some positive integer value n</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">a string of n+1 decimal digits;</p>
+                        <p class="Paragraph">the first n decimal digits are the decimal representation of i / 10;</p>
+                        <p class="Paragraph">the final decimal digit is the decimal representation of i \ 10.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Apart from the exact content of the decimal representation,
+               it is important to take notice of its string length.
+            </p>
+            <p class="Paragraph">From the algorithm described above,
+               the following schema can be derived.
+            </p>
+            <table class="default">
+               <tbody noTR="8" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">String length n</th>
+                     <th rowspan="1" colspan="1" class="default">Exactly fitting negative integer input value i</th>
+                     <th rowspan="1" colspan="1" class="default">Exactly fitting non-negative integer input value i</th>
+                     <th rowspan="1" colspan="1" class="default">Acceptable integer input value i</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">n = 1</td>
+                     <td rowspan="1" colspan="1" class="default"></td>
+                     <td rowspan="1" colspan="1" class="default">0 &#8804; i &lt; 10</td>
+                     <td rowspan="1" colspan="1" class="default">0 &#8804; i &lt; 10</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">n &gt; 1</td>
+                     <td rowspan="1" colspan="1" class="default">-10^(n-1) &lt; i &#8804; -10^(n-2)</td>
+                     <td rowspan="1" colspan="1" class="default">10^(n-1) &#8804; i &lt; 10^n</td>
+                     <td rowspan="1" colspan="1" class="default">-10^(n-1) &lt; i &lt; 10^n</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td colspan="4" rowspan="1" class="default">For example:</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">n = 2</td>
+                     <td rowspan="1" colspan="1" class="default">-10 &lt; i &#8804; -1</td>
+                     <td rowspan="1" colspan="1" class="default">10 &#8804; i &lt; 100</td>
+                     <td rowspan="1" colspan="1" class="default">-10 &lt; i &lt; 100</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">n = 3</td>
+                     <td rowspan="1" colspan="1" class="default">-100 &lt; i &#8804; -10</td>
+                     <td rowspan="1" colspan="1" class="default">100 &#8804; i &lt; 1,000</td>
+                     <td rowspan="1" colspan="1" class="default">-100 &lt; i &lt; 1,000</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">n = 10</td>
+                     <td rowspan="1" colspan="1" class="default">-1,000,000,000 &lt; i &#8804; -100,000,000</td>
+                     <td rowspan="1" colspan="1" class="default">1,000,000,000 &#8804; i &lt; 10,000,000,000</td>
+                     <td rowspan="1" colspan="1" class="default">-1,000,000,000 &lt; i &lt; 10,000,000,000</td>
+                  </tr>
+                  <tr no="8" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">n = 11</td>
+                     <td rowspan="1" colspan="1" class="default">-10,000,000,000 &lt; i &#8804; -1,000,000,000</td>
+                     <td rowspan="1" colspan="1" class="default">10,000,000,000 &#8804; i &lt; 100,000,000,000</td>
+                     <td rowspan="1" colspan="1" class="default">-10,000,000,000 &lt; i &lt; 100,000,000,000</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Notice, that the decimal notation of the signed 32-bit value range is [-2,147,483,648 … 2,147,483,647],
+         implying that 11 string positions must be reserved to cover the complete range.</p>
+         </div>
+         <div class="GeneralSection"><a name="string_to_long_type_conversion"></a><div class="subSectionTitle">String to long type conversion</div>
+            <p class="Paragraph"><a href="#explicit_type_conversion" class="internalLink">Explicit</a> string to long type conversion is performed during the execution of the following functions.
+            </p>
+            <table class="default">
+               <tbody noTR="3" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Function</th>
+                     <th rowspan="1" colspan="1" class="default">Remark</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_string_operations/lval.htm" class="manualLink">lval()</a></td>
+                     <td rowspan="1" colspan="1" class="default">Implicit bounds</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_string_operations/string.to.bounded.long.htm" class="manualLink">string.to.bounded.long()</a></td>
+                     <td rowspan="1" colspan="1" class="default">Explicit bounds</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph"><a href="#implicit_type_conversion" class="internalLink">Implicit</a> string to long type conversion may occur during the execution of the following functions.
+               The list may be incomplete.
+            </p>
+            <table class="default">
+               <tbody noTR="14" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Function</th>
+                     <th rowspan="1" colspan="1" class="default">Remark</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_mathematical_operations/abs.htm" class="manualLink">abs()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when a string value is supplied</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_dll/exec_dll_function.htm" class="manualLink">exec_dll_function()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when receiving a string return value in a long variable</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_dll/exec_function.htm" class="manualLink">exec_function()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when receiving a string return value in a long variable</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_variables_interprocess_transfer/get.indexed.var.htm" class="manualLink">get.indexed.var()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when getting a value from a string array and storing it in a long variable</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_varying_arguments/get.long.arg.htm" class="manualLink">get.long.arg()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when getting a string argument</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_variables_interprocess_transfer/get.var.htm" class="manualLink">get.var()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when getting a string variable and storing it in a long variable</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_dll/parse_and_exec_function.htm" class="manualLink">parse_and_exec_function()</a></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">when supplying a value for a long argument,</p>
+                        <p class="Paragraph">and when receiving a string return value in a long variable</p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_variables_interprocess_transfer/put.indexed.var.htm" class="manualLink">put.indexed.var()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when putting a string value in a long array</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_varying_arguments/put.string.arg.htm" class="manualLink">put.string.arg()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when putting into a long argument</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_variables_interprocess_transfer/put.var.htm" class="manualLink">put.var()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when putting a string value in a long variable</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_formatting_io/sprintf.htm" class="manualLink">sprintf$()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when a string value is supplied where according to the type conversion specifier
+                        (e.g. "%d")
+                        a long value is expected
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_formatting_io/string.scan.htm" class="manualLink">string.scan()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when supplying a long reference argument</td>
+                  </tr>
+                  <tr no="14" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_formatting_io/vsprintf.htm" class="manualLink">vsprintf$()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when a string value is supplied where according to the type conversion specifier
+                        (e.g. "%d")
+                        a long value is expected
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">When
+               (explicit or implicit)
+               string to long type conversion occurs,
+               the resulting long value is the numerical value of the decimal representation found in the string.
+            </p>
+            <p class="Paragraph">Initial white space in the string is ignored.</p>
+            <p class="Paragraph">The decimal representation is expected to contain an optional '+' or '-' sign,
+         followed by a sequence of decimal digits '0' … '9'.</p>
+            <p class="Paragraph">When an unexpected character is encountered,
+               that character and any further string contents are ignored.
+            </p>
+            <p class="Paragraph">If the string value cannot be interpreted as the decimal representation of a numerical value,
+               then the value 0 is used.
+            </p>
+            <p class="Paragraph">If the exact numerical value
+               is greater than the maximum value
+               2^( <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-1) - 1
+               of the signed <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-bit
+               range,
+               then that maximum value is used.
+            </p>
+            <p class="Paragraph">If the exact numerical value
+               is less than the minimum value
+               -2^( <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-1)
+               of the signed <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-bit
+               range,
+               then that minimum value is used.
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="long_to_double_type_conversion"></a><div class="subSectionTitle">Long to double type conversion</div>
+            <p class="Paragraph">There are no functions available for <a href="#explicit_type_conversion" class="internalLink">explicit</a> long to double type conversion.
+            </p>
+            <p class="Paragraph"><a href="#implicit_type_conversion" class="internalLink">Implicit</a> long to double type conversion may occur during the execution of the following operators and functions.
+               The list may be incomplete.
+            </p>
+            <table class="default">
+               <tbody noTR="15" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Function</th>
+                     <th rowspan="1" colspan="1" class="default">Remark</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/3gl_features/assignment_operator.htm" class="manualLink">Assignment operator</a></td>
+                     <td rowspan="1" colspan="1" class="default">when assigning a long value to a variable of type double</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/3gl_features/arithmetic_operators.htm" class="manualLink">Binary arithmetic operator</a></td>
+                     <td rowspan="1" colspan="1" class="default">when one operand is of type long and the other of type double,
+                        the long operand is converted to double
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/3gl_features/relational_operators.htm" class="manualLink">Relational operator</a></td>
+                     <td rowspan="1" colspan="1" class="default">when one operand is of type long and the other of type double,
+                        the long operand is converted to double
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_dll/exec_dll_function.htm" class="manualLink">exec_dll_function()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when receiving a long return value in a double variable</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_dll/exec_function.htm" class="manualLink">exec_function()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when receiving a long return value in a double variable</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_variables_interprocess_transfer/get.indexed.var.htm" class="manualLink">get.indexed.var()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when getting a value from a long array and storing it in a double variable</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_varying_arguments/get.double.arg.htm" class="manualLink">get.double.arg()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when getting a long argument</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_variables_interprocess_transfer/get.var.htm" class="manualLink">get.var()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when getting a long variable and storing it in a double variable</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_dll/parse_and_exec_function.htm" class="manualLink">parse_and_exec_function()</a></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">when receiving a long return value in a double variable</p>
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_variables_interprocess_transfer/put.indexed.var.htm" class="manualLink">put.indexed.var()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when putting a long value in a double array</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_varying_arguments/put.long.arg.htm" class="manualLink">put.long.arg()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when putting into a double argument</td>
+                  </tr>
+                  <tr no="13" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_variables_interprocess_transfer/put.var.htm" class="manualLink">put.var()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when putting a long value in a double variable</td>
+                  </tr>
+                  <tr no="14" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_formatting_io/sprintf.htm" class="manualLink">sprintf$()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when a long value is supplied where according to the type conversion specifier
+                        ("%e" or "%f" or "%g")
+                        a double value is expected
+                     </td>
+                  </tr>
+                  <tr no="15" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_formatting_io/vsprintf.htm" class="manualLink">vsprintf$()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when a long value is supplied where according to the type conversion specifier
+                        ("%e" or "%f" or "%g")
+                        a double value is expected
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">When <a href="../../progguide/3gl_features/data_types.htm#long" class="manualLink">long</a> to <a href="../../progguide/3gl_features/data_types.htm#double" class="manualLink">double</a> type conversion occurs,
+               the intention is that the resulting double value
+               has the same numerical value as the original long value.
+            </p>
+            <p class="Paragraph">Integer values in the signed 32-bit range can be represented without loss of precision.</p>
+            <p class="Paragraph">At the edges of the signed 32-bit value range, neighboring floating point numbers have a distance of 2^-22.</p>
+         </div>
+         <div class="GeneralSection"><a name="double_to_long_type_conversion"></a><div class="subSectionTitle">Double to long type conversion</div>
+            <p class="Paragraph"><a href="#explicit_type_conversion" class="internalLink">Explicit</a> double to long type conversion is performed during the execution of the following functions.
+            </p>
+            <table class="default">
+               <tbody noTR="2" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Function</th>
+                  </tr>
+                  <tr no="2" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_mathematical_operations/int.htm" class="manualLink">int()</a></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph"><a href="#implicit_type_conversion" class="internalLink">Implicit</a> double to long type conversion may occur during the execution of the following operators and functions.
+               The list may be incomplete.
+            </p>
+            <table class="default">
+               <tbody noTR="13" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Function</th>
+                     <th rowspan="1" colspan="1" class="default">Remark</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/3gl_features/assignment_operator.htm" class="manualLink">Assignment operator =</a></td>
+                     <td rowspan="1" colspan="1" class="default">when assigning a double value to a variable of type long</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_dll/exec_dll_function.htm" class="manualLink">exec_dll_function()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when receiving a double return value in a long variable</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_dll/exec_function.htm" class="manualLink">exec_function()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when receiving a double return value in a long variable</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_variables_interprocess_transfer/get.indexed.var.htm" class="manualLink">get.indexed.var()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when getting a value from a double array and storing it in a long variable</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_varying_arguments/get.long.arg.htm" class="manualLink">get.long.arg()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when getting a double argument</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_variables_interprocess_transfer/get.var.htm" class="manualLink">get.var()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when getting a double variable and storing it in a long variable</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_dll/parse_and_exec_function.htm" class="manualLink">parse_and_exec_function()</a></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">when receiving a double return value in a long variable</p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_variables_interprocess_transfer/put.indexed.var.htm" class="manualLink">put.indexed.var()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when putting a double value in a long array</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_varying_arguments/put.double.arg.htm" class="manualLink">put.double.arg()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when putting into a long argument</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_variables_interprocess_transfer/put.var.htm" class="manualLink">put.var()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when putting a double value in a long variable</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_formatting_io/sprintf.htm" class="manualLink">sprintf$()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when a double value is supplied where according to the type conversion specifier
+                        (e.g. "%d")
+                        a long value is expected
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_formatting_io/vsprintf.htm" class="manualLink">vsprintf$()</a></td>
+                     <td rowspan="1" colspan="1" class="default">when a double value is supplied where according to the type conversion specifier
+                        (e.g. "%d")
+                        a long value is expected
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">When (explicit or implicit) <a href="../../progguide/3gl_features/data_types.htm#double" class="manualLink">double</a> to <a href="../../progguide/3gl_features/data_types.htm#long" class="manualLink">long</a> type conversion occurs,
+               the intention is that the resulting long value
+               is a good approximation of the original double value.
+            </p>
+            <p class="Paragraph">During explicit double to long type conversion
+               (i.e. when the function <a href="../../progguide/functions_mathematical_operations/int.htm" class="manualLink">int()</a> is used),
+               some additional rounding is done beforehand.
+            </p>
+            <p class="Paragraph">The actual type conversion means that the fractional part of the floating point value is discarded,
+               leaving only its integer part.
+            </p>
+            <p class="Paragraph">If the exact resulting integer value is outside the signed <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-bit
+               range of the long data type,
+               then the result is undefined.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/data_types.htm" class="manualLink">Data types</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/type_conversions, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

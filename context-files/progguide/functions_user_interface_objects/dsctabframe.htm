@@ -1,0 +1,207 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DsCtabFrame</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dsctabframe ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DsCtabFrame</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">A DsCtabFrame object provides a window with one or more form
+               tabs. The tabs can be arranged in a single line or in multiple
+               lines. When tabs are arranged on a single line, scroll buttons
+               are added automatically if the window is not large enough to
+               accommodate all the tabs.
+            </p>
+            <div class="Figure"><img src="../images/uio_018.gif" alt="[...]" height="190" width="250"></div>
+            <p class="Paragraph">A tab frame object can have multiple children. Children are
+               automatically positioned at the top-left of the tab frame. The
+               size of the tab frame window automatically adjusts to
+               accommodate the largest child.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Events</div>
+            <p class="Paragraph">A DsCtabFrame object can generate the following events:</p>
+            <p class="Paragraph">EVTTABSELECT</p>
+            <p class="Paragraph">EVTKEYPRESS</p>
+            <p class="Paragraph">EVTCHANGEFOCUS</p>
+            <p class="Paragraph">EVTSETFOCUS</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" class="none">
+               <tbody noTR="14" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNeventMask</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies the events that the object can generate.
+                        See <a href="../../progguide/events/select.event.input.htm" class="manualLink">select.event.input()</a> for a list of possible masks.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNfixedWidth</p>
+                        <p class="Paragraph">(boolean)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CG]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies whether or not all tabs have the same
+            width. The default is&nbsp;&nbsp;&nbsp;&nbsp; FALSE.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNfontSet</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of a <a href="../../progguide/functions_user_interface_objects/dscfontset.htm" class="manualLink">DsCfontSet</a> object. The font object defines the font attributes to
+                        be applied to tab titles. The default font is the
+                        Windows default font.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNheight</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The height (in pixels) of the client area of the tab
+                        frame window. If this is not specified, the height of
+                        the tab frame adjusts to accommodate the largest child
+                        window.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNmultiLine</p>
+                        <p class="Paragraph">(boolean)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CG]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies whether or not the tabs are arranged on
+                        multiple lines. The default is FALSE.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNobjectType</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td rowspan="1" colspan="1" class="none">The object type.</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNparent</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of the parent object.</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNselected</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">Use to select a particular tab by tab number. The
+            tab numbers range&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from 1 to the total number of
+            tabs. The default is 1.</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsetState</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The state of the object. See <a href="../../progguide/functions_user_interface_objects/dscmwindow.htm" class="manualLink">DsCmwindow</a>.
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNstring</p>
+                        <p class="Paragraph">(string)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The text of the tab titles. Separate the text for
+                        each tab by \n. The number of title strings entered
+                        determines the number of form tabs displayed. This
+                        attribute is mandatory when creating a tab frame.
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtemplate</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of a <a href="../../progguide/functions_user_interface_objects/dsctemplate.htm" class="manualLink">DsCtemplate</a> that defines a set of attributes to be
+                        applied to the object.
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNwidth</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The width (in pixels) of the client area of the tab
+                        frame window. If this is not specified, the width of
+                        the tab frame adjusts to accommodate the largest child
+                        window.
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNx</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The x-coordinate of the object's outer left edge, in
+                        pixels, relative to the inner left edge of its
+                        parent.
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNy</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The y-coordinate of the object's outer top edge, in
+                        pixels, relative to the inner top edge of its
+                        parent.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/dsctabframe, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

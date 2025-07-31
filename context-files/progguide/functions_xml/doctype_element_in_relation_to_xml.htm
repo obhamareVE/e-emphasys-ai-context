@@ -1,0 +1,65 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Doctype element in relation to XML</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="XML object doctype element in relation to xml ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Doctype element in relation to XML</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The optional document type element (created with function
+               xmlNewNode("name", XML_DTD) ) can be used to generate an
+               XML-document with a DTD. When an XML object results from parsing
+               an XML document, no document type (XML_DTD) node is created.
+            </p>
+            <p class="Paragraph">For the document type element of an XML object the following
+               mapping rules apply:
+            </p>
+            <ul class="List">
+               <li class="ListItem">The name of the XML_DTD node is the name of the document
+                  type definition.
+               </li>
+               <li class="ListItem">The value of the optional attribute "NAMEURL" is the
+                  value of the XML expression <i class="Emphasis">SystemLiteral</i> part of the
+                  XML expression <i class="Emphasis">ExternalID</i>.
+               </li>
+               <li class="ListItem">The value of the optional attribute "NAMEPUBLICID" is the
+                  value of the XML expression <i class="Emphasis">PubidLiteral</i> part of the
+                  XML expression <i class="Emphasis">ExternalID</i>. When attribute "NAMEURL" is
+                  defined and attribute "NAMEPUBLICID" is not defined, the XML
+                  expression <i class="Emphasis">ExternalID</i> gets the form: "SYSTEM <i class="Emphasis">SystemLiteral</i>. When both attributes are defined, the
+                  XML expression <i class="Emphasis">ExternalID</i> gets the form: "PUBLIC <i class="Emphasis">PubidLiteral SystemLiteral</i> "
+               </li>
+               <li class="ListItem">No child nodes other than XML_DATA or XML_PI are allowed
+                  for a XML_DTD node.
+               </li>
+               <li class="ListItem">When data is added to a XML_DTD node, this is written
+                  as-is to the XML document. The generator does not generate
+                  XML tags for the declarations.
+               </li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/overview.htm" class="manualLink">XML object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis.htm" class="manualLink">XML object synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_xml/doctype_element_in_relation_to_xml, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

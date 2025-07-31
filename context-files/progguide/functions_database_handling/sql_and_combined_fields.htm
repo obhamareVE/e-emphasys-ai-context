@@ -1,0 +1,160 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>SQL and combined fields</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="SQL combined fields ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">SQL and combined fields</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Defining a query that can be handled efficiently by the query
+               handler is a complex task. This is especially true if there are
+               combined fields (which consist of a number of child fields), as
+               each field must be specified separately.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Specifying a combined field</div>
+            <p class="Paragraph">As the designer can usually judge best which index should be
+               used for an optimum result, the following construction enables
+               the designer to specify a combined field:
+            </p><pre class="Formula">
+WHERE ppmod001.comb1 = {"adv", "099", "123"}
+</pre><p class="Paragraph">A child field can be an expression, a BAAN 4GL variable, or a
+               pseudo variable. A comparison operator (=, &gt;, &gt;=, etc.)
+               for a combined field applies to the combination of all child
+               fields. For example:
+            </p><pre class="CodeBlock">
+| suppose the combined field ppmod001.comb1 consists of the 
+| fields ppmod001.modu, ppmod001.tblno and ppmod001.compno:
+WHERE ppmod001.comb1 &gt;= {"adv", "000", "100"}
+| The above statement is equal to the following statement
+WHERE ( ppmod001.modu &gt; "adv" ) OR
+      ( ppmod001.modu = "adv" AND ppmod001.tblno &gt; "000" ) OR
+      ( ppmod001.modu = "adv" AND ppmod001.tblno = "000" AND
+        ppmod001.compno &gt;= "100" )
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Comparison operators for combined fields</div>
+            <p class="Paragraph">The comparison operators #&gt;, #&gt;=, #&lt;, #&lt;= for a
+               combined field apply to each child field separately. For
+               example:
+            </p><pre class="CodeBlock">
+WHERE       ( ppmod001.comb1 #&gt;= {"adv", "000", "100"} AND
+         ppmod001.comb1 #&lt;= {"zzz", "999", "200"} )
+</pre><p class="Paragraph">This represents the following:</p><pre class="CodeBlock">
+WHERE       ppmod001.modu &gt;= "adv" AND ppmod001.modu &lt;= "zzz" AND
+       ppmod001.tblno &gt;= "000" AND ppmod001.tblno &lt;= "999" AND
+       ppmod001.compno &gt;= "100" AND ppmod001.compno &lt;= "200"
+</pre><p class="Paragraph">If a child field of a combined field is not specified, the
+               value of this field is free and is not included in the
+               condition. For example:
+            </p><pre class="CodeBlock">
+WHERE       ppmod001.comb1 #&gt;= {"adv", "000", "100"} AND
+       ppmod001.comb1 #&lt;= {"zzz", "999"}
+</pre><p class="Paragraph">This represents the following:</p><pre class="CodeBlock">
+WHERE       ppmod001.modu &gt;= "adv" AND ppmod001.modu &lt;= "zzz" AND
+       ppmod001.tblno &gt;= "000" AND ppmod001.tblno &lt;= "999" AND
+       ppmod001.compno &gt;= "100"
+</pre><p class="Paragraph">As the field ppmod001.compno has no upper limit, all values
+               greater than or equal to 100 are fetched.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Indexes as combined fields</div>
+            <p class="Paragraph">You can specify an index as a combined field even if a
+               combined field is not present in the data dictionary. The index
+               name is table._indexY where:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">table</td>
+                     <td rowspan="1" colspan="1" class="none">is the name of the table or alias of a table</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">_index</td>
+                     <td rowspan="1" colspan="1" class="none">is a prefix to indicate that an index field is
+                        involved (a condition for this syntax is that there are
+                        no field names having this format)
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">Y</td>
+                     <td rowspan="1" colspan="1" class="none">is the sequence number of the index defined in the
+                        data dictionary
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">As a combined field is being used, the value must always be
+               enclosed by '{' and '}'. For example:
+            </p><pre class="Formula">
+WHERE tiitm001._index1 = {:item }
+</pre><p class="Paragraph">As with other combined fields, children of index fields for
+               which no value is specified are not included in the condition.
+               However, you can leave fields unspecified only at the end of the
+               index, not in the middle.
+            </p>
+            <p class="Paragraph">An index's pseudo field cannot be used in the query preceded
+               by ':'.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Meanings of upper and lower limits</div>
+            <p class="Paragraph">In connection with combined fields, the combination of
+               upper/lower limit can have two meanings (compare '&gt;' and
+               '#&gt;').
+            </p>
+            <ul class="List">
+               <li class="ListItem">Firstly, it can mean that each field of a record that
+                  meets the conditions lies between the boundaries
+                  specified. For example: <code class="Code">WHERE   ( ppmod001.comb1 #&gt;= {"adv", "000", "100"} AND
+                     ppmod001.comb1 #&lt;={"zzz", "999", "200"} )</code> Here, {"adv", "050" "123"} meet the conditions, but the
+                  combination {"uvw", "123", "300"} does not, because of the
+                  last child field.For this construction we define the INRANGE statement.
+                  With INRANGE, the preceding example becomes: <code class="Code">WHERE   ppmod001.comb1
+                     INRANGE {"adv", "000","100"} AND {"zzz", "999", "200"}</code> With INRANGE, the boundaries indicated apply to each
+                  separate field (usual in print sessions).
+               </li>
+               <li class="ListItem">Secondly, it can mean that all records are selected for
+                  which the combined field (regarded as one single field)
+                  lies between the boundaries indicated. For example: <code class="Code">WHERE       ( ppmod001.comb1 &gt;= {"adv", "000", "100"} AND
+                     ppmod001.comb1 &lt;= {"zzz", "999", "200"} )</code> Here, {"uvw", "123", "300"} meets the condition as
+                  "uvw"&amp;"123"&amp;"300" lies between
+                  "adv"&amp;"000"&amp;"100" and "zzz"&amp;"999"&amp;"200"
+                  ('&amp;' means concatenation).For this purpose we use a BETWEEN statement. With
+                  BETWEEN, the preceding example becomes: <code class="Code">WHERE       ppmod001.comb1
+                     BETWEEN {"adv", "000","100"} AND {"zzz", "999", "200"}</code> With BETWEEN, the fields in the combined are regarded
+                  as one field; the boundaries apply to the combined field
+                  as a whole.
+               </li>
+            </ul>
+            <p class="Paragraph">If the field consists of one single element, INRANGE and
+               BETWEEN are equivalent.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/sql_and_combined_fields, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

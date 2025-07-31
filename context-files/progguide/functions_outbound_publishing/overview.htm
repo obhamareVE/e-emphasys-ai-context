@@ -1,0 +1,59 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Outbound Publishing functions overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Outbound Publishing functions overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">Use the event manager publishing functions to publish XML
+               messages. The functions are used by first invoking the
+               publish.open(), then invoking publish.message() one or more
+               times, and finally invoking publish.close(). If a message
+               could not be built successfully, publish.error.message() can
+               be used instead of publish.message(). It is mandatory to use
+               publish.close() after a successful publish.open().
+            </p>
+            <p class="Paragraph">Each of the functions has a reference parameter
+               result.xml. If the function returns an error value,
+               result.xml contains the details for the error. Otherwise
+               result.xml will be empty (0). Important: if result.xml is
+               filled, it must be cleaned up afterwards using
+            </p>
+            <p class="Paragraph">xmlDelete().</p>
+            <p class="Paragraph">The xml tree is formatted in accordance with the standard
+               result message.
+            </p>
+            <p class="Paragraph">Publishing is done by invoking the OpenWorld Adapter.
+               If the OpenWorld Adapter is unavailable, the functions will
+               return an error. In most cases, the implementation of the
+               publishing functions will invoke an error handler instead of
+               returning the error. In that case the return value will not
+               indicate an error, and no result XML is provided.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Related topic</div>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_outbound_publishing/synopsis.htm" class="manualLink">Outbound Publishing functions synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_outbound_publishing/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

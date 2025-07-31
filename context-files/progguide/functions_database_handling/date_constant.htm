@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Date constant</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Constants (literals) Date DATE constant ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Date constant</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The date constant specifies a date value.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;date constant&gt;
+    ::= DATE '&lt;year&gt;-&lt;month&gt;-&lt;day&gt;'
+      | DATE "&lt;year&gt;-&lt;month&gt;-&lt;day&gt;"
+
+&lt;year&gt;    ::= &lt;digit&gt;...
+&lt;month&gt;   ::= &lt;digit&gt;...
+&lt;day&gt;     ::= &lt;digit&gt;...
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">The date represented by the date literal must be a valid date
+               according to the Gregorian calender. The value of the month must
+               lie in the range [1..12]. The value of the day must lie in the
+               range [1..31]. The minimum date constant is "0001-01-01"; the
+               maximum date constant is "9999-12-31".
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The data type of a date constant is <i class="Emphasis">date</i>.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following date constant represents the date January 10,
+               2003.
+            </p><pre class="CodeBlock">
+DATE '2003-1-10'
+</pre><p class="Paragraph">The following date constant represents the date March 10, 1.
+               That is, the year 1.
+            </p><pre class="CodeBlock">
+DATE '1-03-10'
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/date_constant, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

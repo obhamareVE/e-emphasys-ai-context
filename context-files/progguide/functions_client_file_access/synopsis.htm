@@ -1,0 +1,296 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Client file access synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="client file access synopsis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Client file access synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <table border="0" class="none">
+               <tbody noTR="31" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/client2server.htm" class="manualLink">client2server()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string source, string dest, boolean text.mode
+                           [, boolean rm.file] [, boolean progress.window]
+                           )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/client.add.download.file.htm" class="manualLink">client.add.download.file</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long id, const string source, [const string mime.type, const string target] )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">void</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/client.delete.upload.file.object.htm" class="manualLink">client.delete.upload.file.object</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long id )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/client.download.file.htm" class="manualLink">client.download.file</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string source, [const string mime.type, const string target] )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">string</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/client.get.media.type.htm" class="manualLink">client.get.media.type</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string source )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">string</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/client.get.upload.file.htm" class="manualLink">client.get.upload.file</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long id, long index, [ref string client.filename, ref string mime.type] )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/client.get.upload.filecount.htm" class="manualLink">client.get.upload.filecount</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long id )</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/client.prepare.download.htm" class="manualLink">client.prepare.download</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/client.show.file.htm" class="manualLink">client.show.file</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string source, boolean newwindow, const string title mb, [const string mime.type, const string target, boolean remove.after.download]
+                           )</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">void</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/client.show.url.htm" class="manualLink">client.show.url</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string url )</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/client.start.download.htm" class="manualLink">client.start.download</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long id )</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/client.upload.file.htm" class="manualLink">client.upload.file</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string destination, [ref string client.filename, ref string mime.type] )</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/client.upload.files.htm" class="manualLink">client.upload.files</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string destination )</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/color.dialog.htm" class="manualLink">color.dialog()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( reference long io.color )</code></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/create.local.directory.htm" class="manualLink">create.local.directory()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string dirent )</code></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/create.local.file.htm" class="manualLink">create.local.file()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string filename )</code></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/dir.select.dialog.local.htm" class="manualLink">dir.select.dialog.local()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string dirent )</code></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/get.client.directory.htm" class="manualLink">get.client.directory()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string id)</code></td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/get.client.hostname.htm" class="manualLink">get.client.hostname()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string hostname )</code></td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/get.client.ip.address.htm" class="manualLink">get.client.ip.address()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string ip.address )</code></td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/get.client.timezone.htm" class="manualLink">get.client.timezone()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/get.local.filename.htm" class="manualLink">get.local.filename()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="23" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/remove.local.directory.htm" class="manualLink">remove.local.directory()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string dirent )</code></td>
+                  </tr>
+                  <tr no="24" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/remove.local.file.htm" class="manualLink">remove.local.file()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string filename )</code></td>
+                  </tr>
+                  <tr no="25" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/seq.fstat.local.htm" class="manualLink">seq.fstat.local()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string filename, ref long nr.bytes )</code></td>
+                  </tr>
+                  <tr no="26" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/seq.open.dialog.local.htm" class="manualLink">seq.open.dialog.local()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string defaultname, const string
+                           directory, const string filter, ref string filename
+                           )</code></td>
+                  </tr>
+                  <tr no="27" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/seq.open.dialog.next.htm" class="manualLink">seq.open.dialog.next()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string filename )</code></td>
+                  </tr>
+                  <tr no="28" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/seq.saveas.dialog.local.htm" class="manualLink">seq.saveas.dialog.local()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string defaultname, const string
+                           directory, const string filter, ref string
+                           filename)</code></td>
+                  </tr>
+                  <tr no="29" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/server2client.htm" class="manualLink">server2client()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string source, string dest, boolean text.mode
+                           [, boolean progress.window] [, boolean read.only]
+                           )</code></td>
+                  </tr>
+                  <tr no="30" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/start.application.local.htm" class="manualLink">start.application.local()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string commandline, boolean waitFlag,
+                           reference long exitCode, [const string verb] )</code></td>
+                  </tr>
+                  <tr no="31" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+			boolean
+		     </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/open.url.local.htm" class="manualLink">open.url.local()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string url, long mode, [const string dialog.title [, const string dialog.message [, const string browser.title]]]
+                           )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Deprecated functions</div>
+            <table border="0" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/app_start.htm" class="manualLink">app_start()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string commandline, string directory, string
+                           stdin, string stdout, string stderr )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/app_status.htm" class="manualLink">app_status()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long app.id )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/seq.close.local.htm" class="manualLink">seq.close.local()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long lfn )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/seq.open.local.htm" class="manualLink">seq.open.local()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string filename, string mode(2) [, long
+                           remove.after.use] )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/seq.read.local.htm" class="manualLink">seq.read.local()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string buf, ref long size, long lfn
+                           )</code></td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_client_file_access/seq.write.local.htm" class="manualLink">seq.write.local()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string buf, long size, long lfn )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_client_file_access/overview.htm" class="manualLink">Client file access overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_client_file_access/synopsis.htm" class="manualLink">Client file access synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_client_file_access/synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

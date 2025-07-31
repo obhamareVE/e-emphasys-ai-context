@@ -1,0 +1,146 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Database Change Management (DBCM) overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="DBCM overview ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Database Change Management (DBCM) overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">Database Change Management has been implemented to support Document Authorization, using ION Workflow. 
+               			Document Authorization is about approving or rejecting changes made to Business Objects, in a controlled way.
+            </p>
+            <p class="Paragraph">In case a user makes changes to a Business Object in ERP Enterprise, e.g. a Sales Order, by modifying 
+               			header data, or by adding, changing and/or removing lines, these changes have to be submitted for approval. 
+               			Only once these changes have been approved, the Business Object may be processed further.
+            </p>
+            <p class="Paragraph">This is where DBCM comes in. DBCM provides a mechanism which allows 2 versions of the same Business Object to exist 
+               			during a certain time-frame: a checked-in version and a checked-out version. When a user changes a Business Object,
+               			a checked-out version is created automatically, which is only visible in maintain sessions for that particular 
+               			Business Object. 
+               			The rest of the ERP system will not know about this version. This checked-out version is a kind of scratch version. 
+               			A user can change whatever he likes, changes will not become visible to the rest of the system until he submits 
+               			the changes, and someone approves these changes. It is also possible to undo the changes, and revert back to 
+               			the original version.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Modeling and Deploying Document Authorization</div>
+            <p class="Paragraph">In order to support Document Authorization for a Business Object, a Model must be defined using the 
+               			Object Change Management modeling sessions (ttocm0101m000). This model defines for what user actions the Application
+               			supports Document Authorization. A customer can choose for which Business Objects he wants to use 
+               			Document Authorization, by specifying this in a Deployment (ttocm0111m000).
+            </p>
+            <p class="Paragraph">When the Model describes two Object Types A and B, and the customer uses Document Authorization for Object Type A, 
+               			DBCM will not create checked-out versions for instances of Object Type B. Instances of Object Type A will be 
+               			checked-out always. Depending on the active user actions in the Deployment, submitting changes will either invoke
+               			application logic to publish a Workflow BOD to ION, in order to get approval, or it will lead to an automatic check-in
+               
+               			of the object.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Prerequisites</div>
+            <p class="Paragraph">In order to support Document Authorization, the application must make use of the DAL2 concept. The DAL of the root
+               			table must implement two new hooks: the <a href="../../progguide/functions_dal/on.submit.htm" class="manualLink">on.submit()</a> and the <a href="../../progguide/functions_dal/on.recall.htm" class="manualLink">on.recall()</a> hooks. 
+               			This first hook is executed when changes are submitted for approval. 
+               			The latter hook is executed when the submit must be recalled. Both these hooks must publish a Workflow BOD to 
+               			ION Workflow.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Application changes</div>
+            <p class="Paragraph">In order to support Document Authorization, the application must be adapted.</p>
+            <p class="Paragraph">Once a Business Object is checked-out, no changes to any related Business Objects of another Object Type are allowed. 
+               			This means the DAL should only update tables which belong to the Business Object itself. Only during checking-in, 
+               			Business Objects of other Object Types may be updated. In order to support this, function <a href="../../progguide/functions_dbcm/dbcm.object.is.being.checked.in.htm" class="manualLink">dbcm.object.is.being.checked.in()</a> must be
+               			must be used.
+            </p>
+            <p class="Paragraph">When a session can be used to change data of a Business Object for which Document Authorization must be supported, this
+               			session must specify the selected Object Type, so the portingset knows whether to include checked-out versions when
+               			selecting data from the database.
+               			For maintain sessions this is done automatically by the 4GL Engine, based on the maintable. For update sessions, this must
+               			be done using functions <a href="../../progguide/functions_dbcm/dbcm.select.object.type.htm" class="manualLink">dbcm.select.object.type()</a> or <a href="../../progguide/functions_dbcm/dbcm.select.object.instance.htm" class="manualLink">dbcm.select.object.instance()</a>.
+            </p>
+            <p class="Paragraph">Furthermore, the session must indicate the user action which is being performed. E.g. when the user presses the button 
+               			'Release to Warehousing', and this supports Document Authorization, the application must indicate that this action is
+               			being performed by the application logic. DBCM can then determine whether this action requires approval or not.
+            </p>
+            <p class="Paragraph">The 4GL Engine supports 3 standard actions: inserting, updating and deleting via the User Interface. 
+               			All other (application specific) actions must be selected by the application using function <a href="../../progguide/functions_dbcm/dbcm.select.object.action.htm" class="manualLink">dbcm.select.object.action()</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Checked-out Business Object states</div>
+            <p class="Paragraph">A Business Object can have one of the following states:</p>
+            <ul class="List">
+               <li class="ListItem"><i class="Emphasis">Draft</i><ul class="List">
+                     <li class="ListItem">The Object is in the Draft state; it is checked-out, it can be modified and any change can be submitted, 
+                        						or any change can be undone by doing a "Revert to Approved" on the User Interface.
+                     </li>
+                  </ul>
+               </li>
+               <li class="ListItem"><i class="Emphasis">Draft (Revision)</i><ul class="List">
+                     <li class="ListItem">The Object is in the Draft state, for a second time; this state is equal to the <i class="Emphasis">Draft</i> state, except that an Object can only enter this state after a Recall of any 
+                        						submitted change was successful.
+                     </li>
+                  </ul>
+               </li>
+               <li class="ListItem"><i class="Emphasis">Pending</i><ul class="List">
+                     <li class="ListItem">The Object is in the Pending state; this means all changes to the Object have been submitted and the user
+                        						must wait until the changes are Approved or Rejected. The Object cannot be modified.
+                     </li>
+                  </ul>
+               </li>
+               <li class="ListItem"><i class="Emphasis">Recall Requested</i><ul class="List">
+                     <li class="ListItem">The Object is in the Recall Requested state; the user made a request to ignore all
+                        						submitted changes, as he e.g. wants to make more changes to the Object. The Object cannot be modified.
+                     </li>
+                  </ul>
+               </li>
+               <li class="ListItem"><i class="Emphasis">Rejected</i><ul class="List">
+                     <li class="ListItem">The Object is in the Rejected state; submitted changes were not approved. 
+                        						The user must either make other changes and re-submit them, or perform a Revert to Approved. The Object can be modified.
+                     </li>
+                  </ul>
+               </li>
+               <li class="ListItem"><i class="Emphasis">Approval Received</i><ul class="List">
+                     <li class="ListItem">The Object is in the Approval Received state; usually this state will not be visible to the user.
+                        						It can only be visible if somehow, after receiving an Approval, the Object cannot be checked-in. In this 
+                        						situation an Admin must be involved in order to force a check-in, or to discard changes and perform
+                        						a Revert to Approved. The Object can be modified.
+                     </li>
+                  </ul>
+               </li>
+               <li class="ListItem"><i class="Emphasis">Approved</i><ul class="List">
+                     <li class="ListItem">The Object is in the Approved state; submitted changes have been Approved, and the Object has
+                        						been checked-in. The Object can be modified.
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dbcm/synopsis.htm" class="manualLink">Database Change Management operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dbcm/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

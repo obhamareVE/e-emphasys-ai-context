@@ -1,0 +1,120 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dal.set.field()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dal.set.field dal.set.field functions dal.set.field ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dal.set.field()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_dam&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;dal.set.field&nbsp;
+					(string&nbsp;fld.name, void&nbsp;value [, long&nbsp;element])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Sets the value of the given field and informs the DAL that
+                  the field is changed.
+               </p>
+               <p class="Paragraph">This function does the same as:</p>
+               <p class="Paragraph"><code class="Code">ret.val = dal.set.property(tbl.name, tbl.cursor, fld.name,
+                     value, mode)</code></p>
+               <p class="Paragraph">where <i class="Emphasis">tbl.name</i> and <i class="Emphasis">tbl.cursor</i> are provided
+                  automatically, and <i class="Emphasis">mode</i> is DAL_NEW after <a href="../../progguide/functions_db_operations/dal.new.object.htm" class="manualLink">dal.new.object()</a> or <a href="../../progguide/functions_db_operations/dal.copy.object.htm" class="manualLink">dal.copy.object()</a>, and otherwise
+                  DAL_UPDATE.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>fld.name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the name of the field</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the new value of the field</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>element</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional element of the field in case of array
+                           fields (default is 1)
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Preconditions</div>
+            <p class="Paragraph">When used in a DAL hook, it is only possible to set fields of
+               other DALs. So the following is not allowed:
+            </p><pre class="CodeBlock">
+function extern void tdsls400.pono.update()
+{
+        | Not allowed
+        dal.set.field("tdsls400.pono", value)
+        | Correct
+        tdsls400.pono = value
+}
+</pre><p class="Paragraph">The only exception is the <a href="../../progguide/functions_dal/set.object.defaults.htm" class="manualLink">set.object.defaults()</a> hook. 
+               	In that hook it is allowed to use dal.set.field() for a field of the current DAL. In this way any field dependencies are
+               
+               	taken into account when a save is done.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">This function does not update any dependent fields itself, nor does
+                  it check the field's value! These actions are done during a save.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/dal.set.field, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

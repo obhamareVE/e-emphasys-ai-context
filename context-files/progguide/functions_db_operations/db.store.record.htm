@@ -1,0 +1,83 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>db.store.record()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="db.store.record db.store.record functions db.store.record ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">db.store.record()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;db.store.record&nbsp;
+					(long&nbsp;table_id)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Creates a copy of the current value of the record buffer belonging to the given table id. 
+                  Later on this copied value can be restored by calling <a href="../../progguide/functions_db_operations/db.restore.record.htm" class="manualLink">db.restore.record()</a>.
+               </p>
+               <p class="Paragraph"><a href="../../progguide/functions_db_operations/db.record.changed.htm" class="manualLink">db.record.changed()</a> compares
+                  the current record buffer values with the copy that is created with <code class="Code">db.store.record()</code>.
+               </p>
+               <div class="Note">
+                  <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+                  <div class="NoteContent">
+                     <p class="Paragraph">Note that, because of performance reasons, <code class="Code">db.record.changed()</code> is implemented as a macro. This is the actual implementation:
+                     </p><pre class="CodeBlock">
+#define db.store.record(tbl)
+^       db.columns.to.record(tbl)
+^       on.change.check(rcd.##tbl)
+</pre></div>
+               </div>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>table_id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The table ID in the format <code class="Code">tppmmmxxx</code>. E.g. <code class="Code">twhinh200</code></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/store.restore.examples.htm" class="manualLink">Storing, restoring record buffers - Examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/db.store.record, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

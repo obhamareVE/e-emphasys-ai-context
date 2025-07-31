@@ -1,0 +1,161 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dialog.new()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dialog.new dialog.new functions dialog.new ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dialog.new()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_dialog&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;dialog.new&nbsp;
+					(string&nbsp;dialogName [, long&nbsp;attribute, value, ...])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Creates a new dialog. <i class="Emphasis">dialog.name</i> will be used for the
+                  title bar of the new dialog. Possible attributes are:
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>dialogName</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>attribute, value, ...</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Possible attributes are:</p>
+                        <p class="Paragraph">DLG_FIELD_WIDTH: The number of characters to be displayed
+                           on one line.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The id of the created dialog. This id identifies the
+               dialog in further dialog calls. It is the id of an XML tree
+               that can be debugged during the whole process.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">Attribute</th>
+                     <th rowspan="1" colspan="1" class="none">Type</th>
+                     <th rowspan="1" colspan="1" class="none">Description</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_BUTTONS</td>
+                     <td rowspan="1" colspan="1" class="none">Long</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DSBUTTONOK: show only an OK button.</p>
+                        <p class="Paragraph">DSBUTTONCANCEL: show only a Cancel button.</p>
+                        <p class="Paragraph">DSBUTTONOKCANCEL: show an OK and Cancel button
+                           (default value).
+                        </p>
+                        <p class="Paragraph">DSBUTTONWIZARD: Show Cancel, Back, Next and
+                           Finish button at the bottom.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_STATUSBAR</td>
+                     <td rowspan="1" colspan="1" class="none">Boolean</td>
+                     <td rowspan="1" colspan="1" class="none">If attribute is true, a status bar is added to the
+                        window. The left area can be filled with the function
+                        footnote() and the status field with the function
+                        fill.status.field(2, "text")
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_OK_TEXT</td>
+                     <td rowspan="1" colspan="1" class="none">String</td>
+                     <td rowspan="1" colspan="1" class="none">The text that should appear on the OK button</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_SCROLLBARS</td>
+                     <td rowspan="1" colspan="1" class="none">Boolean</td>
+                     <td rowspan="1" colspan="1" class="none">When set to <i class="Emphasis">true</i>, the fields will appear in a
+                        window with scrollbars if the initial window is larger
+                        than the display size. Be carefull with this option,
+                        because if this option is set, the initial window size
+                        will be retained. Subsequent changes to the window size
+                        (larger description fields) will cause the scrollbars to
+                        appear as well. This is probably an unwanted
+                        side-effect.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_SAVE_GET_DFLTS</td>
+                     <td rowspan="1" colspan="1" class="none">String</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">When set, two extra buttons will be added to the
+                           dialog: "Save Defaults" and "Get Defaults". The first
+                           button will save the current values of all fields on the
+                           dialog. The next time the dialogs open, the user can click
+                           on the "Get Defaults" button to restore these
+                           values.
+                        </p>
+                        <p class="Paragraph">The values are stored in a location, identified by the
+                           user's login code and the code of the running program. If
+                           the running program supports multiple dialogs, the
+                           identification can be made unique by setting the <i class="Emphasis">string</i> argument for this property. This argument
+                           will then be part of the identifying key. If there is only
+                           one dialog in the program, the argument can be an empty
+                           string.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_programmable_dialogs/synopsis.htm" class="manualLink">Programmable dialogs synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_programmable_dialogs/example.htm" class="manualLink">Example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_programmable_dialogs/dialog.new, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

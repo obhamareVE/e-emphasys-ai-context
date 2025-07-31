@@ -1,0 +1,47 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42T13 - Type conflict on parameter</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42T13 - Type conflict on parameter</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">An SQL statement contains a parameter and two conflicting
+               types have been derived for this parameter.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+select firstnme
+from   dbtst120
+where  firstnme = :var
+and    salary = :var
+   </pre><p class="Paragraph">Column firstnme is of type string and column salary is of
+               type real. According to the condition 'firstnme = :var'
+               parameter var must be of type string, but according to the
+               condition 'salary = :var' parameter var must be of type real.
+               This will cause the error:
+            </p>
+            <p class="Paragraph">SQLState 42T13: Type conflict
+               on parameter. Parameter type is STRING, type REAL
+               expected
+            </p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42T13, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

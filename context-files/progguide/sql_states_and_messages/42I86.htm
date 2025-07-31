@@ -1,0 +1,42 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42I86 - Invalid enum description</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42I86 - Invalid enum description</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">An argument of the enum_description function is invalid.</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+select enum_description( sex, '12' )
+from dbtst120
+</pre><p class="Paragraph">Because the language argument is invalid, this query will cause the error:</p>
+            <p class="Paragraph">SQLState 42I86: The length of the language specification in an
+               enum_description function must be exactly 1
+            </p>
+            <p class="Paragraph">In the following example, the first argument is not a valid column name:</p><pre class="CodeBlock">
+select enum_description( 'state', '2' )
+from dbtst120
+</pre><p class="Paragraph">This query will cause the error:</p>
+            <p class="Paragraph">SQLState 42I86: The first operand of the enum_description function must identify a column of a table name</p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42I86, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

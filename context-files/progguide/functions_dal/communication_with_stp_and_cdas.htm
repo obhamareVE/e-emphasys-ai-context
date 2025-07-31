@@ -1,0 +1,73 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Communication with STP and CDAS</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="data access layer communication with stp and cdas ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Communication with STP and CDAS</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Infor ERP Enterprise provides the following functions to enable the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> and external
+               applications to retrieve and display DAL error messages:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_message_handling/dal.clear.error.messages.htm" class="manualLink">dal.clear.error.messages()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_message_handling/dal.count.error.messages.htm" class="manualLink">dal.count.error.messages()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_message_handling/dal.get.error.message.htm" class="manualLink">dal.get.error.message()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_message_handling/dal.get.first.error.message.htm" class="manualLink">dal.get.first.error.message()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_message_handling/dal.reset.error.messages.htm" class="manualLink">dal.reset.error.messages()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_message_handling/dal.set.error.message.htm" class="manualLink">dal.set.error.message(), dal.set.warning.message(), dal.set.info.message()</a></li>
+            </ul>
+            <p class="Paragraph">You use <i class="Emphasis">dal.set.error.message()</i> to specify a message to be
+               displayed when the DAL returns an error (that is, a negative
+               value). This function is called in the DAL script and not in the
+               UI script.
+            </p>
+            <p class="Paragraph">You can call <i class="Emphasis">dal.get.first.error.message()</i> or <i class="Emphasis">dal.get.error.message()</i> to retrieve DAL messages.
+            </p>
+            <p class="Paragraph">The following example illustrates the use of these functions
+               in a UI script:
+            </p><pre class="CodeBlock">
+    db.retry.point()
+
+    nr.of.errors = dal.count.error.messages()
+    if db.retry.hit()  then
+        | Remove the error messages since the last commit
+        dal.reset.error.messages(nr.of.errors)
+    endif
+    ...
+    ...
+    commit.transaction()
+    nr.of.errors = dal.count.error.messages()
+    ...
+    commit.transaction()
+    while dal.get.error.message(message) &gt;= 0
+        report.message(message)
+    endwhile
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_glossary.htm" class="manualLink">DAL terminology</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_ui_and_stp_interaction.htm" class="manualLink">UI, DAL, and STP interaction</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/transition_issues_baan_iv_to_baanerp.htm" class="manualLink">Transition issues (BAAN IV to Infor ERP Enterprise)</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/communication_with_stp_and_cdas, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

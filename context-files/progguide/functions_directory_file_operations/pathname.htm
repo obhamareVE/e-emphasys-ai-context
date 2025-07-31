@@ -1,0 +1,205 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>pathname()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions pathname pathname pathname ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">pathname()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;pathname&nbsp;
+					(string&nbsp;file_basename, string&nbsp;file_type, ref string&nbsp;file_path [, long&nbsp;log.options])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This searches for and returns the location of a specified
+                  file.
+               </p>
+               <p class="Paragraph">The function uses the file
+                  $BSE/lib/fd <i class="Emphasis">ver.pack_combination</i> to find the file. <i class="Emphasis">ver</i> refers to a particular release of the software; <i class="Emphasis">pack_combination</i> refers to a particular package
+                  combination.
+               </p>
+               <p class="Paragraph">It is not necessary to use this function within functions
+                  such as db.bind(). These also use the file
+                  $BSE/lib/fd <i class="Emphasis">ver.pack_combination</i> to search for a path
+                  name.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>file_basename</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the file that must be found.</p>
+                        <p class="Paragraph">The file name must begin with <i class="Emphasis">xppmmm</i> where <i class="Emphasis">pp</i> is a package code, <i class="Emphasis">mmm</i> is a module code, and <i class="Emphasis">x</i> is a single character that corresponds to the file type, as shown in column one of the
+                           	following table:
+                        </p>
+                        <table class="default">
+                           <thead noTR="1" class="default">
+                              <tr no="1" isLast="true" class="default">
+                                 <th rowspan="1" colspan="1" class="default">Character</th>
+                                 <th rowspan="1" colspan="1" class="default">Description</th>
+                                 <th rowspan="1" colspan="1" class="default">file_type argument</th>
+                              </tr>
+                           </thead>
+                           <tbody noTR="8" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">d</td>
+                                 <td rowspan="1" colspan="1" class="default">data/domain definition</td>
+                                 <td rowspan="1" colspan="1" class="default">"D"</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">r</td>
+                                 <td rowspan="1" colspan="1" class="default">report</td>
+                                 <td rowspan="1" colspan="1" class="default">"O"</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">o</td>
+                                 <td rowspan="1" colspan="1" class="default">object</td>
+                                 <td rowspan="1" colspan="1" class="default">"O"</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">f</td>
+                                 <td rowspan="1" colspan="1" class="default">form</td>
+                                 <td rowspan="1" colspan="1" class="default">"S"</td>
+                              </tr>
+                              <tr no="5" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">m</td>
+                                 <td rowspan="1" colspan="1" class="default">menu</td>
+                                 <td rowspan="1" colspan="1" class="default">"M"</td>
+                              </tr>
+                              <tr no="6" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">p</td>
+                                 <td rowspan="1" colspan="1" class="default">program script</td>
+                                 <td rowspan="1" colspan="1" class="default">"P"</td>
+                              </tr>
+                              <tr no="7" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">i</td>
+                                 <td rowspan="1" colspan="1" class="default">include file</td>
+                                 <td rowspan="1" colspan="1" class="default">"P"</td>
+                              </tr>
+                              <tr no="8" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">b</td>
+                                 <td rowspan="1" colspan="1" class="default">additional files</td>
+                                 <td rowspan="1" colspan="1" class="default">"B"</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">For example, when searching for a report, the file name specified must begin with
+                           'r'. The name of the report object located begins with 'o'.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>file_type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The file type. Use the values shown in column
+                           three of the above table.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>file_path</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the full path to the specified
+                           file.
+                        </p>
+                        <p class="Paragraph">If the file is not found, it returns the full
+                           path (including filename) where the file should be
+                           created.
+                        </p>
+                        <p class="Paragraph">If the <i class="Emphasis">file_type</i> is unknown, or <i class="Emphasis">file_basename</i> starts with an invalid character,
+                           this argument returns the value of <i class="Emphasis">file_basename</i>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>log.options</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PATHNAME.NOLOG: Do not log errors in $BSE/log</p>
+                        <p class="Paragraph">PATHNAME.LOG: Do log errors in $BSE/log (default)</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">ENOENT</th>
+                     <td rowspan="1" colspan="1" class="none">File not found.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">Language codes are relevant to reports, forms, and menus. You
+                  can specify the language code for a report, form, or menu file
+                  by appending it to the file name (that is, adding it as the
+                  16 character). If you do not include this, the
+                  current language is assumed.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+string file_path(256)
+if pathname( "rpctst121200010", "O", file_path ) &lt;&gt; 0 then
+                message( "File not found, must be created in %s",
+                         file_path )
+endif
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/overview.htm" class="manualLink">Directory and file operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/synopsis.htm" class="manualLink">Directory and file operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_directory_file_operations/pathname, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

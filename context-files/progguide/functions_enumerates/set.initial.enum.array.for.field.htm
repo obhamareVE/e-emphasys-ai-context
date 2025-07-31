@@ -1,0 +1,114 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>set.initial.enum.array.for.field()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions set.initial.enum.array.for.field set.initial.enum.array.for.field set.initial.enum.array.for.field ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">set.initial.enum.array.for.field()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;set.initial.enum.array.for.field&nbsp;
+					(const string&nbsp;field.name, long&nbsp;size, const long&nbsp;values)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function applies to enumerated fields that are displayed
+                  as listbox or option set. It limits the number of options to the
+                  specified set of enum constants. Any options not specified will be <i class="Emphasis">hidden</i>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>field.name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the optionset field. For example,
+                           "ttadv996.type". For an array field, include the
+                           array element. For example, "tttadv996.type(5)".
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>size</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The size of the <i class="Emphasis">values</i> array.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">const long</td>
+                     <td class="none"><code>values</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The values to be displayed in the field.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			4GL
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 2100.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">This function can only be called in the <i class="Emphasis">after.form.read</i> section. Use the function <code class="Code"> <a href="../../progguide/functions_enumerates/set.enum.array.for.field.htm" class="manualLink">set.enum.array.for.field()</a></code> in other sections.
+               </p>
+               <p class="Paragraph">You can set enumerate values for the current occurrence
+                  only.
+               </p>
+               <p class="Paragraph">If the existing value of an enumerated field in not
+                  included in the new set, the 4GL Engine selects the nearest valid
+                  option.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long enum.values(1) based
+long enum.count
+after.form.read:
+        enum.count = determine.applicable.types(enum.values)
+        set.initial.enum.array.for.field("ttadv996.type", enum.count, enum.values)
+        | Session only works with specified values.
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_enumerates/overview_and_synopsis.htm" class="manualLink">Enumerates overview and synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/enumerate_and_set_constants.htm" class="manualLink">Enumerate and set constants</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_enumerates/set.initial.enum.array.for.field, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

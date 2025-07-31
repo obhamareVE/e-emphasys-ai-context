@@ -1,0 +1,143 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Report sections (report scripts)</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="report sections (report scripts) ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Report sections (report scripts)</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">A report consists of a number of layouts, which define the
+               content and organization of the various parts of a report (for
+               example, the header, footer, and body of the report). There are
+               a number of possible layout types, as follows:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><i class="Emphasis">before.report</i> – printed once at beginning of the
+      report (a title page, for example)
+               </li>
+               <li class="ListItem"><i class="Emphasis">after.report</i> – printed once at the end of the
+      report
+               </li>
+               <li class="ListItem"><i class="Emphasis">header</i> – printed at the top of each page
+               </li>
+               <li class="ListItem"><i class="Emphasis">footer</i> – printed at the bottom of each page
+               </li>
+               <li class="ListItem"><i class="Emphasis">before.field</i> – printed before each group of
+      records in reports of type 3; if a group of records spans
+      more than one page, the before.field layout is repeated at
+      the top of the new page
+               </li>
+               <li class="ListItem"><i class="Emphasis">after.field</i> – printed immediately after each group
+      of records in reports of type 3
+               </li>
+               <li class="ListItem"><i class="Emphasis">detail</i> – used for the individual records included
+      in the body of the report
+               </li>
+            </ul>
+            <p class="Paragraph">The content and arrangement of these layouts are defined in
+               the data dictionary.
+            </p>
+            <p class="Paragraph">In the report sections in a report script, you can program
+               actions to be performed before and/or after execution of
+               individual layouts of these types. Report sections consist of a
+               main section and a subsection. You use a main section to specify
+               the particular layout for which the programmed actions are to be
+               executed. You must follow a main section with either a <i class="Emphasis">before.layout</i> or an <i class="Emphasis">after.layout</i> subsection. These
+               latter specify whether the actions are to be executed before or
+               after the particular layout is printed.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Main sections</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.report.&lt;layout_number&gt;:</div>
+               <p class="Paragraph">Actions programmed in this section are executed for a
+                  specified layout of type before.report.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.report.&lt;layout_number&gt;:</div>
+               <p class="Paragraph">Actions programmed in this section are executed for a
+                  specified layout of type after.report.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">header.&lt;layout_number&gt;:</div>
+               <p class="Paragraph">Actions programmed in this section are executed for a
+                  specified layout of type header.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">detail.&lt;layout_number&gt;:</div>
+               <p class="Paragraph">Actions programmed in this section are executed for a
+                  specified layout of type detail.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.&lt;field name&gt;.&lt;layout_number&gt;:</div>
+               <p class="Paragraph">Actions programmed in this section are executed for a
+                  specified layout of type before.field.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.&lt;field name&gt;.&lt;layout_number&gt;:</div>
+               <p class="Paragraph">Actions programmed in this section are executed for a
+                  specified layout of type after.field.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">footer.&lt;layout_number&gt;:</div>
+               <p class="Paragraph">Actions programmed in this section are executed for a
+                  specified layout of type footer.
+               </p>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Subsections</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.layout:</div>
+               <p class="Paragraph">Actions programmed in this subsection are executed before the
+                  specified layout is printed.
+               </p>
+               <p class="Paragraph">When <i class="Emphasis">lattr.print</i> is set to false, the layout is not
+                  printed and the <i class="Emphasis">before.layout</i> and <i class="Emphasis">after.layout</i> sections are not executed. If you set <i class="Emphasis">lattr.print</i> to
+                  falsein the <i class="Emphasis">before.layout</i> section itself, the layout is
+                  not printed and the <i class="Emphasis">after.layout</i> section is not
+                  executed.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.layout:</div>
+               <p class="Paragraph">Actions programmed in this subsection are executed after the
+                  specified layout is printed.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/overview.htm" class="manualLink">Report scripts overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/sections.htm" class="manualLink">Report script sections</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/predefined_variables.htm" class="manualLink">Predefined variables</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/functions_in_report_scripts.htm" class="manualLink">Report script functions</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/expanding_text_variables.htm" class="manualLink">Expanding text variables</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/report_scripts/report_sections, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

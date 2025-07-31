@@ -1,0 +1,52 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>String hint</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="query hints string hint string hint ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">String hint</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">With the string hint you can add a native RDBMS hint to the
+               query. The string hint is added to the query 'as is'. Using the
+               string hint you can supply hints that are not directly supported.
+               For example, the Oracle RDBMS supports the hint USE_CONCAT, but
+               this hint is not supported through BaanSQL hints. You can now
+               supply this hint as follows:
+            </p><pre class="CodeBlock">
+select nama
+from tccom100
+where bpid = '1000' or bpid = '2000'
+hint "USE_CONCAT"
+</pre><p class="Paragraph">Everything between the double quotes is added to the query
+               as is. It is up to the programmer to verify the correct
+               syntax and semantics of the hint.
+            </p>
+            <p class="Paragraph">The string hint is only applicable to the Oracle level-2
+               driver. For any other driver this hint is ignored.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/hint_types.htm" class="manualLink">Hint types</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/overview.htm" class="manualLink">Query hints overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_query_hints/string_hint, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

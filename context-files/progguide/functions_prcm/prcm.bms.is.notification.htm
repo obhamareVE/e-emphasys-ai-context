@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>prcm.bms.is.notification()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions prcm.bms.is.notification prcm.bms.is.notification prcm.bms.is.notification ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">prcm.bms.is.notification()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean &nbsp;prcm.bms.is.notification&nbsp;
+					( [long&nbsp;bms.command])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Tests whether the specified bms command is a notification of
+                  a subject. If no bms command is passed to this function, the
+                  predefined 4GL variable <code class="Code">bms.sender.command</code> is checked.
+               </p>
+               <p class="Paragraph">If the bms command is a notification of a subject then a <a href="../../progguide/functions_interprocess_communication_bshell/bms.receive.htm" class="manualLink">bms.receive$()</a> is done. The received bms message is decoded
+                  into a subject and an aspect. The decoced subject and aspect can
+                  be retrieved by calling:
+               </p>
+               <ul class="List">
+                  <li class="ListItem"><a href="../../progguide/functions_prcm/prcm.get.subject.htm" class="manualLink">prcm.get.subject()</a></li>
+                  <li class="ListItem"><a href="../../progguide/functions_prcm/prcm.get.aspect.htm" class="manualLink">prcm.get.aspect()</a></li>
+               </ul>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>bms.command</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional bms command that must be checked to see
+                           whether it represents a notification of a subject.
+                        </p>
+                        <p class="Paragraph">If not specified the predefined</p>
+                        <p class="Paragraph">bms.sender.command</p>
+                        <p class="Paragraph">variable is checked</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">This function returns TRUE if the tested bms command
+               represents a PRCM notification. Otherwise FALSE is returned.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_prcm/overview.htm" class="manualLink">Process Change Manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_prcm/synopsis.htm" class="manualLink">Process Change Manager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_prcm/examples.htm" class="manualLink">Process Change Manager Code Examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_prcm/prcm.bms.is.notification, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

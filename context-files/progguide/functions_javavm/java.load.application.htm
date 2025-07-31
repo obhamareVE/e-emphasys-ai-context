@@ -1,0 +1,165 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>java.load.application</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions java.load.application java.load.application java.load.application ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">java.load.application</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;java.load.application&nbsp;
+					(string&nbsp;Application.Name)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Load the most recent version of a Java application and return a handle
+                  to be used in subsequent operations.
+                  A Java virtual machine (JVM) is started when required (or an existing one is used), see <a href="../../progguide/functions_javavm/overview.htm" class="manualLink">Java VM integration - Infor ERP Enterprise Server 3GL</a> for details.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>Application.Name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Name of the Java program to load.</p>
+                        <p class="Paragraph">The system will look for this name in the "java/application" subdirectory of the (landlord) BSE.
+                           	There must be a file there called &lt;package_comb&gt;.pacc, which lists the details of the installed
+                           	java applications) one per line) for that package combination in the given BSE and current package
+                           	combination. The string you pass as Application.Name must be listed in this file at least once.
+                        </p>
+                        <p class="Paragraph">Every line in the .pacc file consists of a tag name (the argument specified as Application.Name), a vertical
+                           	bar (|) followed by the name of the directory the application is installed in.
+                        </p>
+                        <p class="Paragraph">Each application can have multiple versions installed, the java.load.application will automatically
+                           	determine the most recent version (the last matching line in the .pacc file) and use that.
+                        </p>
+                        <p class="Paragraph">Every application can have dependent applications which are loaded recursively until all dependencies are satisfied.
+                           	The application must have an application.xml file installed for this in the (versioned) application directory
+                           	that lists the dependencies (even when there are none).
+                        </p>
+                        <p class="Paragraph">When the loading process is succesful, a handle is returned (a positive integer value).</p>
+                        <p class="Paragraph">When problems are detected, a negative value is returned and one or more log messages are generated.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 2020.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return codes</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&gt;0</th>
+                     <td rowspan="1" colspan="1" class="none">Success. The value is a handle that can be used in subsequent calls to <a href="../../progguide/functions_javavm/java.execute.static.application.method.htm" class="manualLink">java.execute.static.application.method</a>. 
+                        <p class="Paragraph">Eventually, the handle must be released (the application unloaded and the resources freed) by a call to <a href="../../progguide/functions_javavm/java.unload.application.htm" class="manualLink">java.unload.application</a>.
+                        </p>
+                        <p class="Paragraph">When the application exits without calling unload, the bshell will automatically call <a href="../../progguide/functions_javavm/java.unload.application.htm" class="manualLink">java.unload.application</a> for you to unload all active applications.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;=0</th>
+                     <td rowspan="1" colspan="1" class="none">Unable to start a JavaVM on this platform (not supported, configuration or resource problem, application program
+                        	           not found, etc.).
+                        	           Additional details will be available in the message log.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples:</div><pre class="CodeBlock">
+    long Handle, retval
+    long MyInt
+    string MyString
+    string Answer(1000)
+
+    Handle = java.load.application("TestApplication")
+    if (Handle &lt;= 0) then ReportProblemsAndExit()
+    endif
+
+    MyInt = 10
+    MyString = "Hello, World!"
+    retval = java.execute.static.method(Handle,Answer,"MyClass","MyMethod",MyInt,MyString)
+    ...
+    java.unload.application(Handle)
+  </pre><p class="Paragraph">The Java code in an application TestApplication.java might contain a class + method like this:</p><pre class="CodeBlock">
+    public class MyClass
+    {
+        public static String MyMethod (long a, String b)
+        {
+            return("MyMethod called with " + a + " " + b);
+        }
+    }
+  </pre><p class="Paragraph">The file $BSE/java/application/b61au.pacc might look like follows (if the current package combination is b61au):</p><pre class="CodeBlock">
+    TestApplication|tt7.6a/TestApplication/1
+    TestDepA|tt7.6a/TestDepA/1
+    TestDepB|tt7.6a/TestDepB/1
+  </pre><p class="Paragraph">The file $BSE/java/application/tt7.6a/TestApplication/1/application.xml might look like:</p><pre class="CodeBlock">
+    &lt;application version="1.0"&gt;
+      &lt;dependencies&gt;
+	 &lt;dependency name="TestDepA" /&gt;
+      &lt;/dependencies&gt;
+    &lt;/application&gt;
+  </pre><p class="Paragraph">This would allow you to call java.load.application("TestApplication").</p>
+            <p class="Paragraph">The system would see that the current version is installed in $BSE/java/application/tt7.6a/TestApplication/1.
+               The TestApplication.jar and application.xml file would have to be stored in that directory.
+            </p>
+            <p class="Paragraph">Reading that application.xml file will tell the system that TestApplication version 1 depends on application TestDepA.</p>
+            <p class="Paragraph">The TestDepA is found in the .PACC file as living in $BSE/java/application/tt7.6a/TestDepA/1, which is
+               then loaded and its application.xml file ($BSE/java/application/tt7.6a/TestDepA/1/appication.xml) is read.
+               This process is repeated until all dependencies are satisfied (or an error occurs in which case the function
+               will fail and the log will show the details of the problem).
+            </p>
+            <p class="Paragraph">The above code would invoke the java method 'MyMethod' with parameters a=10 and b="Hello, World!".
+               It would return the string "MyMethod called with 10 Hello, World!" which would show up in the Answer
+               string in the 3GL code. The retval would be 0 in that case. When there is a problem, retval will be
+               negative, Answer will be unaltered and the log will describe the problem.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_javavm/overview.htm" class="manualLink">Java VM integration - Infor ERP Enterprise Server 3GL</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_javavm/java.execute.static.application.method.htm" class="manualLink">java.execute.static.application.method</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_javavm/java.unload.application.htm" class="manualLink">java.unload.application</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_javavm/java.load.application, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

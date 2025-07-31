@@ -1,0 +1,49 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Variables (checking changes): sample program</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="variables (checking changes) sample program ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Variables (checking changes): sample program</div>
+      <div class="body">
+         <div class="GeneralSection"><pre class="CodeBlock">
+string   city(10)
+
+city = "Paris"
+on.change.check( city )   | checkpoint value set to Paris
+city = "Rotterdam"
+on.change.check( city )   | checkpoint value now set to Rotterdam
+city = "Amsterdam"
+if ( changed(city) ) then | changed() returns TRUE here, but also sets
+              |    the new checkpoint value to "Amsterdam"
+        not.curr( city )
+        message( "City is changed, old city is: %s",city )  | city is Rotterdam
+        not.curr( city )
+        message( "New city is: %s",city )   | city is Amsterdam
+endif
+off.change.check(city)
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_variables_checking_changes/overview.htm" class="manualLink">Variables (checking changes) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_variables_checking_changes/synopsis.htm" class="manualLink">Variables (checking changes) synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_variables_checking_changes/example, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

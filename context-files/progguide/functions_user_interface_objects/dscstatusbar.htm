@@ -1,0 +1,173 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DsCstatusBar</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dscstatusbar ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DsCstatusBar</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">A DsCstatusBar object provides a status bar that displays
+               help and status information in a main window (DsCmwindow
+               object). Each main window can include one DsCstatusBar object.
+               The status bar is positioned at the bottom of the window. It
+               occupies part of the client area of the window. When a status
+               bar is added to a main window, the window size is adjusted so
+               that the size of the client area is not affected.
+            </p>
+            <div class="Figure"><img src="../images/uio_017.gif" alt="[...]" height="28" width="544"></div>
+            <p class="Paragraph">The help and status messages are displayed in one or more
+               panes in the status bar. There are three types of status bar
+               panes:
+            </p>
+            <ul class="List">
+               <li class="ListItem">Default text pane. This displays the status field
+                  strings and tooltip strings for commands/buttons, as
+                  defined in the DsNcommandStrings attribute of the
+                  DsCmwindow object. This pane occupies the full width of
+                  the status bar not occupied by other status panes.The application can also write text to this pane using <i class="Emphasis">change.object()</i>. Messages defined by the
+                  DsNcommandStrings attribute temporarily overwrite this
+                  text. But when these disappear, the last message sent to
+                  the default pane by the application is restored.
+               </li>
+               <li class="ListItem">Application-defined text panes. The application supplies
+                  text for these panes using <i class="Emphasis">change.object()</i>. The
+                  application must specify the length of the panes when
+                  creating the status bar.
+               </li>
+               <li class="ListItem">Indicator panes. These indicate the current status of
+                  certain keyboard keys (for example, NUM LOCK and CAPS LOCK).
+                  Microsoft Windows supplies the text for the panes. The
+                  application must specify the availability of the panes when
+                  creating the status bar.
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Events</div>
+            <p class="Paragraph">A DsCstatusBar object does not generate events.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" class="none">
+               <tbody noTR="8" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNobjectType</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td rowspan="1" colspan="1" class="none">The object type.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNparent</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of the parent object.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsetState</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The state of the object. See <a href="../../progguide/functions_user_interface_objects/dscmwindow.htm" class="manualLink">DsCmwindow</a>.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNstatusIndicator</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This specifies the indicators to be shown on the
+                           status bar. You can specify any combination of the
+                           following values:
+                        </p>
+                        <p class="Paragraph">DSCAPS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Caps Lock indicator.</p>
+                        <p class="Paragraph">DSNUM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Num Lock indicator.</p>
+                        <p class="Paragraph">DSSCRL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Scroll Lock indicator.</p>
+                        <p class="Paragraph">DSKANA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kana Lock indicator (Japanese systems
+            only).</p>
+                        <p class="Paragraph">Indicators are displayed on the status bar in the
+                           above order.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNstatusLength</p>
+                        <p class="Paragraph">(long array)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[C]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies the length (in characters) of
+                        application-defined text panes in the status bar. The
+                        number of entries in the array determines the number of
+                        application-defined panes displayed.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNstatusPane</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[SQ]</td>
+                     <td rowspan="1" colspan="1" class="none">This selects a status bar text pane for the
+                        DsNstatusText attribute. The pane numbers range from 0
+                        to the total number of panes defined by
+                        DsNstatusLength. The default text pane is indexed by 0;
+                        this is also the default value.
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DsNstatusText</td>
+                     <td rowspan="1" colspan="1" class="none">[SQ]</td>
+                     <td rowspan="1" colspan="1" class="none">The text for the status bar text pane specified by
+                        DsNstatusPane. If DsNstatusPane is not set, the text is
+                        displayed in the default text pane. To clear a text
+                        pane, set this attribute to an empty string.
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtemplate</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of a <a href="../../progguide/functions_user_interface_objects/dsctemplate.htm" class="manualLink">DsCtemplate</a> that defines a set of attributes to be
+                        applied to the object.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/dscstatusbar, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

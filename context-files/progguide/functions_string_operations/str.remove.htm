@@ -1,0 +1,135 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>str.remove$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions str.remove$ str.remove$ str.remove$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">str.remove$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;str.remove$&nbsp;
+					(const string&nbsp;string$, long&nbsp;offset, long&nbsp;nchars)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Returns a copy of a string having a number of characters deleted, beginning at a specified character position.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>string$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">a string</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>offset</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the character position to begin deleting characters; note that:</p>
+                        <ul class="List">
+                           <li class="ListItem">if <code class="Code">offset &lt; 1</code>, then nothing is removed
+                           </li>
+                           <li class="ListItem">if <code class="Code">offset &gt; len(string$)</code>, then nothing is removed
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>nchars</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the number of characters to remove; note that:</p>
+                        <ul class="List">
+                           <li class="ListItem">if <code class="Code">nchars &lt; 0</code>, then all characters starting at <code class="Code">offset</code> are removed
+                           </li>
+                           <li class="ListItem">if <code class="Code">nchars = 0</code>, then nothing is removed
+                           </li>
+                           <li class="ListItem">if <code class="Code">offset + nchars &gt; len(string$)</code>, then all characters starting at <code class="Code">offset</code> are removed
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">A string equivalent to the specified string less the specified number of characters</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1700.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+string source(50)
+string target(50)
+
+|                  1         2         3         4         5
+| pos     12345678901234567890123456789012345678901234567890
+source = "the quick brown fox jumps over the lazy dog"
+
+target = str.remove$(source, 5, 6)
+| "quick " is removed
+| target now contains "the brown fox jumps over the lazy dog"
+
+target = str.remove$(source, -1, 6)
+| nothing is removed
+| target now contains "the quick brown fox jumps over the lazy dog"
+
+target = str.remove$(source, 50, 6)
+| nothing is removed
+| target now contains "the quick brown fox jumps over the lazy dog"
+
+target = str.remove$(source, 10, 0)
+| nothing is removed
+| target now contains "the quick brown fox jumps over the lazy dog"
+
+target = str.remove$(source, 26, -1)
+| all after "jumps" is removed
+| target now contains "the quick brown fox jumps"
+
+target = str.remove$(source, 26, 100)
+| all after "jumps" is removed
+| target now contains "the quick brown fox jumps"
+		</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/overview.htm" class="manualLink">String operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/synopsis.htm" class="manualLink">String operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_string_operations/str.remove, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42I31 - Multiple compnr specifications on table</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42I31 - Multiple compnr specifications on table</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">An SQL statement contains two or more company number
+               specifications for the same table.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+select *
+from   dbtst120
+where  _compnr = 100 and _compnr = 200
+   </pre><p class="Paragraph">This query causes the error:</p>
+            <p class="Paragraph">SQLState 42I31: Multiple compnr
+               specifications on table 'dbtst120'
+            </p>
+            <p class="Paragraph">You can use a UNION query to retrieve data from multiple
+               companies:
+            </p><pre class="CodeBlock">
+select *
+from   dbtst120
+where  _compnr = 100
+union all
+select *
+from   dbtst120
+where  _compnr = 200
+   </pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/company_numbers.htm" class="manualLink">Company numbers</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/union.htm" class="manualLink">UNION operator</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42I31, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

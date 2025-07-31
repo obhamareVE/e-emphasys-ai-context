@@ -1,0 +1,65 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Multitasking and the GUI</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="multitasking and the gui ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Multitasking and the GUI</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The BAAN bshell provides the execution environment for BAAN
+               applications. Whenever a user logs on to the BAAN system, a
+               separate bshell process is activated for that user. So, when
+               multiple users log on to the same BAAN system, or when the same
+               user logs on multiple times, multiple bshell processes are
+               activated on the execution platform.
+            </p>
+            <p class="Paragraph">The BAAN bshell provides a multitasking execution environment
+               for BAAN applications. Each bshell can execute and schedule
+               multiple parallel processes. So, it blocks individual processes
+               only while they are waiting for user input, and not while other
+               processes are waiting for user input.
+            </p>
+            <p class="Paragraph">This section provides an overview of how processes and user
+               interface interaction are managed by the bshell.
+            </p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/multitasking/bshell_scheduler.htm" class="manualLink">Bshell scheduler</a></li>
+               <li class="ListItem"><a href="../../progguide/multitasking/context_switches.htm" class="manualLink">Context switches</a></li>
+               <li class="ListItem"><a href="../../progguide/multitasking/events.htm" class="manualLink">Events</a></li>
+               <li class="ListItem"><a href="../../progguide/multitasking/requests_inquiries_and_replies.htm" class="manualLink">Requests, inquiries, and replies</a></li>
+               <li class="ListItem"><a href="../../progguide/multitasking/processes_process_groups_and_main_windows.htm" class="manualLink">Processes, process groups, and main windows</a></li>
+               <li class="ListItem"><a href="../../progguide/multitasking/synchronizing_processes_with_the_waitfunction.htm" class="manualLink">Synchronizing processes with the wait() function</a></li>
+            </ul>
+            <p class="Paragraph">The following diagram provides a schematic overview of the
+               relationships between the scheduler, process queues, and the
+               display server.
+            </p>
+            <div class="Figure"><img src="../images/multitasking_001.gif" alt="[...]" height="344" width="491"></div>
+            <div class="Note">
+               <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+               <div class="NoteContent">
+                  <p class="Paragraph">The bshell is a single-threaded process. The complete bshell
+                     blocks when a database action is performed by the database
+                     driver.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/multitasking/multitasking_and_the_gui, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

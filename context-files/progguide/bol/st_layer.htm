@@ -1,0 +1,97 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Protected Layer</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Protected Layer</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Methods in this library are used to actually perform tasks on
+               Components.
+            </p>
+            <p class="Paragraph">Components hide the implementation of the persistency
+               layer. The Protected Layer can be regarded as the successor of
+               the socalled 'Integration Library'. Standard methods, like
+               'Create', 'Change', 'Delete', etc. will call DAL2 methods or
+               Sessions (via the Function Server). The execution logic of the
+               methods List and Show are also part of this layer.
+            </p>
+            <p class="Paragraph">The Protected Layer is generated completely by the system,
+               thefore the script is read-only.
+            </p>
+            <p class="Paragraph">Within the Protected Layer so-called setter and getter
+               functions are present. These functions have to be used to send
+               and retrieve data in other layers. Also in the Protected Layer
+               functions are present is retrieve information whether an
+               attribute has been set before.
+            </p>
+            <p class="Paragraph">'Getter' functions looks like:</p>
+            <ul class="List">
+               <li class="ListItem">&lt;dll name&gt;.get.&lt;component
+                  name&gt;.&lt;attribute&gt;()
+               </li>
+               <li class="ListItem">example: gaadv.bl090st00.get.Header.payByBP()</li>
+               <li class="ListItem">example without component:
+                  gaadv.bl091st00.get.payByBP()
+               </li>
+            </ul>
+            <p class="Paragraph">'Setter' functions looks like:</p>
+            <ul class="List">
+               <li class="ListItem">&lt;dll name&gt;.set.&lt;component
+                  name&gt;.&lt;attribute&gt;(value)
+               </li>
+               <li class="ListItem">example:
+                  gaadv.bl090st00.set.Header.customerReference(value)
+               </li>
+               <li class="ListItem">example without component:
+                  gaadv.bl091st00.set.payByBP(value)
+               </li>
+            </ul>
+            <p class="Paragraph">Functions to detect whether an attribute have been set looks
+               like:
+            </p>
+            <ul class="List">
+               <li class="ListItem">&lt;dll name&gt;.is.set.&lt;component
+                  name&gt;.&lt;attribute&gt;()
+               </li>
+               <li class="ListItem">example: gaadv.bl090st00.is.set.Header.payByBP()</li>
+               <li class="ListItem">example without component:
+                  gaadv.bl091st00.is.set.payByBP()
+               </li>
+            </ul>
+            <p class="Paragraph">Also within the Protected Layer a function is present to get
+               the result of a method.
+            </p>
+            <ul class="List">
+               <li class="ListItem">&lt;dll name&gt;.get.method.result()</li>
+               <li class="ListItem">example: gaadv.bl090st00.get.method.result()</li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/bol/overview.htm" class="manualLink">Business Object Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/bol/sb_layer.htm" class="manualLink">Public Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/bol/sc_layer.htm" class="manualLink">Interface Conversion Public Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/bol/sm_layer.htm" class="manualLink">Interface Conversion Protected Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/bol/sf_layer.htm" class="manualLink">Specific Methods Library</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/bol/st_layer, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

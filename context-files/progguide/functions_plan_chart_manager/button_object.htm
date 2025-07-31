@@ -1,0 +1,81 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>PCM_OT_BUTTON – button object</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="pcm_ot_button button object ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">PCM_OT_BUTTON – button object</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">On the planning board you can create buttons to which you
+               can link sessions or options. You must create a PCM_OT_BUTTON
+               object for each button.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmButtonId</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">The unique identification number of the button.
+                        This is included in PCM_EVTPUSSBUTTON events, in
+                        order to identify the button that the user
+                        selected.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmButtonName(50)</p>
+                        <p class="Paragraph">(string)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">The text string for the button's label.</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmButtonSensitive</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This indicates whether the button is currently
+                           enabled or disabled. The possible values are:
+                        </p>
+                        <p class="Paragraph">true&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The button is
+               enabled.</p>
+                        <p class="Paragraph">false&nbsp;&nbsp;&nbsp; The button is disabled and cannot be
+               selected.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/overview.htm" class="manualLink">Plan Chart Manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/synopsis.htm" class="manualLink">Plan Chart Manager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/example.htm" class="manualLink">Plan Chart Manager: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_plan_chart_manager/button_object, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

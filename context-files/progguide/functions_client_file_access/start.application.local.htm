@@ -1,0 +1,149 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>start.application.local()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions start.application.local start.application.local start.application.local ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">start.application.local()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_desktop&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;boolean&nbsp;start.application.local&nbsp;
+					(string&nbsp;commandline, boolean&nbsp;waitFlag, ref long&nbsp;exitCode [, const string&nbsp;verb])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This starts the client application specified in the <i class="Emphasis">commandline</i> argument.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>commandline</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This specifies the command that starts the
+                           application. If <i class="Emphasis">commandline</i> does not include a
+                           directory path, Windows searches for the executable
+                           file in the following directories, in the order shown
+                           				below:
+                        </p>
+                        <ol class="ProcedureList">
+                           <li class="ProcedureListItem">The Windows system directory.</li>
+                           <li class="ProcedureListItem">The Windows directory.</li>
+                           <li class="ProcedureListItem">The directories listed in the PATH environment
+                              				  variable.
+                           </li>
+                        </ol>
+                        <p class="Paragraph">This argument may also contain the full pathname of
+                           a local document. In this case the application
+                           associated with this document extension will be
+                           started.
+                        </p>
+                        <p class="Paragraph">The <i class="Emphasis">commandline</i> parameter may one or more
+                           times include the string ${BSE_TMP} which indicates the
+                           ${BSE}\tmp directory in case of Baan Windows or Windows
+                           temp directory in case of WebUI.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">boolean</td>
+                     <td class="none"><code>waitFlag</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Indicates whether the application must wait for the
+                           local application to exit.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>exitCode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Exit code of local application. Only contains a
+                           valid exit code when the <i class="Emphasis">waitFlag</i> attribute was
+                           true
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">[const string</td>
+                     <td class="none"><code>verb</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">When the <i class="Emphasis">commandline</i> argument contains a
+                           document pathname, the optional <i class="Emphasis">verb</i> argument
+                           may contain the action to be performed on this
+                           document. The default action is <i class="Emphasis">"open"</i>. Another
+                           useful verb is: <i class="Emphasis">"print"</i>. In case this argument
+                           is supplied, the <i class="Emphasis">waitFlag</i> argument will be
+                           ignored and the execution will always by
+                           asynchronous.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">true</th>
+                     <td rowspan="1" colspan="1" class="none">Application started successfully.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">false</th>
+                     <td rowspan="1" colspan="1" class="none">Application failed to start.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">This function is not supported in HTMLUI. See the <a href="../../progguide/webtop/htmlui_adoption.htm" class="manualLink">Implementing HTML UI support</a> for more information.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_client_file_access/overview.htm" class="manualLink">Client file access overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_client_file_access/synopsis.htm" class="manualLink">Client file access synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_client_file_access/start.application.local, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>text.set.language()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions text.set.language text.set.language text.set.language ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">text.set.language()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean &nbsp;text.set.language&nbsp;
+					(string&nbsp;text_field, string&nbsp;language, void&nbsp;...)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function changes the language for multiline textfields that are displayed
+                  on the form and are part of the
+                  maintable. That language will be used when (one of) the
+                  textfields are/is read from the text tables. The language that
+                  is set with this function can still be overridden by setting
+                  attr.textlang$ in the before.choice section for the
+                  text.manager.
+               </p>
+               <p class="Paragraph">If this function is called after one of the texts is changed
+                  in a multiline text formfield, then the record is saved first
+                  (with the text in the current language). After the language is
+                  set the text is read from the database in the new language, but
+                  not displayed on the form yet. You can use function
+                  display(&lt;text_field&gt;) to display the text in the multiline
+                  text formfield.
+               </p>
+               <p class="Paragraph">Field names and language codes must be provided in pairs.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>text_field</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the textfield for which the language
+                           must be set.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>language</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The language code.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>...</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">false&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; some error occured</p>
+            <p class="Paragraph">true&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function successful</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			4GL
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">You cannot use the function in 
+                  any subsection of <i class="Emphasis">choice.update.db</i> and in the field sections of
+                  the multiline text fields.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+    ret = text.set.language("ttadv151.docu", "3",
+                "ttadv151.help", "1")
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_text_fields/overview.htm" class="manualLink">Text fields overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_text_fields/synopsis.htm" class="manualLink">Text fields synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_text_fields/text.set.language, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

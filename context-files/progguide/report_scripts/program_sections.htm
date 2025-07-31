@@ -1,0 +1,87 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Program sections (report scripts)</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="program sections (report scripts) ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Program sections (report scripts)</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">You use program sections to define functions, and to declare
+               tables and global variables, that you want to use in the other
+               sections in the script. You also use program sections to program
+               actions that you want executed at the start and end of the
+               report and after the report writer receives a record.
+            </p>
+            <p class="Paragraph">The following program sections are available. They are all
+               main sections. There are no subsections associated with program
+               sections.
+            </p>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">declaration:</div>
+               <p class="Paragraph">Use this section to declare tables and global variables that
+                  you want to use in other sections in the report script. See <a href="../../progguide/3gl_features/declarations.htm" class="manualLink">Declarations</a> and <a href="../../progguide/3gl_features/tables.htm" class="manualLink">Tables</a> for details of the declaration syntax. Note that there is no
+                  need to declare a table if a field of that table is defined in
+                  the report writer as an input field. The report writer declares
+                  such tables automatically.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.program:</div>
+               <p class="Paragraph">Use this section to program actions that must be executed
+                  when the report is started. For example, you can use this
+                  section to initialize or import variables.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.program:</div>
+               <p class="Paragraph">Use this section to program actions that must be executed at
+                  the end of the report. For example, you can use this section to
+                  close files that were opened during execution of the report.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.receive.data:</div>
+               <p class="Paragraph">Use this section to program actions that must be executed
+                  whenever the report writer receives a record. For example, you
+                  can use this section to read or modify a variable.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">functions:</div>
+               <p class="Paragraph">Use this section to define functions that you want to use in
+                  other sections in the report script. The syntax of functions
+                  used in a report script is the same as for <a href="../../progguide/3gl_features/functions.htm" class="manualLink">Functions</a>.
+               </p>
+               <p class="Paragraph">When included, this section must be the last section in the
+                  report script.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/overview.htm" class="manualLink">Report scripts overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/sections.htm" class="manualLink">Report script sections</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/predefined_variables.htm" class="manualLink">Predefined variables</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/functions_in_report_scripts.htm" class="manualLink">Report script functions</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/expanding_text_variables.htm" class="manualLink">Expanding text variables</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/report_scripts/program_sections, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>array.info()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="array.info array.info functions array.info ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">array.info()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;array.info&nbsp;
+					(void&nbsp;var, ref long&nbsp;nr.dims, ref long&nbsp;dim.info())</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function returns the number of dimensions in a specified array
+                  variable and the size of each dimension.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>var</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Any variable,
+                           typically (but not restricted to) an array variable.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>nr.dims</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Reference parameter which receives the number of dimensions of <i class="Emphasis">var</i>.
+                        </p>
+                        <p class="Paragraph">If <i class="Emphasis">var</i> is a non-array variable,
+                           then <i class="Emphasis">nr.dims</i> returns 0.
+                        </p>
+                        <p class="Paragraph">If <i class="Emphasis">var</i> is a string variable,
+                           then <i class="Emphasis">nr.dims</i> returns 1.
+                        </p>
+                        <p class="Paragraph">If <i class="Emphasis">var</i> is an array variable,
+                           then the value returned by <i class="Emphasis">nr.dims</i> is at least 1 and at most 4.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>dim.info()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Reference array parameter which receives the sizes of the dimensions of <i class="Emphasis">var</i>.
+                        </p>
+                        <p class="Paragraph">The number of elements of <i class="Emphasis">dim.info</i> must not be less than the value returned by <i class="Emphasis">nr.dims</i></p>
+                        <p class="Paragraph">The first <i class="Emphasis">nr.dims</i> elements of <i class="Emphasis">dim.info</i> are filled with the size of the corresponding dimension of <i class="Emphasis">var</i>.
+                        </p>
+                        <p class="Paragraph">Any further elements of <i class="Emphasis">dim.info</i> (but not further than dim.info(4))
+                           are set to value 0.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long    a3(3,5,7)
+string  s3(3,5,7)
+long    nr.dims
+long    dim.info(4)
+string  b4(1,1,1,1) based
+
+array.info( a3, nr.dims, dim.info )
+        | Returns:
+        |  nr.dims = 3
+        |  dim.info(1) = 3     
+        |  dim.info(2) = 5
+        |  dim.info(3) = 7
+
+array.info( s3, nr.dims, dim.info )
+        | Returns:
+        |  nr.dims = 3
+        |  dim.info(1) = 3
+        |  dim.info(2) = 5
+        |  dim.info(3) = 7
+ 
+array.info( b4, nr.dims, dim.info )
+        | Returns:
+        |  nr_dims = 4 
+        |  dim.info(1) = 0 
+        |  dim.info(2) = 0 
+        |  dim.info(3) = 0 
+        |  dim.info(4) = 0 
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_memory_operations/overview_and_synopsis.htm" class="manualLink">Memory operations overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_memory_operations/array.info, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

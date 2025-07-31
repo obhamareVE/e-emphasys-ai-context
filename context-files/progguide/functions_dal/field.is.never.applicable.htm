@@ -1,0 +1,140 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>field.is.never.applicable()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="field.is.never.applicable field.is.never.applicable functions field.is.never.applicable ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">field.is.never.applicable()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean&nbsp;field.is.never.applicable&nbsp;
+					( [long&nbsp;mode] [, long&nbsp;element])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this hook to indicate if the field is never applicable. If a
+                  	  field is never applicable then the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will not display the field in the UI (it is made invisible at
+                  	  start up of a session). A field can become never applicable based on a static
+                  	  constraint, like a parameter setting.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>mode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional mode flag, one of { 0, DAL_NEW, DAL_UPDATE }</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>element</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional element number in case the field is an element of an array 
+                           (for non array fields this value is 1)
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The hook should return true in case the field is never
+               	  applicable. In that case the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will remove the field from the UI. In any other case the hook
+               	  should return False.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			DAL
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">When called</div>
+            <ul class="List">
+               <li class="ListItem">Just before the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> calls the <i class="Emphasis">after.form.read</i> section of the UI
+                  		script
+               </li>
+               <li class="ListItem">At the time of checking the fields value, but only in case the
+                  		field is not empty
+               </li>
+            </ul>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">In this hook you should test on fields that have a <i class="Emphasis">static</i> nature. In practice this means that you will test
+                  	  fields that do not belong to the business object you're dealing with. So you
+                  	  should not use this hook to test a field of an order header in the DAL of the
+                  	  order lines. Instead, think of parameter settings, user profiles. meta data
+                  	  etc.
+               </p>
+               <p class="Paragraph">If this hook does not exist, it is assumed that the field is not
+                  	  never applicable. Note that this does not mean that the field is applicable.
+                  	  See the <a href="../../progguide/functions_dal/field.is.applicable.htm" class="manualLink">field.is.applicable()</a> hook.
+               </p>
+               <p class="Paragraph">By default, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will check fields that are defined as never applicable to see if
+                  	  they are empty. You can skip these checks by calling function <a href="../../progguide/functions_db_operations/dal.skip.never.applicable.checks.htm" class="manualLink">dal.skip.never.applicable.checks()</a> in the <a href="../../progguide/functions_dal/before.open.object.set.htm" class="manualLink">before.open.object.set()</a> hook of the DAL.
+               </p>
+               <p class="Paragraph">In case checks have to be performed and the field has a value
+                  	  and is never applicable then the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> shows the following message to the end-user: The %1$s field must
+                  	  be empty.
+               </p>
+               <p class="Paragraph">It is advised to set an error message with <a href="../../progguide/functions_message_handling/dal.set.error.message.htm" class="manualLink">dal.set.error.message()</a> to indicate the reason why the
+                  	  field is never applicable.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+function extern domain tcbool whinh200.sfrv.is.never.applicable()
+{
+    if whwmd000.lfcs = tcyesno.no then
+        dal.set.error.message("whinhs0395")
+        |* The Engineering Revision field is not applicable
+        |* according to the Warehousing Parameters.
+        return(true)
+    endif
+
+    return(false)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_4gle.htm" class="manualLink">DAL2 and the 4GL Engine</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_flow.htm" class="manualLink">DAL2 Flow of field hooks</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/field.is.never.applicable, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Expressions and operators</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="expressions and operators ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Expressions and operators</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">An expression is a combination of variables, constants, and
+               operators, built up in accordance with certain rules. There are two
+               main kinds of operators: unary and binary. All operators, except
+               the negation operators, are binary. Expressions with unary
+               operators have the general form:
+            </p><pre class="CodeBlock">
+operator operand
+</pre><p class="Paragraph">Expressions with binary operators have the following form,
+               where each operand can be another expression, variable, or
+               constant:
+            </p><pre class="CodeBlock">
+operand operator operand
+</pre><p class="Paragraph">The available operators can be divided into four
+               categories: arithmetic, relational, logical, and control
+               operators.
+            </p>
+            <table width="100%" border="1" class="default">
+               <tbody noTR="5" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Class</th>
+                     <th rowspan="1" colspan="1" class="default">Operator</th>
+                     <th rowspan="1" colspan="1" class="default">Description</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Arithmetic</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">-</p>
+                        <p class="Paragraph">* / + -</p>
+                        <p class="Paragraph">\</p>
+                        <p class="Paragraph">&amp;</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">negation</p>
+                        <p class="Paragraph">multiply/divide/add/subtract</p>
+                        <p class="Paragraph">remainder after division</p>
+                        <p class="Paragraph">string concatenation</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Relational</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">= or EQ</p>
+                        <p class="Paragraph">&lt;&gt; or NE</p>
+                        <p class="Paragraph">&gt; or GT</p>
+                        <p class="Paragraph">&lt; or LT</p>
+                        <p class="Paragraph">&gt;= or GE</p>
+                        <p class="Paragraph">&lt;= or LE</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">is equal to</p>
+                        <p class="Paragraph">is not equal to</p>
+                        <p class="Paragraph">is greater than</p>
+                        <p class="Paragraph">is less than</p>
+                        <p class="Paragraph">is equal to or greater than</p>
+                        <p class="Paragraph">is equal to or less than</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Logical</td>
+                     <td rowspan="1" colspan="1" class="default">AND, OR, NOT</td>
+                     <td rowspan="1" colspan="1" class="default">logical 'and', 'or' and negation</td>
+                  </tr>
+                  <tr no="5" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">Control</td>
+                     <td rowspan="1" colspan="1" class="default">? :</td>
+                     <td rowspan="1" colspan="1" class="default">question mark expression</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">The question mark expression is a special type of
+               expression. The syntax is:
+            </p>
+            <p class="Paragraph">If the condition is TRUE, expr_1 is executed. If the
+               condition is FALSE, expr_2 is executed. For example:
+            </p><pre class="CodeBlock">
+&lt;condition&gt; ? &lt;expr_1&gt; : &lt;expr_2&gt;
+</pre><p class="Paragraph">If the condition is TRUE, expr_1 is executed. If the
+               condition is FALSE, expr_2 is executed. For example:
+            </p><pre class="CodeBlock">
+lng_1 = (a &gt;= b) ? a : b
+        | if condition a &gt;= b is TRUE lng_1 gets the value of a,
+        | else lng_1 gets the value of b.
+</pre><p class="Paragraph">If boolean variabele bl is TRUE, expr_1 is executed. If bl
+               is FALSE, expr_2 is executed. For example:
+            </p><pre class="CodeBlock">
+bl ? &lt;expr_1&gt; : &lt;expr_2&gt;
+</pre><p class="Paragraph">For further information on the different operator types,
+               see the following sections:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/3gl_features/arithmetic_operators.htm" class="manualLink">Arithmetic operators</a></li>
+               <li class="ListItem"><a href="../../progguide/3gl_features/relational_operators.htm" class="manualLink">Relational operators</a></li>
+               <li class="ListItem"><a href="../../progguide/3gl_features/logical_operators.htm" class="manualLink">Logical operators</a></li>
+               <li class="ListItem"><a href="../../progguide/3gl_features/operator_precedence.htm" class="manualLink">Operator precedence</a></li>
+               <li class="ListItem"><a href="../../progguide/3gl_features/assignment_operator.htm" class="manualLink">Assignment Operator</a></li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/expressions_and_operators, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

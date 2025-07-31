@@ -1,0 +1,121 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>form.command.is.allowed()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="UI template Form command hooks form.command.is.allowed form.command.is.allowed functions form.command.is.allowed ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">form.command.is.allowed()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_4gl2&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;extern boolean&nbsp;form.command.is.allowed&nbsp;
+					()</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">You can use this hook to define the conditions under which
+                  		the form command should become enabled in the UI. The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will use
+                  		this hooks to determine whether the form command must be enabled
+                  		or disabled.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The hook should return TRUE in case the form command is allowed. In that case the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will enable
+               		the form command on the UI. In any other case the hook should
+               		return FALSE.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">When called</div>
+            <p class="Paragraph">Form commands are handled based on the Command Availability
+               setting in the Form Commands session (ttadv3118s000):
+            </p>
+            <ul class="List">
+               <li class="ListItem"><i class="Emphasis">Command Availability Always</i></li>
+               <li class="ListItem">The disabling of these form commands may depend on the
+                  values of the view fields. Therefore, these form commands
+                  are handled only when the session has view fields (form
+                  type 3). This applies to both overview and details
+                  sessions. The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> handles these commands just before the <i class="Emphasis">read.view</i> sub-event of the <i class="Emphasis">main.table.io</i> event section is executed.
+               </li>
+               <li class="ListItem"><i class="Emphasis">Command Availability One Record Selected and Records
+                     	 Selected</i></li>
+               <li class="ListItem">In overview sessions these form commands are handled
+                  when one or more records are marked. The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> handles these commands just before the <i class="Emphasis">after.choice</i> sub-event of the <i class="Emphasis">choice.mark.occur</i> event section is
+                  executed.In details sessions these commands are handled when the
+                  occurrence is being displayed again. This is just before
+                  the <i class="Emphasis">before.display.object</i> event section is
+                  executed.
+               </li>
+               <li class="ListItem"><i class="Emphasis">Command Availability Never</i></li>
+               <li class="ListItem">These commands are never handled.</li>
+            </ul>
+            <p class="Paragraph">See <a href="../../progguide/functions_ui_template/standard.command.is.allowed.htm" class="manualLink">standard.command.is.allowed()</a> for more information regarding the event
+               sections, and the type of commands that are handled when these
+               events are executed.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <ul class="List">
+                  <li class="ListItem">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will also use the DAL <a href="../../progguide/functions_dal/business.method.is.allowed.htm" class="manualLink">business.method.is.allowed()</a> hook to determine whether
+                     the form commands must be enabled or disabled.
+                  </li>
+                  <li class="ListItem">First, the UI hook will be called. If this returns
+                     FALSE, the command will be disabled, if it returns TRUE
+                     (or if it does not exist), the DAL <a href="../../progguide/functions_dal/business.method.is.allowed.htm" class="manualLink">business.method.is.allowed()</a> hook will be called. If this
+                     returns FALSE, the command will be disabled, else it will
+                     be enabled.
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+function extern boolean address.fmfoc200.sfad.is.allowed()
+{
+    if isspace(fmfoc200.sfad) then
+        return(false)
+    endif
+
+    return(true)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_ui_template/overview.htm" class="manualLink">UI Template</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_ui_template/standard.command.is.allowed.htm" class="manualLink">standard.command.is.allowed()</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_ui_template/form.command.is.allowed, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

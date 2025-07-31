@@ -1,0 +1,74 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Parallel Application Processing Tracing</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Parallel Application Processing Tracing ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Parallel Application Processing Tracing</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Error reporting and tracing is an important aspect of a product which is usually run without any user interface.
+               Therefore two mechanisms are used: error logging and tracing. Below the characteristics of these two mechanisms are described.
+               The characteristics of the error logging mechanism are:
+            </p>
+            <ul class="List">
+               <li class="ListItem">Serious errors are logged unconditionally</li>
+               <li class="ListItem">A single error log file is used in which all serious errors related to parallel processing are logged.</li>
+               <li class="ListItem">The name of this file is: ${BSE}/log/log.parbshell</li>
+               <li class="ListItem">The maximum file size of this file is: 512 Kb</li>
+               <li class="ListItem">When this size is reached, the current log file is named "olg.parbshell" and a new empty
+                  "log.parbshell" file is created.
+               </li>
+            </ul>
+            <p class="Paragraph">The characteristics of the trace mechanism are:</p>
+            <ul class="List">
+               <li class="ListItem">A single trace file will be generated per parallel session run</li>
+               <li class="ListItem">All bshells started for this run will send errors and trace output to the same file.</li>
+               <li class="ListItem">The name of this file is: ${BSE}/log/trace.parbshell.&lt;pid&gt; 
+                  in which &lt;pid&gt; is the process id of the client Bshell
+               </li>
+               <li class="ListItem">Tracing is enabled by setting the environment variable: TRACEPARBSHELL in the client environment.
+                  This variable can be set to the following values 
+                  <ul class="List">
+                     <li class="ListItem">0 - no tracing</li>
+                     <li class="ListItem">1 - trace API calls</li>
+                     <li class="ListItem">2 - trace communication</li>
+                     <li class="ListItem">3 - trace API calls and communication</li>
+                  </ul>
+               </li>
+            </ul>
+            <p class="Paragraph">Each trace line is constructed as follows:</p>
+            <p class="Paragraph">[date time] &lt;user&gt;:&lt;session&gt;(pid), &lt;component&gt; (bshellpid): &lt;message&gt;</p>
+            <p class="Paragraph">In which &lt;component&gt; is one of:</p>
+            <ul class="List">
+               <li class="ListItem">ClientAPI</li>
+               <li class="ListItem">ServerAPI</li>
+               <li class="ListItem">SupportAPI</li>
+               <li class="ListItem">ServerCOM</li>
+               <li class="ListItem">ClientCOM</li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/overview.htm" class="manualLink">Parallel Application Processing Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/synopsis.htm" class="manualLink">Parallel Application Processing synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_parallel_processing/tracing, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

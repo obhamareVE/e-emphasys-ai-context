@@ -1,0 +1,139 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Column filtering</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="column filtering ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Column filtering</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Columnfilter introduction</div>
+            <p class="Paragraph">With LN-UI easy filtering is introduced.</p>
+            <p class="Paragraph">Easy filtering is present on an overview screen.</p>
+            <p class="Paragraph">At the top of a column filter fields are shown.</p>
+            <p class="Paragraph">Column filtering is possible when easy filtering is allowed (see tools parameters) and the filter above the column is enabled.</p>
+            <p class="Paragraph">With input of a value in the filter field or by defining an advanced filter, column-filtering is activated.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Functionality columnfiltering</div>
+            <p class="Paragraph">Column filtering is based on the supported SQL of the database.</p>
+            <p class="Paragraph">With tools version 12.0 of tools shipped by Enterprise Server 10.5, a column filter on most fields is or can be made possible.</p>
+            <p class="Paragraph">Limited support for column filtering in tools version 11.2.</p>
+            <p class="Paragraph">1.	Support multiple references to same table by introducing an alias for duplicate occurrence in the engine</p>
+            <p class="Paragraph">2.	Expression of calculated CDF is used in filter expression</p>
+            <p class="Paragraph">Note: on error evaluating the expression of a CDF, all filters of calculated CDF’s are not taken in account.</p>
+            <p class="Paragraph">3.	Query extend field functionality is added. ( must be adopted in the application to make filter possible)</p>
+            <p class="Paragraph">4.	Extension scripts are supported.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Columnfilter in overview</div>
+            <table border="1" cellspacing="0" cellpadding="0" width="832" class="default">
+               <tbody noTR="10" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <td width="181" valign="top" rowspan="1" colspan="1" class="default">easy filter on column</td>
+                     <td width="128" valign="top" rowspan="1" colspan="1" class="default"></td>
+                     <td width="264" colspan="3" valign="top" rowspan="1" class="default">old behaviour before application version 10.x</td>
+                     <td width="251" colspan="3" valign="top" rowspan="1" class="default">new behaviour application version 10.x and higher</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td width="181" valign="top" rowspan="1" colspan="1" class="default"></td>
+                     <td width="128" valign="top" rowspan="1" colspan="1" class="default"></td>
+                     <td width="90" valign="top" rowspan="1" colspan="1" class="default">main table</td>
+                     <td width="92" valign="top" rowspan="1" colspan="1" class="default">unique reference</td>
+                     <td width="91" valign="top" rowspan="1" colspan="1" class="default">multiple reference</td>
+                     <td width="91" valign="top" rowspan="1" colspan="1" class="default">main table</td>
+                     <td width="78" valign="top" rowspan="1" colspan="1" class="default">unique reference</td>
+                     <td width="79" valign="top" rowspan="1" colspan="1" class="default">multiple reference</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td width="181" rowspan="2" valign="top" colspan="1" class="default">on form of session</td>
+                     <td width="128" valign="top" rowspan="1" colspan="1" class="default">table-field</td>
+                     <td width="90" valign="bottom" rowspan="1" colspan="1" class="default">yes</td>
+                     <td width="92" valign="bottom" rowspan="1" colspan="1" class="default">yes</td>
+                     <td width="91" valign="bottom" rowspan="1" colspan="1" class="default">no</td>
+                     <td width="91" valign="bottom" rowspan="1" colspan="1" class="default">yes</td>
+                     <td width="78" valign="bottom" rowspan="1" colspan="1" class="default">yes</td>
+                     <td width="79" valign="bottom" rowspan="1" colspan="1" class="default">yes</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td width="128" valign="top" rowspan="1" colspan="1" class="default">form-field</td>
+                     <td width="276" colspan="3" valign="bottom" rowspan="1" class="default">no</td>
+                     <td width="251" colspan="3" valign="bottom" rowspan="1" class="default">no*)</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td width="181" rowspan="2" valign="top" colspan="1" class="default">custom defined field</td>
+                     <td width="128" valign="top" rowspan="1" colspan="1" class="default">standaard CDF</td>
+                     <td width="90" valign="bottom" rowspan="1" colspan="1" class="default">yes</td>
+                     <td width="92" valign="bottom" rowspan="1" colspan="1" class="default">yes</td>
+                     <td width="91" valign="bottom" rowspan="1" colspan="1" class="default">no</td>
+                     <td width="91" valign="bottom" rowspan="1" colspan="1" class="default">yes</td>
+                     <td width="78" valign="bottom" rowspan="1" colspan="1" class="default">yes</td>
+                     <td width="79" valign="bottom" rowspan="1" colspan="1" class="default">yes</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td width="128" valign="top" rowspan="1" colspan="1" class="default">calculated CDF</td>
+                     <td width="276" colspan="3" valign="bottom" rowspan="1" class="default">no</td>
+                     <td width="251" colspan="3" valign="bottom" rowspan="1" class="default">yes**)</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td width="181" rowspan="2" valign="top" colspan="1" class="default">query.extend.fld… function</td>
+                     <td width="128" valign="top" rowspan="1" colspan="1" class="default">table-field</td>
+                     <td width="90" valign="bottom" rowspan="1" colspan="1" class="default">no</td>
+                     <td width="92" valign="bottom" rowspan="1" colspan="1" class="default">no</td>
+                     <td width="91" valign="bottom" rowspan="1" colspan="1" class="default">no</td>
+                     <td width="91" valign="bottom" rowspan="1" colspan="1" class="default">yes</td>
+                     <td width="78" valign="bottom" rowspan="1" colspan="1" class="default">yes</td>
+                     <td width="79" valign="bottom" rowspan="1" colspan="1" class="default">yes</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td width="128" valign="top" rowspan="1" colspan="1" class="default">form-field</td>
+                     <td width="276" colspan="3" valign="bottom" rowspan="1" class="default">no</td>
+                     <td width="251" colspan="3" valign="bottom" rowspan="1" class="default">yes</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td width="181" rowspan="2" valign="top" colspan="1" class="default">extension script fields</td>
+                     <td width="128" valign="top" rowspan="1" colspan="1" class="default">table field</td>
+                     <td width="90" valign="bottom" rowspan="1" colspan="1" class="default">no</td>
+                     <td width="92" valign="bottom" rowspan="1" colspan="1" class="default">no</td>
+                     <td width="91" valign="bottom" rowspan="1" colspan="1" class="default">no</td>
+                     <td width="91" valign="bottom" rowspan="1" colspan="1" class="default">yes</td>
+                     <td width="78" valign="bottom" rowspan="1" colspan="1" class="default">yes</td>
+                     <td width="79" valign="bottom" rowspan="1" colspan="1" class="default">yes</td>
+                  </tr>
+                  <tr no="10" isLast="true" class="default">
+                     <td width="128" valign="top" rowspan="1" colspan="1" class="default">calculated field by script function</td>
+                     <td width="276" colspan="3" valign="bottom" rowspan="1" class="default">no</td>
+                     <td width="251" colspan="3" valign="bottom" rowspan="1" class="default">no</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">*) often can be replaced in the application by SQL expression through query.extend.fld… functions.</p>
+            <p class="Paragraph">**) must be a valid sql expression</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/overview.htm" class="manualLink">SQL query extensions overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/synopsis.htm" class="manualLink">SQL query extensions synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/example.htm" class="manualLink">Query extensions sample program</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/quoted.string.htm" class="manualLink">quoted.string()</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_sql_query_extensions/column_filtering, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

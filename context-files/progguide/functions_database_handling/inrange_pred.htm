@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>INRANGE predicate</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="INRANGE Search condition INRANGE ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">INRANGE predicate</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The INRANGE predicate evaluates to True if the <i class="Emphasis">individual</i> value expressions of the first row value
+               constructor lie between the <i class="Emphasis">individual</i> value expression
+               of the second and the third value expression.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;inrange predicate&gt;
+    ::= <a href="../../progguide/functions_database_handling/row_value_constructor.htm" class="manualLink">Row value constructor</a> [NOT] INRANGE
+           <a href="../../progguide/functions_database_handling/row_value_constructor.htm" class="manualLink">Row value constructor</a> AND <a href="../../progguide/functions_database_handling/row_value_constructor.htm" class="manualLink">Row value constructor</a>
+      </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">No <i class="Emphasis">&lt;row value constructor&gt;</i> shall contain a
+               reference to an array column.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The following equivalences hold:</p><pre class="Formula">
+      expr NOT INRANGE lower AND upper  &lt;=&gt;  NOT ( expr INRANGE upper AND lower )
+</pre><pre class="Formula">
+      expr INRANGE lower AND upper  &lt;=&gt;  expr #&gt;= lower AND expr #&lt;= upper
+</pre><p class="Paragraph">For the exact semantics see <a href="../../progguide/functions_database_handling/comparison_pred.htm" class="manualLink">Comparison predicate</a>, <a href="../../progguide/functions_database_handling/not_sc.htm" class="manualLink">NOT boolean operator</a> and <a href="../../progguide/functions_database_handling/and_sc.htm" class="manualLink">AND boolean operator</a>.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following predicate evaluates to True if <i class="Emphasis">edlevel</i> lies in the range [10..18].
+            </p><pre class="CodeBlock">
+edlevel INRANGE 10 AND 18
+</pre><p class="Paragraph">The following predicate evaluates to True if <i class="Emphasis">salary</i> lies in the range [20000.00..50000.00] and <i class="Emphasis">bonus</i> is
+               larger than 1000.00.
+            </p><pre class="CodeBlock">
+{ salary, bonus } INRANGE { 20000.00, 1000.00 } AND { 50000.00 }
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/between_pred.htm" class="manualLink">BETWEEN predicate</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/inrange_pred, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

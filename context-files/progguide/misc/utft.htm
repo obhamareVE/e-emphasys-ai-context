@@ -1,0 +1,256 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>UTF-T Encoding</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Unicode UTF-T ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">UTF-T Encoding</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">UTF-T is a proprietary way to encode <a href="../../progguide/misc/unicode.htm" class="manualLink">Unicode</a> characters in a stream of TSS
+               characters. See <a href="../../progguide/misc/tss.htm" class="manualLink">TSS Encoding</a></p>
+            <p class="Paragraph">Each Unicode character is encoded by a sequence of one or four
+	  bytes. The Unicode standard defines 2^16 + 2^20 code points, numbered
+     U+0000 … U+10FFFF. With a straightforward binary numbering of the complete
+     Unicode range, 21 bits are needed. Name the 21 bits as follows:</p>
+            <p class="Paragraph"><code class="Code">b_20   b_19 b_18 b_17 b_16   b_15 b_14 b_13 b_12   b_11 b_10 b_9 b_8   b_7 b_6 b_5 b_4   b_3 b_2 b_1 b_0</code></p>
+            <p class="Paragraph">For a slightly different numbering, first add an amount of
+               0x0F0000 (binary 0 1111 0000 0000 0000 0000) to the code point value. Name the
+               resulting 21 bits as follows:
+            </p>
+            <p class="Paragraph"><code class="Code">c_20   c_19 c_18 c_17 c_16   c_15 c_14 c_13 c_12   c_11 c_10 c_9 c_8   c_7 c_6 c_5 c_4   c_3 c_2 c_1 c_0</code></p>
+            <p class="Paragraph">Notice the following properties of the two groups of
+               bits:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><code class="Code">b_</code> <i class="Emphasis">i</i> = <code class="Code">c_</code> <i class="Emphasis">i</i> for each <i class="Emphasis">i</i> in the range 0 … 15.
+               </li>
+               <li class="ListItem">Bits <code class="Code">b_20   b_19 b_18 b_17 b_16</code> run through only the first 17 of the 32 combinations,
+        viz. 00000 … 10000.
+               </li>
+               <li class="ListItem">Bits <code class="Code">c_20   c_19 c_18 c_17 c_16</code> run through only the last 17 of the 32 combinations,
+        viz. 01111 … 11111.
+               </li>
+               <li class="ListItem">The single bit <code class="Code">c_20</code> is enough to distinguish between the Basic Multilingual Plane
+      (Unicode range U+0000 … U+FFFF, <code class="Code">c_20</code> = 0)
+      and the Supplementary Characters (Unicode range U+010000 … U+10FFFF, <code class="Code">c_20</code> = 1).
+               </li>
+            </ul>
+            <p class="Paragraph">In the explanation below,</p>
+            <ul class="List">
+               <li class="ListItem">each small box represents a single bit;</li>
+               <li class="ListItem">each group of four horizontally adjacent small boxes represents
+                  		a hexadecimal digit;
+               </li>
+               <li class="ListItem">each row (containing two groups of four horizontally adjacent
+                  		boxes) represents a byte.
+               </li>
+            </ul>
+            <p class="Paragraph">After these preliminaries, the UTF-T encoding is defined as
+               	  follows.
+            </p>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Single byte UTF-T</div>
+               <p class="Paragraph">Single byte UTF-T is used for Unicode characters in the range
+		U+0000 … U+007F. For a Unicode character in this range,
+      bit <code class="Code">b_</code> <i class="Emphasis">i</i> is zero
+                  for each <i class="Emphasis">i</i> in the range 7 … 21, and the remaining 7 bits are
+		represented in single byte UTF-T as follows:
+               </p>
+               <table border="1" class="default">
+                  <tbody noTR="1" class="default">
+                     <tr no="1" isLast="true" class="default">
+                        <td rowspan="1" colspan="1" class="default">0</td>
+                        <td rowspan="1" colspan="1" class="default">b_6</td>
+                        <td rowspan="1" colspan="1" class="default">b_5</td>
+                        <td rowspan="1" colspan="1" class="default">b_4</td>
+                        <td width="10" rowspan="1" colspan="1" class="default"></td>
+                        <td rowspan="1" colspan="1" class="default">b_3</td>
+                        <td rowspan="1" colspan="1" class="default">b_2</td>
+                        <td rowspan="1" colspan="1" class="default">b_1</td>
+                        <td rowspan="1" colspan="1" class="default">b_0</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+               <p class="Paragraph">Notice that this Unicode range corresponds with the <a href="../../progguide/misc/ascii_table.htm" class="manualLink">ASCII table (C0 Controls and Basic Latin)</a> range. and
+                  		that each character in this range is encoded by a byte with the corresponding
+                  		ASCII value.
+               </p>
+               <div class="subExampleSection">
+                  <div class="subSectionTitle">Example</div>
+                  <ul class="List">
+                     <li class="ListItem">ASCII character 'A' (ASCII value 0x41)</li>
+                     <li class="ListItem">is assigned to Unicode code point U+0041,</li>
+                     <li class="ListItem">which corresponds to the 21-bit sequence 0 0000 0000 0000
+                        			0100 0001,
+                     </li>
+                     <li class="ListItem">which is represented in single byte UTF-T as 0100
+                        			0001,
+                     </li>
+                     <li class="ListItem">or in hexadecimal notation: 41.</li>
+                  </ul>
+               </div>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Four word UTF-T</div>
+               <p class="Paragraph">Four word UTF-T is used for Unicode characters in the range
+		U+0080 … U+10FFFF. For a Unicode character in this range the 21 bits <code class="Code">c_</code> <i class="Emphasis">i</i> are represented in four byte UTF-T as follows:
+               </p>
+               <table border="1" class="default">
+                  <tbody noTR="7" class="default">
+                     <tr no="1" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default">1</td>
+                        <td rowspan="1" colspan="1" class="default">0</td>
+                        <td rowspan="1" colspan="1" class="default">0</td>
+                        <td rowspan="1" colspan="1" class="default">1</td>
+                        <td width="10" rowspan="1" colspan="1" class="default"></td>
+                        <td rowspan="1" colspan="1" class="default">1</td>
+                        <td rowspan="1" colspan="1" class="default">0</td>
+                        <td rowspan="1" colspan="1" class="default">1</td>
+                        <td rowspan="1" colspan="1" class="default">1</td>
+                     </tr>
+                     <tr no="2" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default"></td>
+                     </tr>
+                     <tr no="3" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default">1</td>
+                        <td rowspan="1" colspan="1" class="default">c_20</td>
+                        <td rowspan="1" colspan="1" class="default">c_19</td>
+                        <td rowspan="1" colspan="1" class="default">c_18</td>
+                        <td rowspan="1" colspan="1" class="default"></td>
+                        <td rowspan="1" colspan="1" class="default">c_17</td>
+                        <td rowspan="1" colspan="1" class="default">c_16</td>
+                        <td rowspan="1" colspan="1" class="default">c_15</td>
+                        <td rowspan="1" colspan="1" class="default">c_14</td>
+                     </tr>
+                     <tr no="4" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default"></td>
+                     </tr>
+                     <tr no="5" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default">1</td>
+                        <td rowspan="1" colspan="1" class="default">c_13</td>
+                        <td rowspan="1" colspan="1" class="default">c_12</td>
+                        <td rowspan="1" colspan="1" class="default">c_11</td>
+                        <td rowspan="1" colspan="1" class="default"></td>
+                        <td rowspan="1" colspan="1" class="default">c_10</td>
+                        <td rowspan="1" colspan="1" class="default">c_9</td>
+                        <td rowspan="1" colspan="1" class="default">c_8</td>
+                        <td rowspan="1" colspan="1" class="default">c_7</td>
+                     </tr>
+                     <tr no="6" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default"></td>
+                     </tr>
+                     <tr no="7" isLast="true" class="default">
+                        <td rowspan="1" colspan="1" class="default">1</td>
+                        <td rowspan="1" colspan="1" class="default">c_6</td>
+                        <td rowspan="1" colspan="1" class="default">c_5</td>
+                        <td rowspan="1" colspan="1" class="default">c_4</td>
+                        <td rowspan="1" colspan="1" class="default"></td>
+                        <td rowspan="1" colspan="1" class="default">c_3</td>
+                        <td rowspan="1" colspan="1" class="default">c_2</td>
+                        <td rowspan="1" colspan="1" class="default">c_1</td>
+                        <td rowspan="1" colspan="1" class="default">c_0</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+               <p class="Paragraph">Notice the following details:</p>
+               <ul class="List">
+                  <li class="ListItem">this Unicode range corresponds with the non-ASCII
+                     		  Characters;
+                  </li>
+                  <li class="ListItem">the first byte of the four byte UTF-T representation has the
+                     		  value 0x9B, i.e. the normal lead byte value for four-byte TSS
+                     		  characters;
+                  </li>
+                  <li class="ListItem">as the bits <code class="Code">c_20   c_19 c_18 c_17 c_16</code> run through only the last 17 of the 32 combinations, viz. 01111 …
+		  11111, the second byte of the four byte UTF-T representation is in the range
+		  0xBC … 0xFF;
+                  </li>
+                  <li class="ListItem">as the single bit <code class="Code">c_20</code> is enough to distinguish between the Basic Multilingual Plane and the
+		  Supplementary Characters, the range 0xBC … 0xBF for the second byte corresponds
+		  to the non-ASCII BMP characters;
+                  </li>
+                  <li class="ListItem">for the same reason, the range 0xC0 … 0xFF for the second
+		  byte corresponds to the Supplementary Characters.</li>
+               </ul>
+               <div class="subExampleSection">
+                  <div class="subSectionTitle">Example</div>
+                  <ul class="List">
+                     <li class="ListItem">the Latin Small Letter C With Cedilla ç</li>
+                     <li class="ListItem">is assigned to Unicode code point U+00E7,</li>
+                     <li class="ListItem">which corresponds to the 21-bit sequence 0 0000 0000 0000
+                        			1110 0111,
+                     </li>
+                     <li class="ListItem">with an extra offset of 0x0F0000, this becomes the 21-bit
+                        			sequence 0 1111 0000 0000 1110 0111,
+                     </li>
+                     <li class="ListItem">which is represented in four byte UTF-T as 1001 1011 1011
+                        			1100 1000 0001 1110 0111
+                     </li>
+                     <li class="ListItem">or in hexadecimal notation: 9B BC 81 E7.</li>
+                  </ul>
+               </div>
+               <div class="subExampleSection">
+                  <div class="subSectionTitle">Example</div>
+                  <ul class="List">
+                     <li class="ListItem">the Euro Sign &euro;</li>
+                     <li class="ListItem">is assigned to Unicode code point U+20AC,</li>
+                     <li class="ListItem">which corresponds to the 21-bit sequence 0 0000 0010 0000
+                        			1010 1100,
+                     </li>
+                     <li class="ListItem">with an extra offset of 0x0F0000, this becomes the 21-bit
+                        			sequence 0 1111 0010 0000 1010 1100,
+                     </li>
+                     <li class="ListItem">which is represented in four byte UTF-T as 1001 1011 1011
+                        			1100 1100 0001 1010 1100
+                     </li>
+                     <li class="ListItem">or in hexadecimal notation: 9B BC C1 AC.</li>
+                  </ul>
+               </div>
+               <div class="subExampleSection">
+                  <div class="subSectionTitle">Example</div>
+                  <ul class="List">
+                     <li class="ListItem">the Musical Symbol G Clef</li>
+                     <li class="ListItem">is assigned to Unicode code point U+01D11E,</li>
+                     <li class="ListItem">which corresponds to the 21-bit sequence 0 0001 1101 0001
+                        			0001 1110,
+                     </li>
+                     <li class="ListItem">with an extra offset of 0x0F0000, this becomes the 21-bit
+                        			sequence 1 0000 1101 0001 0001 1110,
+                     </li>
+                     <li class="ListItem">which is represented in four byte UTF-T as 1001 1011 1100
+                        			0011 1010 0010 1001 1110
+                     </li>
+                     <li class="ListItem">or in hexadecimal notation: 9B C3 A2 9E.</li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/misc/ascii_table.htm" class="manualLink">ASCII table (C0 Controls and Basic Latin)</a></li>
+               <li class="RelTopic"><a href="../../progguide/misc/unicode.htm" class="manualLink">Unicode</a></li>
+               <li class="RelTopic"><a href="../../progguide/misc/utf16.htm" class="manualLink">UTF-16 Encoding</a></li>
+               <li class="RelTopic"><a href="../../progguide/misc/utf8.htm" class="manualLink">UTF-8 Encoding</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/misc/utft, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

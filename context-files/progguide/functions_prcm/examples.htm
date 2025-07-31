@@ -1,0 +1,169 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Process Change Manager Code Examples</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Process Change Manager (PRCM) examples ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Process Change Manager Code Examples</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The most common use of the Process Change Manager is to trigger
+               other sessions to refresh the data on the screen. This can be
+               achieved by registering observer sessions to a certain table. E.g.
+               if updates are done in an Order Header table, then any session that
+               registered itself for this table will be notified, by means of a
+               BMS message. The examples below show how this can be done in both
+               4GL and 3GL code.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Subject sessions</div>
+            <p class="Paragraph">In this example a subject session is a session should notify
+               other sessions after it performs updates on a database
+               table.
+            </p>
+            <p class="Paragraph">In case the subject session is a 4GL session and the session
+               performs the choice UPDATE.DB (either via the Save in the UI or
+               by calling <code class="Code">execute(UPDATE.DB)</code> in the UI script), other
+               sessions will automatically be notified. But in case the
+               maintable is updated directly in the UI script or via a DLL
+               function, then this session itself is responsible for notifying
+               any observer sessions. This can be achieved by calling <a href="../../progguide/functions_prcm/prcm.notify.htm" class="manualLink">prcm.notify()</a> after a
+               commit.transaction() has been done.
+            </p>
+            <div class="Note">
+               <div class="NoteSectionTitle">Note</div>
+               <div class="NoteContent">
+                  <p class="Paragraph">Do not call <a href="../../progguide/functions_prcm/prcm.notify.htm" class="manualLink">prcm.notify()</a> for 
+                     the maintable in the <i class="Emphasis">after.update.db.commit</i> section or the <a href="../../progguide/functions_dal/after.commit.transaction.htm" class="manualLink">after.commit.transaction()</a> hook of the DAL of the maintable, as this interferes with the automatic notification of the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a>.
+                  </p>
+               </div>
+            </div>
+            <p class="Paragraph">3GL sessions have to take care of notifying other sessions
+               themselves. In general this should be done after a
+               commit.transaction() is done.
+            </p>
+            <div class="subExampleSection">
+               <div class="subSectionTitle">Example</div>
+               <p class="Paragraph">The UI script contains a form command that sets a status
+                  field of maintable tisfc001:
+               </p><pre class="CodeBlock">
+function extern set.status()
+{
+    db.retry.point()
+
+    select  tisfc001.*
+    from    tisfc001 for update
+    where   tisfc001._index1 = {:...}
+    as set with 1 rows
+    selectdo
+        ...
+        dal.update("tisfc001", ttisfc001, retval, true, db.retry)
+    endselect
+
+    commit.transaction()
+
+    prcm.notify("tisfc001")
+}
+</pre></div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Observer sessions</div>
+            <p class="Paragraph">In this example an Observer session is a session that is
+               interested in updates done in certain database tables. It wants
+               to be notified about such updates, so that it can take an
+               appropriate action, like refreshing data on the screen.
+            </p>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Registering</div>
+               <p class="Paragraph">Sessions show their interest in changes in subject sessions
+                  by calling <a href="../../progguide/functions_prcm/prcm.register.htm" class="manualLink">prcm.register()</a>.
+               </p>
+               <p class="Paragraph">4GL sessions do this by calling prcm.register() in the <i class="Emphasis">before.program</i> section of the UI script:
+               </p><pre class="CodeBlock">
+before.program:
+    prcm.register("tisfc001")
+    prcm.register("tisfc005")
+</pre><p class="Paragraph">3GL sessions can do this by calling prcm.notify() at start up
+                  of the session (somewhere before entering the main event
+                  loop).
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Handling notifications</div>
+               <p class="Paragraph">When a session is notified, it has to handle the
+                  notification. A 4GL session does this as follows:
+               </p>
+               <p class="Paragraph">(In this case the session wants to refresh its data on
+                  the screen when updates are done on the tables tisfc001 or
+                  tisfc005)
+               </p><pre class="CodeBlock">
+choice.bms:
+on.choice:
+    if prcm.bms.is.notification() then
+        on case prcm.get.subject()
+        case "tisfc001": |* An update is done on table tisfc001
+        case "tisfc005": |* An update is done on table tisfc005
+            |* Refresh all data on the screen
+            refresh.all.occs()
+            break
+        endcase
+    endif
+</pre><p class="Paragraph">See <a href="../../progguide/functions_form_and_form_field_operations/refresh.all.occs.htm" class="manualLink">refresh.all.occs()</a> for more information about refreshing
+                  data on the screen.
+               </p>
+               <p class="Paragraph">A 3GL session has to implement its own event loop:</p><pre class="CodeBlock">
+function main()
+{
+    long event(EVTMAXSIZE)
+
+    prcm.register("tisfc001")
+
+    ...
+
+    while true
+        next.event(event)
+        on case evt.type(event)
+        case EVTBUCKETMESSAGE:
+            if prcm.bms.is.notification(evt.bms.command(event))
+then
+                on case prcm.get.subject()
+                case "tisfc001": |* An update is done on table
+tisfc001
+                    ...
+                endcase
+            endif
+            break
+        ...
+        endcase
+        ...
+    endwhile
+
+    ...
+}
+</pre></div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_prcm/overview.htm" class="manualLink">Process Change Manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_prcm/synopsis.htm" class="manualLink">Process Change Manager synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_prcm/examples, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Report script functions</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="report script functions ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Report script functions</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The statements programmed in a report script section consist
+               of a combination of <a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a> and the following 4GL report
+               functions:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">layout.again()</td>
+                     <td rowspan="1" colspan="1" class="none">Evaluate and print layout again.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">need( expr )</td>
+                     <td rowspan="1" colspan="1" class="none">Force a page break if the number of free lines is
+                        less than <i class="Emphasis">expr</i>.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">page()</td>
+                     <td rowspan="1" colspan="1" class="none">Start a new page.</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">reset.suppress()</td>
+                     <td rowspan="1" colspan="1" class="none">It is possible to suppress printing a value when it
+                        is the same as the previous value. You can use this
+                        function to suppress the value once (that is, for one
+                        value).
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">skip( expr )</td>
+                     <td rowspan="1" colspan="1" class="none">Skip <i class="Emphasis">expr</i> number of lines before printing the
+                        next layout.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">skip.to( expr )</td>
+                     <td rowspan="1" colspan="1" class="none">Skip to the line number indicated by <i class="Emphasis">expr</i>.
+                        Intervening lines are left blank. If the specified line
+                        number is less than the current page number, a new page
+                        is started.
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">to.page( expr )</td>
+                     <td rowspan="1" colspan="1" class="none">Start a new page with number <i class="Emphasis">expr</i>.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">You cannot use <i class="Emphasis">need()</i>, <i class="Emphasis">page()</i>, <i class="Emphasis">skip()</i>, <i class="Emphasis">skip.to()</i>, or <i class="Emphasis">to.page()</i> in header and footer
+               layouts.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/overview.htm" class="manualLink">Report scripts overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/sections.htm" class="manualLink">Report script sections</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/predefined_variables.htm" class="manualLink">Predefined variables</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/expanding_text_variables.htm" class="manualLink">Expanding text variables</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/report_scripts/functions_in_report_scripts, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Macros - sequence header</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="macros - sequence header ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Macros - sequence header</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Warning</div>
+            <p class="Paragraph"><i class="Emphasis">The functions and macros listed below must not be used
+                  anymore.</i> Using them in BaanERP 5.0c or higher releases may
+               result in less reliable data. Know that there is a new set of
+               functions that you can use for retrieval of audit information.
+               Refer to <a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></p>
+            <p class="Paragraph">Use these macros for mapping sequence header information. The
+               'get' macros take <i class="Emphasis">seq_hdr</i> as their input. This is filled
+               by calling <a href="../../progguide/functions_aud/aud_read_seq_hdr.htm" class="manualLink">aud_read_seq_hdr()</a> or <a href="../../progguide/functions_aud/aud_read_info_seq_hdr.htm" class="manualLink">aud_read_info_seq_hdr()</a>.
+               The 'set' macros update the <i class="Emphasis">seq_hdr</i> buffer. Use <a href="../../progguide/functions_aud/aud_write_seq_hdr.htm" class="manualLink">aud_write_seq_hdr()</a> or <a href="../../progguide/functions_aud/aud_update_infofile.htm" class="manualLink">aud_update_infofile()</a> to update the sequence header itself in the sequence file and
+               info file respectively.
+            </p>
+            <p class="Paragraph">Dates are returned as UTC in the form YYYYMMDD. Times are
+               returned as UTC in the form HHMMSS.
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="16" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">aud_get_app_info1()</i> to
+                        </p>
+                        <p class="Paragraph"><i class="Emphasis">aud_get_app_info4()</i></p>
+                        <p class="Paragraph">aud_get_app_info4()</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void aud_get_app_info1( string seq_hdr(),string app1(4) )
+void aud_get_app_info2( string seq_hdr(),string app2(4) )
+void aud_get_app_info3( string seq_hdr(),string app3(4) )
+void aud_get_app_info4( string seq_hdr(),string app4(4) )
+</pre><p class="Paragraph">These fill their second argument with the
+                           application-specific information from the sequence
+                           header.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_creat_date()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string aud_get_creat_date( string seq_hdr() )
+</pre><p class="Paragraph">This returns the creation date (in UTC) of the
+                           sequence file. Use <a href="../../progguide/functions_date_time_zones/utc.to.local.htm" class="manualLink">utc.to.local()</a> to convert the UTC date to a
+                           local date.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_creat_time()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string aud_get_creat_time( string seq_hdr() )
+</pre><p class="Paragraph">This returns the creation time (in UTC) of the
+                           sequence file. Use <a href="../../progguide/functions_date_time_zones/utc.to.local.htm" class="manualLink">utc.to.local()</a> to convert the UTC time to a
+                           local time.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_no_audit_flds()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_no_audit_flds( string seq_hdr() )
+</pre><p class="Paragraph">This returns the number of audited fields in the
+                           sequence file.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_no_prim_flds()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_no_prim_flds( string seq_hdr() )
+</pre><p class="Paragraph">This returns the number of primary key fields
+                           among the audited fields in the sequence file.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_no_trans()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_no_trans( string seq_hdr() )
+</pre><p class="Paragraph">This returns the number of transactions in the
+                           sequence file.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_seqno()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_seqno( string seq_hdr() )
+</pre><p class="Paragraph">This returns the sequence number of the sequence
+                           file.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_seq_status()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_seq_status( string seq_hdr() )
+</pre><p class="Paragraph">This returns a value indicating the termination
+                           status of the sequence file. Possible values
+                           are:
+                        </p><pre class="Formula">
+ 
+AUD_TERM_MAX_SIZE     file terminated because it reached its
+                                  maximum size  
+AUD_TERM_DD_CHGD      file terminated because table definitions in
+                       data dictionary have been changed 
+AUD_TERM_USER_FRCD    file forcibly terminated by user  
+AUD_TERM_CORRUPT      file terminated because of mismatch between
+                                 sequence headers in info file and
+sequence file 
+AUD_SEQ_REMOVED       sequence file removed using session
+                                "ttaad4161m000" (Purge Audit Files)
+ 
+AUD_TERMINATE_VERSION file terminated because a new audit
+                                server has been activated 
+</pre><p class="Paragraph">This value can be bitwise anded with predefined
+                           constants to determine the reason for termination of
+                           a particular sequence file.
+                        </p>
+                        <p class="Paragraph">For example:</p><pre class="Formula">
+long term_status
+
+term_status = aud_get_seq_status(seq_hdr)
+if ( bit.and (term_status,AUD_TERM_MAX_SIZE) ) then
+                | Termination because of reaching max size.
+endif
+if ( bit.and (term_status,AUD_TERM_DD_CHGD) ) then
+                | Termination because of dd change.
+endif
+if ( bit.and (term_status,AUD_TERM_USER_FRCD) ) then
+                | Termination forced by user.
+endif
+</pre></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_seq_full_status()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_seq_full_status( string seq_hdr() )
+</pre><p class="Paragraph">This returns the value of the status field in the
+                           sequence header. Note that you cannot use this value
+                           because the version information is included in the
+                           status. Use <i class="Emphasis">aud_get_seq_status()</i> instead.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_seq_version()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_seq_version( string seq_hdr() )
+</pre><p class="Paragraph">This returns the version of the sequence file as
+                           stored in the sequence header.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_term_date()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string aud_get_term_date( string seq_hdr() )
+</pre><p class="Paragraph">This returns the termination date (in UTC) of the
+                           sequence file (if the file is terminated). Use <a href="../../progguide/functions_date_time_zones/utc.to.local.htm" class="manualLink">utc.to.local()</a> to convert the UTC date to a
+                           local date.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_term_time()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string aud_get_term_time( string seq_hdr() )
+</pre><p class="Paragraph">This returns the termination time (in UTC) of the
+                           sequence file (if the file is terminated). Use <a href="../../progguide/functions_date_time_zones/utc.to.local.htm" class="manualLink">utc.to.local()</a> to convert the UTC time to a
+                           local time.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">aud_set_app_info1() to</p>
+                        <p class="Paragraph">aud_set_app_info4()</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void aud_set_app_info1( string app1(4), string seq_hdr() )
+void aud_set_app_info2( string app2(4), string seq_hdr() )
+void aud_set_app_info3( string app3(4), string seq_hdr() )
+void aud_set_app_info4( string app4(4), string seq_hdr() )
+</pre><p class="Paragraph">These write application-specific information to <i class="Emphasis">seq_hdr</i>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_set_term_date()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void aud_set_term_date( string t_date(), string seq_hdr())
+</pre><p class="Paragraph">This stores the content of <i class="Emphasis">t_date</i> in the
+                           termination date field of the sequence header.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_set_term_time()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void aud_set_term_time( string t_time(), string seq_hdr())
+</pre><p class="Paragraph">This stores the content <i class="Emphasis">t_time</i> in the
+                           termination time field of the sequence header.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="16" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_set_seq_status()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void aud_set_seq_status( long st, string seq_hdr() )
+</pre><p class="Paragraph">This stores the content of <i class="Emphasis">st</i> in the status
+                           field of the sequence header.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_overview.htm" class="manualLink">Audit Information Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_synopsis.htm" class="manualLink">Audit Information Synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_sample_program.htm" class="manualLink">Audit Information Sample Program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_aud/macros_sequence_header, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

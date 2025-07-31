@@ -1,0 +1,111 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>set.strip.mode()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions set.strip.mode set.strip.mode set.strip.mode set.symbol.strip.mode ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">set.strip.mode()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;set.strip.mode&nbsp;
+					(long&nbsp;table.id, long&nbsp;mode)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph"><i class="Emphasis">set.strip.mode()</i> sets or resets the
+                  'strip-on-assignment' flag for all string fields of the table
+                  specified by <i class="Emphasis">table_id</i>. The <i class="Emphasis">mode</i> argument indicates
+                  whether the flag is to be set on or off. 1 indicates set flag
+                  on, 0 indicates set flag off. Setting this flag on a symbol <i class="Emphasis">a</i> means that assignments to other variables <i class="Emphasis">from</i> this value will behave as an assignment from
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>table.id</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>mode</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; success</p>
+            <p class="Paragraph">&lt;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; error</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">These functions do not affect the actual contents of the
+                  fields or variable.
+               </p>
+               <p class="Paragraph">If <i class="Emphasis">set.strip.mode()</i> is the first call on a particular
+                  table, the table structure will be loaded.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+table   tttaad200
+string  s(100)
+string  s2(100) fixed
+string  s3(100)
+
+if( set.strip.mode(tttaad200, 1) &lt; 0 ) or 
+        ( set.symbol.strip.mode(s2, 1) &lt; 0 ) then
+                        | handle error
+endif
+
+db.first(tttaad200)
+  
+s = tttaad200.user  | s contains username without trailing spaces
+s2 = s              | s2 is fixed so username is filled out with spaces
+s3 = s2             | s3 contains username without trailing spaces
+s3 = strip$(s2)     | strip$ is useless here, the set.symbol.strip.mode did this
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/set.symbol.strip.mode.htm" class="manualLink">set.symbol.strip.mode()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/overview.htm" class="manualLink">String operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/synopsis.htm" class="manualLink">String operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_string_operations/set.strip.mode, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

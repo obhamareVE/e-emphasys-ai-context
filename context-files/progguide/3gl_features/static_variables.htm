@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Static variables</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="static variables ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Static variables</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">You can declare local variables as static variables. The value
+               of a static variable is saved at the end of the function and is
+               used again the next time the function is called. A static variable
+               is automatically initialized at the start of the program. Normal
+               local variables are undefined at each function call, and are not
+               initialized at first call.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Declaration, initialization, and scope</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Point of declaration</td>
+                     <td rowspan="1" colspan="1" class="none">In the function between the brackets { }.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Syntax of declaration</td>
+                     <td rowspan="1" colspan="1" class="none">static &lt;type&gt; name</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Initialization</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">At program start:</p>
+                        <p class="Paragraph">numeric set to 0</p>
+                        <p class="Paragraph">boolean set to false</p>
+                        <p class="Paragraph">strings ""</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">Scope (validity and time)</td>
+                     <td rowspan="1" colspan="1" class="none">Can be used only within the function but they
+                        maintain their values throughout program
+                        execution.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div><pre class="CodeBlock">
+function test()
+{
+        static boolean started
+
+        if (not started) then
+                started = true
+                | Actions to be performed only first time around.
+        endif
+        ...
+        return
+}
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2</div><pre class="CodeBlock">
+function void spool( long id, ref string line() )
+{
+        static long   save_id
+        static long   lfn
+
+        if ( save_id &lt;&gt; id ) then      | Optimization
+                lfn = read_new_lfn( id )
+                save_id = id
+        endif
+        seq.puts( line, lfn )
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/functions.htm" class="manualLink">Functions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/static_variables, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

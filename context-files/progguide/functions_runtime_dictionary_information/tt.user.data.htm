@@ -1,0 +1,164 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>tt.user.data()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions tt.user.data tt.user.data tt.user.data ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">tt.user.data()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean &nbsp;tt.user.data&nbsp;
+					(string&nbsp;user(12), long&nbsp;property, &nbsp;...)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function retrieves one or more properties of an Infor LN user.</p>
+               <p class="Paragraph"></p>
+               <p class="Paragraph">The arguments must meet the following conditions:</p>
+               <ul class="List">
+                  <li class="ListItem">at least 3 arguments</li>
+                  <li class="ListItem">an odd number of arguments</li>
+                  <li class="ListItem">a property must be a known property (i.e. in the list below)</li>
+                  <li class="ListItem">the data type of the argument following a property must be correct</li>
+               </ul>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>user(12)</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>property</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">After the 'user', one or more pairs follow, with property (long) and value (ref):</p>
+                        <table class="default">
+                           <tbody noTR="13" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">Property</td>
+                                 <td rowspan="1" colspan="1" class="default">Value</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">UD_NAME</td>
+                                 <td rowspan="1" colspan="1" class="default">The User Name (mb string 30)</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">UD_SECURITY_USER</td>
+                                 <td rowspan="1" colspan="1" class="default">The Infor Security User (mb string 132)</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">UD_PACKAGE_COMB</td>
+                                 <td rowspan="1" colspan="1" class="default">The user's package combination (string 8)</td>
+                              </tr>
+                              <tr no="5" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">UD_COMPANY</td>
+                                 <td rowspan="1" colspan="1" class="default">The user's default company (long)</td>
+                              </tr>
+                              <tr no="6" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">UD_FIN_COMPANY</td>
+                                 <td rowspan="1" colspan="1" class="default">The user's default logistical company (long); 
+                                    			-1 means logistical/financials companies is disabled for this user
+                                 </td>
+                              </tr>
+                              <tr no="7" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">UD_LOG_COMPANY</td>
+                                 <td rowspan="1" colspan="1" class="default">The user's default financial company (long); 
+                                    			-1 means logistical/financials companies is disabled for this user
+                                 </td>
+                              </tr>
+                              <tr no="8" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">UD_SOFTWARE_LANG</td>
+                                 <td rowspan="1" colspan="1" class="default">The user's software language, like "2" for English (string 1)</td>
+                              </tr>
+                              <tr no="9" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">UD_DATA_LANG</td>
+                                 <td rowspan="1" colspan="1" class="default">The user's data language, like "en_US" for US English (string 5)</td>
+                              </tr>
+                              <tr no="10" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">UD_EMAIL_ADDRESS</td>
+                                 <td rowspan="1" colspan="1" class="default">The user's e-mail address (string 80)</td>
+                              </tr>
+                              <tr no="11" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">UD_PHONE_NUMBER</td>
+                                 <td rowspan="1" colspan="1" class="default">The user's phone number (string 20)</td>
+                              </tr>
+                              <tr no="12" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">UD_FAX_NUMBER</td>
+                                 <td rowspan="1" colspan="1" class="default">The user's fax number (string 20)</td>
+                              </tr>
+                              <tr no="13" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">UD_TIME_ZONE</td>
+                                 <td rowspan="1" colspan="1" class="default">The user's time zone (string 50)</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none"></td>
+                     <td class="none"><code>...</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table class="default">
+               <tbody noTR="2" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">false</td>
+                     <td rowspan="1" colspan="1" class="default">error; user not found or invalid input</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">true</td>
+                     <td rowspan="1" colspan="1" class="default">success</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1900.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_runtime_dictionary_information/overview_and_synopsis.htm" class="manualLink">Runtime dictionary information overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_runtime_dictionary_information/tt.user.data, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

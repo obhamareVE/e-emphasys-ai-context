@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Example XML generation</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="XML object generation example ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Example XML generation</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Below a piece of Baan-C code is shown for generating an XML
+               document. For ease of reading, no checking on the return codes
+               of the functions is done.
+            </p><pre class="CodeBlock">
+long    cmfId, identId, recipientsId, fromId, dtdId
+long    fd, retVal
+
+|Create the doctype element and populate its contents
+dtdId = xmlNewNode("CMF", XML_DTD)
+retVal = xmlsetAttribute(dtdId,  "NAMEURL", "cmf1.dtd")
+
+|Create the root element and make it a right sibling of the XML_DTD node.
+cmfId = xmlNewNode("CMF" )
+retVal = xmlAdd(dtdId, cmfId )
+
+|Create IDENTIFICATION element and add its attributes 
+identId = xmlNewNode("IDENTIFICATION", XML_ELEMENT, cmfId)
+
+retVal = xmlSetAttribute (identId,  "MESSAGE-ID", "34a98u0erirori" )
+retVal = xmlSetAttribute(identId,   "CLASS", "order" )
+retVal = xmlSetAttribute(identId,   "SUBJECT", "Subject string" )
+
+|Create RECIPIENTS element
+recipientsId = xmlNewNode("RECIPIENTS", XML_ELEMENT, cmfId)
+
+|Create FROM element and add its attributes 
+fromId = xmlNewNode("FROM", XML_ELEMENT, recipientsId)
+
+retVal = xmlSetAttribute(fromId,  "NAME", "Jan Jansen" )
+retVal = xmlSetAttribute(fromId,  "TYPE", "SMTP" )
+retVal = xmlSetAttribute(fromId,  "ADDRESS", "jjansen@example.com" )
+
+|Open a file for write and store the XML document
+fd = seq.open("/home/ssauser/file.xml", "w" )
+xmlWritePretty(fd, dtdId, 0 )
+seq.close(fd)
+
+|Free the complete XML object from memory
+xmlDelete(dtdId, 0)
+</pre><p class="Paragraph">The resulting XML-document is shown below:</p><pre class="CodeBlock">
+&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE CMF SYSTEM "cmf1.dtd"&gt;
+&lt;CMF&gt;
+        &lt;IDENTIFICATION
+                MESSAGE-ID="34a98u0erirori"
+                CLASS="order"
+                SUBJECT="Subject string"
+        /&gt;
+        &lt;RECIPIENTS&gt;
+                &lt;FROM
+                        NAME="Jan Jansen"
+                        TYPE="SMTP"
+                        ADDRESS="jjansen@example.com"
+                /&gt;
+        &lt;/RECIPIENTS&gt;
+&lt;/CMF&gt;
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/overview.htm" class="manualLink">XML object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis.htm" class="manualLink">XML object synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/example_xml_parsing.htm" class="manualLink">Example XML parsing</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_xml/example_xml_generation, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Tools Interface Version (TIV)</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="TIV ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Tools Interface Version (TIV)</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The Tools Interface Version (TIV) is a concept supported by the
+               	  Infor ERP Enterprise Server to guarantee backwards compatibility. By setting a
+               	  TIV number to each object the behavior can be different for incompatible
+               	  features executed with different versions of the porting set or Infor Enterprise
+               	  Engine. The TIV number is a property of the program and library scripts, and
+               	  can be defined in session "Program Scripts / Libraries (ttadv2530m000)". The
+               	  bshell also has its own TIV number.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Caution</div>
+            <p class="Paragraph">When updating a component to a higher TIV level, it can be
+               		necessary to do rework. This is for example the case when
+               		adopting TIV level 1075 (or higher). Whatever the reason is to
+               		do the TIV level upgrading, the rework for Record selection <i class="Emphasis">must</i> be done. The session will not function with the old record
+               		selection mechanism anymore. Mandatory rework is indicated in
+               		the table below.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Supported Porting set TIV numbers</div>
+            <p class="Paragraph">The supported TIV numbers related to porting set versions are
+               	  listed below.
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="35" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">TIV</th>
+                     <th rowspan="1" colspan="1" class="none">Type</th>
+                     <th rowspan="1" colspan="1" class="none">Description</th>
+                     <th rowspan="1" colspan="1" class="none">Remarks</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">200</td>
+                     <td rowspan="1" colspan="1" class="none">bshell</td>
+                     <td rowspan="1" colspan="1" class="none">original TIV level when TIV was introduced in 4c</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">500</td>
+                     <td rowspan="1" colspan="1" class="none">bshell</td>
+                     <td rowspan="1" colspan="1" class="none">original TIV level when TIV was introduced in Corelli</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_1000.htm" class="manualLink">1000</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">bshell</p>
+                        <p class="Paragraph">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Initial TIV level for porting set 7.5a</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">1010</td>
+                     <td rowspan="1" colspan="1" class="none">bshell</td>
+                     <td rowspan="1" colspan="1" class="none">Initial TIV level for porting set 7.6a</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_1012.htm" class="manualLink">1012</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">bshell</p>
+                        <p class="Paragraph">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">porting set 7.6a.01</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Functions for Outbound Publishing</p>
+                        <p class="Paragraph">String size limit removed for xmlSetAttribute and other xml functions</p>
+                        <p class="Paragraph">db.get.child.transaction function added in bshell</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_1014.htm" class="manualLink">1014</a></td>
+                     <td rowspan="1" colspan="1" class="none">Tools</td>
+                     <td rowspan="1" colspan="1" class="none">Added tt.is.domain.separated() function.</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_1020.htm" class="manualLink">1020</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">bshell</p>
+                        <p class="Paragraph">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">New functions in Enterprise Server 8.2</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">1050</td>
+                     <td rowspan="1" colspan="1" class="none">bshell</td>
+                     <td rowspan="1" colspan="1" class="none">porting set 7.6b</td>
+                     <td rowspan="1" colspan="1" class="none">Added Unicode support.</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_1075.htm" class="manualLink">1075</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">bshell</p>
+                        <p class="Paragraph">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">New functions in Enterprise Server 8.3/porting set 7.6c</td>
+                     <td rowspan="1" colspan="1" class="none">Note: Mandatory rework in <a href="../../progguide/functions_selection/cookbook.htm" class="manualLink">record selection</a>.
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">1076</td>
+                     <td rowspan="1" colspan="1" class="none">bshell</td>
+                     <td rowspan="1" colspan="1" class="none">porting set 8.2b</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">1078</td>
+                     <td rowspan="1" colspan="1" class="none">bshell</td>
+                     <td rowspan="1" colspan="1" class="none">porting set 8.2b.01</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">1100</td>
+                     <td rowspan="1" colspan="1" class="none">bshell</td>
+                     <td rowspan="1" colspan="1" class="none">porting set 8.3a</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">1101</td>
+                     <td rowspan="1" colspan="1" class="none">bshell</td>
+                     <td rowspan="1" colspan="1" class="none">porting set 8.2b.01</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">changed interface handle.report.pool() to handle
+                           						more than 252 arguments
+                        </p>
+                        <p class="Paragraph">added syslibpath.env.var$() bshell function.
+                           						Useful for ERP installer to determine system
+                           						dependent env. var.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_1200.htm" class="manualLink">1200</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">bshell</p>
+                        <p class="Paragraph">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">New functions in Enterprise Server 8.4/porting set 8.3b</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_1300.htm" class="manualLink">1300</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">bshell</p>
+                        <p class="Paragraph">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">New functions in Enterprise Server 8.4 for handling field dependencies.</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_1306.htm" class="manualLink">1306</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">New behavior in Enterprise Server 8.4 for ncrs selection groups</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">1501</td>
+                     <td rowspan="1" colspan="1" class="none">tools</td>
+                     <td rowspan="1" colspan="1" class="none">Function tt.label.desc.by.lang added.</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">1601</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">bshell</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Porting set 8.6a</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">1620</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">bshell</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Porting set 8.6a.01</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">1641</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">bshell</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Porting set 8.6a.02 (rebuild)</p>
+                        <p class="Paragraph">Added function <a href="../../progguide/functions_multibyte_strings/mb.coerce.to.sb.htm" class="manualLink">mb.coerce.to.sb()</a></p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">1660</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">bshell</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Porting set 8.6a.03</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="23" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_1700.htm" class="manualLink">1700</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">bshell</p>
+                        <p class="Paragraph">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">New functions in Porting set 8.7a and Enterprise Server 8.7</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Possible rework needed when moving to object TIV 1700 for use of the <a href="../../progguide/functions_memory_operations/alloc.mem.htm" class="manualLink">alloc.mem()</a> function.
+                     </td>
+                  </tr>
+                  <tr no="24" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_1753.htm" class="manualLink">1753</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">New functions in Enterprise Server 8.7a</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="25" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_1800.htm" class="manualLink">1800</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">bshell</p>
+                        <p class="Paragraph">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">New functions in Porting set 8.8a and Enterprise Server 8.8</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="26" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_1801.htm" class="manualLink">1801</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">New functions in Enterprise Server 8.8</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="27" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_1802.htm" class="manualLink">1802</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">New functions in Enterprise Server 8.8</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="28" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_1804.htm" class="manualLink">1804</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">New functions in Enterprise Server 8.8</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="29" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_1900.htm" class="manualLink">1900</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">bshell</p>
+                        <p class="Paragraph">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">New functions in Porting set 8.9a and Enterprise Server 10.3</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="30" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_2000.htm" class="manualLink">2000</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">New functions in Enterprise Server 10.4</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="31" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_2010.htm" class="manualLink">2010</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">bshell</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">New functions in Porting set 9.0a.01.</p>
+                        <p class="Paragraph">New cURL functions to support secure email.</p>
+                        <p class="Paragraph">New functions to support error bypass</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="32" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_2020.htm" class="manualLink">2020</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">bshell</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">New functions in Porting set 9.0b</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="33" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_2030.htm" class="manualLink">2030</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">bshell</p>
+                        <p class="Paragraph">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">New functions in Porting set 9.0b.01 and Enterprise Server 10.4.2</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="34" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_2040.htm" class="manualLink">2040</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">New functions in Enterprise Server 10.4.2</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="35" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/tiv/tiv_2100.htm" class="manualLink">2100</a></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">tools</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">New functions in Enterprise Server 10.5</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Base TIV levels per Enterprise Server Feature
+               	  Pack
+            </div>
+            <p class="Paragraph">The Base TIV levels per Feature Pack are as specified below.
+               	  Those levels are the <i class="Emphasis">base</i> levels. During the lifetime of a
+               	  Feature Pack, additional numbers may be inserted.
+            </p>
+            <p class="Paragraph">If software is developed on a 'latest Feature Pack' development
+               	  system, for release to customers who might be on a lower Feature Pack, the TIV
+               	  level of the software should be maximized to the base level of the target
+               	  Enterprise Server Feature Pack. If specific functionality within the target
+               	  Feature Pack is necessary, installation of additional tools solutions or
+               	  another porting set might be necessary before the newly developed software
+               	  works correctly.
+            </p>
+            <p class="Paragraph">Example: when developing software for an ES 7 (ERP Enterprise FP1) system,
+               	  the TIV level of the new components should be maximized on TIV level 1010. Only
+               	  when the function tt.is.domain.separated() is used the level should be set to
+               	  1014 (And the target system needs to have solution 202854).
+            </p>
+            <table class="default">
+               <tbody noTR="15" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Version</th>
+                     <th rowspan="1" colspan="1" class="default"><i class="Emphasis">BASE</i> TIV level
+                     </th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">ERP Enterprise without feature packs</td>
+                     <td rowspan="1" colspan="1" class="default">1000</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Enterprise Server 7 (ERP Enterprise FP1)</td>
+                     <td rowspan="1" colspan="1" class="default">1010</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Enterprise Server 8.2 (ERP Enterprise FP2)</td>
+                     <td rowspan="1" colspan="1" class="default">1020</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Enterprise Server 8.3 (ERP Enterprise FP3)</td>
+                     <td rowspan="1" colspan="1" class="default">1075</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Enterprise Server 8.4 (ERP Enterprise FP4)</td>
+                     <td rowspan="1" colspan="1" class="default">1200</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Enterprise Server 8.5 (ERP Enterprise FP5)</td>
+                     <td rowspan="1" colspan="1" class="default">1500</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Enterprise Server 8.6 (ERP Enterprise FP6)</td>
+                     <td rowspan="1" colspan="1" class="default">1600</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Enterprise Server 8.7 (ERP Enterprise FP7)</td>
+                     <td rowspan="1" colspan="1" class="default">1700</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Enterprise Server 8.8 (ERP Enterprise FP8)</td>
+                     <td rowspan="1" colspan="1" class="default">1800</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Enterprise Server 10.3 (ERP Enterprise FP9)</td>
+                     <td rowspan="1" colspan="1" class="default">1900</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Enterprise Server 10.4</td>
+                     <td rowspan="1" colspan="1" class="default">2000</td>
+                  </tr>
+                  <tr no="13" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Enterprise Server 10.4.1</td>
+                     <td rowspan="1" colspan="1" class="default">2020</td>
+                  </tr>
+                  <tr no="14" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Enterprise Server 10.4.2</td>
+                     <td rowspan="1" colspan="1" class="default">2040</td>
+                  </tr>
+                  <tr no="15" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">Enterprise Server 10.5</td>
+                     <td rowspan="1" colspan="1" class="default">2100</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph"><i class="Emphasis">Note:</i> The TIV level can <i class="Emphasis">not</i> be set higher than the current level of the tools or
+               	  porting set.
+            </p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/tiv/tiv_overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

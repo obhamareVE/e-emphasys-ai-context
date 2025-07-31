@@ -1,0 +1,103 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>par.init.server.to.client()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions par.init.server.to.client par.init.server.to.client par.init.server.to.client ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">par.init.server.to.client()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean&nbsp;par.init.server.to.client&nbsp;
+					(ref long&nbsp;group.number, ref long&nbsp;server.number [, ref long&nbsp;tot.nr.servers])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function is used to initialize the communication to the client. 
+                  		This function must be called rather in the beginning of a program which can be started as server.
+                  		This because of the fact that the client function has a time out time (default 2 minutes) on starting each server (receiving
+                  the 'known' command).
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>group.number</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Output argument which will be set to the current group number of which this server will be a member.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>server.number</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Output argument which will be set to the current server number assigned to this server.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[ref long</td>
+                     <td class="none"><code>tot.nr.servers</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Output argument which will be set to the total number of servers in this group.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">true</th>
+                     <td rowspan="1" colspan="1" class="none">When this session is running in parallel processing server mode.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">false</th>
+                     <td rowspan="1" colspan="1" class="none">When this session is not running in parallel processing server mode.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			3GL
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/overview.htm" class="manualLink">Parallel Application Processing Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/synopsis.htm" class="manualLink">Parallel Application Processing synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/examples.htm" class="manualLink">Parallel Application Processing Examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_parallel_processing/par.init.server.to.client, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

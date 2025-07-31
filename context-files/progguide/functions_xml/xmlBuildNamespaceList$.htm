@@ -1,0 +1,118 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>xmlBuildNamespaceList$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions xmlBuildNamespaceList$ xmlBuildNamespaceList$ xmlBuildNamespaceList$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">xmlBuildNamespaceList$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;xmlBuildNamespaceList$&nbsp;
+					(const string&nbsp;prefix, const string&nbsp;URI [, ...&nbsp;])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This is a utility function that creates a string of namespace bindings, to be 
+                  			used for the <a href="../../progguide/functions_xml/xmlFindFirstMatchNs.htm" class="manualLink">xmlFindFirstMatchNs()</a> and <a href="../../progguide/functions_xml/xmlFindMatchNs.htm" class="manualLink">xmlFindMatchNs()</a> functions.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>prefix</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">prefix</i> is the prefix of a namespace.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>URI</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">URI</i> is the URI of a namespace.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[...</td>
+                     <td class="none"><code></code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use optional parameters to supply more pairs of <i class="Emphasis">prefix</i> and <i class="Emphasis">URI</i>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">non-empty string</th>
+                     <td rowspan="1" colspan="1" class="none">Success; A string of the form &lt;prefix&gt;="&lt;URI&gt;"[,&lt;prefix&gt;="&lt;URI&gt;"...].</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">empty string</th>
+                     <td rowspan="1" colspan="1" class="none">Error; One of the optional parameters is not of type string.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1700.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+string namespaceList(100)
+namespaceList = xmlBuildNamespaceList$( 
+	"soap", "http://www.w3.org/2001/12/soap-envelope", 
+	"m", "http://www.example.org/stock")
+
+| namespaceList now contains 'soap="http://www.w3.org/2001/12/soap-envelope",m="http://www.example.org/stock"'
+| The following statement, though a little less readable,  would produce the same result:
+
+namespaceList = "soap=""http://www.w3.org/2001/12/soap-envelope"",m=""http://www.example.org/stock"""</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/overview.htm" class="manualLink">XML object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis.htm" class="manualLink">XML object synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis_namespace.htm" class="manualLink">XML object synopsis (namespace support)</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_xml/xmlBuildNamespaceList$, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

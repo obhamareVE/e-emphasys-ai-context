@@ -1,0 +1,84 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DAL2 Test Mode</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DAL2 Test Mode</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">By means of the <i class="Emphasis">DAL2_TEST_MODE</i> environment variable it is possible to
+               test different aspects of a DAL2 DAL from the User Interface.
+               The <i class="Emphasis">DAL2_TEST_MODE</i> environment variable must be set in the BW
+               Configuration file and can have the following values:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Value</td>
+                     <td rowspan="1" colspan="1" class="none">Aspect</td>
+                     <td rowspan="1" colspan="1" class="none">Explanation</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">0</td>
+                     <td rowspan="1" colspan="1" class="none">None</td>
+                     <td rowspan="1" colspan="1" class="none">Test mode is off</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">1</td>
+                     <td rowspan="1" colspan="1" class="none">Derived fields</td>
+                     <td rowspan="1" colspan="1" class="none">All display maintable fields are shown as input
+                        fields. This makes it possible to see whether derived
+                        fields are made readonly.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">2</td>
+                     <td rowspan="1" colspan="1" class="none">(Never) applicable, readonly and derived fields and
+                        (never) applicable standard and form commands (business
+                        methods)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Same as Mode 1 + All fields and commands stay
+                        enabled. In this way is is possible to see if the DAL
+                        blocks certain field changes and business methods.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">3</td>
+                     <td rowspan="1" colspan="1" class="none">Same as Mode 2 + updating dependent fields</td>
+                     <td rowspan="1" colspan="1" class="none">Same as Mode 2 + Dependent fields are not updated
+                        (no defaulting).
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_field_hooks.htm" class="manualLink">DAL2 Field hooks</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_bm_hooks.htm" class="manualLink">DAL2 Business method hooks</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_field_dependencies.htm" class="manualLink">DAL2 Field dependencies</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_4gle.htm" class="manualLink">DAL2 and the 4GL Engine</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_test_mode.htm" class="manualLink">DAL2 Test Mode</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/dal2_test_mode, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

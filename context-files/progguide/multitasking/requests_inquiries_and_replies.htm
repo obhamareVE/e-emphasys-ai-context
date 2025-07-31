@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Requests, inquiries, and replies</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="requests, inquiries, and replies ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Requests, inquiries, and replies</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">A <i class="Emphasis">request</i> is a message sent by the bshell to the
+   display server requesting some action – for example, the
+   creation of a window or some other UI object. It consists of a
+   package of information that tells the display server what action
+   to perform and the parameters to use for that action. Requests
+   are asynchronous, so the bshell does not wait for a reply from
+   the display server. Consequently, if an error occurs, the bshell
+   does not detect it. The display server, however, may generate an
+   error message on screen and/or in a log file.
+            </p>
+            <p class="Paragraph">An <i class="Emphasis">inquiry</i> is a request for which a result is returned
+               in the form of a <i class="Emphasis">reply</i>. Normally, inquiries are used to
+               retrieve information about existing UI objects. When a process
+               sends an inquiry to the display server, it waits for the server
+               to process the inquiry and send a reply. Consequently, inquiries
+               are more time-consuming than asynchronous requests. When
+               response time is important, avoid using the inquiry/reply
+               mechanism. For example, when retrieving information that does
+               not change, you can store the data in variables and retrieve it
+               from those variables instead of sending queries to the display
+               server.
+            </p>
+            <p class="Paragraph">The following example illustrates the use of requests,
+               inquiries, and replies:
+            </p><pre class="CodeBlock">
+#include &lt;bic_gpart&gt;
+
+gpart_id = first.gpart( window_id )             | Inquiry-reply 
+while gpart_id
+    get.gpart( window_id, part_id, type, x, y )| Inquiry-reply 
+    if type = GPLINE then
+        destroy.gpart( window_id, gpart_id )    | Request
+    endif 
+    gpart_id = next.gpart( window_id, gpart_id )| Inquiry-reply
+endwhile
+
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/multitasking/multitasking_and_the_gui.htm" class="manualLink">Multitasking and the GUI</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/multitasking/requests_inquiries_and_replies, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

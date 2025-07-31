@@ -1,0 +1,503 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Database operations synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="database operations synopsis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Database operations synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div>
+            <table border="0" class="none">
+               <tbody noTR="87" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/abort.io.htm" class="manualLink">abort.io()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string mesg(14) [, ...] )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/abort.transaction.htm" class="manualLink">abort.transaction()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/activate.search.htm" class="manualLink">activate.search()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/commit.transaction.htm" class="manualLink">commit.transaction()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/count.records.in.view.htm" class="manualLink">count.records.in.view()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.change.object.htm" class="manualLink">dal.change.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string class_name )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.check.field.htm" class="manualLink">dal.check.field()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string fld_name, [ long element, long mode ]
+                           					)</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.copy.object.htm" class="manualLink">dal.copy.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string class_name )</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.destroy.htm" class="manualLink">dal.destroy()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string class_name, long object_set, ref long
+      					retval, long&nbsp;prop_check [, long mode [, long
+      					eflag]])</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.destroy.object.htm" class="manualLink">dal.destroy.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string class_name )</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.get.field.mode.htm" class="manualLink">dal.get.field.mode()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string fld_name, [ long element ] )</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.get.object.htm" class="manualLink">dal.get.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string class_name, long lock, key_field1,
+                           					key_value1, [ key_field2, key_value2, ... ] )</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.get.property.flag.htm" class="manualLink">dal.get.property.flag()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string class_name, long object_set, string
+                           					prop_name )</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.is.copy.active.htm" class="manualLink">dal.is.copy.active()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.is.field.changed.htm" class="manualLink">dal.is.field.changed()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string fld.name, [ long element ] )</code></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.new.htm" class="manualLink">dal.new()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string class_name, long object_set, ref long
+      					retval, long&nbsp;prop_check [, long mode [, long
+      					eflag]])</code></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.new.object.htm" class="manualLink">dal.new.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string class_name )</code></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.parent.caused.update.htm" class="manualLink">dal.parent.caused.update()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string fld.name, [long element] )</code></td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.recall.htm" class="manualLink">dal.recall()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string tbl.name )</code></td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.save.object.htm" class="manualLink">dal.save.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string class_name, [ long eflag ] )</code></td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.set.array.field.htm" class="manualLink">dal.set.array.field()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string fld_name, value(.) )</code></td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.set.field.htm" class="manualLink">dal.set.field()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string fld_name, void value, [ long element
+                           					] )</code></td>
+                  </tr>
+                  <tr no="23" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.set.property.htm" class="manualLink">dal.set.property()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string class_name, long object_set, const
+                           					string prop_name, value, long mode )</code></td>
+                  </tr>
+                  <tr no="24" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.set.property.with.check.htm" class="manualLink">dal.set.property.with.check()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string class_name, long object_set, const
+                           					string prop_name, value)</code></td>
+                  </tr>
+                  <tr no="25" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.skip.never.applicable.checks.htm" class="manualLink">dal.skip.never.applicable.checks()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="26" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.start.business.method.htm" class="manualLink">dal.start.business.method()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long|string set_id, string name, ref long
+                           					retval [, arg]... )</code></td>
+                  </tr>
+                  <tr no="27" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.submit.htm" class="manualLink">dal.submit()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string tbl.name )</code></td>
+                  </tr>
+                  <tr no="28" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.update.htm" class="manualLink">dal.update()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string class_name, long object_set, ref long
+      					retval, long&nbsp;prop_check [, long mode [, long
+      					eflag]] )</code></td>
+                  </tr>
+                  <tr no="29" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/dal.undo.check.out.htm" class="manualLink">dal.undo.check.out()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string tbl.name )</code></td>
+                  </tr>
+                  <tr no="30" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.bind.htm" class="manualLink">db.bind()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string table_name(9) [, ref string buffer(.)
+                           					[, long comp_nr]] )</code></td>
+                  </tr>
+                  <tr no="31" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.change.order.htm" class="manualLink">db.change.order()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id, long index_nr [, long
+                           					comp_nr] )</code></td>
+                  </tr>
+                  <tr no="32" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.check.restricted.htm" class="manualLink">db.check.restricted()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id, long mode, ref string
+                           					message(256) )</code></td>
+                  </tr>
+                  <tr no="33" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.check.row.changed.htm" class="manualLink">db.check.row.changed()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id )</code></td>
+                  </tr>
+                  <tr no="34" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.check.row.dlocked.htm" class="manualLink">db.check.row.dlocked()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id )</code></td>
+                  </tr>
+                  <tr no="35" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.check.row.domains.htm" class="manualLink">db.check.row.domains()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id, ref string fld_name(18) )</code></td>
+                  </tr>
+                  <tr no="36" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.clear.table.htm" class="manualLink">db.clear.table()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id[, long flag [, long comp_nr]]
+                           					)</code></td>
+                  </tr>
+                  <tr no="37" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.columns.to.record.htm" class="manualLink">db.columns.to.record()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id )</code></td>
+                  </tr>
+                  <tr no="38" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.create.table.htm" class="manualLink">db.create.table()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, long comp_nr] )</code></td>
+                  </tr>
+                  <tr no="39" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.curr.htm" class="manualLink">db.curr()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, long lock] )</code></td>
+                  </tr>
+                  <tr no="40" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.delete.htm" class="manualLink">db.delete()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, long mode [, long eflag]] )</code></td>
+                  </tr>
+                  <tr no="41" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.drop.table.htm" class="manualLink">db.drop.table()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, long flag] [, long comp_nr]
+                           					)</code></td>
+                  </tr>
+                  <tr no="42" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.eq.htm" class="manualLink">db.eq()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, long lock] )</code></td>
+                  </tr>
+                  <tr no="43" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.error.htm" class="manualLink">db.error()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( [long table_id] )</code></td>
+                  </tr>
+                  <tr no="44" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.error.message.htm" class="manualLink">db.error.message()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="45" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.first.htm" class="manualLink">db.first()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, long lock] )</code></td>
+                  </tr>
+                  <tr no="46" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.flush.htm" class="manualLink">db.flush()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="47" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.ge.htm" class="manualLink">db.ge()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, long lock] )</code></td>
+                  </tr>
+                  <tr no="48" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.get.error.bypass.htm" class="manualLink">db.get.error.bypass()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( [ref boolean with.retry] )</code></td>
+                  </tr>
+                  <tr no="49" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.get.physical.compnr.htm" class="manualLink">db.get.physical.compnr()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string tblname, long logical.compnr )</code></td>
+                  </tr>
+                  <tr no="50" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.gt.htm" class="manualLink">db.gt()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, long lock] )</code></td>
+                  </tr>
+                  <tr no="51" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.indexinfo.htm" class="manualLink">db.indexinfo()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id, long index_nr, ref long
+                           					index_info(32,3), ref long indexparts, ref
+                           					boolean indexdups, ref boolean indexactive )</code></td>
+                  </tr>
+                  <tr no="52" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.insert.htm" class="manualLink">db.insert()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, CODE mode [, long eflag]] )</code></td>
+                  </tr>
+                  <tr no="53" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.last.htm" class="manualLink">db.last()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, long lock] )</code></td>
+                  </tr>
+                  <tr no="54" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.le.htm" class="manualLink">db.le()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, long lock] )</code></td>
+                  </tr>
+                  <tr no="55" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.lock.table.htm" class="manualLink">db.lock.table()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, long comp_nr] )</code></td>
+                  </tr>
+                  <tr no="56" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.lt.htm" class="manualLink">db.lt()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, long lock] )</code></td>
+                  </tr>
+                  <tr no="57" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.next.htm" class="manualLink">db.next()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, long lock] )</code></td>
+                  </tr>
+                  <tr no="58" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.nr.indices.htm" class="manualLink">db.nr.indices()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id, ref long nr_indices )</code></td>
+                  </tr>
+                  <tr no="59" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.nr.rows.htm" class="manualLink">db.nr.rows()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id, ref long nr_rows [, long
+                           					comp_nr] )</code></td>
+                  </tr>
+                  <tr no="60" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.permission.htm" class="manualLink">db.permission()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, string field(18) [, ref
+                           					string buffer(.)]] )</code></td>
+                  </tr>
+                  <tr no="61" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.prev.htm" class="manualLink">db.prev()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, long lock] )</code></td>
+                  </tr>
+                  <tr no="62" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.record.changed.htm" class="manualLink">db.record.changed()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id )</code></td>
+                  </tr>
+                  <tr no="63" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.record.to.columns.htm" class="manualLink">db.record.to.columns()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id )</code></td>
+                  </tr>
+                  <tr no="64" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.ref.handle.mode.htm" class="manualLink">db.ref.handle.mode()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string table_name(9), long mode )</code></td>
+                  </tr>
+                  <tr no="65" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.restore.record.htm" class="manualLink">db.restore.record()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id )</code></td>
+                  </tr>
+                  <tr no="66" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.retry.hit.htm" class="manualLink">db.retry.hit()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="67" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.retry.point.htm" class="manualLink">db.retry.point()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="68" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.row.length.htm" class="manualLink">db.row.length()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id, ref long row_length )</code></td>
+                  </tr>
+                  <tr no="69" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.set.error.bypass.off.htm" class="manualLink">db.set.error.bypass.off()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(  )</code></td>
+                  </tr>
+                  <tr no="70" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.set.error.bypass.on.htm" class="manualLink">db.set.error.bypass.on()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( [boolean with.retry] )</code></td>
+                  </tr>
+                  <tr no="71" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.set.to.default.htm" class="manualLink">db.set.to.default()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id )</code></td>
+                  </tr>
+                  <tr no="72" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.store.record.htm" class="manualLink">db.store.record()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id )</code></td>
+                  </tr>
+                  <tr no="73" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.unbind.htm" class="manualLink">db.unbind()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id )</code></td>
+                  </tr>
+                  <tr no="74" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/db.update.htm" class="manualLink">db.update()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long table_id [, long mode [, long eflag]] )</code></td>
+                  </tr>
+                  <tr no="75" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/for.each.record.in.view.do.htm" class="manualLink">for.each.record.in.view.do()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string callback_function )</code></td>
+                  </tr>
+                  <tr no="76" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/on.main.table.htm" class="manualLink">on.main.table()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( function_name [, ...] )</code></td>
+                  </tr>
+                  <tr no="77" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/restore.rcd.main.htm" class="manualLink">restore.rcd.main()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long occurrence )</code></td>
+                  </tr>
+                  <tr no="78" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/set.limits.off.htm" class="manualLink">set.limits.off()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="79" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/set.transaction.readonly.htm" class="manualLink">set.transaction.readonly()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="80" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/skip.io.htm" class="manualLink">skip.io()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string mesg(14) [, ...] )</code></td>
+                  </tr>
+                  <tr no="81" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/store.occ.maxmin.htm" class="manualLink">store.occ.max(), store.occ.min()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="82" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/store.occ.maxmin.htm" class="manualLink">store.occ.max(), store.occ.min()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="83" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/sum.records.in.view.htm" class="manualLink">sum.records.in.view()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string column(n), ref double result, ...)</code></td>
+                  </tr>
+                  <tr no="84" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/this.dal.htm" class="manualLink">this.dal()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="85" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/to.key.htm" class="manualLink">to.key()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long key_number, [long nr.view.fields] )</code></td>
+                  </tr>
+                  <tr no="86" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/with.object.set.do.htm" class="manualLink">with.object.set.do()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( function_name, argument, ... )</code></td>
+                  </tr>
+                  <tr no="87" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_db_operations/with.old.object.values.do.htm" class="manualLink">with.old.object.values.do()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( function_name, argument, ... )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Remark</div>
+            <div class="NoteContent">
+               <p class="Paragraph">For using the DAL functions, you must include &lt;bic_dam&gt; in your script.</p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

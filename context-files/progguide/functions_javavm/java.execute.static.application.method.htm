@@ -1,0 +1,207 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>java.execute.static.application.method</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions java.execute.static.application.method java.execute.static.application.method java.execute.static.application.method ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">java.execute.static.application.method</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;java.execute.static.application.method&nbsp;
+					(long&nbsp;Handle, ref string&nbsp;JavaReturnValue, string&nbsp;class.name, string&nbsp;method.name [, void&nbsp;...])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Executes a versioned, dynamically loaded, Java method.
+                  These Java mehods can also return a (string) value to the 3 GL.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>Handle</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A handle to a loaded application, obtained by a previous successful call to <a href="../../progguide/functions_javavm/java.load.application.htm" class="manualLink">java.load.application</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>JavaReturnValue</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The Java method can return any type that supports the toString() method.
+                           All return values are converted to a string. When an invoked metod returns a null,
+                           this is converted to the empty string (the bshell does not have the concept of null pointers).
+                           So everything is returned as a string value to the bshell: a long is returned as a decimal
+                           string, a string is returned "as is", etc.
+                        </p>
+                        <p class="Paragraph">This parameter is passed by reference and only valid when the return code of the function is 0 (success).
+                           A non-zero return value indicates a problem and in that case the JavaReturnValue is not used.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>class.name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The Name of the Java class to call (e.g.: com.baan.baanvm.Test).
+                           This must be the name of a valid Java class in the (currently loaded) version of the application.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>method.name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Name of the static Java method in that class to call (e.g.: runMe).</p>
+                        <p class="Paragraph">This must be the name of a static method, returning a type that can be converted to a
+                           string (all return values are cast to a string).
+                        </p>
+                        <p class="Paragraph">The selected class must have a parameter signature that matches the parameters that you specify.</p>
+                        <p class="Paragraph">When one of these restrictions is violated, the function will return a non-zero value and the log will
+                           provide more details.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">[void</td>
+                     <td class="none"><code>...</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional parameters for that method. All BaanC types at this time (string, long, double) are supported.</p>
+                        <p class="Paragraph">The 3GL type BOOLEAN is supported, but it maps to an int in Java.
+                           Also, it is worthwhile noting that the 3GL type LONG maps to the int type in Java.
+                        </p>
+                        <p class="Paragraph">The signature of the method that you are calling must match the signature used by the 3GL call.
+                           It is supported to have several methods with the same name and different signatures. The matching method is
+                           selected automatically.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return codes</div>
+            <table border="0" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Success. The JavaReturnValue will contain the return value of the Java method.
+                           All return values are converted to a string (using toString() in Java) and returned
+                           to the bshell as a string.
+                           More complex interaction with Java can be achieved by means of message queues.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">Java not available or not licensed.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-2</th>
+                     <td rowspan="1" colspan="1" class="none">Java virtual machine could not be started (resource problems).</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-3</th>
+                     <td rowspan="1" colspan="1" class="none">Invalid (unknown) handle specified.</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-4</th>
+                     <td rowspan="1" colspan="1" class="none">Internal (resource) problems handling a request.</td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-5</th>
+                     <td rowspan="1" colspan="1" class="none">Invalid method (does not exist, bad signature, return type, etc) or error
+                        during execution of the method (Java exception).
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">More detailed error information may be available in the log file.</p>
+            <p class="Paragraph">For an example, see <a href="../../progguide/functions_javavm/java.load.application.htm" class="manualLink">java.load.application</a></p>
+            <p class="Paragraph">Note: Java applications can be debugged using the -tracelevel option of the Bshell.
+               This is translated as follows:
+            </p>
+            <table border="1" class="default">
+               <tbody noTR="4" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                     <td rowspan="1" colspan="1" class="default">No Extra Logging</td>
+                     <td rowspan="1" colspan="1" class="default">Level.SEVERE</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">1</td>
+                     <td rowspan="1" colspan="1" class="default">Some Details</td>
+                     <td rowspan="1" colspan="1" class="default">Level.WARNING</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">2</td>
+                     <td rowspan="1" colspan="1" class="default">More Details</td>
+                     <td rowspan="1" colspan="1" class="default">Level.INFO</td>
+                  </tr>
+                  <tr no="4" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">3</td>
+                     <td rowspan="1" colspan="1" class="default">Full Details</td>
+                     <td rowspan="1" colspan="1" class="default">Level.FINE</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">The Java application can log messages by using the standard Java logger:</p><pre class="CodeBlock">
+Logger logger = Logger.getLogger("TestLogging");
+
+logger.log(Level.FINEST,  "Level &gt;= 3: Finest message");
+logger.log(Level.INFO,    "Level &gt;= 2: Info message");
+logger.log(Level.WARNING, "Level &gt;= 1: Warning message");
+logger.log(Level.SEVERE,  "Level &gt;= 0: severe message");
+logger.log(Level.SEVERE, "Exception", new Exception("EXCEPTIONTEST"));
+</pre><p class="Paragraph">Level SEVERE is equivalent to an error: those messages will show up in the error log of the bshell and in the trace file.</p>
+            <p class="Paragraph">All other levels (WARNING, INFO and FINEST) will show up only in the trace file, and only when the current
+               tracelevel is high enough to show them.
+            </p>
+            <p class="Paragraph">Thrown exceptions will show up in the bshell trace file with an accompanying stack trace.</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_javavm/overview.htm" class="manualLink">Java VM integration - Infor ERP Enterprise Server 3GL</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_javavm/java.load.application.htm" class="manualLink">java.load.application</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_javavm/java.unload.application.htm" class="manualLink">java.unload.application</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_javavm/java.execute.static.application.method, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

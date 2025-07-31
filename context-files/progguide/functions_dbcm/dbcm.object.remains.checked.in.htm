@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dbcm.object.remains.checked.in()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dbcm.object.remains.checked.in dbcm.object.remains.checked.in functions dbcm.object.remains.checked.in ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dbcm.object.remains.checked.in()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;dbcm.object.remains.checked.in&nbsp;
+					(ref long&nbsp;tbl.id, long&nbsp;cmac, ref boolean&nbsp;b.eval)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Tests whether the business object related to the current record buffer remains checked in.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>tbl.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A table id as returned by <a href="../../progguide/functions_db_operations/db.bind.htm" class="manualLink">db.bind()</a>,
+                           					or a standard table id, like ttdsls400.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>cmac</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">An CM Action type.</p>
+                        <p class="Paragraph">Parameter cmac should be one of the following values:</p>
+                        <p class="Paragraph"><code class="Code">CMAC_INSERT, CMAC_UPDATE, CMAC_DELETE</code>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">ref boolean</td>
+                     <td class="none"><code>b.eval</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Indicates whether the business object related to the current record buffer will be checked out ('false') or remains checked
+                           in ('true').
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">In case of success.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;&gt; 0</th>
+                     <td rowspan="1" colspan="1" class="none">In case an error occurred such as: table id is invalid, object could not be determined or CheckOutCondition could not be evaluated.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1900.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dbcm/overview.htm" class="manualLink">Database Change Management (DBCM) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dbcm/synopsis.htm" class="manualLink">Database Change Management operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dbcm/dbcm.object.remains.checked.in, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

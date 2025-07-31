@@ -1,0 +1,85 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Timestamp constant</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Constants (literals) Timestamp Timestamp constant ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Timestamp constant</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The timestamp constant specifies a timestamp value.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;timestamp constant&gt;
+    ::= TIMESTAMP '&lt;timestamp string&gt;'
+      | TIMESTAMP "&lt;timestamp string&gt;" 
+
+&lt;timestamp string&gt; 
+    ::= &lt;year&gt;-&lt;month&gt;-&lt;day&gt; &lt;hours&gt;:&lt;minutes&gt;:&lt;seconds&gt;
+
+&lt;year&gt;    ::= &lt;digit&gt;...
+&lt;month&gt;   ::= &lt;digit&gt;...
+&lt;day&gt;     ::= &lt;digit&gt;...
+&lt;hours&gt;   ::= &lt;digit&gt;...
+&lt;minutes&gt; ::= &lt;digit&gt;...
+&lt;seconds&gt; ::= &lt;digit&gt;...
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">The timestamp represented by the timestamp constant must be a
+               valid timestamp according to the Gregorian calender.
+            </p>
+            <p class="Paragraph">The minimum
+               timestamp constant in UTC is "1970-01-01 00:00:00".
+            </p>
+            <p class="Paragraph">The maximum
+               timestamp constant in UTC is "2038-01-19 03:14:07".
+            </p>
+            <p class="Paragraph">For the
+               minimum and maximum timestamp constant in the local timezone, the local
+               timezone displacement and daylight savings time must be taken
+               into account.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The data type of a timestamp constant is <i class="Emphasis">timestamp</i>.
+               The timestamp string is assumed to be in local time.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following timestamp constant represents the timestamp
+               January 10, 2003, 12:04:35.
+            </p><pre class="CodeBlock">
+TIMESTAMP '2003-1-10 12:04:35'
+</pre><p class="Paragraph">The following timestamp constant represents the timestamp
+               March 10, 1, 12:04:01.
+            </p><pre class="CodeBlock">
+TIMESTAMP '1-03-10 12:4:1'
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+               <li class="RelTopic">SQL data type <a href="../../progguide/functions_database_handling/sql_data_types.htm#timestamp" class="manualLink">timestamp</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/timestamp_constant, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

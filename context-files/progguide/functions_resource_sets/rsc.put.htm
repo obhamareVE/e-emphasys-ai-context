@@ -1,0 +1,117 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>rsc.put()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions rsc.put rsc.put rsc.put ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">rsc.put()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;rsc.put&nbsp;
+					(string&nbsp;package_code(2), string&nbsp;resource_set(16), string&nbsp;resource_id(16), value(40)  [, string&nbsp;resource_id(16), value(40) . . .])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This updates one or more resource values in a specified
+                  resource set. You can use the following functions to convert
+                  program variables to a resource value format: <a href="../../progguide/functions_resource_sets/rsc.many.htm" class="manualLink">rsc.boolean(), rsc.double(), rsc.enum(), rsc.long(), rsc.string()</a>, <a href="../../progguide/functions_resource_sets/rsc.many.htm" class="manualLink">rsc.boolean(), rsc.double(), rsc.enum(), rsc.long(), rsc.string()</a>, <a href="../../progguide/functions_resource_sets/rsc.many.htm" class="manualLink">rsc.boolean(), rsc.double(), rsc.enum(), rsc.long(), rsc.string()</a>, <a href="../../progguide/functions_resource_sets/rsc.many.htm" class="manualLink">rsc.boolean(), rsc.double(), rsc.enum(), rsc.long(), rsc.string()</a>, and <a href="../../progguide/functions_resource_sets/rsc.many.htm" class="manualLink">rsc.boolean(), rsc.double(), rsc.enum(), rsc.long(), rsc.string()</a>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>package_code(2)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The package code.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>resource_set(16)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The resource set ID.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>resource_id(16), value(40)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">One or more name/value pairs. Each pair consists
+                           of the ID of a resource that must be updated and the
+                           new value for that resource.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>resource_id(16), value(40) . . .</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">One or more name/value pairs. Each pair consists
+                           of the ID of a resource that must be updated and the
+                           new value for that resource.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">long&nbsp;&nbsp; foreground_color, background_color</p>
+            <p class="Paragraph">string gui_font(80)</p>
+            <p class="Paragraph"></p>
+            <p class="Paragraph">foreground_color = RGB.RED</p>
+            <p class="Paragraph">background_color = RGB.WHITE</p>
+            <p class="Paragraph">gui_font = rsc.font.spec( FNTMEDIUM, FNTROMAN, 14,
+               0,FNTVARIABLE, 140, 0 )
+            </p>
+            <p class="Paragraph"></p>
+            <p class="Paragraph">rsc.put( "tt", "desktop", "foreground", rsc.long(
+               foreground_color ),
+            </p>
+            <p class="Paragraph">"background", rsc.long( background_color ), "font",</p>
+            <p class="Paragraph">rsc.string( gui_font ) )</p>
+            <p class="Paragraph"></p>
+            <p class="Paragraph">rsc.reload()</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_resource_sets/overview.htm" class="manualLink">Resource sets overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_resource_sets/synopsis.htm" class="manualLink">Resource sets synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_resource_sets/rsc.put, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

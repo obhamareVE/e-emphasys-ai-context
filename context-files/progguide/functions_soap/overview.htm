@@ -1,0 +1,165 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>SOAP client overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="SOAP client ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">SOAP client overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">SOAP, originally defined as Simple Object Access Protocol, is a protocol specification for exchanging structured 
+               			information in the implementation of Web Services in computer networks. It relies on eXtensible Markup Language (XML) 
+               			as its message format, and usually relies on other Application Layer protocols (most notably Remote Procedure Call (RPC)
+               
+               			and HTTP) for message negotiation and transmission. 
+               			SOAP can form the foundation layer of a web services protocol stack, providing a basic messaging framework 
+               			upon which web services can be built. This XML based protocol consists of three parts: 
+               			an envelope - which defines what is in the message and how to process it - a set of encoding rules for expressing 
+               			instances of application-defined datatypes, and a convention for representing procedure calls and responses.
+            </p>
+            <p class="Paragraph">As a layman's example of how SOAP procedures can be used, a SOAP message could be sent to a web-service-enabled web site 
+               			(for example, a house price database) with the parameters needed for a search. 
+               			The site would then return an XML-formatted document with the resulting data (prices, location, features, etc). 
+               			Because the data is returned in a standardized machine-parseable format, it could then be integrated directly 
+               			into a third-party site.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Scope and limitations</div>
+            <p class="Paragraph">3GL SOAP client implementations are available as off ERP Enterprise Server 8.3 (ES8.3). 
+               			The implementation used in ES8.3 - ES8.6 has some limitations:
+            </p>
+            <ul class="List">
+               <li class="ListItem">It uses a simple, limited HTTP client (full HTTP is not supported; e.g. redirection is not supported)</li>
+               <li class="ListItem">There is no HTTPS support;</li>
+               <li class="ListItem">There is no XML namespace support.</li>
+            </ul>
+            <p class="Paragraph">As off ERP Enterprise Server 8.7, the 3GL SOAP client supports full HTTP and HTTPS, as well as XML namespaces.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Example (using ES8.7 with XML namespace support)</div>
+            <p class="Paragraph">The below code fragment shows how the SOAP client functions are typically used. 
+               			Note that <code class="Code">#include &lt;bic_soap&gt;</code> must be done.
+            </p><pre class="CodeBlock">
+#include &lt;bic_soap&gt;
+
+function main()
+{
+	long msgNode
+	long requestNode
+	long responseNode
+	long methodNode
+	long status
+	long ns
+	string zip( 64 )
+	string result( 128 )
+
+	zip = "10001"
+
+	| Create a new SOAP message
+	msgNode = soap.newMessage( URI_SOAP11 )
+
+	| Define the method to call
+	requestNode = xmlNewNode( "GetInfoByZIP" )
+	| Declare and set the namespace
+	ns = xmlNewNamespace( requestNode, "", "http://www.webserviceX.NET" )
+	xmlSetNamespace( requestNode, ns )
+	xmlNewDataElementNs( ns, "USZip", zip, requestNode )
+
+	| Add the method to the SOAP envelope contained the in the SOAP message
+	soap.addMethod( msgNode, requestNode )
+	
+	| Set the SOAP Action
+	soap.setAction( msgNode, "http://www.webserviceX.NET/GetInfoByZIP" )
+
+	| Invoke the SOAP request
+	status = soap.invoke( msgNode, "http://www.webservicex.net/uszip.asmx", responseNode )
+
+	| Check the response
+	if status = 0 then
+		| Get the method result
+		methodNode = soap.getMethod( responseNode )
+		result = xmlDataElement$( methodNode, "GetInfoByZIPResult" )
+	else
+		| Something went wrong...
+		message( "SOAP Error: %d", status )
+	endif
+
+	| Cleanup
+	soap.deleteMessage( msgNode )
+	soap.deleteMessage( responseNode )
+}
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Example (using ES8.3-8.6 without XML namespaces support)</div><pre class="CodeBlock">
+#include &lt;bic_soap&gt;
+
+function main()
+{
+	long msgNode
+	long requestNode
+	long responseNode
+	long methodNode
+	long status
+	string zip( 64 )
+	string result( 128 )
+
+	zip = "10001"
+
+	| Create a new SOAP message
+	msgNode = soap.newMessage( URI_SOAP11 )
+
+	| Define the method to call
+	requestNode = xmlNewnode( "GetInfoByZIP" )
+	| Set the default namespace
+	xmlSetAttribute(requestNode, "xmlns", "http://www.webserviceX.NET" )
+	xmlNewDataElement( "USZip", zip, requestNode )
+
+	| Add the method to the SOAP envelope contained the in the SOAP message
+	soap.addMethod( msgNode, requestNode )
+
+	| Set the SOAP Action
+	soap.setAction( msgNode, "http://www.webserviceX.NET/GetInfoByZIP" )
+
+	| Invoke the SOAP request
+	status = soap.invoke( msgNode,
+	   "http://www.webservicex.net/uszip.asmx", responseNode )
+
+	| Check the response
+	if status = 0 then
+		| Get the method result
+		methodNode = soap.getMethod( responseNode )
+		result = xmlDataElement$( methodNode, "GetInfoByZIPResult" )
+	else
+		| Something went wrong...
+		message( "SOAP Error: %d", status )
+	endif
+
+	| Cleanup
+	soap.deleteMessage( msgNode )
+	soap.deleteMessage( responseNode )
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_soap/synopsis.htm" class="manualLink">SOAP client synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_soap/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Query extensions</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="data access layer query extensions query extensions ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Query extensions</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Query extensions define conditions that the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> adds to the
+               SELECT, FROM, and/or WHERE clauses of a database query in order
+               to minimize the number of fields read from the main table and in
+               order to retrieve all reference table fields required by the UI
+               and/or DAL scripts.
+            </p>
+            <p class="Paragraph">Infor ERP Enterprise provides the following functions for constructing
+               query extensions:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_sql_query_extensions/query.extend.select.htm" class="manualLink">query.extend.select()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_sql_query_extensions/query.extend.select.in.zoom.htm" class="manualLink">query.extend.select.in.zoom()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_sql_query_extensions/query.extend.from.htm" class="manualLink">query.extend.from()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_sql_query_extensions/query.extend.from.in.zoom.htm" class="manualLink">query.extend.from.in.zoom()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_sql_query_extensions/query.extend.where.htm" class="manualLink">query.extend.where()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_sql_query_extensions/query.extend.where.in.zoom.htm" class="manualLink">query.extend.where.in.zoom()</a></li>
+            </ul>
+            <p class="Paragraph">You can program query extensions in the UI script and/or the
+               DAL script. In the UI script, you program the extensions in the <i class="Emphasis">before.program</i> or <i class="Emphasis">before.zoom</i> sections. In the DAL script, you program the
+               extensions in the <a href="../../progguide/functions_dal/before.open.object.set.htm" class="manualLink">before.open.object.set()</a> hook.
+            </p>
+            <p class="Paragraph">For a full discussion of query extensions, see <a href="../../progguide/functions_sql_query_extensions/overview.htm" class="manualLink">SQL query extensions overview</a></p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">Using query extensions with <a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a> is strongly discouraged. The main
+                  reason is that this may interfere with the handling of field dependencies.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/query_extensions, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

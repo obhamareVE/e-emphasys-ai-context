@@ -1,0 +1,86 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>brp.ready()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="brp.ready brp.ready functions brp.ready ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">brp.ready()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;brp.ready&nbsp;
+					(long&nbsp;brp_id)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This signals the report writer that a record is ready to
+                  be imported into a particular report. The report writer then
+                  prints the record. You call this function after filling the
+                  fields of a record that the report writer can process. The
+                  fields are specified in the report and must be declared as
+                  EXTERN in the program script.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>brp_id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This identifies the particular report into which
+                           the record must be imported. It is the ID returned
+                           by <a href="../../progguide/functions_reports/brp.open.htm" class="manualLink">brp.open()</a> or <a href="../../progguide/functions_reports/brp.open.language.htm" class="manualLink">brp.open.language()</a> when the report was activated.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; success</p>
+            <p class="Paragraph">-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; error: unknown ID specified</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">See <a href="../../progguide/functions_reports/brp.open.htm" class="manualLink">brp.open()</a>.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_reports/overview_and_synopsis.htm" class="manualLink">Reports overview and synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_spooling/overview_and_synopsis.htm" class="manualLink">Spooling overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_reports/brp.ready, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

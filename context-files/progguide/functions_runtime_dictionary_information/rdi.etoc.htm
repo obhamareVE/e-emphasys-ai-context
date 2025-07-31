@@ -1,0 +1,114 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>rdi.etoc$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions rdi.etoc$ rdi.etoc$ rdi.etoc$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">rdi.etoc$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;rdi.etoc$&nbsp;
+					(string&nbsp;domain_name(14), long&nbsp;enum_value as long)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This gets an enum-value as long and returns a string
+                  representing it in the specified domain.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>domain_name(14)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the domain.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>enum_value as long</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">An enum-value in the specified domain.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">filled string, success</p>
+            <p class="Paragraph">empty string, error occurred</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">Domain: tcynna</p>
+            <table border="1" class="default">
+               <tbody noTR="4" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">Constant</code></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">Constant Name</code></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">Description</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">1</code></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">yes</code></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">Yes</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">2</code></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">no</code></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">No</code></td>
+                  </tr>
+                  <tr no="4" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">3</code></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">not.app</code></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">Not Applicable</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p><pre class="CodeBlock">
+string  enum_name(15)
+
+enum_name = rdi.etoc$("tcynna", 3)
+
+The value of enum_name is now: not.app
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_runtime_dictionary_information/overview_and_synopsis.htm" class="manualLink">Runtime dictionary information overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_runtime_dictionary_information/rdi.etoc, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>IN predicate</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="IN Search condition IN ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">IN predicate</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">An IN predicate is True if the value of the expression on the
+               left hand side is contained in the collection of values on the
+               right hand side. The collection of values can be specified by a
+               list of values or it can be specified by a subquery. In the
+               latter case it is checked if the value is contained in the
+               result set of the subquery.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;in predicate&gt;
+    ::= <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a> [NOT] IN ( <a href="../../progguide/functions_database_handling/sub_query.htm" class="manualLink">Sub query</a> )
+      | <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a> [NOT] IN ( &lt;in value list&gt; )
+
+&lt;in value list&gt; 
+    ::= <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a> [ { , <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a> }... ]
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">The <a href="../../progguide/functions_database_handling/sql_glossary.htm#Degree" class="glossaryLink">degree</a> of
+               the <i class="Emphasis">&lt;sub query&gt;</i> shall be 1.
+            </p>
+            <p class="Paragraph">Example of correct usage.</p><pre class="CodeBlock">
+empno IN ( SELECT empno FROM ... )
+</pre><p class="Paragraph">Examples of <i class="Emphasis">incorrect</i> usage:
+            </p><pre class="CodeBlock">
+empno = ( SELECT empno, salary ... )
+</pre><pre class="CodeBlock">
+empno = ( SELECT * from dbtst120 )
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The following equivalences hold:</p><pre class="Formula">
+   expr NOT IN ( ... )  &lt;=&gt;  NOT ( expr IN ( ... ) )
+</pre><pre class="Formula">
+   expr IN ( v1, v2, ... )  &lt;=&gt;  expr = v1 OR expr = v2 OR ...
+</pre><p class="Paragraph">For the exact semantics see <a href="../../progguide/functions_database_handling/comparison_pred.htm" class="manualLink">Comparison predicate</a>, <a href="../../progguide/functions_database_handling/not_sc.htm" class="manualLink">NOT boolean operator</a> and <a href="../../progguide/functions_database_handling/or_sc.htm" class="manualLink">OR boolean operator</a>.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following condition is True if <i class="Emphasis">empno</i> is either 100,
+               200 or 300.
+            </p><pre class="CodeBlock">
+empno IN ( 100, 200, 300 )
+</pre><p class="Paragraph">The following condition is True if <i class="Emphasis">empno</i> is equal to at
+               least one of the <i class="Emphasis">mgrno</i> values of dbtst100.
+            </p><pre class="CodeBlock">
+empno IN ( select mgrno from dbtst100 )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/in_pred, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

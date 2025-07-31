@@ -1,0 +1,184 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Vocabulary</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="reserved words vocabulary 3GL ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Vocabulary</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Character set</div>
+            <p class="Paragraph">You can include the following characters in a 3GL language
+               statement:
+            </p>
+            <ul class="List">
+               <li class="ListItem">the full alphabet - a-z and A-Z §</li>
+               <li class="ListItem">the digits 0-9 §</li>
+               <li class="ListItem">the characters # $ ^ &amp; * ( ) - _ + = { } [ ] | \ ; :
+                  " , . / &lt; &gt;
+               </li>
+            </ul>
+            <p class="Paragraph">This document uses uppercase characters to indicate keywords.
+               However, this is not necessary in your programs.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Continuation symbol</div>
+            <p class="Paragraph">If a statement does not fit on one line, you can split it
+               across two or more lines. There is no limit to the number of
+               lines that you can use for one statement. Wherever you can
+               include a space, you can also make a new line.
+            </p>
+            <p class="Paragraph">There are two exceptions: a string constant and a macro
+               definition. If these do not fit on one line, you must place a
+               caret symbol [^] at the beginning of the second and subsequent
+               lines. You can use the caret symbol in other statements also,
+               but this is not necessary.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Comment</div>
+            <p class="Paragraph">The pipe symbol [|] indicates that the text from the symbol
+               to the end of the line must be handled as a comment. The
+               compiler ignores this text. Good comments help the reader of a
+               program source to understand the program better.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Separators</div>
+            <p class="Paragraph">You can use tabs, newlines, and spaces as separators in your
+               program.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Reserved words</div>
+            <p class="Paragraph">The Baan 3GL programming language includes a number of
+               words with defined meanings. These are reserved words that
+               you cannot use other than in the context for which they were
+               designed. Not all these words are described in this document;
+               some are for internal use or for compatibility with older
+               releases.
+            </p>
+            <p class="Paragraph">The following is a list of these reserved words:</p>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">AND</p>
+                        <p class="Paragraph">AT</p>
+                        <p class="Paragraph">BASE</p>
+                        <p class="Paragraph">BASED</p>
+                        <p class="Paragraph">BOOLEAN</p>
+                        <p class="Paragraph">BREAK</p>
+                        <p class="Paragraph">BSET</p>
+                        <p class="Paragraph">CALL</p>
+                        <p class="Paragraph">CASE</p>
+                        <p class="Paragraph">COMMON</p>
+                        <p class="Paragraph">CONST</p>
+                        <p class="Paragraph">CONTINUE</p>
+                        <p class="Paragraph">DEFAULT</p>
+                        <p class="Paragraph">DELETE</p>
+                        <p class="Paragraph">DELETEEMPTY</p>
+                        <p class="Paragraph">DELETEERROR</p>
+                        <p class="Paragraph">DIM</p>
+                        <p class="Paragraph">DLLUSAGE</p>
+                        <p class="Paragraph">DOMAIN</p>
+                        <p class="Paragraph">DOUBLE</p>
+                        <p class="Paragraph">ELSE</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">EMPTY</p>
+                        <p class="Paragraph">END</p>
+                        <p class="Paragraph">ENDCASE</p>
+                        <p class="Paragraph">ENDFOR</p>
+                        <p class="Paragraph">ENDFUNCTIONUSAGE</p>
+                        <p class="Paragraph">ENDDELETE</p>
+                        <p class="Paragraph">ENDIF</p>
+                        <p class="Paragraph">ENDUPDATE</p>
+                        <p class="Paragraph">ENDWHILE</p>
+                        <p class="Paragraph">ENDSELECT</p>
+                        <p class="Paragraph">ENDDLLUSAGE</p>
+                        <p class="Paragraph">EQ</p>
+                        <p class="Paragraph">EXTERN</p>
+                        <p class="Paragraph">FALSE</p>
+                        <p class="Paragraph">FIXED</p>
+                        <p class="Paragraph">FOR</p>
+                        <p class="Paragraph">FUNCTION</p>
+                        <p class="Paragraph">FUNCTIONUSAGE</p>
+                        <p class="Paragraph">GE</p>
+                        <p class="Paragraph">GLOBAL</p>
+                        <p class="Paragraph">GOTO</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">GT</p>
+                        <p class="Paragraph">IF</p>
+                        <p class="Paragraph">IN</p>
+                        <p class="Paragraph">INPUT</p>
+                        <p class="Paragraph">LE</p>
+                        <p class="Paragraph">LONG</p>
+                        <p class="Paragraph">LT</p>
+                        <p class="Paragraph">MB</p>
+                        <p class="Paragraph">MULTIBYTE</p>
+                        <p class="Paragraph">NE</p>
+                        <p class="Paragraph">NOT</p>
+                        <p class="Paragraph">ON</p>
+                        <p class="Paragraph">OR</p>
+                        <p class="Paragraph">PRINT</p>
+                        <p class="Paragraph">PROMPT</p>
+                        <p class="Paragraph">REF</p>
+                        <p class="Paragraph">REFERENCE</p>
+                        <p class="Paragraph">REPEAT</p>
+                        <p class="Paragraph">RETURN</p>
+                        <p class="Paragraph">SELECT</p>
+                        <p class="Paragraph">SELECTBIND</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">SELECTDO</p>
+                        <p class="Paragraph">SELECTEMPTY</p>
+                        <p class="Paragraph">SELECTEOS</p>
+                        <p class="Paragraph">SELECTERROR</p>
+                        <p class="Paragraph">STATIC</p>
+                        <p class="Paragraph">STEP</p>
+                        <p class="Paragraph">STOP</p>
+                        <p class="Paragraph">STRING</p>
+                        <p class="Paragraph">TABLE</p>
+                        <p class="Paragraph">THEN</p>
+                        <p class="Paragraph">TO</p>
+                        <p class="Paragraph">TRUE</p>
+                        <p class="Paragraph">UNTIL</p>
+                        <p class="Paragraph">UPDATE</p>
+                        <p class="Paragraph">UPDATEEMPTY</p>
+                        <p class="Paragraph">UPDATEERROR</p>
+                        <p class="Paragraph">VOID</p>
+                        <p class="Paragraph">WHEREBIND</p>
+                        <p class="Paragraph">WHEREUSED</p>
+                        <p class="Paragraph">WHILE</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/vocabulary, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

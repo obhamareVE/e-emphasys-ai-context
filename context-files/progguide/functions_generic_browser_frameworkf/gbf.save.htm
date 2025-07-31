@@ -1,0 +1,196 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>gbf.save()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions gbf.save gbf.save gbf.save ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">gbf.save()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;gbf.save&nbsp;
+					(long&nbsp;obj.id, const string&nbsp;object.key(), long&nbsp;object.value, long&nbsp;save.type)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function will be called when the Save or Save+Exit
+                  menu has been called. The idea is that the main application
+                  should now save any unsaved data.
+               </p>
+               <p class="Paragraph">The save.type indicates for what reason this function is
+                  called. The possible values are:
+               </p>
+               <table border="0" class="none">
+                  <tbody noTR="3" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">Value</td>
+                        <td rowspan="1" colspan="1" class="none">Menu item selected</td>
+                        <td rowspan="1" colspan="1" class="none">Keystroke given</td>
+                        <td rowspan="1" colspan="1" class="none">Button pressed</td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">GBF.MENU.FILE.SAVE</td>
+                        <td rowspan="1" colspan="1" class="none">Save</td>
+                        <td rowspan="1" colspan="1" class="none">Ctrl+S</td>
+                        <td rowspan="1" colspan="1" class="none">Save (floppy disk)</td>
+                     </tr>
+                     <tr no="3" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">GBF.MENU.FILE.QUIT</td>
+                        <td rowspan="1" colspan="1" class="none">Save+Exit</td>
+                        <td rowspan="1" colspan="1" class="none">
+                           <p class="Paragraph_firstAndNoTextBefore">Ctrl+Q</p>
+                           <p class="Paragraph">Alt+F4</p>
+                        </td>
+                        <td rowspan="1" colspan="1" class="none">
+                           <p class="Paragraph_firstAndNoTextBefore">Exit button on button bar</p>
+                           <p class="Paragraph">X in top right hand corner</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+               <p class="Paragraph">There are three possibilities for obj.id:</p>
+               <table border="0" class="none">
+                  <tbody noTR="3" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">obj.id &lt; 0</td>
+                        <td rowspan="1" colspan="1" class="none">
+                           <p class="Paragraph_firstAndNoTextBefore">More that one object was currently selected when
+                              this menu item was chosen and obj.id contains the
+                              negative number of selected objects, that is: -obj.id
+                              is the actual number of selected objects. So obj.id in
+                              this case is no valid object identification, but on the
+                              other hand object.key and object.value contain the
+                              identification of the first selected object. All
+                              currently selected objects can be obtained using a <a href="../../progguide/functions_generic_browser_frameworkf/gbf.get.selected.htm" class="manualLink">gbf.get.selected()</a> for each selected object.
+                           </p>
+                           <p class="Paragraph">This case will only happen if the GBF is configured to
+                              support multiple select (see <a href="../../progguide/functions_generic_browser_frameworkf/gbf.init.htm" class="manualLink">gbf.init()</a>)
+                           </p>
+                        </td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">obj.id = 0</td>
+                        <td rowspan="1" colspan="1" class="none">No object was currently selected when this menu
+                           entry was chosen, and object.key will be an empty
+                           string, that is isspace(object.key) is true.
+                        </td>
+                     </tr>
+                     <tr no="3" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">obj.id &gt; 0</td>
+                        <td rowspan="1" colspan="1" class="none">Precisely one object was currently selected when
+                           this menu item was chosen and that object is
+                           identified by obj.id as well as by the object.key
+                           and object.value, which have been given to the GBF
+                           on a preceding <a href="../../progguide/functions_generic_browser_frameworkf/gbf.add.object.htm" class="manualLink">gbf.add.object()</a> call. The given obj.id identifies the object for the
+                           GBF and should be used only as object identification
+                           for other GBF functions like <a href="../../progguide/functions_generic_browser_frameworkf/gbf.get.parent.htm" class="manualLink">gbf.get.parent()</a>, <a href="../../progguide/functions_generic_browser_frameworkf/gbf.get.first.child.htm" class="manualLink">gbf.get.first.child()</a>, <a href="../../progguide/functions_generic_browser_frameworkf/gbf.get.next.htm" class="manualLink">gbf.get.next()</a> and
+                           gbf.update.object().
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+               <p class="Paragraph">After the saving is done the return value of this function
+                  to GBF uses the same return patterns as <a href="../../progguide/functions_generic_browser_frameworkf/gbf.menu.selected.htm" class="manualLink">gbf.menu.selected()</a>.
+                  Note that even on GBF.MENU.FILE.QUIT the main application
+                  should still return to the GBF as the GBF will perform the
+                  exit part. This exit part may be skipped, that is the GBF
+                  will remain running when the special return value:
+                  GBF.DO.NOT.EXIT is returned in this case. This may be
+                  necessary when, for example, the user should have selected an
+                  object but they did not do so. The code in this case looks
+                  like:
+               </p><pre class="CodeBlock">
+function extern long gbf.save(…)
+{
+        if (save.type = GBF.MENU.FILE.QUIT) and (obj.id = 0) then
+                | Please select at least one object before leaving
+                mess("xxxxxxxxxx", 1)
+                return (GBF.DO.NOT.EXIT)
+        endif
+        …
+        return (0)
+}
+</pre></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>obj.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">See above.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>object.key()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>object.value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>save.type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">See <a href="../../progguide/functions_generic_browser_frameworkf/gbf.menu.selected.htm" class="manualLink">gbf.menu.selected()</a></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/overview.htm" class="manualLink">Generic Browser Framework (GBF) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/synopsis.htm" class="manualLink">Generic Browser Framework (GBF) synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/typical_usage.htm" class="manualLink">Typical usage</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/getting_started.htm" class="manualLink">Getting started</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/example.htm" class="manualLink">Example</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/error_codes_and_return_values.htm" class="manualLink">Generic Browser Framework error codes and return values</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/standard_menu_items_and_function_keys.htm" class="manualLink">standard menu items and function keys</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/messages_and_questions.htm" class="manualLink">Messages and questions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_generic_browser_frameworkf/gbf.save, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

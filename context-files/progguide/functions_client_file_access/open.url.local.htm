@@ -1,0 +1,123 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>open.url.local()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions open.url.local open.url.local open.url.local ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">open.url.local()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_desktop&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;boolean&nbsp;open.url.local&nbsp;
+					(string&nbsp;url, long&nbsp;mode [, string&nbsp;dialog.title] [, string&nbsp;dialog.message] [, string&nbsp;browser.title])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function opens a <i class="Emphasis">URL</i> in an (embedded) browser. This function is only supported in the WebUI.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>url</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This specifies the URL that needs to be started.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>mode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies the start mode of the browser. Possible values are:</p>
+                        <p class="Paragraph">OPEN_URL_EXTERNAL: Open the URL in an new tab of the browser.</p>
+                        <p class="Paragraph">OPEN_URL_INTERNAL: Open the URL embeded in the WebUI.</p>
+                        <p class="Paragraph">OPEN_URL_WAIT: Open the URL embeded in the WebUI and block the current session till the browser window is closed.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>dialog.title</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">When the browser is started in the mode <i class="Emphasis">OPEN_URL_WAIT</i> a modal dialog is created for the session. If this dialog should have a 
+                           title then the parameter dialog.title must be filled. This argument is optional and is only applicable for the <i class="Emphasis">OPEN_URL_WAIT</i> mode.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>dialog.message</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">When the browser is started in the mode <i class="Emphasis">OPEN_URL_WAIT</i> a modal dialog is created for the session. If this dialog should have a 
+                           message the parameter dialog.message must be filled. This argument is optional and is only applicable for the <i class="Emphasis">OPEN_URL_WAIT</i> mode.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>browser.title</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The title of the window used to show the URL local.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">true</th>
+                     <td rowspan="1" colspan="1" class="none">Browser application started successfully.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">false</th>
+                     <td rowspan="1" colspan="1" class="none">iBrowser application failed to start.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_client_file_access/overview.htm" class="manualLink">Client file access overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_client_file_access/synopsis.htm" class="manualLink">Client file access synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_client_file_access/open.url.local, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

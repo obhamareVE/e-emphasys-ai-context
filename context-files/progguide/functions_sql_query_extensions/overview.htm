@@ -1,0 +1,175 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>SQL query extensions overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="sql query extensions ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">SQL query extensions overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">By default, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> reads the entire main table when retrieving data for
+               a particular form, even though some records and fields may not
+               be required. By default also, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> reads only
+               those reference table fields that are included on the form, even
+               though the UI script and/or the DAL script may require other
+               reference table fields.
+            </p>
+            <p class="Paragraph">Query extensions define conditions that the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> adds to the
+               SELECT, FROM, and WHERE clauses of a database query in order to
+               filter out unwanted records and fields of the main table and in
+               order to include in the query all reference fields required by
+               the form, UI script, and DAL script.
+            </p>
+            <p class="Paragraph">In the UI script, you program query extensions for 2
+               purposes:
+            </p>
+            <ul class="List">
+               <li class="ListItem">to minimize the number of records and fields of the main
+                  table read by the query
+               </li>
+               <li class="ListItem">to retrieve any reference table fields that are required
+                  by the UI script but which cannot be retrieved by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> automatically. Note that these fields should occur on the
+                  form.
+               </li>
+            </ul>
+            <p class="Paragraph">In the DAL (not DAL2, DAL2 does not support query
+               extensions!) script, you program query extensions to retrieve
+               reference table fields that are required by the DAL script.
+            </p>
+            <p class="Paragraph">When the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> executes a database query, it automatically adds the query
+               extensions defined in UI and DAL scripts. So, in the case of
+               main table fields, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> reads only those fields and records that meet the
+               conditions set in the query extension in the UI script. In the
+               case of reference tables, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> reads those
+               fields included on the main table and also those mentioned in
+               the UI and DAL scripts.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Building DAL (not DAL2) query extensions</div>
+            <p class="Paragraph">The purpose of DAL query extensions is to read data of other
+               tables, at the moment the functions dal.new(), dal.update() and
+               dal.destroy() functions are executed. This will ensure that the
+               data is available in the property hooks.
+            </p>
+            <ul class="List">
+               <li class="ListItem">Identify the reference table fields required for <a href="../../progguide/functions_dal/method.is.allowed.htm" class="manualLink">method.is.allowed()</a>.
+               </li>
+               <li class="ListItem">Identify the reference table fields required for
+                  executing checks in property and object hooks.
+               </li>
+               <li class="ListItem">Extend the DAL query in the most efficient way possible
+                  (for example, avoid using table.*). 
+                  
+                  For example, define a normal query that specifies all
+                  the referenced fields/tables and then filter out unwanted
+                  fields/tables. Check the joins carefully to ensure that
+                  multiple records are not selected. Then split the query
+                  into strings appropriate for input to the <i class="Emphasis">query.extend.*</i> functions.
+               </li>
+               <li class="ListItem">Because the query must return the most recent values for
+                  reference table fields, you must use the buffered values for
+                  the fields. To do this, append a colon [:] to properties of
+                  the current class that are used in the <i class="Emphasis">query.extend.where()</i> function.
+               </li>
+               <li class="ListItem">Normally, you specify EXTEND_OVERWRITE as the mode for
+                  the <i class="Emphasis">query.extend.*</i> functions. Use EXTEND_APPEND only
+                  when you want to further extend a query that has already been
+                  extended.
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Building UI query extensions</div>
+            <p class="Paragraph">The purpose of UI query extensions is twofold: to read data
+               of other tables in order to be able to display this data on the
+               form and to filter data that is been displayed on the form.
+            </p>
+            <ul class="List">
+               <li class="ListItem">Identify the reference table fields that are used in the
+                  UI script but which cannot be retrieved by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> automatically.
+               </li>
+               <li class="ListItem">Eliminate any fields that have been included in the DAL
+                  query extension of the main table.
+               </li>
+               <li class="ListItem">Identify the conditions required for filtering the
+                  data.
+               </li>
+               <li class="ListItem">Identify the form fields and external variables that
+                  require table values and bind the form fields to the table
+                  fields.
+               </li>
+               <li class="ListItem">Construct the query extension in the most efficient way
+                  possible. When dealing with non-zoom sessions, program the
+                  query extension in the <i class="Emphasis">before.program</i> section. When
+                  dealing with zoom sessions, program the query extension in
+                  the <i class="Emphasis">selection.filter</i> section. Note that, for zoom
+                  sessions, you use query extensions only for filtering out
+                  unwanted data from the main table.
+               </li>
+               <li class="ListItem">Normally, you specify EXTEND_OVERWRITE as the mode for
+                  the <i class="Emphasis">query.extend.*</i> functions. Use EXTEND_APPEND only
+                  when you want to extend further a query that has already been
+                  extended.
+               </li>
+            </ul>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">When you use the EXTEND_OVERWRITE or EXTEND_APPEND options,
+                  be aware that these options only apply to query extensions that
+                  are defined in the script in which they are used. It is not
+                  possible to overwrite the query extension defined in the DAL by
+                  a query extension in the UI script.
+               </p>
+               <p class="Paragraph">To make this clear:</p>
+               <ul class="List">
+                  <li class="ListItem">EXTEND_OVERWRITE in DAL: this will define a new query
+                     extension for the DAL which overwrites any previous DAL query
+                     extension.
+                  </li>
+                  <li class="ListItem">EXTEND_APPEND in DAL: this will append a query extension
+                     to the already existing query extension in the DAL.
+                  </li>
+                  <li class="ListItem">EXTEND_OVERWRITE in UI: this will define a new query
+                     extension for the UI, and will not overwrite any extension
+                     defined in the DAL.
+                  </li>
+                  <li class="ListItem">EXTEND_APPEND in UI: this will append a query extension
+                     to the already existing query extension in the UI.
+                  </li>
+               </ul>
+               <p class="Paragraph">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will
+                  always append the query extensions defined in the DAL and UI
+                  scripts to the main table query.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/synopsis.htm" class="manualLink">SQL query extensions synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/column_filtering.htm" class="manualLink">Column filtering</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/example.htm" class="manualLink">Query extensions sample program</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/quoted.string.htm" class="manualLink">quoted.string()</a>.
+               </li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_sql_query_extensions/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>SQL and delayed locks</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="SQL delayed locks ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">SQL and delayed locks</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The purpose of delayed locking is to postpone the physical
+               lock of a record as long as possible. The program places the
+               physical lock immediately before updating. During updating, the
+               value of the record at the moment of selection must be known, as
+               this is compared to the value at the moment of updating. During
+               comparison, the relationships between fields are taken into
+               account.
+            </p>
+            <p class="Paragraph">For a record to be delayed-locked when selected, the keyword
+               FOR UPDATE must be included in the <a href="../../progguide/functions_database_handling/select.htm" class="manualLink">SELECT clause</a> statement. In SQL, 'normal'
+               record locking is not possible.
+            </p>
+            <p class="Paragraph">When placing a delayed lock on a record, the program fills
+               the field &lt;table&gt;._dlock with an identification number
+               linked to the record. This field identifies the original record.
+               This guarantees a fast search procedure. This field will be
+               overwritten when changing the record buffer.
+            </p>
+            <p class="Paragraph">Updates in combination with SELECT FOR UPDATE are executed
+               with the following functions:
+            </p><pre class="CodeBlock">
+db.insert(table, DB.RETRY [, eflag])
+db.update(table, DB.RETRY [, eflag])
+db.delete(table, DB.RETRY [, eflag])
+</pre><p class="Paragraph">The DB.RETRY flag indicates that we are dealing here with
+               updates with SELECT FOR UPDATE and retry points. This flag
+               ensures that the actual update action is postponed until the
+               commit. The <a href="../../progguide/functions_db_operations/db.update.htm" class="manualLink">db.update()</a> and <a href="../../progguide/functions_db_operations/db.delete.htm" class="manualLink">db.delete()</a> functions with the DB.RETRY flag can be invoked only in
+               combination with SELECT FOR UPDATE. The use of <a href="../../progguide/functions_db_operations/db.insert.htm" class="manualLink">db.insert()</a> with the DB.RETRY flag, on the other hand, is not linked to the
+               use of SELECT FOR UPDATE.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/sql_and_delayed_locks, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

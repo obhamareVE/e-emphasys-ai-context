@@ -1,0 +1,415 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>REFERS TO predicate</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="REFERS TO SETUNREF UNREF ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">REFERS TO predicate</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">A REFERS TO predicate determines how the tables in the FROM
+               clause are joined.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">Note:</i> In <a href="../../progguide/functions_dynamic_sql_queries/sql.parse.htm" class="manualLink">sql.parse()</a> REFERS TO clauses are forbidden. You can use <a href="../../progguide/functions_database_handling/from.htm" class="manualLink">FROM clause</a> instead.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;refers to predicate&gt;
+    ::= <a href="../../progguide/functions_database_handling/row_value_constructor.htm" class="manualLink">Row value constructor</a> REFERS TO &lt;to&gt; 
+        [ PATH &lt;ref path&gt; ] [ UNREF &lt;unref mode&gt; ]
+
+&lt;to&gt;
+    ::= &lt;table name&gt;
+      | &lt;correlation name&gt;
+      | !! <a href="../../progguide/functions_database_handling/sql_glossary.htm#QualifiedColumnName" class="glossaryLink">qualified column name</a>
+
+&lt;ref path&gt;
+    ::= &lt;path element&gt; {,&lt;path element&gt;}...
+
+&lt;path element&gt;
+    ::= &lt;table name&gt;.&lt;column name&gt;
+
+&lt;table name&gt;
+    ::= !! <i class="Emphasis">a valid table name</i>
+
+&lt;column name&gt;
+    ::= !! <i class="Emphasis">a valid column name</i>
+
+&lt;correlation name&gt;
+    ::= <a href="../../progguide/functions_database_handling/identifier.htm" class="manualLink">Identifier</a>
+
+&lt;unref mode&gt;
+    ::= CLEAR | SETUNREF | CLEARUNREF | SKIP
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">The REFERS TO predicate generates a <a href="../../progguide/sql_states_and_messages/42I82.htm" class="manualLink">42I82 - Syntax conflicts with Parse mode</a> when the <i class="Emphasis">PARSE.ANSI</i> flag is set in the optional <i class="Emphasis">mode</i> argument of the <a href="../../progguide/functions_dynamic_sql_queries/sql.parse.htm" class="manualLink">sql.parse()</a> function.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">I.</i> The <i class="Emphasis">&lt;row value constructor&gt;</i> shall
+               either directly contain column references of one table only or
+               directly contain constants or parameters only.
+            </p>
+            <p class="Paragraph">In the following example the <i class="Emphasis">&lt;row value
+                  constructor&gt;</i> contains both a constant and a column
+               reference, which is not allowed.
+            </p><pre class="CodeBlock">
+{ 10, dbtst120.deptno } refers to dbtst180
+</pre><p class="Paragraph">In the following example the <i class="Emphasis">&lt;row value
+                  constructor&gt;</i> contains column references of two tables,
+               which is not allowed.
+            </p><pre class="CodeBlock">
+{ a.empno, b.deptno } refers to dbtst180
+</pre><p class="Paragraph">In the following example the <i class="Emphasis">&lt;row value
+                  constructor&gt;</i> contains an expression, which is not
+               allowed.
+            </p><pre class="CodeBlock">
+{ 10+3 } refers to dbtst120
+</pre><p class="Paragraph"><i class="Emphasis">II.</i> A SELECT statement shall not contain a series of REFERS TO
+               predicates that together define a cyclic relationship between
+               the tables that refer to each other.
+            </p>
+            <p class="Paragraph">The following example shows two REFERS TO predicates that
+               define a cyclic dependency between tables a and b.
+            </p><pre class="CodeBlock">
+a.empno refers to b and b.deptno refers to a.workdept
+</pre><p class="Paragraph"><i class="Emphasis">III.</i> Within a SELECT statement, there shall be no two REFERS TO
+               predicates referring to the same table and of which the <i class="Emphasis">&lt;row value constructor&gt;s</i> contain column references
+               of different tables.
+            </p><pre class="CodeBlock">
+a.empno refers to c and b.empno refers to c
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following statement gives all departments and for each
+               department it gives all last names of the employees working in
+               that department. If there are no employees working in a certain
+               department then it still gives the department name, but it gives
+               a NULL value for the lastname.
+            </p><pre class="CodeBlock">
+SELECT workdepts.deptname, employees.lastname
+FROM dbtst100 workdepts, dbtst120 employees
+WHERE workdepts.deptno REFERS TO employees.workdept
+</pre><p class="Paragraph">The following statement gives all project names and for each
+               project is gives the last names of the employees working on that
+               project.
+            </p><pre class="CodeBlock">
+SELECT projects.projname, employees.lastname
+FROM dbtst180 projemp, dbtst160 projects, dbtst120 employees
+WHERE projemp.projno REFERS TO projects
+  AND projemp.empno REFERS TO employees
+ORDER BY projname
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The REFERS TO predicate always evaluates to True.</p>
+            <p class="Paragraph">The REFERS TO predicate defines an outer join with a join
+               condition between two tables in the FROM clause. If the REFERS
+               TO predicate is as follows:
+            </p><pre class="CodeBlock">
+&lt;row value constructor&gt; REFERS TO &lt;column reference&gt;
+</pre><p class="Paragraph">then the following join condition is defined:</p><pre class="CodeBlock">
+&lt;row value constructor&gt; = &lt;column reference&gt;
+</pre><p class="Paragraph">Suppose the <i class="Emphasis">&lt;row value constructor&gt;</i> contains
+               column references to table A and that the column reference
+               identifies table B.
+            </p>
+            <p class="Paragraph">The result of the (inner) join on the tables A and B is the
+               Cartesian product of the two tables with each row that does not
+               satisfy the join condition filtered out.
+            </p>
+            <p class="Paragraph">The REFERS TO predicate extents this result by adding each
+               row of table A that does not occur in the result of the (inner)
+               join. For each row of table A that is added, NULL values are
+               generated on table B.
+            </p>
+            <p class="Paragraph">For example, suppose table A has one column AC and table B
+   has two columns BC1 and BC2. See table A and table B below.
+   Suppose that the REFERS TO predicate is "A.AC REFERS TO B.BC1".
+   Then the Cartesian product (table A&nbsp;×&nbsp;B) contains each row of A
+   combined with each row of B. The inner join (table A&nbsp;=&nbsp;B)
+   filters any row from the Cartesian product that does not satisfy
+   the condition "A.AC = B.BC1". The REFERS TO predicate (table
+   A&nbsp;&#8594;&nbsp;B) adds those rows from A that are not in the inner join
+   result and generates NULLs for B.</p>
+            <table class="default">
+               <tbody noTR="1" class="default">
+                  <tr no="1" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <table class="default">
+                           <tbody noTR="5" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <th rowspan="1" colspan="1" class="default">A</th>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">AC</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">1</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                              </tr>
+                              <tr no="5" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">3</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <table class="default">
+                           <tbody noTR="5" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <th colspan="2" rowspan="1" class="default">B</th>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">BC1</td>
+                                 <td rowspan="1" colspan="1" class="default">BC2</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">1</td>
+                                 <td rowspan="1" colspan="1" class="default">a</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">b</td>
+                              </tr>
+                              <tr no="5" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">c</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <table class="default">
+                           <tbody noTR="11" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <th colspan="3" rowspan="1" class="default">A × B</th>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">AC</td>
+                                 <td rowspan="1" colspan="1" class="default">BC1</td>
+                                 <td rowspan="1" colspan="1" class="default">BC2</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">1</td>
+                                 <td rowspan="1" colspan="1" class="default">1</td>
+                                 <td rowspan="1" colspan="1" class="default">a</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">1</td>
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">b</td>
+                              </tr>
+                              <tr no="5" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">1</td>
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">c</td>
+                              </tr>
+                              <tr no="6" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">1</td>
+                                 <td rowspan="1" colspan="1" class="default">a</td>
+                              </tr>
+                              <tr no="7" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">b</td>
+                              </tr>
+                              <tr no="8" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">c</td>
+                              </tr>
+                              <tr no="9" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">3</td>
+                                 <td rowspan="1" colspan="1" class="default">1</td>
+                                 <td rowspan="1" colspan="1" class="default">a</td>
+                              </tr>
+                              <tr no="10" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">3</td>
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">b</td>
+                              </tr>
+                              <tr no="11" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">3</td>
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">c</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <table class="default">
+                           <tbody noTR="5" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <th colspan="3" rowspan="1" class="default">A = B</th>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">AC</td>
+                                 <td rowspan="1" colspan="1" class="default">BC1</td>
+                                 <td rowspan="1" colspan="1" class="default">BC2</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">1</td>
+                                 <td rowspan="1" colspan="1" class="default">1</td>
+                                 <td rowspan="1" colspan="1" class="default">a</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">b</td>
+                              </tr>
+                              <tr no="5" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">c</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <table class="default">
+                           <tbody noTR="6" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <th colspan="3" rowspan="1" class="default">A &#8594; B</th>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">AC</td>
+                                 <td rowspan="1" colspan="1" class="default">BC1</td>
+                                 <td rowspan="1" colspan="1" class="default">BC2</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">1</td>
+                                 <td rowspan="1" colspan="1" class="default">1</td>
+                                 <td rowspan="1" colspan="1" class="default">a</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">b</td>
+                              </tr>
+                              <tr no="5" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">2</td>
+                                 <td rowspan="1" colspan="1" class="default">c</td>
+                              </tr>
+                              <tr no="6" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">3</td>
+                                 <td rowspan="1" colspan="1" class="default">NULL</td>
+                                 <td rowspan="1" colspan="1" class="default">NULL</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Equivalences</div>
+            <p class="Paragraph">The following equivalence states that the part "._index1" is
+               optional in the &lt;to&gt; part.
+            </p><pre class="CodeBlock">
+T1.f1 REFERS TO T2   &lt;=&gt;   T1.f1 REFERS TO T2._index1
+</pre><p class="Paragraph">The following equivalence holds for a REFERS TO predicate
+               with the PATH clause. It states that we can rewrite a REFERS TO
+               predicate with a PATH clause into multiple REFERS TO predicates
+               without PATH clauses. Each table in the PATH clause is
+               effectively added to the FROM clause, getting a unique
+               alias.
+            </p><pre class="CodeBlock">
+FROM   T1, Tn
+WHERE  T1.f1 REFERS TO Tn PATH T2.f2, ...
+    &lt;=&gt;
+FROM   T1, Tn, T2 &lt;alias T2&gt;
+WHERE  T1 REFERS TO &lt;alias T2&gt;  AND  &lt;alias T2&gt;.f2 REFERS TO Tn PATH ...
+</pre><p class="Paragraph">If a REFERS TO predicate with a PATH clause also contains an
+               UNREF mode, then this UNREF mode holds for each of the REFERS TO
+               predicates without the PATH clause.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">Note:</i> tables mentioned in the PATH clause of a REFERS
+               TO predicate do not necessarily need to appear in the FROM
+               clause of a SELECT statement. The following fragment is
+               syntactically correct, even though table T2 does not appear in
+               the FROM clause.
+            </p><pre class="CodeBlock">
+FROM T1, T3
+WHERE T1.f1 REFERS TO T3 PATH T2.f2
+</pre><p class="Paragraph">It is equivalent to the following fragment.</p><pre class="CodeBlock">
+FROM T1, T3, T2 alias_T2
+WHERE T1.f1 REFERS TO alias_T2 AND alias_T2.f2 REFERS TO T3
+</pre><p class="Paragraph">The following fragment is syntactically correct too, but is
+               semantically different from the previous fragments.
+            </p><pre class="CodeBlock">
+FROM T1, T2, T3
+WHERE T1.f1 REFERS TO T3 PATH T2.f2
+</pre><p class="Paragraph">It is equivalent to the following fragment. Note that table
+               T2 appears twice now in the FROM clause.
+            </p><pre class="CodeBlock">
+FROM T1, T2, T3, T2 alias_T2
+WHERE T1.f1 REFERS TO alias_T2 AND alias_T2.f2 REFERS TO T3
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Implicit UNREF mode</div>
+            <p class="Paragraph">If a REFERS TO predicate does not contain an UNREF mode, then
+               the query processor defines an implicit UNREF mode for the
+               predicate. If there exists a reference in the data dictionary
+               that "matches" with the REFERS TO predicate then the following
+               table is used to determine the implicit UNREF mode. If there is
+               no such reference then the implicit UNREF mode becomes
+               SETUNREF.
+            </p>
+            <table border="2" class="matrix">
+               <tbody noTR="4" class="matrix">
+                  <tr no="1" isLast="false" class="matrix">
+                     <th rowspan="1" colspan="1" class="matrix">Mode in data dictionary</th>
+                     <th rowspan="1" colspan="1" class="matrix">Implicit Unref mode</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="matrix">
+                     <td rowspan="1" colspan="1" class="matrix">Compulsory</td>
+                     <td rowspan="1" colspan="1" class="matrix">SETUNREF</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="matrix">
+                     <td rowspan="1" colspan="1" class="matrix">Compulsory unless empty</td>
+                     <td rowspan="1" colspan="1" class="matrix">CLEARUNREF</td>
+                  </tr>
+                  <tr no="4" isLast="true" class="matrix">
+                     <td rowspan="1" colspan="1" class="matrix">Not compulsory</td>
+                     <td rowspan="1" colspan="1" class="matrix">CLEAR</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/from.htm" class="manualLink">FROM clause</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/refers_to_pred, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

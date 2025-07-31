@@ -1,0 +1,106 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>4GL form sections</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="4GL form sections sections form sections ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">4GL form sections</div>
+      <div class="body">
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">Only the form.all section is relevant to dynamic forms. For
+                  dynamic forms, use the <a href="../../progguide/4gl_features/4gl_group_sections.htm" class="manualLink">4GL group sections</a> instead.
+               </p>
+               <p class="Paragraph">You use form sections to program actions that you want to be
+   executed when forms are activated or ended. Form sections
+   consist of a main section and a subsection. The main section
+   specifies the particular form(s) for which the actions are to be
+   executed. The subsections specify when the actions must be
+   executed – for example, when the user navigates to a form
+   (before.form), or navigates away from a form (after.form).</p>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Main sections</div>
+            <p class="Paragraph"><i class="Emphasis">form.&lt;form number&gt;:</i></p>
+            <p class="Paragraph">The subsections associated with this section are executed for
+               the specified form. The &lt;form number&gt; is only available
+               for static forms and is the sequence number of the form, as
+               defined in the session <i class="Emphasis">Forms</i> when started from the session <i class="Emphasis">Sessions</i> (ttadv2500m000).
+            </p>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">form.all:</div>
+               <p class="Paragraph">The subsections associated with this section are executed for
+                  all forms of the session.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">form.other:</div>
+               <p class="Paragraph">A subsection associated with this section is executed for all
+                  forms for which the particular subsection has not been
+                  programmed in a <i class="Emphasis">form.&lt;form number</i> section.
+               </p>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Subsections</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">init.form:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed the
+                  first time the specified form becomes current, immediately
+                  before the subsection <i class="Emphasis">before.form</i>. You use this subsection to program the first
+   action to be performed by the system – a <i class="Emphasis">first.set</i> or <i class="Emphasis">first.view</i>, for example.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.form:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed each
+                  time the user navigates to the form.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.form:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed each
+                  time the user navigates away from the form.
+               </p>
+            </div>
+            <div class="subExampleSection">
+               <div class="subSectionTitle">Example:</div><pre class="CodeBlock">
+form.1:
+init.form:
+    execute(first.set)
+form.other:
+init.form:
+    | ONLY FOR STATIC FORMS!
+    display("disp3")
+form.all:
+before.form:
+    display("disp")
+</pre></div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/overview.htm" class="manualLink">Programming a UI Script overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/4gl_event_sections.htm" class="manualLink">4GL event sections</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/flow_of_standard_program.htm" class="manualLink">Flow of 4GL engine</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/4gl_features/4gl_form_sections, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

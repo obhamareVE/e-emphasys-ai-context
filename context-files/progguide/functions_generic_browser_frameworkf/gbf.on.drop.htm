@@ -1,0 +1,121 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>gbf.on.drop()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions gbf.on.drop gbf.on.drop gbf.on.drop ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">gbf.on.drop()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_gbf&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;gbf.on.drop&nbsp;
+					(long&nbsp;from.pid, long&nbsp;collection, long&nbsp;drop.obj, const string&nbsp;drop.key, long&nbsp;drop.value, long&nbsp;drop.type, boolean&nbsp;copy)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Call back function which is passed in function <a href="../../progguide/functions_generic_browser_frameworkf/gbf.enable.drop.htm" class="manualLink">gbf.enable.drop()</a> This function will be called when a drop event from the associated session arrives.
+                  In this function the business logic related to the drop operation must be implemented.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>from.pid</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the process id of the session from which the objects are dropped</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>collection</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">collection of key fields objects which are dropped on this session</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>drop.obj</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">object identifier of GBF object on which the collection is dropped</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>drop.key</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">GBF key related to drop.obj</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>drop.value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">GBF value related to drop.obj</p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>drop.type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">GBF object type related to drop.obj</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td class="none">boolean</td>
+                     <td class="none"><code>copy</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">when true, the user indicated that a copy operation is requested
+                           (CTRL key pressed during drop operation). Otherwise a move operation is required
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The return value is treated in the same way as with the <a href="../../progguide/functions_generic_browser_frameworkf/gbf.menu.selected.htm" class="manualLink">gbf.menu.selected()</a> function and it applies the drop object.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/overview.htm" class="manualLink">Generic Browser Framework (GBF) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/synopsis.htm" class="manualLink">Generic Browser Framework (GBF) synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_composite_sessions/overview.htm" class="manualLink">Composite Sessions overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_keyfields/overview.htm" class="manualLink">Key fields Object overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_generic_browser_frameworkf/gbf.on.drop, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

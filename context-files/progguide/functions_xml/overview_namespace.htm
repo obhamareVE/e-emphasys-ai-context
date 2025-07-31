@@ -1,0 +1,210 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>XML object overview (namespace support)</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="XML object (namespace support) overview ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">XML object overview (namespace support)</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Purpose</div>
+            <p class="Paragraph">The purpose of the XML object api with namespace support is to offer
+               			namespace support in XML to 3GL/4GL applications. The first target 
+               			application is support for SOAP, but there is no restriction on the 
+               			use of this interface.
+            </p>
+            <p class="Paragraph">For a good description of namespace support in XML see <a href="http://www.w3.org/TR/REC-xml-names/" class="wwwlinkLink">Namespaces in XML 1.0</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">What follows is an example of the use of the XML object api with namespace
+               		support.
+            </p><pre class="CodeBlock">
+#define ASSERTSEQ(x,y) 
+^ if (x) &lt;&gt; (y) 
+^ then message("oops, " &amp; str$(x) &amp; " does not equal " &amp; str$(y)) 
+^ else 
+^ endif
+
+function main()
+{
+	long ret
+
+	|
+	| Build the following example SOAP request:
+	| 
+	|  &lt;soap:Envelope
+	|       xmlns:soap="http://www.w3.org/2001/12/soap-envelope"
+	|       soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding"&gt;
+	|       &lt;soap:Body
+	|               xmlns:m="http://www.example.org/stock"&gt;
+	|               &lt;m:GetStockPrice&gt;
+	|                       &lt;m:StockName&gt;IBM&lt;/m:StockName&gt;
+	|               &lt;/m:GetStockPrice&gt;
+	|       &lt;/soap:Body&gt;
+	|  &lt;/soap:Envelope&gt;
+	|
+
+	| Create the "Envelope" node. After the xmlNewNode() functions this node does
+	| not carry any namespace (no namespace declaration) and it is not in a
+	| namespace.
+	long xml_envelope
+	xml_envelope = xmlNewNode("Envelope")
+
+	| The "soap" namespace is defined on the "Envelope" node, which becomes the 
+	| carrier (or owner) of this namespace. The node is still not in a 
+	| namespace.
+	long xmlns_soap
+	xmlns_soap = xmlNewNamespace( xml_envelope, 
+		"soap", "http://www.w3.org/2001/12/soap-envelope")
+
+	| Put the xml_envelope in the "soap" namespace.
+	ret = xmlSetNamespace( xml_envelope, xmlns_soap )
+
+	| Create the encodingStyle attribute in the "soap" namespace, with its value.
+	ret = xmlSetAttributeNs( xml_envelope, xmlns_soap, 
+		"encodingStyle", "http://www.w3.org/2001/12/soap-encoding" )
+
+	| Create the "Body" node, in the "soap" namespace.
+	long xml_body
+	xml_body = xmlNewNodeNs(xmlns_soap, "Body", XML_ELEMENT, xml_envelope)
+
+	| Create the "m" namespace; the "Body" node becomes the carrier of this 
+	| namespace. The "Body" node now declares the "m" namespace, but is still in
+	| in the "soap" namespace.
+	long xmlns_m
+	xmlns_m = xmlNewNamespace( xml_body, "m", "http://www.example.org/stock" )
+
+	| Create the "GetStockPrice" node in the "m" namespace.
+	long xml_GetStockPrice
+	xml_GetStockPrice = xmlNewNodeNs(xmlns_m, "GetStockPrice", XML_ELEMENT, 
+		xml_body)
+
+	| Create the "StockName" node in the "m" namespace, with an XML_DATA child 
+	| node containing the data "IBM".
+	long xml_StockName
+	xml_StockName = xmlNewDataElementNs(xmlns_m, "StockName", "IBM", 
+		xml_GetStockPrice)
+
+	| Verify the serialization of the xml_envelope.
+	string xml(1000)
+	xml = xmlString$(xml_envelope)
+	ASSERTSEQ( xml,
+		  "&lt;?xml version=""1.0""?&gt;"
+		&amp; "&lt;soap:Envelope "
+		&amp;    "xmlns:soap=""http://www.w3.org/2001/12/soap-envelope"" "
+		&amp;    "soap:encodingStyle=""http://www.w3.org/2001/12/soap-encoding""&gt;"
+		&amp;    "&lt;soap:Body "
+		&amp;       "xmlns:m=""http://www.example.org/stock""&gt;"
+		&amp;       "&lt;m:GetStockPrice&gt;"
+		&amp;          "&lt;m:StockName&gt;IBM&lt;/m:StockName&gt;"
+		&amp;       "&lt;/m:GetStockPrice&gt;"
+		&amp;    "&lt;/soap:Body&gt;"
+		&amp; "&lt;/soap:Envelope&gt;" )
+
+	|
+	| Inspect node properties
+	|
+
+	string property(100)
+	
+	property = xmlName$(xml_body)
+	ASSERTSEQ( property, "Body" )
+
+	property = xmlQualifiedName$(xml_body)
+	ASSERTSEQ( property, "soap:Body" )
+
+	property = xmlPrefix$(xml_body)
+	ASSERTSEQ( property, "soap" )
+
+	property = xmlURI$(xml_body)
+	ASSERTSEQ( property, "http://www.w3.org/2001/12/soap-envelope" )
+
+
+	|
+	| Use xmlFindFirst (it ignores namespaces)
+	|
+
+	ret = xmlFindFirst("Body", xml_envelope)
+	ASSERTSEQ( ret, xml_body )
+
+	ret = xmlFindFirst("GetStockPrice", xml_envelope)
+	ASSERTSEQ( ret, xml_GetStockPrice )
+
+	ret = xmlFindFirst("soap:Body", xml_envelope)
+	ASSERTSEQ( ret, 0 )  | Not found, because the name is "Body", not "soap:Body"
+
+	| Use xmlFindFirstNs
+	ret = xmlFindFirstNs("http://www.w3.org/2001/12/soap-envelope", "Body", 
+		xml_envelope)
+	ASSERTSEQ( ret, xml_body )
+
+	ret = xmlFindFirstNs(xmlns_soap, "Body", xml_envelope)
+	ASSERTSEQ( ret, xml_body )
+
+	| Search with an incorrect URI binding
+	ret = xmlFindFirstNs("http://atwt", "Body", xml_envelope)
+	ASSERTSEQ( ret, 0 )
+
+
+	|
+	| Use xmlFindFirstMatch (it ignores namespaces)
+	|
+
+	ret = xmlFindFirstMatch( "?&lt;GetStockPrice&gt;.&lt;StockName&gt;", xml_envelope )
+	ASSERTSEQ( ret, xml_StockName )
+
+	|
+	| Use xmlFindFirstMatchNs
+	|
+
+	| Search with prefixes and correct URI bindings.
+	ret = xmlFindFirstMatchNs( "?&lt;soap:Body&gt;.&lt;m:GetStockPrice&gt;.&lt;m:StockName&gt;",
+			"soap=""http://www.w3.org/2001/12/soap-envelope"","  &amp;
+			"m=""http://www.example.org/stock"" ", 
+			xml_envelope )
+	ASSERTSEQ( ret, xml_StockName )
+
+	| Search with prefixes and correct URI bindings. Use different prefixes than 
+	| in the XML tree.
+	ret = xmlFindFirstMatchNs( "?&lt;x:Body&gt;.&lt;y:GetStockPrice&gt;.&lt;y:StockName&gt;",
+			"x=""http://www.w3.org/2001/12/soap-envelope""," &amp;
+			"y=""http://www.example.org/stock"" ", 
+			xml_envelope )
+	ASSERTSEQ( ret, xml_StockName )
+
+	| Search with prefixes and incorrect URI binding.
+	ret = xmlFindFirstMatchNs( "?&lt;x:Body&gt;.&lt;y:GetStockPrice&gt;.&lt;y:StockName&gt;",
+			"x=""http:gtst"" , y=""http://www.example.org/stock"" ", 
+			xml_envelope )
+	ASSERTSEQ( ret, 0 )
+
+} </pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/constraints.htm" class="manualLink">XML object constraints</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/glossary.htm" class="manualLink">XML object glossary</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis.htm" class="manualLink">XML object synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis_namespace.htm" class="manualLink">XML object synopsis (namespace support)</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/api.htm" class="manualLink">XML object API</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_xml/overview_namespace, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

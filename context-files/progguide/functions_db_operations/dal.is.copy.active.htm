@@ -1,0 +1,88 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dal.is.copy.active()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dal.is.copy.active dal.is.copy.active functions dal.is.copy.active ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dal.is.copy.active()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_dal&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;boolean&nbsp;dal.is.copy.active&nbsp;
+					()</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">You can use this in the <a href="../../progguide/functions_dal/before.save.object.htm" class="manualLink">before.save.object()</a> and <a href="../../progguide/functions_dal/after.save.object.htm" class="manualLink">after.save.object()</a> hooks in <code class="Code">DAL_NEW</code> mode, to test whether the current
+                  	record is being inserted, or being copied.
+               </p>
+               <p class="Paragraph">It returns <code class="Code">true</code> when a <a href="../../progguide/functions_db_operations/dal.copy.object.htm" class="manualLink">dal.copy.object()</a> has been done, or
+                  when the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> is handling a <code class="Code">DUPL.OCCUR</code>, or <code class="Code">GLOBAL.COPY</code> choice.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph"><code class="Code">true</code> when the current record is being copied, <code class="Code">false</code> in any other case.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			DAL
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1801.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+function extern long before.save.object(long mode)
+{
+        on case mode
+        case DAL_NEW:
+                if dal.is.copy.active() then
+                        | Record is being copied, also copy children
+                        if copy.children() &lt;&gt; 0 then
+                                return(DALHOOKERROR)
+                        endif
+                else
+                        | Record is new ...
+                endif
+                break
+        case DAL_UPDATE:
+                break
+        endcase
+
+        return(0)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/dal.is.copy.active, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Progress indicators overview and synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="progress indicators ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Progress indicators overview and synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">A progress indicator provides feedback to the user on the progress of a lengthy operation. It consists of a rectangular
+               		bar that fills from left to right as the operation progresses, indicating the percentage of completion of the
+               		operation. It can also (or alternatively) display a series of text messages that describe the progress of the
+               		operation.
+            </p>
+            <p class="Paragraph">You can create progress indicators in both UI and DAL scripts.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Synopsis</div><pre class="Formula">
+#include &lt;bic_dam&gt;
+		</pre><table border="0" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_progress_indicators/create.progress.indicator.htm" class="manualLink">create.progress.indicator()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string title() [, long mode] )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_progress_indicators/change.progress.indicator.htm" class="manualLink">change.progress.indicator()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long percentage [, string message, ...] )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">void</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_progress_indicators/change.progress.delay.htm" class="manualLink">change.progress.delay()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long delay )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">void</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_progress_indicators/change.progress.title.htm" class="manualLink">change.progress.title()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string title() )</code></td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">void</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_progress_indicators/destroy.progress.indicator.htm" class="manualLink">destroy.progress.indicator()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_progress_indicators/example.htm" class="manualLink">Progress indicators sample program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_progress_indicators/overview_and_synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

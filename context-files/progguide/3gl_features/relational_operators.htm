@@ -1,0 +1,192 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Relational operators</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="relational operators ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Relational operators</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The relational operations are:</p>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">Operator symbol</th>
+                     <th rowspan="1" colspan="1" class="none">Operator keyword</th>
+                     <th rowspan="1" colspan="1" class="none">Description</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">&lt;</td>
+                     <td align="center" rowspan="1" colspan="1" class="none">LT</td>
+                     <td rowspan="1" colspan="1" class="none">less than</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">=</td>
+                     <td align="center" rowspan="1" colspan="1" class="none">EQ</td>
+                     <td rowspan="1" colspan="1" class="none">equal to</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">&gt;</td>
+                     <td align="center" rowspan="1" colspan="1" class="none">GT</td>
+                     <td rowspan="1" colspan="1" class="none">greater than</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">&lt;=</td>
+                     <td align="center" rowspan="1" colspan="1" class="none">LE</td>
+                     <td rowspan="1" colspan="1" class="none">less than or equal to (at most)</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">&gt;=</td>
+                     <td align="center" rowspan="1" colspan="1" class="none">GE</td>
+                     <td rowspan="1" colspan="1" class="none">greater than or equal to (at least)</td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">&lt;&gt;</td>
+                     <td align="center" rowspan="1" colspan="1" class="none">NE</td>
+                     <td rowspan="1" colspan="1" class="none">not equal to (different from)</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Relational operators compare two operands. If the condition
+               (equal, greater than, less than, and so on) is satisfied, the
+               result becomes TRUE. Otherwise, it becomes FALSE.
+            </p>
+            <p class="Paragraph">Relational operators can be performed on values of every
+               available type, but the operands of the relational operator must be of
+               the same type.
+            </p>
+            <p class="Paragraph">If one operand of the relational operator is of type long and the other of type double,
+               then implicit <a href="../../progguide/3gl_features/type_conversions.htm#long_to_double_type_conversion" class="manualLink">long to double type conversion</a> is performed on the long operand
+               and comparison of two double values is done.
+            </p>
+            <p class="Paragraph">If both operands of the relational operator are long values,
+               then the comparison is done using signed <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-bit
+               arithmetic.
+            </p>
+            <p class="Paragraph">If both operands of the relational operator are strings,
+               then the string values are compared on the basis of the following rules.
+               The intention of these string comparison rules is to mimic the ordering used in the database.
+            </p>
+            <ul class="List">
+               <li class="ListItem">The comparison is made on the basis of the weights
+                  of the string characters, starting at the leftmost character of each
+                  string.
+               </li>
+               <li class="ListItem">If two characters are not equal, the string with the
+                  lower character weight is considered to be smaller and the
+                  comparison is terminated.
+               </li>
+               <li class="ListItem">If both strings contain the same number of characters
+                  and the characters agree in all cases,
+                  then the strings are considered to be equal.
+                  If one string is shorter than the other, and the
+                  corresponding characters are equal, then the shorter string is
+                  considered to be smaller than the longer string.
+               </li>
+               <li class="ListItem">Character weights are assigned according to the binary encoding of the characters.
+                  For <a href="../../progguide/misc/ascii_table.htm" class="manualLink">ASCII</a> characters, the byte encoding of each character is used.
+                  For non-ASCII <a href="../../progguide/misc/tss.htm" class="manualLink">TSS</a> characters, the external, native byte encoding of each character is used.
+               </li>
+            </ul>
+            <p class="Paragraph">In Unicode mode,
+               the string comparison is not made on the basis of the weights of the string characters.
+               Instead, the <a href="http://www.unicode.org/reports/tr10/tr10-11.html" class="wwwlinkLink">Unicode Collation Algorithm</a> is used.
+         This is a multi-level comparison algorithm, which roughly works as follows.
+         At the first level
+         the strings are compared while ignoring
+         accents (all five characters a, á, à, ä, and â compare equal),
+         case differences (characters A and a compare equal)
+         and punctuation (characters like . , : ; " ' ! ? are left out from the comparison).
+         When strings compare equal at the first level,
+         the comparison is extended to higher levels,
+         each time ignoring less of the available information in the strings.
+            </p>
+            <p class="Paragraph">As an example, consider the six strings "yes", "YES", "Yes", "no", "NO", "No"
+               and order them on the basis of the binary value of the string bytes.
+               In the used <a href="../../progguide/misc/ascii_table.htm" class="manualLink">ASCII</a> encoding,
+               lower case letters have higher byte values than upper case letters,
+               so the strings are ordered as follows.
+            </p>
+            <ul class="List">
+               <li class="ListItem">NO</li>
+               <li class="ListItem">No</li>
+               <li class="ListItem">YES</li>
+               <li class="ListItem">Yes</li>
+               <li class="ListItem">no</li>
+               <li class="ListItem">yes</li>
+            </ul>
+            <p class="Paragraph">When ordering the same six strings according to the <a href="http://www.unicode.org/reports/tr10/tr10-11.html" class="wwwlinkLink">Unicode Collation Algorithm</a>,
+               at the first level the strings "no", "NO", "No" compare equal
+               and are sorted before the strings "yes", "YES", "Yes" (which also compare equal).
+               Then, at a higher level, lower case letters are sorted before upper case letters,
+               so the resulting order is as follows.
+            </p>
+            <ul class="List">
+               <li class="ListItem">no</li>
+               <li class="ListItem">No</li>
+               <li class="ListItem">NO</li>
+               <li class="ListItem">yes</li>
+               <li class="ListItem">Yes</li>
+               <li class="ListItem">YES</li>
+            </ul>
+            <p class="Paragraph">The used <a href="http://www.unicode.org/reports/tr10/tr10-11.html" class="wwwlinkLink">Unicode Collation Algorithm</a> may consider two strings to be equal,
+               even when they do not represent the same sequence of characters.
+               This is the case when the actual differences between the strings
+               are ignored at all levels of the comparison algorithm.
+               For example, differences between various white space characters may be ignored
+               and some control characters may be completely ignored.
+            </p>
+            <p class="Paragraph">In order to avoid problems when the relational operators are meant to test full string equality
+               instead of determining the sorting order,
+               the following exception is made.
+               Relational operators = and &lt;&gt; with single byte string operands do not use the <a href="http://www.unicode.org/reports/tr10/tr10-11.html" class="wwwlinkLink">Unicode Collation Algorithm</a>,
+               but instead use a straightforward byte-by-byte comparison.
+            </p>
+            <p class="Paragraph">Bshell function <a href="../../progguide/functions_multibyte_strings/mb.cast.to.str.htm" class="manualLink">mb.cast.to.str$()</a> can be used to convert multi-byte string values to single-byte string values
+               before applying the = or &lt;&gt; operator,
+               in order to enforce the straightforward byte-by-byte comparison described above
+            </p>
+            <p class="Paragraph">Bshell function <a href="../../progguide/functions_multibyte_strings/mb.cast.htm" class="manualLink">mb.cast$()</a> can be used to convert at least one of the string operands of the = or &lt;&gt; operator to a multi-byte string value
+               in order to enforce the comparison according to the <a href="http://www.unicode.org/reports/tr10/tr10-11.html" class="wwwlinkLink">Unicode Collation Algorithm</a>.
+            </p>
+            <p class="Paragraph">Notice that for single byte string operands which are not binary equal but which are considered equal according to the <a href="http://www.unicode.org/reports/tr10/tr10-11.html" class="wwwlinkLink">Unicode Collation Algorithm</a>,
+               all three operators =, &lt; and &gt; evaluate to FALSE
+               and all three operators &lt;&gt;, &lt;= and &gt;= evaluate to TRUE.
+            </p>
+            <p class="Paragraph">When the intention is to determine the relative position
+               (i.e. less than, equal, or greater than)
+               of two string values
+               in a well-defined but further irrelevant ordering,
+               then functions like <a href="../../progguide/functions_string_operations/str.compare.htm" class="manualLink">str.compare()</a> and <a href="../../progguide/functions_string_operations/str.equals.htm" class="manualLink">str.equals()</a> may be used.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/expressions_and_operators.htm" class="manualLink">Expressions and operators</a></li>
+               <li class="RelTopic"><a href="http://www.unicode.org/reports/tr10/tr10-11.html" class="wwwlinkLink">Unicode Collation Algorithm</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_multibyte_strings/mb.cast.to.str.htm" class="manualLink">mb.cast.to.str$()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_multibyte_strings/mb.cast.htm" class="manualLink">mb.cast$()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/str.compare.htm" class="manualLink">str.compare()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/str.equals.htm" class="manualLink">str.equals()</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/relational_operators, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

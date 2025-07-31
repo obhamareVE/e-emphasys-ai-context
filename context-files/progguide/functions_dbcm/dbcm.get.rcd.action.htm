@@ -1,0 +1,127 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dbcm.get.rcd.action()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dbcm.get.rcd.action dbcm.get.rcd.action functions dbcm.get.rcd.action ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dbcm.get.rcd.action()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;dbcm.get.rcd.action&nbsp;
+					(long&nbsp;tbl.id)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Retrieves the CM Action of the current record of the given table id.</p>
+               <p class="Paragraph">The CM Action of a record is set when the checked-out version of that particular record 
+                  				is different from the checked-in version.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>tbl.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A table id as returned by <a href="../../progguide/functions_db_operations/db.bind.htm" class="manualLink">db.bind()</a>,
+                           					or a standard table id, like ttdsls400.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">CMAC_NONE (0)</th>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">There is no checked-out version of this record.</p>
+                        <p class="Paragraph">Note that this particular may still be part of a checked-out business object. 
+                           									Conceptually, the complete business object is checked-out, however on individual 
+                           									record level, some records may still be unchanged, compared to the checked-in version.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">CMAC_INSERT (1)</th>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The record has been inserted.</p>
+                        <p class="Paragraph">This means that there is only a checked-out version of this record and no 
+                           									checked-in version.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">CMAC_UPDATE (2)</th>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The record has been updated.</p>
+                        <p class="Paragraph">This means that there two versions of this record, a checked-in and a checked-out one, 
+                           									which differ from each other.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">CMAC_DELETE (3)</th>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The record has been deleted.</p>
+                        <p class="Paragraph">This means that physically there are two versions of this record, a checked-in and a checked-out one.
+                           									However, the checked-out one cannot be retrieved from the database with a query. 
+                           									So conceptually, this record has been deleted from the checked-out business object.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">CMAC_GHOST (11)</th>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Very short lived value that can be visible using a dirty read database</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1800.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dbcm/overview.htm" class="manualLink">Database Change Management (DBCM) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dbcm/synopsis.htm" class="manualLink">Database Change Management operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dbcm/dbcm.get.rcd.action, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

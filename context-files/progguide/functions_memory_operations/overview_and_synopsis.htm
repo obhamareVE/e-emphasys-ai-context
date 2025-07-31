@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Memory operations overview and synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="memory operations ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Memory operations overview and synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">Use these functions to perform various memory operations.
+               For example:
+            </p>
+            <ul class="List">
+               <li class="ListItem">to allocate and deallocate memory at run time</li>
+               <li class="ListItem">to retrieve the structure and size of an array</li>
+               <li class="ListItem">to compare the values in two memory spaces</li>
+               <li class="ListItem">to copy data from one memory space to another</li>
+               <li class="ListItem">to set the content of a memory space.</li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Synopsis</div>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_memory_operations/alloc.mem.htm" class="manualLink">alloc.mem()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref variable, long dim1 [, long dim2, ...]
+                           )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_memory_operations/array.get.size.in.bytes.htm" class="manualLink">array.get.size.in.bytes()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( void var )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_memory_operations/array.info.htm" class="manualLink">array.info()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( void var, ref long nr.dims, ref long&nbsp;
+               dim.array(4) )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_memory_operations/cmp.mem.htm" class="manualLink">cmp.mem()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( var1, var2 [, long count] )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_memory_operations/copy.mem.htm" class="manualLink">copy.mem()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref destination, source [, long count]
+                           )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_memory_operations/free.mem.htm" class="manualLink">free.mem()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( variable )</code></td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_memory_operations/set.mem.htm" class="manualLink">set.mem()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref destination, source [, long count]
+                           )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_memory_operations/overview_and_synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

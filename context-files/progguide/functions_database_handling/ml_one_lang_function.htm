@@ -1,0 +1,79 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>ml_one_lang function</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="ml_one_lang function ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">ml_one_lang function</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">With the ml_one_lang function you can select a single data language from a Multi Language Field (MLF). 
+               	        An MLF is a column which is configured to have multiple data languages.
+            </p>
+            <p class="Paragraph">When it is not necessary to retrieve all languages and a statement is very critical for performance it
+               	        is possible to use this function, to avoid selecting the translations from the database. Do not do this
+               		in cases where the selected data is later inserted into the database, because this will lead to loss of the other 
+               		translations of the value.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;ml_one_lang function&gt;
+    ::= ml_one_lang ( &lt;column&gt;, [ &lt;data language&gt; | &lt;parameter&gt;] )
+
+&lt;column&gt;
+    ::= <a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">Column reference</a>
+
+&lt;data language&gt;
+    ::= <a href="../../progguide/functions_database_handling/string_constant.htm" class="manualLink">String constant</a>
+
+&lt;parameter&gt;
+    ::= <a href="../../progguide/functions_database_handling/parameter.htm" class="manualLink">Parameter</a>
+      </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">The <i class="Emphasis">&lt;data language&gt;</i> (either as a constant or as a parameter) shall be a 
+               		Data Language code in ISO 639-2 format, like "en_GB" for English, or "nl_NL" for Dutch.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">If the column reference is not a Multi Language Field (MLF) then the function ml_one_lang returns the column value.</p>
+            <p class="Paragraph">If <i class="Emphasis">&lt;string constant&gt;</i> is omitted then the implicit string constant is the 
+               	        current data language of the user.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following ml_one_lang function returns the current language value of the column <code class="Code">dscr</code>.
+            </p><pre class="CodeBlock">
+select ml_one_lang(a.dscr) from dbtst100 a where a.id = 10
+</pre><p class="Paragraph">The following ml_one_lang function returns the french language value of the column <code class="Code">dscr</code>.
+            </p><pre class="CodeBlock">
+select ml_one_lang(a.dscr, 'fre') from dbtst100 a where a.id = 10
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/multi_language_data.htm" class="manualLink">Multi Language Data</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_mle/overview.htm" class="manualLink">Multi Language Data overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/ml_one_lang_function, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

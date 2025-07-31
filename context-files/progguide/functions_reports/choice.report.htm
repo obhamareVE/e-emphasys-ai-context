@@ -1,0 +1,117 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>choice.report()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="choice.report choice.report functions choice.report ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">choice.report()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;choice.report&nbsp;
+					(ref string&nbsp;reportname(15))</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This returns the name of a report from the session data in the
+                  	  data dictionary. The report is taken from the group defined in the predefined
+                  	  variable <i class="Emphasis">reportgrp</i> (default = 1). If there is more than
+                  	  one report in the group, the user is presented with a menu from which to select
+                  	  the required report.
+               </p>
+               <p class="Paragraph">The returned name consists of 15 characters, starting with an
+	  “r”. The language code is not included in the name. If you call <a href="../../progguide/functions_reports/brp.open.htm" class="manualLink">brp.open()</a> with the report name returned by this function,
+                  	  the report is opened with the user language. If you call <a href="../../progguide/functions_reports/brp.open.language.htm" class="manualLink">brp.open.language()</a> with the report name returned by this
+                  	  function, the report is opened with the specified language.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>reportname(15)</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">&gt;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sequence number of report in the group</p>
+            <p class="Paragraph">-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; report not found, or no report selected by
+	  user</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> calls <i class="Emphasis">choice.report()</i> immediately before execution of the <i class="Emphasis">on.choice</i> subsection
+                  	  of a <i class="Emphasis">choice.print.data</i> section. By default a report from
+                  	  report group 1 is retrieved. To retrieve a report from a different group, you
+                  	  can assign any group to the predefined variable <i class="Emphasis">reportgrp</i> in the <i class="Emphasis">before.choice</i> subsection of the <i class="Emphasis">choice.print.data</i> section.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div><pre class="CodeBlock">
+choice.print.data:
+on.choice:
+| choice.report()is always called by the 4GL engine
+      brp_id = brp.open( reportname, "", 1 )
+           | report from default group 1
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2</div><pre class="CodeBlock">
+choice.print.data:
+before.choice:
+     reportgrp = 2
+on.choice:
+     brp_id = brp.open( reportname, "", 1 ) | report from group 2
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 3</div><pre class="CodeBlock">
+function choice.and.open.report()
+{
+        if choice.report( repname ) &lt;= 0 then
+                return
+        endif
+        lfn.report = brp.open( repname, dep.device, 1 )
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_reports/overview_and_synopsis.htm" class="manualLink">Reports overview and synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_spooling/overview_and_synopsis.htm" class="manualLink">Spooling overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_reports/choice.report, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>LIKE predicate</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="ALIKE ESCAPE LIKE Search condition LIKE ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">LIKE predicate</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The LIKE predicate matches a value with a pattern.</p>
+            <p class="Paragraph">Infor ERP Enterprise SQL has two like keywords: LIKE and ALIKE.</p>
+            <p class="Paragraph">The handling of the LIKE keywords depends on the optional <i class="Emphasis">mode</i> argument of the <a href="../../progguide/functions_dynamic_sql_queries/sql.parse.htm" class="manualLink">sql.parse()</a> function. With the <i class="Emphasis">PARSE.ANSI</i> flag set, the LIKE keyword
+               is a synonym of the ALIKE keyword.
+            </p>
+            <p class="Paragraph">If this flag is not set, the LIKE predicate evaluates to True
+               if the <i class="Emphasis">value expression</i> matches the <i class="Emphasis">string</i> pattern. The matching is based on <i class="Emphasis">Regular
+                  Expressions</i>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;like predicate&gt;
+    ::= &lt;ansi-like predicate&gt; | &lt;regexp-like predicate&gt;
+
+&lt;ansi-like predicate&gt;
+    ::= <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a> [NOT] ALIKE <a href="../../progguide/functions_database_handling/string_constant.htm" class="manualLink">String constant</a>
+            [ESCAPE <a href="../../progguide/functions_database_handling/string_constant.htm" class="manualLink">String constant</a>]
+
+&lt;regexp-like predicate&gt;
+    ::= <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a> [NOT] LIKE <a href="../../progguide/functions_database_handling/string_constant.htm" class="manualLink">String constant</a>
+      </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">The ALIKE keyword generates a <a href="../../progguide/sql_states_and_messages/42I82.htm" class="manualLink">42I82 - Syntax conflicts with Parse mode</a> when the <i class="Emphasis">PARSE.ANSI</i> flag is set in the optional <i class="Emphasis">mode</i> argument of the <a href="../../progguide/functions_dynamic_sql_queries/sql.parse.htm" class="manualLink">sql.parse()</a> function.
+            </p>
+            <p class="Paragraph">The type of the <i class="Emphasis">&lt;value expression&gt;</i> shall be <i class="Emphasis">string</i>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">If the value of the <i class="Emphasis">&lt;value expression&gt;</i> is NULL, then the result of
+               the LIKE predicate is Unknown.
+            </p>
+            <p class="Paragraph">The result of the LIKE predicate (non ansi mode) is
+               equivalent with the following expression using <a href="../../progguide/functions_expressions_runtime/expr.compile.htm" class="manualLink">expr.compile()</a> and using the value of the <i class="Emphasis">value
+                  expression</i> for the optional argument to <a href="../../progguide/functions_expressions_runtime/l.expr.htm" class="manualLink">l.expr()</a>.
+            </p><pre class="Formula">
+      $$ IN "&lt;string constant&gt;"
+</pre><p class="Paragraph">The
+               ALIKE
+               
+               predicate evaluates to True if the <i class="Emphasis">&lt;value
+                  expression&gt;</i> matches the <i class="Emphasis">&lt;string contant&gt;</i> pattern. Within this <i class="Emphasis">&lt;string contant&gt;</i>, the character <i class="Emphasis">%</i> matches any string of zero or
+               more characters. The character <i class="Emphasis">_</i> matches any
+               single character. A wildcard character will be treated as
+               literal if preceded by the escape character as defined by the
+               optional ESCAPE keyword.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following predicate evaluates to True if <i class="Emphasis">firstnme</i> is 'CHRISTINE'. Note: no blank padding is
+               applied! So, if <i class="Emphasis">firstnme</i> is 'CHRISTINE ' it evaluates to
+               False.
+            </p><pre class="CodeBlock">
+firstnme LIKE 'CHRISTINE'
+</pre><p class="Paragraph">The following predicate evaluates to True if <i class="Emphasis">firstnme</i> starts with an 'A'.
+            </p><pre class="CodeBlock">
+firstnme LIKE 'A.*' AND firstnme ALIKE 'A%'
+</pre><p class="Paragraph">The following predicate evaluates to True if <i class="Emphasis">firstnme</i> start with a 'C' or an 'H'.
+            </p><pre class="CodeBlock">
+firstnme LIKE '[CH].*'
+</pre><p class="Paragraph">The following predicate evaluates to True if <i class="Emphasis">firstnme</i> does not start with an 'I'.
+            </p><pre class="CodeBlock">
+firstnme LIKE '[^I].*'
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/like_pred, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>rdi.domain()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions rdi.domain rdi.domain rdi.domain ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">rdi.domain()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;rdi.domain&nbsp;
+					(string&nbsp;domain_name(14), ref string&nbsp;oformat(.), ref string&nbsp;lechar(.), ref string&nbsp;ilchar(.), ref long&nbsp;adjust, ref string&nbsp;errmess(.), ref long&nbsp;range_expr_id [, ref long&nbsp;plen] [, ref string&nbsp;iformat(.)])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This returns information about a specified domain.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="9" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>domain_name(14)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the domain for which you want to
+                           retrieve information.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>oformat(.)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the output format of the domain.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>lechar(.)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the legal characters for the
+                           domain.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>ilchar(.)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the illegal characters for the
+                           domain.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>adjust</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the domain's alignment mode. Possible
+                           values are:
+                        </p>
+                        <p class="Paragraph">RDI.NONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RDI.LEFT</p>
+                        <p class="Paragraph">RDI.RIGHT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RDI.CENTER</p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>errmess(.)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the domain's error message.</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>range_expr_id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the ID of the compiled expression for
+                           the range check.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td class="none">[ref long</td>
+                     <td class="none"><code>plen</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the maximum field length (in display width) used on forms
+                           and reports.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="true" class="none">
+                     <td class="none">[ref string</td>
+                     <td class="none"><code>iformat(.)</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the domain's internal format.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The function returns the domain type, or -1 if an errors occurs. The possible domain types are:</p>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td width="90" rowspan="1" colspan="1" class="none">DB.BYTE</td>
+                     <td width="90" rowspan="1" colspan="1" class="none">DB.DOUBLE</td>
+                     <td rowspan="1" colspan="1" class="none">DB.ENUM</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DB.INTEGER</td>
+                     <td rowspan="1" colspan="1" class="none">DB.STRING</td>
+                     <td rowspan="1" colspan="1" class="none">DB.BITSET</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DB.LONG</td>
+                     <td rowspan="1" colspan="1" class="none">DB.DATE</td>
+                     <td rowspan="1" colspan="1" class="none">DB.COMBINED</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DB.FLOAT</td>
+                     <td rowspan="1" colspan="1" class="none">DB.TEXT</td>
+                     <td rowspan="1" colspan="1" class="none">DB.MULTIBYTE</td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">DB.TIME</td>
+                     <td rowspan="1" colspan="1" class="none">DB.RAW</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_runtime_dictionary_information/overview_and_synopsis.htm" class="manualLink">Runtime dictionary information overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_runtime_dictionary_information/rdi.domain, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

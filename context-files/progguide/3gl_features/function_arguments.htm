@@ -1,0 +1,197 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Function arguments</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="function arguments ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Function arguments</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The arguments of a function are the variables declared in the
+               function header. Arguments can be accessed only within the
+               function.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Declaration, initialization, and scope</div>
+            <table border="0" width="738" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td width="27%" rowspan="1" colspan="1" class="none">Point of declaration</td>
+                     <td width="73%" rowspan="1" colspan="1" class="none">In the function between the brackets { }.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td width="27%" rowspan="1" colspan="1" class="none">Syntax of declaration</td>
+                     <td width="73%" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">[ref|reference] &lt;type&gt; name</p>
+                        <p class="Paragraph">Note that array subscripts must be empty for
+                           reference arguments.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td width="27%" rowspan="1" colspan="1" class="none">Initialization</td>
+                     <td width="73%" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">At function call.</p>
+                        <p class="Paragraph">For value arguments (see below), the values of
+                           the function call are copied.
+                        </p>
+                        <p class="Paragraph">For reference arguments, the same variable (or
+                           the same memory area) is used as occupied by the
+                           variable submitted to the function call.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td width="27%" rowspan="1" colspan="1" class="none">Scope (validity and time)</td>
+                     <td width="73%" rowspan="1" colspan="1" class="none">Only during function execution.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Value arguments</div>
+            <p class="Paragraph">A value argument gets its value at the time of the
+               function call and has its own memory space. For example:
+            </p><pre class="CodeBlock">
+FUNCTION long dupl(long val)        | val is a value argument
+{
+        RETURN( val * 2 )
+}
+FUNCTION MAIN()
+{
+        message("%d", dupl(10))
+                | the argument val gets value 10
+}
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Reference arguments</div>
+            <p class="Paragraph">Reference arguments must be declared in the function
+               header with the keyword REFERENCE or REF.
+            </p>
+            <p class="Paragraph">A reference argument has the same memory space as the
+               variable used in the function call. Consequently, all changes
+               made to a reference argument within the function block are
+               also accessible after the function call in the variable used
+               in the function call. If a reference argument has array
+               subscripts, these must be empty in the declaration as the
+               contents and size of the call variable is used. If strings or
+               large arrays are used, it is preferable to use reference
+               arguments instead of returning them with the return
+               statement. This avoids copy actions.
+            </p>
+            <div class="subExampleSection">
+               <div class="subSectionTitle">Example 1</div>
+               <p class="Paragraph">Note that in this example, the reference argument is empty
+                  in the declaration.
+               </p><pre class="CodeBlock">
+FUNCTION LONG read_line( REF STRING buffer() )
+{
+        IF ... THEN
+                buffer = ...
+                RETURN( 1 )
+        ELSE
+                buffer = ""
+                RETURN( 0 )
+        ENDIF
+}
+
+FUNCTION MAIN()
+{
+        STRING line(100)
+        IF read_line(line) THEN
+                ...
+        ELSE
+                message("No present line")
+        ENDIF
+        ...
+}
+</pre></div>
+            <div class="subExampleSection">
+               <div class="subSectionTitle">Example 2</div>
+               <p class="Paragraph">This example uses a multi-dimensional array:</p><pre class="CodeBlock">
+FUNCTION VOID fill_array ( REF LONG array(,) )
+{
+        array(1,1) = 10
+        array(1,2) = 20
+        ...
+}
+
+FUNCTION MAIN()
+{
+        STRING  a(5,10)
+        fill_array(a)
+}
+</pre></div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Constant arguments</div>
+            <p class="Paragraph">Constant arguments must be declared with the keyword CONST
+               in the function header. These are similar to reference
+               arguments in that the same memory space is used for the
+               constant argument and the variable used in the function call.
+               However, with constant arguments, it is possible to use a
+               string constant within the function call. Consequently, the
+               value of the argument after the function call is not returned
+               in the calling function.
+            </p>
+            <p class="Paragraph">You cannot change a constant argument within the function.
+               Nor can you use a constant argument as reference in another
+               function call. Only strings with one dimension can be used as
+               constant arguments. The array subscript of the constant
+               argument must be empty in the declaration because the size of
+               the constant is used. For example:
+            </p><pre class="CodeBlock">
+FUNCTION print_mess( CONST STRING mesg )
+{
+        IF NOT isspace(mesg) THEN
+                message("Message: " &amp; mesg)
+        ENDIF
+}
+
+FUNCTION MAIN()
+{
+        ...
+        print_mess("This is a message")
+        ...
+}
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Varying number of arguments</div>
+            <p class="Paragraph">It is possible to pass an (as yet) unspecified number of
+               arguments to a function definition by replacing the actual
+               arguments with '...'. The function call must contain the
+               actual arguments required to execute the function. This
+               enables you to use different arguments (from 0 to
+               approximately 250) each time you call the function. This
+               feature is useful, for example, if you wish to change some
+               (not all) of the flags of a process, and you do not know
+               beforehand precisely which flags you are going to change. See
+               the <a href="../../progguide/functions_varying_arguments/synopsis.htm" class="manualLink">Functions with variable number of arguments: synopsis</a> functions for information on using this feature.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/functions.htm" class="manualLink">Functions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/function_arguments, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

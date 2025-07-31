@@ -1,0 +1,188 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dal.field.depends.on()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dal.field.depends.on dal.field.depends.on functions dal.field.depends.on ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dal.field.depends.on()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_dal&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;dal.field.depends.on&nbsp;
+					(const string&nbsp;fieldname, long&nbsp;hook.list, const string&nbsp;parent.fld.name, ... [, long&nbsp;hook.list] [, const string&nbsp;parent.fieldname, ...])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this to define that a field depends on one or more other fields. 
+                  Dependencies are defined in terms of field hooks.
+               </p>
+               <p class="Paragraph">In general <code class="Code">dal.field.depends.on("a", HOOK_X, "b")</code> means the
+                  following: the result of hook a.x() depends on the value of field b.
+               </p>
+               <p class="Paragraph">So when changing field "b", hook a.x() is executed.</p>
+               <p class="Paragraph">For example, <code class="Code">dal.field.depends.on("whinh312.fire", HOOK_IS_APPLICABLE, "whinh312.lsta")</code> should be used if the result of hook whinh312.fire.yes.is.applicable() depends on the value of
+                  whinh312.lsta.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>fieldname</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the field that depends on other fields</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>hook.list</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the hooks that use the parent fields that follow</p>
+                        <p class="Paragraph">The following hook constants can be used:</p>
+                        <table class="default">
+                           <tbody noTR="7" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <th rowspan="1" colspan="1" class="default">Constant</th>
+                                 <th rowspan="1" colspan="1" class="default">Hook(s)</th>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">HOOK_IS_APPLICABLE</td>
+                                 <td rowspan="1" colspan="1" class="default">&lt;field&gt;.is.applicable()</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">HOOK_IS_READONLY</td>
+                                 <td rowspan="1" colspan="1" class="default">&lt;field&gt;.is.readonly()</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">HOOK_IS_DERIVED</td>
+                                 <td rowspan="1" colspan="1" class="default">&lt;field&gt;.is.derived()</td>
+                              </tr>
+                              <tr no="5" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">HOOK_IS_VALID</td>
+                                 <td rowspan="1" colspan="1" class="default">
+                                    <p class="Paragraph_firstAndNoTextBefore">&lt;field&gt;.is.valid()</p>
+                                    <p class="Paragraph">&lt;field&gt;. <i class="Emphasis">constant</i>.is.applicable()
+                                    </p>
+                                 </td>
+                              </tr>
+                              <tr no="6" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">HOOK_IS_MANDATORY</td>
+                                 <td rowspan="1" colspan="1" class="default">&lt;field&gt;.is.mandatory()</td>
+                              </tr>
+                              <tr no="7" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">HOOK_UPDATE</td>
+                                 <td rowspan="1" colspan="1" class="default">&lt;field&gt;.update()</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>parent.fld.name, ...</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">one or more fields on which the given field (fieldname) depends</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>hook.list</code>]
+                     </td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">[const string</td>
+                     <td class="none"><code>parent.fieldname, ...</code>]
+                     </td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			DAL
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">Sometimes there are 'indirect' dependencies, e.g., through
+                  database references. For example, suppose that table field
+                  teemp100.emno refers to tccom001.emno, that tccom001.awak is
+                  read through the DAL query extension of DAL teemp100, and that
+                  the result of teemp100.talk.update() uses tccom001.awak. In that
+                  case there is an 'indirect' dependency, and the following
+                  dependency should be defined: <code class="Code">dal.field.depends.on("teemp100.talk", HOOK_UPDATE, "teemp100.emno")</code>.
+               </p>
+            </div>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">The defined dependencies are uni-directional. So in order to
+                  specify a bi-directional relation, i.e., when A depends on B and
+                  B depends on A, you have to call this function twice:
+               </p>
+               <ul class="List">
+                  <li class="ListItem">dal.field.depends.on("A", HOOK_UPDATE, "B")</li>
+                  <li class="ListItem">dal.field.depends.on("B", HOOK_UPDATE, "A")</li>
+               </ul>
+               <p class="Paragraph">This function can only be called in the <a href="../../progguide/functions_dal/before.open.object.set.htm" class="manualLink">before.open.object.set()</a> hook!
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">Suppose field G depends on fields D, E and F and field D is
+               used in the is.applicable hook, field E is used in the
+               is.readonly hook and field F is used in both the is.applicable
+               and update hooks then this is coded as follows:
+            </p><pre class="CodeBlock">
+dal.field.depends.on("G",
+        HOOK_IS_APPLICABLE,               "D",
+        HOOK_IS_READONLY,                 "E",
+        HOOK_IS_APPLICABLE + HOOK_UPDATE, "F")
+</pre><p class="Paragraph">It is also possible to use the following syntax:</p><pre class="CodeBlock">
+dal.field.depends.on("G",
+        HOOK_IS_APPLICABLE, "D", "F",
+        HOOK_IS_READONLY,   "E",
+        HOOK_UPDATE,        "F")
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_field_dependencies.htm" class="manualLink">DAL2 Field dependencies</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal.require.field.htm" class="manualLink">dal.require.field()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal.any.parent.changed.htm" class="manualLink">dal.any.parent.changed()</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/dal.field.depends.on, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>text.set.keywords()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions text.set.keywords text.set.keywords text.set.keywords ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">text.set.keywords()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean &nbsp;text.set.keywords&nbsp;
+					(string&nbsp;text_field, string&nbsp;keyword1, string&nbsp;keyword2, string&nbsp;keyword3, string&nbsp;keyword4)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This stores keyword(s) to the specified multiline text
+                  formfield. When the field can be edited with the textmanager
+                  (also), attr.textkw1$, attr.textkw2$, attr.textkw3$,
+                  attr.textkw4$ in the on.choice of 4gl-section
+                  choice.text.manager. In session "Texts overview" (tttxt1500m000)
+                  you can search for texts based on keywords.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>text_field</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the multiline text formfield that must
+                           be retrieved. See <a href="../../progguide/functions_text_fields/overview.htm" class="manualLink">Text fields overview</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>keyword1</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">First keyword of textfield. When not specifying any
+                           keyfield, this first keyfield is filled with
+                           fieldname.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>keyword2</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional. Second keyword of textfield.</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>keyword3</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional. Third keyword of textfield.</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>keyword4</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional. Fourth keyword of textfield.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">false&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; field is not a multiline text formfield on the
+   form</p>
+            <p class="Paragraph">true&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function successful</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			4GL
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">This function can be used in the when.field.changes section
+                  of the multiline text formfield.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_text_fields/overview.htm" class="manualLink">Text fields overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_text_fields/synopsis.htm" class="manualLink">Text fields synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_text_fields/text.set.keywords, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

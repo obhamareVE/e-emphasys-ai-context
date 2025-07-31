@@ -1,0 +1,160 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>num.to.week()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions num.to.week num.to.week num.to.week ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">num.to.week()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;num.to.week&nbsp;
+					(long&nbsp;dayno, ref long&nbsp;week_dayno, ref long&nbsp;year_dayno, ref long&nbsp;weekno [, ref long&nbsp;yearno])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This converts a specified number of days since 01-01-0001 to
+                  the corresponding day of the week, day of the year, and week
+                  number of the year.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>dayno</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A number of days since 01-01-0001.</p>
+                        <p class="Paragraph">This value must be at least 1
+                           (corresponding to January 1 of the year 1)
+                           and less than 3,652,060
+                           (corresponding to January 1 of the year 10,000).
+                           Other values lead to an error.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>week_dayno</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The day of the week. This depends on which day is
+                           defined as the first day of the week in the user data
+                           settings in the data dictionary.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>year_dayno</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The day number in the year.</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>weekno</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The week number in the year. See <a href="../../progguide/functions_date_time_zones/overview.htm#week_handling" class="manualLink">Week handling</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">[ref long</td>
+                     <td class="none"><code>yearno</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The year number. This argument is optional.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">Error.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">If the day of the week lies in the week that includes the
+                  turn of the year, <i class="Emphasis">weekno</i> returns either 53, 0, or 1.&nbsp; The
+   rules applied are:
+               </p>
+               <ul class="List">
+                  <li class="ListItem"><i class="Emphasis">Yearno</i> argument included 
+                     <ul class="List">
+                        <li class="ListItem">If less that 4 days of the week belong to the old
+                           year, <i class="Emphasis">weekno</i> returns 1 and <i class="Emphasis">yearno</i> returns
+                           the number of the new year.
+                        </li>
+                        <li class="ListItem">If 4 or more days belong to the old year, <i class="Emphasis">weekno</i> returns 53 and <i class="Emphasis">yearno</i> returns the
+                           number of the old year.
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="ListItem"><i class="Emphasis">Yearno</i> argument not included 
+                     <ul class="List">
+                        <li class="ListItem">If the day belongs to the old year, weekno returns
+                           53.
+                        </li>
+                        <li class="ListItem">If the day belongs to the new year and there are
+                           less that 4 days of the new year in the week, <i class="Emphasis">weekno</i> returns 0.
+                        </li>
+                        <li class="ListItem">If the day belongs to the new year and there are
+                           more that 3 days of the new year in the week, <i class="Emphasis">weekno</i> returns 1.
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_date_time_zones/synopsis.htm" class="manualLink">Dates, times, time zones synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_date_time_zones/overview.htm" class="manualLink">Dates, times, time zones overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_date_time_zones/num.to.week, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

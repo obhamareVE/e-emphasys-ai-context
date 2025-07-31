@@ -1,0 +1,80 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>TRIM function</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="TRIM function ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">TRIM function</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">With the TRIM function you can remove trailing and/or leading
+               characters from a string.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;trim function&gt;
+    ::= TRIM ( [ [&lt;trim specification&gt;] [&lt;trim character&gt;] FROM ] &lt;trim source&gt; )
+
+&lt;trim source&gt;
+    ::= <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a>
+
+&lt;trim character&gt;
+    ::= <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a>
+
+&lt;trim specification&gt;
+    ::= LEADING | TRAILING | BOTH
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">The type of the <i class="Emphasis">&lt;trim source&gt;</i> and the <i class="Emphasis">&lt;trim character&gt;</i> shall be <i class="Emphasis">string</i>.
+               	The length of <i class="Emphasis">&lt;trim character&gt;</i> shall be 1.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">If the value of the <i class="Emphasis">&lt;trim source&gt;</i> is NULL, then the result of
+               the TRIM function is also NULL.
+            </p>
+            <p class="Paragraph">The data type of the result of the TRIM function is <i class="Emphasis">string</i>.
+            </p>
+            <p class="Paragraph">If <i class="Emphasis">&lt;trim character&gt;</i> is omitted then the implicit
+               trim character is a space (' '). If <i class="Emphasis">&lt;trim specification&gt;</i> is omitted then the implicit trim specification is BOTH.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following TRIM function returns the string <code class="Code">'abc'</code>.
+            </p><pre class="CodeBlock">
+TRIM( ' abc    ' )
+</pre><p class="Paragraph">The following TRIM function returns the string <code class="Code">' abc'</code>.
+            </p><pre class="CodeBlock">
+TRIM( TRAILING FROM ' abc    ' )
+</pre><p class="Paragraph">The following TRIM function returns the string <code class="Code">' ab'</code>.
+            </p><pre class="CodeBlock">
+TRIM( 'c' FROM TRIM( TRAILING FROM ' abc    ' ) )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/trim_function, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>SQL reserved words</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="SQL reserved words ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">SQL reserved words</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">This section lists the reserved words of the Infor ERP Enterprise SQL
+               language.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Reserved words</div><pre class="CodeBlock">
+ ALIKE ALL AND ARRAY AS ASC AVG 
+ BETWEEN BOTH BUFFER BY 
+ CASE CAST CLEAR CLEARUNREF COUNT CROSS CURRENT_DATE CURRENT_TIMESTAMP 
+ DATE DATE.NUM DATE.TO.NUM DELETE DESC DISTINCT
+ ELSE EMPTY END ENUM_DESCRIPTION ESCAPE EXISTS 
+ FALSE FETCHING FIRST FOR FROM FULL
+ GROUP 
+ HAVING HINT HINTS 
+ IN INDEX INNER INRANGE INTEGER IS
+ JOIN 
+ LAST LEADING LEFT LIKE
+ MAX MIN
+ NO NOT NULL 
+ ON OR ORDER ORDERED OUTER 
+ PATH PREPARED 
+ RAW REAL REFERS REPEAT RETRY RIGHT ROW ROWS 
+ SELECT SET SETUNREF SKIP SIZE STRING SUBHINT SUM 
+ TEXT_CONTENT THEN TIMESTAMP TO TRAILING TRIM TRUE
+ UNION UNREF UPDATE USE
+ WHEN WHERE WITH
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Usage notes</div>
+            <p class="Paragraph">Reserved words can be used as names of parameters. The
+               following example contains the keyword SELECT as a parameter
+               name, but is nonetheless legal.
+            </p><pre class="CodeBlock">
+select *
+from dbtst120
+where empno = :select
+</pre><p class="Paragraph">When using embedded SQL in the Baan 3GL language, you can
+               safely use variable names and function names that are also SQL
+               reserved words. There are only a few exceptions such as the
+               SELECT, UPDATE and DELETE keyword. See also the section on <a href="../../progguide/3gl_features/vocabulary.htm" class="manualLink">Vocabulary</a>.
+            </p>
+            <p class="Paragraph">The following program compiles and runs without any
+               complaint.
+            </p><pre class="CodeBlock">
+function main()
+{
+    long where
+    
+    where = 10
+
+    select * from dbtst120 where empno = :where
+    selectdo
+    endselect
+}
+</pre><p class="Paragraph">Some care must be taken when using macro definitions in the
+               Baan 3GL language. For example, the following program does not
+               compile because every occurence of the word "select" is replaced
+               with "123".
+            </p>
+            <p class="Paragraph">A general guideline is to never redefine a reserved word.</p><pre class="CodeBlock">
+#define select 123
+
+function main()
+{
+    select * from dbtst120
+    selectdo
+    endselect
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/sql_reserved_words, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

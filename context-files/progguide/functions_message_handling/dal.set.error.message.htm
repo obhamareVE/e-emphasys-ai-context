@@ -1,0 +1,100 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dal.set.error.message(), dal.set.warning.message(), dal.set.info.message()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dal.set.error.message dal.set.error.message dal.set.info.message dal.set.warning.message functions dal.set.error.message ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dal.set.error.message(), dal.set.warning.message(), dal.set.info.message()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;dal.set.error.message&nbsp;
+					(string&nbsp;mess.or.code [, void&nbsp;arg ...])</code><code>function&nbsp;void&nbsp;dal.set.warning.message&nbsp;
+					(string&nbsp;mess.or.code [, void&nbsp;arg ...])</code><code>function&nbsp;void&nbsp;dal.set.info.message&nbsp;
+					(string&nbsp;mess.or.code [, void&nbsp;arg ...])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">These functions add a message to the DAL message buffer of
+                  type <code class="Code">MSG.ERROR</code>, <code class="Code">MSG.WARNING</code>, or <code class="Code">MSG.INFO</code>.
+               </p>
+               <p class="Paragraph">They are short versions for function <a href="../../progguide/functions_message_handling/dal.set.message.htm" class="manualLink">dal.set.message()</a>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>mess.or.code</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies either the data dictionary code for the
+                           message or a literal string. In the latter case, the
+                           value of <i class="Emphasis">mess.or.code</i> must start with the at
+                           sign [@]. Note that using a literal string makes the
+                           script language dependent.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[void</td>
+                     <td class="none"><code>arg ...</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The literal string or message specified with <i class="Emphasis">mess.or.code</i> can contain format characters for
+                           parameter substitution. The values which must be
+                           substituted are specified in the 2nd, 3rd, ...
+                           arguments of the function. The number of these
+                           arguments is variable.
+                        </p>
+                        <p class="Paragraph">For details about formatting a string see the <a href="../../progguide/functions_formatting_io/sprintf.htm" class="manualLink">sprintf$()</a>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			DAL
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">Empty messages are not added to the DAL message buffer.</p>
+               <p class="Paragraph">For dal.set.error.message(), the message is not added to the DAL message buffer if messages are disabled by using <a href="../../progguide/functions_message_handling/dal.set.messages.off.htm" class="manualLink">dal.set.messages.off()</a>.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_message_handling/overview_and_synopsis.htm" class="manualLink">Message handling overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_message_handling/dal.set.error.message, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

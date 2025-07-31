@@ -1,0 +1,146 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Example</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Example</div>
+      <div class="body">
+         <div class="GeneralSection"><pre class="CodeBlock">
+    #include &lt;bic_plcm&gt;
+
+function main()
+{
+        if not plcm.init("Test gantt", CHART_TYPE_GANTT+CHART_TYPE_SCHEDULE,STARTUP_CHART_TYPE_GANTT+SHOW_COMPLETION_PERCENTAGES+EXPAND_ALL_ROWS) then
+                do.init()
+                if not plcm.start() then      
+                endif
+        endif
+}
+
+function do.init()
+{
+        long ret
+        long date1
+        long date2
+        
+        date1 = utc.num()
+        ret = utc.add(date1,0,0,2,0,0,0,date2)
+        
+        plcm.add.activity.property("opr","Operation")
+        plcm.add.activity.property("NAME","Order")
+        plcm.add.activity.property("START", "Production date")
+        plcm.add.activity.property("END", "Deliver ydate")
+
+        plcm.add.resource.property("wc", "Work center")
+        plcm.add.resource.property("QUANTITY", "Load")
+        
+        ret = plcm.add.root.activity("root", "root1")
+        if ret &lt;&gt; 0 then message("Error: " &amp; str$(ret)) endif
+        long i
+        for i = 1 to 20
+            ret = plcm.add.activity("root", "a"&amp; str$(i), "activity"&amp; str$(i), date1, date2)            
+            plcm.set.activity.property("a"&amp; str$(i),"opr","10")
+            if i = 3 then
+            plcm.set.activity.property("a"&amp; str$(i),"opr","20")
+                date1 = date2
+                ret = utc.add(date1,0,0,3,0,0,0,date2)
+                plcm.add.activity("a"&amp; str$(i), "a"&amp; str$(i) &amp; "1", "activity"&amp; str$(i) &amp; "1", date1, date2)
+                plcm.set.activity.completion.percentage("a"&amp; str$(i) &amp; "1",30)
+                plcm.set.activity.property("a"&amp; str$(i) &amp; "1","opr","20")
+            endif
+            date1 = date2
+            ret = utc.add(date1,0,0,1,0,0,0,date2)
+        endfor
+        if ret &lt;&gt; 0 then message("Error: " &amp; str$(ret)) endif
+        
+        ret = utc.add(date1,0,0,2,0,0,0,date1)
+        ret = utc.add(date1,0,0,3,0,0,0,date2)
+        ret = plcm.add.activity("root", "a2", "activity1.2", date1, date2)
+        
+        ret = plcm.add.root.resource("root","Resource pool")               
+        ret = plcm.add.resource("root","mm","Mark Mooiman",2)        
+        ret = plcm.add.resource("root","gm","Gerald Murre",5)
+        ret = plcm.add.resource("root","btb","Bert ter Burg",20)       
+        ret = plcm.add.resource("root","tom","Tom",1)
+        ret = plcm.add.resource("root","hans","Hans",3)
+        
+        ret = plcm.set.resource.property("mm","wc","G")
+        ret = plcm.set.resource.property("gm","wc","Z")
+        ret = plcm.set.resource.property("btb","wc","W")
+        ret = plcm.set.resource.property("tom","wc","A")
+        ret = plcm.set.resource.property("hans","wc","V")
+        
+        ret = plcm.add.reservation("a1","btb")
+        ret = plcm.add.reservation("a2","mm")
+        ret = plcm.add.reservation("a3","gm")
+        ret = plcm.add.reservation("a4","test")
+        
+        || Add commands
+        plcm.add.command("change.resource.name", "Change resource name")
+        plcm.add.command("change.workcenter", "Change workcenter to A")
+        plcm.add.command("change.quantity", "Change quantity to 50")
+        plcm.add.command("change.activity.name", "Change activity name")
+}
+
+function extern long plcm.command.performed(const string command(), long sela.x, const string ida(,), long selr.x, const string idr(,))
+{
+string a(100), b(100)
+long ret
+
+        on case command
+        case "change.resource.name":
+            if (selr.x&gt;0) then
+                plcm.set.resource.name(strip$(idr(1,selr.x)),"New resource name")
+            endif
+            break        
+        case "change.workcenter":
+            if (selr.x&gt;0) then
+                plcm.set.resource.property(strip$(idr(1,selr.x)),"wc","A")
+            endif
+            break        
+        case "change.quantity":
+            if (selr.x&gt;0) then
+                plcm.set.resource.quantity(strip$(idr(1,selr.x)),50)
+            endif
+            break                    
+        case "change.activity.name":
+            if (sela.x&gt;0) then
+                plcm.set.activity.name(strip$(ida(1,sela.x)),"New name")
+                plcm.set.activity.property(strip$(ida(1,sela.x)),"opr","100")
+            endif
+        break        
+        default:
+            a = (sela.x&gt;0?" Last Act-" &amp; strip$(ida(1,sela.x)):"")
+            b = (selr.x&gt;0?" Last Res-" &amp; strip$(idr(1,selr.x)):"")
+            message("Command: " &amp; command &amp; a &amp; b)
+            break
+        endcase
+
+        return (0)
+}
+
+function extern boolean plcm.activity.moved( string activity.id, long start.date, long end.date)
+{
+    message("Not allowed!")
+    return (false)
+}
+
+</pre></div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_gantt_and_schedule_charts/example, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

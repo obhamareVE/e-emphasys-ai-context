@@ -1,0 +1,67 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Query extensions sample program</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="sql query extensions sample program ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Query extensions sample program</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">This is an example of a simple query extension programmed in
+               the DAL for the main table 'qmptc015'. The unit (qmptc021.cual)
+               of the algorithm (qmptc015.algo) must have the same physical
+               quantity as the unit defined in the table (qmptc015.chun).
+            </p><pre class="CodeBlock">
+function extern long before.open.object.set()
+{
+        query.extend.select("qmptc021.cual")
+        query.extend.from("qmptc021")
+        query.extend.where(":qmptc015.algo refers to qmptc021")
+}
+
+function extern long qmptc015.algo.check(long has_changed)
+{
+        if has_changed then
+                tcibd.dll0003.read.mcs001.tccu(qmptc015.chun,
+                     qmptc021.cual, basu.tccu, unit.tccu)
+                if basu.tccu &lt;&gt; unit.tccu then
+                        dal.set.error.message("qmptcs011526")
+                        |* Algorithm and characteristic units must have the
+                        |* same physical quantity
+                        return(DALHOOKERROR)
+                endif
+        endif
+}
+</pre><p class="Paragraph">An example of a simple query extension programmed in the UI
+               script.
+            </p><pre class="CodeBlock">
+field.tejzw101.orno:
+selection.filter:
+    query.extend.where.in.zoom("tejzw100.item = " &amp; quoted.string(tejzw101.item))
+    | <a href="../../progguide/functions_string_operations/quoted.string.htm" class="manualLink">quoted.string()</a> is used  here, because the value of tejzw101.item might contain (double) quotes.
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/overview.htm" class="manualLink">SQL query extensions overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/synopsis.htm" class="manualLink">SQL query extensions synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/column_filtering.htm" class="manualLink">Column filtering</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_sql_query_extensions/example, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

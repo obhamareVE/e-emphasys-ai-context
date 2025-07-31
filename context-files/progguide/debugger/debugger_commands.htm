@@ -1,0 +1,465 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Debugger commands</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="commands, debugger debugger commands ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Debugger commands</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Debugger commands consist of from one to three words; the
+               words can be separated from each other by one or more spaces.
+               The assignment command is an exception. Here the variable and
+               the value to be assigned are separated by a ':=' sign. Most
+               commands require a line number and/or a source name. If no
+               source name is specified, the default is the current source.
+            </p>
+            <p class="Paragraph">When you start the debugger for an object, the source used by
+               the debugger is first searched for by using the directions in
+               the file fd <i class="Emphasis">x.x</i>.&lt;pack.comb.&gt; (where <i class="Emphasis">x.x</i> is
+               the bshell version), then it is searched for in the $BSE/tmp
+               directory, and finally in the current directory.
+            </p>
+            <table border="1" class="default">
+               <tbody noTR="53" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Command</th>
+                     <th rowspan="1" colspan="1" class="default">Action</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">b [[source]
+                           line_number]</code></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Toggle a break point on the current or specified
+                           line of the current or specified source. The line is
+                           highlighted, when break point is set.
+                        </p>
+                        <p class="Paragraph">Note that you cannot set break points in included
+                           parts in a source. Instead the break point must be
+                           set in the included file.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">B [source]</code></td>
+                     <td rowspan="1" colspan="1" class="default">Display all set break points in the current or
+                        specified source.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">c [number]</code></td>
+                     <td rowspan="1" colspan="1" class="default">Continue (execute the source) up to the next
+                        break point. If you specify a number, the debugger
+                        skips that number of break points. The executed
+                        source lines are not displayed.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">CC [number]</code></td>
+                     <td rowspan="1" colspan="1" class="default">Same as 'c', except that the executed source
+                        lines are displayed.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">cc</code></td>
+                     <td rowspan="1" colspan="1" class="default">Change the size of the command window. This is
+                        valid only when application and debugger are in the
+                        same window.
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">cs</code></td>
+                     <td rowspan="1" colspan="1" class="default">Change the size of the source window. This is
+                        valid only when the application and debugger are in
+                        the same window.
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">d [source line_number]</code></td>
+                     <td rowspan="1" colspan="1" class="default">Delete the break point on the specified line
+                        number in the source. If you do not specify a line
+                        number, the debugger provides the opportunity to
+                        interactively delete any break point in the current
+                        source file.
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">D [source]</code></td>
+                     <td rowspan="1" colspan="1" class="default">Delete all set break points in the specified or
+                        current source.
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">delete all</code></td>
+                     <td rowspan="1" colspan="1" class="default">Delete all traces and stop instructions.</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">delete number</code></td>
+                     <td rowspan="1" colspan="1" class="default">Delete a specified trace or stop instruction.</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">ds</code></td>
+                     <td rowspan="1" colspan="1" class="default">Delete the source window.</td>
+                  </tr>
+                  <tr no="13" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">dd</code></td>
+                     <td rowspan="1" colspan="1" class="default">Generate a dump of the data dictionary.</td>
+                  </tr>
+                  <tr no="14" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">&lt;expression&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">Execute the specified expression.</td>
+                  </tr>
+                  <tr no="15" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">f [noarg|noname][number]</code></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Display stack trace (present nesting of
+                           functions), with the arguments of the functions. If
+                           you specify a number, only that number of nestings
+                           is displayed.
+                        </p>
+                        <p class="Paragraph">noarg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; only the names of functions are
+               displayed</p>
+                        <p class="Paragraph">noname&nbsp;&nbsp;&nbsp;&nbsp; arguments are displayed but not
+               their names</p>
+                     </td>
+                  </tr>
+                  <tr no="16" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">fdebug</code></td>
+                     <td rowspan="1" colspan="1" class="default">Show the open tables on the command window.</td>
+                  </tr>
+                  <tr no="17" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">Fdebug</code></td>
+                     <td rowspan="1" colspan="1" class="default">Print the open tables to the spooler.</td>
+                  </tr>
+                  <tr no="18" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">g [source] line_number</code></td>
+                     <td rowspan="1" colspan="1" class="default">Continue program execution at the specified line
+                        number (goto).
+                     </td>
+                  </tr>
+                  <tr no="19" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">help (or ?)</code></td>
+                     <td rowspan="1" colspan="1" class="default">Start the Help Viewer for debugger options.</td>
+                  </tr>
+                  <tr no="20" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">l</code></td>
+                     <td rowspan="1" colspan="1" class="default">Display the full list of program variables.</td>
+                  </tr>
+                  <tr no="21" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">L</code></td>
+                     <td rowspan="1" colspan="1" class="default">Display the list of program variables that have a
+                        value, and display their current values. To stop
+                        displaying the contents of an array, enter 'n' at
+                        the question 'More ?'.
+                     </td>
+                  </tr>
+                  <tr no="22" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">lp</code></td>
+                     <td rowspan="1" colspan="1" class="default">Print the output of the 'l' command.</td>
+                  </tr>
+                  <tr no="23" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">Lp</code></td>
+                     <td rowspan="1" colspan="1" class="default">Print the output of the 'L' command.</td>
+                  </tr>
+                  <tr no="24" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">mem</code></td>
+                     <td rowspan="1" colspan="1" class="default">Generate a dump including information about the
+                        memory allocated.
+                     </td>
+                  </tr>
+                  <tr no="25" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">p</code></td>
+                     <td rowspan="1" colspan="1" class="default">Go to the source line currently being processed
+                        (this is useful after the view or seek command). The
+                        line is indicated by a greater than (&gt;) sign
+                        before the line number.
+                     </td>
+                  </tr>
+                  <tr no="26" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">q</code></td>
+                     <td rowspan="1" colspan="1" class="default">Exit the debugger (quit).</td>
+                  </tr>
+                  <tr no="27" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">return</code></td>
+                     <td rowspan="1" colspan="1" class="default">Continue execution until the end of the current
+                        function.
+                     </td>
+                  </tr>
+                  <tr no="28" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">s [number]</code></td>
+                     <td rowspan="1" colspan="1" class="default">Execute the program step by step, the specified
+                        number of instructions at a time (default is 1).
+                        During execution, the intermediate source lines are
+                        not displayed.
+                     </td>
+                  </tr>
+                  <tr no="29" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">S [number]</code></td>
+                     <td rowspan="1" colspan="1" class="default">Similar to 's', except that a function call is
+                        executed as a single statement.
+                     </td>
+                  </tr>
+                  <tr no="30" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">slow [number]</code></td>
+                     <td rowspan="1" colspan="1" class="default">Reduce the rate of running source code. The
+                        maximum number is 100; the minimum (and default)
+                        number is 0.
+                     </td>
+                  </tr>
+                  <tr no="31" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">split number</code></td>
+                     <td rowspan="1" colspan="1" class="default">Split the command and source window. The
+                        specified number is the last line of the command
+                        window. This is often used after resizing the
+                        Debugger window.
+                     </td>
+                  </tr>
+                  <tr no="32" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">status [trace|stop|number]</code></td>
+                     <td rowspan="1" colspan="1" class="default">Display traced variables and/or stop
+                        instructions. If you specify a number, only that
+                        traced variable or stop instruction is
+                        displayed.
+                     </td>
+                  </tr>
+                  <tr no="33" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">stop if &lt;expression&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">Stop execution when expression is True.</td>
+                  </tr>
+                  <tr no="34" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">stop in &lt;function&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">Stop execution when function is entered.</td>
+                  </tr>
+                  <tr no="35" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">sym</code></td>
+                     <td rowspan="1" colspan="1" class="default">Generate a dump of the symbol table.</td>
+                  </tr>
+                  <tr no="36" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">trap off</code></td>
+                     <td rowspan="1" colspan="1" class="default">Disables ‘trap on’. This command is available
+               only when the bshell was started with the -dbgcpu
+               flag.</td>
+                  </tr>
+                  <tr no="37" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">trap on</code></td>
+                     <td rowspan="1" colspan="1" class="default">The debugger stops after execution of every
+                        function call. This command is available only when
+                        the bshell was started with the -dbgcpu flag.
+                     </td>
+                  </tr>
+                  <tr no="38" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">swin off</code></td>
+                     <td rowspan="1" colspan="1" class="default">There is a separate window for stack, array and
+                        long string in debugger. The appearence of this
+                        second window can be switched off with "swin
+                        off".
+                     </td>
+                  </tr>
+                  <tr no="39" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">swin on</code></td>
+                     <td rowspan="1" colspan="1" class="default">There is a separate window for stack, array and
+                        long string in debugger. The appearence of this
+                        second window can be switched on with "swin on".
+                     </td>
+                  </tr>
+                  <tr no="40" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">t variable</code></td>
+                     <td rowspan="1" colspan="1" class="default">Trace the specified variable during program
+                        execution. The execution of the program stops every
+                        time the value of the variable is changed. You
+                        cannot trace array variables or common
+                        variables.
+                     </td>
+                  </tr>
+                  <tr no="41" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">T variable [value]</code></td>
+                     <td rowspan="1" colspan="1" class="default">Same as 't', except that program execution is not
+                        stopped when the variable changes. If you specify a
+                        value, execution stops when the variable gets that
+                        value.
+                     </td>
+                  </tr>
+                  <tr no="42" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">u [variable]</code></td>
+                     <td rowspan="1" colspan="1" class="default">Stop tracing the specified variable. If no
+                        variable is specified, you can stop tracing each
+                        variable interactively.
+                     </td>
+                  </tr>
+                  <tr no="43" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">U</code></td>
+                     <td rowspan="1" colspan="1" class="default">Stop tracing all variables currently being
+                        traced.
+                     </td>
+                  </tr>
+                  <tr no="44" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">v [source] line_number</code></td>
+                     <td rowspan="1" colspan="1" class="default">Display a specified source line in the source window
+                        (view). If <i class="Emphasis">line_number</i> is greater than the total
+                        number of lines, the last line is displayed.
+                     </td>
+                  </tr>
+                  <tr no="45" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">v {+-} number</code></td>
+                     <td rowspan="1" colspan="1" class="default">Shift the display to the source line that is <i class="Emphasis">number</i> lines before or after the current source
+                        line.
+                     </td>
+                  </tr>
+                  <tr no="46" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">/pattern</code></td>
+                     <td rowspan="1" colspan="1" class="default">Seek a matching text pattern in the current
+                        source and display that line.
+                     </td>
+                  </tr>
+                  <tr no="47" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">[function.]variable [/option]</code></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Display the value of a specified variable. If you
+                           specify a function, the value of the local variable of
+                           that function is displayed. Otherwise, the value of the
+                           variable of the current function or the global variable
+                           is displayed. If a variable has no value (empty string
+                           or zero number), the value is not displayed.
+                        </p>
+                        <p class="Paragraph">/ <i class="Emphasis">option</i> can have the following values:
+                        </p>
+                        <table width="100%" class="default">
+                           <tbody noTR="10" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default"><code class="Code">/</code></td>
+                                 <td rowspan="1" colspan="1" class="default">Use to display the value of a variable
+                        that has the same name as a Debugger
+                        command. For example, ‘b/’ displays the
+                        value of variable b.</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default"><code class="Code">/d</code></td>
+                                 <td rowspan="1" colspan="1" class="default">Print the flags of the variable and the
+                                    dimension for arrays.
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default"><code class="Code">/D</code></td>
+                                 <td rowspan="1" colspan="1" class="default">Display the number of bytes allocated in
+                                    a long or double variable. Display the
+                                    number of bytes for one element in a string
+                                    array.
+                                 </td>
+                              </tr>
+                              <tr no="4" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default"><code class="Code">/g</code></td>
+                                 <td rowspan="1" colspan="1" class="default">For a string containing the compact
+                                    string representation of a UUID, display
+                                    the standard string representation of the
+                                    UUID. See <a href="../../progguide/functions_uuid/uuid_overview.htm" class="manualLink">UUID overview</a>.
+                                 </td>
+                              </tr>
+                              <tr no="5" isLast="false" class="default">
+                                 <td colspan="2" rowspan="1" class="default">The following options are useful for
+                                    record buffers and binary data. They
+                                    display the value of a string variable with
+                                    its full declared length, regardless of NUL
+                                    characters.
+                                 </td>
+                              </tr>
+                              <tr no="6" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default"><code class="Code">/x</code></td>
+                                 <td rowspan="1" colspan="1" class="default">NUL characters are displayed as ‘^@’.</td>
+                              </tr>
+                              <tr no="7" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default"><code class="Code">/X</code></td>
+                                 <td rowspan="1" colspan="1" class="default">Characters with values 0 to 31 are
+                        displayed as ‘\x&lt;value in hex&gt;’.</td>
+                              </tr>
+                              <tr no="8" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default"><code class="Code">/b</code></td>
+                                 <td rowspan="1" colspan="1" class="default">All characters are displayed as ‘
+                        \x&lt;value in hex&gt;’.</td>
+                              </tr>
+                              <tr no="9" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default"><code class="Code">/l</code></td>
+                                 <td rowspan="1" colspan="1" class="default">Interpret field as UTC field and print
+                                    in local time and prints current time
+                                    zone.
+                                 </td>
+                              </tr>
+                              <tr no="10" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default"><code class="Code">/u</code></td>
+                                 <td rowspan="1" colspan="1" class="default">Interpret field as UTC field and print
+                                    in utc time.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="48" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">variable := value</code></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Assign a value to a variable. The value can
+                           be:
+                        </p>
+                        <p class="Paragraph">a string constant or expression</p>
+                        <p class="Paragraph">a numeric constant or expression</p>
+                        <p class="Paragraph">a variable name</p>
+                     </td>
+                  </tr>
+                  <tr no="49" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">vi</code></td>
+                     <td rowspan="1" colspan="1" class="default">Activate the vi editor for the current source at
+                        the current source line. Changing the source has no
+                        influence on the source displayed by the debugger in
+                        the source window.
+                     </td>
+                  </tr>
+                  <tr no="50" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">width value</code></td>
+                     <td rowspan="1" colspan="1" class="default">Change the width of command and source window.
+                        You can specify any value in the range 80 to
+                        132.
+                     </td>
+                  </tr>
+                  <tr no="51" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">&lt;Ctrl&gt;D/&lt;Ctrl&gt;U</code></td>
+                     <td rowspan="1" colspan="1" class="default">Page down or up in source.</td>
+                  </tr>
+                  <tr no="52" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">&lt;Esc&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">Toggle between normal and history mode.</td>
+                  </tr>
+                  <tr no="53" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">&lt;Arrow up&gt;/ &lt;Arrow down&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">In history mode, these display previously
+                        executed commands on the command line. In normal
+                        mode, these move the cursor through the source.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/debugger/the_baan_debugger.htm" class="manualLink">The debugger</a></li>
+               <li class="RelTopic"><a href="../../progguide/debugger/mouse_actions.htm" class="manualLink">Debugger mouse actions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/debugger/debugger_commands, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

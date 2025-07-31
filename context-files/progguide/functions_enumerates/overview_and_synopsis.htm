@@ -1,0 +1,105 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Enumerates overview and synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="enumerates ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Enumerates overview and synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">Use these functions for handling enumerated domains and
+               table fields.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Synopsis</div>
+            <table border="0" class="none">
+               <tbody noTR="11" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">domain</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_enumerates/ask.enum.htm" class="manualLink">ask.enum()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string quescode(14), domain
+                           default_enumvalue [, arg ] ... )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_enumerates/enum.descr.htm" class="manualLink">enum.descr$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain code(12), enum_expr [, string
+                           language_code] )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_enumerates/etol.htm" class="manualLink">etol()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( domain domain_value )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">domain</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_enumerates/ltoe.htm" class="manualLink">ltoe()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long long_value )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_enumerates/set.ask.enum.values.htm" class="manualLink">set.ask.enum.values()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( enum_constant, ... )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_enumerates/set.enum.values.for.field.htm" class="manualLink">set.enum.values.for.field()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string
+               field.name.string,&nbsp;[ALL_ENUMS_EXCEPT], enum_value,
+               ... )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_enumerates/set.enum.array.for.field.htm" class="manualLink">set.enum.array.for.field()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string field.name.string,&nbsp;long size,
+               long values())</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_enumerates/set.initial.enum.values.for.field.htm" class="manualLink">set.initial.enum.values.for.field()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string
+               field.name.string,&nbsp;[ALL_ENUMS_EXCEPT], enum_value,
+               ... )</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_enumerates/set.initial.enum.array.for.field.htm" class="manualLink">set.initial.enum.array.for.field()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string field.name, long size, const long values() )</code></td>
+                  </tr>
+                  <tr no="11" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_enumerates/set.enum.values.htm" class="manualLink">set.enum.values()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( enum_constant, ... )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/enumerate_and_set_constants.htm" class="manualLink">Enumerate and set constants</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_enumerates/overview_and_synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

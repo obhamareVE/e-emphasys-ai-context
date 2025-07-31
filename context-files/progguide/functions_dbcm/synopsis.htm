@@ -1,0 +1,260 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Database Change Management operations synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="database change management operations synopsis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Database Change Management operations synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">DBCM Table functions</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.get.type.name.htm" class="manualLink">dbcm.get.type.name()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string tbl.name$, ref string obj.type$ )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.is.cm.active.htm" class="manualLink">dbcm.is.cm.active()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string tbl.name$, [ long comp ] )</code></td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.is.root.table.htm" class="manualLink">dbcm.is.root.table()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string tbl.name$ )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">DBCM Object Type functions</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.get.object.type$.htm" class="manualLink">dbcm.get.object.type$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">[ long ]</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.select.object.type.htm" class="manualLink">dbcm.select.object.type()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string obj.type$ )</code></td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">[ long ]</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.set.object.type.htm" class="manualLink">dbcm.set.object.type()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string obj.type$ )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">DBCM Action functions</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.get.object.action$.htm" class="manualLink">dbcm.get.object.action$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.is.action.active.htm" class="manualLink">dbcm.is.action.active()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">[ long ]</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.select.object.action.htm" class="manualLink">dbcm.select.object.action()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string action.id$ )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">DBCM Object functions</div>
+            <table border="0" class="none">
+               <tbody noTR="22" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.find.object.by.workflow.id.htm" class="manualLink">dbcm.find.object.by.workflow.id()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string wf.id$, ref string toid$ )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">enum</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.get.cm.status.htm" class="manualLink">dbcm.get.cm.status()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$ )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.get.cm.action$.htm" class="manualLink">dbcm.get.cm.action$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$ )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.get.object.id$.htm" class="manualLink">dbcm.get.object.id$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.get.root.table$.htm" class="manualLink">dbcm.get.root.table$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid.or.obj.type$ )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.get.functional.id$.htm" class="manualLink">dbcm.get.functional.id$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$, [ long comp ] )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.get.user.htm" class="manualLink">dbcm.get.user()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$, ref string user$ )</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.get.workflow.definition.htm" class="manualLink">dbcm.get.workflow.definition()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$, ref string wf.def$ )</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.get.workflow.id.htm" class="manualLink">dbcm.get.workflow.id()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$, ref string wf.def$ )</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.object.is.being.checked.in.htm" class="manualLink">dbcm.object.is.being.checked.in()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$ )</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.object.is.checked.in.htm" class="manualLink">dbcm.object.is.checked.in()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$ )</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.object.is.checked.out.htm" class="manualLink">dbcm.object.is.checked.out()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$ )</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.object.remains.checked.in.htm" class="manualLink">dbcm.object.remains.checked.in()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref long tbl.id, long cmac, ref boolean b.eval)</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.read.object.htm" class="manualLink">dbcm.read.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$, [ long comp ] )</code></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.select.object.instance.htm" class="manualLink">dbcm.select.object.instance()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$ )</code></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.set.workflow.definition.htm" class="manualLink">dbcm.set.workflow.definition()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$, const string wf.def$ )</code></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.set.submitted.htm" class="manualLink">dbcm.set.submitted()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$, const string wf.id$ )</code></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.set.draft.htm" class="manualLink">dbcm.set.draft()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$ )</code></td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.set.recalled.htm" class="manualLink">dbcm.set.recalled()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$ )</code></td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.set.approved.htm" class="manualLink">dbcm.set.approved()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$ )</code></td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.set.not.started.htm" class="manualLink">dbcm.set.not.started()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$ )</code></td>
+                  </tr>
+                  <tr no="22" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.reject.htm" class="manualLink">dbcm.reject()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string toid$, const string reason$ )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">DBCM Record functions</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.get.rcd.action.htm" class="manualLink">dbcm.get.rcd.action()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long tbl.id )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">enum</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.get.rcd.prst.htm" class="manualLink">dbcm.get.rcd.prst()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref long tbl.id )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.get.rcd.toid$.htm" class="manualLink">dbcm.get.rcd.toid$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long tbl.id )</code></td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.set.rcd.toid.htm" class="manualLink">dbcm.set.rcd.toid()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long tbl.id, const string toid$ )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">DBCM Check functions</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_dbcm/dbcm.checked.out.objects.present.htm" class="manualLink">dbcm.checked.out.objects.present()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long comp, [string tbl.name$] )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dbcm/overview.htm" class="manualLink">Database Change Management (DBCM) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dbcm/synopsis.htm" class="manualLink">Database Change Management operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dbcm/synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

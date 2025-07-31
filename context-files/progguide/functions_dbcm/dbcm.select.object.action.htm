@@ -1,0 +1,108 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dbcm.select.object.action()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dbcm.select.object.action dbcm.select.object.action functions dbcm.select.object.action ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dbcm.select.object.action()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;dbcm.select.object.action&nbsp;
+					(const string&nbsp;action.id$)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Selects the specified object action.</p>
+               <p class="Paragraph">The specified action is used to determine whether any changes made to the object require auto-check-in when
+                  				these changes are submitted for Workflow approval. This works as follows:
+               </p>
+               <p class="Paragraph">When the specified action is active according to the Object Configuration Management deployment for the
+                  				current package combination, submitting any changes will cause execution of the <code class="Code">on.submit</code> hook in the DAL of the object's root table. Typically, this hook will publish a Workflow BOD
+                  				which is to be processed by ION Workflow. Only after the changes have been approved, the object will
+                  				be checked-in.
+               </p>
+               <p class="Paragraph">When it appears that the specified action is not active, submitting any changes will cause an immediate 
+                  				check-in of the object.
+               </p>
+               <div class="Note">
+                  <div class="NoteSectionTitle">Important Note</div>
+                  <div class="NoteContent">
+                     <p class="Paragraph">In contrast to how <a href="../../progguide/functions_dbcm/dbcm.select.object.instance.htm" class="manualLink">dbcm.select.object.instance()</a> works, a selected object action is <i class="Emphasis">not</i> reset on return of a function.
+                     </p>
+                  </div>
+               </div>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>action.id$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">An id which identifies a specific action, as defined in the Object Configuration Management 
+                           					model. This is a string of max 6 characters.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">In case of success.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;&gt; 0</th>
+                     <td rowspan="1" colspan="1" class="none">In case of an error; variable <i class="Emphasis">e</i> contains the error code. 
+                        								See <a href="../../progguide/functions_dbcm/error_codes.htm" class="manualLink">Database Change Management (DBCM) error codes</a> for more information about the error codes and their meaning.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1800.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dbcm/overview.htm" class="manualLink">Database Change Management (DBCM) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dbcm/synopsis.htm" class="manualLink">Database Change Management operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dbcm/dbcm.select.object.action, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Retry points</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="database handling retry points retry points ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Retry points</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">A retry point is a position in a program script to which the
+               program returns if an error occurs within a transaction. The
+               transaction is then retried. There are a number of situations
+               where retry points are useful:
+            </p>
+            <ul class="List">
+               <li class="ListItem">During the time that a delayed lock is applied to a
+                  record, an error can occur that causes the system to execute
+                  an <a href="../../progguide/functions_db_operations/abort.transaction.htm" class="manualLink">abort.transaction()</a>. In such cases, all that Infor ERP Enterprise
+                  can do is inform the program that the transaction has been
+                  aborted. However, if retry points are used, the system can
+                  automatically retry the transaction without the user being
+                  aware of this.
+               </li>
+               <li class="ListItem">Some database systems generate an <i class="Emphasis">abort.transaction()</i> when a dirty record is read (that
+                  is, a record that has been changed but not yet committed). An <i class="Emphasis">abort.transaction()</i> may also be generated when two or
+                  more processes simultaneously attempt to change, delete, or
+                  add the same record. In all these situations, Infor ERP Enterprise
+                  Server can conceal the problem from the user by
+                  using retry points. It simply retries the transaction. If
+                  there is no retry point, the transaction is aborted and the
+                  session is terminated.
+               </li>
+               <li class="ListItem">In Infor ERP Enterprise, updates are buffered, so the success or
+                  failure of an update is not known until <a href="../../progguide/functions_db_operations/commit.transaction.htm" class="manualLink">commit.transaction()</a> is called. If an update fails, the
+                  commit of the transaction also fails, and the entire
+                  transaction must be repeated. If retry points are used, the
+                  system automatically retries the transaction.
+               </li>
+               <li class="ListItem">Retry points can also resolve potential deadlock
+                  problems. If, for example, the system is unable to lock a
+                  record, it rolls the transaction back and tries again.
+               </li>
+            </ul>
+            <p class="Paragraph">It is vital
+               that retry points are included in all update programs.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Coding retry points</div>
+            <p class="Paragraph">The retry point for a transaction must be placed at the start
+               of a transaction. The following example illustrates how you
+               program retry points:
+            </p><pre class="CodeBlock">
+db.retry.point()                    | set retry point
+if db.retry.hit() then
+                ......              | code to execute when the system
+                                    | goes back to retry point
+else
+                ......              | initialization of retry point
+endif
+</pre><p class="Paragraph">The function <a href="../../progguide/functions_db_operations/db.retry.hit.htm" class="manualLink">db.retry.hit()</a> returns 0 when the retry point is generated - that is, the first
+               time the code is executed. It returns a value unequal to 0 when
+               the system returns to the retry point through the database
+               layer.
+            </p>
+            <p class="Paragraph">When the system goes back to a retry point, it clears the
+               internal stack of functions, local variables, and so on that
+               were called during the transaction. The program continues from
+               where the retry point was generated. The value of global
+               variables is NOT reset.
+            </p>
+            <p class="Paragraph">When a commit fails, the database automatically returns to
+               its state at the start of the transaction; the program is set
+               back to the last retry point. It is vital, therefore, that the
+               retry point is situated at the start of the transaction. The <i class="Emphasis">db.retry.hit()</i> call must follow the <a href="../../progguide/functions_db_operations/db.retry.point.htm" class="manualLink">db.retry.point()</a> call. Do not place it in the SQL loop itself as this makes the
+               code very untransparent. When a retry point is placed within a
+               transaction, the system produces a message and terminates the
+               session.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Testing retry points</div>
+            <p class="Paragraph">The following
+               bshell resources and environment variables
+               enable you to test the
+               operation of retry points:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/misc/bshell_environment_variables.htm" class="manualLink">TEST_RETRY</a></td>
+                     <td rowspan="1" colspan="1" class="none">This bshell environment variable indicates how often the system must go
+                        back to a retry point at the moment of committing. This
+                        cannot be used when testing different sessions with
+                        retry points parallel.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/misc/bshell_resources.htm" class="manualLink">max_retry</a></td>
+                     <td rowspan="1" colspan="1" class="none">This bshell resource indicates how often the system may
+                        return to a retry point as a result of an abort in an
+                        update action. Default: 10
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/overview.htm" class="manualLink">Database handling overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/transaction_handling.htm" class="manualLink">Transaction handling</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/locking.htm" class="manualLink">Locking</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/error_handling.htm" class="manualLink">Error handling</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/hints_for_using_sql.htm" class="manualLink">Hints for using SQL</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/hints_for_using_db.retry.point.htm" class="manualLink">Hints for using db.retry.point</a></li>
+               <li class="RelTopic"><a href="../../progguide/misc/bshell_environment_variables.htm" class="manualLink">Bshell environment variable "TEST_RETRY"</a></li>
+               <li class="RelTopic"><a href="../../progguide/misc/bshell_resources.htm" class="manualLink">Bshell resource "max_retry"</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/retry_points, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

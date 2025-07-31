@@ -1,0 +1,123 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>switch.to.company()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions switch.to.company switch.to.company switch.to.company ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">switch.to.company()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;switch.to.company&nbsp;
+					(long&nbsp;new_compnr)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This switches to another company and sets the read-only
+                  variable COMPNR to the specified company number. It performs
+                  several checks before switching company and switches company
+                  only if the checks are successful. For example, it checks if the
+                  user is authorized to change to the new company, it checks if
+                  the package combination linked to the old company contains the
+                  same package VRC's as the package combination linked to the new
+                  company, and it checks if the old and new companies have the
+                  same first day of the week.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>new_compnr</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">1</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">Company not available.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-2</th>
+                     <td rowspan="1" colspan="1" class="none">No permission to change to this company.</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-3</th>
+                     <td rowspan="1" colspan="1" class="none">Package combination does not correspond with new
+                        company number.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-4</th>
+                     <td rowspan="1" colspan="1" class="none">First day of the week does not correspond to first
+                        day of the week of original company.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph"><a href="../../progguide/functions_company_operations/compnr.check.htm" class="manualLink">compnr.check()</a> and <i class="Emphasis">switch.to.company()</i> perform similar functions, but <i class="Emphasis">switch.to.company()</i> performs additional checks. So <i class="Emphasis">switch.to.company()</i> makes heavier demands on system
+                  resources.
+               </p>
+               <p class="Paragraph">Be aware that when there is a switch to another company, the
+                  user's first day of the week does not change, even if the new
+                  company has a different first day of the week. <i class="Emphasis">switch.to.company()</i> returns an error value if the old and
+                  new companies have different first days of the week. <i class="Emphasis">compnr.check()</i> does not.
+               </p>
+               <p class="Paragraph">Super users are authorized for all company numbers. They
+                  always have authority to switch to a different company number.
+                  In addition, super users can also use the data dictionary to
+                  authorize other users for particular company numbers.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_company_operations/overview_and_synopsis.htm" class="manualLink">Company operations overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_company_operations/switch.to.company, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

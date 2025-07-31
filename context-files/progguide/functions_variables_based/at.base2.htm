@@ -1,0 +1,135 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>at.base()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="at.base at.base functions at.base ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">at.base()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;at.base&nbsp;
+					(long&nbsp;process_id, string&nbsp;name[,arg...], string&nbsp;based_variable[,arg...])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this function to base one variable (the based variable)
+                  on an external variable in another process (the basic variable).
+                  The two variables then use the same memory area.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>process_id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The ID of the process in which the basic variable is
+                           declared. This process must be started before the
+                           current process and must be ended after the current
+                           process.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>name[,arg...]</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the external variable on which <i class="Emphasis">based_variable</i> is to be based. You can pass
+                           arguments to this variable. These specify start
+                           position of the based variable within the basic
+                           variable. The default start position is 1.
+                        </p>
+                        <p class="Paragraph">This variable must be declared as EXTERN.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>based_variable[,arg...]</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The based variable. You can pass arguments to this
+                           variable. These specify the length of the based
+                           variable. The length plus the start position must not
+                           exceed the length reserved for the basic variable.
+                        </p>
+                        <p class="Paragraph">If you pass the argument -1 to the variable, the
+                           based variable uses the memory space of the basic
+                           variable from the specified start position to the end
+                           position. If this argument is 0, the variable uses the
+                           memory space of the basic variable from the specified
+                           start position for the declared length of the based
+                           variable.
+                        </p>
+                        <p class="Paragraph">This variable must be declared as BASED.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">See also</div>
+            <p class="Paragraph"><a href="../../progguide/functions_variables_based/at.base1.htm" class="manualLink">at.base()</a></p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">If the variables are multidimensional long or double arrays,
+                  only the first element can differ in the declarations. This is
+                  because the array values are stored column by column.
+               </p>
+               <p class="Paragraph">If the process specified by <i class="Emphasis">process_id</i> ends before the
+                  current process, the based variable can no longer be used. This
+                  is because the memory area allocated to the basic variable is
+                  freed. This can cause serious problems, such as a core dump or
+                  corrupted memory.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">Process 1</p><pre class="CodeBlock">
+EXTERN string base_string(20,2,2)
+</pre><p class="Paragraph">Process 2</p><pre class="CodeBlock">
+string string_to_be_based(20,2) based
+long proc_id1
+
+proc_id1 = activate("session_name_of_process1")
+at.base( proc_id1, "base_string", 1, 1, string_to_be_based, -1, -1 )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_variables_based/overview_and_synopsis.htm" class="manualLink">Variables (based) overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_variables_based/at.base2, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

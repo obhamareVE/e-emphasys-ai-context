@@ -1,0 +1,337 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>qss.sort()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions qss.sort qss.sort qss.sort ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">qss.sort()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;qss.sort&nbsp;
+					(ref void&nbsp;array, ref long&nbsp;def [, long&nbsp;dept])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function performs a fast sort of a specified array.</p>
+               <p class="Paragraph">Note that the order in the result array of two elements that 
+                  compare identical is unpredictable.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">ref void</td>
+                     <td class="none"><code>array</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the array to be sorted.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>def</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This determines how the array is to be sorted. The
+                           argument must be declared as follows:
+                        </p>
+                        <p class="Paragraph">long def(x,4) | x is the number of sort fields</p>
+                        <p class="Paragraph">You can define several sort fields (1 to <i class="Emphasis">x</i>).
+                           When performing a sort, the system sorts on the first
+                           sort field. Then, if there are duplicate values in the
+                           first sort field, the system sorts on the second sort
+                           field, and so on.
+                        </p>
+                        <p class="Paragraph">For each sort field, you define the four sort
+                           properties by using the following functions. In each
+                           case, the <i class="Emphasis">field_number</i> argument specifies the
+                           sequence number (1 to <i class="Emphasis">x</i>) of the sort field.
+                        </p>
+                        <table class="default">
+                           <tbody noTR="4" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <th rowspan="1" colspan="1" class="default"><pre class="CodeBlock">void  qss.start(
+   ref long def,
+   long     field_number,
+   long     position
+)</pre></th>
+                                 <td rowspan="1" colspan="1" class="default">This specifies the start position of the sort
+                                    field in the array elements.
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <th rowspan="1" colspan="1" class="default"><pre class="CodeBlock">void qss.way(
+   ref long def,
+   long     field_number,
+   long     way
+)</pre></th>
+                                 <td rowspan="1" colspan="1" class="default">This defines the sort order. The argument <i class="Emphasis">way</i> can be set to QSS.UP (ascending sort)
+                                    or QSS.DOWN (descending sort) or QSS.ALFA (TSS sorting only for strings can be combined with QSS.UP or QSS.DOWN).
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <th rowspan="1" colspan="1" class="default"><pre class="CodeBlock">void qss.type(
+   ref long def,
+   long     field_number,
+   long     type
+)</pre></th>
+                                 <td rowspan="1" colspan="1" class="default">This specifies the sort field's type, for example (the list may be incomplete): 
+                                    <table class="default">
+                                       <thead noTR="1" class="default">
+                                          <tr no="1" isLast="true" class="default">
+                                             <th rowspan="1" colspan="1" class="default">type</th>
+                                             <th rowspan="1" colspan="1" class="default">byte count</th>
+                                             <th rowspan="1" colspan="1" class="default">search field</th>
+                                          </tr>
+                                       </thead>
+                                       <tbody noTR="7" class="default">
+                                          <tr no="1" isLast="false" class="default">
+                                             <td rowspan="1" colspan="1" class="default">
+                                                <table border="0" class="none">
+                                                   <tbody noTR="2" class="none">
+                                                      <tr no="1" isLast="false" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.BYTE</td>
+                                                      </tr>
+                                                      <tr no="2" isLast="true" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.ENUM</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                                <p class="postspacer">&nbsp;</p>
+                                             </td>
+                                             <td rowspan="1" colspan="1" class="default">1</td>
+                                             <td rowspan="1" colspan="1" class="default"><i class="Emphasis">unsigned</i> 8-bit integer value
+                                             </td>
+                                          </tr>
+                                          <tr no="2" isLast="false" class="default">
+                                             <td rowspan="1" colspan="1" class="default">
+                                                <table border="0" class="none">
+                                                   <tbody noTR="1" class="none">
+                                                      <tr no="1" isLast="true" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.INTEGER</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                                <p class="postspacer">&nbsp;</p>
+                                             </td>
+                                             <td rowspan="1" colspan="1" class="default">2</td>
+                                             <td rowspan="1" colspan="1" class="default">signed 16-bit integer value</td>
+                                          </tr>
+                                          <tr no="3" isLast="false" class="default">
+                                             <td rowspan="1" colspan="1" class="default">
+                                                <table border="0" class="none">
+                                                   <tbody noTR="5" class="none">
+                                                      <tr no="1" isLast="false" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.LONG</td>
+                                                      </tr>
+                                                      <tr no="2" isLast="false" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.BITSET</td>
+                                                      </tr>
+                                                      <tr no="3" isLast="false" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.DATE</td>
+                                                      </tr>
+                                                      <tr no="4" isLast="false" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.MAIL</td>
+                                                      </tr>
+                                                      <tr no="5" isLast="true" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.TEXT</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                                <p class="postspacer">&nbsp;</p>
+                                             </td>
+                                             <td rowspan="1" colspan="1" class="default">4</td>
+                                             <td rowspan="1" colspan="1" class="default">signed 32-bit integer value</td>
+                                          </tr>
+                                          <tr no="4" isLast="false" class="default">
+                                             <td rowspan="1" colspan="1" class="default">
+                                                <table border="0" class="none">
+                                                   <tbody noTR="1" class="none">
+                                                      <tr no="1" isLast="true" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.TIME</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                                <p class="postspacer">&nbsp;</p>
+                                             </td>
+                                             <td rowspan="1" colspan="1" class="default"></td>
+                                             <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_date_time_zones/overview.htm#utc" class="commandLink">UTC</a> long format value
+                                             </td>
+                                          </tr>
+                                          <tr no="5" isLast="false" class="default">
+                                             <td rowspan="1" colspan="1" class="default">
+                                                <table border="0" class="none">
+                                                   <tbody noTR="1" class="none">
+                                                      <tr no="1" isLast="true" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.FLOAT</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                                <p class="postspacer">&nbsp;</p>
+                                             </td>
+                                             <td rowspan="1" colspan="1" class="default">4</td>
+                                             <td rowspan="1" colspan="1" class="default">32-bit floating point value</td>
+                                          </tr>
+                                          <tr no="6" isLast="false" class="default">
+                                             <td rowspan="1" colspan="1" class="default">
+                                                <table border="0" class="none">
+                                                   <tbody noTR="1" class="none">
+                                                      <tr no="1" isLast="true" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.DOUBLE</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                                <p class="postspacer">&nbsp;</p>
+                                             </td>
+                                             <td rowspan="1" colspan="1" class="default">8</td>
+                                             <td rowspan="1" colspan="1" class="default">64-bit floating point value</td>
+                                          </tr>
+                                          <tr no="7" isLast="true" class="default">
+                                             <td rowspan="1" colspan="1" class="default">
+                                                <table border="0" class="none">
+                                                   <tbody noTR="1" class="none">
+                                                      <tr no="1" isLast="true" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.STRING</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                                <p class="postspacer">&nbsp;</p>
+                                             </td>
+                                             <td rowspan="1" colspan="1" class="default">set by qss.length() - see below</td>
+                                             <td rowspan="1" colspan="1" class="default">string</td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                    <p class="postspacer">&nbsp;</p>
+                                 </td>
+                              </tr>
+                              <tr no="4" isLast="true" class="default">
+                                 <th rowspan="1" colspan="1" class="default"><pre class="CodeBlock">void qss.length(
+   ref long def,
+   long     field_number,
+   long     length
+)</pre></th>
+                                 <td rowspan="1" colspan="1" class="default">This specifies the length of the sort field.
+                                    This option is valid only when sorting
+                                    strings.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">If you define fewer sort fields than you have
+                           declared, you must close the <i class="Emphasis">def</i> argument
+                           by calling <i class="Emphasis">qss.start()</i> with a start
+                           position of zero. For example, if you have
+                           declared three sort fields, as follows:def(3,4)but then create only two sort fields, you must
+                           close the definition with the following call:qss.start(def,3,0)
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>dept</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This indicates the number of array elements to be
+                           sorted if the function is not intended to sort the
+                           entire array. By default, the function sorts the
+                           entire array.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" class="none">
+               <tbody noTR="10" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">0</td>
+                     <td rowspan="1" colspan="1" class="none">success</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-1</td>
+                     <td rowspan="1" colspan="1" class="none">error, <i class="Emphasis">array</i> and/or <i class="Emphasis">def</i> is empty
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-11</td>
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">def</i> is not of type long array or <i class="Emphasis">array</i> not of type array
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-12</td>
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">array</i> of strings must have &gt; 1 dimension
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-13</td>
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">dept</i> must be positive
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-14</td>
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">def</i> argument not correctly declared
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-15</td>
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">def</i> size exceeds <i class="Emphasis">array</i> size
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-16</td>
+                     <td rowspan="1" colspan="1" class="none">QSS.TYPE not correct</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-17</td>
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">array</i> argument not correct
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">-18</td>
+                     <td rowspan="1" colspan="1" class="none">no definition found in <i class="Emphasis">def</i></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_searching_sorting_data/overview_and_synopsis.htm" class="manualLink">Searching and sorting data overview and synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_searching_sorting_data/example.htm" class="manualLink">Table searching and sorting sample programs</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_searching_sorting_data/qss.sort, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

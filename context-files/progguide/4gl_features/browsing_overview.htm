@@ -1,0 +1,76 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Overview of browsing</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="browsing overview zooming overview ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Overview of browsing</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Before describing how to implement browsing, it is usefull to
+               see what happens when a browse list is started. This also gives
+               more insight in how the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> is
+               involved.
+            </p>
+            <p class="Paragraph">In short when a browse list starts the following steps are
+               executed:
+            </p>
+            <ol class="ProcedureList">
+               <li class="ProcedureListItem">The browse list session imports one or more variables
+                  from the parent session.This is required because a browse list should show data
+                  based on the value of the input field(s) of the parent
+                  session. E.g. when the user enters 'KO' in a Business
+                  Partner field and then starts the Business Partners browse
+                  list, the list should show Business Partners whose BP id
+                  field has a value equal to or greater than 'KO'.
+               </li>
+               <li class="ProcedureListItem">The browse list session imports any browse filters set
+                  in the parent session.
+                  The parent session may have set a browse filter, using the <i class="Emphasis">query.extend.*.in.zoom()</i> functions. The browse list
+                  session adds this filter to the query it uses to read data
+                  from the maintable.
+               </li>
+               <li class="ProcedureListItem">The browse list session retrieves the data from its
+                  maintable using the values of the imported variables.E.g. it should start reading at the Business Partner
+                  'KO'.
+               </li>
+               <li class="ProcedureListItem">The browse list session displays the data on its form
+                  and waits for user actions.
+               </li>
+               <li class="ProcedureListItem">After the user selects a record and ends the session by
+                  pressing OK, the browse list session exports the data of
+                  the selected record to the parent session.The browse list session therefore needs to know which
+                  fields to export to the parent session. E.g. a Business
+                  Partner id.
+               </li>
+            </ol>
+            <p class="Paragraph">Steps 1, 2 and 5 are specific to browse list sessions. In the
+               next sections we concentrate on steps 1 and 5.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/browsing_definition.htm" class="manualLink">Definition</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/browsing_importing.htm" class="manualLink">Importing variables</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/browsing_exporting.htm" class="manualLink">Exporting variables</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/browsing_starting.htm" class="manualLink">Starting a browse list session</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/4gl_features/browsing_overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

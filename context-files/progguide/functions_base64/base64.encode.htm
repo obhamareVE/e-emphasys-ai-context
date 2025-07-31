@@ -1,0 +1,114 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>base64.encode()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="base64.encode base64.encode functions base64.encode ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">base64.encode()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;base64.encode&nbsp;
+					(string&nbsp;data.in, ref string&nbsp;data.out)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Encodes the binary input to Base64 encoded output.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>data.in</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">String with binary input.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>data.out</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">String which will receive the Base64 encoded output.
+                           The output is NOT null-terminated.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The size of the Base64 encoded output is returned. If this
+               value is greater than the size of data.out, then no output at
+               all is written to data.out.
+            </p>
+            <p class="Paragraph">To compute the size of the Base64 encoded output, only the
+               size of the binary input must be known, the actual input itself
+               is not needed. For each three binary input bytes, four Base64
+               encoded output characters are produced. For any (one or two)
+               remaining binary input bytes at the end, also four Base64
+               encoded output characters are produced.
+            </p>
+            <p class="Paragraph">So, to compute the size of the Base64 encoded output, divide
+               the size of the binary input by 3, and if that is not an
+               integer, round up to the next integer. Multiply the result by
+               4.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">If the input string is not completely filled,
+                  			pass the input string as:
+                  			your.string(1;number.of.filled.bytes).
+                  			This avoids that any following unspecified bytes are encoded.
+               </p><pre class="CodeBlock">
+bytesread = seq.read( filebuffer, 60, filepointer )
+while bytesread &gt; 0
+    | The last bytestring is usually not completely filled.
+    | Avoid undesired bytes in the encoding by passing the number
+    | of read bytes.
+    base64.encode( filebuffer(1;bytesread), base64encodebuffer )
+    | do something useful with the base64encodebuffer here
+    bytesread = seq.read( filebuffer, 60, filepointer )
+endwhile
+</pre></div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_base64/base64_overview.htm" class="manualLink">Base64 overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_base64/base64_synopsis.htm" class="manualLink">Base64 synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_base64/base64.encode, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>program sections</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="4GL program sections after.form.read section after.program section after.update.db.commit section before.display.object section before.new.object section before.program section declaration section on.display.total.line section on.error section sections program sections ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">program sections</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Program sections have no subsections.</p>
+            <div class="Note">
+               <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+               <div class="NoteContent">
+                  <p class="Paragraph">The on.display.total.line section is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">Tools Interface Version (TIV)</a> <a href="../../progguide/tiv/tiv_1075.htm" class="manualLink">TIV 1075</a>.
+                  </p>
+               </div>
+            </div>
+            <p class="Paragraph">The following program sections are available:</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Main sections</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">declaration:</div>
+               <p class="Paragraph">Use this section to declare tables and global variables that
+                  you want to use in other sections in the script. See <a href="../../progguide/3gl_features/declarations.htm" class="manualLink">Declarations</a> and <a href="../../progguide/3gl_features/tables.htm" class="manualLink">Tables</a> for details of the declaration syntax. You also use this section
+                  to define macros and function prototypes. You can put your
+                  #idents for solution identification here as well.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.program:</div>
+               <p class="Paragraph">Use this section to program actions that must be executed
+                  when the session starts. For example, you can use this section
+                  to initialize or import variables or to read a special
+                  record.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.form.read:</div>
+               <p class="Paragraph">Use this section to change form data at run time after it has
+                  been read in memory. Typical functionality is the removal of
+                  fields, groups or commands
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">on.error:</div>
+               <p class="Paragraph">Use this section to program actions that must be executed at
+                  the end of the session, before the <i class="Emphasis">after.program</i> section. If the session is canceled, the
+                  actions in this section are not executed. If an error is
+                  detected, you can check the predefined variable <i class="Emphasis">e</i> for the error code.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.program:</div>
+               <p class="Paragraph">Use this section to program actions that must be executed at
+                  the end of the session, after the <i class="Emphasis">on.error</i> section.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.update.db.commit:</div>
+               <p class="Paragraph">Use this section to program actions that must be executed
+                  immediately after a <a href="../../progguide/functions_dal/after.commit.transaction.htm" class="manualLink">after.commit.transaction()</a> call, if the database is updated.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.display.object:</div>
+               <p class="Paragraph">Use this section to program actions that must be executed
+                  each time the entire record is displayed.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.new.object:</div>
+               <p class="Paragraph">Use this section to program actions that must be executed
+                  once before the input of the first field of the new created
+                  record. It is used for setting the default values of the record
+                  fields.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">on.display.total.line:</div>
+               <p class="Paragraph">Use this section to calculate and display the total line fields. 
+                  The function <a href="../../progguide/functions_form_and_form_field_operations/display.total.fields.htm" class="manualLink">display.total.fields()</a> must be called from this section to display the actual total fields values.
+                  This section will be called when the variable <i class="Emphasis">fattr.total.line</i> is set in the before.program section. By default the 4GL-Engine will call this section after a (new) set of records is 
+                  read from the database. In addition an application can trigger this section to be called by calling the function: <a href="../../progguide/functions_form_and_form_field_operations/refresh.total.line.htm" class="manualLink">refresh.total.line()</a>.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">functions:</div>
+               <p class="Paragraph">Use this section to define the functions used in the other
+                  sections. This must be the last section in the script. The
+                  function syntax is the same as for <a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a>.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+declaration:
+        table       tpctst999
+        long        var01, ret
+
+before.program:
+        if read_parameter() then
+                mess("pctsts0001", 1) | Parameter not present
+                stop()
+        endif
+
+on.error:
+        mess("........", 1)
+
+functions:
+        function long read_parameter()
+        {
+            select pctst999.*
+            from pctst999
+            order by pctst999._index1
+            as set with 1 rows
+            selectdo
+                    return(0)
+            selectempty
+                    return(1)
+            endselect
+        }
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/overview.htm" class="manualLink">Programming a UI Script overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/4gl_event_sections.htm" class="manualLink">4GL event sections</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/flow_of_standard_program.htm" class="manualLink">Flow of 4GL engine</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/4gl_features/4gl_program_sections, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

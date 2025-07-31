@@ -1,0 +1,66 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Application Response Time Measurement (ARTM) Synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="application response time measurement synopsis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Application Response Time Measurement (ARTM) Synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <table border="1" width="100%" class="default">
+               <tbody noTR="5" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_artm/artm.define.transaction.class.htm" class="manualLink">artm.define.transaction.class()</a></td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">( string tran.name(128), string tran.detail(128), [long metric.type, string metric.name(44)] )</pre></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_artm/artm.redefine.transaction.class.htm" class="manualLink">artm.redefine.transaction.class()</a></td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">( long artm.transaction.id, long tran.status, [long metric.type, void metric.value] )</pre></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_artm/artm.begin.transaction.htm" class="manualLink">artm.begin.transaction()</a></td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">( long artm.transaction.class.id, [long metric.type, void metric.value] )</pre></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_artm/artm.update.transaction.htm" class="manualLink">artm.update.transaction()</a></td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">( long artm.transaction.id, [long metric.type, void metric.value] )</pre></td>
+                  </tr>
+                  <tr no="5" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_artm/artm.end.transaction.htm" class="manualLink">artm.end.transaction()</a></td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">( long artm.transaction.id, long tran.status,[long metric.type, void metric.value] )</pre></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_overview.htm" class="manualLink">Application Response Time Measurement (ARTM) Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_error_codes.htm" class="manualLink">Application Response Time Measurement (ARTM) Error Codes</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_debugging.htm" class="manualLink">Application Response Time Measurement (ARTM) Debugging</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_examples.htm" class="manualLink">Application Response Time Measurement (ARTM) Examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_artm/artm_synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

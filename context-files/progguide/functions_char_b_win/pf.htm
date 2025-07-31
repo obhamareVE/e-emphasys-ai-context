@@ -1,0 +1,132 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>pf$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions pf$ pf$ pf$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">pf$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;pf$&nbsp;
+					(long&nbsp;num_expr)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This function is only supported for
+                  character-based windows and its usage is therefore
+                  deprecated.
+               </p>
+               <p class="Paragraph">Use this to change the printer font settings. The following
+                  settings are available:
+               </p>
+               <table border="0" width="50%" class="none">
+                  <tbody noTR="12" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">1</td>
+                        <td rowspan="1" colspan="1" class="none">large</td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">2</td>
+                        <td rowspan="1" colspan="1" class="none">small</td>
+                     </tr>
+                     <tr no="3" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">3</td>
+                        <td rowspan="1" colspan="1" class="none">middle</td>
+                     </tr>
+                     <tr no="4" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">4</td>
+                        <td rowspan="1" colspan="1" class="none">dblwide</td>
+                     </tr>
+                     <tr no="5" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">5</td>
+                        <td rowspan="1" colspan="1" class="none">nlq</td>
+                     </tr>
+                     <tr no="6" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">6</td>
+                        <td rowspan="1" colspan="1" class="none">italic</td>
+                     </tr>
+                     <tr no="7" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">7</td>
+                        <td rowspan="1" colspan="1" class="none">superscript</td>
+                     </tr>
+                     <tr no="8" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">8</td>
+                        <td rowspan="1" colspan="1" class="none">subscript</td>
+                     </tr>
+                     <tr no="9" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">9</td>
+                        <td rowspan="1" colspan="1" class="none">.font1</td>
+                     </tr>
+                     <tr no="10" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">10</td>
+                        <td rowspan="1" colspan="1" class="none">font2</td>
+                     </tr>
+                     <tr no="11" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">...</td>
+                        <td rowspan="1" colspan="1" class="none">...</td>
+                     </tr>
+                     <tr no="12" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">24</td>
+                        <td rowspan="1" colspan="1" class="none">font16</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+               <p class="Paragraph">You define settings 9 to 24 in the printer information file
+                  of the particular printer (for example,
+                  $BSE/lib/printinf/m/m290).
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>num_expr</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+spool.pr.line = pf$(2)
+spool.line() | Set printer to small font
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_char_b_win/overview_and_synopsis.htm" class="manualLink">Character-based windows - overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_char_b_win/pf, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Synchronized sessions illustration</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="synchronized sessions overview illustration ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Synchronized sessions illustration</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="Figure"><img src="../images/synch_sessions.gif" alt="[...]" height="543" width="766"></div>
+            <p class="Paragraph">Dialog synchronization</p>
+            <ul class="List">
+               <li class="ListItem">Sessions 1 and 2 form a set linked by dialog
+                  synchronization. Sessions 3 and 4 form another set linked by
+                  dialog synchronization.
+               </li>
+               <li class="ListItem">You open session 2 by double-clicking a record in session
+                  1. Double-clicking a different record in session 1 updates
+                  session 2 with information from the newly selected record.
+                  You open session 4 by double-clicking a record in session 3.
+                  Double-clicking a different record in session 3 updates
+                  session 4 with information from the newly selected
+                  record.
+               </li>
+            </ul>
+            <p class="Paragraph">Child synchronization</p>
+            <ul class="List">
+               <li class="ListItem">Sessions 1 and 3 form a set linked by child
+                  synchronization.
+               </li>
+               <li class="ListItem">You open session 3 by selecting a form command in session
+                  1. The records displayed in session 3 depend on the arguments
+                  of the function associated with the form command. You could,
+                  for example, program the synchronization in such a way that
+                  each time the user selects a new record in session 1 and
+                  activates the form command, session 3 is updated to display
+                  the child records of the selected record.
+               </li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_synchronized_sessions/synchronized_sessions_illustration, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

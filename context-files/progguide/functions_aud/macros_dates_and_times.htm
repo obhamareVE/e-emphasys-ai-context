@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Macros - dates and times</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="macros - dates and times ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Macros - dates and times</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Warning</div>
+            <p class="Paragraph"><i class="Emphasis">The functions and macros listed below must not be used
+                  anymore.</i> Using them in BaanERP 5.0c or higher releases
+               may result in less reliable data. Know that there is a new
+               set of functions that you can use for retrieval of audit
+               information. Refer to <a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></p>
+            <p class="Paragraph">The input to these macros is a date string in the form
+               YYYYMMDD or a time string in the form HHMMSS.
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_date_yyyy()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_date_yyyy( string s_dat() )
+</pre><p class="Paragraph">This retrieves the year value from the date string <i class="Emphasis">s_dat</i>. The year is represented by four
+                           digits.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_date_mm()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_date_mm( string s_dat() )
+</pre><p class="Paragraph">This retrieves the month value from the date string <i class="Emphasis">s_dat</i>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_date_dd()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_date_dd( string s_dat() )
+</pre><p class="Paragraph">This retrieves the day value from the date string <i class="Emphasis">s_dat</i>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_time_hh()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_time_hh( string s_tim() )
+</pre><p class="Paragraph">This retrieves the hours value from the time string <i class="Emphasis">s_tim</i>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_time_mm()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_time_mm( string s_tim() )
+</pre><p class="Paragraph">This retrieves the minutes value from the time
+                           string <i class="Emphasis">s_tim</i>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_overview.htm" class="manualLink">Audit Information Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_synopsis.htm" class="manualLink">Audit Information Synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_sample_program.htm" class="manualLink">Audit Information Sample Program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_aud/macros_dates_and_times, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

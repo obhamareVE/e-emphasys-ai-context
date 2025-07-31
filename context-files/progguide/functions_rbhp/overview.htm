@@ -1,0 +1,62 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Role Based Home Pages overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="role based home pages ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Role Based Home Pages overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">These functions are used to support drillback from Role Based Home Pages.
+               When the user performs a drillback from a Role Based Home Page, which refers to a ERP Enterprise session, a specific DLL function
+               is called
+               called depending on the ICMDrillback parameter in the drillback URL.
+            </p>
+            <p class="Paragraph">If the ICMDrillback parameter is set and its value is "true", the tools DLL function icm.drillback() in the tticmdll0002 library
+               is called.
+               If the ICMDrillback parameter is not set or not present in the URL, the application DLL function: tcint.dll0001.drill.back()
+               is called. 
+               From this function, a number of specific tools functions can be used to:
+            </p>
+            <ul class="List">
+               <li class="ListItem">determine the parameters passed in the drillback URL</li>
+               <li class="ListItem">indicate which session must be started</li>
+               <li class="ListItem">indicate the company in which this session must be started</li>
+               <li class="ListItem">indicate the session mode</li>
+               <li class="ListItem">indicate the index of the session</li>
+               <li class="ListItem">indicate the query extends for this session</li>
+            </ul>
+            <p class="Paragraph">From every 4GL Session the function is.rbhp.mode() can be called to determine if the session
+               was started from a Role Based Home Page drillback. In case a session is started from such a drillback, the function 
+               rbhp.get.parameter() can be used to retrieve the parameters passed in the drillback URL.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">Drillback from Role Based Home Pages is only supported through the WebTop client.</p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_rbhp/synopsis.htm" class="manualLink">Role Based Home Pages synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_rbhp/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

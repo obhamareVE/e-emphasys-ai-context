@@ -1,0 +1,85 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Dates, times, time zones overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="BitCountOfUtc Dates, times, time zones overview UTC Dates, times, time zones overview Universal Coordinated Time Dates, times, time zones overview dates, times, time zones time time zones ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Dates, times, time zones overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Use these functions to manipulate dates, times, and time
+               	  zones.
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="utc"></a><div class="subSectionTitle">Universal Coordinated Time</div>
+            <p class="Paragraph">Infor ERP Enterprise provides time-zone independent date and time support.
+               	  The user interface always shows local dates and times. Internally, however, Infor
+               	  ERP Enterprise stores dates and times in Universal Coordinated Time
+               	  ( UTC).
+               	  It represents
+               	  both date and time in a single integer value referred to as the UTC long format.
+               	  This integer value represents the number of seconds since UTC time 00:00:00 on January 1, 1970.
+            </p>
+            <p class="Paragraph">The maximum value 2^31 - 1
+               of the signed 32-bit range
+               corresponds to UTC time 03:14:07 on Thursday, January 19, 2038.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Time zones</div>
+            <p class="Paragraph">The UTC functions described in this section support conversion
+               	  between local dates and times and UTC. Users can set their local time zone via
+               	  the user interface. 3GL/4GL programs can modify the time zone at runtime using
+               	  various time zone functions.
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="week_handling"></a><div class="subSectionTitle">Week handling</div>
+            <p class="Paragraph">Infor ERP Enterprise handles week numbering according to ISO:5601. Week 01
+               	  is the week that includes the first Thursday of the year or January 4 . Monday
+               	  is the first day of the week (that is, day 1). Sunday is the last day of the
+               	  week (that is, day 7).
+            </p>
+            <p class="Paragraph">In the company-data settings in the data dictionary it is
+	  possible to define the first day of the week (that is, day 01) for individual
+	  Infor ERP Enterprise users. If a user’s first day of the week is Monday, then week
+	  numbering follows the ISO standard. However, if a user’s first day of the week
+	  is other than Monday (Sunday or Wednesday, for example), the week number is
+	  calculated differently. The week number is always the ISO week number of the
+	  Monday that occurs in the user’s week.</p>
+            <p class="Paragraph">The following diagram illustrates this:</p>
+            <div class="Figure"><img src="../images/date_time_zones_example.gif" alt="[...]" height="225" width="484"></div>
+            <p class="Paragraph">In the example, the user’s first day of the week is a Wednesday.
+	  The week number of the week beginning Wednesday 9 and ending Tuesday 15 &nbsp;is the
+	  ISO week number for the Monday that occurs in that week. The ISO week number of
+	  Monday 14 is week 6, so Wednesday 9 to Tuesday 15 is week 6.</p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">For an explanation of date and time formats, see <a href="../../progguide/functions_formatting_io/overview_and_synopsis.htm" class="manualLink">Formatting input and output - overview and synopsis</a>.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_date_time_zones/synopsis.htm" class="manualLink">Dates, times, time zones synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_date_time_zones/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

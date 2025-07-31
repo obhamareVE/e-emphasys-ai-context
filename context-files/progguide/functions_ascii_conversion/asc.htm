@@ -1,0 +1,98 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>asc()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="asc asc functions asc ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">asc()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;asc&nbsp;
+					(string&nbsp;characters)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function returns the sum of the code point values
+                  encoded in the supplied string.
+               </p>
+               <p class="Paragraph">If the supplied string is a single byte string, then each byte
+                  of the supplied string is treated as a separate code point, so
+                  effectively the sum of all the bytes of the string is
+                  returned.
+               </p>
+               <p class="Paragraph">If the supplied string is a multi byte string, then a byte with
+                  hexadecimal value 0x9B is treated as the beginning of a
+                  four-byte encoding of a <a href="../../progguide/misc/tss.htm" class="manualLink">TSS Encoding</a> character 9B <i class="Emphasis">pp</i> <i class="Emphasis">qq</i> <i class="Emphasis">rr</i>, which contributes
+                  the hexadecimal value 9B <i class="Emphasis">ppqqrr</i> to the value to be
+                  returned. Other bytes contribute their own value to the value to
+                  be returned.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>characters</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">Multibyte characters with very high values can cause the
+                  returned long to overflow and loose its meaning. No check is
+                  made on the legality of the value.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+string  select(10)
+asc_b = asc("B")                | asc_b is set to 66
+asc("abc")                      | Returns 294 (that is, 97 + 98+ 99)
+asc(select)                     | Returns the sum of the ASCII codes for each character 
+                                | in the string variable <i class="Emphasis">select</i>  
+      </pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic">Inverse functionality: <a href="../../progguide/functions_ascii_conversion/chr.htm" class="manualLink">chr$()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_ascii_conversion/ascii_conversion_overview_and_synopsis.htm" class="manualLink">ASCII Conversion - Overview and Synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/misc/ascii_table.htm" class="manualLink">ASCII table (C0 Controls and Basic Latin)</a></li>
+               <li class="RelTopic"><a href="../../progguide/misc/tss.htm" class="manualLink">TSS Encoding</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_ascii_conversion/asc, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

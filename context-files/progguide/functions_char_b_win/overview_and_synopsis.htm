@@ -1,0 +1,387 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Character-based windows - overview and synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="character-based windows ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Character-based windows - overview and synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This API is only supported for
+               character-based windows and its usage is therefore deprecated.
+               You do not use these functions to handle graphical windows.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">The functions for sending data and instructions to the screen
+                  or printer all return a string that you can print by calling the <i class="Emphasis">print()</i> function or that you can use in a string
+                  expression. When you use <i class="Emphasis">print()</i> with these functions, only the internal screen is
+                  updated. You must call <a href="../../progguide/functions_char_b_win/refresh.htm" class="manualLink">refresh()</a> to update the terminal
+                  screen.
+               </p>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Synopsis</div>
+            <table border="0" class="none">
+               <tbody noTR="47" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/bg.htm" class="manualLink">bg$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long color )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/box.htm" class="manualLink">box()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long box_x, long box_y, long box_width,
+                           long box_height, long mode )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/bs.htm" class="manualLink">bs$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( [num_expr] )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/cf.htm" class="manualLink">cf$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( num_expr )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/change.window.htm" class="manualLink">change.window()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long wind_id )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/cl.screen.htm" class="manualLink">cl.screen()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long column, long row, long no_of_cols,
+                           long no_of_rows )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/cp.htm" class="manualLink">cp$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long column, long row )</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/cr.htm" class="manualLink">cr$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/cs.htm" class="manualLink">cs$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( [num_expr] )</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/current.window.htm" class="manualLink">current.window()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/data.input.htm" class="manualLink">data.input()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string options(.), ref string result(.),
+                           string default(.) [, ref long
+                           event(EVTMAXSIZE), ref long char_value )</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/del.window.htm" class="manualLink">del.window()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long wind_id )</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/delch.htm" class="manualLink">delch$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( num_expr )</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/deleteln.htm" class="manualLink">deleteln$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( num_expr )</code></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/el.htm" class="manualLink">el$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/es.htm" class="manualLink">es$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/ff.htm" class="manualLink">ff$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/fg.htm" class="manualLink">fg$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long color )</code></td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/first.window.htm" class="manualLink">first.window()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long wind_id )</code></td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/fs.htm" class="manualLink">fs$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( [num_expr] )</code></td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/get.col.htm" class="manualLink">get.col()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/get.cp.htm" class="manualLink">get.cp()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref long x, ref long y )</code></td>
+                  </tr>
+                  <tr no="23" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/get.row.htm" class="manualLink">get.row()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="24" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/get.window.attrs.htm" class="manualLink">get.window.attrs()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long wind_id, ref long attrs(WINMAXSIZE)
+                           )</code></td>
+                  </tr>
+                  <tr no="25" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/insch.htm" class="manualLink">insch$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string_expr )</code></td>
+                  </tr>
+                  <tr no="26" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/insertln.htm" class="manualLink">insertln$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string_expr )</code></td>
+                  </tr>
+                  <tr no="27" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/keyin.htm" class="manualLink">keyin$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( [99] )</code></td>
+                  </tr>
+                  <tr no="28" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/last.window.htm" class="manualLink">last.window()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long wind_id )</code></td>
+                  </tr>
+                  <tr no="29" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/lf.htm" class="manualLink">lf$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( [num_expr] )</code></td>
+                  </tr>
+                  <tr no="30" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/map.window.htm" class="manualLink">map.window()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long wind_id )</code></td>
+                  </tr>
+                  <tr no="31" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/mark.handler.htm" class="manualLink">mark.handler()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref long mark.table() )</code></td>
+                  </tr>
+                  <tr no="32" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/move.window.htm" class="manualLink">move.window()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long col, long row )</code></td>
+                  </tr>
+                  <tr no="33" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/newwindow.htm" class="manualLink">new.window()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long height, long width, long row, long col
+                           )</code></td>
+                  </tr>
+                  <tr no="34" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/no.scroll.htm" class="manualLink">no.scroll()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long wind_id )</code></td>
+                  </tr>
+                  <tr no="35" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/pc.htm" class="manualLink">pc$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( num_expr )</code></td>
+                  </tr>
+                  <tr no="36" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/pf.htm" class="manualLink">pf$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( num_expr )</code></td>
+                  </tr>
+                  <tr no="37" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/refresh.htm" class="manualLink">refresh()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( [long wind_id] )</code></td>
+                  </tr>
+                  <tr no="38" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/set.refresh.rate.htm" class="manualLink">set.refresh.rate()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( [long wind_id] )</code></td>
+                  </tr>
+                  <tr no="39" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/resize.window.htm" class="manualLink">resize.window()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long width, long height )</code></td>
+                  </tr>
+                  <tr no="40" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/scroll.htm" class="manualLink">scroll()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long wind_id )</code></td>
+                  </tr>
+                  <tr no="41" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/setbgcolor.htm" class="manualLink">set.bg.color()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long wind_id, long color )</code></td>
+                  </tr>
+                  <tr no="42" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/set.fg.color.htm" class="manualLink">set.fg.color()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long wind_id, long color )</code></td>
+                  </tr>
+                  <tr no="43" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/sf.htm" class="manualLink">sf$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( num_expr )</code></td>
+                  </tr>
+                  <tr no="44" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/sub.window.htm" class="manualLink">sub.window()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long parent_wind, long height, long width, long
+                           row, long col )</code></td>
+                  </tr>
+                  <tr no="45" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/tab.htm" class="manualLink">tab$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( num_expr )</code></td>
+                  </tr>
+                  <tr no="46" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/unmapwindow.htm" class="manualLink">unmap.window()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long wind_id )</code></td>
+                  </tr>
+                  <tr no="47" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_char_b_win/wrebuild.htm" class="manualLink">wrebuild()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long mode )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_char_b_win/overview_and_synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

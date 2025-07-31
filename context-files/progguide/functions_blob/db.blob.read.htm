@@ -1,0 +1,124 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>db.blob.read()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="db.blob.read db.blob.read functions db.blob.read ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">db.blob.read()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;db.blob.read&nbsp;
+					(const string&nbsp;blob.locator, long&nbsp;offset, long&nbsp;num.bytes, ref string&nbsp;bytes.array, ref long&nbsp;num.bytes.read)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function reads data from the BLOB, to which the BLOB locator refers. 
+                  	Before calling <i class="Emphasis">db.blob.read()</i>, the BLOB locator must be read from the database.
+                  	For example, the following code retrieves the BLOB locator that refers to a certain picture from
+                  	a table, and then retrieves the first 256 bytes of the picture:
+               </p><pre class="Formula">
+    string bytes.array(256)
+    long num.bytes
+    long ret
+    select dbtst000.photo from dbtst000 where dbtst000.item = "001"
+    selectdo
+        ret = db.blob.read(dbtst000.photo, 1, 256, bytes.array, num.bytes)
+    endselect 
+		</pre></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>blob.locator</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The BLOB locator, which is fetched from the database by e.g. <i class="Emphasis">db.eq</i> or by a SQL statement
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>offset</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The offset at which to read data from the BLOB</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>num.bytes</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The number of bytes to read from the BLOB</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>bytes.array</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The buffer for the BLOB data</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>num.bytes.read</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Returns the number of bytes read. This can be lower than <i class="Emphasis">num.bytes</i> when reading at or beyond the end of a BLOB value
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;&gt;0</th>
+                     <td rowspan="1" colspan="1" class="none">Error.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_blob/overview.htm" class="manualLink">BLOB handling overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_blob/synopsis.htm" class="manualLink">BLOB handling synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_blob/db.blob.read, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

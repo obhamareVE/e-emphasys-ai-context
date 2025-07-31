@@ -1,0 +1,57 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DLL compilation and runtime errors</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="DLL compilation and runtime errors dynamic-link libraries dll compilation and runtime errors ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DLL compilation and runtime errors</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Compilation errors</div>
+            <p class="Paragraph">A compilation error occurs when a function is not found in
+               the specified DLLs or if there is an argument mismatch.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Runtime errors</div>
+            <p class="Paragraph">The following runtime error message is displayed when a
+               script calls a function that has been removed from the DLL
+               and only the DLL has been recompiled:
+            </p><pre class="CodeBlock">
+Dynamic Link Failure function %s
+</pre><p class="Paragraph">The following runtime error messages are displayed when a
+               function&#65533;s arguments are changed within a DLL without
+               recompilation of programs that call the changed function:
+            </p><pre class="CodeBlock">
+Arg error &lt;function name&gt;(&lt;argument name&gt;) type ...
+expected ...
+</pre><p class="Paragraph">or</p><pre class="CodeBlock">
+Illegal number of args (%d) for function %s expected %d
+</pre><p class="Paragraph">To avoid runtime errors, it is advisable to recompile
+               programs whenever you change the programmer&#65533;s interface of a
+               DLL that is linked to those programs.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/dynamic_link_libraries/overview.htm" class="manualLink">Dynamic-link libraries</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/dynamic_link_libraries/dll_compilation_and_runtime_errors, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>start.session()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions start.session start.session start.session ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">start.session()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string &nbsp;start.session&nbsp;
+					(long&nbsp;mode, const string&nbsp;session.code, const string&nbsp;zoomname, const string&nbsp;returnfld)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This starts a session from a program script.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>mode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies the start mode for the new session.
+                           Possible values are:
+                        </p>
+                        <p class="Paragraph">MODAL&nbsp; The parent session is blocked until the child
+            session exits, in case of a multi-occurrence the
+            session will be started as a zoom session.</p>
+                        <p class="Paragraph">MODELESS&nbsp; Parent and child are parallel sessions that
+            can be manipulated simultaneously.</p>
+                        <p class="Paragraph">MODELESS_ALWAYS  Even if the session is a Dailog it will be started 
+                           Modeless
+                        </p>
+                        <p class="Paragraph">MODAL_OVERVIEW&nbsp; The parent session is blocked until
+            the child session exits, in case of a multi-occurrence
+            the session will be started as an overview session.</p>
+                        <p class="Paragraph">For dynamic sessions, other possible values are:</p>
+                        <p class="Paragraph">SINGLE_OCC&nbsp; The session is started as a
+            single-occurrence (details) session.</p>
+                        <p class="Paragraph">MULTI_OCC&nbsp; The session is started as a multioccurrence
+            (overview) session.</p>
+                        <p class="Paragraph">Note: you can combine one of these with one of the
+                           other three; so e.g. MODELESS+SINGLE_OCC
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>session.code</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The code of the session that must be started.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>zoomname</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the calling process. This is used in the <a href="../../progguide/4gl_features/4gl_zoomfrom_sections.htm" class="manualLink">4GL zoom.from sections</a> sections in the child session. If no name
+                           is provided here, <i class="Emphasis">zoom.from</i> sections in the
+                           child session are not executed.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>returnfld</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Indicates the name of the variable to be returned by
+                           the function. If you specify an empty string, the
+                           function returns the exit value of the zoom process.
+                           This argument is relevant only if the start mode is
+                           MODAL.
+                        </p>
+                        <p class="Paragraph">You can also specify an index name in this variable.
+                           In this case, the values of all component fields of the
+                           index are set by the zoom session and exported back to
+                           the calling process.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">If you specify a variable name in the <i class="Emphasis">returnfld</i> argument, the function returns the value of the specified
+               variable. If you specify an index name in <i class="Emphasis">returnfld</i>, the
+               function returns the value of <i class="Emphasis">returnfld</i>. If you specify
+               an empty string in <i class="Emphasis">returnfld</i>, the function returns the
+               exit value of the zoom process. If the session is canceled, the
+               function returns an empty string.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			4GL
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">You can use <i class="Emphasis">start.session()</i> in both 3GL and 4GL
+                  programs, but only for starting 4GL sessions.
+               </p>
+               <p class="Paragraph">The function replaces other functions for starting sessions,
+                  such as <a href="../../progguide/functions_starting_and_stopping_programs/zoom.to.htm" class="manualLink">zoom.to$()</a> and <i class="Emphasis">start.main.session()</i>.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+string	return_str(10)
+
+return_str = start.session(MODAL, "ppmmm1234m000", "ppmmm4321m000", "")
+|* start session ppmmm1234m000 (sessioncode)
+|* where the calling process is ppmmm4321m000
+|* the exit value of the ppmmm1234m000 session is returned in return_str
+
+return_str = start.session(MODAL, "ppmmm1234m000", "ppmmm4321m000", "field")
+|* the value of external var field in session ppmmm1234m000 will be returned in return_str 
+	</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_starting_and_stopping_programs/overview_and_synopsis.htm" class="manualLink">Starting and stopping programs: overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_starting_and_stopping_programs/start.session, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

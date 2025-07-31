@@ -1,0 +1,235 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>local.to.utc()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions local.to.utc local.to.utc local.to.utc ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">local.to.utc()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;local.to.utc&nbsp;
+					(long&nbsp;local_days, long&nbsp;local_time, ref long&nbsp;utc [, string&nbsp;local_dst])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This converts a local date and time to <a href="../../progguide/functions_date_time_zones/overview.htm#utc" class="commandLink">UTC</a> long format.
+                  Input values for local date and time must be in the signed 32-bit value range.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>local_days</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A number of days since 01-01-0001.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>local_time</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A number of seconds since 00:00 hours.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>utc</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The UTC long format value corresponding to the
+                           specified local date and time.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>local_dst</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DST_ON: The number of seconds in <i class="Emphasis">local_time</i> should be considered as Daylight Saving Time.
+                        </p>
+                        <p class="Paragraph">DST_OFF: The number of seconds in <i class="Emphasis">local_time</i> should not be considered as Daylight Saving Time.
+                        </p>
+                        <p class="Paragraph">DST_ON and DST_OFF defines are automatically  available. Size of local_dst should be (at least) 7 chars.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.
+                        The supplied reference argument <i class="Emphasis">utc</i> now contains the UTC value of the supplied local date and time.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">Error.
+                        The exact result is negative or greater than the maximum value
+                        2^( <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-1) - 1
+                        of the signed <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-bit
+                        range.
+                        The supplied reference argument <i class="Emphasis">utc</i> is unchanged.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">This example shows how to deal with Daylight Saving Time.</p><pre class="CodeBlock">
+function main () {
+
+    long    ret
+    long    local_days
+    long    local_time
+    string  local_dst(7)
+
+    long    Before_DST_01.00.00
+    long    After_DST_04.00.00
+    long    UTCTime
+
+    | 03/28/2004 Start of DST
+    | At 02:00 clock is set to 03:00 DST
+    Before_DST_01.00.00 = date.to.utc( 2004, 03, 28, 01, 00, 00 ) | one hour before start of DST
+    | Before_DST_01.00.00 = 1080432000
+
+    | get local_days
+    ret = utc.to.local(Before_DST_01.00.00,local_days,local_time,local_dst)
+
+    local_time = 60*60
+    ret = local.to.utc(local_days,local_time,UTCTime,DST_ON)
+    | UTCTime = 1080428400
+    | which is 60 minutes before Before_DST_01.00.00
+
+    ret = local.to.utc(local_days,local_time,UTCTime,DST_OFF)
+    | UTCTime = 1080432000
+    | which is Before_DST_01.00.00
+
+    ret = local.to.utc(local_days,local_time,UTCTime)
+    | UTCTime = 1080432000
+    | same as DST_OFF, because at this time DST is not started yet
+
+
+    local_time = 2*60*60 + 30*60
+    ret = local.to.utc(local_days,local_time,UTCTime,DST_ON)
+    | ret = -1 02:30 does not exist on this day
+
+    ret = local.to.utc(local_days,local_time,UTCTime,DST_OFF)
+    | ret = -1 02:30 does not exist on this day
+
+    ret = local.to.utc(local_days,local_time,UTCTime)
+    | ret = -1 02:30 does not exist on this day
+
+
+    local_time = 4*60*60
+    ret = local.to.utc(local_days,local_time,UTCTime,DST_ON)
+    | UTCTime = 1080439200
+    | which is 120 minutes after Before_DST_01.00.00
+
+    ret = local.to.utc(local_days,local_time,UTCTime,DST_OFF)
+    | UTCTime = 1080442800
+    | which is 180 minutes after Before_DST_01.00.00
+
+    ret = local.to.utc(local_days,local_time,UTCTime)
+    | UTCTime = 1080439200
+    | same as DST_ON, because at this time DST is started
+
+
+
+    | 10/31/2004 End of DST
+    | At 03:00 DST clock is set to 02:00
+    After_DST_04.00.00 = date.to.utc( 2004, 10, 31, 04, 00, 00 ) | two hours after end of DST
+    | After_DST_04.00.00 = 1099191600
+
+    | get local_days
+    ret = utc.to.local(After_DST_04.00.00,local_days,local_time)
+
+
+    local_time = 60*60
+    ret = local.to.utc(local_days,local_time,UTCTime,DST_ON)
+    | UTCTime = 1099177200 
+    | which is 240 minutes before After_DST_04.00.00
+
+    ret = local.to.utc(local_days,local_time,UTCTime,DST_OFF)
+    | UTCTime = 1099180800 
+    | which is 180 minutes before After_DST_04.00.00
+
+    ret = local.to.utc(local_days,local_time,UTCTime)
+    | UTCTime = 1099177200 
+    | same as DST_ON, because at this time it is DST
+
+
+    local_time = 2*60*60 + 30*60
+    ret = local.to.utc(local_days,local_time,UTCTime,DST_ON)
+    | UTCTime = 1099182600 
+    | which is 150 minutes before After_DST_04.00.00
+
+    ret = local.to.utc(local_days,local_time,UTCTime,DST_OFF)
+    | UTCTime = 1099186200 
+    | which is 90 minutes before After_DST_04.00.00
+
+    ret = local.to.utc(local_days,local_time,UTCTime)
+    | output is uncertain, use local_dst !
+
+
+    local_time = 4*60*60
+    ret = local.to.utc(local_days,local_time,UTCTime,DST_ON)
+    | UTCTime = 1099188000 
+    | which is 60 minutes before After_DST_04.00.00
+
+    ret = local.to.utc(local_days,local_time,UTCTime,DST_OFF)
+    | UTCTime = 1099191600 
+    | which is After_DST_04.00.00
+
+    ret = local.to.utc(local_days,local_time,UTCTime)
+    | UTCTime = 1099191600
+    | same as DST_OFF, because at this time it is not DST anymore
+
+}
+
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_date_time_zones/synopsis.htm" class="manualLink">Dates, times, time zones synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_date_time_zones/overview.htm" class="manualLink">Dates, times, time zones overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_date_time_zones/local.to.utc, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

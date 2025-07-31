@@ -1,0 +1,63 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42I20 - Aggregate function on combined column</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42I20 - Aggregate function on combined column</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">An SQL statement contains an aggregate function that is
+               applied on a combined column. This error will occur even if the
+               combined column contains just one child column.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div><pre class="CodeBlock">
+select max(cmbb)
+from   dbtst120
+group  by edlevel
+</pre><p class="Paragraph">Column cmbb is a combined column that contains two child
+               columns salary and bonus. The expression max(cmbb) will cause
+               the error:
+            </p>
+            <p class="Paragraph">SQLState 42I20: Aggregate
+               function on combined column 'cmbb'
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2</div><pre class="CodeBlock">
+select avg(cmba)
+from   dbtst120
+group  by workdept
+   </pre><p class="Paragraph">The column cmba is a combined column that contains only one
+               child column: the column edlevel. The expression avg(cmba) will
+               cause the error:
+            </p>
+            <p class="Paragraph">SQLState 42I20: Aggregate
+               function on combined column 'cmba'
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/set_function_specification.htm" class="manualLink">Set function specification</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42I20, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42I04 - Unknown table</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42I04 - Unknown table</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">An SQL statement contains a reference to a table that does
+               not exist or that is not known in that particular scope.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div><pre class="CodeBlock">
+select deptno
+from   dbtst121
+   </pre><p class="Paragraph">Table dbtst121 does not exist. That is, the runtime
+               datadictionary does not contain a table called dbtst121. This
+               query will cause the error:
+            </p>
+            <p class="Paragraph">SQLState 42I04: Unknown table
+               'dbtst121'
+            </p>
+            <p class="Paragraph">If the table does exist in the runtime datadictionary, but it
+               does not exist in the RDBMS, then you will get the error:
+            </p>
+            <p class="Paragraph">SQLState QP999: Table does not
+               exist
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2</div><pre class="CodeBlock">
+select dbtst120.salary
+from   dbtst120 a
+   </pre><p class="Paragraph">Table dbtst120 uses alias 'a'. Therefore, the tablename
+               dbtst120 is not known and the select item dbtst120.salary
+               causes the error:
+            </p>
+            <p class="Paragraph">SQLState 42I04: Unknown table
+               'dbtst120'
+            </p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42I04, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

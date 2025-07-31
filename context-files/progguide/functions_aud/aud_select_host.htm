@@ -1,0 +1,168 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>aud_select_host()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="aud_select_host aud_select_host functions aud_select_host ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">aud_select_host()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Warning</div>
+            <p class="Paragraph"><i class="Emphasis">The functions and macros listed below must not be used
+                  anymore.</i> Using them in BaanERP 5.0c or higher releases
+               may result in less reliable data. Know that there is a new
+               set of functions that you can use for retrieval of audit
+               information. Refer to <a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;aud_select_host&nbsp;
+					(const string&nbsp;table_name(), long&nbsp;compno, long&nbsp;user_interaction, ref string&nbsp;host_name())</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Audit files can be located on more than one host (for
+                  example, on the local host and a remote host, or on two or
+                  more remote hosts). The system maintains a list of hosts
+                  where audit files for particular table and company number
+                  combinations are located. When accessing audit files, this
+                  host list is used to select the particular host on which the
+                  files are to be accessed.
+               </p>
+               <p class="Paragraph"><i class="Emphasis">aud_select_host()</i> selects and returns the name of the
+                  host on which the audit files for a specified table and
+                  company are to be accessed. You can use this host name as
+                  input to <a href="../../progguide/functions_aud/aud_open_audit.htm" class="manualLink">aud_open_audit()</a>, <a href="../../progguide/functions_aud/aud_read_info_hdr.htm" class="manualLink">aud_read_info_hdr()</a>, and <a href="../../progguide/functions_aud/aud_write_info_hdr.htm" class="manualLink">aud_write_info_hdr()</a>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>table_name()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the table for which audit files are to be
+                           accessed. This takes the form <i class="Emphasis">ppmmfff</i>, where <i class="Emphasis">pp</i> is the package code, <i class="Emphasis">mmm</i> is the module
+                           code, and <i class="Emphasis">fff</i> is the file number.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>compno</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The company number.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>user_interaction</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies whether or not user interaction is required.
+                           Possible values are:
+                        </p>
+                        <table class="default">
+                           <tbody noTR="2" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <th rowspan="1" colspan="1" class="default">USR_INTACTION_YES</th>
+                                 <td rowspan="1" colspan="1" class="default">If there is more than one host in the host list for the specified table and company number, the user is prompted to select
+                                    the host to be used. The function then returns the name of that host. If there is only one host in the list, that host is
+                                    returned automatically, without user interaction.
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="true" class="default">
+                                 <th rowspan="1" colspan="1" class="default">USR_INTACTION_NO</th>
+                                 <td rowspan="1" colspan="1" class="default">No user interaction. The 3GL library automatically selects the host. It returns the name of the first host in the host list.
+                                    If there is only one host in the list, it returns the name of that host.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>host_name()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the name of the selected host.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&gt;=0</th>
+                     <td rowspan="1" colspan="1" class="none">Success</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">Error; Possibly unable to find host list or
+                        auditing not enabled for the specified table and
+                        company.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">If the AUD_HOST_NAME environment variable is set, <i class="Emphasis">aud_select_host()</i> always returns the host name stored
+                  in this variable, regardless of the 
+                  setting specified by the function.
+                  For example, the application will use the audit file on the
+                  remote host 'ed5c21', if the environment variable has been
+                  set as follows:
+               </p><pre class="Formula">
+AUD_HOST_NAME=ed5c21
+</pre><p class="Paragraph">Note that this environment variable applies to all tables.
+                  If it is set, it is used for accessing the audit files of all
+                  tables.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_overview.htm" class="manualLink">Audit Information Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_synopsis.htm" class="manualLink">Audit Information Synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_sample_program.htm" class="manualLink">Audit Information Sample Program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_aud/aud_select_host, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

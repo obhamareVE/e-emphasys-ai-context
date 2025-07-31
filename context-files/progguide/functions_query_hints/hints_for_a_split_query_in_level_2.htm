@@ -1,0 +1,78 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Hints for a split query in level-2</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="hints for a split query in level-2 query hints split query in level-2 ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Hints for a split query in level-2</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">To evaluate a query the Oracle level-2 driver may split up a
+               query in several smaller ones (child queries). When this happens
+               the hints of the main query are distributed over these smaller
+               queries. This is done according to the same rules as when the query
+               was truly distributed:
+            </p>
+            <ol class="ProcedureList">
+               <li class="ProcedureListItem">An index hint is only added to a child query if it
+                  contains the corresponding table in its from clause.
+               </li>
+               <li class="ProcedureListItem">All other hints are added to all child queries.</li>
+            </ol>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+select a.cuno, b.cuno
+from   tppdm740 a, tccom010 b
+where  a.cuno refers to b
+and    a._compnr = 812
+hint   use index 1 on b
+<i class="Emphasis">and    array fetching</i>
+and    array size 100
+</pre><p class="Paragraph">The Oracle level-2 driver will split this query into the
+               following to child queries:
+            </p>
+            <p class="Paragraph">Query 1:</p><pre class="CodeBlock">
+select a.cuno
+from   tppdm740 a
+<i class="Emphasis">and    array fetching</i>
+and    array size 100
+</pre><p class="Paragraph">Query 2:</p><pre class="CodeBlock">
+select b.cuno
+from   tccom010 b
+where  b.cuno = &lt;variable&gt;
+hint   use index 1 on b
+<i class="Emphasis">and    array fetching</i>
+and    array size 100
+</pre><p class="Paragraph">Query 1 does not have any execution plan hints and
+               therefore the driver will generate default hints for this
+               query. Just like with distributed queries you can prevent the
+               driver from generating default hints for query 1 by adding
+               the hint 'no hints' to the main query. Adding this hint will
+               have no effect for query 2.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/hint_types.htm" class="manualLink">Hint types</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/overview.htm" class="manualLink">Query hints overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_query_hints/hints_for_a_split_query_in_level_2, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

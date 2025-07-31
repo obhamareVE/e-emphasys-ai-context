@@ -1,0 +1,105 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Example XML parsing</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="XML object parsing example ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Example XML parsing</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Below a piece of Baan-C code is shown for parsing and
+               exploring the XML document which was shown in the <a href="../../progguide/functions_xml/example_xml_generation.htm" class="manualLink">Example XML generation</a>.
+            </p><pre class="CodeBlock">
+function parse()
+{
+        long    fd
+        long    cmfId, identId,  fromId
+        long    retVal
+        long    found
+
+        string  error_string(120)
+        string  messageId(20)
+        string  messageClass(20)
+        string  subject(100)
+
+        |Open the XML file for reading.
+        fd = seq.open ("/home/ssauser/file.xml", "r" )
+
+        |Parse the XML file
+        cmfId = xmlRead(fd, error_string)
+        seq.close(fd)
+
+        |Search for the IDENTIFICATION element
+        identId = xmlFindFirst( "IDENTIFICATION", cmfId)
+        if (identId &lt;&gt; 0 )
+        then
+                |Get the identificiation attributes
+                retVal =  xmlGetAttribute(identId,  "MESSAGE-ID" ,messageId)
+                retVal =  xmlGetAttribute(identId,  "CLASS", messageClass)
+                retVal =  xmlGetAttribute(identId,  "SUBJECT", subject)
+        endif
+
+        |Search for the first FROM element
+        fromId = xmlFindFirst( "FROM", cmfId)
+        if (fromId &lt;&gt; 0)
+        then
+                |TODO: Get the from attributes
+        
+        endif
+
+        |Alternative 1 to get to the FROM element
+        fromId = xmlFindFirstMatch( "&lt;CMF&gt;.&lt;RECIPIENTS&gt;.&lt;FROM&gt;", cmfId)
+
+        |Alternative 2 to get to the FROM element
+        fromId = xmlFindFirstMatch( "?&lt;FROM&gt;", cmfId)
+
+        |Alternative 3 to get to the FROM element
+        fromId = xmlFindFirstMatch( "-&lt;FROM&gt;", cmfId)
+
+        |Alternative 4 to get to the FROM element
+        fromId = xmlFindFirstMatch( "&lt;CMF&gt;.&lt;IDENTIFICATION&gt;.right.fChild", cmfId)
+
+        |Alternative 5 to get to the FROM element
+        fromId = xmlFindFirstMatch( "parent.lChild.fChild", identId )
+
+        |Alternative 6 to get to the FROM element
+        fromId = xmlFindFirstMatch( "?&lt;FROM NAME TYPE ADDRESS&gt;", cmfId)
+
+        |Alternative 7 to get to the FROM element
+        fromId = xmlFindFirstMatch( "?&lt;NAME= TYPE ADDRESS&gt;", cmfId)
+
+        |Alternative 8 to get to the FROM element
+        fromId = xmlFindFirstMatch( "?&lt;=""SMTP""&gt;", cmfId)
+
+        |Alternative 9 to get to the FROM element
+        fromId = xmlFindFirstMatch( "?&lt;TYPE=""SMTP""&gt;", cmfId)
+
+        |Alternative to get to the CMF element from the FROM element
+        cmfId = xmlFindFirstMatch( "^&lt;CMF&gt;", fromId )
+}
+   </pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/overview.htm" class="manualLink">XML object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis.htm" class="manualLink">XML object synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/example_xml_generation.htm" class="manualLink">Example XML generation</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_xml/example_xml_parsing, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

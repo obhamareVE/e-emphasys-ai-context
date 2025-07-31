@@ -1,0 +1,48 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42I66 - Table has a parent table that needs to be updated on delete</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42I66 - Table has a parent table that needs to be updated on delete</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The table in the FROM clause of an SQL DELETE statement has a
+               parent table; the reference mode of this parent-child
+               relationship is mandatory or mandatory unless empty and the
+               reference is maintaind through reference counters.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+delete from dbtst146
+   </pre><p class="Paragraph">There is a reference from dbtst146.empno.mu to
+               dbtst120.empno. The reference mode is mandatory unless empty and
+               is maintained through counters. This means that this delete
+               would require that the reference counters of table dbtst120 are
+               updated. An SQL DELETE statement can only be executed if no
+               update actions on a parent table are required. This statement
+               will cause the error:
+            </p>
+            <p class="Paragraph">SQLState 42I66: Table
+               'dbtst146' has a parent table that needs to be updated on
+               delete
+            </p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42I66, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

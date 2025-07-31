@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Fixed and based variables</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="fixed and based variables 3GL ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Fixed and based variables</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Fixed variables</div>
+            <p class="Paragraph">A string variable can be declared as fixed so that its
+               	      current length always equals the maximum length. When a shorter string is 
+               	      assigned to such a string variable, it is right-padded with spaces.
+               	      For example:
+            </p><pre class="CodeBlock">
+STRING name(10)  FIXED
+name = "andrew"       | the string now contains the value "andrew    ", not "andrew"
+</pre><p class="Paragraph">The keyword FIXED is applicable to one-dimensional strings
+               only. Multi-dimensional string arrays are always fixed and do
+               not need to be declared with the keyword FIXED.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Based variables</div>
+            <p class="Paragraph">The BASED mechanism is applicable to strings or arrays of
+               all possible types. It determines that a variable will be
+               based on another variable. For based variables, no memory
+               space is reserved when they are declared. At runtime they use
+               the same memory space as the variable on which they are
+               based. So by using this mechanism, the same section of memory
+               can be accessed via different names.
+            </p>
+            <p class="Paragraph">You use the following construction to base one variable on
+               another: <code class="Code">BASE var_1 AT var_2</code></p>
+            <p class="Paragraph">In the case of a string, the based variable is always
+               fixed. You must ensure that the based variable always fits in
+               the variable on which it is based. So it will be safe to
+               declare the basic variable as FIXED.
+            </p>
+            <div class="subExampleSection">
+               <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+STRING a(10)    FIXED
+STRING b(5)     BASED
+BASE b AT a(3)        | This indicates that the space occupied
+                      | by b is the same as the space for a(3;5)
+b(2;3) = "yes"        | a(4;3) now also contains "yes"
+a(1;8) = "12345678"   | b now contains "34567"
+</pre></div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Variable and fixed length strings</div>
+            <p class="Paragraph">The following points summarize the rules for variable and
+               fixed length strings:
+            </p>
+            <ul class="List">
+               <li class="ListItem">Strings with variable length are 1-dimensional strings
+                  not declared as based or fixed. All other strings are
+                  fixed- that is, database table fields, string arrays, and
+                  variables declared as FIXED or BASED.
+               </li>
+               <li class="ListItem">Normally, variable length strings are not filled up
+                  with spaces except when a start position is specified in
+                  the assignment.
+               </li>
+               <li class="ListItem">Fixed length strings are always filled up with spaces,
+                  except when a length is specified. In the latter case, the
+                  remaining positions are not overwritten by spaces.
+               </li>
+               <li class="ListItem">If a string (of variable or fixed length) is filled
+                  from a certain start position, the part of that string
+                  preceding the start position is filled up with spaces if
+                  it was not filled before.
+               </li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/variables.htm" class="manualLink">Variables</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/fixed_and_based_variables, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

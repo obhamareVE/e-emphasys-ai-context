@@ -1,0 +1,49 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DAL Change Management hooks</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="change management hooks workflow hooks ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DAL Change Management hooks</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">In order to support Workflow Document Authorization, the DAL layer has been extended to support a number of new
+               			hooks. These hooks are executed by the Database Change Management (DBCM) layer (see <a href="../../progguide/functions_dbcm/overview.htm" class="manualLink">Database Change Management (DBCM) overview</a>).
+            </p>
+            <p class="Paragraph">Note that these hooks should only be implemented in the DAL of the root table of a Business Object.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Available object hooks</div>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_dal/on.submit.htm" class="manualLink">on.submit()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/on.recall.htm" class="manualLink">on.recall()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/on.reject.htm" class="manualLink">on.reject()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/on.set.draft.htm" class="manualLink">on.set.draft()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/on.set.approved.htm" class="manualLink">on.set.approved()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/on.set.recalled.htm" class="manualLink">on.set.recalled()</a></li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dbcm/overview.htm" class="manualLink">Database Change Management (DBCM) overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/chm.hooks, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

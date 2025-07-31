@@ -1,0 +1,120 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>ORDER BY clause</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="ORDER BY clause SELECT statement ORDER BY clause ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">ORDER BY clause</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The ORDER BY clause specifies a table that is ordered by the
+               	 columns that are specified by the ORDER BY clause. The input
+               	 table is the table specified by the <a href="../../progguide/functions_database_handling/select.htm" class="manualLink">SELECT clause</a>.
+            </p>
+            <p class="Paragraph">ORDER BY sorts the result-set by one or more columns (where sort direction defines ascending or descending order).</p>
+            <p class="Paragraph">ORDER BY is applied after <a href="../../progguide/functions_database_handling/group_by.htm" class="manualLink">GROUP BY clause</a>,
+               	 so it operates on an aggregated set and not on the individual rows.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;order by clause&gt;
+    ::= ORDER BY &lt;order by item&gt; { , &lt;order by item&gt; }... 
+                 [ <a href="../../progguide/functions_database_handling/with_retry.htm" class="manualLink">WITH RETRY clause</a> [ REPEAT LAST ROW ] ]
+
+&lt;order by item&gt;
+    ::= <a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">Column reference</a> [ &lt;sort direction&gt; ]
+      | &lt;unsigned integer&gt; [ &lt;sort direction&gt; ]
+
+&lt;unsigned integer&gt;
+    ::= <a href="../../progguide/functions_database_handling/integer_constant.htm" class="manualLink">Integer constant</a>
+
+&lt;sort direction&gt;
+    ::= ASC
+      | DESC
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">The <i class="Emphasis">&lt;unsigned integer&gt;</i> shall not start with a
+   minus sign ('–').
+            </p>
+            <p class="Paragraph">The <i class="Emphasis">&lt;column reference&gt;</i> shall not reference an
+               array column.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">If <i class="Emphasis">&lt;sort direction&gt;</i> is ommited, then <i class="Emphasis">ASC</i> is implicit.
+            </p>
+            <p class="Paragraph">The result table is first ordered on the first <i class="Emphasis">&lt;order
+                  	 by item&gt;</i>. If there is a second <i class="Emphasis">&lt;order by item&gt;</i>,
+               	 then whenever the values for the first <i class="Emphasis">&lt;order by item&gt;</i> are the
+               	 same or are both NULL, then the second <i class="Emphasis">&lt;order by item&gt;</i> determines the order.
+               	 And so on.
+            </p>
+            <p class="Paragraph">If for all <i class="Emphasis">&lt;order by item&gt;s</i> the corresponding
+               	 column values of two rows are the same or both NULL, then the
+               	 order of the rows is <a href="../../progguide/functions_database_handling/sql_glossary.htm#Undefined" class="glossaryLink">undefined</a>.
+            </p>
+            <p class="Paragraph">It is <a href="../../progguide/functions_database_handling/sql_glossary.htm#ImplementationDefined" class="glossaryLink">implementation defined</a> whether NULL values sort before or after any other value.
+            </p>
+            <p class="Paragraph">Specifying the <i class="Emphasis">WITH RETRY</i> keywords does not have an
+               impact on the working of the ORDER BY clause. It modifies the
+               result table of the WHERE clause after a jump to a
+               db.retry.point(). See section <a href="../../progguide/functions_database_handling/with_retry.htm" class="manualLink">WITH RETRY clause</a>.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following example selects the columns <i class="Emphasis">lastname</i>, <i class="Emphasis">salary</i> and <i class="Emphasis">bonus</i> from table <i class="Emphasis">dbtst120</i>. The
+               result table is ordered first on column <i class="Emphasis">salary</i> and then
+               on column <i class="Emphasis">bonus</i>.
+            </p><pre class="CodeBlock">
+SELECT lastname, salary, bonus
+FROM dbtst120
+ORDER BY salary DESC, bonus DESC
+</pre><p class="Paragraph">The following example groups table <i class="Emphasis">dbtst120</i> on column <i class="Emphasis">edlevel</i>, then selects column <i class="Emphasis">edlevel</i> and the
+               average of column <i class="Emphasis">salary</i>. The result table is ordered on
+               the average of column <i class="Emphasis">salary</i>.
+            </p><pre class="CodeBlock">
+SELECT edlevel, AVG( salary )
+FROM dbtst120
+GROUP BY edlevel
+ORDER BY 2
+</pre><p class="Paragraph">The following statement produces a list of employees, which is then arranged in
+               	groups of employees belonging to the same department. The result-set is collapsed
+               	into records that represent departments.
+            </p>
+            <p class="Paragraph">For each group (i.e department) the average salary is calculated (stored in AVG).
+               	The result is then ordered using the average salary (which produces a sorted list of departments).
+            </p><pre class="CodeBlock">
+SELECT DEPARTMENT, AVG(SALARY) AS AVG
+FROM EMPLOYEE
+GROUP BY DEPARTMENT
+ORDER BY AVG
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/select.htm" class="manualLink">SELECT clause</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/with_retry.htm" class="manualLink">WITH RETRY clause</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/order_by, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

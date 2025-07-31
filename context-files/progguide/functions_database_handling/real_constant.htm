@@ -1,0 +1,74 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Real constant</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Constants (literals) Real Real constant ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Real constant</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The real constant specifies a real (approximate numeric)
+               value.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;real constant&gt;
+    ::= [-]&lt;mantissa&gt;[&lt;exponent&gt;]
+
+&lt;mantissa&gt;
+    ::= &lt;unsigned integer&gt;.&lt;unsigned integer&gt;
+      | .&lt;unsigned integer&gt;
+
+&lt;exponent&gt;
+    ::= e[-|+]&lt;unsigned integer&gt;
+
+&lt;unsigned integer&gt;
+    ::= &lt;digit&gt;... 
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">The value of the real constant must lie in one of the
+               following ranges.
+            </p>
+            <ul class="List">
+               <li class="ListItem"><code class="Code">[ –1.7976931348623157e+308 .. –4.94065645841246544e–324 ]</code></li>
+               <li class="ListItem"><code class="Code">[ 0.0 ]</code></li>
+               <li class="ListItem"><code class="Code">[ 4.94065645841246544e–324 .. 1.7976931348623157e+308 ]</code></li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The type of a real constant is <i class="Emphasis">real</i>. The value is the
+               closest approximate numeric value representing the real constant.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div><pre class="CodeBlock">
+123.456
+–.25
+1.0e-16
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/real_constant, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>aud_open_audit()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="aud_open_audit aud_open_audit functions aud_open_audit ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">aud_open_audit()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Warning</div>
+            <p class="Paragraph"><i class="Emphasis">The functions and macros listed below must not be used
+                  anymore.</i> Using them in BaanERP 5.0c or higher releases
+               may result in less reliable data. Know that there is a new
+               set of functions that you can use for retrieval of audit
+               information. Refer to <a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;aud_open_audit&nbsp;
+					(const string&nbsp;host_name(), const string&nbsp;table_name(), long&nbsp;compno, long&nbsp;seqno)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This opens a specified sequence file. You identify the
+                  file to open by the table/company combination with which it
+                  is associated, the host on which it is located, and the
+                  sequence file number. The function returns a unique
+                  identifier for the file. Other audit functions use this
+                  identifier (referred to as the sequence identifier) to refer
+                  to this particular sequence file.
+               </p>
+               <p class="Paragraph">When you open a sequence file, the associated info file is
+                  automatically opened also (unless it is already open).
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>host_name()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the host on which the sequence file
+                           is to be accessed. You can use <a href="../../progguide/functions_aud/aud_select_host.htm" class="manualLink">aud_select_host()</a> to select the host to be used.
+                        </p>
+                        <p class="Paragraph">If this argument is an empty string, <i class="Emphasis">aud_select_host()</i> is called automatically to
+                           select a host name.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>table_name()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the table with which the sequence file
+                           is associated. This takes the form <i class="Emphasis">ppmmfff</i>,
+                           where <i class="Emphasis">pp</i> is the package code, <i class="Emphasis">mmm</i> is the
+                           module code, and <i class="Emphasis">fff</i> is the file number.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>compno</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The company number.</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>seqno</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The number of the particular sequence file to
+                           open.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&gt;0</th>
+                     <td rowspan="1" colspan="1" class="none">Sequence id for file</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Error; Possible reasons are:</p>
+                        <ul class="List">
+                           <li class="ListItem">Table or sequence file does not exist</li>
+                           <li class="ListItem">Error occurred while opening sequence
+                              file
+                           </li>
+                           <li class="ListItem">Open file limit reached</li>
+                        </ul>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_overview.htm" class="manualLink">Audit Information Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_synopsis.htm" class="manualLink">Audit Information Synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_sample_program.htm" class="manualLink">Audit Information Sample Program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_aud/aud_open_audit, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

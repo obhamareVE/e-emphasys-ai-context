@@ -1,0 +1,97 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Global variables</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="global variables ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Global variables</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Variables declared outside any function block are global
+               variables. You can use them in all functions that occur after the
+               variable declaration.
+            </p>
+            <p class="Paragraph"><i class="Emphasis">Declaration, initialization, and scope</i></p>
+            <table border="0" width="738" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td width="27%" rowspan="1" colspan="1" class="none">Point of declaration</td>
+                     <td width="73%" rowspan="1" colspan="1" class="none">Outside the functions.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td width="27%" rowspan="1" colspan="1" class="none">Syntax of declaration</td>
+                     <td width="73%" rowspan="1" colspan="1" class="none">&lt;type&gt; name</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td width="27%" rowspan="1" colspan="1" class="none">Initialization</td>
+                     <td width="73%" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">At program start:</p>
+                        <p class="Paragraph">numeric set to 0</p>
+                        <p class="Paragraph">strings ""</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td width="27%" rowspan="1" colspan="1" class="none">Scope (validity and time)</td>
+                     <td width="73%" rowspan="1" colspan="1" class="none">Valid anywhere in the source, throughout the
+                        execution. If any arguments or variables within a
+                        function are declared with the same name as a global
+                        variable, the global variable cannot then be
+                        accessed within that function.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div><pre class="CodeBlock">
+function test()
+{
+        return
+}
+long glob_var
+function long dupl()
+{
+        return( glob_var * 2 )
+}
+</pre><p class="Paragraph">In this example, <i class="Emphasis">glob_var</i> is a global variable. It is
+               not accessible in the test() function as it was declared after
+               that function block. On the other hand, <i class="Emphasis">glob_var</i> is
+               accessible in function dupl().
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2</div><pre class="CodeBlock">
+long i
+
+function void test()
+{
+        long i
+        i = 10      | This is the local variable
+                    | Nothing happens to the global variable 'i'
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/functions.htm" class="manualLink">Functions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/global_variables, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

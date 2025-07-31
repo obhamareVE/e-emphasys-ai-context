@@ -1,0 +1,54 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Document Viewer overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Document Viewer ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Document Viewer overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Session type by which documents can be viewed</p>
+            <p class="Paragraph">The client side browser will be used to render the content of the document.
+               		 The mime-type of the document will be used by the browser to decide how to view the document.
+               		 When the browser cannot render a specific mime-type, the browser will show a (browser specific) dialog typically asking
+               the user what to do with the document. 
+               		 For example: save, save as or open. When the user choses open, another client side application related to the file extension
+               will be started.
+               		 This feature will only become available for Swing WebUI and LN UI and not for Worktop.
+            </p>
+            <p class="Paragraph">A Document viewer session must have the following characteristics:</p>
+            <ul class="List">
+               <li class="ListItem">Related script type: 3GL (Without 4GL Engine)</li>
+               <li class="ListItem">No related form must be created</li>
+               <li class="ListItem">The 3GL Script must include bic_vwr and must implement the main() function. In this main function a call must be done to the
+                  functions: vwr.init() and vwr.start().
+               </li>
+            </ul>
+            <p class="Paragraph">For sending an update message from a navigation session to a viewer session, the PRCM mechanism can be used.</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_vwr/synopsis.htm" class="manualLink">Document Viewer synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_vwr/example.htm" class="manualLink">Document Viewer example</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_client_file_access/client.show.file.htm" class="manualLink">client.show.file</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_client_file_access/client.show.url.htm" class="manualLink">client.show.url</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_vwr/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

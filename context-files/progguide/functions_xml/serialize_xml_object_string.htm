@@ -1,0 +1,140 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Serialize XML Object to String</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions xmlWriteToString xmlWriteToString xmlWriteToString ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Serialize XML Object to String</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;xmlWriteToString&nbsp;
+					(ref string&nbsp;buffer, long&nbsp;fromNode [, long&nbsp;toNode])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Serialize an XML object to XML and write resulting XML document
+                  	  to an in-memory string. Any string information in the XML
+                  	  document is converted to UTF-8 format.
+               </p>
+               <p class="Paragraph">No additional formatting is done. Use <a href="../../progguide/functions_xml/serialize_xml_object_string_pretty.htm" class="manualLink">Serialize XML Object to Formatted String</a> instead to make the XML data human readable.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>buffer</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">buffer</i> must be a reference to a string buffer which contains
+                           		  the generated XML document on return of the function.
+                        </p>
+                        <p class="Paragraph">The function
+                           		  xmlGetStringLength() may be used to determine the
+                           		  required size of the buffer.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>fromNode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">See <a href="../../progguide/functions_xml/api.htm#fromnode_tonode" class="manualLink">Handling of fromNode and toNode arguments</a></p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>toNode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">See <a href="../../progguide/functions_xml/api.htm#fromnode_tonode" class="manualLink">Handling of fromNode and toNode arguments</a></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td width="30" rowspan="1" colspan="1" class="none">&gt;= 0</td>
+                     <td rowspan="1" colspan="1" class="none">Success; Number of bytes written to output when
+                        			successful
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">&lt; 0</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Error. As many bytes as possible are written to the <i class="Emphasis">buffer</i>. If
+                           			  the cause of the error is not that the <i class="Emphasis">buffer</i> is too small, then the exact place where
+                           			  the output of bytes stops, corresponds to the place in the XML tree where the
+                           			  first serialization error occurred. Some specific values:
+                        </p>
+                        <table class="default">
+                           <tbody noTR="3" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td width="20" rowspan="1" colspan="1" class="default">-1</td>
+                                 <td rowspan="1" colspan="1" class="default">Incorrect argument. For example, <i class="Emphasis">fromNode</i> or <i class="Emphasis">toNode</i> is not a valid xml node.
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">-3</td>
+                                 <td rowspan="1" colspan="1" class="default">The <i class="Emphasis">buffer</i> is too small, or a TSS conversion error occured. If TSS
+                                    					conversion of a certain text element (e.g. an attribute name or value) fails,
+                                    					then the output of bytes stops before that text element.
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">-4</td>
+                                 <td rowspan="1" colspan="1" class="default">An invalid character was encountered. The output of bytes
+                                    					stops just before that character. See the <a href="../../progguide/functions_xml/contains_valid_characters_only.htm" class="manualLink">xmlContainsValidCharactersOnly()</a> function.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/overview.htm" class="manualLink">XML object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis.htm" class="manualLink">XML object synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_xml/serialize_xml_object_string, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

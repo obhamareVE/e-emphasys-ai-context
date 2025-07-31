@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>set.refresh.rate()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions set.refresh.rate set.refresh.rate set.refresh.rate ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">set.refresh.rate()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;set.refresh.rate&nbsp;
+					(long&nbsp;rateInSeconds [, long&nbsp;thresholdInSeconds])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">With this function the refreshing rate of the session will be overruled temporary.</p>
+               <p class="Paragraph">The refresh interval is part of the User Data Template.</p>
+               <p class="Paragraph">The interval is standard used for sessions where the Auto Refresh in standard commands is set.</p>
+               <p class="Paragraph">This function is overruling the setting of the session, also for users without refresh interval.</p>
+               <p class="Paragraph">The windows of same connection/browser will be refreshed in the minimum refreshrate seconds of all users active sessions.</p>
+               <p class="Paragraph">Each session of the back-end is using a timer(g.timer) to create a timer event for the choice.interupt.</p>
+               <p class="Paragraph">At change of the refreshing rate, the front-end of that session is informed by tag SESSION REFRESH in the RESPONSE note.</p>
+               <p class="Paragraph">This function will create an assert error when in a session without AutoRefresh to ensure the presence of the choice subsections
+                  choice.interrupt.
+               </p>
+               <p class="Paragraph">Other values are returned in the error value.</p>
+               <p class="Paragraph">This function is available from TIV level 1800.</p>
+               <p class="Paragraph">This function is not supported under WorkTop and WebUI version before AP0068 resp. BL0004 (Aug 2012). (see Return Value)</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>rateInSeconds</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The refreshing rate of the session.</p>
+                        <p class="Paragraph">Special values:</p>
+                        <p class="Paragraph">Zero: the session will set to it's the original refreshing rate.</p>
+                        <p class="Paragraph">-1: the refreshing of the session will be stopped.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>thresholdInSeconds</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The duration of the refreshing rate:</p>
+                        <p class="Paragraph">0   - the refreshRate has no end time</p>
+                        <p class="Paragraph">&gt; 0 - the refreshRate will be changed for thresholdInSeconds.</p>
+                        <p class="Paragraph">After thresholdInSeconds, the original refreshRate is restored.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">Error Code:</p>
+            <p class="Paragraph">0 - Successful completion</p>
+            <p class="Paragraph">-1 - Refresh rate must be greater equal -1.</p>
+            <p class="Paragraph">-2 - Threshold must be greater equal zero.</p>
+            <p class="Paragraph">-3 - No action on XML Response Node "Session Refresh" ( thin-client level before TIV level 1030 )</p>
+            <p class="Paragraph">-4 - refresh interval not supported without ThinClient</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			4GL
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_char_b_win/overview_and_synopsis.htm" class="manualLink">Character-based windows - overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_char_b_win/set.refresh.rate, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

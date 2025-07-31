@@ -1,0 +1,115 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Interprocess communication (bshell) overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="interprocess communication (bshell) ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Interprocess communication (bshell) overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Use these functions to handle communication between different
+               BAAN processes running in the same bshell.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">BMS messages</div>
+            <p class="Paragraph">The BMS mechanism supports broadcast messages, enabling
+               messages to be sent to multiple processes. Messages can be up
+               to 2048 characters long.
+            </p>
+            <p class="Paragraph">The sender process can use process IDs or masks to
+               determine which processes a message is sent to.
+            </p>
+            <ul class="List">
+               <li class="ListItem"><i class="Emphasis">Masks:</i> A mask is a character string used to
+                  control which messages a process can receive. It can be added
+                  to any process by using the <a href="../../progguide/functions_interprocess_communication_bshell/bms.add.mask.htm" class="manualLink">bms.add.mask()</a> function. If
+                  the sender of a message specifies a mask for that message,
+                  the message is sent only to those processes to which the
+                  specified mask has been added.
+               </li>
+               <li class="ListItem"><i class="Emphasis">Process IDs:</i> Instead of, or in addition to a mask,
+                  the sender of a message can specify the process ID of the
+                  process for which the message is intended. The message is
+                  then sent only to that process. If a mask is also
+                  specified for the message, the process can receive the
+                  message only if the mask was previously added to the
+                  process. 
+                  Receiving processes can use masks and levels to control
+                  which messages it receives.
+               </li>
+               <li class="ListItem"><i class="Emphasis">Masks:</i> If a particular mask is added to a process,
+                  the process can receive all messages sent with that
+                  mask.
+               </li>
+               <li class="ListItem"><i class="Emphasis">Levels:</i> The sender of a message can specify a level
+                  for that message. Receiving processes can then choose
+                  which level of messages they wish to receive. 
+                  There are four predefined broadcast messages that the
+                  system can send to processes. Processes must set the
+                  bms.shutdown, bms.exit, bms.exit.child, bms.startup, and
+                  bms.startup.child masks to receive these messages.
+               </li>
+               <li class="ListItem"><i class="Emphasis">bms.shutdown:</i> When this mask is set for a process,
+         the message “bms.shutdown” is sent to the process when all
+         processes that do not have this mask set have ended. It
+      indicates that the process must exit because the bshell wants
+      to stop.
+               </li>
+               <li class="ListItem"><i class="Emphasis">bms.exit:</i> When this mask is set for a process, the
+         exit value of an ended process is sent to the process. The
+      received message contains the string “exit&lt;exit.value&gt;”.
+       The process number of the exited process is provided in
+      evt.bms.sender(event).
+               </li>
+               <li class="ListItem"><i class="Emphasis">bms.exit.child:</i> When this mask is set for a
+      process, the exit value of an ended child process is sent to
+      the process. The received message contains the string “
+         exit.child&lt;exit.value&gt;”.
+               </li>
+               <li class="ListItem"><i class="Emphasis">bms.startup:</i> When this mask is set for a process,
+      the message “startup” is sent to the process when a process
+      is started.
+               </li>
+               <li class="ListItem"><i class="Emphasis">bms.startup.child:</i> When this mask is set for a
+      process, the message “startup.child” is sent to the process
+      when a child process is started.
+               </li>
+            </ul>
+            <p class="Paragraph">Note that when one of the above message is sent,
+               evt.bms.command(event) is zero.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Bucket messages</div>
+            <p class="Paragraph">Bucket messages provide a simple mechanism for two
+               processes to exchange small packets of information (up to 100
+               characters long). A process uses <a href="../../progguide/functions_interprocess_communication_bshell/send.bucket.htm" class="manualLink">send.bucket()</a> or <a href="../../progguide/functions_interprocess_communication_bshell/send.wait.htm" class="manualLink">send.wait()</a> to send a data string
+               to another specified process. A process calls <a href="../../progguide/functions_interprocess_communication_bshell/receive.bucket.htm" class="manualLink">receive.bucket$()</a> to receive
+               the next bucket message sent to it by any other process.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_interprocess_communication_os_level/overview.htm" class="manualLink">Interprocess communication (OS level) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_interprocess_communication_bshell/synopsis.htm" class="manualLink">Interprocess communication (bshell) synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_interprocess_communication_bshell/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

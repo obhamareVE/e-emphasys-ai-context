@@ -1,0 +1,158 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>seq.lock()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions seq.lock seq.lock seq.lock ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">seq.lock()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;seq.lock&nbsp;
+					(long&nbsp;mode, long&nbsp;offset, long&nbsp;size, long&nbsp;fp)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This sets read and write locks on a specified file or
+                  segment of a file.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>mode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The type of lock to set:</p>
+                        <table width="100%" class="default">
+                           <tbody noTR="4" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">SEQ_R_LCK</td>
+                                 <td rowspan="1" colspan="1" class="default">read lock</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">SEQ_W_LCK</td>
+                                 <td rowspan="1" colspan="1" class="default">write lock</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">SEQ_F_R_LCK</td>
+                                 <td rowspan="1" colspan="1" class="default">file lock (read)</td>
+                              </tr>
+                              <tr no="4" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">SEQ_F_W_LCK</td>
+                                 <td rowspan="1" colspan="1" class="default">file lock (write)</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>offset</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">To set a lock on a segment of the file, use this
+                           		argument and the <i class="Emphasis">size</i> argument to specify the offset of the segment from
+                           		the beginning of the file and the length of the segment.
+                        </p>
+                        <p class="Paragraph">To extend a lock to the end of the file, set <i class="Emphasis">size</i> to 0.
+                        </p>
+                        <p class="Paragraph">To set a lock on the entire file, set both arguments to 0.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>size</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">See the <i class="Emphasis">offset</i> argument.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>fp</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The file pointer returned by <a href="../../progguide/functions_directory_file_operations/seq.open.htm" class="manualLink">seq.open()</a> when the file
+                           was opened.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&gt;= 0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">Error; probably <i class="Emphasis">fp</i> not connected.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt; -1</th>
+                     <td rowspan="1" colspan="1" class="none">Operating system error code.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">A read lock prevents any process from setting a write lock
+                  on the protected file or file segment. Multiple read locks
+                  can be set for the same file or file segment. The file with
+                  which the lock is associated must have been opened with read
+                  access (see <a href="../../progguide/functions_directory_file_operations/seq.open.htm" class="manualLink">seq.open()</a>).
+               </p>
+               <p class="Paragraph">A write lock prevents any process from setting a read lock
+                  or a write lock on the protected file or file segment. Only
+                  one write lock can exist for a particular file or file
+                  segment. The file with which the lock is associated must have
+                  been opened with write access.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/overview.htm" class="manualLink">Directory and file operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/synopsis.htm" class="manualLink">Directory and file operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_directory_file_operations/seq.lock, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

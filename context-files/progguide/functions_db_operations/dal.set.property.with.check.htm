@@ -1,0 +1,124 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dal.set.property.with.check()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dal.set.property.with.check dal.set.property.with.check functions dal.set.property.with.check ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dal.set.property.with.check()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_dam&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;dal.set.property.with.check&nbsp;
+					(string&nbsp;tbl.name, long&nbsp;object_set, const string&nbsp;proper_name, void&nbsp;value)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">In order to notify the DAL about a change to the value of a
+                  property, you must use this function to change the value. Using
+                  this function ensures that the relevant property hooks are
+                  executed when the value is changed. If you use an assignment or
+                  the db.* functions to change a property value, the DAL is not
+                  notified of the change. Consequently, the property checks in the
+                  DAL are not executed.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>tbl.name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A string containing the name of the DAL.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>object_set</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The ID of an open object set (if this ID is not
+                           known, use the table ID).
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>proper_name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the property whose value must be
+                           changed.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>value</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The return value of the property check.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">DEPRECATED</div>
+            <p class="Paragraph">This function has been deprecated. Please use <a href="../../progguide/functions_db_operations/dal.set.field.htm" class="manualLink">dal.set.field()</a> in combination
+               with <a href="../../progguide/functions_db_operations/dal.check.field.htm" class="manualLink">dal.check.field()</a> instead.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Remark</div>
+            <p class="Paragraph">The property check is executed by calling this function, and
+               the has_changed flag is set to DAL_UPDATE. The return value of
+               this function is the return value of the property check.
+            </p>
+            <p class="Paragraph">There is another function: <a href="../../progguide/functions_db_operations/dal.set.property.htm" class="manualLink">dal.set.property()</a> which does
+               the same as dal.set.property.with.check, but only calls the
+               property check during the dal.update/dal.destroy.
+            </p>
+            <p class="Paragraph">You can call this function from both UI and DAL scripts.</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">See <a href="../../progguide/functions_db_operations/dal.set.property.htm" class="manualLink">dal.set.property()</a></p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/dal.set.property.with.check, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

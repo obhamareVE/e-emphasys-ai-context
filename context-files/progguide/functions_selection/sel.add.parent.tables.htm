@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>sel.add.parent.tables()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions sel.add.parent.tables record selection sel.add.parent.tables sel.add.parent.tables sel.add.parent.tables ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">sel.add.parent.tables()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean &nbsp;sel.add.parent.tables&nbsp;
+					(long&nbsp;group_id, string&nbsp;parent_table)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">In the Dynamic Form Editor you can already indicate the main table of the parent session for which a session can handle the
+                  selection. You should specify
+                  			that table at the "selection range group" in which the user can specify the range if the selection of the parent session
+                  is not used. Because you can only specify one
+                  			table per group, you need to use this function if you want to add one or more extra tables to a group.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>group_id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The number of the group for which you want to add a table. The number can be found in the Dynamic Form Editor</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>parent_table</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The table code (e.g. tccom100) of which you need to process records.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">true		Tables are added for the group with the specified number.</p>
+            <p class="Paragraph">false		The supplied arguments are not of the right type, or the group with the specified number doesn't exist.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			4GL
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1075.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">This function is avialable from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">Tools Interface Version (TIV)</a> <a href="../../progguide/tiv/tiv_1075.htm" class="manualLink">TIV 1075</a>.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_selection/overview.htm" class="manualLink">Record selection Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_selection/synopsis.htm" class="manualLink">Record selection Synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_selection/cookbook.htm" class="manualLink">Improved Record selection Cookbook</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_selection/sel.add.parent.tables, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

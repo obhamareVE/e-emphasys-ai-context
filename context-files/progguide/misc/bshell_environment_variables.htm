@@ -1,0 +1,122 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Bshell environment variables</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="bshell environment variables ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Bshell environment variables</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Environment variables may be set by any means supplied by the operating system.</p>
+            <p class="Paragraph">Environment variables may also be set by means of <a href="../../progguide/misc/bshell_command_line_options.htm" class="manualLink">bshell command line option -set</a>.
+            </p>
+            <p class="Paragraph">Environment variable values may be retrieved by means of the bshell function <a href="../../progguide/functions_system_and_user_information/getenv.htm" class="manualLink">getenv$()</a>.
+            </p>
+            <p class="Paragraph">Environment variables may be set and modified by means of the bshell function <a href="../../progguide/functions_system_and_user_information/setenv.htm" class="manualLink">setenv()</a>.
+            </p>
+            <p class="Paragraph">Notice that it is possible to set the value of a <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">resource</a> via its corresponding environment variable.
+            </p>
+            <p class="Paragraph">Environment variables are not restricted to any list.
+               The following (incomplete) list shows some environment variables
+               which have some influence on some aspect of the bshell functionality.
+            </p>
+            <table width="100%" border="1" class="default">
+               <tbody noTR="8" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Variable</th>
+                     <th rowspan="1" colspan="1" class="default">Synopsis</th>
+                     <th rowspan="1" colspan="1" class="default">Explanation</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">BAAN_SCM_GRP</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">BAAN_SCM_GRP=&lt;&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">Use components (if any) from the <a href="../../progguide/glossary/glossary.htm#scm" class="glossaryLink">SCM</a> folder
+                        	of the developer.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">SUPPRESS_WINHELP</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">SUPPRESS_WINHELP=[0|1]</code></td>
+                     <td rowspan="1" colspan="1" class="default">Suppress the Baan Windows Help and use the old-fashioned Baan
+                        		Helpviewer. Remove this setting in order to see again the Baan Windows
+                        		Help!
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">AUDIT_FILE_PATH</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">AUDIT_FILE_PATH= <i class="Emphasis">/your/audit/folder</i></code></td>
+                     <td rowspan="1" colspan="1" class="default">Set the location of the audit files. See also <a href="../../progguide/functions_aud/audit_information_overview.htm" class="manualLink">Audit Information Overview</a>.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">TEST_RETRY</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">TEST_RETRY=X</code></td>
+                     <td rowspan="1" colspan="1" class="default">This variable indicates how often the system must go back to a retry
+                        		point at the moment of committing. This cannot be used when testing different
+                        		sessions with retry points parallel. See: <a href="../../progguide/functions_database_handling/retry_points.htm" class="manualLink">Retry points</a></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">BSE_COMPNR</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">BSE_COMPNR=</code></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Set your current company to <code class="Code"></code>.
+                        </p>
+                        <p class="Paragraph"><i class="Emphasis">Note</i>: The package combination of the
+                           		  company must be:
+                        </p>
+                        <ul class="List">
+                           <li class="ListItem">The same as your current user package combination
+                              			OR
+                           </li>
+                           <li class="ListItem">The package combination of the company has no software
+                              			differences with your current package combination. For example a test package
+                              			combination.
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">PACKAGE_COMB</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">PACKAGE_COMB=</code></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Sets your current package combination to <code class="Code"></code>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="true" class="default">
+                     <th rowspan="1" colspan="1" class="default">NO_WORKTOP</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">NO_WORKTOP=1</code></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Suppress the need of the usage of Worktop.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_system_and_user_information/getenv.htm" class="manualLink">getenv$()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_system_and_user_information/setenv.htm" class="manualLink">setenv()</a></li>
+               <li class="RelTopic"><a href="../../progguide/misc/bshell_command_line_options.htm" class="manualLink">Bshell command line option -set</a></li>
+               <li class="RelTopic"><a href="../../progguide/misc/bshell_resources.htm" class="manualLink">Bshell resources</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/misc/bshell_environment_variables, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

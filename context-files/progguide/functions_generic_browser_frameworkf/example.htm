@@ -1,0 +1,131 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Example</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="generic browser framework (GBF) example ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Example</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The following main application example displays all defined
+               icons by icongroup in the current installation.
+            </p><pre class="CodeBlock">
+|************************************************************************
+|* Framework test
+|************************************************************************
+|* Script Type: 0
+|************************************************************************
+|       Type        : 3GL Main program
+|************************************************************************
+        table   tttdsk900       | Icon groups
+        table   tttdsk903       | Icons
+
+|************************************************************************
+| Includes
+|************************************************************************
+#include        &lt;bic_gbf&gt;    | GBF defines
+
+|************************************************************************
+| Main entry point for the menu browser driver
+| It initializes the browser display program and sends all menu
+options
+|************************************************************************
+function main()
+{
+        long    retval  |to test return values
+
+        retval = gbf.init(gbf.current.library(), "", 
+                                GBF.MENU.ALL + GBF.MENU.FILE.OPEN +
+                                GBF.MENU.FILE.READ)
+
+        if retval &lt; 0 then
+                exit(retval)
+        endif
+
+        exit(gbf.start())       |Show and read the first level
+}
+
+|************************************************************************
+|* functions to read a tables with parent child relations
+|* here this will be ttdsk900 and ttdsk903
+|************************************************************************
+
+function extern long gbf.get.children(const string Icongroup(),
+long object.value, long level)
+{
+        long    retval
+
+        select ttdsk903.*
+        from   ttdsk903
+        where  ttdsk903.icgp = :Icongroup and ttdsk903._compnr = 0
+        selectdo
+                | add the just found icon as leaf icon
+                | in case of an error, use the default leaf icon
+                retval = gbf.set.leaf.icon( Icongroup,
+                                  ttdsk903.icon,
+                                  ttdsk903.icon,
+                        FALSE)
+                if retval &lt; 0 then
+                retval = 0      | indicates default leaf icon
+                endif
+
+                | add the icon description as new object to the tree,
+                | with itself as display icon, and use default functions
+                | there is no help function so application specific help
+                | options are insensitive
+                if gbf.add.object(ttdsk903.icon, ttdsk903.desc, 0,
+                                  GBF.LEAF, retval) &lt; 0
+                then
+                		return (GBF.DO.EXIT)
+                endif
+        endselect
+
+        return (0)
+}
+
+function extern long gbf.get.top.level()
+{
+        select ttdsk900.*
+        from ttdsk900
+        where ttdsk900._compnr = 0
+        selectdo
+                | set icongroups with default icons and functions
+                if gbf.add.interior(ttdsk900.icgp, ttdsk900.desc,
+0) &lt; 0
+                then
+                return (GBF.DO.EXIT)
+                endif
+        endselect
+
+        return (0)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/overview.htm" class="manualLink">Generic Browser Framework (GBF) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/synopsis.htm" class="manualLink">Generic Browser Framework (GBF) synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/typical_usage.htm" class="manualLink">Typical usage</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/getting_started.htm" class="manualLink">Getting started</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/error_codes_and_return_values.htm" class="manualLink">Generic Browser Framework error codes and return values</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/standard_menu_items_and_function_keys.htm" class="manualLink">standard menu items and function keys</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/messages_and_questions.htm" class="manualLink">Messages and questions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_generic_browser_frameworkf/example, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

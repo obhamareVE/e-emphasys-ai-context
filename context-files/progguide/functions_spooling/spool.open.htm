@@ -1,0 +1,147 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>spool.open()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions spool.open spool.open spool.open ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">spool.open()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;spool.open&nbsp;
+					(string&nbsp;reportname, string&nbsp;device, string&nbsp;mode)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This opens a specified spooler device.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>reportname</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">If you specify a report name in the <i class="Emphasis">reportname</i> argument, it is stored in the
+                           predefined variable <i class="Emphasis">spool.report</i>, and the
+                           current date and time are stored in the predefined
+                           variables <i class="Emphasis">spool.date</i> and <i class="Emphasis">spool.time</i>. The
+                           settings for the predefined variables <i class="Emphasis">spool.fontnumber</i>, <i class="Emphasis">spool.paper.type</i>, and <i class="Emphasis">spool.left.mrg</i> are taken from the default
+                           settings for the specified report.
+                        </p>
+                        <p class="Paragraph">If both <i class="Emphasis">reportname</i> and <i class="Emphasis">device</i> are
+                           specified, the defaults for the predefined variables
+                           are taken from the default settings for the specified
+                           report. The device name is stored in <i class="Emphasis">spool.device</i>.
+                        </p>
+                        <p class="Paragraph">If both reportname and device are empty (""), the
+                           predefined variables retain their values from the
+                           previous spool action.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>device</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">If you specify a device name in the <i class="Emphasis">device</i> argument, it is stored in the predefined variable <i class="Emphasis">spool.device</i>. The settings for the predefined
+                           variables <i class="Emphasis">spool.paper.type</i>, <i class="Emphasis">spool.left.mrg</i>, <i class="Emphasis">spool.fileout</i>, and <i class="Emphasis">spool.pg.length</i> are taken from the default
+                           settings for the specified device.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>mode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This determines whether or not a window is displayed
+                           where the user can change the device settings:
+                        </p>
+                        <p class="Paragraph">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; no window displayed</p>
+                        <p class="Paragraph">1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; window displayed with a Cancel button</p>
+                        <p class="Paragraph">2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; window displayed without a Cancel
+            button</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; spooler cannot be opened</p>
+            <p class="Paragraph">&gt;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ID of opened spooler – this is also available in <i class="Emphasis">spool.id</i></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">To use several spoolers simultaneously, first open all the
+                  spoolers. Then set the predefined variable <i class="Emphasis">spool.id</i> to
+                  the relevant spooler ID before each <a href="../../progguide/functions_spooling/spool.line.htm" class="manualLink">spool.line()</a> function call.
+               </p>
+               <p class="Paragraph">After opening a second spooler, the predefined spool variables are
+                  set to the settings used for the newly opened spooler. In order to retrieve the
+                  original settings for the first spooler, use the function <a href="../../progguide/functions_spooling/spool.restore.variables.htm" class="manualLink">spool.restore.variables()</a>.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div><pre class="CodeBlock">
+long spooler
+spooler = spool.open("","",1)
+spooler = spool.open("rtccom040101000","D",0)
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2</div><pre class="CodeBlock">
+long spooler1, spooler2
+
+spooler1 = spool.open("", "", 1)
+spooler2 = spool.open("", "1", 0)
+
+spool.pr.line = "Hello spooler1"
+spool.id = spooler1
+spool.line()
+spool.pr.line = "Hello spooler2"
+spool.id = spooler2
+spool.line()
+
+spool.id = spooler1
+spool.close()          | close spooler 1
+spool.id = spooler2
+spool.close()          | close spooler 2
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_spooling/overview_and_synopsis.htm" class="manualLink">Spooling overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_spooling/spool.open, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

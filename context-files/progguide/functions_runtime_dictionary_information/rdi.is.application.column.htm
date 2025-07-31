@@ -1,0 +1,110 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>rdi.is.application.column()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions rdi.is.application.column rdi.is.application.column rdi.is.application.column ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">rdi.is.application.column()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean&nbsp;rdi.is.application.column&nbsp;
+					(const string&nbsp;column.name [, long&nbsp;column.type] [, long&nbsp;column.offset] [, long&nbsp;table.real.length])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function checks whether the given column is an application column, or one that is automatically added by tools.</p>
+               <div class="Note">
+                  <div class="NoteSectionTitle">Note</div>
+                  <div class="NoteContent">
+                     <p class="Paragraph">Indices, combined fields, rcd_utc, and _compnr (among others) are <i class="Emphasis">not</i> considered to be application columns by this function.
+                     </p>
+                     <p class="Paragraph">Either only the first, or all parameters must be specified. The optional parameters can be used to prevent this function from
+                        calling <a href="../../progguide/functions_runtime_dictionary_information/rdi.table.htm" class="manualLink">rdi.table()</a> and <a href="../../progguide/functions_runtime_dictionary_information/rdi.column.htm" class="manualLink">rdi.column()</a> again when that was already done by the application.
+                     </p>
+                  </div>
+               </div>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>column.name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The column (including table name) to check.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>column.type</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional input, the column's database type as returned by e.g. <a href="../../progguide/functions_runtime_dictionary_information/rdi.column.htm" class="manualLink">rdi.column()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>column.offset</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional input, the column's offset in the record as returned by e.g. <a href="../../progguide/functions_runtime_dictionary_information/rdi.column.htm" class="manualLink">rdi.column()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>table.real.length</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional input, the table record's length without internal data as returned by <a href="../../progguide/functions_runtime_dictionary_information/rdi.table.htm" class="manualLink">rdi.table()</a> (real_length).
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">True if the column is a regular application column, false if the column is one that is automatically added by tools.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 2040.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_runtime_dictionary_information/overview_and_synopsis.htm" class="manualLink">Runtime dictionary information overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_runtime_dictionary_information/rdi.is.application.column, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

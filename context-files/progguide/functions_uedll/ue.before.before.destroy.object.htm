@@ -1,0 +1,81 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>ue.before.before.destroy.object()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions ue.before.before.destroy.object ue.before.before.destroy.object ue.before.before.destroy.object ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">ue.before.before.destroy.object()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;extern long&nbsp;ue.before.before.destroy.object&nbsp;
+					()</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This hook is called in case data is deleted, either by the user pressing the delete button on the UI, 
+                  				or programmatically when one of the functions <code class="Code"> <a href="../../progguide/functions_db_operations/dal.destroy.object.htm" class="manualLink">dal.destroy.object()</a></code> or <code class="Code"> <a href="../../progguide/functions_db_operations/dal.destroy.htm" class="manualLink">dal.destroy()</a></code> is called.
+               </p>
+               <p class="Paragraph">Note that this hook is also executed in case a 'stand-alone' (i.e. not initiated by a UI delete or a dal.destroy.object())
+                  <code class="Code"> <a href="../../progguide/functions_db_operations/db.delete.htm" class="manualLink">db.delete()</a></code> is done.
+               </p>
+               <p class="Paragraph">In case a DAL is present, this hook is executed just before the <code class="Code"> <a href="../../progguide/functions_dal/before.destroy.object.htm" class="manualLink">before.destroy.object()</a></code> hook.
+               </p>
+               <p class="Paragraph">In case no DAL is present, this hook is executed just before the <code class="Code">main.table.io:before.delete:</code> UI script section.
+               </p>
+               <p class="Paragraph">In case of a 'stand-alone'<code class="Code"> <a href="../../progguide/functions_db_operations/db.delete.htm" class="manualLink">db.delete()</a></code>, this hook is executed before the <code class="Code"> <a href="../../progguide/functions_db_operations/db.delete.htm" class="manualLink">db.delete()</a></code> operation and also just before the <code class="Code"> <a href="../../progguide/functions_uedll/ue.after.before.destroy.object.htm" class="manualLink">ue.after.before.destroy.object()</a></code> hook.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">This hooks returns 0 if deleting the record is permitted. 
+               					It should return a negative value like DALHOOKERROR, in case of an error.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			UEDLL
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+function extern long ue.before.before.destroy.object()
+{
+        | Do some extra actions just before the standard 
+        | before.destroy.object hook
+        ...
+        return(0)
+}
+		</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_uedll/overview.htm" class="manualLink">User Exit DLL Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/object_hooks.htm" class="manualLink">Object hooks</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/4gl_main_table_io_sections.htm" class="manualLink">4GL main table i/o sections</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_uedll/ue.before.before.destroy.object, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

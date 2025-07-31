@@ -1,0 +1,306 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>stat.info()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions stat.info stat.info stat.info ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">stat.info()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;stat.info&nbsp;
+					(string&nbsp;file_name, ref long&nbsp;size, ref long&nbsp;mode, ref long&nbsp;inode, ref long&nbsp;dev, ref long&nbsp;uid, ref long&nbsp;gid, ref long&nbsp;nlink, ref long&nbsp;ctime, ref long&nbsp;mtime, ref long&nbsp;atime)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This returns information about a named file. It provides
+                  the same information as <a href="../../progguide/functions_directory_file_operations/fstat.info.htm" class="manualLink">fstat.info()</a>, but for a named
+                  file.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="11" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>file_name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the file. All files listed in the
+                           path name must be searchable. To specify a remote
+                           file, include the host name. For example:
+                           "host!/usr/myfile".
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>size</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The file size in bytes.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>mode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This contains a bit pattern that indicates the
+                           access permission (posix) of the file. Use the
+                           following defines to check the file mode:
+                        </p>
+                        <table width="100%" class="default">
+                           <tbody noTR="4" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">S_IRWXU</td>
+                                 <td rowspan="1" colspan="1" class="default">read, write, execute permission by
+                                    owner
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">S_IRUSR</td>
+                                 <td rowspan="1" colspan="1" class="default">read permission by owner</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">S_IWUSR</td>
+                                 <td rowspan="1" colspan="1" class="default">write permission by owner</td>
+                              </tr>
+                              <tr no="4" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">S_IXUSR</td>
+                                 <td rowspan="1" colspan="1" class="default">execute, search permission by owner</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <table width="100%" class="default">
+                           <tbody noTR="4" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">S_IRWXG</td>
+                                 <td rowspan="1" colspan="1" class="default">read, write, execute permission by
+                                    group
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">S_IRGRP</td>
+                                 <td rowspan="1" colspan="1" class="default">read permission by group</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">S_IWGRP</td>
+                                 <td rowspan="1" colspan="1" class="default">write permission by group</td>
+                              </tr>
+                              <tr no="4" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">S_IXGRP</td>
+                                 <td rowspan="1" colspan="1" class="default">execute, search permission by group</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <table width="100%" class="default">
+                           <tbody noTR="4" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">S_IRWXO</td>
+                                 <td rowspan="1" colspan="1" class="default">read, write, execute permission by
+                                    others
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">S_IROTH</td>
+                                 <td rowspan="1" colspan="1" class="default">read permission by others</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">S_IWOTH</td>
+                                 <td rowspan="1" colspan="1" class="default">write permission by others</td>
+                              </tr>
+                              <tr no="4" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">S_IXOTH</td>
+                                 <td rowspan="1" colspan="1" class="default">execute, search permission by others</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <table width="100%" class="default">
+                           <tbody noTR="2" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">S_ISUID</td>
+                                 <td rowspan="1" colspan="1" class="default">set user id on execution (sbit)</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">S_ISGID</td>
+                                 <td rowspan="1" colspan="1" class="default">set group id on execution (sbit)</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <table width="100%" class="default">
+                           <tbody noTR="1" class="default">
+                              <tr no="1" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">S_ISVTX</td>
+                                 <td rowspan="1" colspan="1" class="default">save text after execution</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>inode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">inode number.</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>dev</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Device where file is stored.</p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>uid</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">User ID of the file’s owner.</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>gid</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The file’s group ID.</p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>nlink</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Number of links to the file.</p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>ctime</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The time when the file status was last changed,
+                           as a number of seconds since 00:00:00 GMT, January
+                           1, 1970.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>mtime</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The time when the file was last modified, as a
+                           number of seconds since 00:00:00 GMT, January 1,
+                           1970.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="true" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>atime</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The time when the file data was last accessed, as
+                           a number of seconds since 00:00:00 GMT, January 1,
+                           1970.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;&gt;0</th>
+                     <td rowspan="1" colspan="1" class="none">Operating system error code.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">You can use the following macros to check the file
+                  type:
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long    ret
+long    size, mode, inode, dev, uid, gid, n.link, c.time, a.time,
+m.time
+string file_name(256)
+
+file_name = "/usr/bse/lib/ipc_info"
+ret = stat.info(        file_name,
+                                                        size,
+                                                        mode,
+                                                        inode,
+                                                        dev,
+                                                        uid,
+                                                        gid,
+                                                        n.link,
+                                                        c.time,
+                                                        m.time,
+                                                        a.time )
+if ret then
+                | stat.info failed, probably file not found
+endif
+if ( S_ISDIR( mode ) ) then
+                sprintf$( "%s is a directory", file_name )
+endif
+if ( bit.and( S_IRUSR, mode ) ) then
+                sprintf$( "User has read permission" )
+endif
+if ( bit.and( S_IWUSR, mode ) ) then
+                sprintf$( "User has write permission" )
+endif
+if ( bit.and( S_IXUSR, mode ) ) then
+                sprintf$( "User has execute permission" )
+endif
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/overview.htm" class="manualLink">Directory and file operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/synopsis.htm" class="manualLink">Directory and file operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_directory_file_operations/stat.info, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

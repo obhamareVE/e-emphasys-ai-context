@@ -1,0 +1,170 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>parse_and_exec_function()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions parse_and_exec_function parse_and_exec_function parse_and_exec_function ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">parse_and_exec_function()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;parse_and_exec_function&nbsp;
+					(string&nbsp;dll_name, string&nbsp;function_call [, ref void&nbsp;return_value] [, ref string&nbsp;return_call])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function is similar to <a href="../../progguide/functions_dll/exec_dll_function.htm" class="manualLink">exec_dll_function()</a>. It
+                  loads a specified DLL and parses and executes a specified
+                  function within that DLL. If the DLL is already loaded, the
+                  identification number of the loaded DLL is used to search for
+                  the specified function. Otherwise, a load_dll(dll_name, 0)
+                  call is executed automatically.
+               </p>
+               <p class="Paragraph">Use this function only when the function and its arguments
+                  are known only at runtime. The function is intended for
+                  handing function calls received as strings from other
+                  processes.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>dll_name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the DLL that must be loaded.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>function_call</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A string containing the function name and
+                           arguments. You can specify any function in this
+                           argument, except one that contains array arguments.
+                           To execute a function with array arguments, use <i class="Emphasis">exec_dll_function()</i> instead.
+                        </p>
+                        <p class="Paragraph">For each argument value, <a href="../../progguide/3gl_features/type_conversions.htm#implicit_type_conversion" class="manualLink">implicit conversion</a> of its string representation to the type of the function argument is performed.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">[ref void</td>
+                     <td class="none"><code>return_value</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Reference argument to which the return value of the function call must be assigned.</p>
+                        <p class="Paragraph"><a href="../../progguide/3gl_features/type_conversions.htm#implicit_type_conversion" class="manualLink">Implicit conversion</a> of the return value of the function call from its original type
+                           to the type of the reference argument is performed.
+                        </p>
+                        <p class="Paragraph">If the function to be called is of type void
+                           (this means that no value is returned),
+                           then this argument must be omitted.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">[ref string</td>
+                     <td class="none"><code>return_call</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Reference argument which receives a representation of the function call after its execution.</p>
+                        <p class="Paragraph">For reference arguments of the function, the resulting argument value is given.</p>
+                        <p class="Paragraph"><a href="../../progguide/3gl_features/type_conversions.htm#implicit_type_conversion" class="manualLink">Implicit conversion</a> of the represented values from their original type
+                           to the string type is performed.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">Error; DLL not found.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-2</th>
+                     <td rowspan="1" colspan="1" class="none">Error; Function not found.</td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-3</th>
+                     <td rowspan="1" colspan="1" class="none">Error; Syntax error in function call.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">If the function call contains reference arguments, the result
+                  of the function call (stored in <i class="Emphasis">return_call</i>) cannot
+                  become longer than the length of the <i class="Emphasis">function_call</i> argument.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+| assume the function my_max in DLL ttstdlib which returns the
+| maximum of the two given arguments.
+| object ottstdlib belongs to DLL ttstdlib
+
+long   ret, ret2
+long   a, b
+string ret_call(80)
+string funccall(80)
+
+a = 30
+b = 40
+
+funccall = sprintf$("my_max(%d,%d)", a, b)
+
+ret = parse_and_exec_function( "ottstdlib", funccall, ret2, ret_call )
+| ret2 becomes 40
+| ret_call becomes "my_max(30,40)"
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dll/overview_and_synopsis.htm" class="manualLink">DLL functions (executing) overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dll/parse_and_exec_function, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

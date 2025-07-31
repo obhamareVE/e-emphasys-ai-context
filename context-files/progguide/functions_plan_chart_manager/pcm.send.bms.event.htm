@@ -1,0 +1,132 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>pcm.send.bms.event()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions pcm.send.bms.event pcm.send.bms.event pcm.send.bms.event ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">pcm.send.bms.event()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;pcm.send.bms.event&nbsp;
+					(long&nbsp;command, ref string&nbsp;arglist)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This function is only
+                  	  supported for Baan Windows and its usage is therefore deprecated.
+               </p>
+               <p class="Paragraph">Use this in a process started by <a href="../../progguide/functions_plan_chart_manager/pcm.activate.session.htm" class="manualLink">pcm.activate.session()</a> in order to send an event back to
+                  	  the application that started the session.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>command</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The command to be sent back to the application. The Chart Manager
+                           			places this in the variable
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>arglist</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The argument list. The application can retrieve this string by
+                           			calling <a href="../../progguide/functions_interprocess_communication_bshell/bms.receive.htm" class="manualLink">bms.receive$()</a>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Application</div><pre class="CodeBlock">
+| handle events
+while next.event(event)
+        evt.bucket = bms.receive$()
+        on case evt.bms.sender(event)
+        case appl.pid:
+                pcm.bucket = evt.bucket
+                if pcm.bucket(1;1) = "0" then
+                        item.f = pcm.bucket(2;16)
+                        item.t = pcm.bucket(18;16)
+                else
+                        if pcm.bucket(1;1) = "1" then
+                                cprj.f = pcm.bucket(2;6)
+                                cprj.t = pcm.bucket(8;6)
+                        endif
+                endif
+                pcm.refresh(plan_id)
+                break
+        case ...
+                        ....
+        endcase
+          ....
+endwhile
+
+| start session
+tt.session.desc("ppmod1000m000", desc)
+appl.pid = pcm.activate.session("ppmod1000m000", desc)
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Other process</div><pre class="CodeBlock">
+choice.cont.process:
+before.choice:
+        event.bucket(1;1) = "0"
+        event.bucket(2;16) = item.f
+        event.bucket(18;16) = item.t
+        pcm.send.bms.event(0, event.bucket)
+
+choice.end.program:
+before.choice:
+        event.bucket(1;1) = "1"
+        event.bucket(2;6) = cprj.f
+        event.bucket(8;6) = cprj.t
+        pcm.send.bms.event(0, event.bucket)
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/overview.htm" class="manualLink">Plan Chart Manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/synopsis.htm" class="manualLink">Plan Chart Manager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/example.htm" class="manualLink">Plan Chart Manager: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_plan_chart_manager/pcm.send.bms.event, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

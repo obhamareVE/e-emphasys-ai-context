@@ -1,0 +1,194 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>gbf.set.interior.icon()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions gbf.set.interior.icon gbf.set.interior.icon gbf.set.interior.icon ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">gbf.set.interior.icon()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;gbf.set.interior.icon&nbsp;
+					(const string&nbsp;icon.group(), const string&nbsp;unselected.closed(), const string&nbsp;unselected.open(), const string&nbsp;selected.closed(), string&nbsp;unselected.open(), long&nbsp;is.default [, const string&nbsp;icon.desc()] [, long&nbsp;context.menu])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function adds an interior node icon to the set of
+                  interior node icons. The return value, if non negative, must
+                  be used in subsequent <a href="../../progguide/functions_generic_browser_frameworkf/gbf.add.object.htm" class="manualLink">gbf.add.object()</a> calls to
+                  identify this icon set. Empty icons, in other words empty
+                  strings, are not allowed. It is not checked whether the icons
+                  are different, so for example it is allowed to have the same
+                  icon for both selected.open and selected.closed.
+               </p>
+               <p class="Paragraph">Note that when using the Tree Control this default icon
+                  will also be used as dummy unique root icon.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="8" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>icon.group()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The icon.group must be a valid icon group as
+                           defined in table ttdsk900 Icon Groups using session
+                           ttdsk9100m000 Icon Groups.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>unselected.closed()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The unselected.closed, unselected.open,
+                           selected.closed, unselected.open should be valid
+                           icons as defined in table ttdsk903 Icons using
+                           session ttdsk9103m000 Icons.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>unselected.open()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>selected.closed()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>unselected.open()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>is.default</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">If set to true this icon is used as the default
+                           interior node icon and the previous default interior
+                           node icon is overruled.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td class="none">[const string</td>
+                     <td class="none"><code>icon.desc()</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The icon.desc should be a message that contains
+                           the description of the icon. This icon.desc will be
+                           used when the GBF tree is printed. If not given or
+                           the message is empty then nothing will be printed.
+                           Also this text will be shown when help on icons is
+                           asked for via the Help -&gt; Icon Descriptions.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>context.menu</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The 
+                           argument is used when the user
+                           wants to couple a context menu to the icon (see <a href="../../progguide/functions_generic_browser_frameworkf/gbf.create.context.menu.htm" class="manualLink">gbf.create.context.menu()</a>). Every icon can have it’s own context.menu. This
+               option will be overruled by the context menu given
+               by <a href="../../progguide/functions_generic_browser_frameworkf/gbf.add.object.htm" class="manualLink">gbf.add.object()</a></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">&gt; 1</td>
+                     <td rowspan="1" colspan="1" class="none">The identification of this new icon set</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">= 1</td>
+                     <td rowspan="1" colspan="1" class="none">Should never be returned, as 1 is the GBF
+                        default
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.NO.MEMORY</td>
+                     <td rowspan="1" colspan="1" class="none">Not enough memory</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ICON.EMPTY</td>
+                     <td rowspan="1" colspan="1" class="none">Empty icon strings are not allowed</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ICON.LOAD.ERROR</td>
+                     <td rowspan="1" colspan="1" class="none">Could not load the icon</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.BITMAP</td>
+                     <td rowspan="1" colspan="1" class="none">Illegal bitmap for icon (not a GIF file)</td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.STATE</td>
+                     <td rowspan="1" colspan="1" class="none">GBF is not in the right state to deal with this
+                        function
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/overview.htm" class="manualLink">Generic Browser Framework (GBF) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/synopsis.htm" class="manualLink">Generic Browser Framework (GBF) synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/typical_usage.htm" class="manualLink">Typical usage</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/getting_started.htm" class="manualLink">Getting started</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/example.htm" class="manualLink">Example</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/error_codes_and_return_values.htm" class="manualLink">Generic Browser Framework error codes and return values</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/standard_menu_items_and_function_keys.htm" class="manualLink">standard menu items and function keys</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/messages_and_questions.htm" class="manualLink">Messages and questions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_generic_browser_frameworkf/gbf.set.interior.icon, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

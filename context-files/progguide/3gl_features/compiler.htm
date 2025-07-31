@@ -1,0 +1,461 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Compiler</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="compiler ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Compiler</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">You compile program scripts with the bic6.2 compiler. The
+               compiler is automatically activated after you have edited your
+               program or report script and after the use of std_gen6.2 and
+               repgen6.2 at the option 'Compile' in the data dictionary. You can
+               also use the compiler to compile 3GL programs
+            </p>
+            <p class="Paragraph">The syntax for the compiler is:</p><pre class="CodeBlock">
+bic6.2 [-ilptz67sV] [-wW[level]] [-o &lt;object&gt;] [-d dll[:dll...]]
+       [-D &lt;macro&gt;] [-I &lt;dir&gt;] source
+</pre><table width="100%" class="default">
+               <tbody noTR="20" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-i</code></td>
+                     <td rowspan="1" colspan="1" class="default">Assembler output is stored in &lt;source&gt;.i.
+                        Do not specify an object file.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-l</code></td>
+                     <td rowspan="1" colspan="1" class="default">Object will run in debug mode.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-p</code></td>
+                     <td rowspan="1" colspan="1" class="default">Object will run in profiling mode for time
+                        analysis (see function times.on()).
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-t</code></td>
+                     <td rowspan="1" colspan="1" class="default">Print tokens after preprocessor pass.</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-pacc pack_comb</code></td>
+                     <td rowspan="1" colspan="1" class="default">Use specified package combination.</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-u[l]</code></td>
+                     <td rowspan="1" colspan="1" class="default">Create 'where used' list [ for level l].</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-f fn</code></td>
+                     <td rowspan="1" colspan="1" class="default">File name for 'where used' output file.</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-z</code></td>
+                     <td rowspan="1" colspan="1" class="default">Ignore the BAAN_SCM_GRP variable for VRC
+                        searches.
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-6</code></td>
+                     <td rowspan="1" colspan="1" class="default">Generate 6.1 object format.</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-7</code></td>
+                     <td rowspan="1" colspan="1" class="default">Generate 7.2 object format. This is the
+                        default.
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-s</code></td>
+                     <td rowspan="1" colspan="1" class="default">Generate symbol table to stdout; for more
+                        information use 'bic_info6.2 -s'.
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-V</code></td>
+                     <td rowspan="1" colspan="1" class="default">Print release information.</td>
+                  </tr>
+                  <tr no="13" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-w</code></td>
+                     <td rowspan="1" colspan="1" class="default">Suppress all warnings.</td>
+                  </tr>
+                  <tr no="14" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-wn</code></td>
+                     <td rowspan="1" colspan="1" class="default">Suppress warnings of level n. Some warnings are suppressed by default.</td>
+                  </tr>
+                  <tr no="15" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-W</code></td>
+                     <td rowspan="1" colspan="1" class="default">Give warnings of all levels.</td>
+                  </tr>
+                  <tr no="16" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-Wn</code></td>
+                     <td rowspan="1" colspan="1" class="default">Give warnings of level n. Most warnings are enabled by default. Others must be explicitly switched on.</td>
+                  </tr>
+                  <tr no="17" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-o &lt;obj&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">Specifies the object name; when not specified,
+                        only a syntax check is performed.
+                     </td>
+                  </tr>
+                  <tr no="18" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-d</code></td>
+                     <td rowspan="1" colspan="1" class="default">Specifies the DLL(s), separated by a colon (':').
+                        These are the objects of dynamic-link libraries
+                        necessary to compile the source program.
+                     </td>
+                  </tr>
+                  <tr no="19" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-D&lt;macro&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">Specifies a condition &lt;macro&gt;, see also <a href="../../progguide/3gl_features/preprocessor.htm" class="manualLink">Preprocessor</a>.
+                     </td>
+                  </tr>
+                  <tr no="20" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-I&lt;dir&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">Specifies the directories (separated by a colon
+                        (':')) where include files are located.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">The warnings associated with the various level numbers are
+               as follows:
+            </p>
+            <table width="100%" border="1" class="default">
+               <tbody noTR="21" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Level</th>
+                     <th rowspan="1" colspan="1" class="default">Warning</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">1</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Declared but never used</p>
+                        <p class="Paragraph">For example, remove the declaration of the
+                           non-used variables. Warnings related to an include
+                           file can be prevented by entering <a href="../../progguide/3gl_features/pragma_codes_preprocessor.htm" class="manualLink">#pragma nowarnings</a> at the beginning of the include file.
+                           All warnings caused by the include file will then be
+                           ignored.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">2</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Function never used</p>
+                        <p class="Paragraph">A function is found but never called. For
+                           instance remove the function. This warning related
+                           to an include file can be prevented by entering <a href="../../progguide/3gl_features/pragma_codes_preprocessor.htm" class="manualLink">#pragma nowarnings</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">3</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Return value of function ignored</p>
+                        <p class="Paragraph">When a function yields a value, that value must
+                           be checked. The reason is that many functions return
+                           TRUE or FALSE, depending on whether the action has
+                           been completed successfully or not. If the return
+                           value is of no importance, a dummy value must be
+                           assigned to the function. For example:
+                        </p><pre class="CodeBlock">
+dummy = ittadv0037.search.label(....)
+</pre></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">4</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">A long divided by a long gives also a long</p>
+                        <p class="Paragraph">A long divided by a long will result in a long.
+                           For example:
+                        </p><pre class="CodeBlock">
+long a
+long b
+a = 1
+b = 3
+a / b = 0 and not 0.33
+</pre></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">5</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Statement/Label not reached</p>
+                        <p class="Paragraph">Occurs if a statement cannot be reached. For
+                           example:
+                        </p><pre class="CodeBlock">
+function test.a()
+{
+    if a = 0 then
+        ...
+        return()
+    else
+        ...
+        return()
+    endif
+    a = 1
+}
+</pre><p class="Paragraph">The statement a = 1 will never be reached, so
+                           this warning indicates a programming error or
+                           logical error.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">6</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Comparison of two float types may yield
+                           unpredictable results
+                        </p>
+                        <p class="Paragraph">This warning is given when two double types are
+                           compared for equivalence. Please use the function <a href="../../progguide/functions_mathematical_operations/double.cmp.htm" class="manualLink">double.cmp()</a> to compare double variables, double
+                           domains, and double functions. Note that for double
+                           functions the warning appears only if the function
+                           has been prototyped before its actual use. For
+                           example:
+                        </p><pre class="CodeBlock">
+function double d()
+
+function main()
+{
+    domain tttst.db62   dbldom
+    double              a, b
+
+    if a = b then
+        ...
+    endif
+    if d() &gt; a then
+        ...
+    endif
+    if a &lt;= dbldom then
+        ...
+    endif
+}
+</pre><p class="Paragraph">All the above expressions may yield unpredictable
+                           results, as no tolerances have been specified.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">9</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">External variable '%s' passed as reference to
+                           function '%s'
+                        </p>
+                        <p class="Paragraph">When an external variable is given as a call by
+                           reference to a function, the value of this variable
+                           within the function is not equal to the local value.
+                           Just after the return, the value of the external
+                           variable will be changed. For example:
+                        </p><pre class="CodeBlock">
+extern long a
+
+function main()
+{
+    a = 5
+    make.ten(a)
+    message("a = %d", a)   | results in a = 10
+}
+
+function make.ten( ref long x )
+{
+    message("a = %d", a)   | results in a = 5
+    x = 10
+    ....
+    message("a = %d", a)   | results in a = 5
+}
+</pre><p class="Paragraph">When within the function make.ten() another
+                           function is called using the external variable a,
+                           the variable a still has the value 5.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">10</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Passing fixed variable to non-fixed call by
+                           reference argument (or non-fixed to fixed)
+                        </p>
+                        <p class="Paragraph">When a global variable is declared as fixed, the
+                           variable within a function is still regarded as
+                           fixed, although the reference declaration is not
+                           fixed. For example:
+                        </p><pre class="CodeBlock">
+string a(20)   fixed
+function process.variable( ref string b )
+{
+}
+</pre><p class="Paragraph">If the function is invoked using the argument
+                           "a", "b" is considered fixed.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">12</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">External variable '%s' added in external symbol
+                           table
+                        </p>
+                        <p class="Paragraph">An external variable is declared within a
+                           function. For example:
+                        </p><pre class="CodeBlock">
+function test()
+{
+    extern long a
+    ....
+}
+</pre></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">13</td>
+                     <td rowspan="1" colspan="1" class="default">System library &lt;bic_stdlib&gt; NOT included
+                        !
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">15</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Warning given by #pragma &lt;text&gt;</p>
+                        <p class="Paragraph">This is a warning of your own format, see <a href="../../progguide/3gl_features/pragma_codes_preprocessor.htm" class="manualLink">Pragma codes (preprocessor)</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">16</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Missing selectdo; automatic break or Missing
+                           selectdo; loop until selecteos
+                        </p>
+                        <p class="Paragraph">When a selectdo is missing in the select
+                           statement, an automatic break is generated to
+                           prevent unnecessary use of cpu time. When a selectdo
+                           is missing, while a selecteos section exists, the
+                           select statement should be executed. Probably this
+                           is a non optimal select statement.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">18</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Macro '%s' redefined</p>
+                        <p class="Paragraph">A macro is defined, which was already defined
+                           with the same arguments.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="15" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">19</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Function '%s' in DLL '%s' ignored taken from
+                           '%s'
+                        </p>
+                        <p class="Paragraph">A duplicate function occurs in a DLL or program
+                           script. A function is searched for in the script
+                           first and next in the libraries that are linked to
+                           the script in the specified order. If a function is
+                           found twice, this warning appears.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="16" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">25</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Simulating built in Boolean data type.</p>
+                        <p class="Paragraph">Reserved keyword boolean, true or false is
+                           defined as long, 1 or 0.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="17" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">26</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Macro '%s' has illegal body (future keyword).</p>
+                        <p class="Paragraph">Reserved keyword boolean, true or false is
+                           defined as another value as long, 1 or 0.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="18" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">27</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Casting boolean to numeric not allowed.</p>
+                        <p class="Paragraph">For example:</p><pre class="CodeBlock">
+function test()
+{
+    long    l
+    boolean b
+    l = b
+    l = (a &gt; 10)
+}
+</pre><p class="Paragraph">This warning is suppressed by default. Use compiler option -W27 to switch it on.</p>
+                     </td>
+                  </tr>
+                  <tr no="19" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">28</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Casting numeric to boolean not allowed.</p>
+                        <p class="Paragraph">For example:</p><pre class="CodeBlock">
+function test()
+{
+    long    l
+    boolean b
+    b = l
+    b = 0
+}
+</pre><p class="Paragraph">This warning is suppressed by default. Use compiler option -W28 to switch it on.</p>
+                     </td>
+                  </tr>
+                  <tr no="20" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">31</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Duplicate value in case (ignored)</p>
+                     </td>
+                  </tr>
+                  <tr no="21" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">32</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore"><a href="../../progguide/3gl_features/arithmetic_operators.htm#compile_time_constants" class="manualLink">Constant integer expression</a> outside signed 32-bit range.
+                        </p>
+                        <p class="Paragraph">This warning is suppressed by default. Use compiler option -W32 to switch it on.
+                           For porting sets with <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV level</a> greater than or equal to <a href="../../progguide/tiv/tiv_2030.htm" class="manualLink">2030</a>,
+                           warnings triggered by this compiler option
+                           are not suppressed by <a href="../../progguide/3gl_features/pragma_codes_preprocessor.htm" class="manualLink">#pragma nowarnings</a>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">You can specify the options for automatic compilation in
+               the session Development Parameters Template
+               (ttams1150m000).
+            </p>
+            <p class="Paragraph">When an error is found in the program, all warnings after
+               that error are suppressed.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/compiler, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

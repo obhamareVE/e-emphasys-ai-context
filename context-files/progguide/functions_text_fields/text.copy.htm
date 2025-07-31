@@ -1,0 +1,149 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>text.copy()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions text.copy text.copy text.copy ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">text.copy()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;text.copy&nbsp;
+					(string&nbsp;text_field_to, string&nbsp;text_field_from, string&nbsp;kw1, string&nbsp;kw2, string&nbsp;kw3, string&nbsp;kw4, string&nbsp;tgroup, string&nbsp;edit_opt)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This makes a copy of the entire text of a specified text
+                  field, for all languages, and assigns it a new text number.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="8" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>text_field_to</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the new text field. See <a href="../../progguide/functions_text_fields/overview.htm" class="manualLink">Text fields overview</a>. This
+                           returns the text number for the new text field.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>text_field_from</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the text field that must be copied. See <a href="../../progguide/functions_text_fields/overview.htm" class="manualLink">Text fields overview</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>kw1</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use these arguments to specify key words for the new
+                           text. If you specify one or more of these arguments as
+                           an empty string, the corresponding key word(s) are
+                           copied from the original text. It is possible, for
+                           example, to specify two new key words and to copy the
+                           other two from the original text.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>kw2</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>kw3</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>kw4</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>tgroup</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This specifies the name of the text group to which
+                           the new text must be assigned. If you specify an empty
+                           string here, the text is assigned to the user's default
+                           group.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>edit_opt</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This specifies the type of window in which the text
+                           must be displayed.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">&gt;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; success; returns the number of lines copied</p>
+            <p class="Paragraph">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the text_field_from = 0, no source text number</p>
+            <p class="Paragraph">-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; error; no permission for this text field</p>
+            <p class="Paragraph">-2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No text copied.</p>
+            <p class="Paragraph">In case of textauthorizations are set to "Use" value of
+               textnumber in variable tm.field.from has been assigned to
+               tm.field.to.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">This example copies the text from the text field
+               tttxt008.help to a new text field named tttxt008.docu. A new
+               text number is created for tttxt008.docu and this is returned in
+               the first argument. Key words 1 and 2 are new. Key words 3 and 4
+               are copied from the original text.
+            </p><pre class="CodeBlock">
+ret=TEXT.COPY("tttxt008.docu", "tttxt008.help", "docu", "help", "",
+                "", "", "")
+   </pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_text_fields/overview.htm" class="manualLink">Text fields overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_text_fields/synopsis.htm" class="manualLink">Text fields synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_text_fields/text.copy, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

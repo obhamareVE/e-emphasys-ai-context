@@ -1,0 +1,112 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>GROUP BY clause</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="GROUP BY clause SELECT statement GROUP BY clause ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">GROUP BY clause</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The GROUP BY clause specifies a <a href="../../progguide/functions_database_handling/sql_glossary.htm#GroupedTable" class="glossaryLink">grouped table</a>.
+               It operates on the table that is specified by the FROM clause and possibly the WHERE clause of the SELECT statement.
+            </p>
+            <p class="Paragraph">GROUP BY takes the result-set and arranges its rows into groups using one or more columns that have duplicate values.
+               	    Typically used in conjunction with aggregate functions (MIN, MAX, AVG, etc).
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;group by clause&gt;
+    ::= GROUP BY <a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">Column reference</a> { , <a href="../../progguide/functions_database_handling/column_reference.htm" class="manualLink">Column reference</a> }...
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The columns of the grouped table have the same names and
+               descriptors as the table the GROUP BY clause operates on.
+            </p>
+            <p class="Paragraph">For any two rows of the input table, if the values on the
+               		 grouping columns are identical or both NULL, then the rows are
+               		 in the same group of the grouped table. Otherwise, they are in
+               		 different groups.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">In the following example, the GROUP BY clause groups the rows
+               		 of table <i class="Emphasis">dbtst120</i> that satisfy the condition <i class="Emphasis">sex = dbsex.female</i> by the column <i class="Emphasis">edlevel</i>.
+            </p><pre class="CodeBlock">
+SELECT edlevel, MIN( salary ), MAX( salary )
+FROM dbtst120
+WHERE sex = dbsex.female
+GROUP BY edlevel
+</pre><p class="Paragraph">The result of applying the GROUP BY clause is the following
+               		 grouped table. Column <i class="Emphasis">edlevel</i> is a (the) grouping column
+               	         of the grouped table.
+            </p><pre class="CodeBlock">
+edlevel    salary            firstnme            ...
+-------------------------------------------------------------
+12         15900.00000000000 MAUDE               
+-------------------------------------------------------------
+15         27380.00000000000 MARIA               
+-------------------------------------------------------------
+16         36170.00000000000 EVA                 
+16         29750.00000000000 EILEEN              
+16         23800.00000000000 DOLORES             
+16         17250.00000000000 SYBIL               
+-------------------------------------------------------------
+17         22250.00000000000 ELIZABETH           
+17         21340.00000000000 MARILYN             
+17         26250.00000000000 ETHEL               
+-------------------------------------------------------------
+18         52750.00000000000 CHRISTINE           
+18         28420.00000000000 HEATHER             
+18         29840.00000000000 JENNIFER            
+-------------------------------------------------------------
+20         38250.00000000000 SALLY               
+-------------------------------------------------------------
+</pre><p class="Paragraph">The following example does not actually contain a GROUP BY
+               clause, but because the SELECT clause contains a <a href="../../progguide/functions_database_handling/set_function_specification.htm" class="manualLink">Set function specification</a> the statement may be viewed as one that
+               contains an implicit GROUP BY clause, containing no <i class="Emphasis">&lt;column
+                  reference&gt;s</i>.
+            </p><pre class="CodeBlock">
+SELECT AVG( salary )
+FROM dbtst120
+WHERE edleval &gt; 17
+</pre><p class="Paragraph">The result of applying the implicit GROUP BY clause is the
+               	   following grouped table. Note that the table consists of a
+               	   single group and that it does not have any grouping columns.
+            </p><pre class="CodeBlock">
+edlevel    salary            firstnme            ...
+-------------------------------------------------------------
+18         52750.00000000000 CHRISTINE           
+18         28420.00000000000 HEATHER             
+18         29840.00000000000 JENNIFER            
+20         38250.00000000000 SALLY               
+-------------------------------------------------------------
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/from.htm" class="manualLink">FROM clause</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/having.htm" class="manualLink">HAVING clause</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/select.htm" class="manualLink">SELECT clause</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/group_by, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

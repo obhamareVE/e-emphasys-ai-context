@@ -1,0 +1,124 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Plan Chart Manager synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="plan chart manager overview synopsis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Plan Chart Manager synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This API is only supported for Baan
+               Windows and its usage is therefore deprecated. Instead you
+               should use the "Gantt And Schedule Charts" API.
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="11" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_plan_chart_manager/pcm.activate.session.htm" class="manualLink">pcm.activate.session()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string session(), ref string title()
+                           )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_plan_chart_manager/pcm.change.htm" class="manualLink">pcm.change()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long plan_id [, flag, value ] ... )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_plan_chart_manager/pcm.change.object.htm" class="manualLink">pcm.change.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long plan_id, long object_id
+                &nbsp; [, flag, value ] ... )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_plan_chart_manager/pcm.create.htm" class="manualLink">pcm.create()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( [ flag, value ] ...)</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_plan_chart_manager/pcm.create.object.htm" class="manualLink">pcm.create.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long plan_id, long object_type
+                &nbsp; [, flag, value ] ... )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_plan_chart_manager/pcm.destroy.htm" class="manualLink">pcm.destroy()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long plan_id )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_plan_chart_manager/pcm.destroy.object.htm" class="manualLink">pcm.destroy.object()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long plan_id, long object_id )</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_plan_chart_manager/pcm.get.data.htm" class="manualLink">pcm.get.data()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long evt_type, ref string arglist(), ...
+                           )</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_plan_chart_manager/pcm.lock.htm" class="manualLink">pcm.lock()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long plan_id, long lock )</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_plan_chart_manager/pcm.refresh.htm" class="manualLink">pcm.refresh()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long plan_id )</code></td>
+                  </tr>
+                  <tr no="11" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_plan_chart_manager/pcm.send.bms.event.htm" class="manualLink">pcm.send.bms.event()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long command, ref string arglist() )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/overview.htm" class="manualLink">Plan Chart Manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/synopsis.htm" class="manualLink">Plan Chart Manager synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_plan_chart_manager/synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

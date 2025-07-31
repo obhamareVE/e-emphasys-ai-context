@@ -1,0 +1,334 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DsCrowColumn</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dscrowcolumn ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DsCrowColumn</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">A DsCrowColumn object is a container object that displays its
+               children in rows and columns.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Events</div>
+            <p class="Paragraph">A DsCrowColumn object does not generate events.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" class="none">
+               <tbody noTR="23" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="2" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNfixedDimension</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="2" colspan="1" class="none">[CSG]</td>
+                     <td colspan="3" rowspan="1" class="none">Specifies how children are arranged in the object.
+                        Possible values are:
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DSVERTICAL</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Children are arranged vertically, from top to
+                           bottom.
+                        </p>
+                        <div class="Figure"><img src="../images/uio_012.gif" alt="[...]" height="68" width="109"></div>
+                        <p class="Paragraph">Use DsNnumRows to specify the maximum number of
+                           children that can be displayed.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">DSHORIZONTAL</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Children are arranged horizontally, from left to
+                           right.
+                        </p>
+                        <div class="Figure"><img src="../images/uio_013.gif" alt="[...]" height="69" width="112"></div>
+                        <p class="Paragraph">Use DsNnumColumns to specify the maximum number of
+                           children that can be displayed.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNheight</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="3" rowspan="1" class="none">The height of the object, in pixels.</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNhspace</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="3" rowspan="1" class="none">The horizontal spacing (in pixels) between child
+                        objects and between the edge of the DsCrowColumn object
+                        and its nearest child.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DsNinferiorPointerCursor&nbsp;&nbsp; (long)</td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="3" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The shape of the inferior mouse pointer when
+                           positioned over the object. A child of a DsCrowColumn
+                           object inherits this mouse pointer, unless otherwise
+                           specified.
+                        </p>
+                        <p class="Paragraph">This attribute is overruled by a
+                           DsNsuperiorPointerCursor attribute set for the object
+                           itself or for ancestor windows. It is also overruled by
+                           a DsNinferiorPointerCursor setting in descendant
+                           windows. Possible values are:
+                        </p>
+                        <p class="Paragraph">DSCDEFAULT (default)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCPENCIL</p>
+                        <p class="Paragraph">DSCARROW&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            DSCQUESTIONARROW</p>
+                        <p class="Paragraph">DSCCROSSHAIR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCSPLITHORIZONTAL</p>
+                        <p class="Paragraph">DSCFLEUR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            DSCSPLITVERTICAL</p>
+                        <p class="Paragraph">DSCHAND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCSPRAYCAN</p>
+                        <p class="Paragraph">DSCMAGNIFY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCWATCH</p>
+                        <p class="Paragraph">DSCAPPSTARTING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCNODROP</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNjustify</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="3" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The justification of child windows within the cells
+                           of the DsCrowColumn object. This is relevant only when
+                           DsNpacking is set to DSPACKTIGHT.
+                        </p>
+                        <p class="Paragraph">The possible values for horizontal justification
+                           are:
+                        </p>
+                        <p class="Paragraph">DSJUSTIFY LEFT (default)</p>
+                        <p class="Paragraph">DSJUSTIFY CENTER</p>
+                        <p class="Paragraph">DSJUSTIFY RIGHT</p>
+                        <p class="Paragraph">The possible values for vertical justification
+                           are:
+                        </p>
+                        <p class="Paragraph">DSJUSTIFYTOP (default)</p>
+                        <p class="Paragraph">DSJUSTIFYMIDDEL</p>
+                        <p class="Paragraph">DSJUSTIFYBOTTOM</p>
+                        <p class="Paragraph">When setting this attribute, you must combine a
+                           horizontal justification option and a vertical
+                           justification option.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNnumColumns</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="3" rowspan="1" class="none">The maximum number of children that the object can
+                        display horizontally.
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNnumRows</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="3" rowspan="1" class="none">The maximum number of children that the object can
+                        display vertically.
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNobjectType</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td colspan="3" rowspan="1" class="none">The object type.</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="2" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNpacking
+                           (long)
+                        </p>
+                     </td>
+                     <td rowspan="2" colspan="1" class="none">[CSG]</td>
+                     <td colspan="3" rowspan="1" class="none">The method of spacing the child objects within the
+                        DsCrowColumn object. Possible values are:
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td colspan="2" rowspan="1" class="none">DSPACKTIGHT</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The object contains cells of equal size, set to the
+                           size of the largest child window. Child windows
+                           positioned within these cells maintain their minimum
+                           dimensions.
+                        </p>
+                        <p class="Paragraph">This is the default value.</p>
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td colspan="2" rowspan="1" class="none">DSPACKEQUAL</td>
+                     <td rowspan="1" colspan="1" class="none">The object contains cells of equal size, set to the
+                        size of the largest child window. All child windows
+                        within these cells are displayed at the size of the
+                        largest child window.
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td colspan="2" rowspan="1" class="none">DSPACKNONE</td>
+                     <td rowspan="1" colspan="1" class="none">Child windows determine their own size and position.
+                        The DsCrowColumn window is sized to accommodate all its
+                        children.
+                     </td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td colspan="2" rowspan="1" class="none">DSPACKSTACKED</td>
+                     <td rowspan="1" colspan="1" class="none">All child windows have the same size and position.
+                        Only the last created child is visible. All other
+                        children are stacked beneath this.
+                     </td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNparent</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td colspan="3" rowspan="1" class="none">The ID of the parent object.</td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsetState</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td colspan="3" rowspan="1" class="none">The state of the object. See <a href="../../progguide/functions_user_interface_objects/dscmwindow.htm" class="manualLink">DsCmwindow</a>.
+                     </td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsuperiorPointerCursor</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="3" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The shape of the superior mouse pointer when
+                           positioned over the object. A child of a DsCrowColumn
+                           object always inherits this mouse pointer.
+                        </p>
+                        <p class="Paragraph">DsNsuperiorPointerCursor overrules any inferior
+                           mouse pointer (DsNinferiorPointerCursor) set for the
+                           object and all mouse pointers set for descendant
+                           windows. Possible values are:
+                        </p>
+                        <p class="Paragraph">DSCDEFAULT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCPENCIL</p>
+                        <p class="Paragraph">DSCARROW&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            DSCQUESTIONARROW</p>
+                        <p class="Paragraph">DSCCROSSHAIR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCSPLITHORIZONTAL</p>
+                        <p class="Paragraph">DSCFLEUR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            DSCSPLITVERTICAL</p>
+                        <p class="Paragraph">DSCHAND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCSPRAYCAN</p>
+                        <p class="Paragraph">DSCMAGNIFY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCWATCH</p>
+                        <p class="Paragraph">DSCAPPSTARTING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCNODROP</p>
+                     </td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNvspace</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="3" rowspan="1" class="none">The vertical spacing (in pixels) between child
+                        objects and between the and between the edge of the
+                        DsCrowColumn object and its nearest child.
+                     </td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtemplate</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td colspan="3" rowspan="1" class="none">The ID of a <a href="../../progguide/functions_user_interface_objects/dsctemplate.htm" class="manualLink">DsCtemplate</a> that defines a set of attributes to be
+                        applied to the object.
+                     </td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNwidth</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="3" rowspan="1" class="none">The width of the object, in pixels.</td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNx</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="3" rowspan="1" class="none">The x-coordinate of the object's outer left edge, in
+                        pixels, relative to the inner left edge of its
+                        parent.
+                     </td>
+                  </tr>
+                  <tr no="23" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNy</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="3" rowspan="1" class="none">The y-coordinate of the object's outer top edge, in
+                        pixels, relative to the inner top edge of its
+                        parent.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/dscrowcolumn, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

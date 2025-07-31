@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>set.currencies()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions set.currencies set.currencies set.currencies ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">set.currencies()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;set.currencies&nbsp;
+					(long&nbsp;seqno, string&nbsp;currency(3) [, string&nbsp;currency.desc mb])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this function to create and fill the multicurrency
+                  			table. The function inserts a single entry in the table.
+                  			Currency rotation is based on the order of currencies in
+                  			this table. Make sure that all the indices of the table
+                  			(seqno) form a consecutive range, starting at 1
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>seqno</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">sequence of currency when rotating</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>currency(3)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">currency that is assigned to attr.currency$</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>currency.desc mb</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Label referring to currency description or currency description itself.
+                           					In the latter case, the currency description must start with the at sign [@].
+                           					Note that using a literal string makes the script language dependent.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			4GL
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+set.currencies( 1, "EUR" ) 
+set.currencies( 2, "USD" )
+set.currencies( 3, "GBP" )
+		</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example using labels for descriptions</div><pre class="CodeBlock">
+set.currencies( 1, "EUR" , "tctcemms1000") |* Loc.Curr.
+set.currencies( 2, "USD" , "tctcemms1001") |* Rep.1.Curr.
+set.currencies( 3, "GBP" , "tctcmemm1002") |* Rep.2.Curr.
+		</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example using descriptions</div><pre class="CodeBlock">
+set.currencies( 1, tcemm170.fcua , "@" &amp; tt.field.desc("tcemm170.fcua"))
+set.currencies( 2, tcemm170.fcub , "@" &amp; tt.field.desc("tcemm170.fcub"))
+set.currencies( 3, tcemm170.fcuc , "@" &amp; tt.field.desc("tcemm170.fcuc"))
+		</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_currency_tables/overview_and_synopsis.htm" class="manualLink">Currency tables overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_currency_tables/set.currencies, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

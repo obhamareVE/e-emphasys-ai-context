@@ -1,0 +1,171 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>mb.locale.enumerate()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions mb.locale.enumerate mb.locale.enumerate mb.locale.enumerate mb.locale.enumerate ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">mb.locale.enumerate()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;mb.locale.enumerate&nbsp;
+					(const string&nbsp;locale.name$)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function returns information about one specific
+                  locale or about all locales.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>locale.name$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies the locale about which information is
+                           to be returned.
+                        </p>
+                        <p class="Paragraph">If an empty string "" is supplied, information
+                           about all locales is returned.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">An XML tree containing the requested information.</p>
+            <p class="Paragraph">Like any other XML tree, the returned tree must be freed
+               from memory by using <a href="../../progguide/functions_xml/delete_nodes.htm" class="manualLink">xmlDelete</a>.
+            </p>
+            <p class="Paragraph">When the supplied argument <i class="Emphasis">locale.name$</i> refers to a
+               not existing locale, e.g. "abcdefg", then the returned xml tree
+               looks like this:
+            </p><pre class="Formula">
+&lt;enumeration
+    type="locales"
+    name="abcdefg"
+/&gt;
+</pre><p class="Paragraph">When the supplied argument 
+               refers to an existing locale, e.g.
+               "ISO88591_WIN32", then the returned xml tree looks like
+               this:
+            </p><pre class="Formula">
+&lt;enumeration
+    type="locales"
+    name="ISO88591_WIN32"&gt;
+    &lt;locale
+        name="ISO88591_WIN32"
+        nlsname="NULL"
+        tssname="CP1252"
+        tss_characterset_id="7"
+        internal_factor="1"
+        external_factor="1"
+        multibyte="false"
+        language_group="Latin1"
+    /&gt;
+&lt;/enumeration&gt;
+</pre><p class="Paragraph">When the supplied argument <i class="Emphasis">locale.name$</i> is an empty
+               string "", then the returned xml tree contains a &lt;locale&gt;
+               node for each existing locale, and looks like this:
+            </p><pre class="Formula">
+&lt;enumeration
+    type="locales"&gt;
+    &lt;locale
+        name="GB2312_WIN32"
+        nlsname="chs"
+        tssname="CP936"
+        tss_characterset_id="17"
+        internal_factor="2"
+        external_factor="2"
+        multibyte="true"
+        language_group="Simplified Chinese"
+    /&gt;
+    &lt;locale
+        name="ISO88591"
+        nlsname="NULL"
+        tssname="ISO88591"
+        tss_characterset_id="0"
+        internal_factor="1"
+        external_factor="1"
+        multibyte="false"
+        language_group="Latin1"
+    /&gt;
+
+    ... etcetera ...
+
+    &lt;locale
+        name="ISO_BIN5"
+        nlsname="NULL"
+        tssname="ISO88595"
+        tss_characterset_id="23"
+        internal_factor="1"
+        external_factor="1"
+        multibyte="false"
+        language_group="Cyrillic"
+    /&gt;
+&lt;/enumeration&gt;
+</pre><p class="Paragraph">The 'name' attribute corresponds to the locale name as
+               returned by <a href="../../progguide/functions_multibyte_strings/mb.localename.htm" class="manualLink">mb.localename$()</a>.
+            </p>
+            <p class="Paragraph">The five attribute names 'name', 'nlsname', 'tssname',
+               '&#65533;nternal_factor', and 'external_factor' correspond to the
+               five values 'TSS_GET_LOCALE_NAME', 'TSS_GET_NLS_NAME',
+               'TSS_GET_TSS_NAME', 'TSS_GET_IFACTOR', and 'TSS_GET_EFACTOR'
+               of the flag supplied to the function <a href="../../progguide/functions_multibyte_strings/mb.locale.info.htm" class="manualLink">mb.locale.info()</a>.
+            </p>
+            <p class="Paragraph">The attributes 'tss_characterset_id' and 'tssname'
+               correspond to the first two arguments of <a href="../../progguide/functions_multibyte_strings/mb.set.info.htm" class="manualLink">mb.set.info()</a>.
+            </p>
+            <p class="Paragraph">The attribute 'tss_characterset_id' corresponds to the
+               value returned by <a href="../../progguide/functions_multibyte_strings/mb.char.info.htm" class="manualLink">mb.char.info()</a> and to the
+               optional third argument of <a href="../../progguide/functions_multibyte_strings/mb.import.htm" class="manualLink">mb.import$()</a>, <a href="../../progguide/functions_multibyte_strings/mb.import.raw.htm" class="manualLink">mb.import.raw()</a>, <a href="../../progguide/functions_multibyte_strings/mb.export.htm" class="manualLink">mb.export$()</a>, and <a href="../../progguide/functions_multibyte_strings/mb.export.raw.htm" class="manualLink">mb.export.raw()</a>.
+            </p>
+            <p class="Paragraph">The attribute 'multibyte' indicates if the locale has a multi byte native encoding.</p>
+            <p class="Paragraph">All locales that share a common character set have the same 'language_group' attribute.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Availability</div>
+            <div class="NoteContent">
+               <p class="Paragraph">The attributes "multibyte" and "language_group" are available from TIV 1700.</p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_multibyte_strings/overview_and_synopsis.htm" class="manualLink">Multibyte strings overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_multibyte_strings/mb.locale.enumerate, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

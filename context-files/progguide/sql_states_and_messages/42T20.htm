@@ -1,0 +1,61 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42T20 - Invalid argument type for AVG/SUM function</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42T20 - Invalid argument type for AVG/SUM function</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">An SQL statement contains a SUM or AVG set function and the
+               operand of this set function does not have a numeric type.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div><pre class="CodeBlock">
+select sum(firstnme)
+from   dbtst120
+   </pre><p class="Paragraph">The set function SUM can only be applied to operands of type
+               integer or real. Column firstnme is of type string. This will
+               cause the error:
+            </p>
+            <p class="Paragraph">SQLState 42T20: Invalid
+               argument type for SUM function
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2</div><pre class="CodeBlock">
+select avg(hiredate)
+from   dbtst120
+   </pre><p class="Paragraph">The set function AVG can only be applied to operands of type
+               integer or real. Column hiredate is of type date. This will
+               cause the error:
+            </p>
+            <p class="Paragraph">SQLState 42T20: Invalid
+               argument type for AVG function
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/set_function_specification.htm" class="manualLink">Set function specification</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/sql_data_types.htm" class="manualLink">SQL data types</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42T20, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

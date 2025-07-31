@@ -1,0 +1,64 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Document Viewer example</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Document Viewer example ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Document Viewer example</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Some specific parts in a Composite session with a Navigation panel and a Document Viewer panel are shown.</p>
+            <p class="Paragraph">Below some specific parts in the Composite child Navigation session script are shown.</p><pre class="CodeBlock">
+  Use PRCM for data synchronization between composite child sessions
+	     long node = xmlNewDataElement(“PATH”, serverfilePath)
+		prcm.notify("showfile:" &amp; str$(parent), "", node)
+</pre><p class="Paragraph">Composite child Document Viewer session .</p><pre class="CodeBlock">
+#include &lt;bic_vwr&gt;
+
+main()
+{
+	|Register with PRCM for data synchronization with another Composite child session.	
+	prcm.register("showfile:" &amp; str$(parent))
+	vwr.init()
+ 
+	| Optionally show initial file
+	client.show.file(source, false,“”)
+		
+	vwr.start()
+}
+
+
+function extern void vwr.bms.received(long sender.id, const string mask, const string mss, long length)
+{
+	long node
+	if prcm.bms.is.notification() then
+		node = prcm.get.data()
+		client.show.file(xmlData$(node), false, “”)
+	endif
+}
+
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_vwr/overview.htm" class="manualLink">Document Viewer overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_vwr/synopsis.htm" class="manualLink">Document Viewer synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_vwr/example, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

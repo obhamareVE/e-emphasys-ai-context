@@ -1,0 +1,180 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Chart manager overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="chart manager ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Chart manager overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This API is only supported for Baan Windows
+               and its usage is therefore deprecated. Instead you should use
+               the chart functions in the Programmable Dialogs API.
+            </p>
+            <p class="Paragraph">The Business Chart Manager is a tool that displays data
+               graphically, in charts. The Business Chart Manager supports a
+               variety of chart types, including, pie, line, symbol, high-low,
+               and layer. The input can consist of data from a database, a
+               file, or some other appropriate source.
+            </p>
+            <p class="Paragraph">In this document, the term <i class="Emphasis">graph</i> refers to a chart
+               drawn within a coordinate system with two or more axes. The term <i class="Emphasis">pie</i> refers to a circular chart, divided into segments,
+               which illustrates the quantitative relationship between
+               different groups of data.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">This example illustrates how the Business Chart Manager
+               builds a chart.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Source data</div>
+            <p class="Paragraph">The following figures represent the quantity of goods sold
+               per month by three different companies.
+            </p>
+            <table border="0" width="70%" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none"></th>
+                     <th rowspan="1" colspan="1" class="none">Company 1</th>
+                     <th rowspan="1" colspan="1" class="none">Company 2</th>
+                     <th rowspan="1" colspan="1" class="none">Company 3</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">Jan</th>
+                     <td rowspan="1" colspan="1" class="none">40</td>
+                     <td rowspan="1" colspan="1" class="none">30</td>
+                     <td rowspan="1" colspan="1" class="none">10</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">Feb</th>
+                     <td rowspan="1" colspan="1" class="none">20</td>
+                     <td rowspan="1" colspan="1" class="none">25</td>
+                     <td rowspan="1" colspan="1" class="none">15</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">Mar</th>
+                     <td rowspan="1" colspan="1" class="none">20</td>
+                     <td rowspan="1" colspan="1" class="none">40</td>
+                     <td rowspan="1" colspan="1" class="none">10</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">...</th>
+                     <td rowspan="1" colspan="1" class="none">...</td>
+                     <td rowspan="1" colspan="1" class="none">...</td>
+                     <td rowspan="1" colspan="1" class="none">...</td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">Dec</th>
+                     <td rowspan="1" colspan="1" class="none">30</td>
+                     <td rowspan="1" colspan="1" class="none">35</td>
+                     <td rowspan="1" colspan="1" class="none">20</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">The Business Chart Manager organizes this data into twelve
+               categories (one for each month) and three series (one for each
+               company). The data value for a particular data category and data
+               series can be represented as a data point in a chart.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Axis-oriented graph</div>
+            <p class="Paragraph">The sample data illustrated above can be plotted on a single
+               axis-oriented graph. In the Business Chart Manager, a graph can
+               has up to four axes, as follows:
+            </p>
+            <p class="Paragraph">category axis – x-axis</p>
+            <p class="Paragraph">data axis – y-axis</p>
+            <p class="Paragraph">series axis – z-axis</p>
+            <p class="Paragraph">data axis II – second y-axis</p>
+            <p class="Paragraph">The x-axis represents the data categories (in this case, the
+               months) against which each data value is plotted. The y-axis
+               represents the value scale against which each data value is
+               plotted. The values for each data series (in this case, the
+               different companies), are differentiated in a variety of ways,
+               depending on the chart type used. In a line graph, a line joins
+               the data values for a particular series. The various series can
+               be differentiated by using different line types and/or colors.
+               On a bar graph, a vertical or horizontal bar represents each
+               data value. Bars representing the same series have the same
+               color, pattern, and width.
+            </p>
+            <p class="Paragraph">The data axis II is used in combination with data axis I when
+               two (or more) different series must be drawn on different scales
+               in order to facilitate comparison.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Pie Chart</div>
+            <p class="Paragraph">A pie chart can represent only a single data series. The
+               sample data illustrated above can be represented by either
+               twelve or three pie charts, depending on whether the data is
+               sorted by category or series:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Sorted by category</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Each pie chart illustrates the relationship between
+                           the different series (that is, the companies) for one
+                           category. This results in twelve pie charts, one for
+                           each category (that is, month).
+                        </p>
+                        <p class="Paragraph">Each diagram has three segments, representing the
+                           three data series. The size of each segment is
+                           proportional to the value of the data point in relation
+                           to the total in the category (month).
+                        </p>
+                        <p class="Paragraph">This option facilitates comparison of the three
+                           companies for each month.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">Sorted by series</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Each pie chart illustrates the different category
+                           values within one series (that is, a company). This
+                           results in three pie charts, one for each company.
+                        </p>
+                        <p class="Paragraph">Each diagram has twelve segments, representing the
+                           twelve categories. The size of the segments depends on
+                           the data value of each category as a percentage of the
+                           total of all data values in the series.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/synopsis.htm" class="manualLink">Chart manager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/creating_a_chart_manager_client_application.htm" class="manualLink">Creating a chart manager client application</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/example.htm" class="manualLink">Chart manager example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_chm/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

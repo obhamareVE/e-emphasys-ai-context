@@ -1,0 +1,50 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42I89 - Invalid company number expression</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42I89 - Invalid company number expression</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The company number expression is not valid.</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div><pre class="CodeBlock">
+select *
+from dbtst190 a 
+   left join dbtst120 b on a.empno = b.empno
+      left join dbtst100 c on b.workdept = c.deptno and a.company_nr = b.company_nr
+</pre><p class="Paragraph">This query will cause the following error message:</p>
+            <p class="Paragraph">SqlState=42I89: company_nr join predicate on columns 'a.company_nr' and 'b.company_nr' does not restrict the company set of
+               the right branch of the LEFT OUTER JOIN
+            </p><pre class="CodeBlock">
+select *
+from dbtst120
+where company_nr in ( 0,1 ) and company_nr in ( 0,1 )
+</pre><p class="Paragraph">This query will cause the following error message:</p>
+            <p class="Paragraph">SqlState=42I89: Multiple company_nr IN predicates defined within a query specification</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/company_numbers.htm" class="manualLink">Company numbers</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42I89, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

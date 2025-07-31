@@ -1,0 +1,147 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Improved Record selection Cookbook</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="record selection cookbook ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Improved Record selection Cookbook</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Introduction</div>
+            <p class="Paragraph">When moving a UI script from a <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">Tools Interface Version (TIV)</a> level below <a href="../../progguide/tiv/tiv_1075.htm" class="manualLink">TIV 1075</a> to <a href="../../progguide/tiv/tiv_1075.htm" class="manualLink">TIV 1075</a> or higher, rework might be needed because the  4GL engine  uses a new record selection mechanism. Rework may be needed when
+               one of the following variables or functions is used:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/misc/predefined_variables.htm" class="manualLink">marked</a></td>
+                     <td rowspan="1" colspan="1" class="none">doesn't work anymore</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/misc/predefined_variables.htm" class="manualLink">unmarked</a></td>
+                     <td rowspan="1" colspan="1" class="none">doesn't work anymore</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/misc/predefined_variables.htm" class="manualLink">mark.table</a></td>
+                     <td rowspan="1" colspan="1" class="none">only reflects the state of records that are visible in the window. Note that with TIV higher than 1075 there can also be records
+                        selected that are not visible, but are scrolled out of the window.
+                        	For this purpose, <a href="../../progguide/functions_form_and_form_field_operations/do.selection.htm" class="manualLink">do.selection()</a> can be used.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/4gl_features/4gl_choice_sections.htm" class="manualLink">choice.global.delete</a></td>
+                     <td rowspan="1" colspan="1" class="none">doesn't work anymore</td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_form_and_form_field_operations/mark.occ.htm" class="manualLink">mark.occ()</a></td>
+                     <td rowspan="1" colspan="1" class="none">behavior has changed, see <a href="../../progguide/functions_form_and_form_field_operations/mark.occ.htm" class="manualLink">mark.occ()</a></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">So in case the above variables are not used, no rework is needed. There are a couple of scenarios in which the above variables
+               are used. The most important ones are mentioned below.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Use mark.occ to append records to selection</div>
+            <p class="Paragraph">When you want <a href="../../progguide/functions_form_and_form_field_operations/mark.occ.htm" class="manualLink">mark.occ()</a> to append a record to the selection, specify true for the second argument of  mark.occ  . E.g.:
+            </p><pre class="CodeBlock">
+mark.occ( 1, true)
+		</pre><p class="Paragraph">The behavior has changed because in most cases the application expects that only one record is selected after a find.data
+               and a mark.occ. An example of such a construction is:
+            </p><pre class="CodeBlock">
+execute(find.data)
+mark.occ( 1)</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Transfer selection to print/processing session</div>
+            <p class="Paragraph">In different ways selections are transfered to child sessions for processing or printing. In all cases <a href="../../progguide/misc/predefined_variables.htm" class="manualLink">mark.table</a> is used. In most cases this construction can easily be replaced by the use of <a href="../../progguide/functions_selection/do.parent.selection.htm" class="manualLink">do.parent.selection()</a> in the child session.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Do a check in choice.mark.occur</div>
+            <p class="Paragraph">There were three ways to check whether a record is selected in the after.choice section of the mark.occur event and act on
+               that:
+            </p><pre class="CodeBlock">
+choice.mark.occur: 
+after.choice: 
+	if mark.table(actual.occ) then
+		some.check()
+	endif
+</pre><p class="Paragraph">or</p><pre class="CodeBlock">
+choice.mark.occur: 
+after.choice: 
+	if marked = actual.occ then
+		some.check()
+	endif
+		
+</pre><p class="Paragraph">or</p><pre class="CodeBlock">
+choice.mark.occur: 
+after.choice: 
+	if not unmarked = actual.occ then
+		some.check()
+	endif
+</pre><p class="Paragraph">All these constructions only work if the choice section is executed for every record that is selected. With a TIV  level below
+               1075 this is not the case when the user selects a range of record. With a TIV  level of 1075 or higher the choice section
+               is executed once for every mark action. So it is executed once when the user selects one record, and it is executed once when
+               the user selects range of records (e.g. by using the a shift-click). Therefore, at least when moving to a TIV  level of 1075
+               or higher, these constructions should be rewritten to something that uses <a href="../../progguide/functions_form_and_form_field_operations/do.selection.htm" class="manualLink">do.selection()</a>. E.g.:
+            </p><pre class="CodeBlock">
+choice.mark.occur: 
+after.choice: 
+do.selection(false, some.check())		
+		</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Process selected records or enable/disable commands in mark.occur section</div>
+            <p class="Paragraph">To process selected records a construction like the following is used. The same is also used for determining the state of
+               commands after a user selected a record.
+            </p><pre class="CodeBlock">
+for counter = 1 to filled.occ
+	if mark.table(counter) then
+		restore.rcd.main(counter)
+		do.it()
+	endif
+endfor		
+		</pre><p class="Paragraph">In both cases the construction must be replaced by a construction that uses <a href="../../progguide/functions_form_and_form_field_operations/do.selection.htm" class="manualLink">do.selection()</a>. E.g.:
+            </p><pre class="CodeBlock">
+do.selection(false, do.it)		
+		</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">check whether any record is marked</div>
+            <p class="Paragraph">In some cases the value of the variable <a href="../../progguide/misc/predefined_variables.htm" class="manualLink">marked</a> is used to determine the whether there are any records selected. On these places the function <a href="../../progguide/functions_selection/sel.num.selected.htm" class="manualLink">sel.num.selected()</a> must be used.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="Note">
+               <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+               <div class="NoteContent">
+                  <p class="Paragraph">Improved record selection functionality is available
+                     				from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">Tools Interface Version (TIV)</a> <a href="../../progguide/tiv/tiv_1075.htm" class="manualLink">TIV 1075</a>.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_selection/overview.htm" class="manualLink">Record selection Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_selection/synopsis.htm" class="manualLink">Record selection Synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_selection/cookbook, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

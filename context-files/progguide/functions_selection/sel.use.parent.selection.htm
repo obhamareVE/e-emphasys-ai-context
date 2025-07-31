@@ -1,0 +1,119 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>sel.use.parent.selection()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions sel.use.parent.selection record selection sel.use.parent.selection sel.use.parent.selection sel.use.parent.selection ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">sel.use.parent.selection()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean &nbsp;sel.use.parent.selection&nbsp;
+					(string&nbsp;parent_table)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function can be used in a print or a processing session to determine whether to user wants to 
+                  			print/process based on a selection range, or based on the selection that is made in the parent.
+                  			If the user wants to use the selection of the parent, you should use the function <a href="../../progguide/functions_selection/do.parent.selection.htm" class="manualLink">do.parent.selection()</a> to get the selection. The user can indicate his choice with an optionset. Read below 
+                  			how to create that option set.
+               </p>
+               <p class="Paragraph">Because the information is not available, you can not use
+                  		this function in the before.program section.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>parent_table</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The table code (e.g. tccom100) of which you need to process records.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">true		User wants to use the selection of the given table. (This also means that the parent session has the given table as
+               maintable.)
+            </p>
+            <p class="Paragraph">false		User wants to specify a custom range.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			4GL
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1075.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">How the create the selection field</div>
+            <p class="Paragraph">The user can indicate his choice with an optionset. For an example of such an optionset start session 
+               			ttams2200m000 ("Convert Changes to Runtime DD") from session ttaad2500m000 ("User Data"). The optionset on
+               			the top is the selection field.
+            </p>
+            <p class="Paragraph">To create the selection field, open the form of the print/processing session in the Dynamic Form Editor.
+               			Mark a group that contains a selection range as 'Selection Group' and specify a table code for which 
+               			the selection range applies. Now the selection field is generated.
+            </p>
+            <p class="Paragraph">If the print/processing session is then started from another session, the 4GLE will check whether any group
+               			on the print/processing session is a selection group with the same table as the maintable of the parent. If that 
+               			is the case and a record is selected in the parent, the 4LE does the following:
+            </p>
+            <ul class="List">
+               <li class="ListItem">the option 'selection from parent' is selected</li>
+               <li class="ListItem">the selection group is disabled</li>
+            </ul>
+            <p class="Paragraph">In all other cases:</p>
+            <ul class="List">
+               <li class="ListItem">the selection field is made invisible</li>
+               <li class="ListItem">the selection group is enabled</li>
+            </ul>
+            <p class="Paragraph">The default for the selection field is always ignored by the 4GLE, and if the 'selection from parent' is selected
+               			the 'Add to Job' button will always be disabled.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">This function is avialable from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">Tools Interface Version (TIV)</a> <a href="../../progguide/tiv/tiv_1075.htm" class="manualLink">TIV 1075</a>.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_selection/overview.htm" class="manualLink">Record selection Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_selection/synopsis.htm" class="manualLink">Record selection Synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_selection/cookbook.htm" class="manualLink">Improved Record selection Cookbook</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_selection/sel.use.parent.selection, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>User interface objects overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="user interface objects ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">User interface objects overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This API is only supported for Baan
+               Windows and its usage is therefore deprecated. The Programmable
+               Dialogs API can be used as an alternative.
+            </p>
+            <p class="Paragraph">Infor ERP Enterprise Server provides a library of user
+               interface objects and subobjects that you can use as the
+               building blocks for a complete graphical user interface. The
+               available object types include windows, graphs, graphical
+               images, and a wide range of user interface controls such as menu
+               bars, toolbars, scroll bars, list boxes, check boxes, and so on.
+               The available subobjects consist of graphical parts, such as
+               arcs, lines, and rectangles, which you can create in graphical
+               windows.
+            </p>
+            <p class="Paragraph">Each object and subobject includes a set of attributes that
+               defines its appearance and state. Infor ERP Enterprise Server
+               provides a set of functions that you can use to create and
+               manipulate objects and subobjects, and to set and retrieve their
+               attributes.
+            </p>
+            <p class="Paragraph">Each object and subobject has an identification number that
+               is unique for all bshell processes.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">You must always use the <a href="../../progguide/functions_color/rgb.htm" class="manualLink">rgb()</a> function to
+                  compose colors.
+               </p>
+               <p class="Paragraph">In the lists of attributes for each object type, the
+                  following flags are used:
+               </p>
+               <table border="0" class="none">
+                  <tbody noTR="4" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">C</td>
+                        <td rowspan="1" colspan="1" class="none">You can define the attribute when creating the
+                           object with the functions <i class="Emphasis">create.object()</i>, <i class="Emphasis">create.sub.object()</i>, or <i class="Emphasis">create.sub.object.by.id()</i>.
+                        </td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">S</td>
+                        <td rowspan="1" colspan="1" class="none">You can define the attribute when changing the
+                           object with the functions <i class="Emphasis">change.object()</i> or <i class="Emphasis">change.sub.object()</i>.
+                        </td>
+                     </tr>
+                     <tr no="3" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">G</td>
+                        <td rowspan="1" colspan="1" class="none">You can read the attribute with the functions <i class="Emphasis">get.object()</i> or <i class="Emphasis">get.sub.object()</i>.
+                        </td>
+                     </tr>
+                     <tr no="4" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">Q</td>
+                        <td rowspan="1" colspan="1" class="none">You can query the attribute with the functions <i class="Emphasis">query.object()</i> or <i class="Emphasis">query.sub.object()</i>.
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

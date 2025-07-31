@@ -1,0 +1,74 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Events sample program</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="events sample program ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Events sample program</div>
+      <div class="body">
+         <div class="GeneralSection"><pre class="CodeBlock">
+long event(EVTMAXSIZE)
+
+while TRUE
+                next.event(event)
+
+                on case evt.type(event)
+                case EVTKEYPRESS:
+                                on case evt.keypress.key(event)
+                                case KEY_RETURN:
+                                                ....
+                                case KEY_ESC:
+                                                ....
+                                                break
+          endcase
+          break
+                case EVTCHANGEFOCUS:
+                                on case evt.focus.key(event)
+                                case KEY_TAB:
+                                case KEY_DOWN:
+                                                | set focus on next
+field
+                                case KEY_BACKTAB:
+                                case KEY_UP:
+                                                | set focus on
+previous field
+                                endcase
+                                break
+                case EVTBUTTONSELECT:
+                                if ( evt.button.return(event) =
+ABORT.BUTTON ) then
+                                        | ABORT.BUTTON is the
+return value of the button pressed
+                                        return
+                                endif
+                                break
+                endcase
+endwhile
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/events/overview.htm" class="manualLink">Events overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/synopsis.htm" class="manualLink">Events synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/event_types.htm" class="manualLink">Event types</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/event_array_parameters.htm" class="manualLink">Event array parameters</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/sample_program.htm" class="manualLink">Events sample program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/events/sample_program, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

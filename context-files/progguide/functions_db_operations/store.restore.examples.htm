@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Storing, restoring record buffers - Examples</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Storing, restoring record buffers - Examples</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Code Example 1</div>
+            <p class="Paragraph">Storing and restoring the record buffer can be used e.g. for accessing the same table for another record.</p>
+            <p class="Paragraph">Before reading, you call <a href="../../progguide/functions_db_operations/db.store.record.htm" class="manualLink">db.store.record()</a> to store the
+               current record buffer. After such an action you can restore the record buffer with <a href="../../progguide/functions_db_operations/db.restore.record.htm" class="manualLink">db.restore.record()</a> and continue with that data.
+            </p><pre class="CodeBlock">
+db.store.record(twhinh200)
+
+select  whinh200.*
+from    whinh200
+where   whinh200._index1 = {:...}
+selectdo
+        ...
+endselect
+
+db.restore.record(twhinh200)
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Code Example 2</div>
+            <p class="Paragraph">You can use <a href="../../progguide/functions_db_operations/db.store.record.htm" class="manualLink">db.store.record()</a> and <a href="../../progguide/functions_db_operations/db.record.changed.htm" class="manualLink">db.record.changed()</a> for optimizing reading data from a table.
+            </p><pre class="CodeBlock">
+function read.item.data(domain tcitem i.item)
+{
+        tcibd001.item = i.item
+        tcibd001._compnr = get.compnr()
+        
+        if not db.record.changed(ttcibd001) then
+                return
+        endif
+        
+        select  tcibd001.*
+        from    tcibd001
+        where   tcibd001.item = :tcibd001.item
+        as set with 1 rows
+        selectdo
+        selectempty
+                db.set.to.default(ttcibd001)
+        endselect
+        
+        db.store.record(ttcibd001)
+}
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Explanation</div>
+            <p class="Paragraph">The first time <code class="Code">read.item.data()</code> is executed, <a href="../../progguide/functions_db_operations/db.store.record.htm" class="manualLink">db.store.record()</a> has not yet been called, therefore <a href="../../progguide/functions_db_operations/db.record.changed.htm" class="manualLink">db.record.changed()</a> returns <code class="Code">true</code>, and the query will be executed. After the query is executed, the contents of the record buffer is stored with <a href="../../progguide/functions_db_operations/db.store.record.htm" class="manualLink">db.store.record()</a>.
+            </p>
+            <p class="Paragraph">The second time this function is called, one of the following situations can occur:</p>
+            <ul class="List">
+               <li class="ListItem">The record buffers are the same, so the function returns.</li>
+               <li class="ListItem">The record buffers are not the same, the query is done again etc.</li>
+            </ul>
+            <p class="Paragraph">The record buffer can be changed due to:</p>
+            <ul class="List">
+               <li class="ListItem">another item has been read the last time (key fields differ)</li>
+               <li class="ListItem">another function has read some fields of another item</li>
+               <li class="ListItem">another function has updated this item in the database</li>
+            </ul>
+            <p class="Paragraph">In all these cases the item will be read again. So this implementation ensures that you will always have access to the
+               most recent data. Note however, that it is not possible to see changes made by other users.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/store.restore.examples, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

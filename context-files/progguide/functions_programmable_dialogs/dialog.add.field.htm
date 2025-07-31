@@ -1,0 +1,279 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dialog.add.field()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dialog.add.field dialog.add.field functions dialog.add.field ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dialog.add.field()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_dialog&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;dialog.add.field&nbsp;
+					(long&nbsp;dlg, const string&nbsp;fldName(), const string&nbsp;fldLabel() [, long&nbsp;attribute, value,...])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function creates a new field on the dialog.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>dlg</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The identifier of the dialog. The identifier must be
+                           created with the function <a href="../../progguide/functions_programmable_dialogs/dialog.new.htm" class="manualLink">dialog.new()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>fldName()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Name of the field. Preferably, there should also be a
+                           variable declared as extern in the script with the same
+                           name. The value of the dialog field will then be set in
+                           this variable.
+                        </p>
+                        <p class="Paragraph">If such a variable does not exist, the attribute
+                           DLG_FIELD_DYNAMIC should be set to <i class="Emphasis">true</i> and it will
+                           be created at runtime. Then, the value can be accessed
+                           with the function <a href="../../progguide/functions_variables_interprocess_transfer/get.var.htm" class="manualLink">get.var()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>fldLabel()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The label used for the field.</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>attribute, value,...</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use these optional arguments to set the dialog field's
+                           attributes. For each attribute you specify, you must
+                           include the attribute type (for example, DLG_DOMAIN or
+                           DLG_MANDATORY), and the attribute value.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">0</td>
+                     <td rowspan="1" colspan="1" class="none">Success</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">&lt;0</td>
+                     <td rowspan="1" colspan="1" class="none">The negative sequence number of the erroneous
+                        argument. E.g. a return value of -7 indicates an error
+                        in the 7th argument.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="19" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">Attribute</th>
+                     <th rowspan="1" colspan="1" class="none">Type</th>
+                     <th rowspan="1" colspan="1" class="none">Description</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_FORM_FIELD</td>
+                     <td rowspan="1" colspan="1" class="none">String</td>
+                     <td rowspan="1" colspan="1" class="none">Copy the properties of the specified form field.
+                        Only possible in UI-script of a session
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_DOMAIN</td>
+                     <td rowspan="1" colspan="1" class="none">String</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Copy the properties of the specified domain.
+                           Properties are:
+                        </p>
+                        <p class="Paragraph">Database type</p>
+                        <p class="Paragraph">Alignment (strings)</p>
+                        <p class="Paragraph">Upper/lower case conversion</p>
+                        <p class="Paragraph">Size</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_FIELD_TYPE</td>
+                     <td rowspan="1" colspan="1" class="none">Long</td>
+                     <td rowspan="1" colspan="1" class="none">DLG_TYPE_STRINGDLG_TYPE_LONG,DLG_TYPE_MULTI_LINE,DLG_TYPE_MB,DLG_TYPE_DATE,DLG_TYPE_UTC,DLG_TYPE_CHECKBOX,DLG_TYPE_LISTBOX
+                        orDLG_TYPE_PASSWORD.Only checkbox and password are
+                        really necessary. Others can be derived from the
+                        variable type or domain.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_ALIGNMENT</td>
+                     <td rowspan="1" colspan="1" class="none">Long</td>
+                     <td rowspan="1" colspan="1" class="none">RDI.LEFT, RDI.RIGHT, RDI.CENTER or RDI.NONE for
+                        left, right, center and no alignment.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_CASE_CONVERT</td>
+                     <td rowspan="1" colspan="1" class="none">Long</td>
+                     <td rowspan="1" colspan="1" class="none">RDI.UPPER, RDI.LOWER or RDI.NONE for uppercase,
+                        lowercase and no conversion.
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_FIELD_DYNAMIC</td>
+                     <td rowspan="1" colspan="1" class="none">Long</td>
+                     <td rowspan="1" colspan="1" class="none">If set to true, the variable indicated by <i class="Emphasis">fldName</i> need not exist. It will be created at
+                        runtime. The value of the variable can be access with the
+                        function <a href="../../progguide/functions_variables_interprocess_transfer/get.var.htm" class="manualLink">get.var()</a>.
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_FIELD_SIZE</td>
+                     <td rowspan="1" colspan="1" class="none">Long</td>
+                     <td rowspan="1" colspan="1" class="none">Number of characters that can be entered in the
+                        field (input length). Default is taken from the domain
+                        info or variable info (string). This property is not
+                        needed in normal circumstances.
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_FIELD_WIDTH</td>
+                     <td rowspan="1" colspan="1" class="none">Long</td>
+                     <td rowspan="1" colspan="1" class="none">Width of the field in characters (display length).
+                        Default is the size of the string.
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_FIELD_HEIGHT</td>
+                     <td rowspan="1" colspan="1" class="none">Long</td>
+                     <td rowspan="1" colspan="1" class="none">Height of the multi-line edit box in lines. Default
+                        is 3
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_MANDATORY</td>
+                     <td rowspan="1" colspan="1" class="none">Long</td>
+                     <td rowspan="1" colspan="1" class="none">Mandatory enum: no empty selection possible</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_ZOOM_PROG</td>
+                     <td rowspan="1" colspan="1" class="none">String</td>
+                     <td rowspan="1" colspan="1" class="none">Session code for browsing. If the string starts
+                        with an "@", the value refers to a function to be
+                        called instead of a zoom session. The function should
+                        be in the same object as the dialog.new function.
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_ZOOM_RETURN</td>
+                     <td rowspan="1" colspan="1" class="none">String</td>
+                     <td rowspan="1" colspan="1" class="none">Name of field to be returned from browse
+                        session
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_ZOOM_FROM</td>
+                     <td rowspan="1" colspan="1" class="none">String</td>
+                     <td rowspan="1" colspan="1" class="none">Name of field where the zoom was started from (used
+                        for zoom.from section in the called session)
+                     </td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_FIELD_CHECK</td>
+                     <td rowspan="1" colspan="1" class="none">String</td>
+                     <td rowspan="1" colspan="1" class="none">Name of the function that checks the input of the
+                        field. This function should return false if the input
+                        is incorrect.
+                     </td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_RANGE_FIELD</td>
+                     <td rowspan="1" colspan="1" class="none">String</td>
+                     <td rowspan="1" colspan="1" class="none">Name of the second variable in a range. This second
+                        field will have the same properties as the original
+                        field.
+                     </td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_FIELD_STATE</td>
+                     <td rowspan="1" colspan="1" class="none">Long</td>
+                     <td rowspan="1" colspan="1" class="none">The state of the field: ENABLED(default), READONLY
+                        or DISABLED.
+                     </td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_DESC</td>
+                     <td rowspan="1" colspan="1" class="none">String</td>
+                     <td rowspan="1" colspan="1" class="none">Description field. The value should be set in the
+                        function that checks the value of the input field (see
+                        DLG_FIELD_CHECK)
+                     </td>
+                  </tr>
+                  <tr no="19" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">DLG_HELPCODE</td>
+                     <td rowspan="1" colspan="1" class="none">String</td>
+                     <td rowspan="1" colspan="1" class="none">The code to by used by the help system. Normally, the
+                        code of the corresponding table field is entered here. If
+                        this argument is skipped, the <i class="Emphasis">fieldName</i> will be
+                        taken.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_programmable_dialogs/synopsis.htm" class="manualLink">Programmable dialogs synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_programmable_dialogs/example.htm" class="manualLink">Example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_programmable_dialogs/dialog.add.field, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

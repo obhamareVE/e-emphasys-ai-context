@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Analyzing the Call Graph Profile</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Analyzing the Call Graph Profile</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The Call Graph Profiler is a tool for performance analysis.
+               	  Performance analysis is all about combining the knowledge of the business logic
+               	  that is being executed and the Call Graph Profile that is collected with the
+               	  available tools. Each of these do not lead to performance improvements easily;
+               	  the combination of both can be very powerful.
+            </p>
+            <p class="Paragraph">Some hints on how to determine whether there are improvement
+               	  possibilities:
+            </p>
+            <ul class="List">
+               <li class="ListItem">Match the object summary info against the expectation of the
+                  		developer who knows the functionality of the session and/or business process.
+                  		Unexpected patterns should be investigated. When the run time in some objects
+                  		is much longer than the CPU time the reason should be investigated. The long
+                  		run time may be because the application waits for user input. The long run time
+                  		may also be because of long running SQL statements, in which case the next step
+                  		might be an investigation of long running SQL statements.
+               </li>
+               <li class="ListItem"></li>
+               <li class="ListItem">Look at the functions that are the most expensive in the <a href="../../progguide/profiler/output.htm#flat_profile" class="manualLink">Flat Profile</a>. If the cost is significant it may be useful to try to optimize
+                  		  the implementation of these functions.
+               </li>
+               <li class="ListItem"></li>
+               <li class="ListItem">Look in the <a href="../../progguide/profiler/output.htm#query_summary" class="manualLink">Query Summary</a> for SQL statements that have a long run time, or for SQL
+                  			statements that have much higher number of fetch operations than
+                  			expected.
+               </li>
+               <li class="ListItem"></li>
+               <li class="ListItem">Walk through the <a href="../../progguide/profiler/output.htm#call_graph" class="manualLink">Call Graph</a> from the <code class="Code">main()</code> function. Look for details in child functions that contribute
+                  			  significantly to the cost of the session. Remember your knowledge of the
+                  			  business logic in the session and try to understand whether it is really
+                  			  necessary to do the things you see and to do these things the number of times
+                  			  you see them being done.
+               </li>
+               <li class="ListItem"></li>
+               <li class="ListItem">Remember the numeric characteristics of the business
+                  				process that was executed (e.g. 5 orders with 10 order lines each, in which 6
+                  				different items play a role) and see if the number of calls in the sessions and
+                  				dlls in the process match your expectations.
+               </li>
+               <li class="ListItem"></li>
+               <li class="ListItem">If you see something that looks strange or that
+                  				  unexpectedly takes a significant amount of time and you have no idea why it
+                  				  happens or whether it can be improved, or if it is not 'your area' : do not
+                  				  ignore it, but raise the issue with colleagues and figure out whether there is
+                  				  an improvement possibility.
+               </li>
+               <li class="ListItem"></li>
+               <li class="ListItem">When functions are called very often it may be
+                  					helpful to walk a couple of levels up in the Call Graph, to the parent function
+                  					and the parents parent function etcetera. The reason for the behaviour of the
+                  					code may become clear by studying the various levels of the call stack. For
+                  					example: a large number of fld.display() calls in the 4GL Engine may be related
+                  					to a call to display.all() in a section of the UI script (e.g.
+                  					when.field.changes:).
+               </li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/profiler/using.htm" class="manualLink">Using the Call Graph Profiler</a></li>
+               <li class="RelTopic"><a href="../../progguide/profiler/output.htm" class="manualLink">The Call Graph Profile</a></li>
+               <li class="RelTopic"><a href="../../progguide/profiler/example.htm" class="manualLink">Call Graph Profiler Example</a></li>
+               <li class="RelTopic"><a href="../../progguide/profiler/glossary.htm" class="manualLink">Call Graph Profiler Glossary</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/profiler/analyzing, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

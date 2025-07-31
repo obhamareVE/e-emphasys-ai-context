@@ -1,0 +1,113 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dialog.add.chart()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dialog.add.chart functions dialog.add.chart ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dialog.add.chart()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_dialog&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;dialog.add.chart&nbsp;
+					(long&nbsp;dlg, long&nbsp;initial.type [, long&nbsp;allowed.types])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Note that this function only effects the <i class="Emphasis">Webtop</i> User Interface.
+               </p>
+               <p class="Paragraph">Add a chart to the indicated dialog. Chart data and other
+                  attributes must be set using other chart functions. The
+                  initial chart type is set with argument initial.type. The
+                  user can modify this type when the dialog is shown. Below an
+                  illustration of each supported type is given.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>dlg</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The identifier of the dialog. The identifier must be
+                           created with the function <a href="../../progguide/functions_programmable_dialogs/dialog.new.htm" class="manualLink">dialog.new()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>initial.type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Initial type of the chart. Supported types:
+                           CHART_TYPE_BAR, CHART_TYPE_BARHORIZONTAL,
+                           CHART_TYPE_LINE, CHART_TYPE_LINE_STAIR,
+                           CHART_TYPE_LINE_SPLINE, CHART_TYPE_LINE_SCATTER,
+                           CHART_TYPE_PIE, CHART_TYPE_AREA.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>allowed.types</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Chart types from which the user might choose at
+                           runtime. Value is the sum of the supported type values
+                           (e.g. CHART_TYPE_BAR + CHART_TYPE_LINE).
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">This function returns a chart id which must be used in
+               further chart calls. In case of an error the value 0 is
+               returned.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_programmable_dialogs/chart.set.title.htm" class="manualLink">chart.set.title()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_programmable_dialogs/chart.set.axis.type.htm" class="manualLink">chart.set.axis.type()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_programmable_dialogs/chart.set.axis.title.htm" class="manualLink">chart.set.axis.title()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_programmable_dialogs/chart.add.series.htm" class="manualLink">chart.add.series()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_programmable_dialogs/chart.add.data.point.htm" class="manualLink">chart.add.data.point()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_programmable_dialogs/chart.clear.data.htm" class="manualLink">chart.clear.data()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_programmable_dialogs/synopsis.htm" class="manualLink">Programmable dialogs synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_programmable_dialogs/examplechart.htm" class="manualLink">Example chart</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_programmable_dialogs/dialog.add.chart, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

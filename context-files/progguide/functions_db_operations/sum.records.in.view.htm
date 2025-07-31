@@ -1,0 +1,136 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>sum.records.in.view()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions sum.records.in.view sum.records.in.view sum.records.in.view ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">sum.records.in.view()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;sum.records.in.view&nbsp;
+					(const string&nbsp;column1.var, double&nbsp;result1.var [, const string, double&nbsp;..., ...])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function performs a query on the maintable of the session, 
+                  including all reference tables, and will sum the values of each specified column. 
+                  The query will take the current view fields, active user filter and any query extensions into account. 
+                  
+                  Preconditions - an even number of parameters must be passed 
+                  - any specified column must exist in the datadictionary if one of these conditions is not met, 
+                  an assert is given Parameters column the name of column to sum result 
+                  the result of the sum operation for 'column' ... more pairs of 'column' and 'result'
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>column1.var</code></td>
+                     <td class="none">
+                        <div class="GeneralSection">
+                           <div class="subSectionTitle">field or expression to sum</div>
+                           <p class="Paragraph">specify the field/expression to sum.</p>
+                           <p class="Paragraph">fieldname or fieldname in expression must exist in the maintable or in the referenced tables.</p>
+                           <p class="Paragraph">column1.var must be a decimal field.</p>
+                        </div>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">double</td>
+                     <td class="none"><code>result1.var</code></td>
+                     <td class="none">
+                        <div class="GeneralSection">
+                           <div class="subSectionTitle">result of sum fieldname1</div>
+                           <p class="Paragraph">specify the output field to receive the sum.</p>
+                        </div>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[const string, double</td>
+                     <td class="none"><code>..., ...</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">next pair of [column.var, result.var]. Use these optional pair of arguments to sum other columns. Use commas (,) to
+                           					separate the arguments.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			4GL
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">An even number of parameters must be passed.</p>
+               <p class="Paragraph">When specified a field as column, the column must exist in the datadictionary.</p>
+               <p class="Paragraph">For fields in expression is the expression evaluated by the SQL engine.</p>
+            </div>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Asserts</div>
+            <div class="NoteContent">
+               <p class="Paragraph">No Columns in input.</p>
+               <p class="Paragraph">No navigation present yet.</p>
+               <p class="Paragraph">Column [string] doesn't exist.</p>
+               <p class="Paragraph">Type column [string] is not DOUBLE, INTEGER, LONG or FLOAT.</p>
+               <p class="Paragraph">Missing element for repeating field,  syntax: 'fieldname(n)' with n equals occurrence element.</p>
+               <p class="Paragraph">Syntax of query error.</p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+	on.display.total.line:
+    	double    sum_field
+    	double    sum_expression
+    	double    sum_repeatingField
+
+    	sum.records.in.view("field", sum_field, "xxnum1*xxnum2", sum_expression, "xxrepeatLong(1)", sum_repeatingFieldOccur1)
+		display.total.fields( "xxtable.field", sum_field)
+		display.total.fields( "xxtable.expr", sum_expression)
+		display.total.fields( "xxrepeatLong", sum_repeatingFieldOccur2)
+
+		</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">TIV</div>
+            <p class="Paragraph">This function is available from TIV level 1753 till 1800, 1802 and higher.</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/sum.records.in.view, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

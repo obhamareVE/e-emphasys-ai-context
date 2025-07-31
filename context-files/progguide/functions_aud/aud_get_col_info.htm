@@ -1,0 +1,124 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>aud_get_col_info()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="aud_get_col_info aud_get_col_info functions aud_get_col_info ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">aud_get_col_info()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Warning</div>
+            <p class="Paragraph"><i class="Emphasis">The functions and macros listed below must not be used
+                  anymore.</i> Using them in BaanERP 5.0c or higher releases
+               may result in less reliable data. Know that there is a new
+               set of functions that you can use for retrieval of audit
+               information. Refer to <a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;aud_get_col_info&nbsp;
+					(const string&nbsp;seqhdr(), long&nbsp;col_no, ref string&nbsp;col_name(), ref long&nbsp;col_type, ref long&nbsp;col_dep, ref long&nbsp;col_len)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This retrieves information about a specified field from
+                  the sequence header of a particular sequence file. It
+                  retrieves the same information as <a href="../../progguide/functions_aud/aud_get_audit_dd.htm" class="manualLink">aud_get_audit_dd()</a>, but
+                  for a single field only.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>seqhdr()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The buffer containing the sequence header. You
+                           fill this by calling <a href="../../progguide/functions_aud/aud_read_seq_hdr.htm" class="manualLink">aud_read_seq_hdr()</a> or <a href="../../progguide/functions_aud/aud_read_info_seq_hdr.htm" class="manualLink">aud_read_info_seq_hdr()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>col_no</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The column number.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>col_name()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The field name.</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>col_type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The field type – for example, DB.LONG,
+               DB.STRING.
+See this <a href="../../progguide/functions_database_handling/overview.htm#types" class="manualLink">list of database types</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>col_dep</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The field depth. This is always 1 for non-array
+                           fields.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>col_len</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The field length.
+                           See this <a href="../../progguide/functions_database_handling/overview.htm#types" class="manualLink">list of database types and related byte counts</a>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_overview.htm" class="manualLink">Audit Information Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_synopsis.htm" class="manualLink">Audit Information Synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_sample_program.htm" class="manualLink">Audit Information Sample Program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_aud/aud_get_col_info, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

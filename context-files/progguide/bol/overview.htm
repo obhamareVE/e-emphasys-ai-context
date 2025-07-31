@@ -1,0 +1,84 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Business Object Layer</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Business Object Layer</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">BOL Overview</div>
+            <p class="Paragraph">Business Objects are the main building blocks of Infor ERP Enterprise.
+               Only the Business Objects will handle all communication from
+               other applications with Baan.
+            </p>
+            <p class="Paragraph">A Business Object is an object understandable by the Business
+               (i.e. Purchase Order, Organizational Unit)
+            </p>
+            <ul class="List">
+               <li class="ListItem">It has information stored in the Business Object
+                  Attributes (i.e. Purchase Order Number, Organizational
+                  Unit Name)
+               </li>
+               <li class="ListItem">It has a set of actions, Business Object Methods, which
+                  can manipulate the Business Object Attributes (i.e. Create
+                  Purchase Order, List Organizational Units)
+               </li>
+            </ul>
+            <p class="Paragraph">In order to model and store all this information the Business
+               Object Repository is developed.
+            </p>
+            <p class="Paragraph">Besides the Business Object entities (Public Attributes,
+               Public Methods and its Arguments, Protected Attributes,
+               Protected Methods and its Arguments) the Business Object
+               Repository stores the relation of these entities with the
+               existing Baan 3GL objects (Table fields, DLL functions and
+               sessions).
+            </p>
+            <p class="Paragraph">In this way it supports wrapping the database with a Business
+               oriented layer.
+            </p>
+            <p class="Paragraph">For each Business Object two Business Object Interfaces
+               can be defined: a Public Interface and a Protected Interface.
+            </p>
+            <p class="Paragraph">The Public Interface is targeted for integrators that use
+               external non-Infor ERP Enterprise applications that communicate with Infor
+               ERP Enterprise.
+            </p>
+            <p class="Paragraph">The Protected Interface is targeted for internal Infor ERP
+               Enterprise integrations.
+            </p>
+            <p class="Paragraph">The BOL architecture can be found in the picture below.</p>
+            <div class="Figure"><img src="../images/bol_architecture.gif" alt="[...]"></div>
+            <p class="Paragraph">The BOL can be split into 5 separated parts (DLLs):</p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/bol/sb_layer.htm" class="manualLink">Public Layer</a></li>
+               <li class="ListItem"><a href="../../progguide/bol/sc_layer.htm" class="manualLink">Interface Conversion Public Layer</a></li>
+               <li class="ListItem"><a href="../../progguide/bol/st_layer.htm" class="manualLink">Protected Layer</a></li>
+               <li class="ListItem"><a href="../../progguide/bol/sm_layer.htm" class="manualLink">Interface Conversion Protected Layer</a></li>
+               <li class="ListItem"><a href="../../progguide/bol/sf_layer.htm" class="manualLink">Specific Methods Library</a></li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/bol/overview.htm" class="manualLink">Business Object Layer</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/bol/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

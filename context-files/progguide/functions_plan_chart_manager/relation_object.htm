@@ -1,0 +1,157 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>PCM_OT_RELATION – relation object</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="pcm_ot_relation relation object ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">PCM_OT_RELATION – relation object</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">On the planning board you can record relations between
+               different activities and/or markers. These relations define
+               the mutual relationships between such objects. You can
+               record, for instance, that certain activities must be
+               completed before another activity can start. Also, two
+               related activities can be separated by a mandatory interval
+               (for example, if a coat of paint must dry for two days before
+               the next activity can take place) or they can overlap.
+            </p>
+            <p class="Paragraph">You must create a PCM_OT_RELATION object for each relation
+               you want to include in the chart.
+            </p>
+            <p class="Paragraph">The Plan Chart manager supports the following relation
+               types:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">start-start</td>
+                     <td rowspan="1" colspan="1" class="none">Activity 1 can start as soon as activity 2 has
+                        started.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">start-end</td>
+                     <td rowspan="1" colspan="1" class="none">Activity 1 can start only when activity 2 is
+                        completed.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">end-start</td>
+                     <td rowspan="1" colspan="1" class="none">Activity 2 can start when activity 1 is
+                        completed.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">end-end</td>
+                     <td rowspan="1" colspan="1" class="none">Activity 2 can end only when activity 1 is
+                        completed.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmRelationObject1</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">This specifies the object ID of object 1.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmRelationObject2</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">This specifies the object ID of object 2.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmRelationGroup</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">By grouping relations, you can assign different
+                        colors to different groups of relations. You can
+                        define up to nine relation groups. Use this
+                        attribute to specify the group number for this
+                        relation.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmRelationType</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The relation type. The possible values are:</p>
+                        <p class="Paragraph">PCM_RT_STARTSTART</p>
+                        <p class="Paragraph">PCM_RT_STARTEND</p>
+                        <p class="Paragraph">PCM_RT_ENDSTART</p>
+                        <p class="Paragraph">PCM_RT_ENDEND</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmRelationDelay</p>
+                        <p class="Paragraph">(double)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">The time span between the two related activities.
+                        This number is placed alongside the line that
+                        indicates the relationship (this can also be a
+                        negative value).
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">PcmRelationCritical</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This flag indicates if the relation is part of
+                           the critical path. The critical path is the longest
+                           route between the start and end of the project. Any
+                           change in one of the activities or relations that
+                           are part of the critical path directly influences
+                           the project's end time. The possible values are:
+                        </p>
+                        <p class="Paragraph">true&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the activity is part of the critical
+               path</p>
+                        <p class="Paragraph">false&nbsp;&nbsp;&nbsp; the activity is not part of the
+               critical path</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/overview.htm" class="manualLink">Plan Chart Manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/synopsis.htm" class="manualLink">Plan Chart Manager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_plan_chart_manager/example.htm" class="manualLink">Plan Chart Manager: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_plan_chart_manager/relation_object, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>curl.http.status$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="curl.http.status$ curl.http.status$ functions curl.http.status$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">curl.http.status$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_curl&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;curl.http.status$&nbsp;
+					(long&nbsp;http.status)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Returns a english descriptive text for a given HTTP Status Code. E.g. when 200 (HTTP_STATUS_OK) is
+                  				passed "OK" is returned, or when 503 (HTTP_STATUS_SERVICE_UNAVAILABLE) is passed, "Service Unavailable" is returned.
+               </p>
+               <p class="Paragraph">The descriptive text is meant for logging and tracing purposes and/or technical error messages.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>http.status</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">a HTTP Status code, like <code class="Code">200 (HTTP_STATUS_OK), 404 (HTTP_STATUS_NOT_FOUND), or 500 (HTTP_STATUS_INTERNAL_SERVER_ERROR)</code></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1700.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long ret
+string data(64 * 1024) | 64 Kb
+long http.status
+string http.status.msg(100)
+
+ret = curl.download.string("http://www.infor.com", data)
+if ret = 0 then
+	| data now contains the Infor homepage as a string
+else
+	| error, e.g. because the webservice is unavailable (503)
+	http.status = curl.getinfo.response_code()
+	http.status.msg = curl.http.status$(http.status)
+	| http.status.msg now contains "Service Unavailable"
+endif
+		</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_cURL/overview.htm" class="manualLink">cURL handling overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_cURL/curl.http.status$, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

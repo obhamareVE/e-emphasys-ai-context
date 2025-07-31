@@ -1,0 +1,120 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>UI, DAL, and STP interaction</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="data access layer ui, dal, and stp interaction ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">UI, DAL, and STP interaction</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">A DAL script contains all the logic integrity rules for a
+               particular object set. These rules are referred to as hooks and
+               they can be programmed for every possible manipulation of an
+               object in the object set. For each session with a main table,
+               the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> ensures that
+               the integrity rules for the table are checked each time an
+               insert, update or delete operation is performed on an object of
+               the table.
+            </p>
+            <p class="Paragraph">If there is no DAL script for the particular object set being
+               accessed, no logic integrity checks are performed
+            </p>
+            <p class="Paragraph">A DAL script can contain hooks that prevent access to the
+               database and hooks that prevent data being passed back to the
+               user interface. The former are executed before the database
+               action. The latter are performed after the database action.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">If a user changes the address of a customer on a form, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> changes the
+   address for that customer in the database via the DAL. If you
+   want certain restrictions to apply to the update action, you can
+   program a property hook in the DAL of the session’s main table
+   to impose these restrictions. For example:
+            </p><pre class="CodeBlock">
+when the address changes:
+    if changed into something valid then
+        accept
+    else
+        reject
+    endif
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">UI function calls</div>
+            <p class="Paragraph">The UI script can use either the <a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a> functions or the <a href="../../progguide/functions_dal/dam.htm" class="manualLink">Data Access Methods (DAM)</a> to
+               manipulate the database. The db.* functions are direct database
+               calls. They do not use the DAL. In this case, any logic
+               integrity checks required must be programmed in the UI script
+               itself. This means that they cannot be reused by other sessions.
+               In preference, use the DAL Data Access Methods. These access the
+               database via the DAL, so all necessary checks are automatically
+               performed.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Function flow</div>
+            <p class="Paragraph">When the DAL is used to manipulate the database, the main
+               steps involved are as follows:
+            </p>
+            <ol class="ProcedureList">
+               <li class="ProcedureListItem">The user issues a command through the user interface to
+                  access a record in the database.
+               </li>
+               <li class="ProcedureListItem">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> loads the
+                  appropriate DAL and calls the hooks in the DAL to check the
+                  integrity rules for the object.
+               </li>
+               <li class="ProcedureListItem">If the particular database action is permitted, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> issues
+                  the appropriate database call.
+               </li>
+               <li class="ProcedureListItem">After the database has been updated, the DAL can perform
+                  further checks to determine whether or not data is passed
+                  back to the user interface.
+               </li>
+               <li class="ProcedureListItem">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> passes
+                  data back to the user interface (provided that the integrity
+                  rules permit this).
+               </li>
+            </ol>
+            <p class="Paragraph">The following diagram illustrates this flow:</p>
+            <div class="Figure"><img src="../images/dal_architecture2.gif" alt="[...]" height="190" width="486"></div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">One-way interaction</div>
+            <p class="Paragraph">Note that because the DAL can be used in situations where
+               there is no user interface, the DAL cannot call functions in the
+               UI.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_glossary.htm" class="manualLink">DAL terminology</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_hooks.htm" class="manualLink">DAL hooks</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dam.htm" class="manualLink">Data Access Methods (DAM)</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/property_methods.htm" class="manualLink">Property methods</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/query_extensions.htm" class="manualLink">Query extensions</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/communication_with_stp_and_cdas.htm" class="manualLink">Communication with STP and CDAS</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/transition_issues_baan_iv_to_baanerp.htm" class="manualLink">Transition issues (BAAN IV to Infor ERP Enterprise)</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/dal_ui_and_stp_interaction, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

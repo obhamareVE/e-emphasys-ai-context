@@ -1,0 +1,115 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>ims.w.short()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions ims.w.short ims.w.short ims.w.short ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">ims.w.short()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;ims.w.short&nbsp;
+					(long&nbsp;value, long&nbsp;bytearray)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Writes a 16-bit integer value into the byte array.</p>
+               <p class="Paragraph">The function ims.w.short()
+         writes the 16 least significant bits of
+         the two’s complement representation of the supplied integer value
+         into the first 2 bytes of the supplied byte array.</p>
+               <p class="Paragraph">The inverse function <a href="../../progguide/functions_ims/ims.r.short.htm" class="manualLink">ims.r.short()</a> will retrieve the original supplied integer value,
+                  wrapped to
+                  the <i class="Emphasis">unsigned</i> 16-bit value range
+         [0 … 2^16 - 1] (i.e. [0 … 65,535])
+         by repeatedly adding or subtracting 2^16
+         until the value is in the <i class="Emphasis">unsigned</i> 16-bit value range.
+               </p>
+               <p class="Paragraph">More specifically,
+                  the inverse function <a href="../../progguide/functions_ims/ims.r.short.htm" class="manualLink">ims.r.short()</a> will retrieve the exact original supplied integer value
+                  if and only if
+                  that integer value is within
+                  the <i class="Emphasis">unsigned</i> 16-bit value range
+         [0 … 2^16 - 1] (i.e. [0 … 65,535]).
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The value to write into the byte array</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>bytearray</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The byte array identifier that is returned by
+                           ims.openvba or ims.openfba.
+                        </p>
+                        <p class="Paragraph">This function writes 2 bytes into the byte array.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">Error, most probably <i class="Emphasis">bytearray</i> is not a valid
+                        stream.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic">Related operations: <a href="../../progguide/functions_ims/ims.w.long.htm" class="manualLink">ims.w.long()</a></li>
+               <li class="RelTopic">Inverse operations: <a href="../../progguide/functions_ims/ims.r.long.htm" class="manualLink">ims.r.long()</a>, <a href="../../progguide/functions_ims/ims.r.short.htm" class="manualLink">ims.r.short()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_ims/byte_arrays_overview.htm" class="manualLink">Byte arrays overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_ims/byte_arrays_synopsis.htm" class="manualLink">Byte arrays synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_ims/ims.w.short, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

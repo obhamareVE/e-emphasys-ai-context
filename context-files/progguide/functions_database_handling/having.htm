@@ -1,0 +1,110 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>HAVING clause</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="HAVING clause SELECT statement HAVING clause ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">HAVING clause</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The HAVING clause specifies a <a href="../../progguide/functions_database_handling/sql_glossary.htm#GroupedTable" class="glossaryLink">grouped table</a>. The input
+               table of the HAVING clause is also a grouped table that is the
+               result of applying the <a href="../../progguide/functions_database_handling/group_by.htm" class="manualLink">GROUP BY clause</a>. The HAVING clause rejects each group of the
+               grouped table for which the search condition evaluates to False
+               or Unknown.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;having clause&gt;
+    ::= HAVING <a href="../../progguide/functions_database_handling/search_condition.htm" class="manualLink">Search condition</a>
+      </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The columns of the result grouped table have the same names
+               and descriptors as the grouped table the HAVING clause operates
+               on.
+            </p>
+            <p class="Paragraph">A group is in the result grouped table if and only if the <i class="Emphasis">search condition</i> evaluates to True for that group.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">In the following example, the GROUP BY clause groups the rows
+               of table <i class="Emphasis">dbtst120</i> that satisfy the condition <i class="Emphasis">sex =
+                  dbsex.female</i> by the column <i class="Emphasis">edlevel</i>. The HAVING clause
+               filters out all groups for which the maximum salary is less than
+               or equal to 30000.
+            </p><pre class="CodeBlock">
+SELECT edlevel, AVG( salary )
+FROM dbtst120
+WHERE sex = dbsex.female
+GROUP BY edlevel
+HAVING MAX( salary ) &gt; 30000
+</pre><p class="Paragraph">The result of applying the GROUP BY clause is the following
+               grouped table. Column <i class="Emphasis">edlevel</i> is a (the) grouping column
+               of the grouped table.
+            </p><pre class="CodeBlock">
+edlevel    salary            firstnme            ...
+-------------------------------------------------------------
+12         15900.00000000000 MAUDE               
+-------------------------------------------------------------
+15         27380.00000000000 MARIA               
+-------------------------------------------------------------
+16         36170.00000000000 EVA                 
+16         29750.00000000000 EILEEN              
+16         23800.00000000000 DOLORES             
+16         17250.00000000000 SYBIL               
+-------------------------------------------------------------
+17         22250.00000000000 ELIZABETH           
+17         21340.00000000000 MARILYN             
+17         26250.00000000000 ETHEL               
+-------------------------------------------------------------
+18         52750.00000000000 CHRISTINE           
+18         28420.00000000000 HEATHER             
+18         29840.00000000000 JENNIFER            
+-------------------------------------------------------------
+20         38250.00000000000 SALLY               
+-------------------------------------------------------------
+</pre><p class="Paragraph">Applying the HAVING clause to the grouped table, gives the
+               following grouped table.
+            </p><pre class="CodeBlock">
+edlevel    salary            firstnme            ...
+-------------------------------------------------------------
+16         36170.00000000000 EVA                 
+16         29750.00000000000 EILEEN              
+16         23800.00000000000 DOLORES             
+16         17250.00000000000 SYBIL               
+-------------------------------------------------------------
+18         52750.00000000000 CHRISTINE           
+18         28420.00000000000 HEATHER             
+18         29840.00000000000 JENNIFER            
+-------------------------------------------------------------
+20         38250.00000000000 SALLY               
+-------------------------------------------------------------
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/group_by.htm" class="manualLink">GROUP BY clause</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/select.htm" class="manualLink">SELECT clause</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/having, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

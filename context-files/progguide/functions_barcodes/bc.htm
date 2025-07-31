@@ -1,0 +1,344 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>bc$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="bc$ bc$ functions bc$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">bc$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;bc$&nbsp;
+					(long&nbsp;type, long&nbsp;rows, string&nbsp;barcode, long&nbsp;options)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this to create a barcode of the specified type.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">barcode type. The mapping to a type depends on the used
+                           					client. For BWPrint the type is a number in the range 1-1000 for a
+                           					1D-barcode and 1001-2000 for a 2D-barcode.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>rows</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The height of the barcode, as a number of lines.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>barcode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The string (or binary data) that must be converted to a
+                           					barcode.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>options</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Options for the barcode, see below</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The returned data is an encoded string. This string should not be
+               				modified. Truncation or modification of this return value will
+               				result in undefined
+               				behavior if the value is interpreted (e.g. by BwPrint).
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Options for barcodes specific to BWprint</div>
+            <table border="0" class="none">
+               <tbody noTR="12" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">1D-Barcode option</th>
+                     <th rowspan="1" colspan="1" class="none">Description</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC_AUTOPARITY</td>
+                     <td rowspan="1" colspan="1" class="none">calculate parity</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC_TRANSPARENTBACKGRND</td>
+                     <td rowspan="1" colspan="1" class="none">transparent background</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC_SHOWLIGHTMARGINS</td>
+                     <td rowspan="1" colspan="1" class="none">show light margins</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC_SHOWBEARERS</td>
+                     <td rowspan="1" colspan="1" class="none">show bearer bars</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC_EXTENDBEARERS</td>
+                     <td rowspan="1" colspan="1" class="none">extend bearer bar into light margin</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC_SHOWTEXT</td>
+                     <td rowspan="1" colspan="1" class="none">show barcode caption text</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC_CALCCHECKSUM</td>
+                     <td rowspan="1" colspan="1" class="none">calculate checksum</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC_SHOWCHKDIGIT</td>
+                     <td rowspan="1" colspan="1" class="none">show checksum digit</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC_FIXEDXUNIT</td>
+                     <td rowspan="1" colspan="1" class="none">use fixed xunits for barcode width</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC_EXTRA_FLAG1</td>
+                     <td rowspan="1" colspan="1" class="none">barcode specific extra1 flag</td>
+                  </tr>
+                  <tr no="12" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC_EXTRA_FLAG2</td>
+                     <td rowspan="1" colspan="1" class="none">barcode specific extra2 flag</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <table border="0" class="none">
+               <tbody noTR="12" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">2D-Barcode option</th>
+                     <th rowspan="1" colspan="1" class="none">Description</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC2D_TRANSPARENTBACKGRND</td>
+                     <td rowspan="1" colspan="1" class="none">transparent background</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC2D_AZTECFLAG</td>
+                     <td rowspan="1" colspan="1" class="none">Aztec flag</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC2D_AZTECMENU</td>
+                     <td rowspan="1" colspan="1" class="none">Aztec menu option</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC2D_AZTECRVIDEO</td>
+                     <td rowspan="1" colspan="1" class="none">Aztec reverse video</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC2D_DATAMATRIXGS1</td>
+                     <td rowspan="1" colspan="1" class="none">Datamatrix GS1 encoding</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC2D_PDF417TRUNCATE</td>
+                     <td rowspan="1" colspan="1" class="none">PDF417 truncate</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC2D_SET_MODE(m)</td>
+                     <td rowspan="1" colspan="1" class="none">mode, valid range: 0x0 - 0xF</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC2D_SET_LEVEL(l)</td>
+                     <td rowspan="1" colspan="1" class="none">security level, valid range: 0x00 - 0x3F</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC2D_SET_XUNIT(x)</td>
+                     <td rowspan="1" colspan="1" class="none">set x-unit, valid range: 0x00 - 0xFF</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC2D_SET_MULYUNIT(m)</td>
+                     <td rowspan="1" colspan="1" class="none">set y-unit multiplier, valid range: 0x0 - 0xF</td>
+                  </tr>
+                  <tr no="12" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC2D_SET_COLUMNS(c)</td>
+                     <td rowspan="1" colspan="1" class="none">set columns, valid range: 0x0 - 0xF</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Multiple options can be combined with <a href="../../progguide/functions_bit/bit_and_exor_in_inv_or.htm#bit_or" class="manualLink">bit.or</a> function or with + operator (e.g. if more than 2 options need to be
+               			combined).
+               			Note that not all options are applicable to all barcodes.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Deprecated variants</div>
+            <p class="Paragraph"><code class="Code">string bc$( long type, long rows, string barcode )</code></p>
+            <p class="Paragraph"><code class="Code">string bc$( long type, long rows, string barcode, long
+                  				calc_checksum, long show_checkdigits )</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Mapping implicit options for deprecated variants</div>
+            <p class="Paragraph">The 4-argument variant of the bc$() function requires all options to be specified explicitly.
+               			The deprecated 3- and 5-argument variants of the bc$() function add some implicit options.
+               			Use the table below to rewrite a call to a 3- or 5-argument variant of the bc$() function to a 4-argument one.
+            </p>
+            <p class="Paragraph">The 3-argument variant of bc$() controls the calculation of checksum and showing check digit
+               			by setting a bit-value of the type argument. See the following table:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">Argument</th>
+                     <th rowspan="1" colspan="1" class="none">Value(s) for the 'options' argument of the 4-argument variant of bc$()</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC_CALCCHECKSUM</td>
+                     <td rowspan="1" colspan="1" class="none">BC_CALCCHECKSUM, BC_AUTOPARITY</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">BC_SHOWCHKDIGIT</td>
+                     <td rowspan="1" colspan="1" class="none">BC_SHOWCHKDIGIT</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">The calc_checksum and show_checkdigits arguments for the 5-argument variant of bc$() need to be mapped to 
+               			explicit options for the 4-argument variant when used. See the following table:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">Argument</th>
+                     <th rowspan="1" colspan="1" class="none">Value(s) for the options argument of the 4-argument variant of bc$()</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">calc_checksum argument set to true</td>
+                     <td rowspan="1" colspan="1" class="none">BC_CALCCHECKSUM, BC_AUTOPARITY</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">show_checkdigits argument set to true</td>
+                     <td rowspan="1" colspan="1" class="none">BC_SHOWCHKDIGIT</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Some options are always set for the deprecated 3- and 5-argument variants of the bc$() function, 
+               			but need to be set explicitly for the 4-argument of bc$() function:
+            </p>
+            <ul class="List">
+               <li class="ListItem">If the provided barcode type is 5, then the BC_SHOWLIGHTMARGINS option is implicitly set. 
+                  				Pass BC_SHOWLIGHTMARGINS value in the options argument of the 4-argument variant of bc$()
+                  				to get the same behavior.
+               </li>
+               <li class="ListItem">The BC_SHOWTEXT and BC_TRANSPARENTBACKGRND options are always implicitly 
+                  				set for the 3- and 5-argument variant of the bc$() function. 
+                  				Pass these values in the options argument of the 4-argument variant of bc$() to get 
+                  				the same behavior.
+               </li>
+            </ul>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example mapping to 4-argument bc$ variant</div><pre class="CodeBlock">
+barcode.string = bc$(2, 3, "87291803", false, true)
+</pre><p class="Paragraph">to</p><pre class="CodeBlock">
+barcode.string = bc$(2, 3, "87291803", BC_SHOWCHKDIGIT + BC_SHOWTEXT + BC_TRANSPARENTBACKGRND)
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Remarks</div>
+            <ul class="List">
+               <li class="ListItem">The calc_checksum, show_checkdigits and options arguments
+                  				are not used on non-Windows platforms.
+               </li>
+               <li class="ListItem">The 3-argument variant of bc$() has a limitation to the
+                  				barcode type, which need to be in range of 1-63.
+               </li>
+               <li class="ListItem">The 3- and 5-argument variants of bc$() have a limitation
+                  				to the barcode string length of 224 bytes.
+               </li>
+               <li class="ListItem">2D-barcodes are supported on Windows platform only, by
+                  				BWPrint, starting with portingset 6.1c.09 (BW=B40c.95), 8.5a.02 and
+                  				8.5b.
+               </li>
+               <li class="ListItem">Starting with these BWprint versions: a barcode.pdf file is
+                  				supplied in the directory where BWprint is installed.
+                  				This pdf contains information about the capabilities and allowed options
+                  				for	barcodes.
+               </li>
+               <li class="ListItem">Do not use 1D-barcode options for 2D-barcodes. Do not use 2D-barcode options for 1D-barcodes.</li>
+            </ul>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Windows platform/BwPrint</div>
+            <div class="NoteContent">
+               <p class="Paragraph">The barcode type points to a barcode type. Check the
+                  			barcode-1D and/or
+                  			barcode-2D test in the Help menu of
+                  			BwPrint for
+                  			available barcode types. The number of available barcode types
+                  			depend
+                  			on the thirdparty software from dlSoft.
+                  			This software is used to
+                  			generate the barcode images.
+               </p>
+            </div>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Non-Windows platforms</div>
+            <div class="NoteContent">
+               <p class="Paragraph">The barcode type points to a shell script that is used to generate
+                  			the
+                  			barcode. This script is printer and customer specific.
+                  			The script
+                  			is stored in the $BSE/lib/barcode directory.
+                  			The script name has the
+                  			form 'type <i class="Emphasis">xx</i> ', where <i class="Emphasis">xx</i> gets a leading zero for a barcode type with a value
+                  			lower than 10. For
+                  			example 'type02' or 'type100'.
+                  			The script is called by the printer
+                  			daemon/filter in the form (quotes
+                  			are added, to surround the barcode
+                  			caption):
+                  			$BSE/lib/barcode/type <i class="Emphasis">type</i> '<i class="Emphasis">barcode</i> '<i class="Emphasis">rows</i>.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+string barcode.string(500)
+barcode.string = bc$(2, 3, "87291803", bit.or(BC_TRANSPARENTBACKGRND,BC_SHOWTEXT))
+</pre></div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_barcodes/bc, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

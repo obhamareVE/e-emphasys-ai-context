@@ -1,0 +1,62 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Include files (preprocessor)</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="include files (preprocessor) ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Include files (preprocessor)</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">To include files, use one of the following statements:</p><pre class="CodeBlock">
+#include "filename"
+#include &lt;filename&gt;
+</pre><p class="Paragraph">Files included between '&lt;' and '&gt;' are searched for
+               in the directory '$BSE/include&lt;rel.number&gt;'. This
+               directory is reserved for system headers and cannot be used
+               for applications. Normally a file specified between quotes is
+               searched for using the standard file redirection method.
+            </p>
+            <p class="Paragraph">Note that the preprocessor works only during compilation
+               of a 3GL source, as the standard generator std_gen6.2 does
+               not have a preprocessor pass. So it is not possible to use
+               4GL events in an included file.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">Suppose the following entry occurs in
+               $BSE/lib/fd.6.2&lt;package_comb&gt;:
+            </p><pre class="CodeBlock">
+ippmmm:/usr/bse/standard6.2
+</pre><p class="Paragraph">and there is an include statement as follows:</p><pre class="CodeBlock">
+#include "ippmmmheader"
+</pre><p class="Paragraph">The file "/usr/bse/standard6.21/ippmmm/immmheader0" is
+               included. If a '/' occurs in the filename, the file is
+               searched using the specified path name. When a file is
+               included twice, the second include is ignored.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/preprocessor.htm" class="manualLink">Preprocessor</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/include_files_preprocessor, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>The GOTO statement</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="GOTO statement ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">The GOTO statement</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The GOTO statement transfers control unconditionally to a
+               specified point in the program. You use a label to indicate a
+               position to which the statement can transfer control. The label
+               name can consist of letters, digits, underscores [_], and periods
+               [.]. It must begin with an alphabetic character.
+            </p>
+            <p class="Paragraph">Examples of labels:</p><pre class="CodeBlock">
+LABEL_1:
+START_OF_PROCESS_A:
+</pre><p class="Paragraph">Examples of GOTO statements:</p><pre class="CodeBlock">
+GOTO LABEL_1
+GOTO START_OF_PROCESS_A
+</pre><p class="Paragraph">Both the GOTO statement and the label to which it refers
+               must be within the same function. You cannot transfer control
+               to a label in another function.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/transfer_of_control.htm" class="manualLink">Transfer of control</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/the_goto_statement, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

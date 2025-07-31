@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>SELECT statement</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="SELECT statement SQL SELECT statement ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">SELECT statement</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">A SELECT statement retrieves a row set (or derived table)
+               from the database. The row set can be built up from multiple
+               (database) tables. Rows can be filtered, grouped and ordered.
+               Multiple row sets can be combined into one row set using the
+               UNION operator.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;select statement&gt;
+    ::= <a href="../../progguide/functions_database_handling/query_expression.htm" class="manualLink">Query expression</a>     
+                 [ <a href="../../progguide/functions_query_hints/overview.htm" class="manualLink">Query hints overview</a> ... ]
+        [ <a href="../../progguide/functions_database_handling/order_by.htm" class="manualLink">ORDER BY clause</a>
+          [ WITH RETRY [REPEAT LAST ROW] ] ] 
+        [ <a href="../../progguide/functions_database_handling/set_specification.htm" class="manualLink">SET specification</a> ] 
+        [ <a href="../../progguide/functions_query_hints/overview.htm" class="manualLink">Query hints overview</a> ... ]
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Informal syntax</div><pre class="CodeBlock">
+         <a href="../../progguide/functions_database_handling/select.htm" class="manualLink">SELECT clause</a> &lt;select list&gt; 
+<a href="../../progguide/functions_database_handling/from.htm" class="manualLink">FROM clause</a> &lt;from list&gt;
+[ <a href="../../progguide/functions_database_handling/where.htm" class="manualLink">WHERE clause</a>&nbsp;<a href="../../progguide/functions_database_handling/search_condition.htm" class="manualLink">Search condition</a> ] 
+[ <a href="../../progguide/functions_database_handling/group_by.htm" class="manualLink">GROUP BY clause</a> &lt;group list&gt; 
+  [ <a href="../../progguide/functions_database_handling/having.htm" class="manualLink">HAVING clause</a>&nbsp;<a href="../../progguide/functions_database_handling/search_condition.htm" class="manualLink">Search condition</a> ] ] 
+[ <a href="../../progguide/functions_query_hints/overview.htm" class="manualLink">Query hints overview</a> ... ]
+[ <a href="../../progguide/functions_database_handling/union.htm" class="manualLink">UNION operator</a>&nbsp;
+<a href="../../progguide/functions_database_handling/select.htm" class="manualLink">SELECT clause</a> &lt;select list&gt; 
+<a href="../../progguide/functions_database_handling/from.htm" class="manualLink">FROM clause</a> &lt;from list&gt;
+  [ <a href="../../progguide/functions_database_handling/where.htm" class="manualLink">WHERE clause</a>&nbsp;<a href="../../progguide/functions_database_handling/search_condition.htm" class="manualLink">Search condition</a> ] 
+  [ <a href="../../progguide/functions_database_handling/group_by.htm" class="manualLink">GROUP BY clause</a> &lt;group list&gt; 
+    [ <a href="../../progguide/functions_database_handling/having.htm" class="manualLink">HAVING clause</a>&nbsp;<a href="../../progguide/functions_database_handling/search_condition.htm" class="manualLink">Search condition</a> ] ]
+  [ <a href="../../progguide/functions_query_hints/overview.htm" class="manualLink">Query hints overview</a> ... ]
+] ...
+[ <a href="../../progguide/functions_database_handling/order_by.htm" class="manualLink">ORDER BY clause</a> &lt;order by list&gt; [ WITH RETRY [REPEAT LAST ROW] ]] 
+[ <a href="../../progguide/functions_database_handling/set_specification.htm" class="manualLink">SET specification</a> ] 
+[ <a href="../../progguide/functions_query_hints/overview.htm" class="manualLink">Query hints overview</a> ... ]
+
+</pre><p class="Paragraph">For full details of any of the above clauses of the SELECT
+               statement, simply click on the relevant clause.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following SELECT statement selects all rows from table <code class="Code">dbtst120</code> (employees) and orders them by descending salary:
+            </p><pre class="CodeBlock">
+SELECT *
+FROM   dbtst120
+ORDER  BY salary DESC
+</pre><p class="Paragraph">The following SELECT statement selects the maximum sum of 
+               salary and bonus of all employees that have
+               an education level less than 15:
+            </p><pre class="CodeBlock">
+SELECT max( salary + bonus )
+FROM   dbtst120
+WHERE  edlevel &lt; 15
+</pre><p class="Paragraph">The following SELECT statement selects for each education level
+               the salary and first name of the employee that has the maximum salary of
+               all employees with that education level:
+            </p><pre class="CodeBlock">
+SELECT max_salary_by_edlevel.edlevel, salary, firstnme
+FROM ( SELECT edlevel, MAX( salary ) AS max_salary
+       FROM dbtst120
+       GROUP BY edlevel ) max_salary_by_edlevel
+     INNER JOIN 
+       dbtst120 AS employees 
+     ON max_salary_by_edlevel.max_salary = employees.salary
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/select_statement, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

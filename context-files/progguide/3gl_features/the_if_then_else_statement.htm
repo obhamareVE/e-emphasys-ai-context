@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>The IF ... THEN ... ELSE statement</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="IF ... THEN ... ELSE statement ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">The IF ... THEN ... ELSE statement</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The IF statement enables conditional transfer of control. The
+               statement tests a condition, and executes the succeeding statements
+               only if the condition is true. The condition can consist of a
+               boolean variabele, an expression.
+            </p>
+            <p class="Paragraph">In the past it could be a long variable or a function that
+               returns a long. When the condition is a long variable or a
+               function that returns a long, the value zero is evaluated as
+               FALSE and all other values are evaluated as TRUE.
+            </p>
+            <p class="Paragraph">Usage of a long in this way will cause a warning, in the
+               future it will cause an error.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">IF...THEN</div>
+            <p class="Paragraph">This tests a condition. If the condition evaluates to
+               TRUE, the statements following the IF...THEN statement are
+               executed. For example:
+            </p><pre class="CodeBlock">
+IF condition THEN
+        statement(s)
+ENDIF
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">IF...THEN...ELSE</div>
+            <p class="Paragraph">This tests a condition. If the condition evaluates to
+               TRUE, the statements following the IF...THEN statement are
+               executed. If the condition evaluates to FALSE, the statements
+               following the ELSE statement are executed. For example:
+            </p><pre class="CodeBlock">
+IF condition THEN
+        statement(s)_1
+ELSE
+        statement(s)_2
+ENDIF
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div><pre class="CodeBlock">
+IF a &gt;   b THEN
+        b = b + 1
+ENDIF
+
+IF bl1 THEN
+        bl2 = FALSE
+ENDIF
+
+IF present AND found THEN
+        count = count + 1
+        do_something()
+ENDIF
+
+IF isspace(str1) THEN
+        message("String is empty")
+ENDIF
+
+IF a &gt; b THEN
+        max_val = a
+ELSE
+        max_val = b
+ENDIF
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/transfer_of_control.htm" class="manualLink">Transfer of control</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/the_if_then_else_statement, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Locking</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="database handling locking locking ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Locking</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Database inconsistencies can arise when two or more processes
+   attempt to update or delete the same record or table. Read
+   inconsistencies can arise when changes made during a transaction
+   are visible to other processes before the transaction has been
+   completed – for example, the transaction might subsequently be
+   abandoned. To avoid such inconsistencies, Infor ERP Enterprise supports
+   the following locking mechanisms:</p>
+            <ul class="List">
+               <li class="ListItem">Record locking</li>
+               <li class="ListItem">Table locking</li>
+               <li class="ListItem">Application locking</li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Record locking</div>
+            <p class="Paragraph">To ensure that only one process at a time can modify a
+               record, the database driver locks the record when the first
+               process attempts to modify it. Other processes cannot then
+               update or delete the record until the lock has been released.
+               However, they can still read the record.
+            </p>
+            <p class="Paragraph">While one process is updating a table, it is important that
+               other processes retain read consistency on the table. Read
+               consistency means that a process does not see uncommitted
+               changes. Updates become visible to other processes only when the
+               transaction has been commited. Some database systems do not
+               support read consistency, and so a dirty read is possible. A
+               dirty read occurs when one process updates a record and another
+               process views the record before the modifications have been
+               committed. If the modifications are rolled back, the information
+               read by the second process becomes invalid.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Supported features</div>
+            <table class="default">
+               <tbody noTR="5" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"></td>
+                     <td rowspan="1" colspan="1" class="default">INFORMIX</td>
+                     <td rowspan="1" colspan="1" class="default">ORACLE</td>
+                     <td rowspan="1" colspan="1" class="default">DB2</td>
+                     <td rowspan="1" colspan="1" class="default">SQL Server</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">locking</td>
+                     <td rowspan="1" colspan="1" class="default">row</td>
+                     <td rowspan="1" colspan="1" class="default">row</td>
+                     <td rowspan="1" colspan="1" class="default">row</td>
+                     <td rowspan="1" colspan="1" class="default">row</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">dirty read</td>
+                     <td rowspan="1" colspan="1" class="default">yes</td>
+                     <td rowspan="1" colspan="1" class="default">no</td>
+                     <td rowspan="1" colspan="1" class="default"></td>
+                     <td rowspan="1" colspan="1" class="default"></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">consistent read</td>
+                     <td rowspan="1" colspan="1" class="default">no</td>
+                     <td rowspan="1" colspan="1" class="default">yes</td>
+                     <td rowspan="1" colspan="1" class="default"></td>
+                     <td rowspan="1" colspan="1" class="default"></td>
+                  </tr>
+                  <tr no="5" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">transactions</td>
+                     <td rowspan="1" colspan="1" class="default">yes</td>
+                     <td rowspan="1" colspan="1" class="default">yes</td>
+                     <td rowspan="1" colspan="1" class="default">yes</td>
+                     <td rowspan="1" colspan="1" class="default">yes</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Delayed locks</div>
+            <p class="Paragraph">Locking a record for longer than required can result in
+               unnecessarily long waiting times. The use of delayed locks
+               solves this problem to a great extent.
+            </p>
+            <p class="Paragraph">A delayed lock is applied to a record immediately before
+               changes are committed to the database and not earlier. When the
+               record is initially read, it is temporarily stored. Immediately
+               before updating the database, the system reads the value of the
+               record again, this time placing a lock on it. If the record is
+               already locked, the system goes back to the <a href="../../progguide/functions_database_handling/retry_points.htm" class="manualLink">Retry points</a> and retries the
+               transaction. If the record is not locked, the system compares
+               the content of the record from the first read with the content
+               from the second read. If changes have been made to the record by
+               another process since the first read, the error EROWCHANGED is
+               returned and the transaction is undone. If no changes have
+               occurred, the update is committed to the database.
+            </p>
+            <p class="Paragraph">You place a delayed lock by adding the keyword FOR UPDATE to
+               the SELECT statement (see <a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a>).
+               For example:
+            </p><pre class="CodeBlock">
+table   tpctst999
+db.retry.point()
+SELECT pctst999.*
+FROM pctst999 FOR UPDATE
+SELECTDO
+                pctst999.dsca = "...."
+                ....
+                db.update(tpctst999, DB.RETRY)
+ENDSELECT
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Table locks</div>
+            <p class="Paragraph">Infor ERP Enterprise provides a table locking mechanism, which enables
+               you to lock all the records in a specified table. A table lock
+               prevents other processes from modifying or locking records in
+               the table but not from reading them. This is useful when a
+               particular transaction would otherwise require a large number of
+               record locks. You use the db.lock.table() function to apply a
+               table lock.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Application locks</div>
+            <p class="Paragraph">An <a href="../../progguide/functions_appl/application_locks_overview.htm" class="manualLink">Application locks: overview</a> prevents other applications and users from reading
+               and/or modifying an application's data during critical
+               operations. It is not part of a transaction and so is not
+               automatically removed when a transaction is committed. Instead,
+               an application lock is removed when the application ends or when <a href="../../progguide/functions_appl/appl.delete.htm" class="manualLink">appl.delete()</a> is called.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/overview.htm" class="manualLink">Database handling overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/transaction_handling.htm" class="manualLink">Transaction handling</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/retry_points.htm" class="manualLink">Retry points</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/error_handling.htm" class="manualLink">Error handling</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/hints_for_using_sql.htm" class="manualLink">Hints for using SQL</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/hints_for_using_db.retry.point.htm" class="manualLink">Hints for using db.retry.point</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/locking, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

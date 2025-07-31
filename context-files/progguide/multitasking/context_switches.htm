@@ -1,0 +1,141 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Context switches</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="context switches ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Context switches</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Each running process receives a number of ticks when it is
+               scheduled. This is the equivalent of a UNIX time slice. The
+               execution of each instruction costs the process a number of
+               ticks. When the process has used up all its ticks, the bshell
+               schedules another process. The switch to another process is
+               referred to as a context switch.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Forcing a context switch</div>
+            <p class="Paragraph">Normally, the bshell executes context switches automatically.
+               Functions such as <a href="../../progguide/functions_interprocess_communication_bshell/bms.send.htm" class="manualLink">bms.send()</a>, <a href="../../progguide/functions_appl/appl.set.htm" class="manualLink">appl.set()</a>,
+               and <a href="../../progguide/functions_starting_and_stopping_programs/start.session.htm" class="manualLink">start.session()</a> also cause a context switch. And programmers
+               can force a context switch by calling suspend(0).This is useful
+               when the immediate response of another process is required.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Allocating bonus ticks</div>
+            <p class="Paragraph">The database locking mechanism prevents two or more processes
+               from updating or deleting the same record or table
+               simultaneously. When a process is modifying the database, the
+               relevant record or table is locked. Other processes cannot
+               modify that record or table until the lock is released.
+            </p>
+            <p class="Paragraph">Some database management systems use a page locking mechanism
+               instead of a record locking mechanism. That is, they lock a
+               predefined block size that can include several records. This can
+               result in a deadlock when two processes within the same bshell
+               attempt to lock records that are positioned very close to each
+               other in the database. To prevent this happening, you can boost
+               the number of ticks assigned to a process by using the bonus
+               tick mechanism. When this mechanism is enabled, the bshell
+               assigns bonus ticks to a process when it locks a database record
+               (note that a lock is applied when the first update, insert, or
+               delete is performed by a database transaction) . This means that
+               the process is not scheduled out before the lock is released
+               (the lock is released when the transaction is committed or
+               aborted).
+            </p>
+            <p class="Paragraph">You can configure the bonus tick mechanism by means of
+               environment variables or user resources.
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">User resource</th>
+                     <th rowspan="1" colspan="1" class="none">Environment variable</th>
+                     <th colspan="2" rowspan="1" class="none">Value</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">bonus_enable</td>
+                     <td rowspan="1" colspan="1" class="none">BSE_BONUS_ENABLE</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bonus ticks off (default)</p>
+                        <p class="Paragraph">1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bonus ticks on</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">bonus_timeslice</td>
+                     <td rowspan="1" colspan="1" class="none">BSE_BONUS_TIMESLICE</td>
+                     <td colspan="2" rowspan="1" class="none">The number of bonus ticks to assign to a process.
+                        The default is 1073741824.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">bonus_timeout_warning</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">BSE_BONUS_TIMEOUT_</p>
+                        <p class="Paragraph">WARNING</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="4" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">0</td>
+                                 <td rowspan="1" colspan="1" class="none">Warning mechanism off.</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">1</td>
+                                 <td rowspan="1" colspan="1" class="none">Warning mechanism on. A warning message is
+                                    displayed when a process is about to loose its
+                                    time slice. The message is also displayed when
+                                    a context switch is forced.
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">2</td>
+                                 <td rowspan="1" colspan="1" class="none">This is similar to 1, except that when the
+                                    object is in debug mode, the process stops and
+                                    the debugger points to the next
+                                    instruction.
+                                 </td>
+                              </tr>
+                              <tr no="4" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">3</td>
+                                 <td rowspan="1" colspan="1" class="none">This is similar to 2, except that the
+                                    process is aborted.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/multitasking/multitasking_and_the_gui.htm" class="manualLink">Multitasking and the GUI</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/multitasking/context_switches, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>query.object()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions query.object query.object query.object ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">query.object()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;query.object&nbsp;
+					(long&nbsp;object_id, long&nbsp;attribute_in, void&nbsp;value_in, long&nbsp;size_iin, long&nbsp;attribute_in, ref void&nbsp;value_out, ref long&nbsp;size_out)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This function is only
+                  	  supported for Baan Windows and its usage is therefore deprecated.
+               </p>
+               <p class="Paragraph">This retrieves information about a specified object, based on
+                  	  specified attribute values. For example, you can query a DsCgwindow object for
+                  	  the ID of the subobject that is located at specified x- and y-coordinates
+                  	  within the gwindow. Or you can query a DsCgrid object for the type of control
+                  	  that a specified column contains.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>object_id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The ID of the object to be queried, as returned by <a href="../../progguide/functions_user_interface_objects/create.object.htm" class="manualLink">create.object()</a> when the object was created.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>attribute_in</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">You can use one or more sets of these arguments to specify the input
+                           		attributes for the query. For each attribute you specify, you must include the
+                           		attribute type (for example, DsNcolumns), and the attribute value. For
+                           		attributes of type void data or long array, you must also include the size of
+                           		the data or array.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>value_in</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>size_iin</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>attribute_in</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">You can use one or more sets of these arguments to specify the output
+                           		of the query. For each attribute you specify, you must include the attribute
+                           		type (for example, DsNcontrol). The function returns the current value of the
+                           		attribute. For attributes of type void data or long array, it also returns the
+                           		size of the data or array.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">ref void</td>
+                     <td class="none"><code>value_out</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>size_out</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">TRUE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; success</p>
+            <p class="Paragraph">FALSE&nbsp;&nbsp; &nbsp;&nbsp; error</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following are examples of some of the situations in which
+               	  you can use the <i class="Emphasis">query.object()</i> function:
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div>
+            <p class="Paragraph">To retrieve the ID of the subobject located at a specified
+               	  position within a graphical window. If there is more than one subobject at the
+               	  specified location, the function returns the ID of the uppermost
+               	  subobject.
+            </p><pre class="CodeBlock">
+long mwin_id, gwin_id, gp1, gp2, gp3, part
+mwin_id = create.object( DsCmwindow, current.display(),
+        DsNbackground,  RGB.BLACK,
+        DsNminHeight,   400,
+        DsNminWidth,    650,
+        DsNflags,       DSNORMALSTATE+DSAUTORESIZE )
+gwin_id = create.object( DsCgwindow, mwin_id,
+        DsNbackground,  RGB.BLUE,
+        DsNwidth,       200,
+        DsNheight,      100,
+        DsNx,           30,
+        DsNy,           30 )
+update.object( gwin_id )
+gp1 = create.sub.object( gwin_id, DsCgpRectangle,
+        DsNgcBackground, RGB.WHITE,
+        DsNheight,       50,
+        DsNwidth,        50,
+        DsNx,            0,
+        DsNy,            0 )
+gp2 = create.sub.object( gwin_id, DsCgpArc,
+        DsNgcBackground, RGB.BLACK,
+        DsNheight,       20,
+        DsNwidth,        20,
+        DsNx,            10,
+        DsNy,            10 )
+gp3 = create.sub.object( gwin_id, DsCgpLine,
+        DsNgcBackground, RGB.RED,
+        DsNxo,           1,
+        DsNyo,           1,
+        DsNxn,           1,
+        DsNyn,           200 )
+update.object( mwin_id )
+query.object( gwin_id,
+        DsNx,         20,
+        DsNy,         20,
+        DsNsubObject, part )
+        | part contains the value of gp2
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2</div>
+            <p class="Paragraph">To retrieve the IDs of the subobjects that occur within a
+               	  particular area of a graphical window.
+            </p><pre class="CodeBlock">
+   long part.list(20)    | max. 20 parts
+   long num.parts
+   query.object( gwin_id,
+                 DsNx,         5,
+                 DsNy,         5,
+                 DsNsize,      20,        | maximum number of parts
+                 DsNwidth,     30,
+                 DsNheight,    30,
+                 DsNsubObjectArray, part.list, num.parts )
+</pre><p class="Paragraph">The argument now contains the number of subobjects that occur
+               	  within the specified area (in this case, 2). The array contains the IDs of the
+               	  subobjects (in this example, it contains the IDs of gp1 and gp2).
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 3</div>
+            <p class="Paragraph">To retrieve the ID of the subobject that in on the top of the
+               	  subobject stack. If the DsCgwindow object does not contain any parts, 0 is
+               	  returned.
+            </p><pre class="CodeBlock">
+query.object( gwin_id, DsNfirstSubObject, part )
+   | part contains the ID of gp1
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 4</div>
+            <p class="Paragraph">To retrieve the ID of the subobject on the bottom of the
+               	  subobject stack. If the DsCgwindow object does not contain any parts, 0 is
+               	  returned.
+            </p><pre class="CodeBlock">
+query.object( gwin_id, DsNlastSubObject, part )
+   | part contains the ID of gp3
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 5</div>
+            <p class="Paragraph">To retrieve the ID of the subobject that follows a specified
+               	  reference subobject in the subobject stack. The stack is built from top to
+               	  bottom. So the function returns the ID of the subobject below the reference
+               	  subobject. If the reference subobject is the last subobject in the stack, 0 is
+               	  returned.
+            </p><pre class="CodeBlock">
+query.object( gwin_id, DsNrefSubObject, gp2, DsNnextSubObject, part )
+   | part contains the ID of gp3
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 6</div>
+            <p class="Paragraph">To retrieve the ID of the subobject that precedes the specified
+               	  reference subobject in the subobject stack. The stack is built from top to
+               	  bottom. So the function returns the ID of the subobject above the reference
+               	  subobject. If the reference subobject is the first subobject in the stack, 0 is
+               	  returned.
+            </p><pre class="CodeBlock">
+query.object( gwin_id, DsNrefSubObject, gp2, DsNprevSubObject, part )
+     | part contains the ID of gp1 
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/query.object, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Implementing HTML UI support</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Implementing HTML UI support</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Introduction</div>
+            <p class="Paragraph">As HTMLUI does not support functionality that requires a higher privilege level on the client, some client access functions
+               are not allowed anymore. Calls to these functions have to be replaced with other client access functions which are allowed
+               to be used when running in HTMLUI mode. 
+               Also, when a session has fields on its form for specifying a client file or client folder, these fields have to be hidden
+               when running in HTMLUI mode.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">unsupported client functions in HTMLUI mode</div>
+            <p class="Paragraph">The following functions are not supported when the client runs in HTMLUI mode:</p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client2server.htm" class="manualLink">client2server()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/server2client.htm" class="manualLink">server2client()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/create.local.file.htm" class="manualLink">create.local.file()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/create.local.directory.htm" class="manualLink">create.local.directory()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/dir.select.dialog.local.htm" class="manualLink">dir.select.dialog.local()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/get.client.directory.htm" class="manualLink">get.client.directory()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/get.client.hostname.htm" class="manualLink">get.client.hostname()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/get.local.filename.htm" class="manualLink">get.local.filename()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/remove.local.directory.htm" class="manualLink">remove.local.directory()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/remove.local.file.htm" class="manualLink">remove.local.file()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/seq.fstat.local.htm" class="manualLink">seq.fstat.local()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/seq.open.dialog.local.htm" class="manualLink">seq.open.dialog.local()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/seq.open.dialog.next.htm" class="manualLink">seq.open.dialog.next()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/seq.saveas.dialog.local.htm" class="manualLink">seq.saveas.dialog.local()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/start.application.local.htm" class="manualLink">start.application.local()</a></li>
+            </ul>
+            <p class="Paragraph">When one of these functions is used while running in HTMLUI mode, the following message appear:</p>
+            <p class="Paragraph">This function is not supported in the HTMLUI WebUI: &lt;function&gt;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">HTMLUI client functions</div>
+            <p class="Paragraph">The following functions have to be used when the client runs in HTMLUI mode:</p>
+            <p class="ListTitle">Single file functions:</p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client.upload.file.htm" class="manualLink">client.upload.file</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client.download.file.htm" class="manualLink">client.download.file</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client.show.file.htm" class="manualLink">client.show.file</a></li>
+            </ul>
+            <p class="ListTitle">Multiple file functions:</p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client.prepare.download.htm" class="manualLink">client.prepare.download</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client.add.download.file.htm" class="manualLink">client.add.download.file</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client.start.download.htm" class="manualLink">client.start.download</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client.upload.files.htm" class="manualLink">client.upload.files</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client.get.upload.filecount.htm" class="manualLink">client.get.upload.filecount</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client.get.upload.file.htm" class="manualLink">client.get.upload.file</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client.delete.upload.file.object.htm" class="manualLink">client.delete.upload.file.object</a></li>
+            </ul>
+            <p class="ListTitle">Assisting functions:</p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_system_and_user_information/get.ui.mode.htm" class="manualLink">get.ui.mode()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_webtop/tc.is.html.ui.htm" class="manualLink">tc.is.html.ui()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_webtop/tc.is.thin.client.htm" class="manualLink">tc.is.thin.client()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client.get.media.type.htm" class="manualLink">client.get.media.type</a></li>
+            </ul>
+            <p class="Paragraph">When one of the HTMLUI client functions is used while NOT running in HTMLUI mode, the following message appear:</p>
+            <p class="Paragraph">This function is not supported in the WebUI: &lt;function&gt;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">HTMLUI detection</div>
+            <p class="ListTitle">Two functions are available to detect whether a session should run in HTMLUI mode</p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_system_and_user_information/get.ui.mode.htm" class="manualLink">get.ui.mode()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_webtop/tc.is.html.ui.htm" class="manualLink">tc.is.html.ui()</a></li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Implement HTMLUI support</div>
+            <p class="ListTitle">To Support HTMLUI, the developer has to:</p>
+            <ul class="List">
+               <li class="ListItem">Cleanup the UI of the session by hiding form fields used for entering a client file or a client folder.
+                  			Note: also remove checks of these fields (check.input or DAL is.valid hook)
+               </li>
+               <li class="ListItem">Implement an alternative path for accessing client files based on legitmate HTMLUI functions.</li>
+            </ul>
+            <p class="ListTitle">Restrictions to HTMLUI support:</p>
+            <ul class="List">
+               <li class="ListItem">Starting a client application without a file is no longer supported.</li>
+               <li class="ListItem">It strongly depends on teh user (as the user is in control when HTMLUI) whether a client application is opened.</li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Hiding form fields</div>
+            <p class="Paragraph">Characteristics: session allows user to specify a file on the client. The entered client path is used to access (create, open,
+               etc)
+               	a file on the client machine
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">before.program</div>
+            <p class="Paragraph">The location to hide the fields is the before.program section of the UI-script. Add the following code in this section with
+               the appropriate field names:
+            </p><pre class="CodeBlock">
+if tc.is.html.ui() then
+	inputfield.invisible("&lt;name of field 1&gt;")
+	inputfield.invisible("&lt;name of field 2&gt;")  ... etc
+endif</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Skip validation of hidden fields</div>
+            <p class="Paragraph">Although you've hidden the field, validation checks might still go off. Use the tc.is.html.ui() function
+               		to check the UI-mode and only validate these fields if the UI-mode is not HTMLUI. E.g.:
+            </p><pre class="CodeBlock">
+field.curr.impf:
+check.input:
+	string	impf.dir(255) mb
+	string	impf.file(255) mb
+	long	size
+	
+	if tc.is.html.ui() then
+		if isspace(curr.impf) then
+			set.input.error("ttadv227006")
+			|* Enter (correct) path.
+		endif
+	endif</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Displaying File alternative</div>
+            <p class="Paragraph">Characteristics: session displays a file with server2client followed by start.application.local.</p>
+            <p class="Paragraph">The construction usally looks something like:</p><pre class="CodeBlock">
+if server2client(aServerFile, aClientFile, textMode) = 0 then
+	aClientApplication = "anApplication.exe"
+	start.application.local(aClientApplication &amp; " " &amp; 
+			quoted.string(aClientFile), aWaitFlag, someExitCode)
+endif</pre></div>
+         <div class="GeneralSection">
+            <p class="ListTitle">Displaying a file in HTMLUI mode can be done using one of the following two functions:</p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client.show.file.htm" class="manualLink">client.show.file</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client.download.file.htm" class="manualLink">client.download.file</a>- followed by the user opening the downloaded file
+               </li>
+            </ul>
+            <p class="ListTitle">The main differences between these functions are:</p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client.download.file.htm" class="manualLink">client.download.file</a> shows a dialog in whitch the user can choose to download the file. <a href="../../progguide/functions_client_file_access/client.show.file.htm" class="manualLink">client.show.file</a> does not show a dialog but directly shows or downloads the file.
+               </li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client.download.file.htm" class="manualLink">client.download.file</a> waits until the user closes the download dialog. <a href="../../progguide/functions_client_file_access/client.show.file.htm" class="manualLink">client.show.file</a> returns immediately. The actual file transfer to the client is done later so the file cannot be removed immediately after
+                  <a href="../../progguide/functions_client_file_access/client.show.file.htm" class="manualLink">client.show.file</a> returns. The optional parameter "remove.after.download" of <a href="../../progguide/functions_client_file_access/client.show.file.htm" class="manualLink">client.show.file</a> can be used to control automatic removal of the server file after the file has been downloaded by the client.
+               </li>
+               <li class="ListItem"><a href="../../progguide/functions_client_file_access/client.show.file.htm" class="manualLink">client.show.file</a> will show some browser recognized file types immediately inside the browser. <a href="../../progguide/functions_client_file_access/client.download.file.htm" class="manualLink">client.download.file</a> will always download the file to the client file system.
+               </li>
+            </ul>
+            <p class="ListTitle">Browsers typically recognizes files with the following file extensions:</p>
+            <ul class="List">
+               <li class="ListItem">.txt - mime type: text/plain</li>
+               <li class="ListItem">.pdf - mime type: application/pdf</li>
+               <li class="ListItem">.htm(l) - mime type: text/html,</li>
+               <li class="ListItem">images - mime type: image/*</li>
+            </ul>
+            <div class="Note">
+               <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+               <div class="NoteContent">
+                  <p class="Paragraph">it is highly recommended to use client.show.file(). Using the client.show.file() results in the file being streamed to the
+                     
+                     		browser directly without the download question being ask.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">HTML support - for other file types than .txt, .pdf and .htm(l) and images</div>
+            <p class="Paragraph">For commonly used extensions (e.g. .xlsx, .docx) the client will most likely have an application 
+               		associated with the file extension. For unknown file extensions, the user will be asked which 
+               		application to associate with the file extension of the downloaded file. When the user decides to 
+               		open the file, the associated application will automatically be launched to open the file.
+               		The HTMLUI support code will look something like:
+            </p><pre class="CodeBlock">
+if tc.is.html.ui() then
+	client.show.file(aServerFile, false, "", "", aMimeType) 
+else
+	… original code as depicted in the box above
+endif</pre><div class="Note">
+               <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+               <div class="NoteContent">
+                  <p class="Paragraph">Either the file extension of the file name should be set correctly (e.g. “.txt”) or 
+	    	  the mime type should be set accordingly (e.g. “text/plain”). 
+	    	  This enables the client running in HTMLUI to use the correct application for opening the file.</p>
+               </div>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">HTML support - for .txt, .pdf and htm(l) and images</div>
+            <p class="Paragraph">For files with a.txt, .pdf, htm(l) and images extension, the file can be streamed to the browser without actually 
+               			downloading the file. This means that the user will not be asked explicitly for the download. This 
+               			function automatically shows the content of the file in a new tab or a new browser.
+            </p><pre class="CodeBlock">
+if tc.is.html.ui() then
+	client.show.file(aServerFile, aNewWindow, aTitle, aMimeType) 
+else
+	… original code …
+endif</pre><div class="Note">
+               <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+               <div class="NoteContent">
+                  <p class="Paragraph">this variant may open a separate window when aNewWindow is set to true.</p>
+               </div>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Editing File alternative</div>
+            <p class="Paragraph">Characteristics: copy a server file to the client with server2client 
+               		followed by start.application.local to edit the file and copy the changed file 
+               		back to the server with client2server
+            </p>
+            <p class="Paragraph">The construction is usually something like:</p><pre class="CodeBlock">
+if server2client(aServerFile, aClientFile, textMode) = 0 then
+	aClientApplication = “anApplication.exe”
+	start.application.local(aClientApplication &amp; " " &amp;
+			quoted.string(aClientFile), aWaitFlag, someExitCode)
+	client2server(aClientFile, aServerFile, textMode, true)
+endif</pre><p class="Paragraph">The Single action for editing has to be replace with two actions:</p>
+            <ol class="ProcedureList">
+               <li class="ProcedureListItem">An action to download the file from the server to the client. Afterwards the user can edit the file with the appropriate application.</li>
+               <li class="ProcedureListItem">An action to upload the changed file from the client to the server.</li>
+            </ol>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">HTMLUI support - download/edit part</div><pre class="CodeBlock">
+if tc.is.html.ui() then
+	client.download.file(aServerFile, aMimeType)
+else
+	… original code as depicted in the box above
+endif	</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">HTMLUI support - download zipped archive</div><pre class="CodeBlock">
+long	handle
+
+if tc.is.html.ui() then
+	| Zip files and directories in file with .zip extension
+	handle = zipinfo.new(aServerZipFile)
+	zipinfo.add(handle, aServerFile1)
+	zipinfo.add(handle, aServerFile2)
+	zipinfo.add(handle, aServerDirectory1)
+	zipinfo.add(handle, aServerDirectory2)
+	zipfile.build(handle)
+	zipinfo.delete(handle)
+
+	| Delete intermediate zipfile 
+	client.show.file(aServerZipFile, false, ””, ””, ””, ””, true)
+else
+	… original code as depicted in the box above
+endif	</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">HTML support - upload part</div>
+            <p class="Paragraph">The upload part requires the following two changes:</p>
+            <ol class="ProcedureList">
+               <li class="ProcedureListItem">a form command implementation that will upload the file from the client back to the server.</li>
+               <li class="ProcedureListItem">a command on the session/form to call this implementation. This command is only available if the client is running in HTMLUI
+                  mode.
+               </li>
+            </ol>
+            <p class="Paragraph">The form command implementation will look something like:</p><pre class="CodeBlock">
+Function extern upload.file()
+{
+	client.upload.file(aServerFile, theSelectedClientFile, aMimeType)
+}		</pre><p class="Paragraph">or with uploading a zip archive</p><pre class="CodeBlock">
+Function extern upload.and.unzip.archive()
+{
+	client.upload.file(aServerArchive, aServerZipFile)
+	zipfile.extract(aServerZipFile, theRootSelectedArchive)
+	| Delete intermediate extracted zipfile
+	file.rm(aServerZipFile)
+}		</pre><div class="Note">
+               <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+               <div class="NoteContent">
+                  <p class="Paragraph">there is a risk that the server file was changed in the mean time. Uploading an old version of the file will overwrite these
+                     changes. 
+                     	      When implementing this two phased (i.e. download/upload) approach for editing a file, a mechanism should be added to
+                     determine whether the 
+                     	      server file has been changed in the meantime. If a changed server file is detected, the user should be warned and ask
+                     to continue before 
+                     	      performing the actual upload.
+                  </p>
+               </div>
+            </div>
+            <p class="Paragraph">The form command can be removed from the session by:</p><pre class="CodeBlock">
+after.form.read:
+	if not tc.is.html.ui() then
+		remove.form.commands("upload.file")
+	endif	</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">GBF</div>
+            <p class="Paragraph">GBF is fully supported in HTML UI but there is one usage pattern which is difficult to support in HTML UI.
+               		Node descriptions in a tabular manner in BW only works when using fixed-sized fonts. (all characters have the same width)
+            </p>
+            <p class="Paragraph">Using a fixed-sized font is archieved in Worktop/BW due to the fact that the application passes the value: GBF.OPT.FONT.FIXED
+               in the gbf.init() call.
+            </p>
+            <p class="Paragraph">In case of Webui, the WebUI is not able to determine the column bounderies.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">HTML support - use fixed fonts (not recommended)</div>
+            <p class="Paragraph">By using fixed width fonts in HTML-UI for GBF descriptions, the alignment of the characters in the description remains correct.
+               
+               		As described above, this can be achieved by performing a gbf.init() call with the GBF.OPT.FONT.FIXED passed. 
+               		However, fixed width fonts are not that pretty to and might even harm the overall look and feel of the UI.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">HTML support - use variable width fonts (recommended)</div>
+            <p class="Paragraph">To display descriptions in a tabular manner with variable width fonts, the function gbf.desc.to.column() can be used.</p>
+            <p class="Paragraph">So, whenever the gbf.add.object is called with a ‘formatted’ description (see example below:</p><pre class="CodeBlock">
+func.ret = gbf.add.object(where.used.key,
+		sprintf$("%4d %3d %47s %15s %13.4g %3d %6s "&amp;
+		"%u002 %U001 %6s %u002 %U001 ",
+		tibom010.pono,tibom010.seqn,
+		tibom010.mitm, tcibd001.dsca(1;15),
+		tibom010.qana, tibom010.opno, tibom010.efco,
+		tibom010.indt, tibom010.indt,
+		tibom010.exco, tibom010.exdt, tibom010.exdt),
+		WHERE.VAL, GBF.LEAF, par.leaf.val, 0, 0, 0,
+		MASK.TOOLS, line.col, line.style)	</pre><p class="Paragraph">the call must be changed into:</p><pre class="CodeBlock">
+func.ret = gbf.add.object(where.used.key,
+		gbf.desc.to.column(
+		tibom010.pono,tibom010.seqn,
+		tibom010.mitm, tcibd001.dsca(1;15),
+		tibom010.qana, tibom010.opno, tibom010.efco,
+		tibom010.indt, tibom010.indt,
+		tibom010.exco, tibom010.exdt, tibom010.exdt),
+		WHERE.VAL, GBF.LEAF, par.leaf.val, 0, 0, 0,
+		MASK.TOOLS, line.col, line.style)</pre><div class="Note">
+               <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+               <div class="NoteContent">
+                  <p class="Paragraph">as gbf.desc.to.column also works for other UIs (e.g. bw, webUI, workspace), there is no need use tc.is.html.ui() to check
+                     client mode.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/webtop/htmlui_adoption, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>string.scan()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions string.scan string.scan string.scan ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">string.scan()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;string.scan&nbsp;
+					(string&nbsp;value, string&nbsp;format [, void&nbsp;...])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This scans an input string ( <i class="Emphasis">value</i>) for one or more
+                  fields and stores each individual field found in the first
+                  available <i class="Emphasis">variable</i> argument. The <i class="Emphasis">format</i> argument
+                  contains conversion symbols that the function uses to interpret
+                  the input string and retrieve the individual field values. The
+                  conversion symbols indicate the types of values expected:
+               </p>
+               <p class="Paragraph">%s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; expects a single-byte or multibyte string</p>
+               <p class="Paragraph">%f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; expects a double</p>
+               <p class="Paragraph">%d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; expects a long</p>
+               <p class="Paragraph">An input field is defined as all characters up to the next
+                  separator character or up to the next character that does not
+                  match the type of the corresponding conversion symbol.
+               </p>
+               <p class="Paragraph">A separator character is a single character used to
+                  separate individual values in the input string. It can be a
+                  space character, or any other character that is not used
+                  within individual fields in the input string. You cannot use
+                  multibyte characters as separators.
+               </p>
+               <p class="Paragraph">The <i class="Emphasis">string.scan()</i> function scans the input string using
+                  each conversion symbol in the 
+                  argument in turn. For each conversion symbol,
+                  it scans the input string for characters that match the
+                  specified format. It stops scanning when it meets a separator
+                  character or a character that does match the expected
+                  type.
+               </p>
+               <p class="Paragraph">For example, consider the following function call:</p>
+               <p class="Paragraph">string.scan( input_string, "%d|%f",long,double )</p>
+               <p class="Paragraph">In this case, the function expects <i class="Emphasis">input_string</i> to
+                  contain two separate numeric values. It reads the input string
+                  until it meets a pipe [|] character (this is the separator
+                  specified in the <i class="Emphasis">format</i> argument). It then converts the
+                  characters read (excluding the separator) to a long value and
+                  stores that value in the <i class="Emphasis">long</i> variable. The function then
+                  continues scanning the input string using the next conversion
+                  symbol in the <i class="Emphasis">format</i> argument.
+               </p>
+               <p class="Paragraph">Note that if two conversion symbols are separated by more
+                  than one separator character, the function ignores those
+                  characters unless they match the input.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Input string</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>format</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">contains zero or more ordinary characters and substitution symbols</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[void</td>
+                     <td class="none"><code>...</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">References to variables to which the values scanned from the string must be assigned.</p>
+                        <p class="Paragraph">For each substitution symbol in the format string, <a href="../../progguide/3gl_features/type_conversions.htm#implicit_type_conversion" class="manualLink">implicit conversion</a> of the currently matched sub-string of the input string
+                           to the type of the corresponding reference argument
+                           is performed.
+                        </p>
+                        <p class="Paragraph">Typical
+                           (but not enforced)
+                           usage is to supply
+                           a reference variable of type string for conversion symbol %s, 
+                           a reference variable of type double for conversion symbol %f 
+                           and a reference variable of type long for conversion symbol %d.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The function returns the number of scanned fields.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">double D</p>
+            <p class="Paragraph">long L</p>
+            <p class="Paragraph">string S(80)</p>
+            <p class="Paragraph">long ret</p>
+            <p class="Paragraph">ret = string.scan("string 123 456.78","%s %d %f",S,L,D)</p>
+            <p class="Paragraph">| S contains "string", L contains 123, D contains
+               456.78
+            </p>
+            <p class="Paragraph">ret = string.scan("string|123|456.78","%s|%d|%f",S,L,D)</p>
+            <p class="Paragraph">| S contains "string", L contains 123, D contains
+               456.78
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_formatting_io/overview_and_synopsis.htm" class="manualLink">Formatting input and output - overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_formatting_io/string.scan, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

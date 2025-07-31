@@ -1,0 +1,173 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DAL2 Field dependencies</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DAL2 Field dependencies</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">Since the introduction of the DAL concept, the integrity
+               checks have moved from the UI scripts to the Data Access Layer.
+               However, with the DAL concept being implemented, still a lot of
+               business logic remains in the UI scripts. An important category
+               is the logic to determine defaults at the time of inserting a
+               record (in the <i class="Emphasis">before.new.object</i> section) and after a field change (in
+               the <i class="Emphasis">when.field.changes</i> section).
+            </p>
+            <p class="Paragraph">In order to be able to re-use this logic, this logic should
+               be moved to the DAL. DAL2 allows you to do that. For this the <a href="../../progguide/functions_dal/field.update.htm" class="manualLink">field.update()</a> hook has been
+               introduced.
+            </p>
+            <p class="Paragraph">In the Corelli release it was already possible to define a
+               field sequence in the Table Definitions session for determining
+               defaults. Baan OpenWorld uses this sequence to call the <a href="../../progguide/functions_dal/fieldname.set.defaults.htm" class="manualLink">fieldname.set.defaults()</a> hooks in the right order. The main drawback of this is that
+               these hooks are not called by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> or the <a href="../../progguide/functions_dal/dam.htm" class="manualLink">Data Access Methods (DAM)</a>. This also makes
+               it very hard to test the hooks.
+            </p>
+            <p class="Paragraph">The DAL2 concept now makes it possible to define field
+               dependencies in such a way that they can also be used by the Infor
+               ERP Enterprise applications in order to determine default values. Once
+               these field dependencies are defined, they are used in order to
+               trigger dependent fields to update themselves when required.
+            </p>
+            <p class="Paragraph">Another difference with Corelli is that the field
+               dependencies are also used by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> in order to
+               update the User Interface, with regards to disabling/enabling of
+               fields and determining enum values.
+            </p>
+            <p class="Paragraph">The following functions are available to define and handle field dependencies:</p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_dal/dal.field.depends.on.htm" class="manualLink">dal.field.depends.on()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/dal.require.field.htm" class="manualLink">dal.require.field()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/dal.any.parent.changed.htm" class="manualLink">dal.any.parent.changed()</a></li>
+            </ul>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">Suppose we have table temmt020 Currencies in which, amongst
+               others, the following 3 fields exist:
+            </p>
+            <ul class="List">
+               <li class="ListItem">temmt020.prnt - Parent Currency of the Currency being
+                  edited
+               </li>
+               <li class="ListItem">temmt020.sdat - Start date of the relation between the
+                  Currency and its Parent Currency
+               </li>
+               <li class="ListItem">temmt020.edat - End date of the relation between the
+                  Currency and its Parent Currency
+               </li>
+            </ul>
+            <p class="Paragraph">An example of this relationship could be the Euro (EUR)
+               currency being the parent of the Dutch Guilder (NLG) with a
+               start date of 1999-01-01 and an end date of 2002-06-30.
+            </p>
+            <p class="Paragraph">The following direct field dependencies exist:</p>
+            <ul class="List">
+               <li class="ListItem">temmt020.prnt --&amp; temmt020.sdat</li>
+               <li class="ListItem">temmt020.prnt --&amp; temmt020.edat</li>
+               <li class="ListItem">temmt020.sdat --&amp; temmt020.edat</li>
+            </ul>
+            <p class="Paragraph">Here you can see that the start date depends only on the
+               parent currency, and that the end date depends on both the
+               parent currency and the start date. This is defined in the <a href="../../progguide/functions_dal/before.open.object.set.htm" class="manualLink">before.open.object.set()</a> hook as follows:
+            </p><pre class="CodeBlock">
+function extern long before.open.object.set()
+{
+    ...
+
+    dal.field.depends.on("temmt020.sdat",
+        HOOK_IS_APPLICABLE + HOOK_UPDATE,   "temmt020.prnt")
+    dal.field.depends.on("temmt020.edat",
+        HOOK_IS_APPLICABLE + HOOK_UPDATE,   "temmt020.prnt",
+        HOOK_UPDATE,            "temmt020.sdat")
+
+    ...
+
+    return(0)
+}
+</pre><p class="Paragraph">Explanation:</p>
+            <ul class="List">
+               <li class="ListItem">the Start Date (temmt020.sdat) field only depends on the
+                  Parent Currency (temmt020.prnt) field. The Parent Currency
+                  field is used in both the temmt020.sdat.is.applicable() and
+                  temmt020.sdat.update() hooks.
+               </li>
+               <li class="ListItem">the End Date (temmt020.edat) field depends on both the
+                  Parent Currency and the Start Date fields. The Parent
+                  Currency field is used in the temmt020.edat.is.applicable()
+                  and temmt020.edat.update() hooks. The Start Date field is
+                  only used in the temmt020.edat.update() hook.
+               </li>
+               <li class="ListItem">the is.applicable() hook is called in order to see if the
+                  Start and End Date fields must be cleared. In case the field
+                  is applicable, then the update() hook is called. Note that
+                  this is also the case if the HOOK_IS_APPLICABLE dependency is
+                  defined without a HOOK_UPDATE dependency.
+               </li>
+            </ul>
+            <p class="Paragraph">In case the Parent Currency field changes, then the
+               is.applicable() and update() hooks of the Start and End Date
+               fields will be executed, so that these fields can determine a
+               correct value based on the value of the Parent Currency:
+            </p><pre class="CodeBlock">
+function extern void temmt020.sdat.update()
+{
+    if temmt020.prnt = temmt001.euro then
+        temmt020.sdat = date.to.num(1999, 01, 01)
+        return
+    endif
+    if temmt020.sdat = 0 and temmt020.sdat.is.mandatory() then
+        temmt020.sdat = date.num()
+        return
+    endif
+}
+
+function extern void temmt020.edat.update()
+{
+    if temmt020.prnt = temmt001.euro then
+        temmt020.edat = date.to.num(2002, 06, 30)
+        return
+    endif
+    if temmt020.edat = 0 and temmt020.edat.is.mandatory() then
+        set.max(temmt020.edat)
+        return
+    endif
+    if temmt020.sdat &gt; temmt020.edat then
+        temmt020.edat = temmt020.sdat
+        return
+    endif
+}
+</pre><p class="Paragraph">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> also uses
+               the defined field dependencies in order to (re)determine the new
+               state of the dependent fields with regards to enabling/disabling
+               and - for enum fields - the applicable enum values.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/field.update.htm" class="manualLink">field.update()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_4gle.htm" class="manualLink">DAL2 and the 4GL Engine</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/dal2_field_dependencies, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>send.bucket()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions send.bucket send.bucket send.bucket ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">send.bucket()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;send.bucket&nbsp;
+					(long&nbsp;processno, string&nbsp;bucket)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This sends a bucket message to a specified process. If the
+                  specified process is sleeping, it is automatically started.
+                  It can retrieve the message by calling <a href="../../progguide/functions_interprocess_communication_bshell/receive.bucket.htm" class="manualLink">receive.bucket$()</a>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>processno</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The process ID of the process to which the
+                           message must be sent, as returned by functions such
+                           as <a href="../../progguide/functions_processes/activate.htm" class="manualLink">activate()</a> and <a href="../../progguide/functions_processes/act.and.sleep.htm" class="manualLink">act.and.sleep()</a>. In subprocesses, the predefined
+                           variable <i class="Emphasis">parent</i> indicates the process ID of the parent
+                           process.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>bucket</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The message string.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">&gt;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the process ID of the called process</p>
+            <p class="Paragraph">-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; error</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_interprocess_communication_os_level/overview.htm" class="manualLink">Interprocess communication (OS level) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_interprocess_communication_bshell/overview.htm" class="manualLink">Interprocess communication (bshell) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_interprocess_communication_bshell/synopsis.htm" class="manualLink">Interprocess communication (bshell) synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_interprocess_communication_bshell/send.bucket, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

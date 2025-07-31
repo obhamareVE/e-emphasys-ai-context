@@ -1,0 +1,496 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>4GL choice sections</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="4GL choice sections sections choice sections ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">4GL choice sections</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">You use choice sections to program actions that you want to be
+               	  executed when standard commands or form commands are activated or ended. Choice
+               	  sections consist of a main section and a subsection. The main section specifies
+               	  the standard command or form command for which the actions must be executed.
+               	  The subsections specify when the actions must be executed.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Main section</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">choice.&lt;standard command&gt;:</div>
+               <p class="Paragraph">The subsections associated with this main section are executed
+                  		for the specified command. You can enable standard commands and specify form
+                  		commands from the session <i class="Emphasis">Sessions</i> (ttadv2500m000). A list
+                  		of standard commands appears at the end of this help topic. For form commands,
+                  		the session, menu or function name is used.
+               </p>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Subsections</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.choice:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed
+                  		immediately before the specified command is executed. You can use this
+                  		subsection, for example, to test data before the command process continues. You
+                  		can use the <a href="../../progguide/functions_form_and_form_field_operations/choice.again.htm" class="manualLink">choice.again()</a> function to stop the command.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">on.choice:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed when
+                  		the specified command is activated. These actions are executed instead of the
+                  		standard action associated with the command. This subsection is not always
+                  		available. For details, see the list at the end of this help topic.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.choice:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed
+                  		immediately after the specified command has been executed. This subsection is
+                  		not available for the <i class="Emphasis">end.program</i> and <i class="Emphasis">abort.program</i> commands.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+choice.first.view:      | standard command
+after.choice:
+    execute(first.set)
+
+
+choice.ttadv2111m000:       | form command
+before.choice:
+    export_var = "some value"
+</pre></div>
+         <div class="GeneralSection"><a name="standard_commands"></a><div class="subSectionTitle">Standard commands</div>
+            <p class="Paragraph">The following table lists the available standard commands and
+               	  the types of program in which the various choice subsections can be programmed
+               	  for each command.
+            </p>
+            <table width="100%" class="default">
+               <tbody noTR="45" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">No</th>
+                     <th rowspan="1" colspan="1" class="default">Section name <i class="Emphasis">choice.</i> &lt;...&gt;
+                     </th>
+                     <th rowspan="1" colspan="1" class="default">Description</th>
+                     <th rowspan="1" colspan="1" class="default">Before</th>
+                     <th rowspan="1" colspan="1" class="default">On</th>
+                     <th rowspan="1" colspan="1" class="default">After</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">01</th>
+                     <td rowspan="1" colspan="1" class="default">start.set</td>
+                     <td rowspan="1" colspan="1" class="default">Add/start a new group in main table</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">02</th>
+                     <td rowspan="1" colspan="1" class="default">first.view</td>
+                     <td rowspan="1" colspan="1" class="default">View first group of main table</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">03</th>
+                     <td rowspan="1" colspan="1" class="default">next.view</td>
+                     <td rowspan="1" colspan="1" class="default">View next group of main table</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">04</th>
+                     <td rowspan="1" colspan="1" class="default">prev.view</td>
+                     <td rowspan="1" colspan="1" class="default">View previous group of main table</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">05</th>
+                     <td rowspan="1" colspan="1" class="default">last.view</td>
+                     <td rowspan="1" colspan="1" class="default">View last group of main table</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">06</th>
+                     <td rowspan="1" colspan="1" class="default">def.find</td>
+                     <td rowspan="1" colspan="1" class="default">Find a specific record on key</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">07</th>
+                     <td rowspan="1" colspan="1" class="default">find.data</td>
+                     <td rowspan="1" colspan="1" class="default">Start the set from the current data in the program script. Use:
+                        			after import of data in a zoom process. (refresh)
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">08</th>
+                     <td rowspan="1" colspan="1" class="default">first.set</td>
+                     <td rowspan="1" colspan="1" class="default">View first set of main table</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">09</th>
+                     <td rowspan="1" colspan="1" class="default">next.set</td>
+                     <td rowspan="1" colspan="1" class="default">First execute an update.db and then view next set of main
+                        			table
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">10</th>
+                     <td rowspan="1" colspan="1" class="default">display.set</td>
+                     <td rowspan="1" colspan="1" class="default">Open read-only details</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">11</th>
+                     <td rowspan="1" colspan="1" class="default">prev.set</td>
+                     <td rowspan="1" colspan="1" class="default">First execute an update.db and then view previous set of main
+                        			table
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="13" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">12</th>
+                     <td rowspan="1" colspan="1" class="default">rotate.curr</td>
+                     <td rowspan="1" colspan="1" class="default">Show amounts in other currency (on.choice subsections are
+                        			available for this command only if no currencies are set)
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="14" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">13</th>
+                     <td rowspan="1" colspan="1" class="default">last.set</td>
+                     <td rowspan="1" colspan="1" class="default">View last set of main table</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="15" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">14</th>
+                     <td rowspan="1" colspan="1" class="default">add.set</td>
+                     <td rowspan="1" colspan="1" class="default">Insert a new record</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="16" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">15</th>
+                     <td rowspan="1" colspan="1" class="default">update.db</td>
+                     <td rowspan="1" colspan="1" class="default">First test consistency of data and then (re)write record or set
+                        			(save)
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="17" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">16</th>
+                     <td rowspan="1" colspan="1" class="default">dupl.occur</td>
+                     <td rowspan="1" colspan="1" class="default">Copy the record to a new one</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="18" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">17</th>
+                     <td rowspan="1" colspan="1" class="default">recover.set</td>
+                     <td rowspan="1" colspan="1" class="default">Undo modifications which are not yet written to the database</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="19" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">18</th>
+                     <td rowspan="1" colspan="1" class="default">mark.delete</td>
+                     <td rowspan="1" colspan="1" class="default">Delete selected records</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="20" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">19</th>
+                     <td rowspan="1" colspan="1" class="default">mark.occur</td>
+                     <td rowspan="1" colspan="1" class="default">Select a record on the screen</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="21" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">20</th>
+                     <td rowspan="1" colspan="1" class="default">change.order</td>
+                     <td rowspan="1" colspan="1" class="default">Change the search key</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="22" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">21</th>
+                     <td rowspan="1" colspan="1" class="default">modify.set</td>
+                     <td rowspan="1" colspan="1" class="default">Change a record stored in the database</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">----</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="23" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">23</th>
+                     <td rowspan="1" colspan="1" class="default">print.data</td>
+                     <td rowspan="1" colspan="1" class="default">Make a report with the current data on the form</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="24" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">24</th>
+                     <td rowspan="1" colspan="1" class="default">create.job</td>
+                     <td rowspan="1" colspan="1" class="default">Add session in job</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">----</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="25" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">25</th>
+                     <td rowspan="1" colspan="1" class="default">change.frm</td>
+                     <td rowspan="1" colspan="1" class="default">Go to another form in session. The command mnemonic (as used by
+                        			the <i class="Emphasis">execute()</i> command is form.tab.change.
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">----</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="26" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">26</th>
+                     <td rowspan="1" colspan="1" class="default">first.frm</td>
+                     <td rowspan="1" colspan="1" class="default">Go to first form</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">----</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="27" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">27</th>
+                     <td rowspan="1" colspan="1" class="default">next.frm</td>
+                     <td rowspan="1" colspan="1" class="default">Go to next form</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">----</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="28" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">28</th>
+                     <td rowspan="1" colspan="1" class="default">prev.frm</td>
+                     <td rowspan="1" colspan="1" class="default">Go to previous form</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">----</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="29" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">29</th>
+                     <td rowspan="1" colspan="1" class="default">last.frm</td>
+                     <td rowspan="1" colspan="1" class="default">Go to last form</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">----</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="30" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">31</th>
+                     <td rowspan="1" colspan="1" class="default">resize.frm</td>
+                     <td rowspan="1" colspan="1" class="default">Resize the current form</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="31" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">34</th>
+                     <td rowspan="1" colspan="1" class="default">zoom</td>
+                     <td rowspan="1" colspan="1" class="default">Out dated: use form commands instead. Zoom to another session/menu</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">----</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="32" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">35</th>
+                     <td rowspan="1" colspan="1" class="default">interrupt</td>
+                     <td rowspan="1" colspan="1" class="default">Do an action each time interval</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="33" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">36</th>
+                     <td rowspan="1" colspan="1" class="default">end.program</td>
+                     <td rowspan="1" colspan="1" class="default">End execution of the session; the main table will be updated</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">----</td>
+                     <td rowspan="1" colspan="1" class="default">----</td>
+                  </tr>
+                  <tr no="34" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">37</th>
+                     <td rowspan="1" colspan="1" class="default">abort.program</td>
+                     <td rowspan="1" colspan="1" class="default">Cancel execution of the session. The main table is not
+                        			updated
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">----</td>
+                     <td rowspan="1" colspan="1" class="default">----</td>
+                  </tr>
+                  <tr no="35" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">38</th>
+                     <td rowspan="1" colspan="1" class="default">cont.process</td>
+                     <td rowspan="1" colspan="1" class="default">Continue process. Supported only for running Print/Update sessions in job mode. 
+                        		    When the session runs in job mode and this choice section is not implemented, the default 
+                        		    form command will be executed.
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                  </tr>
+                  <tr no="36" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">39</th>
+                     <td rowspan="1" colspan="1" class="default">text.manager</td>
+                     <td rowspan="1" colspan="1" class="default">Start the text manager</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">----</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="37" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">40</th>
+                     <td rowspan="1" colspan="1" class="default">run.job</td>
+                     <td rowspan="1" colspan="1" class="default">Run job of session</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="38" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">41</th>
+                     <td rowspan="1" colspan="1" class="default">global.delete</td>
+                     <td rowspan="1" colspan="1" class="default">Delete range of records</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="39" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">42</th>
+                     <td rowspan="1" colspan="1" class="default">global.copy</td>
+                     <td rowspan="1" colspan="1" class="default">Copy range of records</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="40" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">43</th>
+                     <td rowspan="1" colspan="1" class="default">save.defaults</td>
+                     <td rowspan="1" colspan="1" class="default">Save values as defaults</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">----</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="41" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">44</th>
+                     <td rowspan="1" colspan="1" class="default">get.defaults</td>
+                     <td rowspan="1" colspan="1" class="default">Get previous stored defaults</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">----</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="42" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">45</th>
+                     <td rowspan="1" colspan="1" class="default">chm</td>
+                     <td rowspan="1" colspan="1" class="default">Chart Manager is started. The command mnemonic (as used by the <i class="Emphasis">execute()</i> command is start.chart.
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="43" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">46</th>
+                     <td rowspan="1" colspan="1" class="default">start.query</td>
+                     <td rowspan="1" colspan="1" class="default">Start query by form</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">---4</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+                  <tr no="44" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">47</th>
+                     <td rowspan="1" colspan="1" class="default">select.all</td>
+                     <td rowspan="1" colspan="1" class="default">Select All records</td>
+                     <td rowspan="1" colspan="1" class="default">-23-</td>
+                     <td rowspan="1" colspan="1" class="default">----</td>
+                     <td rowspan="1" colspan="1" class="default">-23-</td>
+                  </tr>
+                  <tr no="45" isLast="true" class="default">
+                     <th rowspan="1" colspan="1" class="default">64</th>
+                     <td rowspan="1" colspan="1" class="default">bms</td>
+                     <td rowspan="1" colspan="1" class="default">A broadcast message is received</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                     <td rowspan="1" colspan="1" class="default">1234</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">The following commands are supported for backward compatibility
+               	  only. Support is not guaranteed in future versions of the software.
+            </p>
+            <ul class="List">
+               <li class="ListItem">calendar</li>
+               <li class="ListItem">user.0</li>
+               <li class="ListItem">user.1</li>
+               <li class="ListItem">user.2</li>
+               <li class="ListItem">user.3</li>
+               <li class="ListItem">user.4</li>
+               <li class="ListItem">user.5</li>
+               <li class="ListItem">user.6</li>
+               <li class="ListItem">user.7</li>
+               <li class="ListItem">user.8</li>
+               <li class="ListItem">user.9</li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/overview.htm" class="manualLink">Programming a UI Script overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/4gl_event_sections.htm" class="manualLink">4GL event sections</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/flow_of_standard_program.htm" class="manualLink">Flow of 4GL engine</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/4gl_features/4gl_choice_sections, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Functions</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Functions</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">In a program, a function performs a particular task that can be
+               executed many times, with different values. The syntax of a
+               function is as follows (parts between brackets [] are
+               optional):
+            </p><pre class="CodeBlock">
+FUNCTION [ function_type ] function_name( [ arglist ] )
+{
+        declaration of local variables
+        statement(s)
+        RETURN[( return_value )]
+}
+</pre><p class="Paragraph">where <i class="Emphasis">arglist</i> consists of one or more argument
+               declarations with the following syntax:
+            </p><pre class="CodeBlock">
+[REFERENCE / CONST] argument_type argument_name 
+</pre><p class="Paragraph">When including more than one argument declaration, use
+               commas [,] to separate the declarations. Note that the key
+               word REFERENCE can be replaced by REF.
+            </p>
+            <p class="Paragraph">For further information about functions, see the following
+               topics:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/3gl_features/function_type_and_return_value.htm" class="manualLink">Function type and return value</a></li>
+               <li class="ListItem"><a href="../../progguide/3gl_features/local_variables.htm" class="manualLink">Local variables</a></li>
+               <li class="ListItem"><a href="../../progguide/3gl_features/static_variables.htm" class="manualLink">Static variables</a></li>
+               <li class="ListItem"><a href="../../progguide/3gl_features/global_variables.htm" class="manualLink">Global variables</a></li>
+               <li class="ListItem"><a href="../../progguide/3gl_features/external_variables.htm" class="manualLink">External variables</a></li>
+               <li class="ListItem"><a href="../../progguide/3gl_features/function_arguments.htm" class="manualLink">Function arguments</a></li>
+               <li class="ListItem"><a href="../../progguide/3gl_features/function_prototypes.htm" class="manualLink">Function prototypes</a></li>
+               <li class="ListItem"><a href="../../progguide/3gl_features/function_calls.htm" class="manualLink">Function calls</a></li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/functions, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

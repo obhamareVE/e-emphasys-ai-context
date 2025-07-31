@@ -1,0 +1,77 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>BLOB handling overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="BLOB handling ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">BLOB handling overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Tables in the database can contain BLOB columns. BLOBs can contain a
+               	    lot of data. Therefore BLOB values are not in the record buffer, but the record buffer
+               	    contains a <i class="Emphasis">BLOB locator</i> which can be used in a couple of BLOB functions,
+               	    to read, write and clear the BLOB and to retrieve the size of the BLOB.
+            </p>
+            <p class="Paragraph">A BLOB locator can be retrieved with a db statement (e.g. db.eq()) and with a SQL statement.</p>
+            <p class="Paragraph">A BLOB can only be written to or cleared when the record is locked.
+               	    The functions <i class="Emphasis">db.blob.append()</i> and <i class="Emphasis">db.blob.clear()</i> will promote a delayed lock to a lock in the database.
+            </p>
+            <p class="Paragraph">In cases where the size of the BLOB is unknown, avoid reading the size of the BLOB and then retrieving
+               	the entire BLOB at once. This helps avoid memory consumption problems. Instead of retrieving a large chunk
+               	of data in one call please consider reading it block by block (e.g. blocksize 4096 or 8192 bytes).
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Restrictions</div>
+            <p class="Paragraph">BLOB operations are executed through the db.blob.* functions, which work on a BLOB locator. For 
+               	      other database operations a number of restrictions apply:
+            </p>
+            <ul class="List">
+               <li class="ListItem">The SQL processor supports retrieving the BLOB column. A BLOB locator will be returned 
+                  		in the result set, which can be used in the BLOB functions. The SQL processor does not
+                  		support any other operations on the blob (e.g. no substring, not in the where clause, not in a join)
+               </li>
+               <li class="ListItem">Classic QP does not recognize BLOB columns</li>
+               <li class="ListItem">BLOB columns can not be part of combined columns or indexes</li>
+               <li class="ListItem">It is not possible to have an array column of type BLOB</li>
+               <li class="ListItem">It is not possible to define references to or from a BLOB column</li>
+               <li class="ListItem">BLOB columns can not be audited</li>
+               <li class="ListItem">Tables with BLOB columns can not be mirrored</li>
+               <li class="ListItem">When a delayed lock (dlock) is promoted to a lock in the database the delayed lock buffer is compared to the
+                  		actual values in the database and error EROWCHANGED may be issued. This check does not apply to the BLOB column.
+                  		Therefore it is recommended to use a database lock rather than a delayed lock for BLOB in cases where this
+                  		might lead to problems
+               </li>
+               <li class="ListItem">The maximum size of a BLOB is determined by the limitations of the underlying RDBMS</li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_blob/synopsis.htm" class="manualLink">BLOB handling synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_blob/db.blob.read.htm" class="manualLink">db.blob.read()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_blob/db.blob.read.xml.htm" class="manualLink">db.blob.read.xml()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_blob/db.blob.read.xml.ns.htm" class="manualLink">db.blob.read.xml.ns()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_blob/db.blob.append.htm" class="manualLink">db.blob.append()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_blob/db.blob.append.xml.htm" class="manualLink">db.blob.append.xml()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_blob/db.blob.clear.htm" class="manualLink">db.blob.clear()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_blob/db.blob.size.htm" class="manualLink">db.blob.size()</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_blob/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

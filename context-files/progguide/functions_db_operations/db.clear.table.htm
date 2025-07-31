@@ -1,0 +1,155 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>db.clear.table()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="db.clear.table db.clear.table functions db.clear.table ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">db.clear.table()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;db.clear.table&nbsp;
+					(long&nbsp;table_id [, long&nbsp;flag] [, long&nbsp;comp_nr])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This deletes all data from a specified table. Reference
+                  counters are automatically updated.
+               </p>
+               <p class="Paragraph">By default, all deleted records are saved in rollback
+                  segments. Consequently, using this function to clear a large
+                  table can result in reduced performance and, in some cases, can
+                  cause overflow of the internal rollback segments.
+               </p>
+               <p class="Paragraph">Note that this function cannot be used within a transaction if the option NO.ROLLBACK is given; see <a href="../../progguide/functions_database_handling/transaction_handling.htm" class="manualLink">Transaction handling</a>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>table_id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The table ID, as returned by <a href="../../progguide/functions_db_operations/db.bind.htm" class="manualLink">db.bind()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>flag</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use this optional argument to indicate whether the
+                           delete operation must be performed as a single
+                           transaction or as multiple transactions. The possible
+                           values are:
+                        </p>
+                        <table border="0" width="100%" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">0&nbsp;WITH.ROLLBACK</td>
+                                 <td rowspan="1" colspan="1" class="none">The table is cleared in a single
+                                    transaction. All records are saved in rollback
+                                    segments. This is the default option.
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">1&nbsp;NO.ROLLBACK</td>
+                                 <td rowspan="1" colspan="1" class="none">
+                                    <p class="Paragraph_firstAndNoTextBefore">The table is cleared in one or more
+                                       transactions, depending on the number of
+                                       records in the table. Each transaction is
+                                       automatically committed after 20 records have
+                                       been deleted. The number of records deleted in
+                                       the final transaction can be 20 or less; this
+                                       depends on how many records remain to be
+                                       deleted.
+                                    </p>
+                                    <p class="Paragraph">When you use this option, transactions are
+                                       small and records are not saved in rollback
+                                       segments.
+                                    </p>
+                                    <p class="Paragraph">When you use this option, you must place <i class="Emphasis">db.clear.table()</i> at the start of the
+                                       transaction.
+                                    </p>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">The table is cleared in a single transaction. All records are saved in rollback segments. This is the default option.</p>
+                        <p class="Paragraph">The table is cleared in one or more
+                           transactions, depending on the number of
+                           records in the table. Each transaction is
+                           automatically committed after 20 records have
+                           been deleted. The number of records deleted in
+                           the final transaction can be 20 or less; this
+                           depends on how many records remain to be
+                           deleted.
+                        </p>
+                        <p class="Paragraph">When you use this option, transactions are
+                           small and records are not saved in rollback
+                           segments.
+                        </p>
+                        <p class="Paragraph">When you use this option, you must place <i class="Emphasis">db.clear.table()</i> at the start of the
+                           transaction.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>comp_nr</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This optional argument specifies a company number
+                           for the table. The default company is the company of
+                           the user.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">0 success</p>
+            <p class="Paragraph">&lt;&gt;0 error</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/db.clear.table, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

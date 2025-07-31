@@ -1,0 +1,140 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Multi Table Overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="multi table secondary tables ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Multi Table Overview</div>
+      <div class="body">
+         <div class="ConceptSection">
+            <p class="Paragraph">In order to support editing multiple tables, so called
+               			'secondary tables' are introduced. Secondary tables have a
+               			1:1 relation with the main table. It is not required that
+               			there is a database reference from the maintable to the
+               			secondary table. However it must be possible to fetch a
+               			secondary table record through a 4GL-Engine query extend.
+               			Such a fetch must result in zero or one secondary table
+               			record. Comparable to the functionality for the main table,
+               			the 4GL-Engine will handle transactions / reads etc. for
+               			secondary tables. A secondary table requires that a DAL2
+               			implementation is available for that table. It will not be
+               			possible to use unmodified 'old' sessions in a MT way. At
+               			least some parts of the UI script for the session must
+               			change.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Specific Requirements</div>
+            <p class="Paragraph">The query.extend functionality must be handled very
+			carefully. For secondary tables to work properly, it is
+			necessary to add the complete secondary table record to the
+			session query. Selecting only a part of the fields will
+			result in data loss. (Fields that are not present in the
+			query will be emptied on save). Furthermore, the
+			query.extend REPLACE construction must be kept in mind. In
+			the current design no measures are taken to protect the
+			coupling with secondary tables. A query.extend REPLACE will
+			destroy the coupling to a secondary table (if the developer
+			doesn’t add the secondary tables as previous). Also care
+			must be taken to use the “UNREF CLEAR” construction in the
+			query.extend.where clause. The 4GL-Engine requires that when
+			no reference to a secondary table record is found, the
+			related record buffer is cleared.</p>
+            <p class="Paragraph">When in a DAL script of a secondary table, the corresponding
+               			record from the maintable is needed, special care must be
+               			taken to prevent that the DAL of the secondary table
+               			overwrites the maintable record which is already read (and
+               			perhaps modified) by the 4GL-Engine. When a new secondary
+               			table record is added within the same transaction with the
+               			addition of a new maintable record, the DAL script of the
+               			secondary table record cannot yet fetch this maintable
+               			record from the database. Both above mentioned issues will
+               			be handled using the existing function: dal.get.object(). In
+               			the DAL script of the secondary table, the function
+               			dal.get.object() must be called to get the required
+               			maintable record. The implementation of this function will
+               			make sure that when the keyfields match with the keyfields
+               			of the current maintable record in the 4GL-Engine, no read
+               			from the database is done. Instead the 4GL-Engine maintained
+               			record is made actual.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <p class="Paragraph">The following standard program features are handled
+               			differently for secondary tables.
+            </p>
+            <ul class="List">
+               <li class="ListItem">The 4GL-Engine will not generate the queries for
+                  				retrieving and updating the secondary table records. The
+                  				UI script of the application is responsible for passing
+                  				the correct queries to the 4GL-Engine through the
+                  				query.extend functions.
+               </li>
+               <li class="ListItem">Maintain references and related reference buffers. The
+                  				UI script of the application is responsible for filling
+                  				reference fields referred to by secondary table fields
+                  				(for instance descriptions).
+               </li>
+               <li class="ListItem">Secondary tables without DAL2 scripts are not
+                  				supported.
+               </li>
+               <li class="ListItem">Auto complete in BW mode will not be available for
+                  				secondary table fields.
+               </li>
+               <li class="ListItem">Secondary table fields cannot be shown above the grid as
+                  				view fields.
+               </li>
+               <li class="ListItem">The sort order is always based upon the available main
+                  				table indices and not on secondary table indices.
+               </li>
+               <li class="ListItem">Running MT sessions through application functionserver
+                  				(AFS) is not supported.
+               </li>
+               <li class="ListItem">When a main table record is
+                  				deleted related secondary table records are not
+                  				automatically deleted by the 4GL-Engine. The DAL of the
+                  				main table is responsible for cleanup of related
+                  				secondary table records.
+               </li>
+            </ul>
+            <div class="Note">
+               <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+               <div class="NoteContent">
+                  <p class="Paragraph">Multi Table functionality is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">Tools Interface Version (TIV)</a> <a href="../../progguide/tiv/tiv_1075.htm" class="manualLink">TIV 1075</a>.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+before.program:
+        query.extend.select( "bpmdm001.* ", EXTEND_APPEND)
+        query.extend.from(   "bpmdm001 ", EXTEND_APPEND)
+        query.extend.where(  ":tccom001.emno REFERS TO bpmdm001 " &amp;
+                                               "UNREF CLEAR " &amp;
+                             EXTEND_APPEND)
+        g.bpmdm001.table.id = sec.add.table("bpmdm001")
+		</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/multitable/synopsis.htm" class="manualLink">Multi Table synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/multitable/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

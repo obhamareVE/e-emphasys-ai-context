@@ -1,0 +1,159 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Object hooks</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="object hooks ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Object hooks</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Object hooks are used for checking the logic integrity of
+               objects (that is, records in a table).
+            </p>
+            <p class="Paragraph">Object hooks replace the <i class="Emphasis">before.read</i>, <i class="Emphasis">after.read</i>, <i class="Emphasis">before.write</i>, <i class="Emphasis">after.write</i>, <i class="Emphasis">before.rewrite</i>, <i class="Emphasis">after.rewrite</i>, <i class="Emphasis">before.delete</i>, and <i class="Emphasis">after.delete</i> subsections in the <i class="Emphasis">main.table.io</i> section of the UI script.
+            </p>
+            <p class="Paragraph">If there is a DAL for an object set, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> calls the
+               object hooks in the DAL every time that a <a href="../../progguide/functions_dal/dam.htm" class="manualLink">Data Access Methods (DAM)</a> is executed for that object set. The
+               object hooks perform the necessary checks to ensure the logical
+               integrity of the objects being accessed. Any of the above
+               mentioned sections in the UI script are ignored. So, if a UI
+               script contains any of these sections, you must replace these by
+               object hooks in the DAL.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Available object hooks</div>
+            <ul class="List">
+               <li class="ListItem">Open object set hook - <a href="../../progguide/functions_dal/before.open.object.set.htm" class="manualLink">before.open.object.set()</a></li>
+               <li class="ListItem">Get object hooks - <a href="../../progguide/functions_dal/before.get.object.htm" class="manualLink">before.get.object()</a>, <a href="../../progguide/functions_dal/after.get.object.htm" class="manualLink">after.get.object()</a></li>
+               <li class="ListItem">New object hooks - <a href="../../progguide/functions_dal/before.new.object.htm" class="manualLink">before.new.object()</a>, <a href="../../progguide/functions_dal/after.new.object.htm" class="manualLink">after.new.object()</a> (DAL2
+                  only)
+               </li>
+               <li class="ListItem">Change object hooks - <a href="../../progguide/functions_dal/before.change.object.htm" class="manualLink">before.change.object()</a>, <a href="../../progguide/functions_dal/after.change.object.htm" class="manualLink">after.change.object()</a> (DAL2 only)
+               </li>
+               <li class="ListItem">Destroy object hooks - <a href="../../progguide/functions_dal/before.destroy.object.htm" class="manualLink">before.destroy.object()</a>, <a href="../../progguide/functions_dal/after.destroy.object.htm" class="manualLink">after.destroy.object()</a></li>
+               <li class="ListItem">Save object hooks - <a href="../../progguide/functions_dal/before.save.object.htm" class="manualLink">before.save.object()</a>, <a href="../../progguide/functions_dal/after.save.object.htm" class="manualLink">after.save.object()</a></li>
+               <li class="ListItem">After commit transaction hook - <a href="../../progguide/functions_dal/after.commit.transaction.htm" class="manualLink">after.commit.transaction()</a></li>
+               <li class="ListItem">After abort transaction hook - <a href="../../progguide/functions_dal/after.abort.transaction.htm" class="manualLink">after.abort.transaction()</a></li>
+               <li class="ListItem">Method is allowed hook - <a href="../../progguide/functions_dal/method.is.allowed.htm" class="manualLink">method.is.allowed()</a></li>
+               <li class="ListItem">Default object set hook - <a href="../../progguide/functions_dal/set.object.defaults.htm" class="manualLink">set.object.defaults()</a></li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values and errors</div>
+            <p class="Paragraph">Only the before hooks can prevent a database action. The <i class="Emphasis">after.get.object()</i> hook can prevent a record from being
+               sent to the UI. Both these types of hooks block continuation of
+               the calling method if the return value is set to DALHOOKERROR (a
+               negative constant). If the return value is zero, the method
+               continues.
+            </p>
+            <p class="Paragraph">The following table indicates how return values and error
+               messages are handled. The STP column indicates how the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> reacts if a
+               hook returns a DALHOOKERROR. The Messages column indicates what
+               happens to messages when an error occurs. The DAM column
+               indicates how Data Access Methods react when an error
+               occurs.
+            </p>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="12" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">Hook</th>
+                     <th rowspan="1" colspan="1" class="none">STP</th>
+                     <th rowspan="1" colspan="1" class="none">Messages</th>
+                     <th rowspan="1" colspan="1" class="none">DAM</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">before.open.object.set()</td>
+                     <td rowspan="1" colspan="1" class="none">exit</td>
+                     <td rowspan="1" colspan="1" class="none">display</td>
+                     <td rowspan="1" colspan="1" class="none">return</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">before.get.object()</td>
+                     <td rowspan="1" colspan="1" class="none">ignore</td>
+                     <td rowspan="1" colspan="1" class="none">ignore</td>
+                     <td rowspan="1" colspan="1" class="none">return</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">after.get.object()</td>
+                     <td rowspan="1" colspan="1" class="none">skip</td>
+                     <td rowspan="1" colspan="1" class="none">ignore</td>
+                     <td rowspan="1" colspan="1" class="none">return</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">before.new.object()</td>
+                     <td rowspan="1" colspan="1" class="none">ignore</td>
+                     <td rowspan="1" colspan="1" class="none">display</td>
+                     <td rowspan="1" colspan="1" class="none">return</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">after.new.object()</td>
+                     <td rowspan="1" colspan="1" class="none">skip</td>
+                     <td rowspan="1" colspan="1" class="none">display</td>
+                     <td rowspan="1" colspan="1" class="none">return</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">before.change.object()</td>
+                     <td rowspan="1" colspan="1" class="none">ignore</td>
+                     <td rowspan="1" colspan="1" class="none">display</td>
+                     <td rowspan="1" colspan="1" class="none">return</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">after.change.object()</td>
+                     <td rowspan="1" colspan="1" class="none">skip</td>
+                     <td rowspan="1" colspan="1" class="none">display</td>
+                     <td rowspan="1" colspan="1" class="none">return</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">before.destroy.object()</td>
+                     <td rowspan="1" colspan="1" class="none">return</td>
+                     <td rowspan="1" colspan="1" class="none">display</td>
+                     <td rowspan="1" colspan="1" class="none">return</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">after.destroy.object()</td>
+                     <td rowspan="1" colspan="1" class="none">skip</td>
+                     <td rowspan="1" colspan="1" class="none">display</td>
+                     <td rowspan="1" colspan="1" class="none">return</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">before.save.object()</td>
+                     <td rowspan="1" colspan="1" class="none">return</td>
+                     <td rowspan="1" colspan="1" class="none">display</td>
+                     <td rowspan="1" colspan="1" class="none">return</td>
+                  </tr>
+                  <tr no="12" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">after.save.object()</td>
+                     <td rowspan="1" colspan="1" class="none">skip</td>
+                     <td rowspan="1" colspan="1" class="none">display</td>
+                     <td rowspan="1" colspan="1" class="none">return</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_glossary.htm" class="manualLink">DAL terminology</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_hooks.htm" class="manualLink">DAL hooks</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/object_hooks, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

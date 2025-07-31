@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Sub query</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Search condition Sub query Sub query ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Sub query</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">A sub query defines a row set within an SQL statement.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;sub query&gt;
+    ::= <a href="../../progguide/functions_database_handling/query_expression.htm" class="manualLink">Query expression</a> 
+      </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <ul class="List">
+               <li class="ListItem"><i class="Emphasis">No select targets</i> The SELECT clause of a sub query shall not contain a
+                  select target.
+               </li>
+               <li class="ListItem"><i class="Emphasis">Not FOR UPDATE</i> The SELECT clause or FROM clause of a sub query shall
+                  not contain the FOR UPDATE clause.
+               </li>
+            </ul>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph"><i class="Emphasis">Example 1</i>:
+               The following query calculates the maximum salary of all
+               employees.
+            </p><pre class="CodeBlock">
+SELECT MAX( salary )
+FROM dbtst120
+</pre><p class="Paragraph"><i class="Emphasis">Example 2</i>:
+               The following query calculates the average salary of all
+               employees with the same education level as the 'current'
+               employee. Because the sub query contains an <a href="../../progguide/functions_database_handling/sql_glossary.htm#OuterColumnReference" class="glossaryLink">outer column reference</a> it is
+               called a <a href="../../progguide/functions_database_handling/sql_glossary.htm#CorrelatedSubquery" class="glossaryLink">correlated subquery</a>.
+            </p><pre class="CodeBlock">
+SELECT AVG( salary )
+FROM dbtst120
+WHERE edlevel = employee.edlevel
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/select_statement.htm" class="manualLink">SELECT statement</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/sub_query, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

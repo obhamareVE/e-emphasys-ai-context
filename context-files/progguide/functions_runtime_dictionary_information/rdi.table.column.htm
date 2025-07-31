@@ -1,0 +1,171 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>rdi.table.column()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions rdi.table.column rdi.table.column rdi.table.column ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">rdi.table.column()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;rdi.table.column&nbsp;
+					(string&nbsp;table_name(9), long&nbsp;column_number, ref string&nbsp;column_name, ref string&nbsp;domain_name(14), ref long&nbsp;offset, ref long&nbsp;size, ref long&nbsp;dept, ref long&nbsp;type, ref long&nbsp;flag, ref string&nbsp;default_value [, long&nbsp;flag_filter])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This returns information about a specified column which is
+                  identified by the table name and the column number. Note that
+                  the first columns in the table are reserved for the following
+                  columns: Refcntd, Refcntu, _compnr, _dlock, and
+                  _index&lt;number&gt; (one column for each index).
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="11" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>table_name(9)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the table in which the column occurs
+                           (omit the leading 't').
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>column_number</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The column number.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>column_name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the name of the column.</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>domain_name(14)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the name of the column's domain.</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>offset</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the position of the column in the
+                           row.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>size</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the size of the column, in bytes.
+                           See this <a href="../../progguide/functions_database_handling/overview.htm#types" class="manualLink">list of database types and related byte counts</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>dept</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the depth of the column (array columns
+                           only).
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the database type of the column. For
+                           example, DB.LONG, DB.FLOAT, and so on.
+                           See this <a href="../../progguide/functions_database_handling/overview.htm#types" class="manualLink">list of database types</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>flag</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns a bit pattern that represents one or
+                           more of the following values:
+                        </p>
+                        <p class="Paragraph">DB.ARRAY</p>
+                        <p class="Paragraph">DB.CDF</p>
+                        <p class="Paragraph">DB.CHILD</p>
+                        <p class="Paragraph">DB.FILLED</p>
+                        <p class="Paragraph">DB.MLF</p>
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>default_value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the default value of the column.</p>
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>flag_filter</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This optional argument can be used to get a filtered list of columns that 
+                           have the specified flag set.
+                        </p>
+                        <p class="Paragraph">For example, the 2nd CDF column from a table can be retrieved 
+                           by callimg this finction with column_name = 2 and flag_filter = DB.CDF
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; success</p>
+            <p class="Paragraph">-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; error</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_runtime_dictionary_information/overview_and_synopsis.htm" class="manualLink">Runtime dictionary information overview and synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/overview.htm#types" class="manualLink">Database types and related byte counts</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_runtime_dictionary_information/rdi.table.column, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

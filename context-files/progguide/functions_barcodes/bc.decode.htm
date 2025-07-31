@@ -1,0 +1,140 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>bc.decode()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="bc.decode bc.decode functions bc.decode ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">bc.decode()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;bc.decode&nbsp;
+					(const string&nbsp;encoded.barcode, ref long&nbsp;bytes.read [, ref long&nbsp;xmlid])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this function to decode the output of <a href="../../progguide/functions_barcodes/bc.htm" class="manualLink">bc$()</a> function.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>encoded.barcode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The input string, which typically contains the output of the bc$() function.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>bytes.read</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The number of bytes read from the input buffer.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[ref long</td>
+                     <td class="none"><code>xmlid</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The decoded output in XML form. If no xmlid is provided, the encoded barcode string is not validated.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">Returns zero upon success, non-zero otherwise.
+               					If an xmlid argument is supplied, then xmlid contains an XML document upon success. 
+               					When finished, use <a href="../../progguide/functions_xml/delete_nodes.htm" class="manualLink">xmlDelete</a> to free the returned XML document from memory.
+               					In case of error return, the xmlid argument value is always zero.
+               					The function will return with an error if an xmlid was provided and the encoded input contains an invalid barcode string.
+               					In case of error return, the bytes.read argument is set if the input was a barcode, 
+               					even if the encoded input encapsulated an invalid barcode string.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Remarks</div>
+            <p class="Paragraph">The bc.decode() function translates its input string, which typically contains the encoded output from the bc$() function,
+               to an XML document. 
+               			The input parameters of bc$() are translated to attributes in the XML document with a similar name (type, height/rows,
+               barcode caption, options). An example 
+               			of such an XML document is shown below.
+            </p>
+            <p class="Paragraph">The data in the barcode XML node is the <a href="../../progguide/functions_base64/base64_overview.htm" class="manualLink">base64</a> encoded output of the provided barcode caption for bc$(). This 
+               			data may contain single-byte/ <a href="../../progguide/misc/ascii_table.htm" class="manualLink">ASCII</a>, 
+               			multi-byte/ <a href="../../progguide/misc/tss.htm" class="manualLink">TSS</a> or even binary data. 
+               			In case the input is valid TSS 
+               			(which comprises single-byte/ASCII) and valid XML, a caption attribute is added to the XML document.
+            </p>
+            <p class="Paragraph">All options provided to bc$() are translated to speaking literal names and put as attributes to the XML document,
+               			including the options that are set implicitly (if any) by the porting set.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example XML document</div><pre class="CodeBlock">	
+&lt;barcode
+	type="1"
+	height="3"
+	options="18"
+	caption="12345678"
+	BC_TRANSPARENTBACKGRND="1"
+	BC_EXTENDBEARERS="1"&gt;MTIzNDU2Nzg=
+&lt;/barcode&gt;
+		</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Possible error conditions</div>
+            <p class="Paragraph">A list of possible/common error conditions is provided below.</p>
+            <ul class="List">
+               <li class="ListItem">Invalid input data.</li>
+               <li class="ListItem">The provided input exceeds allowed ranges, e.g. a barcode type that is outside the 1 - 2000 range.</li>
+            </ul>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Availability</div>
+            <div class="NoteContent">
+               <p class="Paragraph">This function is available from bshell TIV 2100.</p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_barcodes/bc.htm" class="manualLink">bc$()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/delete_nodes.htm" class="manualLink">Delete Nodes</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_base64/base64_overview.htm" class="manualLink">Base64 overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/misc/ascii_table.htm" class="manualLink">ASCII table (C0 Controls and Basic Latin)</a></li>
+               <li class="RelTopic"><a href="../../progguide/misc/tss.htm" class="manualLink">TSS Encoding</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_barcodes/bc.decode, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Dynamic linking</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dynamic linking dynamic-link libraries dynamic linking ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Dynamic linking</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">DLLs can be linked to a program script either at compile time or
+               at runtime.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Dynamic linking at compile time</div>
+            <p class="Paragraph">For dynamic linking at compile time, you must specify the
+               libraries that belong to a program script when you create or
+               update that script. Which libraries belong to a program
+               script depends on which external functions the program uses.
+               It is necessary to specify the libraries at compile time
+               because the compiler locates the functions and checks the
+               types of arguments and return values with the function
+               prototypes. Note that a DLL object is loaded into memory and
+               linked to the executable program at runtime, at the time a
+               DLL function is called.
+            </p>
+            <p class="Paragraph">You must compile the libraries before you compile the
+               program script that uses those libraries. However, since
+               loading and linking take place at runtime, when a library is
+               changed, you need only compile the library and restart the
+               program.
+            </p>
+            <p class="Paragraph">The are two ways to compile the libraries and program
+               script:
+            </p>
+            <ul class="List">
+               <li class="ListItem">Use the Infor ERP Enterprise Server. Choose the
+                  Compile option in the sessions "Maintain Libraries" and
+                  "Maintain Program Scripts".
+               </li>
+               <li class="ListItem">Use the bic6.2 compiler. For example: <code class="Code">$ bic6.2 dll1 -o odll1
+                     $ bic6.2 dll2 -o odll2
+                     $ bic6.2 dll3 -o odll3
+                     $ bic6.2 &lt;program&gt; -o&lt;object&gt; -d
+                     odll1:odll2:odll3</code></li>
+            </ul>
+            <p class="Paragraph">Note that, at runtime, external functions are searched for
+               in the order in which the DLLs were supplied during
+               compilation. In above example, dll1 is first.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Dynamic linking at runtime</div>
+            <p class="Paragraph">This is used in cases where the DLL(s) that must be linked
+               to a program are known only at runtime.
+            </p>
+            <p class="Paragraph">For example, consider a programmer&#65533;s interface that
+               receives a string containing the library or external function
+               to be called. The return value of the function call (if any)
+               is sent back to the calling process. In this case dynamic
+               linking at runtime must be used, because only at runtime is
+               it known which external function must be called.
+            </p>
+            <p class="Paragraph">A number of functions are available for handling dynamic
+               linking at runtime. Using these functions, you can load a
+               specific DLL and execute one or more of its functions. See <a href="../../progguide/functions_dll/overview_and_synopsis.htm" class="manualLink">DLL functions (executing) overview and synopsis</a>.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/dynamic_link_libraries/overview.htm" class="manualLink">Dynamic-link libraries</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/dynamic_link_libraries/dynamic_linking, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

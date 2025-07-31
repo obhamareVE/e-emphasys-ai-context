@@ -1,0 +1,124 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>enum.descr$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="enum.descr$ enum.descr$ functions enum.descr$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">enum.descr$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string &nbsp;enum.descr$&nbsp;
+					(string&nbsp;domain_code(12), &nbsp;enum_expr [, string&nbsp;language_code])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This returns the description associated with a specific
+                  value in an enumerated domain.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>domain_code(12)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the domain. The domain must be of
+                           type enumerated.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none"></td>
+                     <td class="none"><code>enum_expr</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">One of the possible values of the enumerated
+                           domain.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>language_code</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">To retrieve the description in a language other
+                           than the user language, specify the relevant
+                           language code in this argument. This is an optional
+                           argument. The default language is the language of
+                           the user.
+                        </p>
+                        <p class="Paragraph">Note that the language code of the user is
+                           available in the predefined, read-only variable <i class="Emphasis">language$</i>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The description of the specified enumerate value, either
+               in the current user language or in another specified
+               language.
+            </p>
+            <p class="Paragraph">The function returns an empty string, and displays an
+               error message, if an unknown domain is specified or if no
+               description exists in the data dictionary for the specified
+               language.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">This example assumes an enumerated domain 'tcyesno'&nbsp; with
+      two possible constants: 'tcyesno.yes' and 'tcyesno.no'.&nbsp; It
+      also assumes that 1 is the language code for Dutch, 2 is the
+      language code for English, and 3 is the language code for
+      German. English is the current user language.</p><pre class="CodeBlock">
+domain    tcyesno active     | enumerated domain
+string    descr(25)
+
+active = tcyesno.no
+descr = enum.descr$("tcyesno", active, "1")  | descr contains "nee"
+descr = enum.descr$("tcyesno", active)       | descr contains "no"
+descr = enum.descr$("tcyesno", active, "3")  | descr contains
+"nein"
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_enumerates/overview_and_synopsis.htm" class="manualLink">Enumerates overview and synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/enumerate_and_set_constants.htm" class="manualLink">Enumerate and set constants</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_enumerates/enum.descr, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>bms.receive$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="bms.receive$ bms.receive$ functions bms.receive$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">bms.receive$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string &nbsp;bms.receive$&nbsp;
+					( [ref long&nbsp;level] [, long&nbsp;wait.flag] [, ref string&nbsp;mask])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this to receive a broadcast message. If no arguments
+                  are included, the function returns the first broadcast
+                  message sent to the process.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">[ref long</td>
+                     <td class="none"><code>level</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This optional argument specifies a message level.
+                           The following values are available:
+                        </p>
+                        <p class="Paragraph">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the function returns the first
+               broadcast message sent to the process</p>
+                        <p class="Paragraph">&gt;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the function returns the first
+               broadcast message sent with the specified</p>
+                        <p class="Paragraph">level</p>
+                        <p class="Paragraph">&lt;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the function returns the first
+               broadcast message sent with a level less</p>
+                        <p class="Paragraph">than or equal to the absolute
+                           value of the specified level
+                        </p>
+                        <p class="Paragraph">This argument returns the process ID of the
+                           sending process. The process ID overwrites the
+                           specified level.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>wait.flag</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This optional argument indicates whether the process
+                           must wait for a broadcast message if no message has yet
+                           been sent:
+                        </p>
+                        <p class="Paragraph">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wait</p>
+                        <p class="Paragraph">&lt;&gt;0&nbsp;&nbsp;&nbsp;&nbsp; do not wait</p>
+                        <p class="Paragraph">If you include this argument, you must also include
+                           the <i class="Emphasis">level</i> argument.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[ref string</td>
+                     <td class="none"><code>mask</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This optional argument returns the mask (if any)
+                           sent with the message.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The received broadcast message.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_interprocess_communication_os_level/overview.htm" class="manualLink">Interprocess communication (OS level) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_interprocess_communication_bshell/overview.htm" class="manualLink">Interprocess communication (bshell) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_interprocess_communication_bshell/synopsis.htm" class="manualLink">Interprocess communication (bshell) synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_interprocess_communication_bshell/bms.receive, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

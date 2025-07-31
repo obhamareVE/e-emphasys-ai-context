@@ -1,0 +1,188 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>cURL handling overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="cURL ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">cURL handling overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Below is a list of all cURL functions.</p>
+            <p class="Paragraph">A detailed description of the cURL functions can be found in the <a href="http://curl.haxx.se/libcurl/c/" class="wwwlinkLink">documentation of the libcurl c interface</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">cURL 3GL convenience functions</div>
+            <table border="0" class="none">
+               <tbody noTR="9" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.download.data.htm" class="manualLink">curl.download.data()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string url, ref string data, ref long data.size [, long header.list] )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.download.file.htm" class="manualLink">curl.download.file()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string url, const string file [, long header.list] )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.download.stream.htm" class="manualLink">curl.download.stream()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string url, long response.stream [, long header.list] )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.download.string.htm" class="manualLink">curl.download.string()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string url, ref string data [, long header.list] )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.http.status$.htm" class="manualLink">curl.http.status$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long http.status )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.upload.data.htm" class="manualLink">curl.upload.data()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string url, const string data, long data.size, long response.stream [, long header.list] [, const string method] )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.upload.file.htm" class="manualLink">curl.upload.file()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string url, const string file, long response.stream [, long header.list] [, const string method] )</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.upload.stream.htm" class="manualLink">curl.upload.stream()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string url, long request.stream, long data.size, long response.stream [, long header.list] [, const string method]
+                           )</code></td>
+                  </tr>
+                  <tr no="9" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.upload.string.htm" class="manualLink">curl.upload.string()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string url, const string data, long response.stream [, long header.list] [, const string method] )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">General cURL functions</div>
+            <table border="0" class="none">
+               <tbody noTR="9" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.get.errorbuffer$.htm" class="manualLink">curl.get.errorbuffer$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">()</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">double,long,string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.getinfo.htm" class="manualLink">curl.getinfo</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">()</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.setopt.htm" class="manualLink">curl.setopt</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">()</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.perform.htm" class="manualLink">curl.perform()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">()</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.slist.append.htm" class="manualLink">curl.slist.append</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref long ListId, const string SomeText)</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.slist.free.all.htm" class="manualLink">curl.slist.free.all</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref long ListId)</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.strerror$.htm" class="manualLink">curl.strerror$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long CurlCode)</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.xml.get.error$.htm" class="manualLink">curl.xml.get.error$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">()</code></td>
+                  </tr>
+                  <tr no="9" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.xml.set.whitespacehandling.htm" class="manualLink">curl.xml.set.whitespacehandling()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long WhiteSpaceHandling)</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">SSO functions</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.sso.get.ssolocation$.htm" class="manualLink">curl.sso.get.ssolocation$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">()</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.sso.user.encode$.htm" class="manualLink">curl.sso.user.encode$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(const string User)</code></td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.sso.user.gettable.htm" class="manualLink">curl.sso.user.gettable()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref string EscapeTable)</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Escape functions</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.escape.decode$.htm" class="manualLink">curl.escape.decode$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(const string SomeText)</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.escape.encode$.htm" class="manualLink">curl.escape.encode$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(const string SomeText)</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.escape.encode.ext$.htm" class="manualLink">curl.escape.encode.ext$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(const string EscapeTable, const string SomeText)</code></td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_cURL/curl.escape.gettable.htm" class="manualLink">curl.escape.gettable()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref string EscapeTable)</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_cURL/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

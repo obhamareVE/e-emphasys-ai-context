@@ -1,0 +1,527 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Runtime dictionary information overview and synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="runtime dictionary information ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Runtime dictionary information overview and synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">Use these functions to retrieve information from the runtime
+               dictionary.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Include files (for tt.* functions)</div>
+            <p class="Paragraph"><code class="Code">#include &lt;bic_tt&gt;</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Synopsis</div>
+            <table border="0" class="none">
+               <tbody noTR="60" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">string</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/domainof.htm" class="manualLink">domainof()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( variable )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.audit.hosts.htm" class="manualLink">rdi.audit.hosts()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string table_name(9), long comp_nr,
+             &nbsp; ref string hosts() )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.column.htm" class="manualLink">rdi.column()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string column_name(18),
+             &nbsp; ref string domain_name(14),
+             &nbsp; ref long offset, ref long size,
+             &nbsp; ref long dept, ref long type,
+             &nbsp; ref long flag, ref string default_val(.)
+            )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.column.combined.htm" class="manualLink">rdi.column.combined()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string column_name(18),
+             &nbsp; ref string child_columns(18,32) )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.date.input.format.htm" class="manualLink">rdi.date.input.format$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string date_format(7)
+             &nbsp; [, ref string display_format() ] )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.domain.htm" class="manualLink">rdi.domain()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14),
+             &nbsp; ref string oformat(.),
+             &nbsp; ref string lechar(.), ref string ilchar(.),
+            &nbsp; ref long adjust, ref string errmess(.),
+             &nbsp; ref long range_expr_id&nbsp;
+             &nbsp; [, ref long plen, ref string iformat(.) ]
+            )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.domain.byte.htm" class="manualLink">rdi.domain.byte()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14), ref long digits
+                           )</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.domain.combined.htm" class="manualLink">rdi.domain.combined()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14),
+             &nbsp; ref string child_domains(14,32) )</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.domain.date.htm" class="manualLink">rdi.domain.date()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14), ref long digits
+                           )</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.domain.double.htm" class="manualLink">rdi.domain.double()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14),
+             &nbsp; ref long digits_before,
+             &nbsp; ref long digits_after,
+             &nbsp; ref long divide_factor, ref long round_code
+            )</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.domain.enum.htm" class="manualLink">rdi.domain.enum()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14),
+             &nbsp; ref long no_enum_items )</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.domain.enum.value.htm" class="manualLink">rdi.domain.enum.value()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14), long enum_item,
+             &nbsp; string language, ref string keyword(.),
+             &nbsp; ref string descr(.), ref long value )</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.etoc.htm" class="manualLink">rdi.etoc$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14), long enum_value
+                           )</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.ctoe.htm" class="manualLink">rdi.ctoe()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14), string enum_name(256)
+                           )</code></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.domain.float.htm" class="manualLink">rdi.domain.float()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14),
+             &nbsp; ref long digits_before,
+             &nbsp; ref long digits_after,
+             &nbsp; ref long divide_factor, ref long round_code
+            )</code></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.domain.integer.htm" class="manualLink">rdi.domain.integer()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14), ref long digits)</code></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.domain.long.htm" class="manualLink">rdi.domain.long()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14), ref long digits
+                           )</code></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.domain.raw.htm" class="manualLink">rdi.domain.raw()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14), ref long length )</code></td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.domain.set.htm" class="manualLink">rdi.domain.set()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14),
+             &nbsp; ref long no_enum_items )</code></td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.domain.set.value.htm" class="manualLink">rdi.domain.set.value()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14), long enum_item,
+            &nbsp; string language, ref string keyword(.),
+             &nbsp; ref string descr(.), ref long value )</code></td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.domain.string.htm" class="manualLink">rdi.domain.string()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14), ref long length, ref
+                           long convert )</code></td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.domain.text.htm" class="manualLink">rdi.domain.text()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string domain_name(14), ref long digits
+                           )</code></td>
+                  </tr>
+                  <tr no="23" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.first.day.of.week.htm" class="manualLink">rdi.first.day.of.week()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="24" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.format.digits.htm" class="manualLink">rdi.format.digits()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string format(), ref long digits.before,
+             &nbsp; ref long digits.after [, ref string
+            display.format()] )</code></td>
+                  </tr>
+                  <tr no="25" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.index.htm" class="manualLink">rdi.index()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string table_name(9), long index_no,
+             &nbsp; ref long parts(32,3), ref boolean duplicate,
+             &nbsp; ref boolean active )</code></td>
+                  </tr>
+                  <tr no="26" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">boolean</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.is.application.column.htm" class="manualLink">rdi.is.application.column()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string column.name()[, long column.type, long column.offset, long table.real.length] )</code></td>
+                  </tr>
+                  <tr no="27" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.reference.htm" class="manualLink">rdi.reference()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string column_name(18),
+             &nbsp; ref string ref_column(18),
+             &nbsp; ref long ref_mode, ref string ref_mess()
+             &nbsp; [, ref boolean check_by_db, ref long
+            ref_update_mode,
+             &nbsp; ref long ref_delete_mode] )</code></td>
+                  </tr>
+                  <tr no="28" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.table.htm" class="manualLink">rdi.table()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string table_name(9), ref long no_keys,
+             &nbsp; ref long no_columns, ref long int_length,
+            &nbsp; ref long real_length )</code></td>
+                  </tr>
+                  <tr no="29" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.table.column.htm" class="manualLink">rdi.table.column()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string table_name(9), long column_number,
+            &nbsp; ref string column_name(18),
+             &nbsp; ref string domain_name(14),
+             &nbsp; ref long offset, ref long size,
+             &nbsp; ref long dept, ref long type,
+             &nbsp; ref long flag, ref string default_val(.)
+            )</code></td>
+                  </tr>
+                  <tr no="30" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.bobject.desc.htm" class="manualLink">tt.bobject.desc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string b_object(10), [ref string desc() mb]
+                           )</code></td>
+                  </tr>
+                  <tr no="31" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.chart.desc.htm" class="manualLink">tt.chart.desc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string chart, [ref string desc() mb] )</code></td>
+                  </tr>
+                  <tr no="32" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt_chm.appl.desc.htm" class="manualLink">tt.chm.appl.desc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string appl(40), ref string desc() mb )</code></td>
+                  </tr>
+                  <tr no="33" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt_chm.application.htm" class="manualLink">tt.chm.application()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string appl(40) )</code></td>
+                  </tr>
+                  <tr no="34" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt_chm.chart.htm" class="manualLink">tt.chm.chart()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string appl(40), string chart_name(16) )</code></td>
+                  </tr>
+                  <tr no="35" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt_chm.charttype.htm" class="manualLink">tt.chm.charttype()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string appl(40), string chart_type(16) )</code></td>
+                  </tr>
+                  <tr no="36" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.comp.desc.htm" class="manualLink">tt.comp.desc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( [ref string desc() mb] )</code></td>
+                  </tr>
+                  <tr no="37" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean 
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.company.htm" class="manualLink">tt.company()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long company, ref string comp_desc() mb,
+             &nbsp; ref string deflt_curr(),
+             &nbsp; ref long first_weekday )</code></td>
+                  </tr>
+                  <tr no="38" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.currency.htm" class="manualLink">tt.currency()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string cur(3), ref string cur_desc() mb,
+             &nbsp; ref string thous_sign, ref string dec_sign,
+            &nbsp; ref string symbol() )</code></td>
+                  </tr>
+                  <tr no="39" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean 
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.device.htm" class="manualLink">tt.device()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string device(9), ref string desc() mb,
+             &nbsp; ref long device type )</code></td>
+                  </tr>
+                  <tr no="40" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string 
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.field.desc.htm" class="manualLink">tt.field.desc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string field(17), [ref string desc() mb]
+                           )</code></td>
+                  </tr>
+                  <tr no="41" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string 
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.index.desc.htm" class="manualLink">tt.index.desc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string tabl(8), long indexnr,
+             &nbsp; [ref string desc() mb] )</code></td>
+                  </tr>
+                  <tr no="42" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean 
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.is.domain.separated.htm" class="manualLink">tt.is.domain.separated()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string domain(), [ref long
+                           numberOfSeparators, ref string separatorCharacter()]
+                           )</code></td>
+                  </tr>
+                  <tr no="43" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string 
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.label.desc.htm" class="manualLink">tt.label.desc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string label_code(19), domain ttadv.cont
+            label_context,
+             &nbsp; [ref string desc() mb] )</code></td>
+                  </tr>
+                  <tr no="44" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean 
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.langdesc.htm" class="manualLink">tt.langdesc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string language, ref string desc() mb )</code></td>
+                  </tr>
+                  <tr no="45" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean 
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.language.htm" class="manualLink">tt.language()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string lang, ref string desc() mb,
+             &nbsp; ref string dec_sign, ref string thous_sign,
+            &nbsp; ref string date_sep, ref string time_sep
+            )</code></td>
+                  </tr>
+                  <tr no="46" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.library.htm" class="manualLink">tt.library()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string library.code(14),
+             &nbsp; ref string library.desc() mb )</code></td>
+                  </tr>
+                  <tr no="47" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string 
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.menu.desc.htm" class="manualLink">tt.menu.desc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string menu(13), string par_menu,
+             &nbsp; [ref string desc() mb] )</code></td>
+                  </tr>
+                  <tr no="48" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean 
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.menu.present.htm" class="manualLink">tt.menu.present()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string menu(13), string par_menu )</code></td>
+                  </tr>
+                  <tr no="49" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string 
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.report.desc.htm" class="manualLink">tt.report.desc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string reprt(15), [ref string desc() mb]
+                           )</code></td>
+                  </tr>
+                  <tr no="50" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean 
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.reportgroup.exists.htm" class="manualLink">tt.reportgroup.exists()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string session(13), long report_group )</code></td>
+                  </tr>
+                  <tr no="51" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string 
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.session.desc.htm" class="manualLink">tt.session.desc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string session(13), [ref string desc() mb,
+                           string language] )</code></td>
+                  </tr>
+                  <tr no="52" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long 
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/get.session.permission.htm" class="manualLink">get.session.permission()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string session(13) )</code></td>
+                  </tr>
+                  <tr no="53" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long 
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.session.present.htm" class="manualLink">tt.session.present()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string session(13) )</code></td>
+                  </tr>
+                  <tr no="54" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.short.field.desc.htm" class="manualLink">tt.short.field.desc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string field(17), long length,
+             &nbsp; [ref string desc() mb] )</code></td>
+                  </tr>
+                  <tr no="55" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.table.desc.htm" class="manualLink">tt.table.desc()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string table(8), [ref string desc() mb]
+                           )</code></td>
+                  </tr>
+                  <tr no="56" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.user.htm" class="manualLink">tt.user()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string user(12), ref string name() mb )</code></td>
+                  </tr>
+                  <tr no="57" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/tt.user.data.htm" class="manualLink">tt.user.data()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string user(12), property, ... )</code></td>
+                  </tr>
+                  <tr no="58" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.report.sensitivity.htm" class="manualLink">rdi.report.sensitivity()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( [const string reportname] )</code></td>
+                  </tr>
+                  <tr no="59" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.tablefield.sensitivity.htm" class="manualLink">rdi.tablefield.sensitivity()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string tablefield )</code></td>
+                  </tr>
+                  <tr no="60" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_runtime_dictionary_information/rdi.session.sensitivity.htm" class="manualLink">rdi.session.sensitivity()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_runtime_dictionary_information/overview_and_synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

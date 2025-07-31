@@ -1,0 +1,294 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>gbf.add.object()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions gbf.add.object gbf.add.object gbf.add.object ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">gbf.add.object()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;gbf.add.object&nbsp;
+					(const string&nbsp;object.key(), const string&nbsp;object.description() mb, long&nbsp;object.value, long&nbsp;obj.type [, long&nbsp;icon.set] [, long&nbsp;default.function.id] [, long&nbsp;help.function.id] [, long&nbsp;drop.function.id] [, long&nbsp;menumask] [, long&nbsp;text.color] [, long&nbsp;line.style] [, long&nbsp;context.menu.id])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Adds a header, interior, or leaf node to the object
+                  tree.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="12" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>object.key()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The key of the object by which it is known in the
+                           application.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>object.description() mb</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The text that is displayed in the browser to
+                           describe the object.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>object.value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The object.value can be used to further identify
+                           this object, which may be needed in case the object
+                           appears more than once in the tree. This
+                           object.value will be returned on subsequent function
+                           calls, such as gbf.get.children() or <a href="../../progguide/functions_generic_browser_frameworkf/gbf.menu.selected.htm" class="manualLink">gbf.menu.selected()</a>.
+                        </p>
+                        <p class="Paragraph">Note that a value of 0 means something special,
+                           see gbf.update.object().
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>obj.type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specify the object type by choosing one of the
+                           following:
+                        </p>
+                        <p class="Paragraph">GBF.HEADER</p>
+                        <p class="Paragraph">GBF.INTERIOR</p>
+                        <p class="Paragraph">GBF.LEAF</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>icon.set</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The value returned by a function depending on the
+                           obj.type:
+                        </p>
+                        <p class="Paragraph">GBF.HEADER or GBF.LEAF: <a href="../../progguide/functions_generic_browser_frameworkf/gbf.set.leaf.icon.htm" class="manualLink">gbf.set.leaf.icon()</a></p>
+                        <p class="Paragraph">GBF.INTERIOR: <a href="../../progguide/functions_generic_browser_frameworkf/gbf.set.interior.icon.htm" class="manualLink">gbf.set.interior.icon()</a></p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>default.function.id</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The default.function.id is an overloaded function
+                           identification. The actual function depends on
+                           whether or not this object is a leaf object.
+                        </p>
+                        <p class="Paragraph">See Table default.function.id.</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>help.function.id</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The help.function.id, if given and &gt; 0, is the
+                           function to be called when help is asked and this
+                           object is currently selected. The value of
+                           help.function.id must be a value returned by a
+                           preceding <a href="../../progguide/functions_generic_browser_frameworkf/gbf.set.help.function.htm" class="manualLink">gbf.set.help.function()</a> call. When this help.function.id has an illegal
+                           value an error will be returned, and when
+                           GBF.OPT.DEBUG has been set then a debug error
+                           message will be given.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>drop.function.id</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The drop.function.id, if given and &gt; 0, is the
+                           function to be called when other objects are dragged
+                           and dropped on this object. The value of
+                           drop.function.id must be a value returned by a
+                           preceding <a href="../../progguide/functions_generic_browser_frameworkf/gbf.set.help.function.htm" class="manualLink">gbf.set.help.function()</a> call. When this drop.function.id has an illegal
+                           value an error will be returned and when
+                           GBF.OPT.DEBUG has been set then a debug error
+                           message will be given.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>menumask</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The menumask is a bitmask to indicate which menu
+                           options should be disabled. Which bit disables which
+                           option is defined by setting a maskbit with <a href="../../progguide/functions_generic_browser_frameworkf/gbf.set.menu.item.htm" class="manualLink">gbf.set.menu.item()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>text.color</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The text.color, if given and &lt;&gt; 0 is the
+                           color with which the object.description will be
+                           written in the tree. The value must be given as an
+                           RGB (red-green-blue) value. The standard defines are
+                           RGB.RED, RGB.GREEN, RGB.YELLOW, RGB.CYAN,
+                           RGB.MAGENTA, RGB.BLUE, RGB.WHITE RGB.GRAY,
+                           RGB.DGRAY. There is a limited number of colors
+                           possible, so that when this limit is exceeded the
+                           standard colors will be used.
+                        </p>
+                        <p class="Paragraph">Note that the RGB.BLACK happens to be 0, so that
+                           value is mapped onto the standard foreground color
+                           of the GBF (see also: gbf.get.resource() and <a href="../../progguide/functions_generic_browser_frameworkf/gbf.set.resource.htm" class="manualLink">gbf.set.resource()</a>)
+                           which by default is black. All used colors must have
+                           a description so in case the end user asks for Help
+                           on Colors they will get a short explanation of these
+                           colors, see also <a href="../../progguide/functions_generic_browser_frameworkf/gbf.set.color.htm" class="manualLink">gbf.set.color()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>line.style</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The line.style, if given and &lt;&gt;
+                           GBF.LINE.SOLID (which is defined as: 0), indicates
+                           that the linestyle to the parent node must be used
+                           rather than a solid line. Currently only
+                           GBF.LINE.DASHED must be used, which draws dashed
+                           lines.
+                        </p>
+                        <p class="Paragraph">Note that this information is not used when this <a href="../../progguide/functions_generic_browser_frameworkf/gbf.add.object.htm" class="manualLink">gbf.add.object()</a> call is made during a gbf.get.top.level() function
+                           call.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>context.menu.id</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The <i class="Emphasis">context.menu.id</i> is used to couple a
+                           context menu to this specific object. The context menu
+                           and its context should be known before the call to <a href="../../progguide/functions_generic_browser_frameworkf/gbf.start.htm" class="manualLink">gbf.start()</a>. The <i class="Emphasis">context.menu.id</i> is aquired through the function
+                           gbf.create.context.menu(). When used properly the end
+                           user can right-click on an item which makes a context
+                           menu appear for this specific node. When the option
+                           GBF.OPT.TREE.CONTROL is used, i.e. microsoft treeview,
+                           the functions <a href="../../progguide/functions_generic_browser_frameworkf/gbf.set.leaf.icon.htm" class="manualLink">gbf.set.leaf.icon()</a> and <a href="../../progguide/functions_generic_browser_frameworkf/gbf.set.interior.icon.htm" class="manualLink">gbf.set.interior.icon()</a> have to be used to add the context menu. This is
+                           because the Microsoft Treeview couples the context
+                           menus to the icon groups.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">&gt;= 0</td>
+                     <td rowspan="1" colspan="1" class="none">Successful completion, returned value is the new
+                        obj.id
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.NO.MEMORY</td>
+                     <td rowspan="1" colspan="1" class="none">Not enough memory</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.ICON</td>
+                     <td rowspan="1" colspan="1" class="none">Illegal icon.set identification</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.FUNCTION</td>
+                     <td rowspan="1" colspan="1" class="none">Illegal default.function.id, help.function.id or
+                        drop.function.id identification
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.LENGTH</td>
+                     <td rowspan="1" colspan="1" class="none">Length of object.key exceeds the stored key
+                        length in GBF
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.STATE</td>
+                     <td rowspan="1" colspan="1" class="none">GBF is not in the correct state to deal with this
+                        function
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.NOT.EXPECTED</td>
+                     <td rowspan="1" colspan="1" class="none">Function called when GBF did not expect this</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Restriction</div>
+            <p class="Paragraph">This function may only be called by the application when
+               the GBF issues a gbf.get.top.level() or a gbf.get.children()
+               call.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/gbf.add.header.htm" class="manualLink">gbf.add.header()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/gbf.add.interior.htm" class="manualLink">gbf.add.interior()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/gbf.add.leaf.htm" class="manualLink">gbf.add.leaf()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/overview.htm" class="manualLink">Generic Browser Framework (GBF) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/synopsis.htm" class="manualLink">Generic Browser Framework (GBF) synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/typical_usage.htm" class="manualLink">Typical usage</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/getting_started.htm" class="manualLink">Getting started</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/example.htm" class="manualLink">Example</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/error_codes_and_return_values.htm" class="manualLink">Generic Browser Framework error codes and return values</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/standard_menu_items_and_function_keys.htm" class="manualLink">standard menu items and function keys</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/messages_and_questions.htm" class="manualLink">Messages and questions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_generic_browser_frameworkf/gbf.add.object, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

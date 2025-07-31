@@ -1,0 +1,125 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Data Access Layer</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="data access layer ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Data Access Layer</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">In BAAN applications, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> provides the
+               default functionality for a session. Changes or additions to the
+               default functionality for a session are programmed in a
+               UI-script (for UI specific tasks) and DAL (for Business Logic
+               related tasks)
+            </p>
+            <p class="Paragraph">Programmers create a user interface (UI) script to change the
+               default behavior of a session and a DAL script to program all
+               the logical integrity rules for a particular table. So the DAL
+               ensures the logical integrity of the database. As in previous
+               versions of the software, the database server ensures the
+               referential integrity of the database.
+            </p>
+            <p class="Paragraph">The DAL script for a particular table has the same name as
+               	that table. It is implemented as a DLL that can be accessed by
+               	user interface scripts (via the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a>) and by other DALs. The following diagram illustrates the
+               	overall relationship of these components.
+            </p>
+            <div class="Figure"><img src="../images/dal_architecture.gif" alt="[...]" height="220" width="461"></div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Database integrity checks</div>
+            <p class="Paragraph">The following are examples of some logical integrity rules
+               that could be programmed in a DAL script:
+            </p>
+            <ul class="List">
+               <li class="ListItem">When customers have reached their credit limit, they
+                  cannot order further items.
+               </li>
+               <li class="ListItem">If the invoice for an order has been printed, the order
+                  cannot be changed.
+               </li>
+               <li class="ListItem">If the current VRC of a user is not equal to the package
+                  VRC of the program script, the script cannot be
+                  compiled.
+               </li>
+            </ul>
+            <p class="Paragraph">Programming database integrity checks in a separate DAL
+               script has two main advantages:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><i class="Emphasis">Code reuse:</i> The integrity rules do not have to be
+                  replicated in each session that uses a particular table.
+               </li>
+               <li class="ListItem">External applications can access the
+                  database via nthe DAL.
+               </li>
+            </ul>
+            <p class="Paragraph">For an overview of the interaction between the user
+               interface, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a>, and the
+               DAL, see <a href="../../progguide/functions_dal/dal_ui_and_stp_interaction.htm" class="manualLink">UI, DAL, and STP interaction</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Business methods</div>
+            <p class="Paragraph">In addition to performing data integrity checks, the DAL
+               provides business methods for handling non-interactive database
+               modifications such as printing sales orders or posting all
+               orders to history.
+            </p>
+            <p class="Paragraph">A business method is a function that performs a task that
+               involves manipulating and/or checking one or more tables in the
+               database. The function is programmed in a DAL script and can be
+               called directly from a UI script. It must be programmed in the
+               DAL script of the most relevant table.
+            </p>
+            <p class="Paragraph">Users can activate a business method with a single command.
+               There is then no further user interaction. The UI script calls
+               the relevant function in the DAL script. The function performs
+               all operations to complete the required task. The user must wait
+               until the business method finishes before continuing with other
+               tasks. However, if a <a href="../../progguide/functions_progress_indicators/overview_and_synopsis.htm" class="manualLink">Progress indicators overview and synopsis</a> is provided, the user can cancel the
+               business method by clicking on the Cancel button.
+            </p>
+            <p class="Paragraph">The UI script starts a business method by calling the <a href="../../progguide/functions_db_operations/dal.start.business.method.htm" class="manualLink">dal.start.business.method()</a> function
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Extended DAL (DAL2)</div>
+            <p class="Paragraph">The DAL2 concept is an extension of the DAL concept, that
+               allows better re-use of business logic. See <a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a> for more
+               information.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_glossary.htm" class="manualLink">DAL terminology</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_ui_and_stp_interaction.htm" class="manualLink">UI, DAL, and STP interaction</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_hooks.htm" class="manualLink">DAL hooks</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dam.htm" class="manualLink">Data Access Methods (DAM)</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/property_methods.htm" class="manualLink">Property methods</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/query_extensions.htm" class="manualLink">Query extensions</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/communication_with_stp_and_cdas.htm" class="manualLink">Communication with STP and CDAS</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/transition_issues_baan_iv_to_baanerp.htm" class="manualLink">Transition issues (BAAN IV to Infor ERP Enterprise)</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

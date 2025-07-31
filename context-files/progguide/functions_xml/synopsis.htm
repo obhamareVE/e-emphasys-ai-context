@@ -1,0 +1,397 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>XML object synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="XML object synopsis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">XML object synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <table border="1" class="default">
+               <tbody noTR="76" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default"></th>
+                     <th rowspan="1" colspan="1" class="default">3GL/4GL function</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/contains_valid_characters_only.htm" class="manualLink">Verify the used characters</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlContainsValidCharactersOnly(string
+                           inputstring)</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/replace_invalid_characters.htm" class="manualLink">Replace the invalid characters</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlReplaceInvalidCharacters(string
+                           inputString, string replacementCharacter(1))</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/serialize_xml_object.htm" class="manualLink">Serialize XML Object (xmlWrite)</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlWrite(long fp, long fromNode, [long
+                           toNode] )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/serialize_xml_object_pretty.htm" class="manualLink">Serialize XML Object Formatted</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlWritePretty(long fp, long fromNode, [long toNode]</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/serialize_xml_object_string.htm" class="manualLink">Serialize XML Object to String</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlWriteToString(ref string buffer, long fromNode,
+                           [long toNode] )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/serialize_xml_object_string_pretty.htm" class="manualLink">Serialize XML Object to Formatted String</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlWritePrettyToString(ref string buffer, long
+                           	  fromNode, [long toNode]</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/serialize_xml_object_return.htm" class="manualLink">Serialize XML Object to Returned String</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">string xmlString$(long fromNode, [long toNode] )</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/serialize_xml_object_return_pretty.htm" class="manualLink">Serialize XML Object to Returned Formatted String</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">string xmlPrettyString$(long fromNode, [long toNode]</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/serialize_xml_object_alloc.htm" class="manualLink">Serialize XML Object to String Buffer</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlAllocString(ref string basedString(), long
+                           fromNode, [long toNode] )</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/serialize_xml_object_alloc_pretty.htm" class="manualLink">Serialize XML Object to Formatted String Buffer</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlAllocPrettyString(ref string basedString(), long
+                           fromNode, [long toNode] )</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_serialize_length.htm" class="manualLink">Get length of a serialized XML Object</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetStringLength(long fromNode, [long
+                           toNode] )</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_serialize_length_pretty.htm" class="manualLink">Get length of a formatted serialized XML Object</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetPrettyStringLength(long fromNode, [long
+                           toNode] )</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/de_serialize_xml_object.htm" class="manualLink">De-serialize XML Object</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlRead(long fp, ref string error, [ long
+                           whitespacehandling ] )</code></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/de_serialize_xml_object_string.htm" class="manualLink">De-serialize XML Object from String</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlReadFromString(string xmlString, ref string
+                           error, [ long whitespacehandling ] )</code></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/create_a_new_node.htm" class="manualLink">Create a new Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlNewNode(string name, [long type, long
+                           parentNode ])</code></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/is_node.htm" class="manualLink">Check a long is a valid XML node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlIsNode(long node)</code></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/create_an_element_node_with_data_node.htm" class="manualLink">Create an Element Node with Data Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlNewDataElement(string name, string data,
+                           [ long parentNode ])</code></td>
+                  </tr>
+                  <tr no="19" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/rewrite_data_element.htm" class="manualLink">Rewrite Data Element</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlRewriteDataElement(long node, string
+                           name, string data)</code></td>
+                  </tr>
+                  <tr no="20" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_data_of_all_elements.htm" class="manualLink">Get data of all Elements</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetDataElement(long node, string name,
+                           ref string data)</code></td>
+                  </tr>
+                  <tr no="21" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_data_of_all_elements_return.htm" class="manualLink">Get data of all Elements</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">string xmlDataElement$(long node, string name, [ string default.value ] )</code></td>
+                  </tr>
+                  <tr no="22" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_data_of_all_elements_alloc.htm" class="manualLink">Get data of all Elements</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlAllocDataElement(ref string basedString(), long
+                           node, string name, [ string default.value ] )</code></td>
+                  </tr>
+                  <tr no="23" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_data_length_of_all_elements.htm" class="manualLink">Get data length of all Elements</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetDataElementLength(long node, string
+                           name)</code></td>
+                  </tr>
+                  <tr no="24" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/set_name_of_a_node.htm" class="manualLink">Set name of a Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlSetName(long node, string
+                           name)</code></td>
+                  </tr>
+                  <tr no="25" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/set_data_of_a_node.htm" class="manualLink">Set data of a Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlSetData(long node, string
+                           data)</code></td>
+                  </tr>
+                  <tr no="26" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/set_attribute.htm" class="manualLink">Set attribute</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlSetAttribute(long node, string
+                           attributeName, string data)</code></td>
+                  </tr>
+                  <tr no="27" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/delete_attribute.htm" class="manualLink">Delete attribute</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlDeleteAttribute(long node, string
+                           attribute )</code></td>
+                  </tr>
+                  <tr no="28" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_name_of_a_node.htm" class="manualLink">Get name of a Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetName(long node, ref string name)</code></td>
+                  </tr>
+                  <tr no="29" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_name_of_a_node_return.htm" class="manualLink">Get name of a Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">string xmlName$(long node, [ string default.value ])</code></td>
+                  </tr>
+                  <tr no="30" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_name_of_a_node_alloc.htm" class="manualLink">Get name of a Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlAllocName(ref string basedString(), long node, [
+                           string default.value ] )</code></td>
+                  </tr>
+                  <tr no="31" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_name_length.htm" class="manualLink">Get name length of a node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetNameLength(long node)</code></td>
+                  </tr>
+                  <tr no="32" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_parent_of_a_node.htm" class="manualLink">Get parent of a Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetParent(long node)</code></td>
+                  </tr>
+                  <tr no="33" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_child_of_a_node.htm" class="manualLink">Get first child of a Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetFirstChild(long node)</code></td>
+                  </tr>
+                  <tr no="34" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_last_child_of_a_node.htm" class="manualLink">Get last child of a Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetLastChild(long node)</code></td>
+                  </tr>
+                  <tr no="35" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_number_of_child_nodes.htm" class="manualLink">Get number of child Nodes</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetNumChilds(long node)</code></td>
+                  </tr>
+                  <tr no="36" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_sibling_of_a_node.htm" class="manualLink">Get left sibling of a Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetLeftSibling(long node)</code></td>
+                  </tr>
+                  <tr no="37" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_right_sibling_of_a_node.htm" class="manualLink">Get right sibling of a Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetRightSibling(long node)</code></td>
+                  </tr>
+                  <tr no="38" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_number_of_sibling_nodes.htm" class="manualLink">Get number of sibling Nodes</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetNumSiblings(long node)</code></td>
+                  </tr>
+                  <tr no="39" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_number_of_left_sibling_nodes.htm" class="manualLink">Get number of left sibling Nodes</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetNumLeftSiblings(long node)</code></td>
+                  </tr>
+                  <tr no="40" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_number_of_right_sibling_nodes.htm" class="manualLink">Get number of right sibling Nodes</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetNumRightSiblings(long node)</code></td>
+                  </tr>
+                  <tr no="41" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/xmlGetSAMLnode.htm" class="manualLink">Get SAML (security data) node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetSAMLnode()</code></td>
+                  </tr>
+                  <tr no="42" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_data_of_a_node.htm" class="manualLink">Get data of a Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetData(long node, ref string
+                           data)</code></td>
+                  </tr>
+                  <tr no="43" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_data_of_a_node_return.htm" class="manualLink">Get data of a Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">string xmlData$(long node, [ string default.value ])</code></td>
+                  </tr>
+                  <tr no="44" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_data_of_a_node_alloc.htm" class="manualLink">Get data of a Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlAllocData(ref string basedString(), long node, [
+                           string default.value ] )</code></td>
+                  </tr>
+                  <tr no="45" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_data_length_of_a_node.htm" class="manualLink">Get data length of a Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetDataLength(long node)</code></td>
+                  </tr>
+                  <tr no="46" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_attribute_value.htm" class="manualLink">Get attribute value</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetAttribute(long node, string attributeName, ref string data)</code></td>
+                  </tr>
+                  <tr no="47" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_attribute_value_return.htm" class="manualLink">Get attribute value</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">string xmlAttribute$(long node, string attributeName, [
+                           string default.value ] )</code></td>
+                  </tr>
+                  <tr no="48" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_attribute_value_alloc.htm" class="manualLink">Get attribute value</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlAllocAttribute(ref string basedString(), long
+                           node, string attributeName, [ string default.value ]
+                           )</code></td>
+                  </tr>
+                  <tr no="49" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_attribute_length.htm" class="manualLink">Get attribute length</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetAttributeLength(long node, string
+                           attributeName)</code></td>
+                  </tr>
+                  <tr no="50" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_attribute_name.htm" class="manualLink">Get attribute name</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetAttributeName(long node, long
+                           attributeNr, ref string attributeName)</code></td>
+                  </tr>
+                  <tr no="51" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_attribute_name_return.htm" class="manualLink">Get attribute name</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">string xmlAttributeName$(long node, long attributeNr, [
+                           string default.value ] )</code></td>
+                  </tr>
+                  <tr no="52" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_attribute_name_alloc.htm" class="manualLink">Get attribute name</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlAllocAttributeName(ref string basedString(), long
+                           node, long attributeNr,[ string default.value ]
+                           )</code></td>
+                  </tr>
+                  <tr no="53" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_attribute_name_length.htm" class="manualLink">Get attribute name length</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetAttributeNameLength(long node, long
+                           attributeNr)</code></td>
+                  </tr>
+                  <tr no="54" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_number_of_attributes.htm" class="manualLink">Get number of attributes</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetNumAttributes(long node)</code></td>
+                  </tr>
+                  <tr no="55" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/get_node_type.htm" class="manualLink">Get Node type</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlGetType(long node)</code></td>
+                  </tr>
+                  <tr no="56" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/delete_nodes.htm" class="manualLink">Delete Nodes</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlDelete(long fromNode, [ long toNode
+                           ])</code></td>
+                  </tr>
+                  <tr no="57" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/unlink_nodes.htm" class="manualLink">Unlink Nodes</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlUnlink(long fromNode, [ long toNode
+                           ])</code></td>
+                  </tr>
+                  <tr no="58" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/unlink_and_insert_nodes.htm" class="manualLink">Unlink and Insert Nodes</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlInsert(long destinationNode, long
+                           fromNode, [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="59" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/unlink_and_add_nodes.htm" class="manualLink">Unlink and Add Nodes</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlAdd(long destinationNode, long fromNode,
+                           [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="60" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/unlink_and_append_nodes.htm" class="manualLink">Unlink and Append Nodes</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlAppend(long destinationNode, long
+                           fromNode, [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="61" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/unlink_and_insert_nodes_in_children.htm" class="manualLink">Unlink and Insert Nodes in Children</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlInsertInChilds(long parentNode, long
+                           fromNode, [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="62" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/unlink_and_append_nodes_to_children.htm" class="manualLink">Unlink and Append Nodes to Children</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlAppendToChilds(long parentNode, long
+                           fromNode, [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="63" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/duplicate_nodes.htm" class="manualLink">Duplicate Nodes</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlDuplicate(long fromNode, [ long toNode
+                           ])</code></td>
+                  </tr>
+                  <tr no="64" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/xmlduplicatetoprocess.htm" class="manualLink">Duplicate Nodes to Process</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlDuplicateToProcess(long processId, long
+                           fromNode, [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="65" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/duplicate_and_insert_nodes.htm" class="manualLink">Duplicate and Insert Nodes</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlDuplicateAndInsert(long destinationNode,
+                           long fromNode, [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="66" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/duplicate_and_add_nodes.htm" class="manualLink">Duplicate and Add Nodes</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlDuplicateAndAdd(long destinationNode,
+                           long fromNode, [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="67" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/duplicate_and_append_nodes.htm" class="manualLink">Duplicate and Append Nodes</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlDuplicateAndAppend(long destinationNode,
+                           long fromNode, [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="68" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/duplicate_and_insert_nodes_in_children.htm" class="manualLink">Duplicate and Insert Nodes in Children</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlDuplicateAndInsertInChilds(long
+                           parentNode, long fromNode, [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="69" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/duplicate_and_append_nodes_to_children.htm" class="manualLink">Duplicate and Append Nodes to Children</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlDuplicateAndAppendToChilds(long
+                           parentNode, long fromNode, [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="70" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/find_first_node.htm" class="manualLink">Find first Node</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlFindFirst(string tagName, long fromNode,
+                           [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="71" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/find_first_node_using_a_match_pattern.htm" class="manualLink">Find first Node using a Match Pattern</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlFindFirstMatch(string pattern, long
+                           fromNode, [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="72" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/find_nodes.htm" class="manualLink">Find Nodes</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlFindNodes(long node, string criteria,
+                           long maxFound, [ref long numFound] )</code></td>
+                  </tr>
+                  <tr no="73" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/find_nodes_using_a_match_pattern.htm" class="manualLink">Find Nodes using a Match Pattern</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlFindMatch(string pattern, long fromNode,
+                           [ long toNode ])</code></td>
+                  </tr>
+                  <tr no="74" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/find_set_of_sibling_nodes.htm" class="manualLink">Find set of Sibling Nodes</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">long xmlFindSetOfSiblingNodes(long node, string
+                           criteria, long maxFound, [ref long numFound])</code></td>
+                  </tr>
+                  <tr no="75" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/create_context.htm" class="manualLink">Create context</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">No 3GL/4GL function</code></td>
+                  </tr>
+                  <tr no="76" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_xml/delete_context.htm" class="manualLink">Delete context</a></td>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">No 3GL/4GL function</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/overview.htm" class="manualLink">XML object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/constraints.htm" class="manualLink">XML object constraints</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/glossary.htm" class="manualLink">XML object glossary</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/api.htm" class="manualLink">XML object API</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_xml/synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

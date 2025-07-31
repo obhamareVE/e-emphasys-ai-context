@@ -1,0 +1,142 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>ask.enum()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="ask.enum ask.enum functions ask.enum ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">ask.enum()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;bset&nbsp;ask.enum&nbsp;
+					(string&nbsp;quescode, bset&nbsp;default_enumval [, void&nbsp;arg, ...])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This displays a message box containing a question and a
+                  number of possible responses. The responses are presented as
+                  push buttons. To respond to the question and close the
+                  message box, the user selects one of the push buttons.
+               </p>
+               <p class="Paragraph">The possible responses are defined in the data dictionary
+                  as an enumerated domain. By default, the function displays
+                  all of the defined enumerate values. To display a subset
+                  only, call <a href="../../progguide/functions_enumerates/set.ask.enum.values.htm" class="manualLink">set.ask.enum.values()</a> before calling <i class="Emphasis">ask.enum()</i>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>quescode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The question to be displayed in the message box
+                           is defined in the data dictionary. This argument
+                           specifies the data dictionary code for the
+                           question.
+                        </p>
+                        <p class="Paragraph">If the question contains substitution symbols,
+                           use the third and subsequent arguments to specify
+                           the values to substitute for these symbols.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">bset</td>
+                     <td class="none"><code>default_enumval</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies the enumerate value of the default
+                           answer. For example, tcyesno.yes. If this argument
+                           is empty, the default value specified in the data
+                           dictionary is used.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[void</td>
+                     <td class="none"><code>arg, ...</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The values to substitute for any substitution
+                           symbols that the question contains. See <a href="../../progguide/functions_formatting_io/sprintf.htm" class="manualLink">sprintf$()</a>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The value of the enumerated domain that corresponds to the
+               option selected by the user. This is always the enumerate
+               value and not its description.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">The question text and the push button labels are always in
+                  the language of the user. The return value of <i class="Emphasis">ask.enum()</i> is always the enumerate value and not its
+                  description. So the script in which the function is used
+                  remains language independent.
+               </p>
+               <p class="Paragraph">The process executing this function should have a UI. In job processes this 
+                  function will stop the session.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">This example assumes an enumerated domain 'tcyesno'&nbsp; with
+      two possible constants: 'tcyesno.yes' and 'tcyesno.no'. It
+      also assumes a question defined in the data dictionary with
+      code "tccom00001". This question contains the string "Error
+      %d in file %s; Try again [y/n]?". The default answer is
+      yes.</p><pre class="CodeBlock">
+ret = seq.open( filename, "w" )
+while ( ret &lt;= 0 )
+    if ( ask.enum( "tccom00001", tcyesno.yes, ret, filename )
+                  = tcyesno.no) then
+         return
+    endif
+    ret = seq.open( filename, "w" )
+endwhile
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_enumerates/overview_and_synopsis.htm" class="manualLink">Enumerates overview and synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/enumerate_and_set_constants.htm" class="manualLink">Enumerate and set constants</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_enumerates/ask.enum, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

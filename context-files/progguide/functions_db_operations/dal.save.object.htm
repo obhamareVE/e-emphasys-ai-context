@@ -1,0 +1,233 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dal.save.object()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dal.save.object dal.save.object functions dal.save.object ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dal.save.object()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_dam&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;dal.save.object&nbsp;
+					(string&nbsp;tbl.name [, long&nbsp;error.flag])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Saves a record of the given table. In case a <a href="../../progguide/functions_db_operations/dal.new.object.htm" class="manualLink">dal.new.object()</a> or a <a href="../../progguide/functions_db_operations/dal.copy.object.htm" class="manualLink">dal.copy.object()</a> was done,
+                  the record is inserted in the database. In case a <a href="../../progguide/functions_db_operations/dal.change.object.htm" class="manualLink">dal.change.object()</a> was
+                  done, the record is updated in the database.
+               </p>
+               <p class="Paragraph">In case <a href="../../progguide/functions_dal/dal2_field_dependencies.htm" class="manualLink">DAL2 Field dependencies</a> have been defined in the DAL, this function
+                  takes care that dependent fields will be triggered in the right
+                  order so that they can update themselves.
+               </p>
+               <p class="Paragraph">Note that this is done based on the values of the fields that
+                  have been set by calling <a href="../../progguide/functions_db_operations/dal.set.field.htm" class="manualLink">dal.set.field()</a></p>
+               <p class="Paragraph">Before the record is saved all (changed) fields will be
+                  validated.
+               </p>
+               <p class="Paragraph">The sequence of the actions is as follows:</p>
+               <ol class="ProcedureList">
+                  <li class="ProcedureListItem">Table level permission is checked.</li>
+                  <li class="ProcedureListItem">For all fields set, the <a href="../../progguide/functions_dal/fieldname.make.valid.htm" class="manualLink">fieldname.make.valid()</a> is executed, e.g. to perform rounding of data.
+                  </li>
+                  <li class="ProcedureListItem">All dependent fields are triggered to update
+                     themselves.
+                  </li>
+                  <li class="ProcedureListItem">Record level permission is checked.</li>
+                  <li class="ProcedureListItem">The actual save (insert or update) is done.</li>
+               </ol>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>tbl.name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the table name of the DAL.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>error.flag</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">For some errors, it is possible to indicate the
+                           action the system must perform when the error occurs.
+                           You use this argument to specify the required
+                           action(s). See <a href="../../progguide/functions_database_handling/error_handling.htm" class="manualLink">Error handling</a></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">0</td>
+                     <td rowspan="1" colspan="1" class="none">Record is saved</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DALHOOKERROR</td>
+                     <td rowspan="1" colspan="1" class="none">One of the hooks blocked the save action</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DALDBERROR</td>
+                     <td rowspan="1" colspan="1" class="none">A domain or reference error occurred (only in
+                        Integration context (e.g. via a BOL))
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DALNOSETPERM</td>
+                     <td rowspan="1" colspan="1" class="none">No table level permission</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DALNOOBJPERM</td>
+                     <td rowspan="1" colspan="1" class="none">No record level permission</td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">&gt;0</td>
+                     <td rowspan="1" colspan="1" class="none">The error code of the db.insert() or db.update()
+                        function
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Hooks called</div>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_dal/before.open.object.set.htm" class="manualLink">before.open.object.set()</a> if this is the first call to the DAL
+               </li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/after.new.object.htm" class="manualLink">after.new.object()</a> in case of a new record
+               </li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/after.change.object.htm" class="manualLink">after.change.object()</a> in case of an existing record
+               </li>
+               <li class="ListItem">for all fields set, the <a href="../../progguide/functions_dal/fieldname.make.valid.htm" class="manualLink">fieldname.make.valid()</a> hook is executed
+               </li>
+               <li class="ListItem">for each dependent field:</li>
+               <li class="ListItem">
+                  <ul class="List">
+                     <li class="ListItem"><a href="../../progguide/functions_dal/field.update.htm" class="manualLink">field.update()</a></li>
+                  </ul>
+               </li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/method.is.allowed.htm" class="manualLink">method.is.allowed()</a></li>
+               <li class="ListItem">for each (DAL_NEW) / each changed (DAL_UPDATE)
+                  field:
+               </li>
+               <li class="ListItem">
+                  <ul class="List">
+                     <li class="ListItem">one or more field hooks</li>
+                  </ul>
+               </li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/before.save.object.htm" class="manualLink">before.save.object()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/after.save.object.htm" class="manualLink">after.save.object()</a></li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Error Handling</div>
+            <p class="Paragraph">In case a database error occurs (a return value greater than
+               0), then this function will set an error message. E.g. in case a
+               record is modified by another user then an error message is
+               set.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">When working with DAL2 DALs, it is advised to use
+                  dal.save.object() instead of <a href="../../progguide/functions_db_operations/dal.new.htm" class="manualLink">dal.new()</a> or <a href="../../progguide/functions_db_operations/dal.update.htm" class="manualLink">dal.update()</a>. Only then field
+                  dependencies are taken into account.
+               </p>
+               <p class="Paragraph">In case the DAL does not have field dependencies defined, or
+                  if you don't want to set defaults based on field dependencies,
+                  you can also use <a href="../../progguide/functions_db_operations/dal.new.htm" class="manualLink">dal.new()</a> or <a href="../../progguide/functions_db_operations/dal.update.htm" class="manualLink">dal.update()</a>. These functions are
+                  faster than dal.save.object().
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+function extern long temmt020.insert(
+        domain  tegen.code  currency,
+        domain  tegen.code  category,
+        domain  tegen.symb  symbol,
+        domain  tegen.code  sub.code,
+        domain  tegen.symb  sub.symbol,
+        domain  tegen.isoc  iso.code,
+        domain  tegen.ison  iso.number)
+{
+    FunctionUsage
+    Inserts a currency. Only the required fields have to be
+specified.
+    This function accepts 7 parameters. Based on these the other
+table fields
+    will get correct default values.
+    ...
+    EndFunctionUsage
+
+    long    result
+
+    |* Start insert, sets object defaults
+    result = dal.new.object("temmt020")
+    ...
+
+    |* Set fields
+    dal.set.field("temmt020.curr", currency)
+    dal.set.field("temmt020.catg", category)
+    dal.set.field("temmt020.symb", symbol)
+    dal.set.field("temmt020.subc", sub.code)
+    dal.set.field("temmt020.subs", sub.symbol)
+    dal.set.field("temmt020.isoa", iso.code)
+    dal.set.field("temmt020.isob", iso.number)
+
+    |* Save the record. This will make sure that all fields will
+    |* get a correct value, based on the field dependencies defined for this DAL.
+    result = dal.save.object("temmt020")
+    ...
+
+    return(result)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/dal.save.object, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

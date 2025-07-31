@@ -1,0 +1,221 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Text fields synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="text fields synopsis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Text fields synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <table border="0" class="none">
+               <tbody noTR="20" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td colspan="3" rowspan="1" class="none"><pre class="Formula">
+#include &lt;bic_text&gt;
+            </pre></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/remove.textfields.htm" class="manualLink">remove.textfields()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string field.name.string, ...
+                           )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/set.file.for.textfield.htm" class="manualLink">set.file.for.textfield()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string field.name.string, const string
+                           filename )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/text.copy.htm" class="manualLink">text.copy()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string text_field_to(17), &nbsp; string
+         text_field_from(17), &nbsp; string kw1(17) mb, string kw2(17)
+         mb,&nbsp; string kw3(17) mb, string kw4(17) mb,&nbsp; string
+         tgroup(8), string edit_opt(15) )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/text.copy.between.companies.htm" class="manualLink">text.copy.between.companies()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string text_field_to(17), &nbsp; string
+         text_field_from(17), &nbsp; long source_company, &nbsp; long
+         target_company, string kw1(17) mb,&nbsp; string kw2(17) mb,
+         string kw3(17) mb, &nbsp; string kw4(17) mb, string tgroup(8),&nbsp;
+         string edit_opt(15) )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/text.copy.language.htm" class="manualLink">text.copy.language()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long textnr, string lang_from,
+          &nbsp; string lang_to )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/text.defaults.htm" class="manualLink">text.defaults()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string text_field(17), &nbsp; ref string
+         tgroup(8),
+          &nbsp; ref string edit_opt(15), &nbsp;[long comp_number]
+         )</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/text.delete.htm" class="manualLink">text.delete()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string text_field(17), string lang
+                           )</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/text.edit.htm" class="manualLink">text.edit()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string text_field(17), string lang, string
+         kw1(17) mb, string kw2(17) mb, string kw3(17) mb, string
+         kw4(17) mb, string tgroup(8), string edit_opt(15),
+         &nbsp; long mode )</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/text.present.in.language.htm" class="manualLink">text.present.in.language()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long textnr, string lang &nbsp; [, ref long
+         nr_lines ] )</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/text.read.htm" class="manualLink">text.read()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string text_field(17), string lang,
+          &nbsp; ref string kw1(17) mb,
+          &nbsp; ref string kw2(17) mb,
+          &nbsp; ref string kw3(17) mb,
+          &nbsp; ref string kw4(17) mb,
+          &nbsp; ref string tgroup(8),
+          &nbsp; ref string edit_opt(15),
+          &nbsp; string tmp_file(256), long lock [,string rtf_file(256)]
+         )</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/text.rewrite.htm" class="manualLink">text.rewrite()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string text_field(17), string lang, &nbsp; string
+         kw1(17) mb, string kw2(17) mb, string kw3(17) mb, string
+         kw4(17) mb, string tgroup(8), string edit_opt(15), &nbsp;
+         string tmp_file(256) [, long bidi, string rtf_file(256)]
+         )</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/text.to.buf.htm" class="manualLink">text.to.buf()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string text_field(17), string lang,
+          &nbsp; long nr_lines,&nbsp; ref string buf(,)
+          &nbsp; [, long rtf.text] )</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/text.buf.to.field.htm" class="manualLink">text.buf.to.field()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string text_field(17), string buf
+                           )</code></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/text.set.keywords.htm" class="manualLink">text.set.keywords()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string text_field(17), string kw1(17),
+          &nbsp; [, string kw2(17),&nbsp; string kw3(17), &nbsp; , long kw4(17)]
+         )</code></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+boolean
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/text.set.language.htm" class="manualLink">text.set.language()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string text_field(17), string
+                           language(1))</code></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/textfield.to.database.htm" class="manualLink">textfield.to.database()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string text_field(17) )</code></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/textfield.to.buf.htm" class="manualLink">textfield.to.buf()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string text_field(17), ref string buffer
+                           )</code></td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/text.window.htm" class="manualLink">text.window()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string edit_opt(15),
+          &nbsp; ref long start_column,
+          &nbsp; ref long start_row,
+          &nbsp; ref long number_columns,
+          &nbsp; ref long number_rows )</code></td>
+                  </tr>
+                  <tr no="20" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_text_fields/text.write.htm" class="manualLink">text.write()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string text_field(17), string lang, string
+         kw1(17) mb, string kw2(17) mb, string kw3(17) mb, string
+         kw4(17) mb,&nbsp; string tgroup(8), string edit_opt(15),&nbsp;
+         string tmp_file(256) [, long bidi, string rtf_file(256)]
+         )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_text_fields/overview.htm" class="manualLink">Text fields overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_text_fields/synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

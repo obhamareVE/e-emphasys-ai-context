@@ -1,0 +1,131 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>cipher.decrypt.initialize()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="cipher.decrypt.initialize cipher.decrypt.initialize functions cipher.decrypt.initialize ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">cipher.decrypt.initialize()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;cipher.decrypt.initialize&nbsp;
+					(long&nbsp;crypt.type, string&nbsp;key, string&nbsp;iv)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Initializes the state of the Decrypt Algorithm and selects the appropriate decryption algorithm.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>crypt.type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the cipher algorithm. This must be one of:</p>
+                        <ul class="List">
+                           <li class="ListItem">CIPHER_AES_128_ECB</li>
+                           <li class="ListItem">CIPHER_AES_128_CBC</li>
+                           <li class="ListItem">CIPHER_AES_128_CFB1</li>
+                           <li class="ListItem">CIPHER_AES_128_CFB8</li>
+                           <li class="ListItem">CIPHER_AES_128_CFB128</li>
+                           <li class="ListItem">CIPHER_AES_128_OFB</li>
+                           <li class="ListItem">CIPHER_AES_128_CTR</li>
+                           <li class="ListItem">CIPHER_AES_128_XTS</li>
+                           <li class="ListItem">CIPHER_AES_192_ECB</li>
+                           <li class="ListItem">CIPHER_AES_192_CBC</li>
+                           <li class="ListItem">CIPHER_AES_192_CFB1</li>
+                           <li class="ListItem">CIPHER_AES_192_CFB8</li>
+                           <li class="ListItem">CIPHER_AES_192_CFB128</li>
+                           <li class="ListItem">CIPHER_AES_192_OFB</li>
+                           <li class="ListItem">CIPHER_AES_192_CTR</li>
+                           <li class="ListItem">CIPHER_AES_256_ECB</li>
+                           <li class="ListItem">CIPHER_AES_256_CBC</li>
+                           <li class="ListItem">CIPHER_AES_256_CFB1</li>
+                           <li class="ListItem">CIPHER_AES_256_CFB8</li>
+                           <li class="ListItem">CIPHER_AES_256_CFB128</li>
+                           <li class="ListItem">CIPHER_AES_256_OFB</li>
+                           <li class="ListItem">CIPHER_AES_256_CTR</li>
+                           <li class="ListItem">CIPHER_AES_256_XTS</li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>key</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The key with wich the data is to be decrypted. The key must be of the proper
+                           length as required by the algorithm (usually at least 16 bytes). The format is raw binary.
+                           The key must have <i class="Emphasis">exactly</i> the same value as used during the encryption.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>iv</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The initialization vector. This parameter is optional.
+                           When no initialization vector is given and the algorithm requires one, a default IV is used.
+                           When the data is decrypted, the <i class="Emphasis">same</i> IV must be used. An IV is used as a starting
+                           vector for the feedback modes of the algorithm: the results of the previous block decryption
+                           are used as input for the next block decryption operation.
+                           The IV servers as input for the first such block.
+                           The IV must have <i class="Emphasis">exactly</i> the same value as used during the encryption.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">A handle for this decrypt operation that must be used in subsequent calls to <a href="../../progguide/functions_cipher/cipher.decrypt.update.htm" class="manualLink">cipher.decrypt.update()</a> and <a href="../../progguide/functions_cipher/cipher.decrypt.finalize.htm" class="manualLink">cipher.decrypt.finalize()</a>.
+            </p>
+            <p class="Paragraph">The returned <i class="Emphasis">Id</i> can only be used in the original process where cipher.decrypt.initialize
+               was called, and is useless in other processes in the same bshell.
+            </p>
+            <p class="Paragraph">The allocated memory is freed explicitly by passing the Id to cipher.decrypt.finalize().
+               The allocated memory is freed implicitly when the process exits.
+            </p>
+            <p class="Paragraph">Any number of Cipher Encrypt Algorithm ID's may be in use concurrently.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 2000.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_cipher/cipher_overview.htm" class="manualLink">Cipher Functions overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_cipher/cipher_synopsis.htm" class="manualLink">Cipher Function synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_cipher/cipher.decrypt.initialize, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

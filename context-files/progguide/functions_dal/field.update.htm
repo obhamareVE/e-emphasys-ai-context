@@ -1,0 +1,180 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>field.update()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="field.update field.update functions field.update ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">field.update()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;[void|long]&nbsp;field.update&nbsp;
+					( [long&nbsp;mode] [, long&nbsp;element])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this hook to (re) determine the value of the field based
+                  on the current record values. Think of determining defaults and
+                  calculating derived values. When using this hook you don't have
+                  to use the <i class="Emphasis">when.field.changes</i> section in the UI script to update
+                  fields.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>mode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional mode flag, one of { 0, DAL_NEW, DAL_UPDATE
+                           }
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>element</code>]
+                     </td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			DAL
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">When called</div>
+            <ul class="List">
+               <li class="ListItem">This hook is called in case a field on which this field
+                  depends (by means of a HOOK_UPDATE or HOOK_IS_APPLICABLE
+                  dependency) has changed. Just before the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> calls the
+                  the <i class="Emphasis">when.field.changes</i> section, it will call this hook for
+                  each field that depends on the field that was changed. The
+                  4GL engine will take care that the hooks are called in the
+                  right order.
+               </li>
+               <li class="ListItem">In case of <i class="Emphasis">Subdals</i> you have to use <a href="../../progguide/functions_db_operations/dal.save.object.htm" class="manualLink">dal.save.object()</a> in order to let dependent fields update
+                  themselves. This function triggers dependent fields to update
+                  themselves. It will take care that the update hooks are
+                  called in the right order.
+               </li>
+            </ul>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">Normally this hook should have a <code class="Code">void</code> return type. Only if it is possible that this
+                  hook finds a data setup error (as opposed to a programming
+                  error), and if that error could not have been detected earlier
+                  or elsewhere, then return type <code class="Code">long</code> is allowed. In that case an error is indicated
+                  by <code class="Code">return(DALHOOKERROR)</code> or something equivalent.
+               </p>
+            </div>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">This hook will only be called in case a HOOK_UPDATE or
+                  HOOK_IS_APPLICABLE dependency relationship has been defined in
+                  the <a href="../../progguide/functions_dal/before.open.object.set.htm" class="manualLink">before.open.object.set()</a> hook. See also <a href="../../progguide/functions_dal/dal2_field_dependencies.htm" class="manualLink">DAL2 Field dependencies</a>.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">E.g. if you currently have the following programmed in your
+               UI script:
+            </p><pre class="CodeBlock">
+field.a:
+when.field.changes:
+    if a &lt;= 10 then
+        b = 5
+        c = 6
+    else
+        b = 0
+        c = 0
+    endif
+</pre><p class="Paragraph">Then this will become the following in your DAL:</p><pre class="CodeBlock">
+function extern void b.update()
+{
+    if a &lt;= 10 then
+        b = 5
+    else
+        b = 0
+    endif
+}
+
+function extern void c.update()
+{
+    if a &lt;= 10 then
+        c = 6
+    else
+        c = 0
+    endif
+}
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+function extern void whinh200.sfty.update()
+{
+    on case whinh200.ittp
+    case whinh.ittp.receipt:
+        if whinh200.order.origin.is(whinh200.oorg,
+                        whinh.oorg.maint.work,
+                        whinh.oorg.maint.work.man,
+                        whinh.oorg.production,
+                        whinh.oorg.production.man,
+                        whinh.oorg.product.asc,
+                        whinh.oorg.product.asc.man) then
+            whinh200.sfty = tctyps.work.center
+        else
+            whinh200.sfty = tctyps.partner
+        endif
+        break
+    case whinh.ittp.issue:
+    case whinh.ittp.transfer:
+    case whinh.ittp.item.transfer:
+        whinh200.sfty = tctyps.warehouse
+        break
+    endcase
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_field_dependencies.htm" class="manualLink">DAL2 Field dependencies</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_4gle.htm" class="manualLink">DAL2 and the 4GL Engine</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal2_flow.htm" class="manualLink">DAL2 Flow of field hooks</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/field.update, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

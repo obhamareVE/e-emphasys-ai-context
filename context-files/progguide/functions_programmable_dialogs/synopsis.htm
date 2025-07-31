@@ -1,0 +1,138 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Programmable dialogs synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="programmable dialogs ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Programmable dialogs synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">Use these functions for programmable dialogs.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Synopsis</div>
+            <table border="0" class="none">
+               <tbody noTR="15" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_programmable_dialogs/dialog.new.htm" class="manualLink">dialog.new()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string dialogName() [, long attribute, value] ... )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_programmable_dialogs/dialog.add.field.htm" class="manualLink">dialog.add.field()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long dlg, const string fldName(), const
+                           string fldLabel() [, long attribute, value] ...
+                           )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_programmable_dialogs/dialog.add.listbox.htm" class="manualLink">dialog.add.listbox()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long dlg, const string fldName(), const
+                           string fldLabel(), long no.items, long enum.vals(),
+                           string enum.desc(,) [, long attribute, value]
+                           ... )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_programmable_dialogs/dialog.add.text.htm" class="manualLink">dialog.add.text()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long dlg, const string text() [, long
+                           attribute, value] ... )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_programmable_dialogs/dialog.add.button.htm" class="manualLink">dialog.add.button()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long dlg, const string btnFunction(), const
+                           string btnLabel())</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_programmable_dialogs/dialog.show.htm" class="manualLink">dialog.show()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long dlg [, long previous_window, long load_defaults] )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_programmable_dialogs/dialog.refresh.field.htm" class="manualLink">dialog.refresh.field()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long dlg, const string fldName() )</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_programmable_dialogs/dialog.add.chart.htm" class="manualLink">dialog.add.chart()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long dlg, long initial.type [, long
+                           allowed.types] )</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_programmable_dialogs/chart.set.title.htm" class="manualLink">chart.set.title()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long chart, const string title [,const
+                           string subtitle] )</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_programmable_dialogs/chart.set.axis.type.htm" class="manualLink">chart.set.axis.type()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long chart, long axis, long type )</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_programmable_dialogs/chart.set.axis.title.htm" class="manualLink">chart.set.axis.title()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long chart, long axis, const string title
+                           )</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_programmable_dialogs/chart.add.series.htm" class="manualLink">chart.add.series()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long chart , const string title )</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_programmable_dialogs/chart.add.line.series.htm" class="manualLink">chart.add.line.series()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long chart , const string title )</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_programmable_dialogs/chart.add.data.point.htm" class="manualLink">chart.add.data.point()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long series , (long|string|double) x,
+                           (long|double) y )</code></td>
+                  </tr>
+                  <tr no="15" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_programmable_dialogs/chart.clear.data.htm" class="manualLink">chart.clear.data()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long chart )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="Note">
+               <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+               <div class="NoteContent">
+                  <p class="Paragraph">Grids are not supported by programmable dialogs.</p>
+               </div>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_programmable_dialogs/example.htm" class="manualLink">Example</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_programmable_dialogs/examplechart.htm" class="manualLink">Example chart</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_programmable_dialogs/synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

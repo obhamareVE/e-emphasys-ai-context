@@ -1,0 +1,212 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>cmf.resolveAddress()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="cmf.resolveaddress cmf.resolveaddress functions cmf.resolveaddress ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">cmf.resolveAddress()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_cmf&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;cmf.resolveaddress&nbsp;
+					(ref domain ttcmf.catg&nbsp;category, ref domain ttcmf.catg&nbsp;key, ref domain ttcmf.defa&nbsp;addresstype, ref string&nbsp;address(), ref string&nbsp;message.str [, string&nbsp;name(100) mb] [, long&nbsp;use.default])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Selects address data of recipient identified by key and
+                  category from Address Book and sets address depending on
+                  value of addresstype. Address data is selected from Tools
+                  Address Book (table ttcmf200) if current company is 0 and
+                  from Infor ERP Enterprise Address Book (table tccom130/131) if current
+                  company is not 0.
+               </p>
+               <ul class="List">
+                  <li class="ListItem">If <i class="Emphasis">key</i> and <i class="Emphasis">category</i> arguments are&nbsp; empty, it
+      is possible to search the Tools Address Book using the
+      optional argument <i class="Emphasis">name</i>. If more than one record is
+                     found, an error is returned. The Infor ERP Enterprise Address Book
+                     cannot be searched using just a name. In this case a
+                     RECIPIENT_NOT_FOUND (-2) error is returned.
+                  </li>
+                  <li class="ListItem">If the argument <i class="Emphasis">use.default</i> is set to true and <i class="Emphasis">addresstype</i> is empty, the address is resolved using
+                     the default address type specified in the Address Book. If
+                     the <i class="Emphasis">addresstype</i> argument is empty and <i class="Emphasis">use.default</i> is not set to true, the address is not
+                     resolved.
+                  </li>
+                  <li class="ListItem">If the <i class="Emphasis">key</i> and <i class="Emphasis">category</i> arguments are both
+                     filled and also a <i class="Emphasis">name</i> argument is supplied, then it
+                     is checked if they match. If they do not match, the <i class="Emphasis">category</i> and <i class="Emphasis">key</i> arguments are made empty and
+                     the Tools Address Book is searched for an entry with <i class="Emphasis">name</i> = &lt;name&gt;. If exactly one entry is found the <i class="Emphasis">category</i>, <i class="Emphasis">key</i> and <i class="Emphasis">address</i> argument  are filled with the found values.
+                     Note: the Infor ERP Enterprise Address Book cannot be searched with
+                     just a <i class="Emphasis">name</i> argument. So in this case a
+                     RECIPIENT_NOT_FOUND (-2) error is returned.
+                  </li>
+                  <li class="ListItem">If <i class="Emphasis">category</i> is ‘Distribution List’, the function
+      stops immediately after the above check and returns SUCCESS
+      (0). If the <i class="Emphasis">category</i> and <i class="Emphasis">key</i> arguments are
+                     empty and the <i class="Emphasis">name</i> argument filled, the Tools Address
+                     Book (ttcmf200) is searched to determine if this name
+                     represents a distribution list, if so, the <i class="Emphasis">key</i> argument
+                     is filled with the name of the list (ttcmf210.list) and the <i class="Emphasis">category</i> argument is set to ‘Distribution List’.
+                  </li>
+               </ul>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">ref domain ttcmf.catg</td>
+                     <td class="none"><code>category</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Recipient's category.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref domain ttcmf.catg</td>
+                     <td class="none"><code>key</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Recipient's key.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref domain ttcmf.defa</td>
+                     <td class="none"><code>addresstype</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Recipient type of address (fax, telex, smtp and
+                           so on.)
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>address()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Recipient's actual address depending on the
+                           address type.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>message.str</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>name(100) mb</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the recipient.</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>use.default</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">If true, the default address type for the
+                           recipient is used.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="9" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">Error: no address specified for addresstype in
+                        Address Book
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-2</th>
+                     <td rowspan="1" colspan="1" class="none">Error: recipient not found in Address Book</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-3</th>
+                     <td rowspan="1" colspan="1" class="none">Error: more than one record found in Address
+                        Book
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-4</th>
+                     <td rowspan="1" colspan="1" class="none">Error: dll tcintdlltccom not found on server</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-5</th>
+                     <td rowspan="1" colspan="1" class="none">Error: function tcint.dlltccom.start.addresses
+                        not found in dll tcintdlltccom.
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-6</th>
+                     <td rowspan="1" colspan="1" class="none">Error: key field must be filled if category is
+                        Business Contact
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-7</th>
+                     <td rowspan="1" colspan="1" class="none">Error: table tccom130 and/or tccom131 not
+                        found
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-8</th>
+                     <td rowspan="1" colspan="1" class="none">Error: something went wrong in execution of
+                        function tcint.dlltccom.start.addresses in DLL
+                        tcintdlltccom
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/emessage_connector/overview.htm" class="manualLink">eMessage Connector overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/emessage_connector/synopsis.htm" class="manualLink">eMessage Connector synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/emessage_connector/examples.htm" class="manualLink">eMessage Connector examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/emessage_connector/cmf.resolveaddress, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>utc.to.local()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions utc.to.local utc.to.local utc.to.local ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">utc.to.local()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;utc.to.local&nbsp;
+					(long&nbsp;utc, ref long&nbsp;local_days, ref long&nbsp;local_time [, ref string&nbsp;local_dst])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This converts a <a href="../../progguide/functions_date_time_zones/overview.htm#utc" class="commandLink">UTC</a> long format value to local date and
+                  time.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>utc</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The UTC long format value.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>local_days</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The local date as the number of days since
+                           01-01-0001.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>local_time</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The local time as the number of seconds since 00:00
+                           hour.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">[ref string</td>
+                     <td class="none"><code>local_dst</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DST_ON: The number of seconds in <i class="Emphasis">local_time</i> should be considered as Daylight Saving Time.
+                        </p>
+                        <p class="Paragraph">DST_OFF: The number of seconds in <i class="Emphasis">local_time</i> should not be considered as Daylight Saving Time.
+                        </p>
+                        <p class="Paragraph">DST_ON and DST_OFF defines are automatically
+                           available. Size of local_dst should be 7 chars.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Error. For example:</p>
+                        <ul class="List">
+                           <li class="ListItem">Any intermediate result involves a date before the year 1 or past the year 9999.</li>
+                        </ul>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">This example shows how to deal with Daylight Saving Time.</p><pre class="CodeBlock">
+function main () {
+
+    long    ret
+    long    local_days
+    long    local_time
+    string  local_dst(7)
+
+    long    Before_DST_01.00.00
+    long    After_DST_04.00.00
+    long    UTCTime
+
+    | 03/28/2004 Start of DST
+    | At 02:00 clock is set to 03:00 DST
+    Before_DST_01.00.00 = date.to.utc( 2004, 03, 28, 01, 00, 00 ) | one hour before start of DST
+    | Before_DST_01.00.00 = 1080432000
+
+    UTCTime = Before_DST_01.00.00
+    ret = utc.to.local(UTCTime,local_days,local_time)
+    | local_time is 3600 which means 01:00:00
+    ret = utc.to.local(UTCTime,local_days,local_time,local_dst)
+    | local_dst is DST_OFF
+    | local_time is 3600 which means 01:00:00
+
+    UTCTime = Before_DST_01.00.00 + 1*60*60 -1 | almost 1 hour after 01:00; 1 second before DST
+    ret = utc.to.local(UTCTime,local_days,local_time)
+    | local_time is 7199 which means 01:59:59
+    ret = utc.to.local(UTCTime,local_days,local_time,local_dst)
+    | local_dst is DST_OFF
+    | local_time is 7199 which means 01:59:59
+
+    UTCTime = Before_DST_01.00.00 + 1*60*60 | 1 hour after 01:00; beginning of DST
+    ret = utc.to.local(UTCTime,local_days,local_time)
+    | local_time is 10800 which means 03:00:00
+    ret = utc.to.local(UTCTime,local_days,local_time,local_dst)
+    | local_dst is DST_ON
+    | local_time is 10800 which means 03:00:00
+
+
+    | 10/31/2004 End of DST
+    | At 03:00 DST clock is set to 02:00
+    After_DST_04.00.00 = date.to.utc( 2004, 10, 31, 04, 00, 00 ) | two hours after end of DST
+    | After_DST_04.00.00 = 1099191600
+
+    UTCTime = After_DST_04.00.00
+    ret = utc.to.local(UTCTime,local_days,local_time)
+    | local_time is 14400 which means 04:00:00
+    ret = utc.to.local(UTCTime,local_days,local_time,local_dst)
+    | local_dst is DST_OFF
+    | local_time is 14400 which means 04:00:00
+
+    UTCTime = After_DST_04.00.00 - 1*60*60 - 30*60 | 1.5 hours before 04:00
+    ret = utc.to.local(UTCTime,local_days,local_time)
+    | local_time is 9000 which means 02:30:00
+    ret = utc.to.local(UTCTime,local_days,local_time,local_dst)
+    | local_dst is DST_OFF
+    | local_time is 9000 which means 02:30:00
+
+    UTCTime = After_DST_04.00.00 - 2*60*60 - 30*60 | 2.5 hours before 04:00
+    ret = utc.to.local(UTCTime,local_days,local_time)
+    | local_time is 9000 which means 02:30:00
+    ret = utc.to.local(UTCTime,local_days,local_time,local_dst)
+    | local_dst is DST_ON
+    | local_time is 9000 which means 02:30:00
+
+    UTCTime = After_DST_04.00.00 - 4*60*60 | 4 hours before 04:00
+    ret = utc.to.local(UTCTime,local_days,local_time)
+    | local_time is 3600 which means 01:00:00
+    ret = utc.to.local(UTCTime,local_days,local_time,local_dst)
+    | local_dst is DST_ON
+    | local_time is 3600 which means 01:00:00
+
+}
+
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_date_time_zones/synopsis.htm" class="manualLink">Dates, times, time zones synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_date_time_zones/overview.htm" class="manualLink">Dates, times, time zones overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_date_time_zones/utc.to.local, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

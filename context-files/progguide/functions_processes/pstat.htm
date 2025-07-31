@@ -1,0 +1,156 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>pstat()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions pstat pstat pstat ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">pstat()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp; &nbsp;pstat&nbsp;
+					(long&nbsp;pid, ref string&nbsp;progname, ref long&nbsp;info(PSMAXSIZE))</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This returns status information about a specified
+                  process.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>pid</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The ID of the process for which you want to
+                           retrieve information. Specify a negative value here
+                           to retrieve information about the init process.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>progname</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the process code.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>info(PSMAXSIZE)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns status information that you can
+                           retrieve with the following macros, each of which
+                           returns a long:
+                        </p>
+                        <p class="Paragraph"><i class="Emphasis">ps.state(info)</i> returns PSRUNNING, PSBLOCKING,
+                           PSSLEEPING, or PSTERMINATING.
+                        </p>
+                        <p class="Paragraph"><i class="Emphasis">ps.group(info)</i> returns the identifier of the
+                           process group to which the process belongs.
+                        </p>
+                        <p class="Paragraph"><i class="Emphasis">ps.parent(info)</i> returns the identifier of the
+                           parent process of the process group.
+                        </p>
+                        <p class="Paragraph"><i class="Emphasis">ps.flags(info)</i> returns flags.
+                        </p>
+                        <p class="Paragraph"><i class="Emphasis">ps.nice(info)</i> returns the <a href="../../progguide/multitasking/bshell_scheduler.htm" class="manualLink">nice value</a> of the process.
+                        </p>
+                        <p class="Paragraph"><i class="Emphasis">ps.cpu.use(info)</i> returns the number of ticks
+                           used by the process.
+                        </p>
+                        <p class="Paragraph"><i class="Emphasis">ps.mwin(info)</i> returns the object id of the <a href="../../progguide/functions_user_interface_objects/dscmwindow.htm" class="manualLink">main window</a> of the process.
+                        </p>
+                        <p class="Paragraph"><i class="Emphasis">ps.pri(info)</i> returns the <a href="../../progguide/multitasking/bshell_scheduler.htm" class="manualLink">priority</a> of the process.
+                        </p>
+                        <p class="Paragraph"><i class="Emphasis">ps.size(info)</i> returns the amount of memory
+                           allocated by the process (in bytes).
+                        </p>
+                        <p class="Paragraph"><i class="Emphasis">ps.cwin(info)</i> returns the object id of the
+                           current <a href="../../progguide/functions_user_interface_objects/dscmwindow.htm" class="manualLink">window</a> of the process.
+                        </p>
+                        <p class="Paragraph"><i class="Emphasis">ps.menu(info)</i> returns the
+                           object id of the <a href="../../progguide/functions_user_interface_objects/dscbarmenu.htm" class="manualLink">menubar</a> of the current window of the
+                           process.
+                        </p>
+                        <p class="Paragraph"><i class="Emphasis">ps.bar(info)</i> returns the
+                           object id of the <a href="../../progguide/functions_user_interface_objects/dsctoolbar.htm" class="manualLink">toolbar</a> of the current window of the
+                           process.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt; 0</th>
+                     <td rowspan="1" colspan="1" class="none">Could not retrieve info: process does not
+                        exist.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&gt;= 0</th>
+                     <td rowspan="1" colspan="1" class="none">The process ID of the next process in the
+                        internal process list, or 0 if this is the last
+                        process in that list.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Related help topics</div>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_processes/overview_and_synopsis.htm" class="manualLink">Processes overview and synopsis</a></li>
+            </ul>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long     info(PSMAXSIZE)
+string   progname(512)
+long     procid
+
+procid = -1
+procid = pstat( procid, progname, info )
+while procid &gt; 0
+        | process info
+        procid = pstat( procid, progname, info )
+endwhile
+</pre></div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_processes/pstat, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

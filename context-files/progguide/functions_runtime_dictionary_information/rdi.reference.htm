@@ -1,0 +1,152 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>rdi.reference()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions rdi.reference rdi.reference rdi.reference ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">rdi.reference()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;rdi.reference&nbsp;
+					(string&nbsp;column_name(18), ref string&nbsp;ref_column(18), ref long&nbsp;ref_mode, ref string&nbsp;ref_mess() [, ref boolean&nbsp;check_by_db] [, ref long&nbsp;ref_update_mode] [, ref long&nbsp;ref_delete_mode])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">If a database column references a column in another table,
+                  use this function to retrieve information about the referenced
+                  column.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>column_name(18)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the column which references the column
+                           about which you want to retrieve information.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>ref_column(18)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the name of the column to which the
+                           column specified in <i class="Emphasis">column_name</i> refers.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>ref_mode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the relation type. Possible values
+                           are:
+                        </p>
+                        <p class="Paragraph">1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mandatory</p>
+                        <p class="Paragraph">2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mandatory unless empty</p>
+                        <p class="Paragraph">3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; not mandatory</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>ref_mess()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the error message of the referenced
+                           column.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">[ref boolean</td>
+                     <td class="none"><code>check_by_db</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This indicates whether or not a referential
+                           integrity check is performed by the database driver.
+                           Possible values are:
+                        </p>
+                        <p class="Paragraph">false&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; check ignored</p>
+                        <p class="Paragraph">true&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; check performed by database
+            driver</p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">[ref long</td>
+                     <td class="none"><code>ref_update_mode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the action to be done by the system, if
+                           an occurrence in the table referred to (= parent table)
+                           is updated. Possible values are:
+                        </p>
+                        <p class="Paragraph">DB.REF.RESTRICTED</p>
+                        <p class="Paragraph">DB.REF.CASCADE</p>
+                        <p class="Paragraph">DB.REF.NULLIFY</p>
+                        <p class="Paragraph">DB.REF.CHK.RUNTIME</p>
+                        <p class="Paragraph">DB.REF.NOP</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td class="none">[ref long</td>
+                     <td class="none"><code>ref_delete_mode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This returns the action to be done by the system, if
+                           an occurrence in the table referred to (= parent table)
+                           is deleted. Possible values are:
+                        </p>
+                        <p class="Paragraph">DB.REF.RESTRICTED</p>
+                        <p class="Paragraph">DB.REF.CASCADE</p>
+                        <p class="Paragraph">DB.REF.NULLIFY</p>
+                        <p class="Paragraph">DB.REF.CHK.RUNTIME</p>
+                        <p class="Paragraph">DB.REF.NOP</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; success</p>
+            <p class="Paragraph">-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; error</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_runtime_dictionary_information/overview_and_synopsis.htm" class="manualLink">Runtime dictionary information overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_runtime_dictionary_information/rdi.reference, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

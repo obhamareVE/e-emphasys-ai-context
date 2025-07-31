@@ -1,0 +1,59 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42I18 - Table is referred to by different tables</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42I18 - Table is referred to by different tables</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">An SQL statement contains two or more REFERS TO predicates
+               that refer to the same table, but with columns of different
+               tables.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+select *
+from   dbtst120, dbtst100, dbtst160
+where  dbtst100.mgrno refers to dbtst120
+and    dbtst160.respemp refers to dbtst120
+   </pre><p class="Paragraph">Both REFERS TO predicates refer to the same table dbtst120,
+               but the first is done with a column of dbtst100 and the second
+               with a column from dbtst160. This query causes the error:
+            </p>
+            <p class="Paragraph">SQLState 42I18: Table
+               'dbtst120' is referred to by different tables
+            </p>
+            <p class="Paragraph">It is possible to join different tables to the same table
+               within one query, but each table should then join with a
+               different instance of that table:
+            </p><pre class="CodeBlock">
+select *
+from   dbtst120 tst120a, dbtst120 tst120b, dbtst100, dbtst160
+where  dbtst100.mgrno refers to tst120a
+and    dbtst160.respemp refers to tst120b
+   </pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/refers_to_pred.htm" class="manualLink">REFERS TO predicate</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42I18, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

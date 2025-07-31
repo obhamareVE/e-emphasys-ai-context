@@ -1,0 +1,42 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Focus events</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Focus events</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The WebTop will detect if a session needs focus events (by
+               checking if the following sections are used: <code class="Code">check.input</code>, <code class="Code">before.field</code> and <code class="Code">before.input</code>). If a session does not need focus
+               events, then the WebTop will not send focus events for this
+               session. This results in better performance when for example
+               tabbing through the fields of such a session. This however has
+               the following consequence:
+            </p>
+            <p class="Paragraph">Normally, when a field receives the focus, the field is
+               automatically redisplayed. This will not happen when no focus
+               events are send anymore. This means that if you change values of
+               table fields, you must always call the <code class="Code">display</code> function. You can not rely on the automatic redisplay of fields
+               when the field receives the focus. Note: this only applies to
+               sessions for which the WebTop decides not to send focus
+               events!
+            </p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/webtop/focusevents, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

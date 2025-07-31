@@ -1,0 +1,159 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>seq.gets()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions seq.gets seq.gets seq.gets ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">seq.gets()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;seq.gets&nbsp;
+					(ref string&nbsp;line, long&nbsp;nrbytes, long&nbsp;fp [, long&nbsp;mode] [, ref long&nbsp;there.was.more])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This reads one or more characters from a specified
+                  file.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>line</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This stores the retrieved characters.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>nrbytes</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The maximum number of bytes to be read. Note that
+                           the function stops retrieving characters when a new
+                           line character is read or when the end of file is
+                           reached.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>fp</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The pointer to the file from which the characters
+                           are to be read, as returned by <a href="../../progguide/functions_directory_file_operations/seq.open.htm" class="manualLink">seq.open()</a> when the file
+                           was opened.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>mode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use this optional argument to specify the read mode for seq.gets(). Possible values are:</p>
+                        <table width="100%" border="0" class="none">
+                           <tbody noTR="3" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">GETS_NORMAL</th>
+                                 <td rowspan="1" colspan="1" class="none">The function continues reading characters until either the buffer (line) is full, a new line character is read, or EOF is
+                                    reached. 
+                                    
+                                    If the buffer is full, any remaining characters on the line being read are discarded. 
+                                    
+                                    This is the default mode.
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">GETS_ALL_CHARS</th>
+                                 <td rowspan="1" colspan="1" class="none">The function continues reading characters until either the buffer (line) is full, a new line character is read, or EOF is
+                                    reached. 
+                                    
+                                    If the buffer is full, the next seq.gets() call starts reading at the point where the current seq.gets() finished. The use
+                                    of this mode ensures that all characters available in input file are eventually returned.
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="true" class="none">
+                                 <th rowspan="1" colspan="1" class="none">GETS_SKIP_ALL</th>
+                                 <td rowspan="1" colspan="1" class="none">This is the same as GETS_NORMAL, except that if the last line in the file does not end with a new line character, that line
+                                    is discarded completely and EOF is returned.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">[ref long</td>
+                     <td class="none"><code>there.was.more</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">When characters are discarded in GETS_NORMAL or
+                           GETS_SKIP_ALL mode, or when more characters are
+                           available in the line (but the buffer is full) in
+                           GETS_ALL_CHARS mode, this argument is set to 1.
+                           Otherwise, the argument returns 0.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">Error; probably <i class="Emphasis">fp</i> not connected or end of
+                        file reached.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/overview.htm" class="manualLink">Directory and file operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/synopsis.htm" class="manualLink">Directory and file operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_directory_file_operations/seq.gets, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

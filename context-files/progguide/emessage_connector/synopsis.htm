@@ -1,0 +1,701 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>eMessage Connector synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="eMessage connector synopsis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">eMessage Connector synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Functions are categorized into the following:</p>
+            <ul class="List">
+               <li class="ListItem">Message object general functions</li>
+               <li class="ListItem">Message object identification functions</li>
+               <li class="ListItem">Message object delivery settings functions</li>
+               <li class="ListItem">Message object recipient functions</li>
+               <li class="ListItem">Message object attachment functions</li>
+               <li class="ListItem">Task object functions</li>
+               <li class="ListItem">Appointment object functions</li>
+               <li class="ListItem">Miscellaneous</li>
+            </ul>
+            <p class="Paragraph">Infor ERP Enterprise eMessage Connector APIextensions for the
+               Address BookCMF_API_extensions_for_the_Address_Book
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Message object general functions</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.create.htm" class="manualLink">cmf.create()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.destroy.htm" class="manualLink">cmf.destroy()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid)</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.send.htm" class="manualLink">cmf.send()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, string service(15))</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.receive.htm" class="manualLink">cmf.receive()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref long mid, domain ttcmf.prov service, long
+                           block)</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.startservice.htm" class="manualLink">cmf.startService()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string service(15), long mode, [string
+                           address(13)])</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.stopservice.htm" class="manualLink">cmf.stopService()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string service(15), long mode)</code></td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.addobjecttomessage.htm" class="manualLink">cmf.addObjectToMessage()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long oid, long mid, string class(100))</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Message object identification functions</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="13" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setclass.htm" class="manualLink">cmf.setClass()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, string class)</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getclass.htm" class="manualLink">cmf.getClass()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, ref string class)</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setmessageid.htm" class="manualLink">cmf.setMessageId()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, string messageId)</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getmessageid.htm" class="manualLink">cmf.getMessageId()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, ref string messageId)</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getcreatetime.htm" class="manualLink">cmf.getCreateTime()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, ref domain ttutc createtime)</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setsubject.htm" class="manualLink">cmf.setSubject()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, string subject)</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getsubject.htm" class="manualLink">cmf.getSubject()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, ref string subject)</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.settemplate.htm" class="manualLink">cmf.setTemplate()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, string template)</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.gettemplate.htm" class="manualLink">cmf.getTemplate()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, ref string template)</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setchargecode.htm" class="manualLink">cmf.setChargeCode()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, string chargecode)</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getchargecode.htm" class="manualLink">cmf.getChargeCode()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, ref string chargecode)</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setcategories.htm" class="manualLink">cmf.setCategories()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, string categories)</code></td>
+                  </tr>
+                  <tr no="13" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getcategories.htm" class="manualLink">cmf.getCategories()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, ref string categories)</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Message object delivery functions</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="16" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setpriority.htm" class="manualLink">cmf.setPriority()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, enum priority)</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getpriority.htm" class="manualLink">cmf.getPriority()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, ref enum priority)</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setsensitivity.htm" class="manualLink">cmf.setSensitivity()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, enum sensitivity)</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getsensitivity.htm" class="manualLink">cmf.getSensitivity()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, ref enum sensitivity)</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setstarttime.htm" class="manualLink">cmf.setStartTime()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, domain ttutc starttime)</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getstarttime.htm" class="manualLink">cmf.getStartTime()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, ref domain ttutc starttime)</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setexpiry.htm" class="manualLink">cmf.setExpiry()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, domain ttutc expiry)</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getexpiry.htm" class="manualLink">cmf.getExpiry()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, ref domain ttutc expiry)</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setfollowupflag.htm" class="manualLink">cmf.setFollowupFlag()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid)</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getfollowupflag.htm" class="manualLink">cmf.getFollowupFlag()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid)</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setduedate.htm" class="manualLink">cmf.setDueDate()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, domain ttutc duedate)</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getduedate.htm" class="manualLink">cmf.getDueDate()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, ref domain ttutc duedate)</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setnotification.htm" class="manualLink">cmf.setNotification()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, enum notification)</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getnotification.htm" class="manualLink">cmf.getNotification()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, ref enum notification)</code></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setdisplay.htm" class="manualLink">cmf.setDisplay()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, enum display)</code></td>
+                  </tr>
+                  <tr no="16" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getdisplay.htm" class="manualLink">cmf.getDisplay()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, ref enum display)</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Message object recipient functions</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="14" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.createrecipient.htm" class="manualLink">cmf.createRecipient()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, enum role)</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getnextrecipient.htm" class="manualLink">cmf.getNextRecipient()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, ref enum role, long
+                           previous)</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setrecipientname.htm" class="manualLink">cmf.setRecipientName()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long recipient, string name)</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getrecipientname.htm" class="manualLink">cmf.getRecipientName()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long recipient, ref string name)</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setrecipientaddress.htm" class="manualLink">cmf.setRecipientAddress()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long recipient, string address)</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getrecipientaddress.htm" class="manualLink">cmf.getRecipientAddress()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long recipient, ref string address)</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setrecipienttype.htm" class="manualLink">cmf.setRecipientType()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long recipient, string type)</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getrecipienttype.htm" class="manualLink">cmf.getRecipientType()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long recipient, ref string type)</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setrecipientresponsibility.htm" class="manualLink">cmf.setRecipientResponsibility()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long recipient, string responsibility)</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getrecipientresponsibility.htm" class="manualLink">cmf.getRecipientResponsibility()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long recipient, ref string
+                           responsibility)</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setrecipientreasoncode.htm" class="manualLink">cmf.setRecipientReasoncode()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long recipient, long reasoncode)</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getrecipientreasoncode.htm" class="manualLink">cmf.getRecipientReasoncode()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long recipient, ref long reasoncode)</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setrecipientreasonstring.htm" class="manualLink">cmf.setRecipientReasonstring()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long recipient, string
+                           reasonstring(100))</code></td>
+                  </tr>
+                  <tr no="14" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getrecipientreasonstring.htm" class="manualLink">cmf.getRecipientReasonstring()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long recipient, ref string
+                           reasonstring)</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Message object attachment functions</div>
+            <table border="0" class="none">
+               <tbody noTR="11" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.createattachment.htm" class="manualLink">cmf.createAttachment()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid)</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getnextattachment.htm" class="manualLink">cmf.getNextAttachment()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, long previous)</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.copyattachment.htm" class="manualLink">cmf.copyAttachment()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long attachment.id, oid)</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setattachmentbody.htm" class="manualLink">cmf.setAttachmentBody()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long attachment, enum ttyeno body)</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getattachmentbody.htm" class="manualLink">cmf.getAttachmentBody()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long attachment, enum ttyeno body)</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setattachmentmime.htm" class="manualLink">cmf.setAttachmentMIME()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long attachment, string mime)</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getattachmentmime.htm" class="manualLink">cmf.getAttachmentMime()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long attachment, ref string mime)</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setattachmentfilename.htm" class="manualLink">cmf.setAttachmentFilename()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long attachment, string filename [, string
+                           displayname])</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getattachmentfilename.htm" class="manualLink">cmf.getAttachmentFilename()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long attachment, ref string filename, ref
+                           string displayname)</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setattachmentposition.htm" class="manualLink">cmf.setAttachmentPosition()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long attachment, string position(10))</code></td>
+                  </tr>
+                  <tr no="11" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getattachmentposition.htm" class="manualLink">cmf.getAttachmentPosition()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long attachment, ref string position)</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Task object functions</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="13" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.createtask.htm" class="manualLink">cmf.createTask()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.settasksubject.htm" class="manualLink">cmf.setTaskSubject()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long tid, string subject)</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.gettasksubject.htm" class="manualLink">cmf.getTaskSubject()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long tid, ref string subject)</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.settaskpriority.htm" class="manualLink">cmf.setTaskPriority()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long tid, enum priority)</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.gettaskpriority.htm" class="manualLink">cmf.getTaskPriority()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long tid, ref enum priority)</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.settaskstartdate.htm" class="manualLink">cmf.setTaskStartdate()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long tid, domain ttutc startdate)</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.gettaskstartdate.htm" class="manualLink">cmf.getTaskStartdate()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long tid, ref domain ttutc startdate)</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.settaskduedate.htm" class="manualLink">cmf.setTaskDuedate()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long tid, domain ttutc duedate)</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.gettaskduedate.htm" class="manualLink">cmf.getTaskDuedate()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long tid, ref domain ttutc duedate)</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.settaskremindertime.htm" class="manualLink">cmf.setTaskReminderTime()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long tid, domain ttutc remindertime)</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.gettaskremindertime.htm" class="manualLink">cmf.getTaskReminderTime()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long tid, ref domain ttutc
+                           remindertime)</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.settasktotalwork.htm" class="manualLink">cmf.setTaskTotalwork()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long tid, string totalwork)</code></td>
+                  </tr>
+                  <tr no="13" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.gettasktotalwork.htm" class="manualLink">cmf.getTaskTotalwork()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long tid, ref string totalwork)</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Appointment object functions</div>
+            <table border="0" class="none">
+               <tbody noTR="23" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.createappointment.htm" class="manualLink">cmf.createAppointment()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( [long mid] )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setappointmentsubject.htm" class="manualLink">cmf.setAppointmentSubject()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, string subject)</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getappointmentsubject.htm" class="manualLink">cmf.getAppointmentSubject()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, ref string subject)</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setappointmentdescription.htm" class="manualLink">cmf.setAppointmentDescription()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, string description)</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getappointmentdescription.htm" class="manualLink">cmf.getAppointmentDescription()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, ref string description)</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setappointmentmethod.htm" class="manualLink">cmf.setAppointmentMethod()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, domain ttcmf.mth method)</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getappointmentmethod.htm" class="manualLink">cmf.getAppointmentMethod()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, ref domain ttcmf.mth method)</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setappointmentuuid.htm" class="manualLink">cmf.setAppointmentUUID()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, string uuid)</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getappointmentuuid.htm" class="manualLink">cmf.getAppointmentUUID()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, ref string uuid)</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setappointmentmeeting.htm" class="manualLink">cmf.setAppointmentMeeting()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, enum meeting)</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getappointmentmeeting.htm" class="manualLink">cmf.getAppointmentMeeting()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, ref enum meeting)</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setappointmentalldayevent.htm" class="manualLink">cmf.setAppointmentAlldayevent()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, enum alldayevent)</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getappointmentalldayevent.htm" class="manualLink">cmf.getAppointmentAlldayevent()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, ref enum alldayevent)</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setappointmentstarttime.htm" class="manualLink">cmf.setAppointmentStarttime()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, domain ttutc starttime)</code></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getappointmentstarttime.htm" class="manualLink">cmf.getAppointmentStarttime()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, ref domain ttutc starttime)</code></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setappointmentendtime.htm" class="manualLink">cmf.setAppointmentEndtime()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, domain ttutc endtime)</code></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getappointmentendtime.htm" class="manualLink">cmf.getAppointmentEndtime()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, ref domain ttutc endtime)</code></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setappointmentalarm.htm" class="manualLink">cmf.setAppointmentAlarm()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, domain ttutc alarm)</code></td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getappointmentalarm.htm" class="manualLink">cmf.getAppointmentAlarm()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, ref domain ttutc alarm)</code></td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setappointmentbusystatus.htm" class="manualLink">cmf.setAppointmentBusystatus()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, enum busystatus)</code></td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getappointmentbusystatus.htm" class="manualLink">cmf.getAppointmentBusystatus()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, ref string busystatus)</code></td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.setappointmentlocation.htm" class="manualLink">cmf.setAppointmentLocation()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, string location)</code></td>
+                  </tr>
+                  <tr no="23" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getappointmentlocation.htm" class="manualLink">cmf.getAppointmentLocation()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long apid, ref string location)</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Miscellaneous</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.messagedialog.htm" class="manualLink">cmf.messageDialog()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mode, long show, [long
+                           show.message])</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getid.htm" class="manualLink">cmf.getId()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(domain ttcmf.cmes messageId, string service,
+                           domain ttcmf.mdir message.direction, ref string
+                           error_string())</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.isserviceenabled.htm" class="manualLink">cmf.isServiceEnabled()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(domain ttcmf.prov service)</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.enableservice.htm" class="manualLink">cmf.enableService()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(domain ttcmf.prov service, long
+                           enable)</code></td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.resolveaddress.htm" class="manualLink">cmf.resolveAddress()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref domain ttcmf.catg category, ref domain
+                           ttcmf.catg key, ref domain ttcmf.defa addresstype,
+                           ref string address(), ref string message.str,
+                           [string name(100) mb, long use.default])</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Address List Object Functions</div>
+            <table border="0" class="none">
+               <tbody noTR="9" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.createaddresslist.htm" class="manualLink">cmf.createAddressList()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">()</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.addaddressentry.htm" class="manualLink">cmf.addAddressEntry()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long aid, string role, string name, string
+                           address, string addresstype, [domain ttcmf.catg key,
+                           domain ttcmf.catg category])</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getnextaddress.htm" class="manualLink">cmf.getNextAddress()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long aid, long previous)</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getaddressdetails.htm" class="manualLink">cmf.getAddressDetails()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long entry_id, ref string category, ref
+                           string key, ref string role, ref string name, ref
+                           string address, ref string addresstype, ref long
+                           errorcode)</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getaddressbookkey.htm" class="manualLink">cmf.getAddressBookKey()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long entry.id,&nbsp; ref string key,&nbsp; ref string
+               category)</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.updateaddressstatus.htm" class="manualLink">cmf.updateAddressStatus()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long entry_id, long errorcode)</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.getservice.htm" class="manualLink">cmf.getService()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(enum addresstype, enum user_interaction, enum
+                           resolve, ref string service)</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.sendtoperson.htm" class="manualLink">cmf.sendToPerson()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long mid, long aid, long display, long
+               show.progress, ref string message_string() [,long
+               convert, string filename1, string filename2, …]
+               )</code></td>
+                  </tr>
+                  <tr no="9" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">void</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/emessage_connector/cmf.stopallservices.htm" class="manualLink">cmf.stopAllServices()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">()</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/emessage_connector/overview.htm" class="manualLink">eMessage Connector overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/emessage_connector/examples.htm" class="manualLink">eMessage Connector examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/emessage_connector/synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

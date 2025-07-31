@@ -1,0 +1,81 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>refresh.all.occs()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions refresh.all.occs refresh.all.occs refresh.all.occs ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">refresh.all.occs()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;refresh.all.occs&nbsp;
+					()</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This re-reads all records that are currently on the screen
+                  and refreshes them (after all processes are idle).
+               </p>
+               <p class="Paragraph">Note that this is not done in the following cases:</p>
+               <ul class="List">
+                  <li class="ListItem">One of the occurrences on the screen has been modified by
+                     the user, but not yet saved.
+                  </li>
+                  <li class="ListItem">An occurrence is being added in an editable grid
+                     session.
+                  </li>
+                  <li class="ListItem">The session is a parent session and it has been updated
+                     due to the adding of a record in a synchronized dialog. In
+                     that case the occurrences of the parent session are not
+                     ordered on the screen: the record being added appears at the
+                     end of the grid.
+                  </li>
+               </ul>
+               <p class="Paragraph">This function works in both overview and details
+                  sessions.
+               </p>
+               <p class="Paragraph">This function does not work in display sections.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Process Change Manager (PRCM)</div>
+            <p class="Paragraph">You can use this function in combination with the <a href="../../progguide/functions_prcm/overview.htm" class="manualLink">Process Change Manager overview</a> functionality to refresh occurrences. In case
+               updates have been done by other sessions on one or more tables
+               that your session uses, PRCM can be used to notify your session
+               about those changes. Your session then can refresh its data.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/overview.htm" class="manualLink">Form and form field operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/synopsis.htm" class="manualLink">Form and form field operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_form_and_form_field_operations/refresh.all.occs, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dal.reset.messages()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dal.reset.messages dal.reset.messages functions dal.reset.messages ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dal.reset.messages()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;dal.reset.messages&nbsp;
+					(long&nbsp;i.type, long&nbsp;i.count)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Removes the most recent messages of the given type from the
+                  DAL message buffer. The 2nd argument determines how many
+                  messages will remain in the buffer.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>i.type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A message type.</p>
+                        <p class="Paragraph">Parameter i.type should be one of the following values:</p>
+                        <p class="Paragraph"><code class="Code">MSG.ALL, MSG.ERROR, MSG.WARNING, MSG.INFO</code>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>i.count</code></td>
+                     <td class="none">
+                        <table border="0" class="none">
+                           <tbody noTR="3" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">0</td>
+                                 <td rowspan="1" colspan="1" class="none">All messages are removed.</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">&gt;0</td>
+                                 <td rowspan="1" colspan="1" class="none">The number of messages that have to remain
+                                    in the list (the most recent ones are
+                                    removed).
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">&lt;0</td>
+                                 <td rowspan="1" colspan="1" class="none">The number of messages that have to be
+                                    removed from the list (starting with the most
+                                    recent).
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			DAL
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Preconditions</div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div><pre class="CodeBlock">
+dal.reset.messages(MSG.WARNING, -4)   | clears the 4 most recent warning messages
+dal.reset.messages(MSG.ALL, 2)        | leave only the 2 oldest messages, regardless of type
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_message_handling/overview_and_synopsis.htm" class="manualLink">Message handling overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_message_handling/dal.reset.messages, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

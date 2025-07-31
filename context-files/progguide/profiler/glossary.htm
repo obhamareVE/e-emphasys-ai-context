@@ -1,0 +1,79 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Call Graph Profiler Glossary</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Call Graph Profiler Glossary</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <table width="100%" border="1" class="default">
+               <tbody noTR="5" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th width="20%" rowspan="1" colspan="1" class="default">Term</th>
+                     <th rowspan="1" colspan="1" class="default">Explanation</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">CPU time</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">The amount of time a bshell process <i class="Emphasis">actually</i> uses the CPU. This does not include time waiting for e.g.
+                           on database, the disk and user input.
+                        </p>
+                        <p class="Paragraph"></p>
+                        <p class="Paragraph">Note: The cpu time includes the time spent in the database
+                           driver when the bshell runs in the so called 'combo mode'
+                           (that is: when the database driver runs as a DLL or shared
+                           library).
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">run time</td>
+                     <td rowspan="1" colspan="1" class="default">The amount of <i class="Emphasis">elapsed time</i> (sometimes also
+                        			referred to as "wallclock time" or "rtime") that was spent with execution of
+                        			code in the bshell process and time spent waiting on database, disk, network
+                        			and user input.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">utime / stime</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">utime is "user time", the actual time spent in the code
+                           			  itself.
+                        </p>
+                        <p class="Paragraph">stime is "system time", the actual time spent in system
+                           			  functions on behalf of the bshell.
+                        </p>
+                        <p class="Paragraph">utime + stime = CPU time</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">children / parents</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">The term <i class="Emphasis">children</i> (or descendants) is used for
+                           the functions that are callee of a particular
+                           			  function.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/profiler/glossary, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

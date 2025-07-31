@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Execution plan hints</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="execution plan hints query hints execution plan hints ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Execution plan hints</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The hints are divided into two groups:</p>
+            <ul class="List">
+               <li class="ListItem"><i class="Emphasis">Execution plan hints</i>, hints that influence the
+                  actual execution plan of the query
+               </li>
+               <li class="ListItem"><i class="Emphasis">General hints</i>; hints that do not influence the
+                  execution plan but that may influence other parameters, like
+                  for example buffer sizes.
+               </li>
+            </ul>
+            <p class="Paragraph">The table below shows which hint belongs to which
+               group:
+            </p>
+            <table border="1" width="70%" class="default">
+               <tbody noTR="5" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Execution plan hints</th>
+                     <th rowspan="1" colspan="1" class="default">General hints</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Index hint</td>
+                     <td rowspan="1" colspan="1" class="default">Buffer hint</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Row mode hint</td>
+                     <td rowspan="1" colspan="1" class="default">Array fetching hint</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">Ordered hint</td>
+                     <td rowspan="1" colspan="1" class="default">Array size hint</td>
+                  </tr>
+                  <tr no="5" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">String hint</td>
+                     <td rowspan="1" colspan="1" class="default">'No hints' hint</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">For the Oracle level-2 driver the execution plan hints are
+               translated into native hints and added to the SQL query that
+               is sent to the Oracle RDBMS. The execution plan hints are
+               added according to the following rules:
+            </p>
+            <ol class="ProcedureList">
+               <li class="ProcedureListItem">If there are execution plan hints specified then no
+                  default hints are added. The execution plan hints replace
+                  the default hints.
+               </li>
+               <li class="ProcedureListItem">The string hint is always the first hint in the hint
+                  text added to the SQL query.
+               </li>
+               <li class="ProcedureListItem">If there are no execution plan hints but there is a
+                  'no hints' hint, then no hints are added at all.
+               </li>
+               <li class="ProcedureListItem">If there are no execution plan hints and the 'no
+                  hints' hint is not specified default hints are
+                  generated.
+               </li>
+            </ol>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/hint_types.htm" class="manualLink">Hint types</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/overview.htm" class="manualLink">Query hints overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_query_hints/execution_plan_hints, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

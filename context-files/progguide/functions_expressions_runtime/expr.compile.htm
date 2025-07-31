@@ -1,0 +1,450 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>expr.compile()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="expr.compile expr.compile functions expr.compile ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">expr.compile()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;expr.compile&nbsp;
+					(string&nbsp;expression)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This compiles the specified expression and returns an ID number
+                  	  for the compiled expression. The expression can be executed subsequently using <a href="../../progguide/functions_expressions_runtime/l.expr.htm" class="manualLink">l.expr()</a>, <a href="../../progguide/functions_expressions_runtime/d.expr.htm" class="manualLink">d.expr()</a>, or <a href="../../progguide/functions_expressions_runtime/s.expr.htm" class="manualLink">s.expr$()</a>. Because variables included in the expression
+                  	  must be known at runtime, they must be declared as external
+                  	  variables.
+               </p>
+               <p class="Paragraph">You can execute compiled expressions multiple times without
+                  	  recompiling. The current values of the variables are used each
+                  	  time.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>expression</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Expression to compile.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Features</div>
+            <p class="Paragraph">The expression can include any of the following
+               	  features:
+            </p>
+            <p class="Paragraph">Literal decimal integer values.
+               For example: <code class="Code">123</code></p>
+            <p class="Paragraph">Literal decimal floating point values.
+               For example: <code class="Code">123.456</code></p>
+            <p class="Paragraph">Literal string values.
+               For example: <code class="Code">"abc"</code></p>
+            <p class="ListIntro">The following named constants:</p>
+            <ul class="List">
+               <li class="ListItem">PI&nbsp;&nbsp; &nbsp; ( = 3.1415927... )</li>
+               <li class="ListItem">TRUE</li>
+               <li class="ListItem">FALSE</li>
+            </ul>
+            <p class="ListIntro">The following symbolic names:</p>
+            <ul class="List">
+               <li class="ListItem">
+                  <p class="Paragraph">$$</p>
+                  <p class="Paragraph">This represents the optional value argument passed to <a href="../../progguide/functions_expressions_runtime/l.expr.htm" class="manualLink">l.expr()</a>, <a href="../../progguide/functions_expressions_runtime/d.expr.htm" class="manualLink">d.expr()</a>, or <a href="../../progguide/functions_expressions_runtime/s.expr.htm" class="manualLink">s.expr$()</a>.
+                  </p>
+                  <p class="Paragraph">In expressions on forms, this represents the current field name.</p>
+                  <p class="Paragraph">For example: <code class="Code">$$ IN [30,40]</code></p>
+               </li>
+               <li class="ListItem">
+                  <p class="Paragraph">$#</p>
+                  <p class="Paragraph">In expressions on forms, this represents the current domain name.</p>
+               </li>
+            </ul>
+            <p class="Paragraph">External variable read access.
+               For example: <code class="Code">a</code></p>
+            <p class="Paragraph">External variable write access (assignment).
+               For example: <code class="Code">a := 5</code></p>
+            <p class="Paragraph">Merged expressions, separated by commas (,).
+               For example: <code class="Code">a:=3, b:=7, c-8</code></p>
+            <p class="Paragraph">Operators. These have the same function as in normal
+               	  expressions. Integer division is an exception. Normally, integer division
+               	  returns an integer (for example, 45/30 returns 1). With these functions,
+               	  integer division returns a double (for example, 45/30 returns 1.5).
+            </p>
+            <p class="Paragraph">The IN keyword. Use this to check whether a value lies within a
+               	  specified range, or a string value matches a string regular expression.
+            </p>
+            <p class="Paragraph">Conditional expressions.
+               For example: <code class="Code">a &lt; 0 ? -a : a</code></p>
+            <p class="Paragraph">Numerical ranges.
+               For example: <code class="Code">a IN [12,30]</code> or <code class="Code">a IN [12,30] [50,100] [200,500]</code></p>
+            <p class="Paragraph">The following functions:</p>
+            <table border="0" frame="above" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">abs()</td>
+                     <td rowspan="1" colspan="1" class="none">acos()</td>
+                     <td rowspan="1" colspan="1" class="none">asc()</td>
+                     <td rowspan="1" colspan="1" class="none">asin()</td>
+                     <td rowspan="1" colspan="1" class="none">atan()</td>
+                     <td rowspan="1" colspan="1" class="none">chr()</td>
+                     <td rowspan="1" colspan="1" class="none">cos()</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">cosh()</td>
+                     <td rowspan="1" colspan="1" class="none">edit()</td>
+                     <td rowspan="1" colspan="1" class="none">exp()</td>
+                     <td rowspan="1" colspan="1" class="none">int()</td>
+                     <td rowspan="1" colspan="1" class="none">len()</td>
+                     <td rowspan="1" colspan="1" class="none">log()</td>
+                     <td rowspan="1" colspan="1" class="none">log10()</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">min()</td>
+                     <td rowspan="1" colspan="1" class="none">max()</td>
+                     <td rowspan="1" colspan="1" class="none">pos()</td>
+                     <td rowspan="1" colspan="1" class="none">pow()</td>
+                     <td rowspan="1" colspan="1" class="none">round()</td>
+                     <td rowspan="1" colspan="1" class="none">rpos()</td>
+                     <td rowspan="1" colspan="1" class="none">sin()</td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">sqrt()</td>
+                     <td rowspan="1" colspan="1" class="none">str()</td>
+                     <td rowspan="1" colspan="1" class="none">strip()</td>
+                     <td rowspan="1" colspan="1" class="none">tan()</td>
+                     <td rowspan="1" colspan="1" class="none">tanh()</td>
+                     <td rowspan="1" colspan="1" class="none">val()</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph"></p>
+            <table border="0" frame="lhs" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">time()</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">current time in HHMM format</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">date()</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">current date in number of days since January 1,
+                           			  0001
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">date(YYYY,MM,DD)</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">specified date in number of days since January 1, 0001</p>
+                        <p class="Paragraph">for example: <code class="Code">date() IN [ date(1988,1,1), date(1992,1,1) ]</code></p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">utc()</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">current date and time in <a href="../../progguide/functions_date_time_zones/overview.htm#utc" class="commandLink">UTC</a> long format
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">utc(YYYY,MM,DD,HH,MM,SS)</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">specified local date/time in <a href="../../progguide/functions_date_time_zones/overview.htm#utc" class="commandLink">UTC</a> long format;
+                           input values must be in signed 32-bit value range;
+                           if exact result is negative or greater than
+                           the maximum value
+                           2^( <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-1) - 1
+                           of the signed <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-bit
+                           range,
+                           then error value -1 is returned
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">fmin()</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Returns the minimum value of a 4GL variable, domain, or
+                           			  table field. See <a href="../../progguide/functions_mathematical_operations/set.fmin.htm" class="manualLink">set.fmin()</a> for an explanation of how the attributes of the
+                           			  concerned domain may influence the result.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">fmax()</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Returns the maximum value of a 4GL variable, domain, or
+                           			  table field. See <a href="../../progguide/functions_mathematical_operations/set.fmax.htm" class="manualLink">set.fmax()</a> for an explanation of how the attributes of the
+                           			  concerned domain may influence the result.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">String regular expressions. A string regular expression is a constant string and 
+               	must appear on the right hand side of
+               	the IN operator.  Note that it must be <i class="Emphasis">constant</i>, which excludes
+               	the use of $$ as regular expression.
+               	String regular expressions can contain the following characters:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="12" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">^</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">means the beginning of the string</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">$</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">means the end of the string</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">.</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">means any character</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">*</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">takes the previous character 0 or more times</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">[]</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">means one of the characters between [ ]</p>
+                        <p class="Paragraph">for example: <code class="Code">[abcd123] or [a-z] or [a-zA-Z]</code></p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">[^]</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">means any character except the characters after
+                           			  ^
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">{m}</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">means the previous character exactly <i class="Emphasis">m</i> times. <i class="Emphasis">m</i> must be an integer in the range 0..255.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">{m,}</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">means the previous character at least <i class="Emphasis">m</i> times. <i class="Emphasis">m</i> must be an integer in the range 0..255.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">{m,n}</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">means the previous character at least <i class="Emphasis">m</i> times and at most <i class="Emphasis">n</i> times. <i class="Emphasis">m</i> and <i class="Emphasis">n</i> must be integers in the range 0..255,
+                           			and <i class="Emphasis">m</i> must be less than or equal to <i class="Emphasis">n</i>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(re) \n</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">means the same string of characters matched by the <i class="Emphasis">n</i> th parenthesized regular expression. <i class="Emphasis">n</i> must be an integer in the range 1..9.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">\</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">take the following character literally. This is the escape character
+                           		and removes any special meaning from the character that follows. 
+                           		Note the \n construction above. Also note that the \ character does
+                           		not play a special role in "ordinary" 3GL strings.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">""</code></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">means a single double-quote within a string</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">The result of a regular expression that includes IN is 0 if the
+               	  expression is FALSE. If the expression is TRUE, the result is a long containing
+               	  4 bytes. The first two bytes contain the length of the substring; the last 2
+               	  bytes contain the position of the substring in the string.
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="14" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="2" colspan="1" class="none">Expression</th>
+                     <th colspan="2" rowspan="1" class="none">Result</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">length</th>
+                     <th rowspan="1" colspan="1" class="none">position</th>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">"abcdefg" IN "def"</td>
+                     <td rowspan="1" colspan="1" class="none">3</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">"abcdefg" IN "^def$"</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">FALSE</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">"abcdefg" IN "^[a-z]*$"</td>
+                     <td rowspan="1" colspan="1" class="none">7</td>
+                     <td rowspan="1" colspan="1" class="none">1</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">"abcdefg" IN "^a"</td>
+                     <td rowspan="1" colspan="1" class="none">1</td>
+                     <td rowspan="1" colspan="1" class="none">1</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">"abcdefg" IN "^b"</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">FALSE</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">"abcdefg" IN "g$"</td>
+                     <td rowspan="1" colspan="1" class="none">1</td>
+                     <td rowspan="1" colspan="1" class="none">7</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">"abcdefg" IN "^a.*g$"</td>
+                     <td rowspan="1" colspan="1" class="none">7</td>
+                     <td rowspan="1" colspan="1" class="none">1</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">"abcdefg" IN "^[^a].*"</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">FALSE</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">"abcdefg" IN "^[^b-z]"</td>
+                     <td rowspan="1" colspan="1" class="none">1</td>
+                     <td rowspan="1" colspan="1" class="none">1</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">"creative" IN "[tea]{3}"</td>
+                     <td rowspan="1" colspan="1" class="none">3</td>
+                     <td rowspan="1" colspan="1" class="none">3</td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">"abracadabra" IN "(bra).*\1"</td>
+                     <td rowspan="1" colspan="1" class="none">10</td>
+                     <td rowspan="1" colspan="1" class="none">2</td>
+                  </tr>
+                  <tr no="14" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">"ab*de" IN "\*"</td>
+                     <td rowspan="1" colspan="1" class="none">1</td>
+                     <td rowspan="1" colspan="1" class="none">3</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">You can retrieve the length and position from the result with <a href="../../progguide/functions_string_operations/store.long.htm" class="manualLink">store.long()</a> and <a href="../../progguide/functions_string_operations/load.short.htm" class="manualLink">load.short()</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Integer arithmetic</div>
+            <p class="Paragraph">Integer arithmetic in runtime expression evaluation is performed in the signed 64-bit value range:
+      [-2^63 … 2^63 - 1].</p>
+            <p class="Paragraph">In older porting sets
+               (with <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">bshell TIV level</a> less than <a href="../../progguide/tiv/tiv_2000.htm" class="manualLink">2000</a>),
+               signed 32-bit values are used for integer arithmetic in runtime expression evaluation.
+            </p>
+            <p class="Paragraph">When during runtime expression evaluation
+               an assignment of an integer value
+               to a bshell variable
+               is performed,
+               a value check is done.
+            </p>
+            <p class="Paragraph">If the integer value
+               is greater than the maximum value
+               2^( <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-1) - 1
+               of the signed <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-bit
+               range,
+               then that maximum value is assigned.
+            </p>
+            <p class="Paragraph">If the integer value
+               is less than the minimum value
+               -2^( <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-1)
+               of the signed <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-bit
+               range,
+               then that minimum value is assigned.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return value</div>
+            <p class="Paragraph">An ID for the compiled expression.</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long       expr_id, lng, length_res, pos_res
+string     tmp(4)
+expr_id    = expr.compile( """abcdefg"" IN ""def""" )
+lng        = l.expr( expr_id )
+store.long( lng, tmp )
+length_res = load.short( tmp(1;2) ) | length_res contains 3
+pos_res    = load.short( tmp(3;2) ) | pos_res contains 4
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_expressions_runtime/overview_and_synopsis.htm" class="manualLink">Runtime expressions: overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_expressions_runtime/expr.compile, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

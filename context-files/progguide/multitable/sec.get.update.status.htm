@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>sec.get.update.status()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions sec.get.update.status sec.get.update.status sec.get.update.status secondary tables sec.get.update.status ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">sec.get.update.status()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;sec.get.update.status&nbsp;
+					(long&nbsp;id, long&nbsp;occ)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Retrieve the update status of occurrence <code class="Code">occ</code> of secondary table <code class="Code">id</code>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The ID of the secondary table. This ID was
+                           						obtained via a call to <a href="../../progguide/multitable/sec.add.table.htm" class="manualLink">sec.add.table()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>occ</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The occurence number that must be checked. (Like <code class="Code">actual.occ</code>).
+                           						For single occurrence sessions this number will always be 1.
+                           						For multi occurrence sessions it is a number between 1 and the number of rows.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return value</div>
+            <p class="Paragraph">The result uses the same defines as the value of the <a href="../../progguide/misc/predefined_variables.htm" class="manualLink">update.status</a> variable for the main table.
+            </p>
+            <table class="default">
+               <tbody noTR="4" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                     <td rowspan="1" colspan="1" class="default">No update</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">ADD.SET</td>
+                     <td rowspan="1" colspan="1" class="default">during add</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">MODIFY.SET</td>
+                     <td rowspan="1" colspan="1" class="default">during modify</td>
+                  </tr>
+                  <tr no="4" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">MARK.DELETE</td>
+                     <td rowspan="1" colspan="1" class="default">during delete</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/multitable/sec.get.update.status, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

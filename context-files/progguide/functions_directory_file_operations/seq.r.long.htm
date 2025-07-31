@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>seq.r.long()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions seq.r.long seq.r.long seq.r.long ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">seq.r.long()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;seq.r.long&nbsp;
+					(long&nbsp;fp)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Reads a 32-bit value from the file. 
+         The 4 bytes read from the file are
+         interpreted as the 32-bit two’s complement representation of a signed integer value.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>fp</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The file pointer returned by <a href="../../progguide/functions_directory_file_operations/seq.open.htm" class="manualLink">seq.open()</a> when the particular file was opened.
+                        </p>
+                        <p class="Paragraph">This function reads 4 bytes from the file.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">return_value = -1</th>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Error, most probably <i class="Emphasis">fp</i> is not a valid file pointer
+                           or end-of-file was reached.
+                           The last system error is available in <a href="../../progguide/misc/predefined_variables.htm" class="manualLink">predefined variable</a> <i class="Emphasis">e</i>.
+                        </p>
+                        <p class="Paragraph">Notice that this error value -1 cannot be distinguished from normal value -1.
+                           This is problematic,
+                           unless it is known that value -1 is not expected
+                           as a normal value to be read from the file.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-2^31 &#8804; return_value &#8804; 2^31 - 1</th>
+                     <td rowspan="1" colspan="1" class="none">The numerical value of the first 4 bytes of the supplied file.
+                  This is a value in the signed 32-bit range
+                  [-2^31 … 2^31 - 1] (i.e. [-2,147,483,648 … 2,147,483,647]).</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic">Related operations: <a href="../../progguide/functions_directory_file_operations/seq.r.short.htm" class="manualLink">seq.r.short()</a></li>
+               <li class="RelTopic">Inverse operations: <a href="../../progguide/functions_directory_file_operations/seq.w.long.htm" class="manualLink">seq.w.long()</a>, <a href="../../progguide/functions_directory_file_operations/seq.w.short.htm" class="manualLink">seq.w.short()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/overview.htm" class="manualLink">Directory and file operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/synopsis.htm" class="manualLink">Directory and file operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_directory_file_operations/seq.r.long, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

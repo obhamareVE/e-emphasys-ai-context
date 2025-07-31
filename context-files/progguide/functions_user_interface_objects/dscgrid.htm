@@ -1,0 +1,452 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DsCgrid</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dscgrid ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DsCgrid</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">A DsCgrid object is a rectangular child window that displays
+               a spreadsheet grid. Cells in the grid can contain not only data
+               but also controls such as text boxes, list boxes, and check
+               boxes.
+            </p>
+         </div>
+         <div class="GeneralSection"></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Events</div>
+            <p class="Paragraph">A DsCgrid object can generate the following events:</p>
+            <p class="Paragraph">EVTCHANGEFOCUS</p>
+            <p class="Paragraph">EVTGRIDEVENT</p>
+            <p class="Paragraph">EVTKEYPRESS</p>
+            <p class="Paragraph">EVTSETFOCUS</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" class="none">
+               <tbody noTR="29" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNbackground</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[S]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies the background color (as an rgb value) for
+                        selected cells. The possible values are 0 to 16777215.
+                        When not specified, the background adopts the Windows
+                        standard.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNcolHeader</p>
+                        <p class="Paragraph">(boolean)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CG]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies whether or not the grid includes column
+                        headers. The default is TRUE.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNcolumn</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[SQ]</td>
+                     <td rowspan="1" colspan="1" class="none">Use this to select a column in the grid. The value
+                        of the attribute is the column number (0-based index).
+                        In combination with DsNrow, this attribute selects an
+                        individual cell.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNcolumns</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The number of columns in the grid. The default is
+                        1.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNcolWidth</p>
+                        <p class="Paragraph">(long array)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSQ]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use this to specify the width of the grid columns.
+                           You fill the array with the width values for each
+                           column, starting with the first column. If you specify
+                           only one value, all columns are set to that width.
+                        </p>
+                        <p class="Paragraph">If you first use DsNcolumn to select a column, the
+                           width specified is applied to the selected column. The
+                           width can be any value between 0 and 32768.
+                        </p>
+                        <p class="Paragraph">By default, all columns are the same width, the
+                           actual width depending on the width of the grid.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNcontrol</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[SQ]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use to create a control object in selected cell(s).
+                           Possible values are:
+                        </p>
+                        <p class="Paragraph">DSEDIT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edit control (text box)
+            (default).</p>
+                        <p class="Paragraph">DSSTATIC&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Static label field.</p>
+                        <p class="Paragraph">DSDDLISTBOX&nbsp; &nbsp; Drop-down list box.</p>
+                        <p class="Paragraph">DSCHECKBOX&nbsp;&nbsp;&nbsp; Check-box.</p>
+                        <p class="Paragraph">DSZOOMEDIT&nbsp;&nbsp; &nbsp; Zoom edit field.</p>
+                        <p class="Paragraph">For an edit control, use DsNmaxLength to specify the
+                           maximum number of input characters for the field.
+                        </p>
+                        <p class="Paragraph">For a drop-down list box, use DsNenum to specify the
+                           list box contents.
+                        </p>
+                        <p class="Paragraph">For a check box, use the values 1 and 0 to
+                           select/deselect the control.
+                        </p>
+                        <p class="Paragraph">For a drop-down list box, select the list box entry
+                           to be displayed by specifying its index number in the
+                           list.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNeditable</p>
+                        <p class="Paragraph">(boolean)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[SQ]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies whether or not an edit control is
+                        read-only. The default is FALSE.
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNenum</p>
+                        <p class="Paragraph">(string)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[SQ]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies the contents of a drop-down list box.
+                           Separate the individual list items using \n. For
+                           example:
+                        </p>
+                        <p class="Paragraph">item1\nitem2\nitem3\n</p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNfontSet</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[SQ]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of a <a href="../../progguide/functions_user_interface_objects/dscfontset.htm" class="manualLink">DsCfontSet</a> object. The font object defines the font attributes to
+                        be applied to the entire grid or to selected cells. The
+                        default font is the Windows default font.
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNforeground</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[S]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies the text color (as an rgb value) for
+                        selected cells. The possible values are 0 to 16777215.
+                        When not specified, the Windows standard is used.
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNfreezeColumns</p>
+                        <p class="Paragraph">(boolean)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[SG]</td>
+                     <td rowspan="1" colspan="1" class="none">Use to freeze and unfreeze column(s) selected by the
+                        user. The default value is FALSE.
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNgridEnableSelection</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies user selection options. Possible values
+                           are:
+                        </p>
+                        <p class="Paragraph">DSGRIDSELFULL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; All selection actions
+            (default).</p>
+                        <p class="Paragraph">DSGRIDSELNONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No selection
+            actions.</p>
+                        <p class="Paragraph">DSGRIDSELROW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Row selection.</p>
+                        <p class="Paragraph">DSGRIDSELCOL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; column selection.</p>
+                        <p class="Paragraph">DSGRIDSELTABLE&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Grid selection.</p>
+                        <p class="Paragraph">DSGRIDSELCELL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cell selection.</p>
+                        <p class="Paragraph">DSGRIDSELMULTIPLE&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Multiple selections.</p>
+                        <p class="Paragraph">DSGRIDSELSHIFT&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Extend selection by
+            pressing SHIFT.</p>
+                        <p class="Paragraph">DSGRIDSELKEYBOARD&nbsp; &nbsp;&nbsp;&nbsp; Selection with SHIFT+Arrow
+            Key.</p>
+                        <p class="Paragraph">You can combine all the above values.</p>
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNgridFooter</p>
+                        <p class="Paragraph">(boolean)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies whether or not the last row in the grid
+                        has a special style. In this special style, the font
+                        and top border are bold and the background color is
+                        that defined for 3D objects in the Windows standard
+                        color scheme.
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNgridSetState</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[S]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The state of a grid selection. Possible values
+                           are:
+                        </p>
+                        <p class="Paragraph">DSGRIDSTATEMARK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mark the
+            selection.</p>
+                        <p class="Paragraph">DSGRIDSTATEUNMARK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unmark the
+            selection.</p>
+                        <p class="Paragraph">DSGRIDSTATESETFOCUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set focus on the
+            selection</p>
+                        <p class="Paragraph">(single cell only).</p>
+                        <p class="Paragraph">DSGRIDSTATESETSENSITIVE&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Make the selection
+            sensitive.</p>
+                        <p class="Paragraph">DSGRIDSTATESETINSENSITIVE&nbsp;&nbsp;&nbsp; Make the selection
+            insensitive.</p>
+                        <p class="Paragraph">You cannot combine these values.</p>
+                     </td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNgridType</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The grid type. Possible options are:</p>
+                        <p class="Paragraph">DSGRIDTYPENORMAL&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Normal grid functionality
+            (default).</p>
+                        <p class="Paragraph">DSGRIDTYPEDISPLAY&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Read-only
+            functionality.</p>
+                        <p class="Paragraph">DSGRIDTYPEEDIT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edit functionality.</p>
+                        <p class="Paragraph">DSGRIDTYPEVEERTEDIT&nbsp;&nbsp; Vertical edit functionality.</p>
+                     </td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNheight</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The height of the object, in pixels.</td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNjustify</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[SQ]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use this to specify the justification for data in
+                           selected cells. Possible values are:
+                        </p>
+                        <p class="Paragraph">DSJUSTIFYRIGHT</p>
+                        <p class="Paragraph">DSJUSTIFYLEFT (default)</p>
+                        <p class="Paragraph">DSJUSTIFYCENTER</p>
+                     </td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNmaxLength</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[SQ]</td>
+                     <td rowspan="1" colspan="1" class="none">The maximum number of input characters for an edit
+                        control field. This can be any value from 0 to 4096.
+                        4096 is the default value.
+                     </td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNrange</p>
+                        <p class="Paragraph">(long array)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[SQ]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use this to select a range of cells. The array is
+                           filled as follows:
+                        </p>
+                        <p class="Paragraph">start_row_num + start_col_num + end_row_num + end
+                           _col_num
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNrow</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[SQ]</td>
+                     <td rowspan="1" colspan="1" class="none">Use this to select a row in the grid. The value of
+                        the attribute is the row number (0-based index). In
+                        combination with DsNcolumn, this attribute selects an
+                        individual cell.
+                     </td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNrowHeader</p>
+                        <p class="Paragraph">(boolean)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CG]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies whether or not the grid includes row
+                        headers. The default is TRUE.
+                     </td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNrowHeight</p>
+                        <p class="Paragraph">(long array)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSQ]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use this to specify the height of the grid rows. You
+                           fill the array with the height values for each row,
+                           starting with the first row.
+                        </p>
+                        <p class="Paragraph">If you specify only one value, all rows are set to
+                           that height. If you first use DsNrow to select a row,
+                           the height specified is applied to the selected
+                           row.
+                        </p>
+                        <p class="Paragraph">The height can be any value between 0 and 32768. By
+                           default, all rows are the same height, the actual
+                           height depending on the font size.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="23" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNrows</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The number of rows in the grid. The default is 1
+                        row.
+                     </td>
+                  </tr>
+                  <tr no="24" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsetState</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The state of the object. See <a href="../../progguide/functions_user_interface_objects/dscmwindow.htm" class="manualLink">DsCmwindow</a>.
+                     </td>
+                  </tr>
+                  <tr no="25" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNstringArray</p>
+                        <p class="Paragraph">(void)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[SQ]</td>
+                     <td rowspan="1" colspan="1" class="none">A one-dimensional array that holds data values for
+            selected cell(s). When filling multiple cells, separate
+            the data values with&nbsp; null characters. The data is
+            filled from left to right and from top to bottom.</td>
+                  </tr>
+                  <tr no="26" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtemplate</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of a <a href="../../progguide/functions_user_interface_objects/dsctemplate.htm" class="manualLink">DsCtemplate</a> that defines a set of attributes to be
+                        applied to the object.
+                     </td>
+                  </tr>
+                  <tr no="27" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNwidth</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The width of the object, in pixels.</td>
+                  </tr>
+                  <tr no="28" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNx</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The x-coordinate of the object's outer left edge, in
+                        pixels, relative to the inner left edge of its
+                        parent.
+                     </td>
+                  </tr>
+                  <tr no="29" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNy</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The y-coordinate of the object's outer top edge, in
+                        pixels, relative to the inner top edge of its
+                        parent.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/dscgrid, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

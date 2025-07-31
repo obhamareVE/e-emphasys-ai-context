@@ -1,0 +1,222 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Macros - info header</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="macros - info header ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Macros - info header</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Warning</div>
+            <p class="Paragraph"><i class="Emphasis">The functions and macros listed below must not be used
+                  anymore.</i> Using them in BaanERP 5.0c or higher releases
+               may result in less reliable data. Know that there is a new
+               set of functions that you can use for retrieval of audit
+               information. Refer to <a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></p>
+            <p class="Paragraph">Use these macros for mapping info header information. The
+               'get' macros take <i class="Emphasis">info_hdr</i> as their input. This is filled
+               by calling <a href="../../progguide/functions_aud/aud_read_info_hdr.htm" class="manualLink">aud_read_info_hdr()</a>. The
+               'set' macros update the <i class="Emphasis">info_hdr</i> buffer. Use <a href="../../progguide/functions_aud/aud_write_info_hdr.htm" class="manualLink">aud_write_info_hdr()</a> to
+               update the information file header itself.
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="14" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td width="227" rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_version()</i></td>
+                     <td width="650" rowspan="1" colspan="1" class="none"><pre class="Formula">
+string aud_get_version( string info_hdr() )
+</pre><p class="Paragraph">This returns the current version of the info file
+                           and related sequence files.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td width="227" rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_tablename()</i></td>
+                     <td width="650" rowspan="1" colspan="1" class="none"><pre class="Formula">
+string aud_get_tablename( string info_hdr() )
+</pre><p class="Paragraph">This returns the name of the table to which the
+                           specified info file relates.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td width="227" rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_compno()</i></td>
+                     <td width="650" rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_compno( string info_hdr() )
+</pre><p class="Paragraph">This returns the company number of the table to
+                           which the info file relates.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td width="227" rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_status()</i></td>
+                     <td width="650" rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_status( string info_hdr() )
+</pre><p class="Paragraph">This returns the value of the status field in the
+                           info header. The status field indicates whether the
+                           sequence file reuse feature is enabled or
+                           disabled.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td width="227" rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_from_seqno()</i></td>
+                     <td width="650" rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_from_seqno( string info_hdr() )
+</pre><p class="Paragraph">This returns the starting number for sequence
+                           files related to the info file.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td width="227" rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_to_seqno()</i></td>
+                     <td width="650" rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_to_seqno( string info_hdr() )
+</pre><p class="Paragraph">This returns the maximum sequence number for
+                           sequence files related to the info file.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td width="227" rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_curr_seqno()</i></td>
+                     <td width="650" rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_curr_seqno( string info_hdr() )
+</pre><p class="Paragraph">This returns the sequence number of the current
+                           sequence file. This is the sequence file to which
+                           new audit information will be written.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td width="227" rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_curr_security()</i></td>
+                     <td width="650" rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_curr_security( string info_hdr() )
+</pre><p class="Paragraph">This returns the security permissions for the
+                           info file and associated sequence files. The return
+                           value can be a combination of the following
+                           values:
+                        </p><pre class="Formula">
+AUD_SECU_NONE         no permissions
+AUD_SECU_ALL          all permissions
+AUD_SECU_PRINT        print permissions
+AUD_SECU_CLEAN        purge permissions
+AUD_SECU_MAINTAIN     maintain permissions
+AUD_SECU_APPL_DEF     application-defined permissions  
+</pre><p class="Paragraph">For example:</p><pre class="Formula">
+long security
+
+security = aud_get_curr_security( info_hdr )
+if (bit.and (security, AUD_SECU_NONE)) then
+        | No permissions on info file
+else
+        if (bit.and (security, AUD_SECU_ALL)) then
+                | All permissions on info file
+        else
+
+                if (bit.and (security, AUD_SECU_PRINT)) then
+                        | Print permissions on info file
+                endif
+                
+                if (bit.and (security, AUD_SECU_CLEAN)) then
+                        | Purge permissions on info file
+                endif
+
+                if (bit.and (security, AUD_SECU_MAINTAIN)) then
+                        | Maintain permissions on info file
+                endif
+
+                if (bit.and (security, AUD_SECU_APPL_DEF)) then
+                        | Application-defined permissions on file 
+                endif
+
+        endif
+endif
+</pre></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td width="227" rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_max_audit_file_
+                           size()</i></td>
+                     <td width="650" rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_max_audit_file_size( string info_hdr() )
+</pre><p class="Paragraph">This returns the maximum size (in bytes) of
+                           sequence files related to the info file.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td width="227" rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_set_status()</i></td>
+                     <td width="650" rowspan="1" colspan="1" class="none"><pre class="Formula">
+void aud_set_status( long status, string info_hdr() )
+</pre><p class="Paragraph">This stores the value of <i class="Emphasis">status</i> in the status
+                           field of the info header.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td width="227" rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_set_to_seqno()</i></td>
+                     <td width="650" rowspan="1" colspan="1" class="none"><pre class="Formula">
+void aud_set_to_seqno( long to_seq, string info_hdr() )
+</pre><p class="Paragraph">This stores the value of <i class="Emphasis">to_seq</i> in the
+                           maximum sequence number field of the info header.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td width="227" rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_set_curr_seqno()</i></td>
+                     <td width="650" rowspan="1" colspan="1" class="none"><pre class="Formula">
+void aud_set_curr_seqno( long c_seq, string info_hdr() )
+</pre><p class="Paragraph">This stores the value of the <i class="Emphasis">c_seq</i> in the
+                           current sequence number field of the info header.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td width="227" rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_set_max_audit_file_
+                           size()</i></td>
+                     <td width="650" rowspan="1" colspan="1" class="none"><pre class="Formula">
+void aud_set_max_audit_file_size( long m_size, string
+              info_hdr() )
+</pre><p class="Paragraph">This stores the value of <i class="Emphasis">m_size</i> in the
+                           maximum file size field of the info header.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="true" class="none">
+                     <td width="227" rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_set_security()</i></td>
+                     <td width="650" rowspan="1" colspan="1" class="none"><pre class="Formula">
+void aud_set_security( long c_sec, string info_hdr() )
+</pre><p class="Paragraph">This stores the value of <i class="Emphasis">c_sec</i> in the
+                           security field of the info header. For a list of valid
+                           values, see <i class="Emphasis">aud_get_curr_security()</i>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_overview.htm" class="manualLink">Audit Information Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_synopsis.htm" class="manualLink">Audit Information Synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_sample_program.htm" class="manualLink">Audit Information Sample Program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_aud/macros_info_header, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

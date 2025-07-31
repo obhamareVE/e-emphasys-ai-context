@@ -1,0 +1,115 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Exporting variables</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="browsing exporting variables zooming exporting variables ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Exporting variables</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">When the browse list session ends, data of the selected record
+               needs to be returned to the parent session. In case of automatic
+               export, the name of the return field (or fields) can be defined by
+               means of the predefined variable <i class="Emphasis">attr.zoomreturn$</i>, or by filling the Return field property
+               in DFE.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Automatic export of a single field</div>
+            <p class="Paragraph">If the application sets the predefined variable <i class="Emphasis">attr.zoomreturns$</i> in the <i class="Emphasis">before.zoom</i> sub-event, or when the Return field property
+               in DFE is filled, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will
+               automatically export the right field value to the parent session
+               on exit of the browse list session. The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> also copies
+               the value of the return field in the current field of the parent
+               session.
+            </p>
+            <p class="Paragraph">Example:</p><pre class="CodeBlock">
+field.ppmm999.bpid:
+before.zoom:
+        attr.zoomreturn$ = "tccom100.bpid"
+after.zoom:
+        |* The 4GL engine will export the value of tccom100.bpid of the
+        |* browse list session to this session, stores its value in
+        |* the current field (ppmmm999.bpid) and displays it.
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Automatic export of all key fields</div>
+            <p class="Paragraph">It is also possible to return all fields of a key. This can
+               be defined in DFE, but also in the script. In this situation
+               however, the script has to copy the exported values to the right
+               fields in the parent session.
+            </p>
+            <p class="Paragraph">Example:</p><pre class="CodeBlock">
+field.ppmm999.bpid:
+before.zoom:
+        tccom100.prbp = ppmmm999.prbp
+        tccom100.bpid = ppmmm999.bpid
+        attr.zoomindex = 2
+        attr.zoomreturn$ = "tccom100._index2"
+
+after.zoom:
+        ppmmm999.prbp = tccom100.prbp
+        ppmmm999.bpid = tccom100.bpid
+        display("ppmmm999.prbp") | Not automatically done
+        display("ppmmm999.bpid") | Not automatically done
+</pre><p class="Paragraph">If tccom100._index2 consists of the fields tccom100.prbp and
+               tccom100.bpid, then both fields will be exported by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> to the
+               parent process, just before the browse list session exits. In
+               the <i class="Emphasis">after.zoom</i> sub event you can assign these values to the
+               fields of the parent session and do a display of these
+               fields.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">No automatic export</div>
+            <p class="Paragraph">When no return field is defined, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> will not
+               export anything. In this case the browse list session has to do
+               the export itself. This can be programmed in the <i class="Emphasis">zoom.from.*: on.exit:</i> event section. It is up to the
+               browse list session to define what will be exported.
+            </p>
+            <p class="Paragraph">Example:</p>
+            <p class="Paragraph">Parent session:</p><pre class="CodeBlock">
+declaration:
+
+extern  domain  tccom.bpid      zoom.bpid
+
+field.ppmmm999.bpid:
+before.zoom:
+        zoom.bpid = ppmmm999.bpid
+after.zoom:
+        ppmmm999.bpid = zoom.bpid
+</pre><p class="Paragraph">browse list session:</p><pre class="CodeBlock">
+declaration:
+
+        table   ttccom100
+
+zoom.from.all:
+on.exit:
+        export("zoom.bpid", tccom100.bpid)
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/browsing_definition.htm" class="manualLink">Definition</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/browsing_overview.htm" class="manualLink">Overview of browsing</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/browsing_importing.htm" class="manualLink">Importing variables</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/browsing_starting.htm" class="manualLink">Starting a browse list session</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/4gl_features/browsing_exporting, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Before and After Method Hooks</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Before and After Method Hooks</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">In some cases the functionality of a standard method is not
+               sufficient.
+            </p>
+            <p class="Paragraph">Therefore it should be possible to extend the standard
+               behaviour without moving the complete method to a specific
+               method.
+            </p>
+            <p class="Paragraph">For a SalesOrder for instance a number of actions is
+               needed after all order lines have been added or changed.
+            </p>
+            <p class="Paragraph">Each before/after hook has to be created manually in the
+               development part of the script.
+            </p>
+            <p class="Paragraph">The name of the hook is built as follows:</p>
+            <ul class="List">
+               <li class="ListItem">&lt;dll name&gt;befero|after.&lt;method&gt;()</li>
+               <li class="ListItem">example: gaadv.bl090sf00.before.Create()</li>
+            </ul>
+            <p class="Paragraph">or specified for a component:</p>
+            <ul class="List">
+               <li class="ListItem">&lt;dll name&gt;befero|after.&lt;method&gt;&lt;component
+                  name&gt;()
+               </li>
+               <li class="ListItem">example: gaadv.bl090sf00.before.Create.Header()</li>
+            </ul>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+function extern long gaadv.bl090sf00.after.Create()
+{
+    |* Next 4 lines are optional
+    if gaadv.bl090st00.get.method.result() &lt;&gt; 0 then
+        |* Execution of method has failed
+        dal.set.error.message("@Execution of method Create has
+failed.")
+        return(DALHOOKERROR)
+    endif
+
+        .....
+
+    return(0)
+}
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Error Handling</div>
+            <p class="Paragraph">In the development part, it is possible to report problems.
+               The standard function 'dal.set.error.message' have to be used
+               for setting an error message, followed by 'return
+               (DALHOOKERROR)'.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/bol/specific_methods.htm" class="manualLink">Specific Methods</a></li>
+               <li class="RelTopic"><a href="../../progguide/bol/filter_hooks.htm" class="manualLink">Filter Hooks</a></li>
+               <li class="RelTopic"><a href="../../progguide/bol/st_layer.htm" class="manualLink">Protected Layer</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/bol/before_hooks, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

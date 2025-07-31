@@ -1,0 +1,76 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Assignment Operator</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="assignment operator ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Assignment Operator</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">You use the assignment operator [=] to store variables,
+               constants, and the results of expressions in a variable.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples (general)</div><pre class="CodeBlock">
+  LONG      I, J, K(100), L(100)
+  STRING    S(50), A, B(10)
+  DOUBLE    AMOUNT
+  J         = 4
+  AMOUNT    = 123.45 * J
+  L(20)     = 1001
+  S         = "This is an example"
+  I         = J            | The contents of J are stored in variable I
+  L(2)      = L(20)        | Now L(2) is equal to L(20)
+  A         = S(3;1)       | The character 'i' is placed in A
+  B(1;2)    = S(6;2)       | The word 'is' is placed in the first two
+                           | positions of B
+  K         = L            | The entire content of array L is copied to K
+</pre><p class="Paragraph">In general,
+               both operands of the assignment operator
+               must have the same type.
+            </p>
+            <p class="Paragraph">Apart from the general rule above,
+               assignment of a double value to a variable of type long is allowed.
+               In such a case,
+               implicit <a href="../../progguide/3gl_features/type_conversions.htm#double_to_long_type_conversion" class="manualLink">double to long type conversion</a> is performed.
+            </p>
+            <p class="Paragraph">Apart from the general rule above,
+               assignment of a long value to a variable of type double is allowed.
+               In such a case,
+               implicit <a href="../../progguide/3gl_features/type_conversions.htm#long_to_double_type_conversion" class="manualLink">long to double type conversion</a> is performed.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples (longs and doubles)</div><pre class="CodeBlock">
+   LONG      A
+   DOUBLE    C
+   A = 3.14       | A is set to 3
+   C = A          | C now contains 3.0
+   C = 45 / 30    | C now equals 1.0, because this division
+                  | results in a long
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/expressions_and_operators.htm" class="manualLink">Expressions and operators</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/assignment_operator, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

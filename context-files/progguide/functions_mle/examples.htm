@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Multi Language Data support code examples</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Multi Language Data support examples ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Multi Language Data support code examples</div>
+      <div class="body">
+         <div class="GeneralSection"></div>
+         <div class="GeneralSection">
+            <div class="subExampleSection">
+               <div class="subSectionTitle">Example</div>
+               <p class="Paragraph"></p><pre class="CodeBlock">
+function print.records()
+{
+        domain  ttiso.dlan      currlang | New domain, string(5)
+        domain  ttiso.dlan      datalang
+        long                    ret
+
+        | save current datalang
+        currlang = ml_get_datalang()
+        
+        select  tdsls400.*, tdsls401.*, tcibd001.*
+        from    tdsls400, tdsls401, tcibd001
+        where   &lt;where clause&gt;
+        order by tdsls400._index1
+        selectdo
+                | retrieve datalang of bus. partner
+                datalang = get.bus.partner.datalang(tdsls400.ofbp)
+                | switch to datalang of bus. partner                    
+                ret = ml_set_datalang(datalang)
+                | this prints data to the report in bus. partner's language
+                | e.g. the item description
+                print.record()
+        endselect
+        
+        | switch back to previous datalang
+        ret = ml_set_datalang(currlang)
+}
+
+function domain ttiso.dlan get.bus.partner.datalang(
+                domain  tccom.bpid      i.bpid)
+{
+        domain  tclang          softlang
+        domain  ttiso.dlan      datalang
+
+        select  tcmcs046.lang:softlang
+        from    tcmcs046, tccom100
+        where   tcmcs046.clan = tccom100.clan
+        and     tccom100.bpid = :i.bpid
+        as set with 1 rows
+        selectdo
+                datalang = ml_get_datalang_of_softlang(softlang)
+        selectempty
+                datalang = ""
+        endselect
+
+        if isspact(datalang) then
+                | no mapping present between soft- and datalang
+                | use base language
+                datalang = ml_get_baselang()
+        endif
+        
+        return(datalang)
+}
+</pre></div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_mle/overview.htm" class="manualLink">Multi Language Data overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_mle/synopsis.htm" class="manualLink">Multi Language Data synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_mle/examples, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

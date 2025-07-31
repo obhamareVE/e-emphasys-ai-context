@@ -1,0 +1,50 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Bidirectional strings</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="bidirectional strings 3GL ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Bidirectional strings</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Bidirectional functionality is necessary to support languages
+               that read and write from right to left- for example, Arabic and
+               Hebrew. Bidirectional input is supported only on fields of type <a href="../../progguide/3gl_features/multibyte_strings.htm" class="manualLink">Multibyte strings</a>. A
+               string is bidirectional when it contains at least one
+               bidirectional character. You can check whether a string
+               includes bidirectional characters by calling <a href="../../progguide/functions_multibyte_strings/mb.hasbidi.htm" class="manualLink">mb.hasbidi()</a>.
+               All strings, including bidirectional, are stored in logic
+               order - that is, the first typed character is the leftmost
+               one in the string. This means that all regular string
+               handling functions like <a href="../../progguide/functions_string_operations/pos.htm" class="manualLink">pos()</a>,
+               and constructors like the semicolon [;], work correctly.
+            </p>
+            <p class="Paragraph">Special attention must be paid when concatenating or
+               splitting strings. When bidirectional and non-bidirectional
+               strings are concatenated, one part must be reversed.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/variables.htm" class="manualLink">Variables</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/bidirectional_strings, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

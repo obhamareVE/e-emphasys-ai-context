@@ -1,0 +1,163 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>artm.define.transaction.class()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="artm.define.transaction.class artm.define.transaction.class functions artm.define.transaction.class ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">artm.define.transaction.class()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;artm.define.transaction.class&nbsp;
+					(string&nbsp;tran.name(128), string&nbsp;tran.detail(128) [, long&nbsp;metric.type] [, string&nbsp;metric.name(44)])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Assigns a unique identifier to a transaction class, and
+                  optionally to describe the format of additional data passed
+                  on by artm.begin.transaction (), artm.update.transaction(),
+                  and the artm.end.transaction() calls. This is normally done
+                  during the initialization of the specified application. The
+                  value returned by artm.define.transaction.class() is passed
+                  as a parameter in artm.begin.transaction() calls to identify
+                  which class of transaction is starting.
+               </p>
+               <p class="Paragraph">A transaction class is a description of a unit of work,
+                  such as Check Account Balance. Any number of transaction
+                  classes can be defined within each application.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>tran.name(128)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The unique name of a transaction class. It is
+                           defined for each transaction class by the
+                           application developer. It must be unique within the
+                           application.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>tran.detail(128)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Additional information about a transaction class.
+                           If no tran.detail is associated with this
+                           transaction, the string must be empty.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>metric.type</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">It is possible to pass several metrics to ARTM.
+                           These metrics give information about the status of a
+                           transaction. Artm.define.transaction.class() is used
+                           to define the metrics to be used in the transaction
+                           class. Each metric consists of an id, which
+                           determines the type of metric, and a descriptive
+                           name. Five metrics can be passed at a maximum. These
+                           metrics may be chosen arbitrarily from the following
+                           list:
+                        </p>
+                        <ul class="List">
+                           <li class="ListItem">ARTM.COUNTER (long)
+                              A counter must be used when it makes sense
+                              to add up the values over an interval. Examples
+                              are bytes printed and records written.
+                           </li>
+                           <li class="ListItem">ARTM.GAUGE (long)
+                              A gauge must be used instead of a counter
+                              when it is not meaningful to add up the values
+                              over an interval. An example is the amount of
+                              memory used.
+                           </li>
+                           <li class="ListItem">ARTM.NUMERIC (long)
+                              A numeric id is simply a numeric value
+                              that is used as an identifier, and not as a
+                              measurement value. Examples are message numbers
+                              and error codes.
+                           </li>
+                           <li class="ListItem">ARTM.CODE (string(8))
+                              A measurement agent should process a
+                              string in the same way as a numeric id. As with
+                              numeric ids it is not meaningful to do arithmetic
+                              operations on a string value.
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>metric.name(44)</code>]
+                     </td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&gt;= 0</th>
+                     <td rowspan="1" colspan="1" class="none">The unique transaction class id. This id has to
+                        be passed to function artm.begin.transaction() for
+                        each transaction of this class.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt; 0</th>
+                     <td rowspan="1" colspan="1" class="none">The registering of the class failed.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_overview.htm" class="manualLink">Application Response Time Measurement (ARTM) Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_synopsis.htm" class="manualLink">Application Response Time Measurement (ARTM) Synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_debugging.htm" class="manualLink">Application Response Time Measurement (ARTM) Debugging</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_error_codes.htm" class="manualLink">Application Response Time Measurement (ARTM) Error Codes</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_examples.htm" class="manualLink">Application Response Time Measurement (ARTM) Examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_artm/artm.define.transaction.class, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

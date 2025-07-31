@@ -1,0 +1,54 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Workbench Sessions overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Workbench Sessions ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Workbench Sessions overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Workbench sessions are sessions which are used to launch a Workbench application which runs outside the WebUI or LN UI.
+               The UI of such a session is rendered as a normal session inside the WebUI or LN UI. Workbench sessions are only supported
+               when running inside the Infor Workspace or Ming.le portal.
+               The first generation of Workbench UI's is implemented using Silverlight.
+               The next generation of Workbench UI's is based on the Infor Workbench SDK.
+               The Infor Workbench SDK is used to create a HTML5 based Workbench.
+            </p>
+            <p class="Paragraph">For each Workbench Application one Workbench session (also known as desk session) is running on the ERP Enterprise server.
+               
+               	  A Workbench session must have the following characteristics:
+            </p>
+            <ul class="List">
+               <li class="ListItem">Related script type: 3GL (Without 4GL Engine)</li>
+               <li class="ListItem">No related form must be created</li>
+               <li class="ListItem">By default, the session Description will become the title in the title bar of the Workbench Application (similar to normal
+                  sessions)
+               </li>
+            </ul>
+            <p class="Paragraph">The related 3GL Script must include bic_desk and must implement the main() function. In this main function a call must be
+               done to the function: start.ext.desk().
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_workbench_sessions/synopsis.htm" class="manualLink">Workbench Sessions synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_workbench_sessions/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

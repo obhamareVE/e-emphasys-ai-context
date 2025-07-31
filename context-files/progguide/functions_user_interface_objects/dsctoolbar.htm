@@ -1,0 +1,265 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DsCtoolBar</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dsctoolbar ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DsCtoolBar</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">A DsCtoolBar object defines a toolbar for a main window
+               (DsCmwindow). An application creates the entire toolbar with a
+               single <i class="Emphasis">create.object()</i> call. Subsequently, it can use <i class="Emphasis">change.object()</i> toadd, remove, change, enable, and
+               disable toolbar buttons.
+            </p>
+            <p class="Paragraph">Use the DsNcommandStrings attribute of the main window to
+               specify status field and tooltip text for the toolbar
+               buttons.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Events</div>
+            <p class="Paragraph">A DsCtoolBar object can generate the following event:</p>
+            <p class="Paragraph">EVTBUTTONSELECT</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" class="none">
+               <tbody noTR="16" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNbutton</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[SQ]</td>
+                     <td rowspan="1" colspan="1" class="none">Selects a particular toolbar button. The value
+            specified is an index into the toolbar button list (1
+            based index) – separators are not counted.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNbuttonState</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[SQ]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The state of the toolbar button identified by
+                           DsNbutton. Possible values are:
+                        </p>
+                        <p class="Paragraph">DSTBBTNDISABLEDUNCHECKED</p>
+                        <p class="Paragraph">DSTBBTNDISABLEDCHECKED &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (DSCHECK
+            buttons only)</p>
+                        <p class="Paragraph">DSTBBTNENABLEDUNCHECKED (default)</p>
+                        <p class="Paragraph">DSTBBTNENABLEDCHECKED &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (DSCHECK
+            buttons only)</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNcommandList</p>
+                        <p class="Paragraph">(long array)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[C]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The list of the command identifiers associated with
+                           the toolbar buttons. This attribute is mandatory when
+                           creating a toolbar. The command identifiers must be in
+                           the range 0 to 12287.
+                        </p>
+                        <p class="Paragraph">The number of entries in the DsNcommandList array
+                           must equal the number of entries in the DsNimageList
+                           array (excluding separator entries). The event
+                           generated when a user clicks a toolbar button contains
+                           the command ID for the button.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNdockable</p>
+                        <p class="Paragraph">(boolean)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CG]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies whether a toolbar is dockable or fixed.
+                        When this attribute is FALSE, the toolbar is fixed at
+                        the top of the main window immediately below the menu
+                        bar. When TRUE (default), the toolbar is dockable;
+                        DsNgravity specifies its initial position.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNeventMask</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies the events that the object can generate.
+                        See <a href="../../progguide/events/select.event.input.htm" class="manualLink">select.event.input()</a> for a list of possible masks.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNgravity</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The initial position and state of a dockable
+                           toolbar. Possible values are:
+                        </p>
+                        <p class="Paragraph">DSTBTOP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Docked at top of main
+            window (default).</p>
+                        <p class="Paragraph">DSTBBOTTOM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Docked at bottom of main
+            window.</p>
+                        <p class="Paragraph">DSTBLEFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Docked at left of main
+            window.</p>
+                        <p class="Paragraph">DSTBRIGHT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Docked at right of main
+            window.</p>
+                        <p class="Paragraph">DSTBFLOATING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Floating toolbar, initially
+            centered in main window.</p>
+                        <p class="Paragraph">DSTBINVISIBLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Toolbar not visible (not valid
+            in <i class="Emphasis">create.object()</i>).
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNheight</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The height of the object, in pixels.</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNimageList</p>
+                        <p class="Paragraph">(long array)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The list of DsCpixmap objects and separators that
+                        the toolbar displays. This is a mandatory attribute for <i class="Emphasis">create.object()</i>. A toolbar separator is
+                        indicated by a value of -1. All toolbar images must
+                        have the same width and height. The recommended size is
+                        16 pixels wide and 15 pixels high.
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNobjectType</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td rowspan="1" colspan="1" class="none">The object type.</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNparent</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of the parent object.</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsetState</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The state of the object. See <a href="../../progguide/functions_user_interface_objects/dscmwindow.htm" class="manualLink">DsCmwindow</a>.
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNstateList</p>
+                        <p class="Paragraph">(long array)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The state of the toolbar buttons. The array consists
+                           of one or more pairs of values. The first value in each
+                           pair is the button index (1-based index). The second
+                           value defines the state of the button. Possible state
+                           values are:
+                        </p>
+                        <p class="Paragraph">DSTBBTNDISABLEDUNCHECKED</p>
+                        <p class="Paragraph">DSTBBTNDISABLEDCHECKED&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (DSCHECK
+            buttons only)</p>
+                        <p class="Paragraph">DSTBBTNENABLEDUNCHECKED (default)</p>
+                        <p class="Paragraph">DSTBBTNENABLEDCHECKED&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (DSCHECK
+            buttons only)</p>
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtemplate</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of a <a href="../../progguide/functions_user_interface_objects/dsctemplate.htm" class="manualLink">DsCtemplate</a> that defines a set of attributes to be
+                        applied to the object.
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtitle</p>
+                        <p class="Paragraph">(string)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The title of the window of a floating toolbar. The
+                        default is an empty string.
+                     </td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtypeList</p>
+                        <p class="Paragraph">(long array)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[C]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The button types. The array consists of one or more
+                           pairs of values. The first value in each pair is the
+                           button index (1-based index). The second value defines
+                           the button type. Possible values are:
+                        </p>
+                        <p class="Paragraph">DSNORMAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Normal pushbutton (default).</p>
+                        <p class="Paragraph">DSCHECK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A two-state button.</p>
+                     </td>
+                  </tr>
+                  <tr no="16" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNwidth</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The width of the object, in pixels.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/dsctoolbar, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

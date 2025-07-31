@@ -1,0 +1,70 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Considerations on doubles</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Considerations on doubles</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">In the related topics some extra information on double.cmp() is
+               given.
+            </p>
+            <p class="Paragraph">For Baan 4GL engineers it is important to know that:</p>
+            <ul class="List">
+               <li class="ListItem">A domain is normative for representation of doubles
+                  and not for storage in the database
+               </li>
+               <li class="ListItem">A double is stored in 52 bits format and with the help
+         of 2x values, so in a combination of 1024, …, 8, …, 1/16, …m
+         m m m , 1/24. This is why doubles are approximate numeric
+         values. The number that approaches the double best is
+         stored.</li>
+               <li class="ListItem">In the bshell or debugger a maximum of 6 decimals is
+                  shown.
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Remarks</div>
+            <ul class="List">
+               <li class="ListItem">When problems occur they will mainly occur on
+                  comparisons with zero (&lt;param&gt; = 0.0
+               </li>
+               <li class="ListItem">Rounding must be done especially before actual update.
+                  When comparing intermediate results, you must be carefull
+                  with rounding (e.g. compare rounded intermediate results
+                  with some table field). Advice: round end results
+                  only!
+               </li>
+               <li class="ListItem">Don't use 'hard coded' tolerances but instead use DD
+                  information. For this purpose in Verdi1 the tcmcs.dll0012
+                  DLL was created. It is strongly advised to use this
+                  DLL.
+               </li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/considerations_on_doubles/reliability.of.double.cmp.htm" class="manualLink">Reliability of double.cmp()</a></li>
+               <li class="RelTopic"><a href="../../progguide/considerations_on_doubles/comparison.of.doubles.in.queries.htm" class="manualLink">Comparison of doubles in queries</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/considerations_on_doubles/considerations.on.doubles, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

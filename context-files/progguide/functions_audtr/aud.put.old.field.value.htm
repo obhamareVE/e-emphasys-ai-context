@@ -1,0 +1,284 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>aud.put.old.field.value()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="aud.put.old.field.value aud.put.old.field.value functions aud.put.old.field.value ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">aud.put.old.field.value()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;aud.put.old.field.value&nbsp;
+					(long&nbsp;pid, string&nbsp;variable.name, long&nbsp;selection.id, long&nbsp;table.id, long&nbsp;field.id, long&nbsp;element [, bool&nbsp;endian])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use aud.put.old.field.value to
+                  retrieve the value of a field from the old (new) value string.
+                  The retrieved value is put into the variable supplied by the
+                  application.
+               </p>
+               <p class="Paragraph">If the action is a table operation the old value
+                  has no meaning and therefore this function cannot be used
+                  in that case. Depending on the status of a field the old value
+                  and/or new value can be retrieved.
+               </p>
+               <table border="0" class="none">
+                  <tbody noTR="3" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">Insert row</td>
+                        <td rowspan="1" colspan="1" class="none">The value part of the action row contains all the
+                           field values of the inserted row. This part is copied
+                           to the new.value string.
+                        </td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">Delete row</td>
+                        <td rowspan="1" colspan="1" class="none">The value part of the action row contains all the
+                           field values of the deleted row. This part is copied to
+                           the new.value string.
+                        </td>
+                     </tr>
+                     <tr no="3" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">Update row</td>
+                        <td rowspan="1" colspan="1" class="none">
+                           <p class="Paragraph_firstAndNoTextBefore">The value part of the action row contains both old
+                              and new values but not for all fields. Only those
+                              fields that have been changed or are part of the key or
+                              specified in the audit_set file are stored in the
+                              action row.
+                           </p>
+                           <p class="Paragraph">Unchanged field entries in the action row consist of
+                              only two parts: the status that is 'N', meaning
+                              unchanged, and the old value.
+                           </p>
+                           <p class="Paragraph">Changed field entries in the action row consist of
+                              three parts: the status which is 'Y', meaning that the
+                              field has changed, and both old value and new
+                              value.
+                           </p>
+                           <p class="Paragraph">The function reads each field entry in the action
+                              row and, depending on the status, copies the values to
+                              the old.value or the new.value string.
+                           </p>
+                           <p class="Paragraph">If the field is unchanged, the status string will
+                              have an 'N' for this field entry otherwise an 'Y'.
+                           </p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+               <p class="Paragraph">The following table shows whether the functions can be used,
+                  depending on action type and status:
+               </p>
+               <table border="0" width="100%" class="none">
+                  <tbody noTR="9" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <th rowspan="1" colspan="1" class="none">Action Type</th>
+                        <th rowspan="1" colspan="1" class="none">Status</th>
+                        <th rowspan="1" colspan="1" class="none">Field in OldValues</th>
+                        <th rowspan="1" colspan="1" class="none">Field in NewValues</th>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">I</td>
+                        <td rowspan="1" colspan="1" class="none">Y</td>
+                        <td rowspan="1" colspan="1" class="none">No</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                     </tr>
+                     <tr no="3" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">I</td>
+                        <td rowspan="1" colspan="1" class="none">X</td>
+                        <td rowspan="1" colspan="1" class="none">No</td>
+                        <td rowspan="1" colspan="1" class="none">No</td>
+                     </tr>
+                     <tr no="4" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">D</td>
+                        <td rowspan="1" colspan="1" class="none">Y</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                        <td rowspan="1" colspan="1" class="none">No</td>
+                     </tr>
+                     <tr no="5" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">D</td>
+                        <td rowspan="1" colspan="1" class="none">X</td>
+                        <td rowspan="1" colspan="1" class="none">No</td>
+                        <td rowspan="1" colspan="1" class="none">No</td>
+                     </tr>
+                     <tr no="6" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">U</td>
+                        <td rowspan="1" colspan="1" class="none">Y</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                     </tr>
+                     <tr no="7" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">U</td>
+                        <td rowspan="1" colspan="1" class="none">N</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                        <td rowspan="1" colspan="1" class="none">Yes</td>
+                     </tr>
+                     <tr no="8" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">U</td>
+                        <td rowspan="1" colspan="1" class="none">X</td>
+                        <td rowspan="1" colspan="1" class="none">No</td>
+                        <td rowspan="1" colspan="1" class="none">No</td>
+                     </tr>
+                     <tr no="9" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">U</td>
+                        <td rowspan="1" colspan="1" class="none">X</td>
+                        <td rowspan="1" colspan="1" class="none">No</td>
+                        <td rowspan="1" colspan="1" class="none">No</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>pid</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Id of the current process. This must be filled in
+                           the same manner as the Infor ERP Enterprise function
+                           put.var().
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>variable.name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the variable that will contain the
+                           extracted field value.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>selection.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Id of the selection, as provided by
+                           aud.select.transactions
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>table.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Id of the table on which the action occurred, which
+                           is used to retrieve the detailed action data using
+                           function aud.get.field.status, aud.put.old.field.value
+                           and aud.put.new.field.value. This id is also used to
+                           get the meta data information, in case it has been
+                           changed.company: the company that holds the updated
+                           table.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>field.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Identification of the field as retrieved using
+                           function aud.get.field.ids.
+                        </p>
+                        <p class="Paragraph">Precondition:</p>
+                        <p class="Paragraph"><i class="Emphasis">field.id</i> must not be 0: for not existing fields
+                           no field information can be retrieved.
+                        </p>
+                        <p class="Paragraph">( <i class="Emphasis">action.type</i> = 'D' and FieldStatus = 'A')
+                           or
+                        </p>
+                        <p class="Paragraph">( <i class="Emphasis">action.type</i> = 'U' and FieldStatus = ('Y' or
+                           'N')).
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>element</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Identification of the array element within a field.</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td class="none">[bool</td>
+                     <td class="none"><code>endian</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Defines how the data in <i class="Emphasis">element</i> must be
+                           interpreted. It is assumed that data is stored in big
+                           endian order (highest byte first) . If little endian
+                           order is required set this optional argument to 1.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">None</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Restrictions</div>
+            <p class="Paragraph">This function will not check the input, because of
+               performance reasons. Instead the combination <i class="Emphasis">selection.id</i>, <i class="Emphasis">table.id</i>, <i class="Emphasis">field.id</i> is assumed
+               to refer to an existing field, as returned by aud.get.field.ids.
+               This means that if the input parameters are not valid, an error
+               message will be presented to the end user.
+            </p>
+            <p class="Paragraph">During the last aud.get.next.action for this selection, an <i class="Emphasis">action.type</i> must have been returned that is 'I', 'U' or
+               'D'. The last execution of aud.get.field.status for this action
+               must have indicated a status &lt;&gt; "X".
+            </p>
+            <p class="Paragraph">The combination of <i class="Emphasis">action.type</i> and status for the
+               field must be one of the following:
+            </p>
+            <p class="Paragraph">Status &lt;&gt; "X" and
+               ( <i class="Emphasis">action.type</i> = "U" or <i class="Emphasis">action.type</i> = "D")
+            </p>
+            <p class="Paragraph">In all other cases the value of a field has no meaning and
+               therefore this function cannot be used in those cases.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_synopsis.htm" class="manualLink">Audit management synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_examples.htm" class="manualLink">Audit management examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_audtr/aud.put.old.field.value, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

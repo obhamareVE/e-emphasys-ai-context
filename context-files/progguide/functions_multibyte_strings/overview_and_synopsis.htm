@@ -1,0 +1,209 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Multibyte strings overview and synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="multibyte strings ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Multibyte strings overview and synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">Use these functions for handling multibyte strings.</p>
+            <p class="Paragraph">The character sets used in languages all over the world
+               require often more characters than the 128 characters
+               available in the <a href="../../progguide/misc/ascii_table.htm" class="manualLink">ASCII table (C0 Controls and Basic Latin)</a> character
+               set. BAAN software provides foreign character set support via
+               the BAAN Super Set ( <a href="../../progguide/misc/tss.htm" class="manualLink">TSS Encoding</a>). In TSS, a character
+               occupies one or four bytes. Multibyte TSS characters always
+               start with the hexadecimal byte 0x9B. So they can always be
+               recognized within a string.
+            </p>
+            <p class="Paragraph">See also <a href="../../progguide/functions_string_operations/overview.htm" class="manualLink">String operations overview</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Synopsis</div>
+            <table border="0" class="none">
+               <tbody noTR="30" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.cast.htm" class="manualLink">mb.cast$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string_expr )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.cast.to.str.htm" class="manualLink">mb.cast.to.str$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string_expr )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.char.htm" class="manualLink">mb.char()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long charvalue )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.char.info.htm" class="manualLink">mb.char.info()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string ch$ )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.coerce.to.sb.htm" class="manualLink">mb.coerce.to.sb()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string string$ [, long setid ] )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.display.htm" class="manualLink">mb.display()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string_expr, ref string substr$, long space,
+                &nbsp; [, long flags] )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.export.htm" class="manualLink">mb.export$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string target$, string source$ [, long
+                           setid ] )</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.export.raw.htm" class="manualLink">mb.export.raw()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string target$, string source$ [, long
+                           setid ] )</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.ext.clean.htm" class="manualLink">mb.ext.clean$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string ext.string )</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.hasbidi.htm" class="manualLink">mb.hasbidi()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string_expr )</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.import.htm" class="manualLink">mb.import$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string target$, string source$ [, long
+                           setid ] )</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.import.raw.htm" class="manualLink">mb.import.raw()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string target$, string source$ [, long
+                           setid ] )</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.isbidi.htm" class="manualLink">mb.isbidi()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">boolean</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.isbidi.language.htm" class="manualLink">mb.isbidi.language()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string lang )</code></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.locale.enumerate.htm" class="manualLink">mb.locale.enumerate()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( const string locale.name$() )</code></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.locale.info.htm" class="manualLink">mb.locale.info()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long info_flag )</code></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.localename.htm" class="manualLink">mb.localename$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.long.to.str.htm" class="manualLink">mb.long.to.str$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long charvalue )</code></td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.nsets.htm" class="manualLink">mb.nsets()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">string</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.rev.htm" class="manualLink">mb.rev$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string_expr [, long flags] )</code></td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.scrpos.htm" class="manualLink">mb.scrpos()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string_expr, long pos )</code></td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.set.info.htm" class="manualLink">mb.set.info()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long setid, ref string name, ref string
+               desc,
+                &nbsp; ref long n_items )</code></td>
+                  </tr>
+                  <tr no="23" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.strpos.htm" class="manualLink">mb.strpos()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string_expr, long pos )</code></td>
+                  </tr>
+                  <tr no="24" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.tss.clean.htm" class="manualLink">mb.tss.clean$()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string tss.string )</code></td>
+                  </tr>
+                  <tr no="25" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.type.htm" class="manualLink">mb.type()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string_expr )</code></td>
+                  </tr>
+                  <tr no="26" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/mb.width.htm" class="manualLink">mb.width()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string_expr )</code></td>
+                  </tr>
+                  <tr no="27" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/uni.export.htm" class="manualLink">uni.export()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string target$, const string source$ [,
+                           long sb_flag ] )</code></td>
+                  </tr>
+                  <tr no="28" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/uni.import.htm" class="manualLink">uni.import()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string target$, const string source$ [,
+                           long sb_flag ] )</code></td>
+                  </tr>
+                  <tr no="29" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/utf8.export.htm" class="manualLink">utf8.export()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string target$, const string source$,
+                           long option_mask )</code></td>
+                  </tr>
+                  <tr no="30" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">long</code></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_multibyte_strings/utf8.import.htm" class="manualLink">utf8.import()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string target$, const string source$,
+                           long option_mask )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_multibyte_strings/overview_and_synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

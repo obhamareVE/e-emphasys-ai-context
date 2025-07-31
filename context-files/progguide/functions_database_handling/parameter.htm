@@ -1,0 +1,79 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Parameter</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Parameter ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Parameter</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The parameter specifies a value that can vary from execution
+               to execution.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;parameter&gt;
+    ::= ?
+      | :&lt;digit&gt;...
+      | :&lt;identifier&gt;
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The type of a parameter is any of the available SQL data
+               types. The context in which the parameter is used determines the
+               actual data type.
+            </p>
+            <p class="Paragraph">For example, in the following comparison the left value
+               expression ( <i class="Emphasis">hiredate</i>) is of type <i class="Emphasis">date</i> and hence
+               the parameter is also of type <i class="Emphasis">date</i>, because this is the
+               only valid data type <a href="../../progguide/functions_database_handling/comparable_datatypes.htm" class="manualLink">comparable</a> to data type <i class="Emphasis">date</i>.
+            </p><pre class="CodeBlock">
+hiredate = :1
+</pre><p class="Paragraph">As another example, in the following expression both
+               parameters must be of type <i class="Emphasis">string</i> or of type <i class="Emphasis">raw</i>,
+               because these are the only valid types for the <a href="../../progguide/functions_database_handling/ve_concat.htm" class="manualLink">Operator &amp; (concatenation)</a>.
+            </p><pre class="CodeBlock">
+:1 &amp; :2
+</pre><p class="Paragraph">As another example, in the following expression both
+               parameters must be of type <i class="Emphasis">raw</i>, because this is the only
+               valid type for the <a href="../../progguide/functions_database_handling/ve_concat.htm" class="manualLink">Operator &amp; (concatenation)</a> given that the right hand side of the comparison is of type <i class="Emphasis">raw</i>.
+            </p><pre class="CodeBlock">
+:1 &amp; :2 = x'ABCD'
+</pre><p class="Paragraph">This example shows that it is not always possible to derive
+               the correct type for a parameter. In the following expression
+               the parameters can be of any SQL type, because each type is
+               comparable with itself.
+            </p><pre class="CodeBlock">
+:1 = :2
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div><pre class="CodeBlock">
+?
+:1
+:my.long
+:my.string$
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/parameter, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Chart manager example</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="chart manager example ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Chart manager example</div>
+      <div class="body">
+         <div class="GeneralSection"><pre class="CodeBlock">
+ 
+#define CHART.NAME                   "RESULT"
+#define CHART.APPLICATION            "ttchmtest"
+
+#include &lt;bic_chartman&gt;
+
+long     chart.data(2,4)
+
+function main()
+{
+                long chno
+                string chart_type(16)
+                                                 
+                | start Chart manager
+                chm.chartman(CHART.APPLICATION, "Title", "user1",
+"")
+                chno = chm.open(CHART.NAME, chart_type)
+
+                if chno &gt; 0  then
+                                send.chart.data()          | define
+data
+                                chm.draw()                 | draw
+chart
+                                get.chart.data(chno)       | store
+data
+                endif
+}
+                           
+| define data, send it to Chart manager
+function void send.chart.data( )
+{
+                double     series, category
+                long       no_1, no_2, no_3, no_4
+
+                | Chart title
+                chm.title.in("Financial Results", "")
+                | Set definitions
+                no_1 = 1
+                no_2 = 2
+                no_3 = 3
+                no_4 = 4
+                chm.set.in("Series", no_1, "Company 1")
+                chm.set.in("Series", no_2, "Company 2")
+                chm.set.in("Categories", no_1, "Qrtr I")
+                chm.set.in("Categories", no_2, "Qrtr II")
+                chm.set.in("Categories", no_3, "Qrtr III")
+                chm.set.in("Categories", no_4, "Qrtr IV")
+
+                    
+                | Domain definitions
+                chm.domain.in(CHM_SERIES_DOMAIN, CHM_SET,
+                      "Series", "Companies", "Unit", 1.0, 2.0, 1.0,
+"")
+                chm.domain.in(CHM_CATEGORY_DOMAIN, CHM_SET,
+                      "Categories", "Quarters", "1993", 1.0, 4.0,
+                      1.0, "")
+                chm.domain.in(CHM_DATA_DOMAIN, CHM_REAL, "",
+"Result", "x 1000", 
+                                                                   
+    0.0, 100.0, 0.01, "ZZZZZ9V,99")
+
+                | Axis data
+                chm.axis.in(CHM_SERIES_AXIS, FALSE, 0, 2, 1.0, 0.0,
+"")
+                chm.axis.in(CHM_CATEGORY_AXIS, FALSE, 0, 4, 1.0,
+0.0, "")
+                chm.axis.in(CHM_DATA_AXIS, FALSE, 0, 10, 10.0, 0.0,
+"")
+
+                get.data.from.table(chart.data())          | user
+defined
+
+                for series = 1 to 2
+                                for category = 1 to 4              
+  | Data values
+                                                chm.data.in(series,
+category, 1,
+                                                               
+chart.data(series, category), 0)
+                                endfor
+                endfor
+}
+                                                      
+| get data from Chart manager
+function void get.chart.data( long chart_no)  
+{
+                long      datn, footnote_no, ret, request
+                double    catv, data, serv, category_from,
+category_to
+
+                repeat
+                                request = chm.get.request(
+chart_no,category_from,
+                                category_to)
+                                on case request
+                                case CHM_SOURCE_OUT:            |
+OUT-command Chart manager
+
+                        ret = chm.first.data.out(CHM_ALL_DATA,
+                           serv, catv, datn, data, footnote_no)
+
+                                                while (ret =
+CHM_OK)
+                                                               
+chart.data(serv, catv) = data
+                                                                ret
+= chm.next.data.out(CHM_ALL_DATA,
+                              serv, catv, datn, data, footnote_no)
+                                                endwhile
+
+                                               
+put.data.in.table(chart.data()) | user defined
+                                                break
+                                endcase
+                until (request = CHM_ABORT)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/overview.htm" class="manualLink">Chart manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/synopsis.htm" class="manualLink">Chart manager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/creating_a_chart_manager_client_application.htm" class="manualLink">Creating a chart manager client application</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_chm/example, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

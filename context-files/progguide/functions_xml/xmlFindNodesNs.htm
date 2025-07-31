@@ -1,0 +1,174 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>xmlFindNodesNs()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions xmlFindNodesNs xmlFindNodesNs xmlFindNodesNs ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">xmlFindNodesNs()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;xmlFindNodesNs&nbsp;
+					(long&nbsp;node, void&nbsp;namespaceOrURI, const string&nbsp;name, long&nbsp;maxFound [, ref long&nbsp;numFound])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">In an XML tree, find all XML nodes of type XML_ELEMENT 
+                  			or XML_DTD, whose <i class="Emphasis">local name</i> matches the specified <i class="Emphasis">name</i> and whose URI matches the URI specified by <i class="Emphasis">namespaceOrURI</i>. This is a <i class="Emphasis">depth first</i> search.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>node</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">node</i> is a reference to an XML node.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>namespaceOrURI</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">namespaceOrURI</i> is either a reference to an XML namespace, or it is a URI.
+                           				If the <i class="Emphasis">namespaceOrURI</i> parameter is of type <i class="Emphasis">long</i> then
+                           				it is a reference to an XML namespace; if it is of type <i class="Emphasis">string</i> then it
+                           				is a URI; otherwise the function fails.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">name</i> is the <i class="Emphasis">local name</i> of the node(s) of type 
+                           				XML_ELEMENT or XML_DTD.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>maxFound</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">maxFound</i> is the maximum number of matches to be returned. When its
+                           				value is 0 then all matches will be returned.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">[ref long</td>
+                     <td class="none"><code>numFound</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">numFound</i> is a reference variable, and contains the number of 
+                           				matches found.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The return value refers to a new tree, which contains the
+               				NodeId's of the nodes which match the <i class="Emphasis">pattern</i>. This new
+               				tree corresponds to an XML document as shown below:
+            </p><pre class="Formula">
+&lt;Enumeration TYPE="InMemory XmlNodes"&gt;
+        &lt;e0&gt;id0&lt;/e0&gt;
+        &lt;e1&gt;id1&lt;/e1&gt;
+        ...
+        &lt;en&gt;idn&lt;/en&gt;
+&lt;/Enumeration&gt;
+			</pre><p class="Paragraph">In this example <i class="Emphasis">idn</i> is the decimal string
+               				representation of a nodeId of a node, which matches the <i class="Emphasis">pattern</i>.
+            </p>
+            <p class="Paragraph">Like any other tree of Nodes, the returned tree must be freed
+               				from memory by using xmlDelete().
+            </p>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;&gt;0</th>
+                     <td rowspan="1" colspan="1" class="none">Success; The new tree containing the references to the matching nodes.
+                        							 In case no match is found the tree consists of a single node.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Error; either the <i class="Emphasis">namespaceOrURI</i> is invalid, or the <i class="Emphasis">node</i> is invalid.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1700.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long xml_envelope, xml_stockprice
+string error(100)
+xml_envelope = xmlReadFromStringNs( 
+	"&lt;soap:Envelope xmlns:soap=""http://www.w3.org/2001/12/soap-envelope"" " &amp;
+		" soap:encodingStyle=""http://www.w3.org/2001/12/soap-encoding""&gt;" &amp;
+		"&lt;soap:Body xmlns:m=""http://www.example.org/stock""&gt;" &amp;
+			"&lt;m:GetStockPrice&gt;" &amp;
+				"&lt;m:StockName&gt;IBM&lt;/m:StockName&gt;" &amp;
+			"&lt;/m:GetStockPrice&gt;" &amp;
+		"&lt;/soap:Body&gt;" &amp;
+	"&lt;/soap:Envelope&gt;" , error )
+
+long numFound
+xml_stockprice = xmlFindNodesNs( xml_envelope, "http://www.example.org/stock", "GetStockPrice", 0, numFound )
+
+| numFound now contains 1
+| xml_stockprice now contains a reference to the "GetStockPrice" node, in the following XML:
+|
+|	&lt;Enumeration
+|		TYPE="InMemory XmlNodes"&gt;
+|		&lt;e0&gt;2147483641&lt;/e0&gt;
+|	&lt;Enumeration&gt;
+|
+| The value 2147483641 is the reference to the "GetStockPrice" node.</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/overview.htm" class="manualLink">XML object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis.htm" class="manualLink">XML object synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis_namespace.htm" class="manualLink">XML object synopsis (namespace support)</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_xml/xmlFindNodesNs, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

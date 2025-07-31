@@ -1,0 +1,134 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>path.combine()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions path.combine path.combine path.combine ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">path.combine()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;path.combine&nbsp;
+					(const string&nbsp;path, &nbsp;..., long&nbsp;os.type)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Combines one ore more strings into a path.</p>
+               <p class="Paragraph">If ERP Enterprise is running on UNIX, the given path is interpreted as a Unix path; if ERP Enterprise is running on Windows,
+                  the path is interpreted as a Windows path.
+                  				Optionally, this can be overridden, by supplying the OS type. When dealing with paths for the client 
+                  				(e.g. when using <a href="../../progguide/functions_client_file_access/seq.open.local.htm" class="manualLink">seq.open.local()</a>, 
+                  				it is advised to always specify <code class="Code">OS_WINDOWS_NT</code>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>path</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">a path part</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none"></td>
+                     <td class="none"><code>...</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">optional path parts</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>os.type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">when specified, the path is interpreted according to the given OS type; 
+                           					specify one of the following values: <code class="Code">OS_WINDOWS_NT</code>, <code class="Code">OS_UNIX</code>. 
+                           					Note: this must be the last argument.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The combined paths.</p>
+            <div class="Note">
+               <div class="NoteSectionTitle">note that:</div>
+               <div class="NoteContent">
+                  <ul class="List">
+                     <li class="ListItem">If  one of the subsequent paths is an absolute path, then the combine operation resets 
+                        							starting with that absolute path, discarding all previous combined paths.
+                     </li>
+                     <li class="ListItem">Zero-length strings are omitted from the combined path.</li>
+                     <li class="ListItem">The parameters are not parsed if they have white space.</li>
+                     <li class="ListItem">Not all invalid characters for directory and file names are interpreted as unacceptable by the <code class="Code">path.combine</code> function, 
+                        							because you can use these characters for search wildcard characters. 
+                        							For example, while <code class="Code">path.combine("c:\", "*.txt")</code> might be invalid if you were to create a file from it, 
+                        							it is valid as a search string. It is therefore successfully interpreted by the <code class="Code">path.combine</code> function.
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1700.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+string path(1024)
+
+| Suppose ERP Enterprise is running on Unix, but we want to deal with Windows paths
+path = path.combine("c:\temp", "test", "bla", "mydoc.doc", OS_WINDOWS_NT)
+| path = "c:\temp\test\bla\mydoc.doc"
+
+path = path.combine("c:\temp", "test", "c:\bla", "mydoc.doc", OS_WINDOWS_NT)
+| path = "c:\bla\mydoc.doc"
+
+path = path.combine("c:\temp", "", "bla", "mydoc.doc", OS_WINDOWS_NT)
+| path = "c:\temp\bla\mydoc.doc"
+
+path = path.combine("c:\temp\", "x\", "bla", "mydoc.doc", OS_WINDOWS_NT)
+| path = "c:\temp\x\bla\mydoc.doc"
+
+path = path.combine("", "")
+| path = ""
+		</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/overview.htm" class="manualLink">Directory and file operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/synopsis.htm" class="manualLink">Directory and file operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_directory_file_operations/path.combine, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>22026 - String data length mismatch</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">22026 - String data length mismatch</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">A raw value is assigned to a raw column and the length of the
+               value is smaller than the length of the column.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+update dbtst230 a set a.raw = x'0'
+where a.empno = 10
+</pre><p class="Paragraph">Column  is a raw of length 20, and the
+               value assigned to it is shorter than 20 bytes. This will result
+               in the following error:
+            </p>
+            <p class="Paragraph">SqlState=22026, 'Value cannot
+               be assigned to column dbtst230.raw', NativeError=205
+            </p>
+            <p class="Paragraph">It can be solved by assuring that the value assigned to the
+               raw column is of the same length as the column.
+            </p><pre class="CodeBlock">
+update dbtst230 a set a.raw = x'CAFEBABECAFEBABECAFEBABECAFEBABECAFEBABE'
+where a.empno = 10
+</pre></div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/22026, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

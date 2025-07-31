@@ -1,0 +1,81 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>activate.search()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="activate.search activate.search functions activate.search ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">activate.search()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;activate.search&nbsp;
+					()</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This forces a random search action on the main table. You
+                  call the function immediately after input to a field during
+                  insertion of a new record (standard command ADD.SET or
+                  DUPL.OCCUR) or during MODIFY.SET (if the predefined variable <i class="Emphasis">modify.prim.key</i> is set to TRUE).
+               </p>
+               <p class="Paragraph">When a new record is being added to the database, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> normally
+                  executes a search action in the main table after input to the
+                  field(s) of the primary index. If the key values entered belong
+                  to an existing record in the main table, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> displays all
+                  the fields of that record and stops adding the new record.
+                  Otherwise, the user must fill the remaining fields; then the
+                  record is added to the main table.
+               </p>
+               <p class="Paragraph">In some applications, not all parts of the primary index
+                  appear on the form. In this case, the search operation in the
+                  main table occurs when the user leaves the last input field of
+                  the occurrence. You can force an earlier search action by
+                  calling <i class="Emphasis">activate.search()</i> after input to any field of the
+                  occurrence.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+| Suppose there are 2 input fields on the form, 'number' and
+| 'name', which are not parts of the primary index of the main
+| table. When the user leaves the field 'number', a search action in
+| the main table should be done by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="manualLink">4GL engine</a>:
+field.number:
+on.input:
+                activate.search()
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/activate.search, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

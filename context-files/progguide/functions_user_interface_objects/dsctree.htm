@@ -1,0 +1,647 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DsCtree</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dsctree ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DsCtree</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">A DsCtree object defines a tree view control. Like any tree view
+               	  control, it displays a list of items as an indented outline that reflects the
+               	  hierarchical relationship between the items.
+            </p>
+            <div class="Figure"><img src="../images/uio_019.gif" alt="[...]" height="308" width="296"></div>
+            <p class="Paragraph">Items in a tree control have a parent-child relationship. They
+               	  can be either nodes or leaves. Nodes represent category headings and can have
+               	  leaves and other nodes as children. Leaves do not have children. All items,
+               	  except the root node, have one parent node; the root node is the highest node
+               	  in the tree.
+            </p>
+            <p class="Paragraph">Each item in a tree control consists of an icon and a text
+               	  label. If a node has children, it is preceded by a + or - button that enables
+               	  the user to expand or collapse it respectively.
+            </p>
+            <p class="Paragraph">Each item has a unique ID. An item also has a parent ID; this is
+               	  the ID of the item's parent node. An item can also have a sibling ID; this is
+               	  the ID of the item that appears immediately below it within the same parent
+               	  node. The parent and sibling IDs of an item determine where the item is
+               	  positioned within the tree structure.
+            </p>
+            <p class="Paragraph">You use the DsNtreeData attribute to define the type, label, ID,
+               	  image, and parent or sibling ID of a tree control item. You also use
+               	  DsNtreeData to change the properties of a tree control item, by calling <i class="Emphasis">change.object()</i> and defining the new properties in the
+               	  DsNtreeData attribute.
+            </p>
+            <p class="Paragraph">For example, you can reposition an item within the tree control
+	  by specifying a different parent or sibling for the item. You cannot, however,
+	  change the parent ID of an item to 0 (because a tree control can have only one
+	  root node). Nor can you change an item's parent ID to that of one of the item's
+	  descendants or to the item's own ID. You can change a leaf to a node and vice
+	  versa – however, if you change a node to a leaf, all children of the node are
+	  automatically removed. You cannot change the unique ID of an item directly. To
+	  assign a new ID to an item, you must remove the item and then redefine it with
+	  the new ID. Note that when an item has been removed, you can reuse its ID for a
+	  new item.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Navigation</div>
+            <p class="Paragraph">Users can use the mouse or keyboard keys to navigate through a
+               	  tree control and to activate items.
+            </p>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Mouse actions</div>
+               <p class="Paragraph">To move to an item with the mouse, click on the item. To
+                  		activate an item, and to expand and collapse a node, double-click on
+                  		it.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Keyboard actions</div>
+               <p class="Paragraph">Move between items <i class="Emphasis">A single item at a
+                     time</i> UP
+                  ARROW, DOWN ARROW
+               </p>
+               <p class="Paragraph"> <i class="Emphasis">One scroll
+                     page at a time</i> Pg Up, Pg Dn
+               </p>
+               <p class="Paragraph"> <i class="Emphasis">To first
+                     and last items</i> HOME, END
+               </p>
+               <p class="Paragraph"> <i class="Emphasis">To move to
+                     next item whose label begins with a particular
+                     character</i> Press key
+                  correspoding to the character
+               </p>
+               <p class="Paragraph">Expand/collapse nodes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RIGHT ARROW, LEFT ARROW</p>
+               <p class="Paragraph">Activate a leaf&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ENTER</p>
+               <p class="Paragraph">All the above mouse and keyboard actions generate an
+                  		EVTTREESELECT event (see <a href="../../progguide/events/event_types.htm" class="manualLink">Event types</a>).
+                  		Pressing any key other than those mentioned above generates an EVTKEYPRESS
+                  		event.
+               </p>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Events</div>
+            <p class="Paragraph">A DsCtree object can generate the following events:</p>
+            <p class="Paragraph">EVTTREESELECT</p>
+            <p class="Paragraph">EVTKEYPRESS</p>
+            <p class="Paragraph">EVTCHANGEFOCUS</p>
+            <p class="Paragraph">EVTSETFOCUS</p>
+            <p class="Paragraph">EVTHELP</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" class="none">
+               <tbody noTR="14" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNcommandList</p>
+                        <p class="Paragraph">(long array)</p>
+                        <p class="Paragraph"></p>
+                     </td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use this to set the state of tree control items and to
+                           			  remove tree items. The array contains one or more entries in the following
+                           			  format:
+                        </p>
+                        <table class="default">
+                           <tbody noTR="6" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">long</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">The ID
+                                    					of a tree node or leaf
+                                 </td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default"></td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">long</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">The state of the specified node or
+                                    					leaf:
+                                 </td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default"></td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default"></td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">DSTREEEXPAND</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">Expands the node by one
+                                    					level
+                                 </td>
+                              </tr>
+                              <tr no="4" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default"></td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">DSTREECOLLAPSE</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">Collapses the node if it is
+                                    					expanded
+                                 </td>
+                              </tr>
+                              <tr no="5" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default"></td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">DSTREEREMOVE</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">Removes the item(if it is a
+                                    					node, all its children are also removed)
+                                 </td>
+                              </tr>
+                              <tr no="6" isLast="true" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default"></td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">DSTREEEXPANDALL</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">Expands the node and all its
+                                    					children
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNeventMask</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies the events that the object can generate. See <a href="../../progguide/events/select.event.input.htm" class="manualLink">select.event.input()</a> for a list of possible
+                           			  masks.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNeventReasonMask</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The EVTTREESELECT event can be generated when a tree
+                           			  item is activated, expanded, collapsed, or selected. The DsNeventReasonMask
+                           			  attribute specifies for which of these actions or reasons the event is
+                           			  generated. If a particular reason is not set in this attribute, then an event
+                           			  is not generated for that reason. Possible values are:
+                        </p>
+                        <p class="Paragraph">EVTTREEREASONACTIVATEMASK</p>
+                        <p class="Paragraph">EVTTREEREASONEXPANDMASK</p>
+                        <p class="Paragraph">EVTTREEREASONCOLLAPSEMASK</p>
+                        <p class="Paragraph">EVTTREEREASONSELECTMASK</p>
+                        <p class="Paragraph">Use the bitwise OR operator to combine some or all of
+                           			  these flags.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNheight</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">The height of the scroll view window, in pixels.
+                        			When the tree is longer than the window, a vertical scroll bar is automatically
+                        			enabled.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNmode</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The tree mode. Possible values are:</p>
+                        <table class="default">
+                           <tbody noTR="2" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">DSOPENAGAIN</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">When reopening node, restore previous state.</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">DSOPENNONE</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">When reopening node, collapse all
+                                    					subnodes.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNobjectType</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">[G]</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">The object type.</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNparent</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">[G]</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">The ID of the parent object.</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">DsNselectedId</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">Specifies the ID of the currently selected tree
+                        			item.
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsetState</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">The state of the object. See <a href="../../progguide/functions_user_interface_objects/dscmwindow.htm" class="manualLink">DsCmwindow</a>.
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtemplate</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">The ID of a <a href="../../progguide/functions_user_interface_objects/dsctemplate.htm" class="manualLink">DsCtemplate</a> that defines a set of attributes to be
+                        	applied to the object.
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">DsNtreeData</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This contains the tree data. The data consists of the
+                           		  following information:
+                        </p>
+                        <p class="Paragraph"><i class="Emphasis">A header containing the following
+                              		  fields:</i></p>
+                        <table class="default">
+                           <tbody noTR="3" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">long</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">Version
+                                    				number (currently always 1).
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">long</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">Number of image sets used by the tree images.</td>
+                              </tr>
+                              <tr no="3" isLast="true" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">long</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">Number of items in the
+                                    				tree.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph"><i class="Emphasis">Zero or more entries specifying the image sets
+                              		  used by the tree items.</i></p>
+                        <p class="Paragraph">Normally, tree items of the same type use the same icon.
+		  This icon can have a different appearance in different situations – for
+		  example, when the item is selected, not selected, expanded, collapsed, and so
+		  on. An image set is the set of such images for a particular type of item.</p>
+                        <p class="Paragraph">For example, on the contents page of a Windows help file,
+                           		  the following icons represent a collapsed book and an expanded book
+                           		  respectively.
+                        </p>
+                        <p class="Paragraph">The two icons represent the image set for book-type
+                           		  items.
+                        </p>
+                        <div class="Figure"><img src="../images/uio_020.gif" alt="[...]" height="23" width="56"></div>
+                        <p class="Paragraph">An image set entry contains the following
+                           		  fields:
+                        </p>
+                        <table class="default">
+                           <tbody noTR="6" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">short</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">The image
+                                    				set ID
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">long</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">The ID of the
+                                    				image for items not selected and not expanded
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">long</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">The ID of the image for items selected
+                                    				but not expanded. If this is 0, the default is the ID of the image for images
+                                    				not selected and not expanded.
+                                 </td>
+                              </tr>
+                              <tr no="4" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">long</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">The ID of the image for nodes expanded but not selected. If this
+                                    				is 0, the default is the ID of the image for items not selected and not
+                                    				expanded. This is relevant only ot node items.
+                                 </td>
+                              </tr>
+                              <tr no="5" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">long</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">The ID of the image for nodes selected
+                                    				and expanded. If this is 0, the default is the ID of the image for items
+                                    				selected but not expanded. This is relevant only to node
+                                    				items.
+                                 </td>
+                              </tr>
+                              <tr no="6" isLast="true" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default"></td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default"></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph"><i class="Emphasis">Zero or more item entries containing the
+                              		  following fields:</i> byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The item type. Possible values
+		  are:
+                        </p>
+                        <table class="default">
+                           <tbody noTR="5" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">byte</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">
+                                    <p class="Paragraph_firstAndNoTextBefore">the item type. Possible values are:</p>
+                                    <table class="default">
+                                       <tbody noTR="4" class="default">
+                                          <tr no="1" isLast="false" class="default">
+                                             <td valign="top" rowspan="1" colspan="1" class="default">0</td>
+                                             <td valign="top" rowspan="1" colspan="1" class="default">leaf</td>
+                                          </tr>
+                                          <tr no="2" isLast="false" class="default">
+                                             <td valign="top" rowspan="1" colspan="1" class="default">1</td>
+                                             <td valign="top" rowspan="1" colspan="1" class="default">node</td>
+                                          </tr>
+                                          <tr no="3" isLast="false" class="default">
+                                             <td valign="top" rowspan="1" colspan="1" class="default">2</td>
+                                             <td valign="top" rowspan="1" colspan="1" class="default">sibling
+                                                						leaf
+                                             </td>
+                                          </tr>
+                                          <tr no="4" isLast="true" class="default">
+                                             <td valign="top" rowspan="1" colspan="1" class="default">3</td>
+                                             <td valign="top" rowspan="1" colspan="1" class="default">sibling
+                                                						node
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                    <p class="postspacer">&nbsp;</p>
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">string</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">The text for the item's lable. This is a null-terminated
+                                    				string.
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">short</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">The ID of the
+                                    				item's image set. This can be the ID of an image set specified by the current
+                                    				DsNtreeData attribute, or the ID of an image set specified by a previous
+                                    				DsNtreeData attribute.
+                                 </td>
+                              </tr>
+                              <tr no="4" isLast="false" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">short</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">A unique item ID.</td>
+                              </tr>
+                              <tr no="5" isLast="true" class="default">
+                                 <td valign="top" rowspan="1" colspan="1" class="default">short</td>
+                                 <td valign="top" rowspan="1" colspan="1" class="default">The ID of the item's parent of sibling. If the item type is 0 or
+                                    				1, the item is inserted as the last item under the specified parent item - the
+                                    				paren ID of the root item is always 0. If the item type is 2 or 3 (that is,
+                                    				sibling), the item is insered above the specified sibling item. The parent or
+                                    				sibling ID must be that of an existing tree item.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p> When changing the property of a tree item with <i class="Emphasis">change.object()</i>, you must specify the full data for that
+                        		item in the DsNtreeData attribute. In the case of a node, it is not necessary
+                        		to redefine the node's children.
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNwidth</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">The width of the scroll view window, in pixels. When the
+                        		tree is wider than the window, a horizonotal scroll bar is automatically
+                        		enabled.
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNx</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">The x-coordinate of the object's outer left edge, in
+                        		pixels, relative to the inner left edge of its parent.
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="true" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNy</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">The y-coordinate of the object's outer top edge, in
+                        		pixels, relative to the inner top edge of its parent.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following is an example of DsNtreeData data used to create a
+               	  new tree control:
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Resulting tree control</div>
+            <div class="Figure"><img src="../images/uio_021.gif" alt="[...]" height="235" width="210"></div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">DsNtreeData header</div>
+            <table class="default">
+               <thead noTR="1" class="default">
+                  <tr no="1" isLast="true" class="default">
+                     <td valign="top" rowspan="1" colspan="1" class="default">Version</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">Count
+                        			(image sets)
+                     </td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">Count
+                        			(nodes)
+                     </td>
+                  </tr>
+               </thead>
+               <tbody noTR="1" class="default">
+                  <tr no="1" isLast="true" class="default">
+                     <td valign="top" rowspan="1" colspan="1" class="default">1</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">2</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">9</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">DsNtreeData image set entries</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th valign="top" rowspan="1" colspan="1" class="none">Image set ID</th>
+                     <th valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph">Image ID (not selected, not expanded</p>
+                     </th>
+                     <th valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph">Image ID (selected, not expanded)</p>
+                     </th>
+                     <th valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph">Image ID (not selected, expanded)</p>
+                     </th>
+                     <th valign="top" rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph">Image ID (selected, expanded)</p>
+                     </th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">ID_FOLDER_SET</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">ID_FOLDER_1</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">0</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">ID_FOLDER_2</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">0</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none">ID_SESSION_SET</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">ID_SESSION_1</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">ID_SESSION_2</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">0</td>
+                     <td valign="top" rowspan="1" colspan="1" class="none">0</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">DsNtreeData item
+               	  entries
+            </div>
+            <table class="default">
+               <thead noTR="1" class="default">
+                  <tr no="1" isLast="true" class="default">
+                     <td valign="top" rowspan="1" colspan="1" class="default">Type</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">Text</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">Image set ID</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">ID</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">Parent
+                        			ID
+                     </td>
+                  </tr>
+               </thead>
+               <tbody noTR="9" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <td valign="top" rowspan="1" colspan="1" class="default">1</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">root</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">ID_FOLDER_SET</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">1</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">0</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td valign="top" rowspan="1" colspan="1" class="default">0</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">leaf1</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">ID_SESSION_SET</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">2</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">1</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td valign="top" rowspan="1" colspan="1" class="default">0</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">leaf2</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">ID_SESSION_SET</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">6</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">1</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td valign="top" rowspan="1" colspan="1" class="default">1</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">node1</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">ID_FOLDER_SET</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">86</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">1</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td valign="top" rowspan="1" colspan="1" class="default">1</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">node2</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">ID_FOLDER_SET</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">87</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">1</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td valign="top" rowspan="1" colspan="1" class="default">0</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">leaf7</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">ID_SESSION_SET</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">88</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">1</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td valign="top" rowspan="1" colspan="1" class="default">0</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">leaf8</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">ID_SESSION_SET</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">43</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">1</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td valign="top" rowspan="1" colspan="1" class="default">0</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">leaf9</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">ID_SESSION_SET</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">78</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">1</td>
+                  </tr>
+                  <tr no="9" isLast="true" class="default">
+                     <td valign="top" rowspan="1" colspan="1" class="default">1</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">node4</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">ID_FOLDER_SET</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">361</td>
+                     <td valign="top" rowspan="1" colspan="1" class="default">1</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/dsctree, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

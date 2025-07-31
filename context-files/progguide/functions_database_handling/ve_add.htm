@@ -1,0 +1,176 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Operator + (add)</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="+ operator Add operator Operators + operator ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Operator + (add)</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The operator + adds the values of two value expressions.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;operator +&gt;
+    ::= <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a> + <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a>
+      </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The following table shows the data types that are allowed for
+               the left and right value expression and the resulting data type.
+               The type of the left value expression is on the vertical axis.
+               The type of the right value expression is on the horizontal
+               axis. A hyphen ('-') indicates that the combination is not
+               allowed.
+            </p>
+            <table class="default">
+               <tbody noTR="9" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">+</th>
+                     <th rowspan="1" colspan="1" class="default">I</th>
+                     <th rowspan="1" colspan="1" class="default">R</th>
+                     <th rowspan="1" colspan="1" class="default">S</th>
+                     <th rowspan="1" colspan="1" class="default">D</th>
+                     <th rowspan="1" colspan="1" class="default">T</th>
+                     <th rowspan="1" colspan="1" class="default">ID</th>
+                     <th rowspan="1" colspan="1" class="default">IS</th>
+                     <th rowspan="1" colspan="1" class="default">Ra</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">I</th>
+                     <td rowspan="1" colspan="1" class="default">I</td>
+                     <td rowspan="1" colspan="1" class="default">R</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">R</th>
+                     <td rowspan="1" colspan="1" class="default">R</td>
+                     <td rowspan="1" colspan="1" class="default">R</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">S</th>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">D</th>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">D</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">T</th>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">T</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">ID</th>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">D</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">ID</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">IS</th>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">T</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">IS</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                  </tr>
+                  <tr no="9" isLast="true" class="default">
+                     <th rowspan="1" colspan="1" class="default">Ra</th>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">I=Integer R=Real S=String D=Date T=TimeStamp ID=Interval Days
+               IS=Interval Seconds Ra=Raw
+            </p>
+            <p class="Paragraph">The addition of values of types <i class="Emphasis">integer</i> and <i class="Emphasis">real</i> follow the normal rules for addition of numeric
+               values.
+            </p>
+            <p class="Paragraph">The addition of a value of type <i class="Emphasis">date</i> and a value of
+               type <i class="Emphasis">interval days</i> yields a value of type <i class="Emphasis">date</i>.
+               The addition of a value of type <i class="Emphasis">timestamp</i> and a value of
+               type <i class="Emphasis">interval seconds</i> yields a value of type <i class="Emphasis">timestamp</i>. Arithmetic operations involving values of type <i class="Emphasis">date</i> or <i class="Emphasis">timestamp</i> and <i class="Emphasis">interval days</i> or <i class="Emphasis">interval seconds</i> obey the natural rules associated with
+               dates and yield valid results according to the Gregorian
+               calendar.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph"><i class="Emphasis">Example 1</i>: The following expression adds the constants 1 and 2.
+            </p><pre class="CodeBlock">
+1 + 2
+</pre><p class="Paragraph"><i class="Emphasis">Example 2</i>: The following expression adds the date "July 16, 2002" and
+               the interval "2 days". The result is "July 18, 2002".
+            </p><pre class="CodeBlock">
+DATE '2002-7-16' + 2
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/ve_add, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

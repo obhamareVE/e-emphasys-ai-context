@@ -1,0 +1,76 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Ordered hint</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="ordered hint query hints ordered hint ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Ordered hint</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The ordered hint advises the query processor to join the tables
+               of the query in the order in which they are listed in the from
+               clause. For example:
+            </p><pre class="CodeBlock">
+select a.bpid, b.bpid
+from   tccom100 a, tfgld106 b, tfacr200 c
+where  b.bpid = a.bpid
+and    b = c.bpid 
+hint   ordered
+</pre><p class="Paragraph">In this query, first table tccom100 should be joined with
+               table tfgld106. The result of this should be joined with
+               table tfacr200.
+            </p>
+            <p class="Paragraph">An ordered hint does not give you the guarantee that the
+               tables are actually joined in that order. In case you are
+               working on the Oracle level-2 driver the hint is simply added
+               to the Oracle query. Its effect depends on how Oracle
+               interprets this hint. In case you are working on a level-1
+               driver the tables are joined in the specified order if it
+               does not conflict with any other fixed order that may exist
+               due to a 'refers to' expression, a subquery or a company
+               number expression. For example:
+            </p><pre class="CodeBlock">
+select tppin020.cmbc
+from   tppdm740, tppin020
+where  tppin020.cmbc refers to tppdm740
+hint   ordered
+</pre><p class="Paragraph">On a level-1 driver the 'refers to' expression already
+               dictates a fixed join order between the tables tppdm740 and
+               tppin020. They cannot be joined in the order of the from
+               clause, therefore the ordered hint has no effect. To make the
+               ordered hint take effect you can substitute the 'refers to'
+               expression with an 'equal' expression:
+            </p><pre class="CodeBlock">
+select tppin020.cmbc
+from   tppdm740, tppin020
+where  tppin020.cmbc = tppdm740
+hint   ordered
+</pre><p class="Paragraph">Now the join can be performed in the hinted order.
+               Replacing the 'refers to' expression may however not always
+               be possible.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/hint_types.htm" class="manualLink">Hint types</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_query_hints/overview.htm" class="manualLink">Query hints overview</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_query_hints/ordered_hint, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

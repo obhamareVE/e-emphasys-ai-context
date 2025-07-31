@@ -1,0 +1,94 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>4GL group sections</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="4GL group sections sections group sections ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">4GL group sections</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">With dynamic forms, the mapping of groups to forms is not fixed.
+               	  Consequently, the only form sections that are relevant to dynamic forms are the <i class="Emphasis">form.all</i> and <i class="Emphasis">form.1</i> sections. When
+               	  dealing with dynamic forms, you use group sections instead of form
+               	  sections
+            </p>
+            <p class="Paragraph">You use group sections to program actions that you want to be
+	  executed when a particular group is activated or ended. Group sections consist
+	  of a main section and a subsection. The main section specifies the particular
+	  group(s) for which the actions are to be executed. The subsections specify when
+	  the actions must be executed – for example, when the group is activated or when
+	  the group is ended.</p>
+            <p class="Paragraph">Note that a group becomes active when the form on which it
+               	  occurs becomes current.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Main section</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">group.&lt;group number&gt;:</div>
+               <p class="Paragraph">This section defines the group for which the actions
+                  		programmed in the group subsections are executed. The group number is
+                  		automatically generated when the group is created and can be obtained from the <a href="../../progguide/glossary/glossary.htm#dfe" class="glossaryLink">DFE</a>.
+               </p>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Subsections</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">init.group:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed only
+                  		the first time the group becomes active, immediately before the <i class="Emphasis">before.group</i> subsection. You use this subsection to
+                  		program the first action to be performed by the system when the group becomes
+                  		active. When the group is split across two or more forms (because not all the
+                  		group fits on one form or because it is a repeating group), this subsection is
+                  		executed the first time that the first form on which the group occurs becomes
+                  		current.
+               </p>
+               <p class="Paragraph">Note: the <i class="Emphasis">init.group</i> section for group.1
+                  		is the former <i class="Emphasis">init.form</i> section for form.1. Group number 1
+                  		is reserved and represents a super group, containing all other
+                  		groups.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.group:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed each
+                  		time the specified group becomes active. When the group is split across more
+                  		than one form, this subsection is executed whenever any form on which it occurs
+                  		becomes current.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.group:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed each
+                  		time the form on which the group occurs is ended. When the group is split
+                  		across more than one form, this section is executed whenever any form on which
+                  		the group occurs is ended.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/overview.htm" class="manualLink">Programming a UI Script overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/4gl_event_sections.htm" class="manualLink">4GL event sections</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/flow_of_standard_program.htm" class="manualLink">Flow of 4GL engine</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/4gl_features/4gl_group_sections, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

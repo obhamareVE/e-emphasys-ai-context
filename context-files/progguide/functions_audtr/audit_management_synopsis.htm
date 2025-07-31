@@ -1,0 +1,158 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Audit management synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="audit management synopsis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Audit management synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">For a good overview of the relations between the audit
+               	  management functions see the <a href="#flow" class="internalLink">Relations between the functions</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Include files for audit management functions</div><pre class="CodeBlock">
+#include &lt;bic_audhdr.h&gt;
+#include &lt;bic_audlib&gt;
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Selecting transaction and action data</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_audtr/aud.select.transactions.htm" class="manualLink">aud.select.transactions()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long nr.tables, const string table.codes(,),
+                           const long companies(), const string
+                           selection.criteria, ref long selection.id)</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">bool</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_audtr/aud.audit.is.on.for.table.htm" class="manualLink">aud.audit.is.on.for.table()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(const string table.code(), long company)</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_audtr/aud.get.next.transaction.htm" class="manualLink">aud.get.next.transaction()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long selection.id, long number.of.retries, long
+                           retry.interval, ref string transaction.id, ref long
+                           commit.time, ref string session, ref string
+                           user)</code></td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_audtr/aud.get.next.action.htm" class="manualLink">aud.get.next.action()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long selection.id, ref long table.id, ref long
+                           company, ref string table.code, ref bool
+                           meta.data.changed, ref long current.action.number, ref
+                           string action.type)</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Handling meta data</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_audtr/aud.get.number.of.fields.htm" class="manualLink">aud.get.number.of.fields()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long selection.id, long table.id, ref long
+                           number.of.fields)</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_audtr/aud.get.field.list.htm" class="manualLink">aud.get.field.list()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long selection.id, long table.id, ref string
+                           field.names(,))</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_audtr/aud.get.field.ids.htm" class="manualLink">aud.get.field.ids()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long selection.id, long table.id, long
+                           number.of.fields, const string field.names(,), ref long
+                           field.ids())</code></td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">void</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_audtr/aud.get.field.info.htm" class="manualLink">aud.get.field.info()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long selection.id, long table.id, long field.id,
+                           ref long field.depht, ref long field.type, ref long
+                           field.length)</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Retrieving field information for a database
+               	  action
+            </div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">string</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_audtr/aud.get.field.status.htm" class="manualLink">aud.get.field.status()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long selection.id, long table.id, long
+                           field.id)</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">void</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_audtr/aud.put.old.field.value.htm" class="manualLink">aud.put.old.field.value</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long pid, string variable.name, long
+                           selection.id, long table.id, long field.id, long
+                           element [, bool endian] )</code></td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">void</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_audtr/aud.put.old.field.value.htm" class="manualLink">aud.put.new.field.value</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long pid, string variable.name, long
+                           selection.id, long table.id, long field.id, long
+                           element [, bool endian] )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Closing the selection of transaction data</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">long</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_audtr/aud.close.selection.htm" class="manualLink">aud.close.selection()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long selection.id)</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection"><a name="flow"></a><div class="subSectionTitle">Relations between the functions</div>
+            <div class="Figure"><img src="../images/audtr_flow.gif" alt="[...]" height="1016" width="664"></div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_examples.htm" class="manualLink">Audit management examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_audtr/audit_management_synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

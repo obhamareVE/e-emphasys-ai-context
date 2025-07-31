@@ -1,0 +1,71 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42I19 - Column is not a grouping column</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42I19 - Column is not a grouping column</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The SELECT clause, the WHERE clause or the HAVING clause of a
+               SQL statement uses a column of a grouped query, but the column
+               is not used within an aggregate function and the column it also
+               not a grouping column (the column is not in the GROUP BY
+               clause)
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div><pre class="CodeBlock">
+select edlevel, salary, max(bonus)
+from   dbtst120
+where  workdept = "A01"
+group  by edlevel
+</pre><p class="Paragraph">Column salary is not in the GROUP BY clause, therefore it
+               cannot be used in the SELECT clause, unless (like bonus) it is
+               used in an aggregate function. The WHERE clause filters the
+               records before grouping is applied, so column workdept can be
+               used here without an aggregate function. This query will cause
+               the error:
+            </p>
+            <p class="Paragraph">SQLState 42I19: Column 'salary'
+               is not a grouping column
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2</div><pre class="CodeBlock">
+select *
+from   dbtst120
+group  by workdept
+   </pre><p class="Paragraph">The select item * or &lt;table name&gt;.* cannot be
+               used if the query contains a GROUP BY clause, because these
+               items will automatically select the column _compnr as well and
+               this column cannot appear in a GROUP BY clause. This query will
+               cause the error:
+            </p>
+            <p class="Paragraph">SQLState 42I19: Column
+               'dbtst120._compnr' is not a grouping column
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/group_by.htm" class="manualLink">GROUP BY clause</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42I19, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

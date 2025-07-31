@@ -1,0 +1,117 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>get.arg.type()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions get.arg.type get.arg.type get.arg.type ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">get.arg.type()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;get.arg.type&nbsp;
+					(long&nbsp;arg_no)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function returns the type of the specified argument.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>arg_no</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The sequence number of an argument supplied to the
+                           currently executing function (i.e. the function in
+                           which <i class="Emphasis">get.arg.type()</i> is called). The allowed
+                           range for this sequence number is 1 ... <i class="Emphasis">get.argc()</i>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The function can return any of the following values:</p>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">VAR.TYPE.LONG</td>
+                     <td rowspan="1" colspan="1" class="none">The specified argument is of type long or boolean.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">VAR.TYPE.DOUBLE</td>
+                     <td rowspan="1" colspan="1" class="none">The specified argument is of type double.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">VAR.TYPE.STRING</td>
+                     <td rowspan="1" colspan="1" class="none">The specified argument is of type string.</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">VAR.TYPE.MULTIBYTE</td>
+                     <td rowspan="1" colspan="1" class="none">The specified argument is of type multibyte
+                        string.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">VAR.TYPE.UNKNOWN</td>
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">arg_no</i> is out of range, or the specified
+                        argument is not of one of the allowed types.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">For historic reasons,
+               these values are defined in terms of other named constants.
+               The definitions are available when the tiv level is at least 2010
+               or when USE_VAR_TYPE_DEFINES is defined to a non-zero value.
+            </p><pre class="CodeBlock">
+#if ES_TIV_LEVEL &gt;= 2010 or USE_VAR_TYPE_DEFINES
+#define VAR.TYPE.LONG      DB.LONG
+#define VAR.TYPE.DOUBLE    DB.DOUBLE
+#define VAR.TYPE.STRING    DB.STRING
+#define VAR.TYPE.MULTIBYTE DB.MULTIBYTE
+#define VAR.TYPE.UNKNOWN   (-1)
+#endif
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_varying_arguments/overview.htm" class="manualLink">Functions with variable number of arguments: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_varying_arguments/synopsis.htm" class="manualLink">Functions with variable number of arguments: synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_varying_arguments/example.htm" class="manualLink">Functions with variable number of arguments: sample program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_varying_arguments/get.arg.type, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

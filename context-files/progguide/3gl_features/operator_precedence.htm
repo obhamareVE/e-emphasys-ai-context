@@ -1,0 +1,116 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Operator precedence</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="operator precedence ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Operator precedence</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">An expression can include a number of operators, variables, and
+               constants. The overall result is calculated in accordance with the
+               rules of precedence described here. For example, because
+               multiplication has precedence over addition, the result of the
+               expression (3 + 4 * 5) is 23 and not 35.
+            </p>
+            <p class="Paragraph">The following table lists all operators in order of
+               decreasing precedence. Operators with high precedence are
+               evaluated before operators with lower precedence. Operators
+               on the same line in the table have the same precedence. If
+               they occur in one expression, they are evaluated from left to
+               right.
+            </p>
+            <table width="70%" border="1" class="default">
+               <tbody noTR="10" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Operator</th>
+                     <th rowspan="1" colspan="1" class="default">Associativity</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">- (negation)</td>
+                     <td rowspan="1" colspan="1" class="default">right to left</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">* / \</td>
+                     <td rowspan="1" colspan="1" class="default">left to right</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">&amp;</td>
+                     <td rowspan="1" colspan="1" class="default">left to right</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">+ - (minus)</td>
+                     <td rowspan="1" colspan="1" class="default">left to right</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">= &gt; &lt; &lt;&gt; &lt;= &gt;=</td>
+                     <td rowspan="1" colspan="1" class="default">none</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">NOT</td>
+                     <td rowspan="1" colspan="1" class="default">right to left</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">AND</td>
+                     <td rowspan="1" colspan="1" class="default">left to right</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">OR</td>
+                     <td rowspan="1" colspan="1" class="default">left to right</td>
+                  </tr>
+                  <tr no="10" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">?:</td>
+                     <td rowspan="1" colspan="1" class="default">right to left</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">You can use parentheses to force a specific precedence.
+               For example:
+            </p><pre class="CodeBlock">
+The result of the expression 3+4*5     is 23
+The result of the expression (3+4)*5   is 35
+The result of the expression 10/2*5    is 25 
+The result of the expression 10/(2*5)  is 1
+</pre><p class="Paragraph">In case of doubt, always use parentheses. This makes the
+               program easier to read.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <ul class="List">
+                  <li class="ListItem">The operators NOT and - (negation) are unary, the
+                     others are binary.
+                  </li>
+                  <li class="ListItem">The relational operators are non-associative. This
+                     means that A &lt;= B &lt;= C is not available. This should
+                     be A &lt;= B AND B &lt;= C.
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/expressions_and_operators.htm" class="manualLink">Expressions and operators</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/operator_precedence, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

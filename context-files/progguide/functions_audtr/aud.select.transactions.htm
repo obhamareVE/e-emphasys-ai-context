@@ -1,0 +1,326 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>aud.select.transactions()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="aud.select.transactions aud.select.transactions functions aud.select.transactions ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">aud.select.transactions()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;aud.select.transactions&nbsp;
+					(long&nbsp;nr.tables, const string&nbsp;table.codes(,), const long&nbsp;companies(), const string&nbsp;selection.criteria, ref long&nbsp;selection.id)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Before transactional data can be read from the audit trail
+                  the developer has to select the transactions. This function
+                  selects transactions from the audit trail using a list of tables
+                  and, if required, some additional selection criteria. The <i class="Emphasis">selection.criteria</i> is given in a SQL 'where' like fashion
+                  and is used to filter the desired transactions.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>nr.tables</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The number of tables for which transaction data must
+                           be selected. This must be greater than 0.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>table.codes(,)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">An array containing the tables for which transaction
+                           data must be selected. This array must have at least <i class="Emphasis">nr.tables</i> elements.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">const long</td>
+                     <td class="none"><code>companies()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">An array containing the company for each table in
+                           the table.codes array. This array must have at least <i class="Emphasis">nr.tables</i> elements. The physical company number
+                           must be used, because the audit trail is created per
+                           physical company. For a logical table, the physical
+                           company can be retrieved using function
+                           db.get.physical.compnr().
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>selection.criteria</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A string that holds the where clause for the
+                           selection. This string may be empty, in which case you
+                           will select all transaction data for the specified
+                           tables.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>selection.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Id of the prepared selection of transactions. This
+                           value can be used in subsequent function calls to
+                           functions like aud.get.next.transaction().
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_OK</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_NO_TABLES</th>
+                     <td rowspan="1" colspan="1" class="none">No tables are specified.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_NO_AUDIT</th>
+                     <td rowspan="1" colspan="1" class="none">The specified tables/companies are not valid, or
+                        audit is not on for one of the tables.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_INCORRECT_SELECTION</th>
+                     <td rowspan="1" colspan="1" class="none">The selection.criteria is not valid.</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_TOO_BIG</th>
+                     <td rowspan="1" colspan="1" class="none">Too many tables, too many different companies, or a
+                        very long selection.criteria string are specified.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_MULTI_COMPANY</th>
+                     <td rowspan="1" colspan="1" class="none">The <i class="Emphasis">companies</i> array contains multiple
+                        different companies, but the system setup doesn't allow
+                        simultaneous selection of transaction data for those
+                        companies.
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_FAIL</th>
+                     <td rowspan="1" colspan="1" class="none">The <i class="Emphasis">selection.criteria</i> is not valid.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Restrictions</div>
+            <p class="Paragraph">None.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">How to specify the selection criteria</div>
+            <p class="Paragraph">The <i class="Emphasis">selection.criteria</i> string is an expression that is
+               used to create the 'where' clause of an SQL statement. Instead
+               of using table fields in the expression the user must use
+               predefined identifiers.
+            </p>
+            <p class="Paragraph">The following identifiers are available for the user:</p>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">#TRANSID#</th>
+                     <td rowspan="1" colspan="1" class="none">The transaction id. Transaction id values are in
+                        string format.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">#COMMITTIME#</th>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The commit time of the transaction.</p>
+                        <p class="Paragraph">Note that the date/time is represented in UTC
+                           format.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">#SESSION#</th>
+                     <td rowspan="1" colspan="1" class="none">The session in which the transaction has been
+                        done.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">#USER#</th>
+                     <td rowspan="1" colspan="1" class="none">The Baan user that has performed the update.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Using these identifiers the developer can construct any
+               expression that complies with the constraints of a 'where'
+               condition of Infor ERP Enterprise SQL.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Constraints</div>
+            <table border="0" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Number of tables</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The number of tables for which transaction data can
+                           be selected simultaneously is limited.As a rule of
+                           thumb, you can presume the function will have no
+                           problems if the sum of the number of tables and the
+                           number of different companies is less than or equal to
+                           30.If too many tables, or too many different companies,
+                           or a very long selection.criteria string are specified,
+                           aud.select.transactions() will return AUD_TOO_BIG.
+                        </p>
+                        <p class="Paragraph">Furthermore, take into account that the number of
+                           tables influences the performance of the function.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Number of companies</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">By default, transaction notifications are logged in
+                           company 000. But the user has the option to log
+                           transaction notifications in the application company.
+                           If this is done (by setting resource variable
+                           "audit_per_compnr" for the Infor ERP Enterprise Virtual Machine),
+                           the functionality of aud.select.transactions() is
+                           limited, because it can only read from one company at a
+                           time. So if the resource variable is set, the function
+                           will only succeed if each table has the same company
+                           specified, or if the transaction notifications for the
+                           specified companies are stored in the same company.
+                        </p>
+                        <p class="Paragraph">In other words, if the transaction notifications for
+                           the specified tables are stored in multiple physical
+                           companies, the function will return
+                           AUD_MULTI_COMPANY.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Joins</td>
+                     <td rowspan="1" colspan="1" class="none">In the selection.criteria, a join with other tables
+                        is not possible because aud.select.transactions()
+                        creates an SQL statement with only the transaction
+                        notification table in the from list. The function
+                        returns an error if other tables are used in the
+                        selection criteria.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Case-sensitive identifiers</td>
+                     <td rowspan="1" colspan="1" class="none">When the selection criteria string is parsed, the
+                        identifiers (such as #USER#) are searched and the table
+                        field equivalent will be substituted for the
+                        identifier. The search and replace process is
+                        case-sensitive so only the identifiers as described
+                        above will be replaced. Other versions of the
+                        identifiers such as #User# or #user# are left unchanged
+                        and will present errors during the selection
+                        process.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Time ranges</td>
+                     <td rowspan="1" colspan="1" class="none">Note that with a time range the end time is included
+                        in the selection. To specify a time range of one hour
+                        use 08:00:00 - 08:59:59 and not 08:00:00 - 09:00:00.
+                        The time range must be specified in UTC time, which is
+                        independent of the current time zone.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">Parameter checking</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Parameter checking is limited. For the table and
+                           company parameters, only the data type is checked. So
+                           if you specify non-existing tables or companies, the
+                           aud.select.transactions() function may succeed, but no
+                           data will be selected. Also if you use tables for which
+                           auditing is not on, you will not notice this, except
+                           for the lack of transactions being retrieved.
+                        </p>
+                        <p class="Paragraph">For the selection.criteria, if the string can be
+                           parsed, the function will succeed, without checking the
+                           semantics. So you can for example specify
+                           selection.criteria like "#USER# &lt; 'John' and #USER#
+                           = 'Mary'".
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example of a selection.criteria string</div><pre class="CodeBlock">
+long    my.nr.tables
+string  my.tables(8, 3)
+long    my.companies(3)
+long    my.selection.id
+long    retval
+my.nr.tables = 3
+my.tables(1,1) = "tdsls400" | sales order headers
+my.companies(1) = 200
+my.tables(1,2) = "tdsls401" | sales order lines
+my.companies(2) = 200
+my.tables(1,3) = "tcibd001" | general item data
+my.companies(3) = 100
+retval = aud.select.transactions(my.nr.tables, my.tables, my.companies, 
+    "#TRANSID# &gt; '12345678901234567890' and #USER# in {'John', 'Mary'}",
+    my.selection.id)
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_synopsis.htm" class="manualLink">Audit management synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_examples.htm" class="manualLink">Audit management examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_audtr/aud.select.transactions, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

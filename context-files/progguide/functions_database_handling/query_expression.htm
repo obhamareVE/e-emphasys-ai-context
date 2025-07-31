@@ -1,0 +1,66 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Query expression</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="SELECT statement query expression ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Query expression</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">A query expression defines a row set. The row set
+               	 can be built up from multiple query specifications using the
+               UNION operator.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;query expression&gt;
+    ::= <a href="../../progguide/functions_database_handling/query_specification.htm" class="manualLink">Query specification</a>
+      | <a href="../../progguide/functions_database_handling/query_specification.htm" class="manualLink">Query specification</a>&nbsp;<a href="../../progguide/functions_database_handling/union.htm" class="manualLink">UNION operator</a> &lt;query expression&gt;</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The result of the <i class="Emphasis">&lt;query expression&gt;</i> is the result of the <i class="Emphasis">&lt;query specification&gt;</i> or the result of applying the <a href="../../progguide/functions_database_handling/union.htm" class="manualLink">UNION</a> operator.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following example shows the simplest <i class="Emphasis">query expression</i>,
+               a <i class="Emphasis">query specification</i>:
+            </p><pre class="CodeBlock">
+select empno, lastname
+from dbtst120
+where salary &gt; 30000</pre><p class="Paragraph">The following example shows a <i class="Emphasis">query expression</i> built up
+               from two <i class="Emphasis">query specification</i> s:
+            </p><pre class="CodeBlock">
+select empno, lastname
+from dbtst120
+where salary &gt; 30000
+union all
+select empno, lastname
+from dbtst120
+where salary &lt; 10000</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/select_statement.htm" class="manualLink">SELECT statement</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/union.htm" class="manualLink">UNION operator</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/query_expression, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42I63 - Combined column used in SET clause</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42I63 - Combined column used in SET clause</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">An SQL UPDATE statement contains a combined column with more
+               than one child column in its SET clause.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+update dbtst120
+set    cmbb = 50000
+where  edlevel &gt; 0
+   </pre><p class="Paragraph">Column cmbb is a combined column that contains two child
+               columns salary and bonus. This statement will cause the
+               error:
+            </p>
+            <p class="Paragraph">SQLState 42I63: Combined column
+               'cmbb' used in SET clause
+            </p>
+            <p class="Paragraph">A combined column that contains just one child column can be
+               used in the SET clause.
+            </p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42I63, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

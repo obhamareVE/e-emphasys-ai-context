@@ -1,0 +1,73 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Functions with variable number of arguments: sample program</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions varying numbers of arguments sample program ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Functions with variable number of arguments: sample program</div>
+      <div class="body">
+         <div class="GeneralSection"><pre class="CodeBlock">
+function long change.attributes( long id, ...)
+{
+    long    argc
+    long    i
+    long    long_value
+    double  double_value
+    string  string_value
+
+    argc    = get.argc()
+
+    for i = 3 to argc step 2
+        on case get.long.arg(i-1)
+        case DS_TITLE:
+            string_value = get.string.arg(i)
+            ......
+            break
+        case DS_BACKGROUND:
+            long_value = get.long.arg(i)
+            ......
+            break
+        default:
+            ......
+            break
+        endcase
+    endfor
+
+    return(0)
+}
+
+function call:
+
+    change.attributes(
+        window_id,
+        DS_TITLE,   "Title",
+        DS_BACKGROUND,  CW.GREEN,
+        DS_FOREGROUND,  CW.WHITE,
+        DS_WIDTH,   80,
+        DS_HEIGHT,  40
+    )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_varying_arguments/overview.htm" class="manualLink">Functions with variable number of arguments: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_varying_arguments/synopsis.htm" class="manualLink">Functions with variable number of arguments: synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_varying_arguments/example, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

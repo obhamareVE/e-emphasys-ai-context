@@ -1,0 +1,334 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>TSS Encoding</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="TSS ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">TSS Encoding</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">TSS is the default string encoding in the 3GL language. Several
+               	  types of TSS-encoded characters can be distinguished. The first distinction is
+               	  between single byte and multibyte.
+            </p>
+            <ul class="List">
+               <li class="ListItem">A single byte TSS-encoded character occupies exactly one byte
+                  		and that byte has a value different from 0x9B.
+               </li>
+               <li class="ListItem">A multibyte TSS-encoded character occupies exactly four
+                  		subsequent bytes and the first byte has the value 0x9B.
+               </li>
+            </ul>
+            <p class="Paragraph">Both single byte and multibyte TSS-encoded characters can be
+               	  further distinguished.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Single byte TSS-encoded characters</div>
+            <table border="1" class="default">
+               <tbody noTR="8" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph">TSS range</p>
+                        <p class="Paragraph">(hexadecimal)</p>
+                     </th>
+                     <th rowspan="1" colspan="1" class="default">Meaning</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">00 … 7F</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default"><a href="../../progguide/misc/ascii_table.htm" class="manualLink">ASCII table (C0 Controls and Basic Latin)</a> character.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">80 … 8A</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">Line drawing character.</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">8B … 9A</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">Code feature (see <a href="../../progguide/functions_char_b_win/cf.htm" class="manualLink">cf$()</a>).
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">9B</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">Lead byte for four-byte TSS character.</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">9C … 9E</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">Reserved for future use.</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">9F</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">Used to encode the Euro Sign &euro; in the rare circumstance (i.e. only in
+		a Cyrillic context) that none of the byte values in the range A0 … FF can be
+		used for it.</td>
+                  </tr>
+                  <tr no="8" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">A0 … FF</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Used to encode characters from one of the ISO 8859 subsets,
+		  dependent on the character set of the current locale. If possible, one of the
+		  values is used to encode the Euro Sign &euro;, which normally is not part of the
+		  supported ISO 8859 subsets.</p>
+                        <p class="Paragraph">This usage of the range A0 … FF is ambiguous. For example,
+		  in ISO 8859-1 the byte value E7 encodes the character Latin Small Letter C With
+		  Cedilla ç, but in ISO 8859-7 it encodes the character Greek Small Letter Eta
+		  &#951;.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Multibyte TSS-encoded characters</div>
+            <p class="Paragraph">Multibyte TSS-encoded characters are exactly four bytes long,
+               	  and their first byte has hexadecimal value 9B. They are distinguished by the
+               	  value of their second byte.
+            </p>
+            <table border="1" class="default">
+               <tbody noTR="10" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph">TSS range</p>
+                        <p class="Paragraph">(hexadecimal)</p>
+                     </th>
+                     <th rowspan="1" colspan="1" class="default">Meaning</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">9B 21 <i class="Emphasis">pp qq</i></p>
+                        <p class="Paragraph"></p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">Japanese full width character.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">9B 23 21 <i class="Emphasis">pp</i></p>
+                        <p class="Paragraph"></p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">Japanese half width character.</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">9B 25 <i class="Emphasis">pp qq</i></p>
+                        <p class="Paragraph"></p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">Simplified Chinese character.</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">9B 27 <i class="Emphasis">pp qq</i></p>
+                        <p class="Paragraph"></p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">Traditional Chinese character.</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">9B 31 <i class="Emphasis">pp qq</i></p>
+                        <p class="Paragraph"></p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">Korean (Wansung) character.</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">9B 32 <i class="Emphasis">pp qq</i></p>
+                        <p class="Paragraph"></p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">Korean (Johab) character.</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">9B 9C 9D <i class="Emphasis">nn</i></p>
+                        <p class="Paragraph"></p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Used to encode characters from one of the single byte
+                           Windows Code Pages which cannot be unified with one of
+                           the characters of the corresponding ISO 8859 subset.
+                           The fourth byte <i class="Emphasis">nn</i> is 64 (0x40) less than the
+                           Windows Code Page encoding of the character.
+                        </p>
+                        <p class="Paragraph">For example, the character Horizontal Ellipsis …
+            (encoded with hexadecimal byte value 85 in Windows Code
+            Page 1252) is not available in the corresponding
+            character set ISO 8859-1, and therefore it is encoded
+            in multibyte TSS as 9B 9C 9D 45.</p>
+                        <p class="Paragraph">In principle, this usage is ambiguous. However, in
+                           practice it appears that only 3 of the 52 used
+                           encodings in this range are ambiguous. For example,
+                           TSS-encoding 9B 9C 9D 74 is used in two different
+                           cases:
+                        </p>
+                        <ul class="List">
+                           <li class="ListItem">In Windows Code Page 1251 (Cyrillic), hexadecimal byte
+				value B4 encodes the character Cyrillic Small Letter Ghe With Upturn &#1169;. This
+				character is not available in the corresponding Cyrillic character set ISO
+				8859-5. Therefore, it is encoded in TSS as 9B 9C 9D 74.</li>
+                           <li class="ListItem">In Windows Code Pages 1256 (Arabic) and 1257 (Baltic
+				Rim) hexadecimal byte value B4 encodes the character Acute Accent ´. This
+				character is neither available in the Arabic character set ISO 8859-6, nor in
+				the Baltic Rim character set ISO 8859-13. Therefore, it is encoded in TSS as 9B
+				9C 9D 74.</li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">9B BC <i class="Emphasis">pp qq</i></p>
+                        <p class="Paragraph">…</p>
+                        <p class="Paragraph">9B BF <i class="Emphasis">pp qq</i></p>
+                        <p class="Paragraph"></p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Used to encode the first 2^16 Unicode code
+         points (U+0000 … U+FFFF). See <a href="../../progguide/misc/utft.htm" class="manualLink">UTF-T Encoding</a>. These Unicode code points
+                           form the so-called Basic Multilingual Plane (BMP), and
+                           their <a href="../../progguide/misc/utf16.htm" class="manualLink">UTF-16 Encoding</a> encoding consists of
+                           a single 16-bit word.
+                        </p>
+                        <p class="Paragraph">The first 128 Unicode code points correspond to the <a href="../../progguide/misc/ascii_table.htm" class="manualLink">ASCII table (C0 Controls and Basic Latin)</a> character set. For
+                           ASCII characters, this multibyte TSS encoding must not be
+                           used. Instead, for ASCII characters the single byte TSS
+                           			  encoding must be used.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">9B C0 <i class="Emphasis">pp qq</i></p>
+                        <p class="Paragraph">…</p>
+                        <p class="Paragraph">9B FF <i class="Emphasis">pp qq</i></p>
+                        <p class="Paragraph"></p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">Used to encode the remaining 2^20 Unicode code points (U+010000 …
+			U+10FFFF). See <a href="../../progguide/misc/utft.htm" class="manualLink">UTF-T Encoding</a>.
+                        	These Unicode code points are the so-called Supplementary Characters and their <a href="../../progguide/misc/utf16.htm" class="manualLink">UTF-16 Encoding</a> encoding
+                        	consists of two 16-bit words.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Ambiguity</div>
+            <p class="Paragraph">Two areas of the TSS encoding are ambiguous: the single byte
+   range A0 … FF and the multi byte range 9B 9C 9D <i class="Emphasis">nn</i>. For
+               several TSS encodings in these ranges it is not completely clear
+               which character is meant. In slightly other words: it depends on
+               the context which character is meant.
+            </p>
+            <p class="Paragraph">For example, in a West-European context the byte value E7
+   encodes the character Latin Small Letter C With Cedilla ç, but
+   in a Greek context it encodes the character Greek Small Letter
+   Eta &#951;. And, in a Cyrillic context, the four-byte sequence 9B 9C
+   9D 74 encodes the character Cyrillic Small Letter Ghe With
+   Upturn &#1169;, but in an Arabic or Baltic context it encodes the
+   character Acute Accent ´.</p>
+            <p class="Paragraph">The required context information is contained in the current
+               locale, especially in the character set used by that locale. See <a href="../../progguide/functions_multibyte_strings/mb.locale.info.htm" class="manualLink">mb.locale.info()</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Aliasing</div>
+            <p class="Paragraph">Many characters can be encoded in TSS in more than one way. Such
+	  characters have several 'aliases', therefore this phenomenon is called
+	  'aliasing'. For example, the character Greek Small Letter Alpha &#945; can be
+	  encoded in TSS (in a Greek context) by means of the single byte value E1, or it
+	  can be encoded by means of each of the multi byte TSS sequences 9B 21 26 41 (in
+	  the area for Japanese full width characters), 9B 25 A6 C1 (in the area for
+	  Simplified Chinese characters), 9B 27 A3 5C (in the area for Traditional
+	  Chinese characters), 9B 31 A5 E1 (in the area for Korean (Wansung) characters),
+	  or 9B BC 87 B1 (in the UTF-T area).</p>
+            <p class="Paragraph">When such a character must be encoded in TSS, then it depends
+               	  on the context which of the available aliases is chosen. If the environment is
+               	  running in Unicode mode, then the UTF-T encoding is chosen. Otherwise, the
+               	  character set of the current locale is used to select the appropriate TSS area
+               	  to encode the character in.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Unification</div>
+            <p class="Paragraph">More or less the inverse of the phenomenon of aliasing is called
+               	  'unification'. Code points from different character sets may represent the same
+               	  character, and may be mapped to the same TSS code point.
+            </p>
+            <p class="Paragraph">For example, code point B3 in character set ISO 8859-5 and code
+	  point C3 in Windows Code Page 1251 both represent the character Cyrillic
+	  Capital Letter Ghe &#1043; and are mapped to the single TSS code point
+	  B3.</p>
+            <p class="Paragraph">As another example, consider the Japanese TSS code point 9B 21
+               	  25 22, which represents the character Katakana Letter A &#12450;. Each one of the
+               	  Kanji EUC code point A5 A2, the Shift JIS code point 83 41, and the Windows
+               	  Code Page 932 code point 83 41 represents that same character Katakana Letter A
+               	  &#12450;, so each one of them is mapped to TSS code point 9B 21 25 22.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Unicode mode</div>
+            <p class="Paragraph">If the environment is running in Unicode mode, then the
+               phenomena of ambiguity and aliasing almost disappear. Some
+               ambiguity remains possible when old TSS-encoded data is used,
+               either received from external parties not running in Unicode
+               mode, or retained in the system itself from before it was
+               switched to Unicode mode.
+            </p>
+            <p class="Paragraph">TSS data generated when running in Unicode mode (e.g. by means
+               of one of the functions <a href="../../progguide/functions_multibyte_strings/mb.import.htm" class="manualLink">mb.import$()</a>, <a href="../../progguide/functions_multibyte_strings/mb.import.raw.htm" class="manualLink">mb.import.raw()</a>, <a href="../../progguide/functions_multibyte_strings/uni.import.htm" class="manualLink">uni.import()</a>,
+               and <a href="../../progguide/functions_multibyte_strings/utf8.import.htm" class="manualLink">utf8.import()</a>)
+   is restricted to the single byte range 00 … 9A (for ASCII, line
+   drawing characters, and code features) and the multi byte UTF-T
+   range 9B BC <i class="Emphasis">pp qq</i> … 9B FF <i class="Emphasis">pp qq</i> (for non-ASCII
+               Unicode).
+            </p>
+            <p class="Paragraph">This implies that the phenomenon of unification occurs very
+   often. For example, the character Greek Small Letter Alpha &#945; is
+   mapped to UTF-T code point 9B BC 87 B1, regardless whether it
+   was originally represented by a code point in a Greek character
+   set (code point E1 in ISO 8859-7 or Windows Code Page 1253), or
+   in a Japanese character set (code point A6 C1 in Kanji EUC, or
+   code point 83 BF in Shift JIS or Windows Code Page 932), or in a
+   Simplified Chinese character set (code point A6 C1 in GB2312 or
+   Windows Code Page 936), or in a Traditional Chinese character
+   set (code point A3 5C in Big 5 or Windows Code Page 950), or in
+   a Korean character set (code point A5 E1 in Wansung or Windows
+   Code Page 949).</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/misc/ascii_table.htm" class="manualLink">ASCII table (C0 Controls and Basic Latin)</a></li>
+               <li class="RelTopic"><a href="../../progguide/misc/utft.htm" class="manualLink">UTF-T Encoding</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/misc/tss, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

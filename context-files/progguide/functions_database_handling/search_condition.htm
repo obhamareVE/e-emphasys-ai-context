@@ -1,0 +1,130 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Search condition</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Search condition ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Search condition</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The search condition is a condition (expression) that
+               evaluates to True, Unknown or False. The condition is comparable
+               with an expression in an ordinary programming language: it has
+               constants, variables, relational operators and logical
+               operators.
+            </p>
+            <p class="Paragraph">The search condition is used to restrict a row set to those
+               rows that fullfil the search condition. A row fullfils a search
+               condition if and only if, for that row, the search condition
+               evaluates to True.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;search condition&gt; 
+    ::= &lt;search condition&gt; <a href="../../progguide/functions_database_handling/and_sc.htm" class="manualLink">AND boolean operator</a> &lt;search condition&gt;
+    | &lt;search condition&gt; <a href="../../progguide/functions_database_handling/or_sc.htm" class="manualLink">OR boolean operator</a> &lt;search condition&gt;
+    | <a href="../../progguide/functions_database_handling/not_sc.htm" class="manualLink">NOT boolean operator</a> &lt;search condition&gt;
+    | ( &lt;search condition&gt; )
+    | <a href="../../progguide/functions_database_handling/comparison_pred.htm" class="manualLink">Comparison predicate</a>
+    | &lt;row value constructor&gt; <a href="../../progguide/functions_database_handling/between_pred.htm" class="manualLink">BETWEEN predicate</a>
+        &lt;row value constructor&gt; AND &lt;row value constructor&gt;
+    | &lt;row value constructor&gt; <a href="../../progguide/functions_database_handling/inrange_pred.htm" class="manualLink">INRANGE predicate</a> &lt;row value constructor&gt; AND &lt;row value constructor&gt;
+    | <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a>&nbsp;<a href="../../progguide/functions_database_handling/is_null_pred.htm" class="manualLink">IS NULL predicate</a>
+    | <a href="../../progguide/functions_database_handling/like_pred.htm" class="manualLink">LIKE predicate</a>
+    | <a href="../../progguide/functions_database_handling/in_pred.htm" class="manualLink">IN predicate</a>
+    | <a href="../../progguide/functions_database_handling/exists_pred.htm" class="manualLink">EXISTS predicate</a> ( <a href="../../progguide/functions_database_handling/sub_query.htm" class="manualLink">Sub query</a> )
+
+    | <a href="../../progguide/functions_database_handling/refers_to_pred.htm" class="manualLink">REFERS TO predicate</a>
+    | <a href="../../progguide/functions_database_handling/compnr_pred.htm" class="manualLink">_compnr predicate</a>
+         
+
+&lt;row value constructor&gt; 
+    ::= <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a>
+      | { <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a> [ { , <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a> }... ] }
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">sub query</div>
+               <p class="Paragraph">The sub query shall be of degree 1.</p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">_compnr predicate</div>
+               <p class="Paragraph">If a search condition is of the form "SC1 OR SC2" or "NOT SC"
+                  then it shall not contain a _compnr predicate, unless there is
+                  an intervening subquery.
+               </p>
+               <p class="Paragraph">Examples of <i class="Emphasis">incorrect</i> usage:
+               </p><pre class="CodeBlock">
+_compnr = 0 OR empno = 10
+</pre><pre class="CodeBlock">
+NOT ( _compnr = 0 AND empno = 10 )
+</pre><p class="Paragraph">Examples of correct usage. The second example shows that a
+                  _compnr predicate is used in a search condition of the form "SC1
+                  OR SC2" but there is an intervening subquery. Within the search
+                  condition of the subquery the usage of the _compnr predicate is
+                  correct.
+               </p><pre class="CodeBlock">
+_compnr = 0 AND empno = 10
+</pre><pre class="CodeBlock">
+empno = 10 OR EXISTS (
+    SELECT * FROM dbtst190 WHERE _compnr = 0 )
+</pre></div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">REFERS TO predicate</div>
+               <p class="Paragraph">If a search condition is of the form "SC1 OR SC2" or "NOT SC"
+                  then it shall not contain a REFERS TO predicate, unless there is
+                  an intervening subquery.
+               </p>
+               <p class="Paragraph">Examples of <i class="Emphasis">incorrect</i> usage:
+               </p><pre class="CodeBlock">
+a.empno REFERS TO b.empno OR b.empno = 10
+</pre><pre class="CodeBlock">
+NOT ( a.empno REFERS TO b.empno )
+</pre><p class="Paragraph">Examples of correct usage. The second example shows that a
+                  REFERS TO predicate is used in a search condition of the form
+                  "SC1 OR SC2" but there is an intervening subquery.
+               </p><pre class="CodeBlock">
+_compnr = 0 AND a.empno REFERS TO b
+</pre><pre class="CodeBlock">
+empno = 10 OR EXISTS (
+    SELECT * FROM dbtst190 a, dbtst120 b WHERE a.empno REFERS TO b )
+</pre></div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph"><i class="Emphasis">Example 1</i>: The following search condition is True if edlevel is larger
+               than 10 and hiredate is before January 16, 1999.
+            </p><pre class="CodeBlock">
+{ edlevel } &gt; 10  AND  hiredate &lt; DATE '1999-1-16'
+</pre><p class="Paragraph"><i class="Emphasis">Example 2</i>: The following search condition is True if the employees
+               salary is larger than 10000 and there does not exist another
+               employee with a larger salary.
+            </p><pre class="CodeBlock">
+{ emp.salary &gt; 10000 } 
+    AND NOT EXISTS( SELECT * FROM dbtst120 where salary &gt; emp.salary )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/search_condition, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

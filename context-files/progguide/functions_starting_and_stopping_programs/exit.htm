@@ -1,0 +1,79 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>exit()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="exit exit functions exit ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">exit()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;exit&nbsp;
+					( [void&nbsp;exitvalue])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">When included in a 3GL program that is not activated by a 4GL
+                  program, <i class="Emphasis">exit()</i> has the same effect as <a href="../../progguide/functions_starting_and_stopping_programs/end.htm" class="manualLink">end()</a> and <a href="../../progguide/functions_starting_and_stopping_programs/end.htm" class="manualLink">end()</a> in
+                  a 3GL program.
+               </p>
+               <p class="Paragraph">When included in a 4GL script, or in a 3GL program that is
+                  activated from a 4GL program with <a href="../../progguide/functions_starting_and_stopping_programs/zoom.to.htm" class="manualLink">zoom.to$()</a>, an exit value is returned
+                  to the calling program. The <i class="Emphasis">exitvalue</i> argument can be of
+                  any type (except an array). It is always converted to a string.
+                  If no exit value is specified, an empty string is returned.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">[void</td>
+                     <td class="none"><code>exitvalue</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Exit value to be returned to the calling program.</p>
+                        <p class="Paragraph"><a href="../../progguide/3gl_features/type_conversions.htm#implicit_type_conversion" class="manualLink">Implicit conversion</a> of the supplied value from its original type
+                           to the string type is performed.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_starting_and_stopping_programs/overview_and_synopsis.htm" class="manualLink">Starting and stopping programs: overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_starting_and_stopping_programs/exit, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

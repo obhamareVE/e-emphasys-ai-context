@@ -1,0 +1,153 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dal.set.property()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dal.set.property dal.set.property functions dal.set.property ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dal.set.property()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_dam&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;dal.set.property&nbsp;
+					(string&nbsp;tbl.name, long&nbsp;object_set, string&nbsp;prop_name, void&nbsp;value, long&nbsp;mode)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">In order to notify the DAL about a change to the value of a
+                  property, you must use this function to change the value. Using
+                  this function ensures that the relevant property hooks are
+                  executed when the value is changed. If you use an assignment or
+                  the db.* functions to change a property value, the DAL is not
+                  notified of the change. Consequently, the property checks in the
+                  DAL are not executed.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>tbl.name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A string containing the name of the DAL.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>object_set</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The ID of an open object set (if this ID is not
+                           known, use the table ID).
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>prop_name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the property whose value must be
+                           changed.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>value</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>mode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use this to indicate the value for the <i class="Emphasis">has_changed</i> flag of the property. The possible
+                           values are DAL_NEW or DAL_UPDATE.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">Always 0</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">DEPRECATED</div>
+            <p class="Paragraph">This function has been deprecated. Please use <a href="../../progguide/functions_db_operations/dal.set.field.htm" class="manualLink">dal.set.field()</a> instead.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Remark</div>
+            <p class="Paragraph">The property check is not executed by calling this function,
+               only the has_changed flag is set. The return value of this
+               function is therefore not the return value of the property
+               check, but 0.
+            </p>
+            <p class="Paragraph">There is another function: <a href="../../progguide/functions_db_operations/dal.set.property.with.check.htm" class="manualLink">dal.set.property.with.check()</a> which does the same as dal.set.property, but also calls the
+               property check immediately.
+            </p>
+            <p class="Paragraph">You can call this function from both UI and DAL scripts.</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">This is an example of using the function in a DAL script to
+               update an object in another object set.
+            </p><pre class="CodeBlock">
+| This function is in the DAL of tdsls401
+
+function extern long after.save.object(long mode)
+{
+    long ret
+
+    if mode = DAL_NEW then
+        old.amnt = 0
+    endif
+    select  tdsls400.*
+    from    tdsls400 for update
+    where   tdsls400.orno =:tdsls401.orno
+    selectdo
+        dal.set.property("tdsls400", ttdsls400, "tdsls400.amnt",
+            tdsls400.amnt - old.amnt + tdsls401.amnt, DAL_UPDATE)
+        dal.update("tdsls400", ttdsls400, ret, true, db.retry)
+    endselect
+    return(ret)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/dal.set.property, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Predefined variables</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="predefined variables (report scripts) ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Predefined variables</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">You can use the following predefined variables in a report
+               script.
+            </p>
+            <p class="Paragraph">R = read-only&nbsp;&nbsp;&nbsp;&nbsp; R/W = read and write</p>
+            <table border="0" class="none">
+               <tbody noTR="20" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.autobefores</td>
+                     <td rowspan="1" colspan="1" class="none">R/W</td>
+                     <td rowspan="1" colspan="1" class="none">A boolean indicating whether or not before.field
+                        layouts are automatically repeated at the top of a page
+                        if the page break does not correspond with a sort
+                        break. The default value is true.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.autoreset</td>
+                     <td rowspan="1" colspan="1" class="none">R/W</td>
+                     <td rowspan="1" colspan="1" class="none">A boolean indicating whether or not <a href="../../progguide/report_scripts/functions_in_report_scripts.htm" class="manualLink">Report script functions</a> is automatically performed in the case of breaks of
+                        layouts in sorting fields. The default value is
+                        true.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.break</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td rowspan="1" colspan="1" class="none">A boolean that is set to true during printing of
+                        before.field layouts when the layout is printed as the
+                        result of a sort field change. It is set to false when
+                        a before.field layout is printed because of a page
+                        break.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.enddata</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td rowspan="1" colspan="1" class="none">A boolean indicating whether or not the end of the
+                        data has been reached.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.header</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td rowspan="1" colspan="1" class="none">A boolean that is set to true during printing of
+                        header layouts and during printing of before.field
+                        layouts at the top of a page.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.language$</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td rowspan="1" colspan="1" class="none">The language code of the report.</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.lineno</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td rowspan="1" colspan="1" class="none">The current line number.</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.multicol</td>
+                     <td rowspan="1" colspan="1" class="none">R/W</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Indicates whether or not multiple columns are used
+                           when more than one layout fits on a line. Possible
+                           values are:
+                        </p>
+                        <p class="Paragraph">MULTICOL_NONE</p>
+                        <p class="Paragraph">Normal output; no columns are used.</p>
+                        <p class="Paragraph">MULTICOL_ORDER_HORIZONTAL</p>
+                        <p class="Paragraph">Output is arranged in multiple columns, ordered
+                           horizontally. For example:
+                        </p>
+                        <p class="Paragraph">rec_1&nbsp;&nbsp;&nbsp; rec_2&nbsp;&nbsp;&nbsp; rec_3</p>
+                        <p class="Paragraph">rec_4&nbsp;&nbsp;&nbsp; rec_5&nbsp;&nbsp;&nbsp; rec_6</p>
+                        <p class="Paragraph">MULTICOL_ORDER_VERTICAL</p>
+                        <p class="Paragraph">Output is arranged in multiple columns, ordered
+                           vertically (per page). For example:
+                        </p>
+                        <p class="Paragraph">rec_1&nbsp;&nbsp;&nbsp; rec_3&nbsp;&nbsp;&nbsp; rec_5</p>
+                        <p class="Paragraph">rec_2&nbsp;&nbsp;&nbsp; rec_4&nbsp;&nbsp;&nbsp; rec_6</p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.multicol.count</td>
+                     <td rowspan="1" colspan="1" class="none">R/W</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies the number of columns to use when multiple
+                        columns are specified (see <i class="Emphasis">lattr.multicol</i>). The
+                        default value is 0. In this case, the report manager
+                        calculates the number of columns based of the report
+                        width and the layout width.
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.multicol.repeat</td>
+                     <td rowspan="1" colspan="1" class="none">R/W</td>
+                     <td rowspan="1" colspan="1" class="none">A boolean indicating whether headers and footers are
+                        automatically repeated for each column. The default
+                        value is true. The width of the header and footer
+                        layouts width must be equal to or less than the width
+                        of the detail layout.
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.pageno</td>
+                     <td rowspan="1" colspan="1" class="none">R/W</td>
+                     <td rowspan="1" colspan="1" class="none">Current page number.</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.print</td>
+                     <td rowspan="1" colspan="1" class="none">R/W</td>
+                     <td rowspan="1" colspan="1" class="none">Indicates whether or not a layout is to be
+                        printed.
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.prline</td>
+                     <td rowspan="1" colspan="1" class="none">R/W</td>
+                     <td rowspan="1" colspan="1" class="none">After expansion of a variable in a report, this is
+                        filled with the text line that is printed.
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.recordtimes</td>
+                     <td rowspan="1" colspan="1" class="none">R/W</td>
+                     <td rowspan="1" colspan="1" class="none">Indicates the number of times the layout will be
+                        printed.
+                     </td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.textexpand</td>
+                     <td rowspan="1" colspan="1" class="none">R/W</td>
+                     <td rowspan="1" colspan="1" class="none">A boolean indicating whether or not variables
+                        included in text fields can be expanded. The default is
+                        false.
+                     </td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.textlang$</td>
+                     <td rowspan="1" colspan="1" class="none">R/W</td>
+                     <td rowspan="1" colspan="1" class="none">The language code for printing text. The default is
+                        the language code of the report.
+                     </td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.textline</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td rowspan="1" colspan="1" class="none">A string containing the source text line from the
+                        text manager.
+                     </td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.textlineno</td>
+                     <td rowspan="1" colspan="1" class="none">R</td>
+                     <td rowspan="1" colspan="1" class="none">The number of the line that must be printed.</td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.textlines.max</td>
+                     <td rowspan="1" colspan="1" class="none">R/W</td>
+                     <td rowspan="1" colspan="1" class="none">The maximum number of lines in the layout.</td>
+                  </tr>
+                  <tr no="20" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">lattr.textlines.min</td>
+                     <td rowspan="1" colspan="1" class="none">R/W</td>
+                     <td rowspan="1" colspan="1" class="none">The minimum number of lines in the layout.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/overview.htm" class="manualLink">Report scripts overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/sections.htm" class="manualLink">Report script sections</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/predefined_variables.htm" class="manualLink">Predefined variables</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/functions_in_report_scripts.htm" class="manualLink">Report script functions</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/expanding_text_variables.htm" class="manualLink">Expanding text variables</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/report_scripts/predefined_variables, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

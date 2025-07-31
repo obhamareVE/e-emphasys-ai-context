@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>4GL zoom.from sections</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="4GL zoom.from sections sections zoom.from sections ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">4GL zoom.from sections</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">You use zoom.from sections to program actions that you want to
+               be executed when the current session is activated as a zoom
+               process. A zoom process can be activated by a form-specific command
+               of type session, by zooming on an input field, by pressing CTRL+B,
+               or by calling <a href="../../progguide/functions_starting_and_stopping_programs/zoom.to.htm" class="manualLink">zoom.to$()</a> in the program script. Zoom.from sections consist
+               of a main section and a subsection. The main section specifies
+               the process for which the actions must be executed. The
+               subsections specify when the actions must be executed.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Main sections</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">zoom.from.&lt;zoom name&gt;:</div>
+               <p class="Paragraph">Each field has a name that can be used as a zoom name. You
+                  can specify the zoom name in this main section. The zoom name
+                  indicates which field the current session was zoomed from (when
+                  the subprocess is started from a form command, the zoom name is
+                  "choice"). The subsections associated with this main section are
+                  executed when the current process was zoomed to from the
+                  specified process.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">zoom.from.all:</div>
+               <p class="Paragraph">The subsections associated with this main section are
+                  executed for all processes from which the current session can be
+                  zoomed to.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">zoom.from.other:</div>
+               <p class="Paragraph">A subsection associated with this section is executed for all
+                  processes for which the particular subsection has not been
+                  programmed in a <i class="Emphasis">zoom.from.&lt;zoom name&gt;</i> section.
+               </p>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Subsections</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">on.entry:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed each
+                  time the current process is started from the specified
+                  process(es). You can use this subsection to import
+                  variables.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">on.exit:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed at the
+                  end of the current process, if the current process was started
+                  from the process(es) specified in the main section. You can use
+                  this subsection to export variables.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+zoom.from.all:
+on.entry:
+                   import("globvar", localvar)
+on.exit:
+                export("globvar", localvar)
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/overview.htm" class="manualLink">Programming a UI Script overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/4gl_event_sections.htm" class="manualLink">4GL event sections</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/flow_of_standard_program.htm" class="manualLink">Flow of 4GL engine</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/4gl_features/4gl_zoomfrom_sections, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

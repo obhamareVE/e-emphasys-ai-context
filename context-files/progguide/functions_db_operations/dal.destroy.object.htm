@@ -1,0 +1,155 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dal.destroy.object()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dal.destroy.object dal.destroy.object functions dal.destroy.object ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dal.destroy.object()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_dam&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;dal.destroy.object&nbsp;
+					(string&nbsp;tbl.name [, long&nbsp;error.flag])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Deletes a record of the given table. The record must have
+                  been locked for update. This function does the same as <a href="../../progguide/functions_db_operations/dal.destroy.htm" class="manualLink">dal.destroy()</a>, however it does
+                  more detailed permission checking. Further, the <a href="../../progguide/functions_dal/method.is.allowed.htm" class="manualLink">method.is.allowed()</a> hook is always called ( <a href="../../progguide/functions_db_operations/dal.destroy.htm" class="manualLink">dal.destroy()</a> allows you to skip
+                  this hook by passing FALSE to the prop_check parameter).
+               </p>
+               <p class="Paragraph">Except for more detailed permission checking, this function
+                  is equivalent to:
+               </p>
+               <p class="Paragraph"><code class="Code">dal.destroy(tbl.name, tbl.cursor, retval, true,
+                     db.retry)</code></p>
+               <p class="Paragraph">The sequence of the actions is as follows:</p>
+               <ol class="ProcedureList">
+                  <li class="ProcedureListItem">Table level permission is checked</li>
+                  <li class="ProcedureListItem">Record level permission is checked</li>
+                  <li class="ProcedureListItem">The method.is.allowed(DAL_DESTROY) hook is called</li>
+                  <li class="ProcedureListItem">The before.destroy.object hook is called</li>
+                  <li class="ProcedureListItem">The delete is performed</li>
+                  <li class="ProcedureListItem">The after.destroy.object hook is called</li>
+               </ol>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>tbl.name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The table name of the DAL.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>error.flag</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">For some errors, it is possible to indicate the
+                           action the system must perform when the error occurs.
+                           You use this argument to specify the required
+                           action(s). See <a href="../../progguide/functions_database_handling/error_handling.htm" class="manualLink">Error handling</a>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">0</td>
+                     <td rowspan="1" colspan="1" class="none">Record is deleted</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DALHOOKERROR</td>
+                     <td rowspan="1" colspan="1" class="none">One of the hooks blocked the delete action</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DALNOSETPERM</td>
+                     <td rowspan="1" colspan="1" class="none">No table level permission</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">DALNOOBJPERM</td>
+                     <td rowspan="1" colspan="1" class="none">No record level permission</td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">&gt;0</td>
+                     <td rowspan="1" colspan="1" class="none">The error code of the db.delete() action</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Error Handling</div>
+            <p class="Paragraph">In case a database error occurs (a return value greater than
+               0), then this function will set an error message. E.g. in case a
+               record cannot be deleted because it is used in another table
+               then an error message is set.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Hooks called</div>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_dal/before.open.object.set.htm" class="manualLink">before.open.object.set()</a> if this is the first call to the DAL
+               </li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/method.is.allowed.htm" class="manualLink">method.is.allowed()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/before.destroy.object.htm" class="manualLink">before.destroy.object()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_dal/after.destroy.object.htm" class="manualLink">after.destroy.object()</a></li>
+            </ul>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">This function can be be used for Update Sessions as well as
+                  Integrations via OpenWorld. Because it performs more detailed
+                  permission checking it is a bit slower than <a href="../../progguide/functions_db_operations/dal.destroy.htm" class="manualLink">dal.destroy()</a>. Therefore it is
+                  advised to use <a href="../../progguide/functions_db_operations/dal.destroy.htm" class="manualLink">dal.destroy()</a> in case performance
+                  is at stake.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/dal.destroy.object, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

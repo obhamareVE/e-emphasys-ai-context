@@ -1,0 +1,118 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Specific Methods</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Specific Methods</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The name of the specific method is built as follows:</p>
+            <ul class="List">
+               <li class="ListItem">execute.&lt;component name&gt;.&lt;method&gt;()</li>
+               <li class="ListItem">example: execute.Header.Approve()</li>
+               <li class="ListItem">example without component: execute.Approve()</li>
+            </ul>
+            <p class="Paragraph">The system will generate the library. The file can be divided
+               	  into two parts. The first part is read-only, while in the second part the
+               	  content of the specific methods must be programmed (see the example
+               	  below).
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example Read-only</div><pre class="CodeBlock">
+function extern long tlbct.bl790sf00.execute.Header.Approve()
+{
+    DllUsage
+    EndDllUsage
+
+    tlbct.bl790st00.get.Header.orderNumber(g.Header.orderNumber)
+
+    RETIFNOK(execute.Header.Approve())
+
+   
+RETIFNOK(tlbct.bl790st00.set.Header.lifeCycle(g.Header.lifeCycle))
+
+    return(0)
+}
+
+function extern long tlbct.bl790sf00.execute.Header.Present()
+{
+    DllUsage
+    EndDllUsage
+
+    tlbct.bl790st00.get.Header.orderNumber(g.Header.orderNumber)
+
+    RETIFNOK(execute.Header.Present())
+
+    RETIFNOK(tlbct.bl790st00.set.Header.present(g.Header.present))
+
+    return(0)
+}
+</pre><p class="Paragraph">Between the read-only and the development part the following
+               	  'comment' lines are present. The code below these lines will not be overwritten
+               	  or removed during regeneration of the BOL.
+            </p><pre class="CodeBlock">
+|********** Below this line the specific function can be filled***************
+|********** These lines will not be overwritten by Generation tool************
+|********** REMARK : Changes above this line will be overwritten**************
+|||SPECIFIC PART||| |* Do not remove this line!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">To be filled by the developer</div><pre class="CodeBlock">
+function long execute.Header.Approve()
+{
+    #pragma used dll otlbctdll7001
+
+    RETIFNOK(tlbct.dll7001.approve.order(g.Header.orderNumber,
+                         g.Header.lifeCycle))
+        return(0)
+}
+
+function long execute.Header.Present()
+{
+    table   ttlbct700
+
+    g.Header.present = false
+    select  tlbct700.orno
+    from    tlbct700
+    where   tlbct700._index1 = {:g.Header.orderNumber}
+    selectdo
+        g.Header.present = true
+    endselect
+
+        return(0)
+}
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Error Handling</div>
+            <p class="Paragraph">In the development part, it is possible to report problems. The
+               	  standard function 'dal.set.error.message' have to be used for setting an error
+               	  message, followed by 'return (DALHOOKERROR)'.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/bol/filter_hooks.htm" class="manualLink">Filter Hooks</a></li>
+               <li class="RelTopic"><a href="../../progguide/bol/before_hooks.htm" class="manualLink">Before and After Method Hooks</a></li>
+               <li class="RelTopic"><a href="../../progguide/bol/st_layer.htm" class="manualLink">Protected Layer</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/bol/specific_methods, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

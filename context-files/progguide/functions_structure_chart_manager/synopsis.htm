@@ -1,0 +1,178 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Structure ChartManager synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="structure chart manager synopsis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Structure ChartManager synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This API is only supported for Baan
+               Windows and its usage is therefore deprecated.
+            </p>
+            <p class="Paragraph"><code class="Code">#include &lt;bic_eis&gt;</code></p>
+            <table border="0" class="none">
+               <tbody noTR="16" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_structure_chart_manager/create.node.htm" class="manualLink">create.node()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string tree_name(25), string
+         parent_id(25),
+         &nbsp; string node_id(25), string node_desc(80),
+         &nbsp; long node_class [, long process_id ] )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_structure_chart_manager/create.tree.htm" class="manualLink">create.tree()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string tree_name(25),
+         &nbsp; string tree_title(80) )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_structure_chart_manager/create.tree.button.htm" class="manualLink">create.tree.button()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string tree_name(25), long button_id,
+         &nbsp; string button_desc(80)
+         &nbsp; [, long process_id ] )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_structure_chart_manager/destroy.tree.htm" class="manualLink">destroy.tree()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string tree_name(25) [, long process_id ]
+                           )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_structure_chart_manager/get.tree.default.htm" class="manualLink">get.tree.default()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_structure_chart_manager/get.tree.node.dpress.htm" class="manualLink">get.tree.node.dpress()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref long event(), ref long process_id,
+         &nbsp; ref string node_id() )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_structure_chart_manager/get.tree.node.press.htm" class="manualLink">get.tree.node.press()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref long event(), ref long process_id,
+         &nbsp; ref string node_id() )</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_structure_chart_manager/get.tree.push.button.htm" class="manualLink">get.tree.push.button()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref long event(), ref long process_id,
+         &nbsp; ref long button_id, ref string node_id() )</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_structure_chart_manager/set.node.class.htm" class="manualLink">set.node.class()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string tree_name(25), string
+         node_id(25),
+         &nbsp; long node_class [, long process_id ] )</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_structure_chart_manager/set.node.class.color.htm" class="manualLink">set.node.class.color()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string tree_name(25), long node_class,
+         &nbsp; long class_color [, long process_id ] )</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_structure_chart_manager/set.tree.background.htm" class="manualLink">set.tree.background()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string tree_name(25), long color
+         &nbsp; [, long process_id ]</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_structure_chart_manager/set.tree.font.htm" class="manualLink">set.tree.font()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string tree_name(25), long
+         visible_level,
+         &nbsp; long font [, long process_id ] )</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_structure_chart_manager/set.tree.foreground.htm" class="manualLink">set.tree.foreground()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string tree_name(25), long color
+         &nbsp; [, long process_id ] )</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_structure_chart_manager/set.tree.linewidth.htm" class="manualLink">set.tree.linewidth()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string tree_name(25), long
+         visible_level,
+         &nbsp; long linewidth [, long process_id ] )</code></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_structure_chart_manager/set.tree.name.htm" class="manualLink">set.tree.name()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string tree_name(25), string
+         tree_title(80)
+         &nbsp; [, long process_id ] )</code></td>
+                  </tr>
+                  <tr no="16" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_structure_chart_manager/view.tree.htm" class="manualLink">view.tree()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string tree_name(25), string
+         node_id(25),
+         &nbsp; long depth [, long process_id ] )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_structure_chart_manager/overview.htm" class="manualLink">Structure Chart Manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_structure_chart_manager/example.htm" class="manualLink">Tree structures: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_structure_chart_manager/synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

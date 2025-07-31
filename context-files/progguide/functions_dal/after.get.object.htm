@@ -1,0 +1,144 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>after.get.object()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="after.get.object after.get.object functions after.get.object ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">after.get.object()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;extern long&nbsp;after.get.object&nbsp;
+					(long&nbsp;direction)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this, to program checks that determine whether reading a
+                  record is permitted. The checks are performed after the record
+                  has been retrieved from the database. The <i class="Emphasis">dir</i> argument is
+                  set by the STP and specifies the object being read. The possible
+                  values are:
+               </p>
+               <p class="Paragraph">DAL_GET_FIRST DAL_GET_NEXT DAL_GET_PREV</p>
+               <p class="Paragraph">DAL_GET_LAST DAL_FIND DAL_GET_CURR</p>
+               <p class="Paragraph"><i class="Emphasis">This object hook replaces the</i> after.read subsection of
+                  the <i class="Emphasis">main.table.io</i> event section in a UI script. If there is a
+                  DAL for an object set, this hook is called to perform the
+                  necessary checks. Any <i class="Emphasis">after.read</i> sections in the UI script are ignored. So, if
+                  a UI script contains <i class="Emphasis">after.read</i> sections for the main table, you must replace
+                  these by <i class="Emphasis">after.get.object()</i> hooks in the DAL.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>direction</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			DAL
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return value</div>
+            <p class="Paragraph">The hook returns 0 if reading of the record is permitted. If
+               the hook returns a negative value (DALHOOKERROR), the object is
+               skipped.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">This hook is only executed in case the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> reads data
+                  from the maintable. It is <i class="Emphasis">not</i> executed when you do <a href="../../progguide/functions_db_operations/dal.new.htm" class="manualLink">dal.new()</a>, <a href="../../progguide/functions_db_operations/dal.update.htm" class="manualLink">dal.update()</a> or <a href="../../progguide/functions_db_operations/dal.destroy.htm" class="manualLink">dal.destroy()</a>.
+               </p>
+               <p class="Paragraph">It is preferable to use a <a href="../../progguide/functions_dal/query_extensions.htm" class="manualLink">Query extensions</a> in the <i class="Emphasis">before.program</i> section of the UI script instead of this
+                  hook. So, only use this hook if a query extension is not
+                  possible.
+               </p>
+               <p class="Paragraph">The <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> ignores
+                  messages set in this hook.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+| after.get.object hook
+
+function extern long after.get.object(long dir)
+{
+    on case dir
+    case DAL_GET_FIRST:
+        …
+        break
+    case DAL_GET_NEXT:
+        …
+        break
+    case DAL_GET_PREV:
+        …
+        break
+    case DAL_GET_LAST:
+        …
+        break
+    case DAL_FIND:
+        …
+        break
+    case DAL_GET_CURR:
+        …
+        break
+    default:
+        …
+        break
+    endcase
+    if ttadv100.cpac = "tt"
+        return(DALHOOKERROR)
+        | Error messages from after.get.object are
+        | ignored by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="manualLink">4GL engine</a>
+    endif
+    return(0)
+}
+
+| Query extension with the same result
+| Use this in preference
+before.program:
+    query.extend.where("ttadv100.cpac &lt;&gt; ""tt"" ")
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_glossary.htm" class="manualLink">DAL terminology</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/object_hooks.htm" class="manualLink">Object hooks</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/after.get.object, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Java VM integration - Infor ERP Enterprise Server 3GL</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Java VM integration ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Java VM integration - Infor ERP Enterprise Server 3GL</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Introduction</div>
+            <p class="Paragraph">Starting from BaanERP 5.0c, java programs can be called from
+               	  within the Infor ERP Enterprise Server. The Java VM has been integrated within
+               	  the Baan Virtual Machine (BaanVM, also known as the Bshell). This integration is
+               	  also known as JVMI.
+            </p>
+            <p class="Paragraph">Using the JVMI, it is possible to:</p>
+            <ul class="List">
+               <li class="ListItem">Start Java programs;</li>
+               <li class="ListItem">Exchange messages (also known as buckets) between Java and Infor
+                  		ERP Enterprise.
+               </li>
+            </ul>
+            <p class="Paragraph">Starting from Infor LN 10.4.1 it is also possible to load, execute and unload
+               	java programs dynamically. These functions allow the deployment of new versions of
+               	a Java program without disrupting running programs or the need to overwrite existing
+               	versions of software (which is not possible in Windows environments if the object is
+               	being used by a currently running program).
+            </p>
+            <p class="Paragraph">This dynamic system can be used next to the older system described below.
+               	For new applications the newer calls are preferred:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_javavm/java.load.application.htm" class="manualLink">java.load.application</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_javavm/java.execute.static.application.method.htm" class="manualLink">java.execute.static.application.method</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_javavm/java.unload.application.htm" class="manualLink">java.unload.application</a></li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">The JVMI consists of the following parts:</p>
+            <ul class="List">
+               <li class="ListItem">Bucket. A bucket consists of a header (type is string) and a
+                  		body. The body can contain any information you like.
+               </li>
+               <li class="ListItem">Queues (which are maintained within Infor ERP Enterprise). These queues
+                  		are used to store buckets. Buckets are stored and retrieved using the FIFO
+                  		(first in first out) principle.
+               </li>
+               <li class="ListItem">Listeners. Whenever a new bucket arrives on a queue, the
+                  		listener of that queue is notified. Zero or one listeners can be installed on a
+                  		queue. A listener can be installed in Java, or in Infor ERP Enterprise! Another advantage
+                  		is that a listener decides what to do with a particular bucket. For example,
+                  		one type of listener could route it 'as is' to another queue, while
+                  		another listener could write that same bucket into the database.
+               </li>
+               <li class="ListItem">Methods to create/remove queues, send/retrieve buckets, and to
+                  		install/remove listeners.
+               </li>
+               <li class="ListItem">Methods to start a Java program directly. Only static Java
+                  		methods with return type void can be called (e.g. public static void
+                  		startThisMethod()). The signature of the method (the paremeters it receives) must
+                  		match the call in 3GL. Strings, longs and arrays are supported.
+               </li>
+            </ul>
+            <p class="Paragraph">The following figure shows an example of an application using JVMI:</p>
+            <div class="Figure"><img src="../images/javavm1.gif" alt="[...]" height="614" width="634"></div>
+            <p class="Paragraph">In the picture above, Infor ERP Enterprise sends buckets to Java, and Java
+               	  sends the same buckets back to Infor ERP Enterprise. It is implemented as follows (for
+               	  more details please read the specific sections of this document):
+            </p>
+            <ul class="List">
+               <li class="ListItem">From Infor ERP Enterprise, create two queues (using
+                  		java.new.queue)
+               </li>
+               <li class="ListItem">On one queue, install a listener at the Infor ERP Enterprise end (using
+                  		java.install.listener). In the picture above, this listener is called BVM
+                  		listener.
+               </li>
+               <li class="ListItem">Next, install a listener at the Java end by
+                  		java.execute.static.method.async("java listener class name", "method name", queue_id).
+                  		This will start a Java program, which will register itself as a
+                  		listener on the Java queue. In the picture above, this is called the JVM
+                  		listener.
+               </li>
+               <li class="ListItem">Place a message from Infor ERP Enterprise on the outgoing Java queue
+                  		(using java.put.bucket)
+               </li>
+               <li class="ListItem">The listener at the Java end is triggered through the
+                  		onReceive() method (part of the Java listener interface).
+               </li>
+               <li class="ListItem">In this particular case, the message is placed without any
+                  		modification on the queue to Infor ERP Enterprise.
+               </li>
+               <li class="ListItem">The listener in Infor ERP Enterprise is triggered. It generates an event
+                  		(EVT_CHANNEL_EVENT).
+               </li>
+               <li class="ListItem">The Infor ERP Enterprise program script receives the event (through the
+                  		standard event handling functions), and retrieves the message using
+                  		java.get.bucket.
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">3GL functions of the JVMI</div>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_javavm/java.execute.static.method.sync.htm" class="glossaryLink">java.execute.static.method.sync</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_javavm/java.execute.static.method.sync.htm" class="glossaryLink">java.execute.static.method.async</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_javavm/java.new.queue.htm" class="manualLink">java.new.queue</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_javavm/java.destroy.queue.htm" class="manualLink">java.destroy.queue</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_javavm/java.install.listener.htm" class="manualLink">java.install.listener</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_javavm/java.uninstall.listener.htm" class="manualLink">java.uninstall.listener</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_javavm/java.put.bucket.htm" class="manualLink">java.put.bucket</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_javavm/java.get.bucket.htm" class="manualLink">java.get.bucket</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_javavm/java.lookup.queue.htm" class="manualLink">java.lookup.queue</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_javavm/java.load.application.htm" class="manualLink">java.load.application</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_javavm/java.execute.static.application.method.htm" class="manualLink">java.execute.static.application.method</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_javavm/java.unload.application.htm" class="manualLink">java.unload.application</a></li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Java Interfaces of the JVMI</div>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_javavm/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

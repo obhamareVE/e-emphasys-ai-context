@@ -1,0 +1,239 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>set.max()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions set.max set.max set.max ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">set.max()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;set.max&nbsp;
+					(ref void&nbsp;variable [, string&nbsp;domain])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This sets a specified standard variable to its maximum value.</p>
+               <p class="Paragraph">For string variables, use <a href="../../progguide/functions_mathematical_operations/set.fmax.htm" class="manualLink">set.fmax()</a> instead.
+               </p>
+               <p class="Paragraph">For setting the minimum value, use <a href="../../progguide/functions_mathematical_operations/set.min.htm" class="manualLink">set.min()</a> and <a href="../../progguide/functions_mathematical_operations/set.fmin.htm" class="manualLink">set.fmin()</a>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">ref void</td>
+                     <td class="none"><code>variable</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Reference argument to be set. This can be a single variable
+                           			or an array.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>domain</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional name of the domain of which the maximum value must be used.</p>
+                        <p class="Paragraph">If it is not supplied,
+                           then the runtime domain of the first argument is used.
+                        </p>
+                        <p class="Paragraph">If the first argument does not have a runtime domain,
+                           then a default domain is used which depends on the runtime type of the first argument.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Notes</div>
+            <p class="Paragraph">The following table shows the minimum and maximum values of domain
+               types supported by Infor ERP Enterprise.
+            </p>
+            <table class="default">
+               <tbody noTR="11" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Domain type</th>
+                     <th rowspan="1" colspan="1" class="default">Minimum value</th>
+                     <th rowspan="1" colspan="1" class="default">Maximum value</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">byte/enumerated</p>
+                        <p class="Paragraph">(unsigned 7-bit integer range)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                     <td rowspan="1" colspan="1" class="default">127 (0x7f)</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">integer</p>
+                        <p class="Paragraph">(signed 16-bit integer range)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">-32768 (-0x8000)</td>
+                     <td rowspan="1" colspan="1" class="default">32767 (0x7fff)</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">long/text</p>
+                        <p class="Paragraph">(signed 32-bit integer range)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">-2147483648 (-0x8000,0000)</td>
+                     <td rowspan="1" colspan="1" class="default">2147483647 (0x7fff,ffff)</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">float</p>
+                        <p class="Paragraph">(32-bit floating point range)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">-999999999999.9e20</td>
+                     <td rowspan="1" colspan="1" class="default">999999999999.9e20</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">double</p>
+                        <p class="Paragraph">(64-bit floating point range)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">-999999999999.9e64</td>
+                     <td rowspan="1" colspan="1" class="default">999999999999.9e64</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">string[1]</td>
+                     <td rowspan="1" colspan="1" class="default">chr(1)</td>
+                     <td rowspan="1" colspan="1" class="default">"~" (or other value, depending on the locale, max length 1024)</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">enumerated/set</td>
+                     <td rowspan="1" colspan="1" class="default">1</td>
+                     <td rowspan="1" colspan="1" class="default">depends on set definition</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">date</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                     <td rowspan="1" colspan="1" class="default">3652059, which corresponds to December 31, 9999</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">time</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">2147483647 (0x7fff,ffff), which corresponds to January 19, 2038, 03:14:07 UTC.</p>
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">multibyte string</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">configurable using the TSS dictionary programs</p>
+                        <p class="Paragraph">(session: Maintain Locale Data)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">configurable using the TSS dictionary programs</p>
+                        <p class="Paragraph">(session: Maintain Locale Data)</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Numeric domains with a range expression</div>
+               <p class="Paragraph">When the concerned domain has a range expression, then it is
+                  		tried to involve the range expression also in the calculation. However, it is
+                  		practically impossible to do this for all allowed range expressions in general.
+                  		At the moment it is implemented for numeric domains only. Above that, the range
+                  		expression must be of a specific form:
+               </p>
+               <p class="Paragraph"><code class="Code">$$ in [number,number] [number, number]</code></p>
+               <p class="Paragraph">So, it is allowed to use multiple intervals. The interval
+                  		bounds must be specified as literal numbers, not as general expressions. When
+                  		the range expression is not of this specific form, then it is ignored in the
+                  		computations.
+               </p>
+               <p class="Paragraph">Examples of range expressions which will work for an integer
+                  		domain (the minimum and maximum will be set to 0 and 159
+                  		respectively):
+               </p>
+               <p class="Paragraph"><code class="Code">$$ in [0,159]</code></p>
+               <p class="Paragraph"><code class="Code">$$ in [0,59] [100,159]</code></p>
+               <p class="Paragraph">Examples of range expressions which will work for a float
+                  		domain (the minimum and maximum will be set to 0.0 and 159.9
+                  		respectively):
+               </p>
+               <p class="Paragraph"><code class="Code">$$ in [0.0,159.9]</code></p>
+               <p class="Paragraph"><code class="Code">$$ in [0.0,59.9] [100.0,159.9]</code></p>
+               <p class="Paragraph">Examples of range expressions which will be ignored because
+                  		they are not of the correct form:
+               </p>
+               <p class="Paragraph"><code class="Code">$$ in [0,100+60-1]</code></p>
+               <p class="Paragraph"><code class="Code">(0 &lt;= $$) and ($$ &lt; 160)</code></p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Numeric domains with 'Digits before Decimal' or 'Digits
+                  		after Decimal'
+               </div>
+               <p class="Paragraph">When the concerned domain is a numeric domain with a non-zero
+                  		'Digits before Decimal' or 'Digits after Decimal' value, then these values are
+                  		also involved in the calculation.
+               </p>
+               <p class="Paragraph">For example, when 'Digits before Decimal' is set to 3, then
+                  		the minimum and maximum of an integer domain will be set to -999 and 999
+                  		respectively.
+               </p>
+               <p class="Paragraph">When, above that, 'Digits after Decimal' is set to 4, then the
+                  		minimum and maximum of a float domain will be set to -999.9999 and 999.9999
+                  		respectively.
+               </p>
+               <p class="Paragraph">When one of 'Digits before Decimal' and 'Digits after Decimal'
+                  		is set to 0, then the minimum and maximum of the same float domain will be set
+                  		either to -0.9999 and 0.9999 respectively or to -999.0 and 999.0
+                  		respectively.
+               </p>
+               <p class="Paragraph">When both 'Digits before Decimal' and 'Digits after Decimal'
+                  		are set to 0, then these values are ignored and do not influence the
+                  		calculation of the minimum and maximum of the float domain.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long value
+set.max(value) | value contains 2147483647
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_mathematical_operations/overview.htm" class="manualLink">Mathematical operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_mathematical_operations/synopsis.htm" class="manualLink">Mathematical operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_mathematical_operations/set.max, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

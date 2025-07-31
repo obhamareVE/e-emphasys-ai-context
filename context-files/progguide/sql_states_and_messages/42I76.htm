@@ -1,0 +1,55 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42I76 - Index hint specified on UNION query</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42I76 - Index hint specified on UNION query</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">A UNION query contains a HINT clause and this HINT clause
+               contains an index hint.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+select mgrno
+from   dbtst100
+union  all
+select respemp
+from   dbtst160
+hint   use index 1 on dbtst100
+</pre><p class="Paragraph">A HINT clause of a UNION applies to the UNION as a whole. You
+               cannot specify an index hint in this HINT clause, because the
+               index hint applies to only one of the queries of the UNION. This
+               query will cause the error:
+            </p>
+            <p class="Paragraph">SQLState 42I76: Index hint specified on UNION query</p>
+            <p class="Paragraph">You can use a SUBHINT clause to specify hints for a specific
+               query in the UNION. For example, the above query can be
+               corrected as follows:
+            </p><pre class="CodeBlock">
+select  mgrno
+from    dbtst100
+subhint use index 1 on dbtst100
+union   all
+select  respemp
+from    dbtst160
+</pre></div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42I76, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

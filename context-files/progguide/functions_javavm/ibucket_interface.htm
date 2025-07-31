@@ -1,0 +1,55 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>IBucket Interface</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="IBucket Interface ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">IBucket Interface</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">With the IBucket interface, it is possible to modify the bucket
+               	  and to read the contents of a bucket. The interface is instantiated using the
+               	  createBucket method of the IBaanVM interface.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Interface methods</div>
+            <p class="Paragraph"><code class="Code">public String getHeader();</code></p>
+            <p class="Paragraph">Retrieves the header of the bucket, in String
+               	  format.
+            </p>
+            <p class="Paragraph"><code class="Code">public void setHeader(String p_hdr);</code></p>
+            <p class="Paragraph">Sets the header of the bucket. P_hdr becomes the new
+               	  header.
+            </p>
+            <p class="Paragraph"><code class="Code">public byte[] getBucket();</code></p>
+            <p class="Paragraph">Retrieves the message within the bucket as a byte
+               	  array.
+            </p>
+            <p class="Paragraph"><code class="Code">public String toString();</code></p>
+            <p class="Paragraph">Retrieves the message within the bucket in String
+               	  format.
+            </p>
+            <p class="Paragraph"><code class="Code">public void setBucket(String p_msg);
+                  public void setBucket(byte[] p_msg);</code></p>
+            <p class="Paragraph">Sets the message within the bucket. The contents of the message
+               	  will be set using the content of p_msg.
+            </p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_javavm/ibucket_interface, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>mb.coerce.to.sb()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions mb.coerce.to.sb mb.coerce.to.sb mb.coerce.to.sb ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">mb.coerce.to.sb()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;mb.coerce.to.sb&nbsp;
+					(ref string&nbsp;string$ [, long&nbsp;setid])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function converts a string from the <a href="../../progguide/misc/tss.htm" class="manualLink">TSS Encoding</a> character set to the
+                  external, native character set, assuring that each resulting character is a <i class="Emphasis">single</i> byte. By default, the setting of
+                  the current user locale (singlebyte or multibyte environment) or the installation
+                  locale (Unicode environment) determines the character set to which the
+                  string is converted. Code features in the string are
+                  skipped.
+               </p>
+               <p class="Paragraph">This function may be used when a string containing multibyte characters must be
+                  	      assigned to a singlebyte string. Note that the conversion may result in <i class="Emphasis">ambiguous</i> high ascii characters (see <a href="../../progguide/misc/tss.htm" class="manualLink">TSS Encoding</a>).
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>string$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>setid</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">If you do not want to base the conversion on the
+                           	setting of the current user locale (singlebyte or multibyte environment) or the
+                           	installation locale (Unicode environment), use this optional
+                           argument to specify the ID of the TSS character set
+                           to be used during the converversion.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&gt;=0</th>
+                     <td rowspan="1" colspan="1" class="none">The number of bytes in the result string.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">The conversion failed because some character could not be converted, or 
+                        		       some converted character is not a <i class="Emphasis">single</i> byte.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1641.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_multibyte_strings/mb.export.htm" class="manualLink">mb.export$()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_multibyte_strings/mb.locale.enumerate.htm" class="manualLink">mb.locale.enumerate()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_multibyte_strings/overview_and_synopsis.htm" class="manualLink">Multibyte strings overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_multibyte_strings/mb.coerce.to.sb, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

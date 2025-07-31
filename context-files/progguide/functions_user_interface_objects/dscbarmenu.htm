@@ -1,0 +1,361 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DsCbarMenu</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dscbarmenu ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DsCbarMenu</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">A DsCbarMenu object defines a menu bar and associated
+               drop-down and cascaded menus. The menu bar is displayed across
+               the top of a main window (DsCmwindow), below the title bar.
+            </p>
+            <div class="Figure"><img src="../images/uio_002.gif" alt="[...]" height="175" width="365"></div>
+            <p class="Paragraph">An application creates the entire menu with a single <i class="Emphasis">create.object()</i> call. Subsequently, it can use <i class="Emphasis">change.object()</i> toadd, remove, change, enable, and
+               disable menu items.
+            </p>
+            <p class="Paragraph">Remember to specify the identification number of the
+               DsCbarMenu object in the DsNbarMenu attribute of the parent
+               window.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Events</div>
+            <p class="Paragraph">A DsCbarMenu object can generate the following event
+               type:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">EVTMENUSELECT</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" class="none">
+               <tbody noTR="9" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNcommandList</p>
+                        <p class="Paragraph">(long array)</p>
+                        <p class="Paragraph"></p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use this to set the state of menu items and to
+                           remove menu items. The array contains one or more
+                           index/attribute pairs. The index is an index into the
+                           list created by DsNmenuData. The menu entry identified
+                           by each index (1-based) is set to the associated
+                           attribute value. Possible attribute values
+                           are:
+                        </p>
+                        <p class="Paragraph">DSMENUNORMAL</p>
+                        <p class="Paragraph">DSMENUDISABLED</p>
+                        <p class="Paragraph">DSMENUCHECKED</p>
+                        <p class="Paragraph">DSMENUREMOVE</p>
+                        <p class="Paragraph">DSMENURADIOBUTTON</p>
+                        <p class="Paragraph">You can modify or remove multiple menu items with a
+                           single <i class="Emphasis">change.object()</i> call.
+                        </p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNeventMask</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies the events that the object can generate.
+                        See <a href="../../progguide/events/select.event.input.htm" class="manualLink">select.event.input()</a> for a list of possible masks.
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNfunction</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies whether menu items are to be added before
+                           or after the point specified by DsNrefCommand. Possible
+                           values are:
+                        </p>
+                        <p class="Paragraph">DSMENUINSERT (default)</p>
+                        <p class="Paragraph">DSMENUAPPEND</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNmenuData</p>
+                        <p class="Paragraph">(void)</p>
+                        <p class="Paragraph"></p>
+                        <p class="Paragraph"></p>
+                        <p class="Paragraph"></p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This contains the menu data in binary format. The
+                           data includes the structure of the menu, menu item
+                           names, shortcut and access keys, and the state and ID
+                           (return value) of menu items.
+                        </p>
+                        <p class="Paragraph">The data must start with a header containing the
+                           following fields:
+                        </p>
+                        <p class="Paragraph">long&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Version number (currently always
+            1).</p>
+                        <p class="Paragraph">long&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Number of entries to follow.</p>
+                        <p class="Paragraph">This is followed by multiple entries in the
+                           following format:
+                        </p>
+                        <p class="Paragraph">long&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Menu hierarchy level.</p>
+                        <p class="Paragraph">long &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unique command identifier. Separators
+            must always</p>
+                        <p class="Paragraph">be assigned an ID of -1; cascaded
+                           menu entries must
+                        </p>
+                        <p class="Paragraph">always be assigned an ID of 0.</p>
+                        <p class="Paragraph">string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Null terminated name string (mb).</p>
+                        <p class="Paragraph">long&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; State of menu items – possible values
+            are:</p>
+                        <p class="Paragraph">DSMENUNORMAL</p>
+                        <p class="Paragraph">DSMENUDISABLED</p>
+                        <p class="Paragraph">DSMENUCHECKED</p>
+                        <p class="Paragraph">DSMENUREMOVE</p>
+                        <p class="Paragraph">DSMENURADIOBUTTON</p>
+                        <p class="Paragraph">You can use DsNmenuData to create a new menu and
+                           also to add items to existing menus.
+                        </p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNobjectType</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td rowspan="1" colspan="1" class="none">The object type.</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNparent</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of the parent object.</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNrefCommand</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[S]</td>
+                     <td rowspan="1" colspan="1" class="none">This contains the index (1-based offset) of the menu
+                        position where menu items are to be added or
+                        inserted.
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsetState</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td colspan="2" rowspan="1" class="none">The state of the object. See <a href="../../progguide/functions_user_interface_objects/dscmwindow.htm" class="manualLink">DsCmwindow</a>.
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtemplate</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of a <a href="../../progguide/functions_user_interface_objects/dsctemplate.htm" class="manualLink">DsCtemplate</a> that defines a set of attributes to be
+                        applied to the object.
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following is an example of DsNmenuData data used to
+               create a new menu:
+            </p>
+            <p class="Paragraph"><i class="Emphasis">Version/Count</i> 1/ 12
+            </p>
+            <table class="default">
+               <tbody noTR="13" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Level</th>
+                     <th rowspan="1" colspan="1" class="default">ID</th>
+                     <th rowspan="1" colspan="1" class="default">Name</th>
+                     <th rowspan="1" colspan="1" class="default">Flag</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">1</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                     <td rowspan="1" colspan="1" class="default">&amp;File</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">2</td>
+                     <td rowspan="1" colspan="1" class="default">15</td>
+                     <td rowspan="1" colspan="1" class="default">&amp;Save</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">2</td>
+                     <td rowspan="1" colspan="1" class="default">-1</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">2</td>
+                     <td rowspan="1" colspan="1" class="default">23</td>
+                     <td rowspan="1" colspan="1" class="default">&amp;Print\tCtrl + P</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">2</td>
+                     <td rowspan="1" colspan="1" class="default">-1</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">2</td>
+                     <td rowspan="1" colspan="1" class="default">37</td>
+                     <td rowspan="1" colspan="1" class="default">E&amp;xit\tAlt + F4</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">1</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                     <td rowspan="1" colspan="1" class="default">&amp;Edit</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">2</td>
+                     <td rowspan="1" colspan="1" class="default">17</td>
+                     <td rowspan="1" colspan="1" class="default">&amp;Undo</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">2</td>
+                     <td rowspan="1" colspan="1" class="default">-1</td>
+                     <td rowspan="1" colspan="1" class="default">-</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">2</td>
+                     <td rowspan="1" colspan="1" class="default">6</td>
+                     <td rowspan="1" colspan="1" class="default">&amp;Find...</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">1</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                     <td rowspan="1" colspan="1" class="default">&amp;Help</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                  </tr>
+                  <tr no="13" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">2</td>
+                     <td rowspan="1" colspan="1" class="default">72</td>
+                     <td rowspan="1" colspan="1" class="default">&amp;Contents</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">The following function call creates the menu specified in
+               DsNmenuData:
+            </p>
+            <p class="Paragraph">barmenu.id = create.object(barmenu_id, DsCbarMenu,
+               parentWindow,
+            </p>
+            <p class="Paragraph">DsNmenuData, data, size)</p>
+            <p class="Paragraph">The following is an example of DsNmenuData used to add new
+               entries to the menu:
+            </p>
+            <p class="Paragraph"><i class="Emphasis">Version/Count</i> 1/2
+            </p>
+            <table class="default">
+               <tbody noTR="3" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Level</th>
+                     <th rowspan="1" colspan="1" class="default">ID</th>
+                     <th rowspan="1" colspan="1" class="default">Name</th>
+                     <th rowspan="1" colspan="1" class="default">Flag</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">2</td>
+                     <td rowspan="1" colspan="1" class="default">90</td>
+                     <td rowspan="1" colspan="1" class="default">&amp;Redo</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">2</td>
+                     <td rowspan="1" colspan="1" class="default">901</td>
+                     <td rowspan="1" colspan="1" class="default">&amp;Delete</td>
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">The following function call adds the new entries after the
+               Undo menu item:
+            </p><pre class="CodeBlock">
+change.object(barmenu_id, DsNmenuData, data, size, DsNrefCommand, 
+        8, DsNfunction, DSMENUAPPEND)
+</pre><p class="Paragraph">The following code disables the Print menu item and removes
+               the Undo menu item:
+            </p><pre class="CodeBlock">
+long commandlist(4)
+
+commandlist(1) = 4                      | index of Print menu item
+commandlist(2) = DSMENUDISABLE
+commandlist(3) = 8                      | index of Undo menu item
+commandlist(4) = DSMENUREMOVE
+
+change.object(barmenu.id, DsNcommandList, commandlist, 4) 
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/dscbarmenu, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

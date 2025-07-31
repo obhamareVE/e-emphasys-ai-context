@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>SET specification</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="SET ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">SET specification</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Infor ERP Enterprise SQL supports the following options in relation to
+               sets:
+            </p>
+            <ul class="List">
+               <li class="ListItem">Maximum set size. 
+                  
+                  With this option you can indicate the maximum number of
+                  rows the SELECT statement can produce.
+               </li>
+               <li class="ListItem">Prepared set. 
+                  
+                  With this option, the entire set is retrieved before
+                  the first row is returned to the application. The set is
+                  temporarily stored. This option is useful when a process
+                  simultaneously selects and maintains (or deletes or adds)
+                  rows of a table. In this case, changes must not be visible
+                  in the selected records. The prepared set option forces a
+                  consistent read.
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;set specification&gt;
+    ::= AS PREPARED SET
+      | AS [PREPARED] SET WITH <a href="../../progguide/functions_database_handling/integer_constant.htm" class="manualLink">Integer constant</a> ROWS
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">If the keyword <i class="Emphasis">PREPARED</i> is specified, then the entire
+               row set is read from the database before the first row is
+               returned to the application.
+            </p>
+            <p class="Paragraph">If the phrase <i class="Emphasis">WITH &lt;integer constant&gt; ROWS</i> is
+               specified then the containing SELECT statement returns at most <i class="Emphasis">&lt;integer constant&gt;</i> rows.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/set_specification, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>prcm.get.aspect()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions prcm.get.aspect prcm.get.aspect prcm.get.aspect ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">prcm.get.aspect()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;observer processes can call &nbsp;prcm.get.aspect&nbsp;
+					()</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Returns the last decoded aspect of the subject that did a
+                  notification.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The last decoded aspect as string.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Preconditions</div>
+            <ul class="List">
+               <li class="ListItem">The bms message that was sent to the observer process is
+                  expected to be a PRCM notification. This can be tested by
+                  calling function <a href="../../progguide/functions_prcm/prcm.bms.is.notification.htm" class="manualLink">prcm.bms.is.notification()</a>.
+                  In other words, <a href="../../progguide/functions_prcm/prcm.bms.is.notification.htm" class="manualLink">prcm.bms.is.notification()</a> must have been called before calling prcm.get.aspect() and it
+                  should have returned TRUE.
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Explanation</div>
+            <p class="Paragraph">Subjects can notify observers (i.e. other processes) about
+               certain aspects. Only if an observer registered itself for a
+               combination of subject and aspect, the observer is notified.
+            </p>
+            <p class="Paragraph">Suppose a process wants to notify other processes about
+               delete and insert actions on table fmfoc200. This process can
+               call <a href="../../progguide/functions_prcm/prcm.notify.htm" class="manualLink">prcm.notify()</a> ("fmfoc200", "delete")
+               to inform processes about a delete action and <a href="../../progguide/functions_prcm/prcm.notify.htm" class="manualLink">prcm.notify()</a> ("fmfoc200", "insert")
+               to inform processes about an insert action. The 2nd argument in
+               this call defines the aspect.
+            </p>
+            <p class="Paragraph">Observer processes can call prcm.get.aspect() to test for
+               this aspect:
+            </p><pre class="CodeBlock">
+before.program:
+    |* Register for the delete aspect of the fmfoc200 subject
+    prcm.register("fmfoc200", "delete")
+    |* Register for the insert aspect of the fmfoc200 subject
+    prcm.register("fmfoc200", "insert")
+    |* Register for any change of the fmlbd300 subject
+    prcm.register("fmlbd300")
+
+choice.bms:
+on.choice:
+    if prcm.bms.is.notification() then
+        on case prcm.get.subject()
+        case "fmfoc200":
+            on case prcm.get.aspect()
+            case "delete":
+                |* React on the delete
+                break
+            case "insert":
+                |* React on the insert
+                break
+            endcase
+        case "fmlbd300":
+            ...
+        endcase
+    endif
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_prcm/overview.htm" class="manualLink">Process Change Manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_prcm/synopsis.htm" class="manualLink">Process Change Manager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_prcm/examples.htm" class="manualLink">Process Change Manager Code Examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_prcm/prcm.get.aspect, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

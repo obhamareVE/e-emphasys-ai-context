@@ -1,0 +1,83 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Property hooks</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="hooks DAL property hooks ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Property hooks</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Property hooks are hooks that relate to a specific property
+               (that is, a table field).
+            </p>
+            <p class="Paragraph">The fieldname.check() property hooks replace the <i class="Emphasis">check.input</i> event sections for fields of the main table.
+               If there is a DAL for an object set, the property hooks are
+               called to perform the necessary field checks. Any <i class="Emphasis">check.input</i> sections in the UI script are ignored. So, if
+               a UI script contains <i class="Emphasis">check.input</i> sections for fields of the main table, you
+               must replace these by property hooks in the DAL. In the UI
+               script, <i class="Emphasis">check.input</i> sections are retained for non-database form
+               fields. Such sections are executed even if a DAL exists.
+            </p>
+            <p class="Paragraph">There are 3 property hooks:</p>
+            <ul class="List">
+               <li class="ListItem">Hook <a href="../../progguide/functions_dal/fieldname.make.valid.htm" class="manualLink">fieldname.make.valid()</a> is called before the field is checked. It can be used e.g. to
+                  perform rounding of data.
+               </li>
+               <li class="ListItem">Hook <a href="../../progguide/functions_dal/fieldname.check.htm" class="manualLink">fieldname.check()</a> is called
+                  by the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> when
+                  inserting or updating an object
+               </li>
+               <li class="ListItem">Hook <a href="../../progguide/functions_dal/fieldname.set.defaults.htm" class="manualLink">fieldname.set.defaults()</a> is called by the B3 through a BOI in case of a DAL_NEW or
+                  DAL_UPDATE
+               </li>
+            </ul>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">The fieldname.make.valid() is <i class="Emphasis">not</i> executed when a <a href="../../progguide/functions_db_operations/dal.new.htm" class="manualLink">dal.new()</a> or <a href="../../progguide/functions_db_operations/dal.update.htm" class="manualLink">dal.update()</a> is done! Instead use <a href="../../progguide/functions_db_operations/dal.save.object.htm" class="manualLink">dal.save.object()</a> in combination with <a href="../../progguide/functions_db_operations/dal.new.object.htm" class="manualLink">dal.new.object()</a> or <a href="../../progguide/functions_db_operations/dal.change.object.htm" class="manualLink">dal.change.object()</a>.
+               </p>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">DAL 2</div>
+            <p class="Paragraph">In case of <a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a> the fieldname.check()
+               property hook is supported for
+               backwards compatibility reasons. However, a field having this
+               property hook is <i class="Emphasis">not</i> regarded as a DAL2 field. In order to make use of the
+               benefits of DAL2 for such a field, you should replace these
+               hooks by a number of <a href="../../progguide/functions_dal/dal2_field_hooks.htm" class="manualLink">DAL2 Field hooks</a>.
+            </p>
+            <p class="Paragraph">In this way you can implement the DAL2 concept
+               incrementally.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">See also</div>
+            <p class="Paragraph"><a href="../../progguide/functions_dal/property_methods.htm" class="manualLink">Property methods</a></p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_glossary.htm" class="manualLink">DAL terminology</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_hooks.htm" class="manualLink">DAL hooks</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/property_hooks, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

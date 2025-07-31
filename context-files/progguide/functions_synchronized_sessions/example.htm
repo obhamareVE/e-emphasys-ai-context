@@ -1,0 +1,57 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Child synchronization sample program</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="synchronized sessions overview sample program ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Child synchronization sample program</div>
+      <div class="body">
+         <div class="GeneralSection"><pre class="CodeBlock">
+  declaration:
+    long   field.proc
+  before.program:
+    field.proc = 0
+    ...
+
+  function extern field.process()       | called by Form Command
+  {
+    if field.proc then
+          synchronize.with.child( field.proc )
+    endif
+    | field.proc is a reference variable that is set to zero when
+    | child cannot be found
+    if not field.proc then
+          field.proc = start.synchronized.child ( "ttadv4127m000",
+              "ttadv420.vers", "ttadv422.vers",
+              "ttadv420.rele", "ttadv422.rele",
+              "ttadv420.cust", "ttadv422.cust",
+              "ttadv420.cpac", "ttadv422.cpac",
+              "ttadv420.cmod", "ttadv422.cmod",
+              "ttadv420.flno", "ttadv422.flno" )
+    endif
+  }
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_synchronized_sessions/overview.htm" class="manualLink">Synchronized sessions overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_synchronized_sessions/synopsis.htm" class="manualLink">Synchronized sessions synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_synchronized_sessions/example, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

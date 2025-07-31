@@ -1,0 +1,106 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Application Response Time Measurement (ARTM) Examples</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="application response time measurement examples ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Application Response Time Measurement (ARTM) Examples</div>
+      <div class="body">
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div><pre class="CodeBlock">
+function extern start.mrprun()
+{
+long    tra.class.id
+long    tra.id
+
+        | Define the MRP transaction class
+        tra.class.id = artm.define.transaction.class(
+                "MRP run",
+                "This is a logistic MRP run within Infor ERP Enterprise.",
+                ART.CODE, "State",
+                ART.GAUGE, "Memory" )
+
+        | Start the MRP run
+        session.tra.id = artm.begin.transaction(
+                tra.class.id,
+                ART.CODE, "Starting",
+                ART.GAUGE, get.mem() )
+
+        while not end,of.run()
+                process.next.mrp.item()
+
+                | Give feedback about the status
+                artm.update.transaction(
+                        session.tra.id,
+                        ART.CODE, "In progress",
+                        ART.GAUGE, get.mem() )
+        endwhile
+
+        | Run was successfull.
+        artm.end.transaction(
+                tra.id,
+                ART.TRANSACTION.SUCCESS,
+                ART.CODE, "Finished",
+                ART.GAUGE, get.mem() )
+}
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2:</div>
+            <p class="Paragraph">Update of the metrics of a predefined session transaction class
+               	  at the beginning of a session.
+            </p><pre class="CodeBlock">
+before.program:      
+        | Redefine the transaction belonging to form command
+"Process orders"
+        redefined.tra.class.id = artm.redefine.transaction.class(
+                "process.orders",
+                ART.COUNTER, "Order count",
+                ART.CODE, "Customer code" )
+
+functions:
+function extern process.orders()                | Attached to form
+command
+{
+        long    tra.id
+
+        | User has started order processing. Start the transaction
+        tra.id = artm.begin.transaction(
+                redefined.tra.class.id,
+                ART.COUNTER, 0,
+                ART.CODE, "" )
+
+        for i = 1 to order.count
+                process.order()
+
+                | Give feedback about the order processed
+                artm.update.transaction(
+                        tra.id,
+                        ART.COUNTER, i,
+                        ART.CODE, cust.code )
+        endfor
+
+        | All orders are processed. End transaction.
+        artm.end.transaction(
+                tra.id,
+                ART.TRANSACTION.SUCCESS,
+                ART.COUNTER, order.count,
+                ART.CODE, "" )
+}
+</pre></div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_artm/artm_examples, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

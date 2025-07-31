@@ -1,0 +1,174 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Parallel Application Processing synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Parallel Application Processing synopsis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Parallel Application Processing synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Client side functions</div>
+            <table border="0" class="none">
+               <tbody noTR="8" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.get.no.of.server.htm" class="manualLink">par.get.no.of.server</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.init.client.to.server.htm" class="manualLink">par.init.client.to.server</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long nr.of.servers, string server.session, [string support.session])</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.client.start.servers.htm" class="manualLink">par.client.start.servers</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long group.id, [long options])</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.client.send.message.htm" class="manualLink">par.client.send.message</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long group.id, string comm.string, [long server.number])</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.client.get.status.htm" class="manualLink">par.client.get.status</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long group.id, long server.number, ref long messages)</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.client.get.message.htm" class="manualLink">par.client.get.message</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long group.id, ref string comm.string)</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.client.wait.ready.htm" class="manualLink">par.client.wait.ready</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">([long group.id, long server.number])</code></td>
+                  </tr>
+                  <tr no="8" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.client.close.servers.htm" class="manualLink">par.client.close.servers</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(long group.id)</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Server side functions</div>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.init.server.to.client.htm" class="manualLink">par.init.server.to.client</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref long group.number, ref long server.number, [ref long tot.nr.servers])</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.server.get.message.htm" class="manualLink">par.server.get.message</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref string comm.string)</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.server.send.message.htm" class="manualLink">par.server.send.message</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string comm.string)</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.server.question.htm" class="manualLink">par.server.question</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string question, ref string answer)</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.server.id.htm" class="manualLink">par.server.id</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">void</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.server.retry.point.htm" class="manualLink">par.server.retry.point</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">void</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.server.retry.hit.htm" class="manualLink">par.server.retry.hit</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Support session functions</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.support.init.htm" class="manualLink">par.support.init</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref long group.number, ref long tot.nr.servers)</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">long</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.support.get.question.htm" class="manualLink">par.support.get.question</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(ref string question)</code></td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.support.send.answer.htm" class="manualLink">par.support.send.answer</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string answer, long server.number)</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Common functions</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">void</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.abort.client.server.htm" class="manualLink">par.abort.client.server</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">(string error.message)</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.server.running.htm" class="manualLink">par.server.running</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.client.running.htm" class="manualLink">par.client.running</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">boolean</td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_parallel_processing/par.support.running.htm" class="manualLink">par.support.running</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/overview.htm" class="manualLink">Parallel Application Processing Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/examples.htm" class="manualLink">Parallel Application Processing Examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_parallel_processing/synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

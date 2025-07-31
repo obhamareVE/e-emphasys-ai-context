@@ -1,0 +1,214 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Conditional compiling (preprocessor)</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="conditional compiling (preprocessor) ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Conditional compiling (preprocessor)</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Directives</div>
+            <p class="Paragraph">The preprocessor provides the following directives to
+               enable you to compile parts of the source depending on
+               certain conditions:
+            </p>
+            <table width="100%" class="default">
+               <tbody noTR="7" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">#ifdef &lt;macro&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">The source after #ifdef up to #else/#elif/#endif
+                        is compiled if &lt;macro&gt; is defined. Otherwise
+                        this source is ignored.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">#ifndef &lt;macro&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">The source after #ifndef up to #else/#elif/#endif
+                        is compiled if &lt;macro&gt; is not defined.
+                        Otherwise this source is ignored.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">#if &lt;constant expression&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">The source after #if up to #else/#elif/#endif is
+                           compiled if &lt;constant expression&gt; evaluates to TRUE.
+                           Otherwise this source is ignored.
+                        </p>
+                        <p class="Paragraph">The &lt;constant expression&gt;
+                           is in fact a runtime expression with the same features as described for the function <a href="../../progguide/functions_expressions_runtime/expr.compile.htm" class="manualLink">expr.compile()</a>.
+                        </p>
+                        <p class="Paragraph">Variable names in the expression refer to macro definitions.</p>
+                        <p class="Paragraph">If the macro substitution text is the string "0"
+                           or can be implicitly converted to a non-zero integer value,
+                           then the variable is evaluated to the indicated integer value.
+                        </p>
+                        <p class="Paragraph">Assignment expressions are not allowed.</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">#else</code></td>
+                     <td rowspan="1" colspan="1" class="default">If the condition belonging to
+                        #if/#ifdef/#ifndef/#elif is FALSE, the source after
+                        #else up to #endif is compiled. If the condition
+                        belonging to #if/#ifdef/#ifndef/#elif is TRUE, the
+                        source after #else up to #endif is ignored.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">#elif &lt;constant expression&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">'#elif' is a combination of #else and #if. For
+                           example:
+                        </p><pre class="CodeBlock">
+#if &lt;constant expression&gt;  
+...  
+#else  
+#if &lt;constant expression&gt;  
+...  
+#else  
+...  
+#endif  
+#endif  
+This is equivalent to the following:  
+#if &lt;constant expression&gt;  
+...  
+#elif &lt;constant expression&gt;  
+...  
+#else  
+...  
+#endif
+</pre></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">#endif</code></td>
+                     <td rowspan="1" colspan="1" class="default">To finish a part of the source started with
+                        #ifdef/#ifndef/#if.
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">#undef &lt;macro&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">To delete a macro definition. The macro is not
+                        known on the next #ifdef call.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes on using the directives</div>
+            <div class="NoteContent">
+               <ul class="List">
+                  <li class="ListItem">It is possible to use nested #if structures.</li>
+                  <li class="ListItem">It is possible to define a macro when starting the
+                     compiler. You use the D option to do this. For
+                     example:
+                  </li>
+               </ul><pre class="CodeBlock">
+bic6.2 -D&lt;macro&gt;                  | no value means default 1
+bic6.2 -D&lt;macro&gt;=&lt;value&gt;
+bic6.2 -D&lt;macro&gt;='any token string'
+</pre><ul class="List">
+                  <li class="ListItem">These macros can also be used in the #if conditions.
+                     For example:
+                  </li>
+               </ul><pre class="CodeBlock">
+bic6.2 -DDEBUG -DMYTEST &lt;source&gt;  
+
+|source  
+#if DEBUG and MYTEST  
+        message("Some debug information")  
+        ...  
+#endif  
+
+bic6.2 -DCUSTOMER_X -DCUSTOMER_Y &lt;source&gt;  
+bic6.2 -DSTANDARD &lt;source&gt;  
+
+#if STANDARD  
+        ...  
+#elif ( CUSTOMER_X and (not CUSTOMER_Y) )  
+        ...  
+#endif   
+</pre><ul class="List">
+                  <li class="ListItem">You can use #ifdef to make a part of the file
+                     inactive. For example: Example:
+                  </li>
+               </ul><pre class="CodeBlock">
+#ifdef OLD
+        ...
+        ...
+        ...
+#endif
+</pre><ul class="List">
+                  <li class="ListItem">The preprocessor works only during compilation of a
+                     3GL source, as the standard generator std_gen6.2 does not
+                     have a preprocessor pass. So it is not possible to use 4GL
+                     events in #if, #ifdef or #ifndef.
+                  </li>
+                  <li class="ListItem">It is not possible to use a #ifdef statement within an
+                     embedded SQL query. So, the following construction is not
+                     allowed:
+                  </li>
+               </ul><pre class="CodeBlock">
+select  *
+#ifdef STANDARD
+        ...
+        from x
+#else
+        ...
+        from y
+#endif
+        where ...
+selectdo
+        ...
+endselect
+</pre><p class="Paragraph">But the following construction is possible:</p><pre class="CodeBlock">
+#ifdef STANDARD
+        select * from x where ...
+        selectdo
+                ...
+        endselect
+#else
+        select * from y where ...
+        selectdo
+                ...
+        endselect
+#endif
+</pre><ul class="List">
+                  <li class="ListItem">The following keywords provide debug information in
+                     3GL sources:
+                  </li>
+               </ul><pre class="CodeBlock">
+__FILE__      : contains the name of the current source
+__LINE__      : contains the line number of the current source
+__FUNCTION__  : contains the name of the current function
+__OBJECT__    : contains the name of the current object
+</pre><p class="Paragraph">For example:</p><pre class="CodeBlock">
+message("This is at line %d in the source %s", __LINE__, __FILE__)
+</pre></div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/preprocessor.htm" class="manualLink">Preprocessor</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/conditional_compiling_preprocessor, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

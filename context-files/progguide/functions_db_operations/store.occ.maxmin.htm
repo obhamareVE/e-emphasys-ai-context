@@ -1,0 +1,83 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>store.occ.max(), store.occ.min()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions store.occ.max store.occ.max store.occ.max store.occ.min ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">store.occ.max(), store.occ.min()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;store.occ.max&nbsp;
+					()</code><code>function&nbsp;void &nbsp;store.occ.min&nbsp;
+					()</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Normally, standard commands that access records of the main
+                  table can access all records of that table. You can use these
+                  functions to limit the records that can be accessed to those
+                  whose key values are within a specified range. Use <i class="Emphasis">store.occ.max()</i> to define the upper limit of the range.
+                  Use <i class="Emphasis">store.occ.min()</i> to define the lower limit of the range.
+                  If you wish, you can define only a maximum or only a minimum
+                  limit.
+               </p>
+               <p class="Paragraph">Before you call either of these functions, you must fill the
+                  key value with the required maximum or minimum value. If you set
+                  a limit that has previously been defined, the new value of the
+                  limit overwrites the previous value of the limit.
+               </p>
+               <p class="Paragraph">Use <a href="../../progguide/functions_db_operations/set.limits.off.htm" class="manualLink">set.limits.off()</a> to switch off
+                  the limits defined with these functions.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			4GL
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">For performance reasons, it is preferable to use <a href="../../progguide/functions_sql_query_extensions/query.extend.where.htm" class="manualLink">query.extend.where()</a> instead of these functions.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph"></p><pre class="CodeBlock">
+| Suppose that on the
+      first form you can access the entire main
+
+</pre><p class="Paragraph"></p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/store.occ.maxmin, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

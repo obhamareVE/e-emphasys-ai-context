@@ -1,0 +1,108 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Creating a chart manager client application</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="chart manager creating a chart manager client application ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Creating a chart manager client application</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The window preferences, fonts, charts, chart types, and option
+               sets for a particular Chart Manager session are defined in a Chart
+               Manager application. When you start the Chart Manager from a
+               program script, you specify the particular Chart Manager
+               application you want to use.
+            </p>
+            <p class="Paragraph">To create a Chart Manager application, use the following
+               steps.
+            </p>
+            <ol class="ProcedureList">
+               <li class="ProcedureListItem">Start the Chart Manager Application Data session
+                  (ttchm1500m000)).
+               </li>
+               <li class="ProcedureListItem">Create a new application record.</li>
+               <li class="ProcedureListItem">Define the option sets (Chart-Specific Options).</li>
+               <li class="ProcedureListItem">Create a default window setting (Window
+                  Preferences).
+               </li>
+               <li class="ProcedureListItem">Start the Chart Manager from the Chart Manager
+                  Application Data session (ttchm1500m000).
+               </li>
+               <li class="ProcedureListItem">Create the chart types required to present the data.</li>
+            </ol>
+            <p class="Paragraph">By using the Business Chart Manager functions described in
+               this document, you can create a client application that starts
+               the Business Chart Manager and that sends data to and receives
+               data from the Business Chart Manager. For further details on
+               using the Chart Manager, see the session help.
+            </p>
+            <p class="Paragraph">The Business Chart Manager functions fall into three
+               groups:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Input functions</td>
+                     <td rowspan="1" colspan="1" class="none">These send data from the application to the Chart
+                        Manager. The function names in this group end in
+                        .in
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Output functions</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">These functions send data from the Chart Manager to
+                           the application. The function names in this group end
+                           in .out. Within this group, there is a further
+                           subdivision:
+                        </p>
+                        <ul class="List">
+                           <li class="ListItem">Functions with the extension .first retrieve the
+                              first value for a particular object from the Chart
+                              Manager.
+                           </li>
+                           <li class="ListItem">Functions with the extension .next retrieve the
+                              next value for a particular object from the Chart
+                              Manager. Before you can call a .next function, you
+                              must already have retrieved the first value by
+                              calling the relevant .first function.
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">Other functions</td>
+                     <td rowspan="1" colspan="1" class="none">Miscellaneous functions. For example, control
+                        functions or functions to start and end the Business
+                        Chart Manager.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/overview.htm" class="manualLink">Chart manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/synopsis.htm" class="manualLink">Chart manager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/example.htm" class="manualLink">Chart manager example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_chm/creating_a_chart_manager_client_application, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

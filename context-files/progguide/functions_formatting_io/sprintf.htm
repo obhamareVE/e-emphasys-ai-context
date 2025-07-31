@@ -1,0 +1,842 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>sprintf$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions sprintf$ sprintf$ sprintf$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">sprintf$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;sprintf$&nbsp;
+					(string&nbsp;format [, void&nbsp;...])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This formats a string and returns the formatted string. The <i class="Emphasis">format</i> argument contains zero or more ordinary characters and substitution symbols.
+                  	  The ordinary characters are copied directly to the output string. The
+                  	  substitution symbols specify formats for the values specified in the <i class="Emphasis">expression</i> arguments
+                  	  and are substituted by these formatted values.
+               </p>
+               <p class="Paragraph">The substitution symbols are used in the sequence in which they
+                  	  are specified. The first substitution symbol is used for the first <i class="Emphasis">expression</i> argument.
+                  	  The second substitution symbol is used for the second <i class="Emphasis">expression</i> argument, and so
+                  	  on.
+               </p>
+               <p class="Paragraph">In addition to a range of numeric type expressions, the function
+                  	  supports dates, amounts, single-byte strings, multibyte strings, bidirectional
+                  	  strings, and combined normal and bidirectional strings. input strings that
+                  	  contain bidirectional strings must be specified in logic order. The result is
+                  	  also returned in logic order.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>format</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">contains zero or more ordinary characters and substitution symbols</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[void</td>
+                     <td class="none"><code>...</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">One or more expressions to be replaced in the format</p>
+                        <p class="Paragraph"><a href="../../progguide/3gl_features/type_conversions.htm#implicit_type_conversion" class="manualLink">Implicit conversion</a> of the input value
+                           is performed
+                           from its original type
+                           to the type expected according to the corresponding substitution symbol.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The formatted string. If you specify an invalid format, <i class="Emphasis">sprintf$()</i> returns a percentage character [%].
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Substitution symbols</div>
+            <p class="Paragraph">Substitution strings have the following syntax:</p>
+            <p class="Paragraph">%[ <i class="Emphasis">index</i>][-|+|0][ <i class="Emphasis">min[index]</i>][ <i class="Emphasis">.max[index]</i>] <i class="Emphasis">type</i></p>
+            <p class="Paragraph">The elements of a substitution string have the following meanings:</p>
+            <table border="0" class="none">
+               <tbody noTR="8" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%</td>
+                     <td rowspan="1" colspan="1" class="none">All substitution strings begin with a percentage character [%].
+			To output the percentage character itself, specify it as ‘%%’.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td valign="top" rowspan="1" colspan="1" class="none"><i class="Emphasis">index</i></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">An index can be used for setting the sequence of <i class="Emphasis">expressions</i> or <i class="Emphasis">types</i> in a
+                           			  formatted string. Setting a sequence might be needed for translation purposes,
+                           			  because sentences do not have a similar word order for all langues. Index
+                           			  specifiers are in the form 1$ (meaning first in sequence), 2$ etc. As an
+                           			  example take message ppmmm0001, which has the following text in language 1 and
+                           			  2:
+                        </p>
+                        <ul class="List">
+                           <li class="ListItem">1: Item %s cannot be found in warehouse %s</li>
+                           <li class="ListItem">2: In warehouse %s, item %s cannot be found</li>
+                        </ul>
+                        <p class="Paragraph">The accompanying output for mess("ppmmm0001", 1, item,
+                           			  warehouse ) would be
+                        </p>
+                        <ul class="List">
+                           <li class="ListItem">1: Item BIKE cannot be found in warehouse
+                              				WH01
+                           </li>
+                           <li class="ListItem">2: In warehouse BIKE, item WH01 cannot be found | This
+                              				is wrong!
+                           </li>
+                        </ul>
+                        <p class="Paragraph">With indexed arguments, this can be solved:</p>
+                        <ul class="List">
+                           <li class="ListItem">1: Item %1$s cannot be found in warehouse
+                              				%2$s
+                           </li>
+                           <li class="ListItem">2: In warehouse %2$s, item %1$s cannot be found | Note:
+                              				the 1$ and 2$ are interchanged
+                           </li>
+                        </ul>
+                        <p class="Paragraph">The accompanying output for mess("ppmmm0001", 1, item,
+                           			  warehouse ) would be
+                        </p>
+                        <ul class="List">
+                           <li class="ListItem">1: Item BIKE cannot be found in warehouse
+                              				WH01
+                           </li>
+                           <li class="ListItem">2: In warehouse WH01, item BIKE cannot be found | This
+                              				is correct
+                           </li>
+                        </ul>
+                        <p class="Paragraph">Note that the arguments following the unformatted string
+                           			  are language independent when <i class="Emphasis">indexing</i> is used.
+                        </p>
+                        <p class="Paragraph">Remark: <i class="Emphasis">If you are using indexes, it is
+                              			  mandatory to use them for all expressions and types!</i></p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">-</i></td>
+                     <td rowspan="1" colspan="1" class="none">An optional flag indicating that the output string is to be left
+                        			justified. If this is omitted, the output string is right justified by
+                        			default.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">+</i></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">An optional flag which adds a '+' sign before the formatted string
+                           if <i class="Emphasis">type</i> is one of the
+                           %d, %e, %f, %g, %o, %lo, %x or %lx
+                           substitution types.
+                        </p>
+                        <p class="Paragraph">The '+' sign will not be shown in the formatted string if the width of the string is too less,
+                           due to width specifiers in <i class="Emphasis">min</i> value
+                           or if the provided value is a negative number.
+                        </p>
+                        <p class="Paragraph">For all other <i class="Emphasis">types</i> the '+' sign is ignored.
+                        </p>
+                        <p class="Paragraph">This flag is ignored,
+                           when followed by a '-' flag.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">0</i></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">An optional flag which adds one or more zeroes before the formatted string
+                           if <i class="Emphasis">type</i> is one of the
+                           %d, %e, %f, %g, %o, %lo, %x or %lx
+                           substitution types,
+                           up to the available space in the formatted string as specified by <i class="Emphasis">min</i> value.
+                        </p>
+                        <p class="Paragraph">For all other <i class="Emphasis">types</i> the '0' flag is ignored.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">min</i></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies the minimum length of the output field. If the
+			  output string has fewer characters than the minimum field width, it is filled
+			  out with spaces. By default, these are inserted at the start of the field. If
+			  the ‘-‘ flag is specified, the spaces are inserted at the end of the
+			  string.</p>
+                        <p class="Paragraph">Instead of an integer constant, you can specify the
+                           			  length with an asterisk [*]. In this case, the corresponding <i class="Emphasis">expression</i> argument must
+                           			  supply the length.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">max</i></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies either the maximum number of digits after the
+			  decimal sign (for ‘%e’ and ‘%f’ substitution types), the maximum number of
+			  digits (for ‘%g’ substitution types), or the maximum string length (for ‘%s’,
+			  ‘%A’, ‘%D’, ‘%u’, and ‘%U’ substitution types).</p>
+                        <p class="Paragraph">Instead of an integer constant, you can specify the
+                           			  length with an asterisk [*]. In this case, the corresponding <i class="Emphasis">expression</i> argument must
+                           			  supply the length.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">type</i></td>
+                     <td rowspan="1" colspan="1" class="none">The type of conversion to be applied to the substituted value
+                        			(see below).
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">The type element can have one of the following
+               	  values:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="17" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td width="100" rowspan="1" colspan="1" class="none">%A <i class="Emphasis">xxx</i> [ <i class="Emphasis">,CUR</i>]
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use for amounts.</p>
+                        <p class="Paragraph"><i class="Emphasis">xxx</i> is the code for an amount format defined in the
+                           			  data dictionary. <i class="Emphasis">CUR</i> indicates the currency code to use. If this is omitted, the
+                           			  default currency of the company of the user is used.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%D <i class="Emphasis">xxx</i> [ <i class="Emphasis">,lang</i>]
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use for dates.</p>
+                        <p class="Paragraph"><i class="Emphasis">xxx</i> is the code for a date format defined in the data
+                           			  dictionary. <i class="Emphasis">lang</i> indicates the language code to use. If this is omitted, the current
+                           			  user language is used.
+                        </p>
+                        <p class="Paragraph">The expression that is substituted for this symbol must
+                           			  specify a number of days since 01-01-0001.
+                        </p>
+                        <p class="Paragraph">Any date before 01-01-0001 will be interpreted as 01-01-0001.</p>
+                        <p class="Paragraph">Any date past 31-12-9999 will be interpreted as 31-12-9999.</p>
+                        <p class="Paragraph">Note that it isn't possible to use a comma direct after a %D <i class="Emphasis">xxx</i> substitution symbol other than for selecting a language. As a workaround select a space as the language code, 
+                           			 this will substitute the users default language and close the type element. Now it is possible to use the 
+                           			 comma that should be included in your string. See the example in the example section.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%D( <i class="Emphasis">format</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use for dates.</p>
+                        <p class="Paragraph">This option enables you to define your own date format
+			  by using the following subformats of the ‘%D’ format:</p>
+                        <table border="1" width="100%" class="default">
+                           <tbody noTR="12" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%m</td>
+                                 <td rowspan="1" colspan="1" class="default">month in year</td>
+                                 <td rowspan="1" colspan="1" class="default">1 - 12</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%w</td>
+                                 <td rowspan="1" colspan="1" class="default">week in year</td>
+                                 <td rowspan="1" colspan="1" class="default">week 0 in previous year week 53 in current year</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%W</td>
+                                 <td rowspan="1" colspan="1" class="default">week in year</td>
+                                 <td rowspan="1" colspan="1" class="default">week 53 in previous year</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%d</td>
+                                 <td rowspan="1" colspan="1" class="default">day in month</td>
+                                 <td rowspan="1" colspan="1" class="default">1 - 31</td>
+                              </tr>
+                              <tr no="5" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%e</td>
+                                 <td rowspan="1" colspan="1" class="default">day in week</td>
+                                 <td rowspan="1" colspan="1" class="default">1 - 7</td>
+                              </tr>
+                              <tr no="6" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%j</td>
+                                 <td rowspan="1" colspan="1" class="default">day in year</td>
+                                 <td rowspan="1" colspan="1" class="default">1 - 365</td>
+                              </tr>
+                              <tr no="7" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%y</td>
+                                 <td rowspan="1" colspan="1" class="default">year without century</td>
+                                 <td rowspan="1" colspan="1" class="default">01 - 99</td>
+                              </tr>
+                              <tr no="8" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%Y</td>
+                                 <td rowspan="1" colspan="1" class="default">year with century</td>
+                                 <td rowspan="1" colspan="1" class="default">1 - 9999</td>
+                              </tr>
+                              <tr no="9" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%h</td>
+                                 <td rowspan="1" colspan="1" class="default">name of month</td>
+                                 <td rowspan="1" colspan="1" class="default">
+                                    <p class="Paragraph_firstAndNoTextBefore">(‘Jan’ - ‘Dec’)</p>
+                                    <p class="Paragraph">(abbreviated)</p>
+                                 </td>
+                              </tr>
+                              <tr no="10" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%H</td>
+                                 <td rowspan="1" colspan="1" class="default">name of month</td>
+                                 <td rowspan="1" colspan="1" class="default">(‘January’ - ‘December’)</td>
+                              </tr>
+                              <tr no="11" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%a</td>
+                                 <td rowspan="1" colspan="1" class="default">name of day</td>
+                                 <td rowspan="1" colspan="1" class="default">
+                                    <p class="Paragraph_firstAndNoTextBefore">(‘Sun’ - ‘Sat’)</p>
+                                    <p class="Paragraph">(abbreviated)</p>
+                                 </td>
+                              </tr>
+                              <tr no="12" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%A</td>
+                                 <td rowspan="1" colspan="1" class="default">name of day</td>
+                                 <td rowspan="1" colspan="1" class="default">(‘Sunday’ - ‘Saturday’)</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">You can combine these subformats with other formats.
+                           			  Note that strings returned by name of month and day formats are language
+                           			  dependent.
+                        </p>
+                        <p class="Paragraph">The expression that is substituted for this symbol must
+                           specify a number of days since 01-01-0001.
+                        </p>
+                        <p class="Paragraph">Any date before 01-01-0001 will be interpreted as 01-01-0001.</p>
+                        <p class="Paragraph">Any date past 31-12-9999 will be interpreted as 31-12-9999.</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%u <i class="Emphasis">xxx</i> [ <i class="Emphasis">,lang</i>]
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Use for UTC dates. <i class="Emphasis">xxx</i> is the code for a UTC date format defined in
+                        			the data dictionary. <i class="Emphasis">lang</i> indicates the language code to use. If this is omitted, the current
+                        			  user language is used. 
+                        <p class="Paragraph">The expression that is substituted for this symbol must
+                           specify a <a href="../../progguide/functions_date_time_zones/overview.htm#utc" class="commandLink">UTC</a> long format value of which only the local date will be used.
+                        </p>
+                        <p class="Paragraph">Any date before 01-01-0001 will be interpreted as 01-01-0001.</p>
+                        <p class="Paragraph">Any date past 31-12-9999 will be interpreted as 31-12-9999.</p>
+                        <p class="Paragraph">Note that it isn't possible to use a comma direct after a %u <i class="Emphasis">xxx</i> substitution symbol other than for selecting a language. As a workaround select a space as the language code, 
+                           			 this will substitute the users default language and close the type element. Now it is possible to use the 
+                           			 comma that should be included in your string. See the example in the example section.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%U <i class="Emphasis">xxx</i> [ <i class="Emphasis">,lang</i>]
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">Use for UTC times. <i class="Emphasis">xxx</i> is the code for a UTC time format defined in
+                        			the data dictionary. <i class="Emphasis">lang</i> indicates the language code to use. If this is omitted, the current
+                        			  user language is used. 
+                        <p class="Paragraph">The expression that is substituted for this symbol must
+                           specify a <a href="../../progguide/functions_date_time_zones/overview.htm#utc" class="commandLink">UTC</a> long format value of which only the local time will be used.
+                        </p>
+                        <p class="Paragraph">Note that it isn't possible to use a comma direct after a %U <i class="Emphasis">xxx</i> substitution symbol other than for selecting a language. As a workaround select a space as the language code, 
+                           			 this will substitute the users default language and close the type element. Now it is possible to use the 
+                           			 comma that should be included in your string. See the example in the example section.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%u( <i class="Emphasis">format</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use for UTC dates.</p>
+                        <p class="Paragraph">This option enables you to define your own date format
+			  by using the subformats described for the ‘ %D( <i class="Emphasis">format</i>)’ symbol. You can combine
+			  these subformats with other formats.
+                        </p>
+                        <p class="Paragraph">Note that strings returned by name of month and day
+                           			  formats are language dependent.
+                        </p>
+                        <p class="Paragraph">The expression that is substituted for this symbol must
+                           specify a <a href="../../progguide/functions_date_time_zones/overview.htm#utc" class="commandLink">UTC</a> long format value of which only the local date will be used.
+                        </p>
+                        <p class="Paragraph">Any date before 01-01-0001 will be interpreted as 01-01-0001.</p>
+                        <p class="Paragraph">Any date past 31-12-9999 will be interpreted as 31-12-9999.</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%U( <i class="Emphasis">format</i>)
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use for UTC times.</p>
+                        <p class="Paragraph">This option enables you to define your own time using
+			  the following subformats of the ‘%U’ format.</p>
+                        <table border="1" width="100%" class="default">
+                           <tbody noTR="6" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%H</td>
+                                 <td rowspan="1" colspan="1" class="default">hours in 24 hour format</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%h</td>
+                                 <td rowspan="1" colspan="1" class="default">hours in 12 hour format</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%m</td>
+                                 <td rowspan="1" colspan="1" class="default">minutes</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%s</td>
+                                 <td rowspan="1" colspan="1" class="default">seconds</td>
+                              </tr>
+                              <tr no="5" isLast="false" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%a</td>
+                                 <td rowspan="1" colspan="1" class="default">substitutes the am/pm symbol as defined for the user
+                                    					language
+                                 </td>
+                              </tr>
+                              <tr no="6" isLast="true" class="default">
+                                 <td rowspan="1" colspan="1" class="default">%x</td>
+                                 <td rowspan="1" colspan="1" class="default">time separator as specified for the user language</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">You can combine these subformats with other
+                           			  formats.
+                        </p>
+                        <p class="Paragraph">The expression that is substituted for this symbol must
+                           specify a <a href="../../progguide/functions_date_time_zones/overview.htm#utc" class="commandLink">UTC</a> long format value of which only the local time will be used.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%d</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use for decimal representation of long values.</p>
+                        <p class="Paragraph">First, <a href="../../progguide/3gl_features/type_conversions.htm#implicit_type_conversion" class="manualLink">implicit conversion</a> of the supplied value
+                           from its original type
+                           to a long value
+                           is performed.
+                        </p>
+                        <p class="Paragraph">Then, <a href="../../progguide/3gl_features/type_conversions.htm#explicit_type_conversion" class="manualLink">explicit conversion</a> of the long value
+                           to its decimal representation
+                           is performed.
+                        </p>
+                        <p class="Paragraph">For this explicit long to string type conversion,
+                           the same considerations apply
+                           as for implicit <a href="../../progguide/3gl_features/type_conversions.htm#long_to_string_type_conversion" class="manualLink">long to string type conversion</a>,
+                           especially concerning the string length to be expected.
+                        </p>
+                        <p class="Paragraph">Additional elements of the substitution string may be used to control certain details of the conversion,
+                           e.g. minimum field width,
+                           left or right adjustment,
+                           zero padding,
+                           and prepending a '+' sign to non-negative values.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%e</td>
+                     <td rowspan="1" colspan="1" class="none">Use for double values with exponent.</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%f</td>
+                     <td rowspan="1" colspan="1" class="none">Use for doubles values with 6 decimal places.</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%g</td>
+                     <td rowspan="1" colspan="1" class="none">Use for double values.</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%s</td>
+                     <td rowspan="1" colspan="1" class="none">Use for single-byte and multibyte strings.</td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%o</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use for octal representation of long values.</p>
+                        <p class="Paragraph">First, <a href="../../progguide/3gl_features/type_conversions.htm#implicit_type_conversion" class="manualLink">implicit conversion</a> of the supplied value
+                           from its original type
+                           to a long value
+                           is performed.
+                        </p>
+                        <p class="Paragraph">Then,
+                           the long value is wrapped around
+                           from the signed <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-bit
+               value range
+               [-2^(BitCountOfLong-1) … 2^(BitCountOfLong-1) - 1]
+               to the <i class="Emphasis">unsigned</i> 32-bit value range
+               [0 … 2^32 - 1]
+               by repeatedly adding or subtracting 2^32.
+                        </p>
+                        <p class="Paragraph">Then, <a href="../../progguide/3gl_features/type_conversions.htm#explicit_type_conversion" class="manualLink">explicit conversion</a> of the resulting integer value
+                           to its octal representation
+                           is performed.
+                        </p>
+                        <p class="Paragraph">For this explicit conversion,
+                           the same considerations
+                           (with powers of 10 replaced by powers of 8)
+                           apply
+                           as for implicit <a href="../../progguide/3gl_features/type_conversions.htm#long_to_string_type_conversion" class="manualLink">long to string type conversion</a>,
+                           especially concerning the string length to be expected.
+                        </p>
+                        <p class="Paragraph">Notice that the octal notation of the unsigned 32-bit value range is [0 … 377,7777,7777],
+               implying that 11 string positions must be reserved to cover the complete range.</p>
+                        <p class="Paragraph">Notice that small negative input values are wrapped to the high part of the unsigned 32-bit value range.
+                           E.g. the value -1 is wrapped to 2^32 - 1,
+                           such that the resulting octal representation uses the maximal string width of 11 positions.
+                        </p>
+                        <p class="Paragraph">Additional elements of the substitution string may be used to control certain details of the conversion,
+                           e.g. minimum field width,
+                           left or right adjustment,
+                           zero padding,
+                           and prepending a '+' sign.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%lo</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The same as %o, but the wrapping is done 
+               to the unsigned 64-bit value range
+               [0 … 2^64 - 1]
+               by repeatedly adding or subtracting 2^64.</p>
+                        <p class="Paragraph">Notice that the octal notation of the unsigned 64-bit value range is [0 … 17,7777,7777,7777,7777,7777],
+               implying that 22 string positions must be reserved to cover the complete range.</p>
+                        <p class="Paragraph">Notice that small negative input values are wrapped to the high part of the unsigned 64-bit value range.
+                           E.g. the value -1 is wrapped to 2^64 - 1,
+                           such that the resulting octal representation uses the maximal string width of 22 positions.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%x</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The same as %o, but hexadecimal representation is used
+                           and powers of 8 are replaced by powers of 16.
+                        </p>
+                        <p class="Paragraph">Lower case letters are used for digits greater than 9: 'a', 'b', 'c', 'd', 'e', and 'f'.</p>
+                        <p class="Paragraph">Notice that the hexadecimal notation of the unsigned 32-bit value range is [0 … ffff,ffff],
+               implying that 8 string positions must be reserved to cover the complete range.</p>
+                        <p class="Paragraph">Notice that small negative input values are wrapped to the high part of the unsigned 32-bit value range.
+                           E.g. the value -1 is wrapped to 2^32 - 1,
+                           such that the resulting hexadecimal representation uses the maximal string width of 8 positions.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%lx</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The same as %x, but the wrapping is done 
+               to the unsigned 64-bit value range
+               [0 … 2^64 - 1]
+               by repeatedly adding or subtracting 2^64.</p>
+                        <p class="Paragraph">Notice that the hexadecimal notation of the unsigned 64-bit value range is [0 … ffff,ffff,ffff,ffff],
+               implying that 16 string positions must be reserved to cover the complete range.</p>
+                        <p class="Paragraph">Notice that small negative input values are wrapped to the high part of the unsigned 64-bit value range.
+                           E.g. the value -1 is wrapped to 2^64 - 1,
+                           such that the resulting hexadecimal representation uses the maximal string width of 16 positions.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="17" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">%@&lt;format&gt;@</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Make it possible to use edit$() formatting characters for
+                           printf$(). Replace &lt;format&gt; format specifier by the formatting characters
+                           as described for <a href="../../progguide/functions_formatting_io/edit.htm" class="manualLink">edit$()</a>.
+                        </p>
+                        <p class="Paragraph"><a href="../../progguide/3gl_features/type_conversions.htm#implicit_type_conversion" class="manualLink">Implicit conversion</a> of the supplied value from its original type to type string is performed.
+                           The resulting string value is formatted according to the format string.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Strings</div>
+            <p class="Paragraph">string result(80), word(20)</p>
+            <p class="Paragraph">word = "word"</p>
+            <p class="Paragraph">result = sprintf$("This is a '%*s' of 10
+               	  positions",10,word)
+            </p>
+            <p class="Paragraph">| result contains "This is a '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; word' of 10
+	  positions"</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Doubles</div>
+            <p class="Paragraph">string result(80)</p>
+            <p class="Paragraph">result = sprintf$("number: %-*.*f",10,2,1.2)</p>
+            <p class="Paragraph">| result contains "number: 1.20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "</p>
+            <p class="Paragraph">| minimum length of the double value is 10
+               	  positions
+            </p>
+            <p class="Paragraph">| number of digits after decimal sign is 2</p>
+            <p class="Paragraph">For %g the style used depends on the value converted. Style e is
+               	  used only if the exponent resulting from the conversion is
+            </p>
+            <p class="Paragraph">less than -4 or greater than or equal to the precision.
+               	  Otherwise style f is used.
+            </p>
+            <p class="Paragraph">result = sprintf$("number: %-*.*g",10,3,1234.567)</p>
+            <p class="Paragraph">| result contains "number: &nbsp;&nbsp;1.23e+03 "</p>
+            <p class="Paragraph">| e style because the exponent (3) is equal to the
+               	  precision .
+            </p>
+            <p class="Paragraph">result = sprintf$("number: %-*.*g",10,6,1234.567)</p>
+            <p class="Paragraph">| result contains "number: &nbsp;&nbsp;&nbsp;1234.57 "</p>
+            <p class="Paragraph">| f style because the exponent (3) is greater than -4 and
+               	  smaller than the precision (6).
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Amounts</div>
+            <p class="Paragraph">| Suppose the default currency is USD ($)</p>
+            <p class="Paragraph">| and A001 is defined as "$$ 999T999T999VD99"</p>
+            <p class="Paragraph">string result(80)</p>
+            <p class="Paragraph">result = sprintf$("%A001", 1234.56)</p>
+            <p class="Paragraph">| result contains "$ 000,001,234.56"</p>
+            <p class="Paragraph">result = sprintf$("%-10A001,hfl", 1234.56)</p>
+            <p class="Paragraph">| result contains "fl 000.001.234,56"</p>
+            <p class="Paragraph">result = sprintf$("%-.10A001,hfl", 1234.56)</p>
+            <p class="Paragraph">| result contains "001.234,56"; there is insufficient
+               	  space
+            </p>
+            <p class="Paragraph">| for currency symbol</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Dates</div>
+            <p class="Paragraph">| Suppose date format 002 is: "year/month/day in
+               	  month"
+            </p>
+            <p class="Paragraph">string result(80)</p>
+            <p class="Paragraph">result = sprintf$("%D002", 727168)</p>
+            <p class="Paragraph">| result contains "1991/12/2"</p>
+            <p class="Paragraph">| Example of substitution symbol %D(format)</p>
+            <p class="Paragraph">string result(80)</p>
+            <p class="Paragraph">result = sprintf$("%D(Date: %02d/%02m/%04Y)",
+               	  date.num())
+            </p>
+            <p class="Paragraph">| result contains "Date: 12/07/1993"</p>
+            <p class="Paragraph">result = sprintf$("Date: %D(%02d %-20H %04Y)",
+               	  date.num())
+            </p>
+            <p class="Paragraph">| result contains "Date: 12 June&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  1993"</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">UTC dates and times</div>
+            <p class="Paragraph">| Date format 002 is "year/month/day in month"</p>
+            <p class="Paragraph">| Time format 001 is "12 hour format:minutes:seconds AM/PM
+               	  symbol"
+            </p>
+            <p class="Paragraph">string result(80)</p>
+            <p class="Paragraph">result = sprintf$("%u002 %001", utc.num(),
+               	  utc.num())
+            </p>
+            <p class="Paragraph">| Result contains "1997/01/01 10:02:53 pm"</p>
+            <p class="Paragraph">string result(80)</p>
+            <p class="Paragraph">result = sprintf$("UTC: %u(%02d/%02m/%04Y) %U(%02h%x%02m%x%02s
+               	  %a)", utc.num(), utc.num())
+            </p>
+            <p class="Paragraph">| result contains "UTC: 22/07/1997 06:24:53 am"</p>
+            <p class="Paragraph">| provided that for the user's language the time</p>
+            <p class="Paragraph">| separator is ":" and the AM symbol is "am"</p>
+            <p class="Paragraph">| Using a comma after a %u substitution symbol</p>
+            <p class="Paragraph">string result(80)</p>
+            <p class="Paragraph">result = sprintf$("%u001, ,Message text....", utc.now())</p>
+            <p class="Paragraph">| result containts "06-05-15,Message text...."</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <table border="0" class="none">
+               <tbody noTR="19" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Format</td>
+                     <td rowspan="1" colspan="1" class="none">Value</td>
+                     <td rowspan="1" colspan="1" class="none">Result</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%f</td>
+                     <td rowspan="1" colspan="1" class="none">1.2</td>
+                     <td rowspan="1" colspan="1" class="none">"1.200000"</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%10f</td>
+                     <td rowspan="1" colspan="1" class="none">1.2</td>
+                     <td rowspan="1" colspan="1" class="none">"&nbsp; 1.200000"</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%10.2f</td>
+                     <td rowspan="1" colspan="1" class="none">1.2</td>
+                     <td rowspan="1" colspan="1" class="none">"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.20"</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%-10.2f</td>
+                     <td rowspan="1" colspan="1" class="none">1.267</td>
+                     <td rowspan="1" colspan="1" class="none">"1.27&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%10.6g</td>
+                     <td rowspan="1" colspan="1" class="none">1234.567</td>
+                     <td rowspan="1" colspan="1" class="none">"&nbsp;&nbsp;&nbsp; 1234.57"</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%10.3g</td>
+                     <td rowspan="1" colspan="1" class="none">1234.567</td>
+                     <td rowspan="1" colspan="1" class="none">"&nbsp;&nbsp; 1.23e+03 "</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%10.2e</td>
+                     <td rowspan="1" colspan="1" class="none">12.34</td>
+                     <td rowspan="1" colspan="1" class="none">"&nbsp; 1.23e+01"</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%-10.2e</td>
+                     <td rowspan="1" colspan="1" class="none">12.34</td>
+                     <td rowspan="1" colspan="1" class="none">"1.23e+01&nbsp; "</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%10d</td>
+                     <td rowspan="1" colspan="1" class="none">1</td>
+                     <td rowspan="1" colspan="1" class="none">"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1"</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%10d</td>
+                     <td rowspan="1" colspan="1" class="none">-1</td>
+                     <td rowspan="1" colspan="1" class="none">"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1"</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%-10d</td>
+                     <td rowspan="1" colspan="1" class="none">1</td>
+                     <td rowspan="1" colspan="1" class="none">"1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;"</td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%-10d</td>
+                     <td rowspan="1" colspan="1" class="none">-1</td>
+                     <td rowspan="1" colspan="1" class="none">"-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "</td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%10s</td>
+                     <td rowspan="1" colspan="1" class="none">"12"</td>
+                     <td rowspan="1" colspan="1" class="none">"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12"</td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%-10s</td>
+                     <td rowspan="1" colspan="1" class="none">"12"</td>
+                     <td rowspan="1" colspan="1" class="none">"12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "</td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%10s</td>
+                     <td rowspan="1" colspan="1" class="none">"123456789012"</td>
+                     <td rowspan="1" colspan="1" class="none">"123456789012"</td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%.10s</td>
+                     <td rowspan="1" colspan="1" class="none">"123456789012"</td>
+                     <td rowspan="1" colspan="1" class="none">"1234567890"</td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">%@ZZVD99@</td>
+                     <td rowspan="1" colspan="1" class="none">1.267</td>
+                     <td rowspan="1" colspan="1" class="none">"&nbsp;&nbsp;&nbsp;&nbsp; 1.26"</td>
+                  </tr>
+                  <tr no="19" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">%1$*2$.*3$f</td>
+                     <td rowspan="1" colspan="1" class="none">3.14, 5, 6</td>
+                     <td rowspan="1" colspan="1" class="none">"3.140" (effective similar to format %5.6f and value 3.14)</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph"></p>
+            <table class="default">
+               <tbody noTR="5" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <td width="124" rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Format</p>
+                     </td>
+                     <td colspan="2" width="565" rowspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Result</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td width="124" rowspan="1" colspan="1" class="default">%s</td>
+                     <td colspan="2" width="565" rowspan="1" class="default">Returns the full string.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td width="124" rowspan="1" colspan="1" class="default">%20s</td>
+                     <td colspan="2" width="565" rowspan="1" class="default">Right justifies the string in a field of
+                        			20 positions. If the string is longer 20 positions, the field is lengthened to
+                        			accommodate the full string.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td width="124" rowspan="1" colspan="1" class="default">%-20s</td>
+                     <td colspan="2" width="565" rowspan="1" class="default">Left justifies the string in a field of
+                        			20 positions. If the string is longer 20 positions, the field is lengthened to
+                        			accommodate the full string.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="default">
+                     <td width="124" rowspan="1" colspan="1" class="default">%20.20s</td>
+                     <td colspan="2" width="565" rowspan="1" class="default">Right justifies the string and limits its
+                        			size to 20 positions. Partially displayable multibyte characters (2 characters
+                        			wide) will be spaced out.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_formatting_io/overview_and_synopsis.htm" class="manualLink">Formatting input and output - overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_formatting_io/sprintf, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

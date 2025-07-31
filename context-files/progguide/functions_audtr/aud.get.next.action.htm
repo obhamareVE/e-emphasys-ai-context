@@ -1,0 +1,236 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>aud.get.next.action()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="aud.get.next.action aud.get.next.action functions aud.get.next.action ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">aud.get.next.action()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;aud.get.next.action&nbsp;
+					(long&nbsp;selection.id, ref long&nbsp;table.id, ref long&nbsp;company, ref string&nbsp;table.code, ref bool&nbsp;meta.data.changed, ref long&nbsp;current.action.number, ref string&nbsp;action.type)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Determines and reads the next action from the list of tables
+                  that was constructed by the <a href="../../progguide/functions_audtr/aud.get.next.transaction.htm" class="manualLink">aud.get.next.transaction()</a> function.
+               </p>
+               <p class="Paragraph">The action header is returned, which consists of the <i class="Emphasis">current.action.number</i> and the <i class="Emphasis">action.type</i>.
+                  Furthermore, an indication is given on whether the meta data is
+                  changed. If this is the case, the number of fields, the type, or
+                  the length of one or more fields has changed, which means the
+                  meta data functions <a href="../../progguide/functions_audtr/aud.get.field.ids.htm" class="manualLink">aud.get.field.ids()</a> and <a href="../../progguide/functions_audtr/aud.get.field.info.htm" class="manualLink">aud.get.field.info()</a> must
+                  be used to handle the meta data.
+               </p>
+               <p class="Paragraph">The other information on the action (for each field the
+                  status, the old value and the new value) is kept internally and
+                  can be retrieved using function <a href="../../progguide/functions_audtr/aud.get.field.status.htm" class="manualLink">aud.get.field.status()</a>, <a href="../../progguide/functions_audtr/aud.put.old.field.value.htm" class="manualLink">aud.put.old.field.value()</a>,
+                  and <a href="../../progguide/functions_audtr/aud.put.old.field.value.htm" class="manualLink">aud.put.new.field.value()</a>.
+               </p>
+               <p class="Paragraph">The <i class="Emphasis">action.type</i> specifies if the action is a table
+                  operation (create table, clear table and drop table) or a row
+                  operation (insert row, delete row and update row).
+               </p>
+               <p class="Paragraph">If the maximum number of opened files has been reached, the
+                  function uses the action numbers to determine the last action in
+                  the list. The sequence file of this action is closed before
+                  opening a new sequence file.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>selection.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Id of the selection, as provided by <a href="../../progguide/functions_audtr/aud.select.transactions.htm" class="manualLink">aud.select.transactions()</a></p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>table.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Id of the table on which the action occurred that is
+                           used to retrieve the detailed action data using
+                           functions <a href="../../progguide/functions_audtr/aud.get.field.status.htm" class="manualLink">aud.get.field.status()</a>, <a href="../../progguide/functions_audtr/aud.put.old.field.value.htm" class="manualLink">aud.put.old.field.value()</a>,
+                           and <a href="../../progguide/functions_audtr/aud.put.old.field.value.htm" class="manualLink">aud.put.new.field.value()</a>.
+                           This id is also used to get the meta data information,
+                           in case it has been changed.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>company</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Infor ERP Enterprise company that contains the table on which
+                           the database action was done.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>table.code</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The code of the updated database table</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">ref bool</td>
+                     <td class="none"><code>meta.data.changed</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>current.action.number</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Sequence number of the action within the
+                           transaction.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>action.type</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A character that specifies the type of action
+                           retrieved. The string contains an 'I' for inserting a
+                           row, 'U' for updating a row and a 'D' for deleting a
+                           row. For table operations the string contains a 'C' for
+                           creating a table, 'L' for clearing a table and 'R' for
+                           dropping a table.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_OK</th>
+                     <td rowspan="1" colspan="1" class="none">Next transaction in the selection is determined and
+                        transaction header data is retrieved
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_FAIL</th>
+                     <td rowspan="1" colspan="1" class="none">The transaction data could not be retrieved</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_NO_MORE_ACTIONS</th>
+                     <td rowspan="1" colspan="1" class="none">There are no more transactions in the selection</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Restrictions</div>
+            <p class="Paragraph">The function <a href="../../progguide/functions_audtr/aud.get.next.transaction.htm" class="manualLink">aud.get.next.transaction()</a> has to be called successfully prior to this function.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">State</div>
+            <p class="Paragraph">If <i class="Emphasis">meta.data.changed</i> is true, the internal meta data
+               information on the fields have been refreshed. This information
+               must be retrieved using functions <a href="../../progguide/functions_audtr/aud.get.field.ids.htm" class="manualLink">aud.get.field.ids()</a> and <a href="../../progguide/functions_audtr/aud.get.field.info.htm" class="manualLink">aud.get.field.info()</a>.
+            </p>
+            <p class="Paragraph">If <i class="Emphasis">action.type</i> is 'I', 'U' or 'D' then the row
+               information on the action is available for retrieval using
+               functions <a href="../../progguide/functions_audtr/aud.get.field.status.htm" class="manualLink">aud.get.field.status()</a>, <a href="../../progguide/functions_audtr/aud.put.old.field.value.htm" class="manualLink">aud.put.old.field.value()</a> and <a href="../../progguide/functions_audtr/aud.put.old.field.value.htm" class="manualLink">aud.put.new.field.value()</a>.
+               See the following table:
+            </p>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">Action type</th>
+                     <th rowspan="1" colspan="1" class="none">aud.get.field.status</th>
+                     <th rowspan="1" colspan="1" class="none">aud.get.old.field.value</th>
+                     <th rowspan="1" colspan="1" class="none">aud.get.new.field.value</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">'C' (Create table)</td>
+                     <td rowspan="1" colspan="1" class="none">no</td>
+                     <td rowspan="1" colspan="1" class="none">no</td>
+                     <td rowspan="1" colspan="1" class="none">no</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">'L' (Clear table)</td>
+                     <td rowspan="1" colspan="1" class="none">no</td>
+                     <td rowspan="1" colspan="1" class="none">no</td>
+                     <td rowspan="1" colspan="1" class="none">no</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">'R' (Drop table)</td>
+                     <td rowspan="1" colspan="1" class="none">no</td>
+                     <td rowspan="1" colspan="1" class="none">no</td>
+                     <td rowspan="1" colspan="1" class="none">no</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">'I' (Insert row)</td>
+                     <td rowspan="1" colspan="1" class="none">yes</td>
+                     <td rowspan="1" colspan="1" class="none">no</td>
+                     <td rowspan="1" colspan="1" class="none">yes</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">'D' (Delete row)</td>
+                     <td rowspan="1" colspan="1" class="none">yes</td>
+                     <td rowspan="1" colspan="1" class="none">yes</td>
+                     <td rowspan="1" colspan="1" class="none">no</td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">'U' (Update row)</td>
+                     <td rowspan="1" colspan="1" class="none">yes</td>
+                     <td rowspan="1" colspan="1" class="none">yes</td>
+                     <td rowspan="1" colspan="1" class="none">yes</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Note: The old and new field value is not available if the
+               status shows the field is not logged in the audit trail. See <a href="../../progguide/functions_audtr/aud.get.field.status.htm" class="manualLink">aud.get.field.status()</a>.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_synopsis.htm" class="manualLink">Audit management synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_examples.htm" class="manualLink">Audit management examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_audtr/aud.get.next.action, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

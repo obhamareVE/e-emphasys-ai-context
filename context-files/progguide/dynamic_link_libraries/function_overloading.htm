@@ -1,0 +1,143 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Function overloading</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dynamic-link libraries function overloading function overloading ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Function overloading</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">When DLLs are dynamically linked at runtime, instead of at
+               	  compile time, function overloading is possible. This means that an external
+               	  function contained in a loaded DLL can be replaced by overloading another DLL
+               	  that contains a function with the same name and arguments.
+            </p>
+            <p class="Paragraph">You use the <a href="../../progguide/functions_dll/load_dll.htm" class="manualLink">load_dll()</a> function to load DLLs dynamically. When you call this function, you can specify
+               	  whether the DLL is to be overloaded or not. When searching for an external
+               	  function called by a program, the bshell always searches in overloaded DLLs
+               	  first.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Specifying which DLLs belong to an object</div>
+            <p class="Paragraph">There are three methods for specifying which DLLs belong to an
+               	  object.
+            </p>
+            <ul class="List">
+               <li class="ListItem">Specify the DLL dynamically, with overload, in the source code.
+                  		For example: <code class="Code">load_dll( &lt;dll_object&gt;, DLL_OVERLOAD
+                     )</code></li>
+            </ul>
+            <ul class="List">
+               <li class="ListItem">Specify the DLL statically at compile time. There are three
+                  		ways to do this: 
+                  <ul class="List">
+                     <li class="ListItem">use the option "Define Libraries" in the session "Maintain
+                        			Program Scripts"
+                     </li>
+                     <li class="ListItem">use the following syntax when starting the bic6.2 compiler <code class="Code">bic6.2 script -o object -d
+                           dll_object</code></li>
+                     <li class="ListItem">use the following pragma code in the script <code class="Code">#pragma used dll
+                           &lt;dll_object&gt;</code></li>
+                  </ul>
+               </li>
+               <li class="ListItem">Specify the DLL dynamically, without overload, in the source
+                  		code. For example:
+               </li>
+            </ul><pre class="CodeBlock">
+load_dll( &lt;dll_object&gt;, 0 ) or
+load_dll( &lt;dll_object&gt; )    | 0 is default
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Function search algorithm</div>
+            <p class="Paragraph">When a DLL function is called for the first time, the function
+               	  address is unresolved. The bshell attempts to resolve the function address by
+               	  searching for the function using the search method described below. After a
+               	  function address is resolved, that address is used for all subsequent function
+               	  calls with the same function name and arguments. So once a function address is
+               	  resolved, the function cannot be replaced by overloading a different DLL
+               	  containing a function of the same name and arguments.
+            </p>
+            <p class="Paragraph">The bshell searches DLLs in the following order:</p>
+            <ol class="ProcedureList">
+               <li class="ProcedureListItem">All dynamically overloaded DLLs &#65533; that is, DLLs loaded by
+                  		calling <a href="../../progguide/functions_dll/load_dll.htm" class="manualLink">load_dll()</a> with the overload flag set to DLL_OVERLOAD. For
+                  		example: <code class="Code">load_dll(dll_object, DLL_OVERLOAD)</code> The bshell searches the overloaded DLLs in reverse order. So, the DLL
+                  		that was overloaded last is searched first.
+               </li>
+               <li class="ProcedureListItem">The first DLL where the function was found during
+                  		compilation.
+               </li>
+               <li class="ProcedureListItem">All statically specified DLLs.</li>
+               <li class="ProcedureListItem">First the bshell searches in the DLLs specified in the
+                  		compilation command with the &#65533;d option. The DLLs are searched in the order they
+                  		are specified in the command. For example: <code class="Code">bic6.2 script -o object -d odll1:odll2:odll3</code> Next the bshell searches in DLLs specified using the following pragma
+                  		statement: <code class="Code">#pragma used dll &lt;dll_object&gt;</code></li>
+               <li class="ProcedureListItem">4&nbsp;&nbsp; All dynamically loaded DLLs &#65533; that is, DLLs loaded by
+		calling <a href="../../progguide/functions_dll/load_dll.htm" class="manualLink">load_dll()</a> without the overload flag or with the overload
+                  		flag set to 0. For example: <code class="Code">load_dll(dll_object, 0</code> The bshell searches the loaded DLLs in the order in which they were
+                  		loaded. So, the DLL that was loaded first is searched first.Note that you can
+                  		change the search order of dynamically loaded DLLs by calling <i class="Emphasis">load.dll()</i> for a loaded DLL and changing the value of the
+                  		overload flag.
+               </li>
+            </ol>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Function overloading example</div><pre class="CodeBlock">
+Compile
+
+bic6.2 dll -o odll
+bic6.2 dll_new -o odll_new
+bic6.2 script -o object -d odll -DDEBUG
+
+Script code
+
+function main()
+{
+#ifdef DEBUG
+        if ( debug flag ) then
+                | Load dynamically DLL 'dll_new' to
+                | overload the DLL 'dll'
+                load_dll("odll_new", 1) | Argument '1' means overload 
+        endif
+#endif
+        dll_function()
+}
+
+dll code 
+
+function extern dll_function()
+{
+        ... 
+}
+
+dll_new code 
+
+function extern dll_function() 
+{
+        ... 
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/dynamic_link_libraries/overview.htm" class="manualLink">Dynamic-link libraries</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/dynamic_link_libraries/function_overloading, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Enumerate and set constants</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="3GL enumerate and set constants enumerate and set constants 3GL ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Enumerate and set constants</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">In the data dictionary you can define database table fields and
+               domains of type enumerate or set.
+            </p>
+            <p class="Paragraph">An enumerate or set domain consists of a number of
+               constants. In the program script (and other places in the
+               data dictionary), a symbolic name is used. The symbolic name
+               is the domain name, followed by a period [.] followed by the
+               name of the constant. Variables of type set can also consist
+               of a combination of set values.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples of enumerate constants</div><pre class="CodeBlock">
+      DOMAIN color  box_color       | color is an enumerate domain
+                                    | with two constants, green and red
+
+      box_color = color.green
+      box_color = color.red
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples of set constants</div><pre class="CodeBlock">
+      DOMAIN feature cf                         | feature is a domain of type set with
+                                                | the constants bold, reverse, underlined
+      cf = feature.bold
+      cf = cf + feature.reverse                 | add constant, cf contains
+                                                | bold and reverse
+      cf = cf - feature.bold                    | subtract constant
+      etol( cf )                                | returns the combined number of the
+                                                | current value, here reverse.
+</pre><p class="Paragraph">For working with sets, see also the <a href="../../progguide/functions_bit/bit_operations_overview_and_synopsis.htm" class="manualLink">Bit operations: overview and synopsis</a> functions.
+            </p>
+            <p class="Paragraph">A special constant of type enumerate or set is EMPTY. This
+               indicates an empty set or an enumerate which is not defined.
+               Internally, it has the value 0.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/constants.htm" class="manualLink">Constants</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/enumerate_and_set_constants, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

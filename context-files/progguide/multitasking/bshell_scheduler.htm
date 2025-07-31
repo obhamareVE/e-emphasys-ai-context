@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Bshell scheduler</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="bshell scheduler ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Bshell scheduler</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The bshell scheduler is responsible for managing and
+               scheduling processes. It maintains four process queues, as
+               follows:
+            </p>
+            <ul class="List">
+               <li class="ListItem">running queue</li>
+               <li class="ListItem">blocking queue</li>
+               <li class="ListItem">sleeping queue</li>
+               <li class="ListItem">terminating queue</li>
+            </ul>
+            <p class="Paragraph">The scheduler keeps all processes in one or other of the
+               above process queues, depending on their current state.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Running queue</div>
+            <p class="Paragraph">The scheduler schedules processor time only for those
+               processes in the running queue. It schedules each process in the
+               running queue in turn, in order of priority. Each scheduled
+               process receives a number of ticks, and the execution of each
+               instruction costs the process a certain number of ticks. When
+               the process has used up all its ticks, the bshell schedules
+               another process.
+            </p>
+            <p class="Paragraph">The scheduler always schedules the process with the highest
+               priority.
+            </p>
+            <p class="Paragraph">When a process is started, it gets a default priority (this
+               depends on its nice value). While it is in the running queue,
+               the process's priority is incremented each time that another
+               process is scheduled. In this way, the process's priority
+               increases until it has the highest priority in the running
+               queue. It is then scheduled. When a process has been scheduled,
+               its priority returns to its default value.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Blocking queue</div>
+            <p class="Paragraph">When a process is waiting for input, the scheduler moves it
+               from the running queue to the blocking queue. So, the running
+               queue contains only processes that can be run. When a blocked
+               process receives an event, it is moved back from the blocking
+               queue to the running queue.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Sleeping queue</div>
+            <p class="Paragraph">Processes in the sleeping queue are suspended until some
+               external action wakes them again. Processes can be put in a
+               sleeping state (and so in the sleeping queue) only by the
+               functions <a href="../../progguide/functions_processes/sleep.htm" class="manualLink">sleep()</a>, <a href="../../progguide/functions_processes/suspend.htm" class="manualLink">suspend()</a>, <a href="../../progguide/functions_interprocess_communication_bshell/receive.bucket.htm" class="manualLink">receive.bucket$()</a>, and related functions.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Terminating queue</div>
+            <p class="Paragraph">When a process ends, it is stripped of almost all allocated
+               data and moved to the terminating queue. When the scheduler has
+               scheduled another process to run, it then 'cleans up' the
+               terminating queue. That is, it removes all processes except <i class="Emphasis">zombie</i> processes. A zombie process is a process that has
+               ended but whose parent process has not yet caught its exit
+               signal.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/multitasking/multitasking_and_the_gui.htm" class="manualLink">Multitasking and the GUI</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/multitasking/bshell_scheduler, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

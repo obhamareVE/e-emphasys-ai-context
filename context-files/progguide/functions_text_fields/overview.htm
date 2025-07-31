@@ -1,0 +1,60 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Text fields overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="text fields ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Text fields overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Use these functions for handling database text fields.</p>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Text numbers</div>
+               <p class="Paragraph">Every text stored in the database has a text number. A text
+                  field that is included in a database table is referenced in the
+                  table by its text number. The text itself, its key words, and so
+                  on, are stored in a separate table.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Text field names</div>
+               <p class="Paragraph">The <i class="Emphasis">text_field</i>, <i class="Emphasis">text_field_from</i>, and <i class="Emphasis">text_field_to</i> arguments must always contain a text field
+                  name. This name can be the name of a database field of type
+                  DB.TEXT, or it can be the name of a variable of type long. In
+                  both cases, the name must be enclosed by quote marks. When using
+                  a variable, this must be declared as EXTERN because the
+                  functions use the <i class="Emphasis">text_field</i> argument indirectly to store
+                  the text number of the specified text. Database text field names
+                  are automatically declared as external.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">Committing transactions</div>
+               <p class="Paragraph">In the case of all text field transactions, you must commit
+                  the transaction yourself.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_text_fields/synopsis.htm" class="manualLink">Text fields synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_text_fields/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

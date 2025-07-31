@@ -1,0 +1,104 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>load.float()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions load.float load.float load.float ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">load.float()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;double&nbsp;load.float&nbsp;
+					(string&nbsp;record$ [, long&nbsp;swap])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">The load.byte(), load.short(), load.long(), load.float() and load.double()
+                  functions treat the supplied string merely as a
+                  sequence of bytes, without trying to interpret that sequence of
+                  bytes as the encoding of a sequence of characters. Instead, the
+                  bytes are interpreted as the encoding of numerical values.
+               </p>
+               <p class="Paragraph">The function <i class="Emphasis">load.float</i> returns the numerical value of
+                  the first four bytes of the supplied string, interpreted as the four-byte encoding of a
+                  floating point value.
+               </p>
+               <p class="Paragraph">The load.float() function is <i class="Emphasis">not</i> machine independent and 
+                  must be used with care in (for
+                  example) network communications.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>record$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The string containing the numeric value that must be
+                           loaded into the double variable.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>swap</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This function assumes that  the data in <i class="Emphasis">record$</i> is stored in <i class="Emphasis">machine dependent</i> format.
+                           To compensate for a difference in the endianess of the data and the host running the program
+                           set this optional argument to 1. In effect all four byte will be swapped.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+| Load a float from a string
+string tmp(4)
+double value
+store.float(3.14,tmp)
+value = load.float( tmp )
+| The variable value contains now the value 3.14
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic">Related operations: <a href="../../progguide/functions_string_operations/load.byte.htm" class="manualLink">load.byte()</a>, <a href="../../progguide/functions_string_operations/load.double.htm" class="manualLink">load.double()</a>, <a href="../../progguide/functions_string_operations/load.long.htm" class="manualLink">load.long()</a>, <a href="../../progguide/functions_string_operations/load.short.htm" class="manualLink">load.short()</a></li>
+               <li class="RelTopic">Inverse operations: <a href="../../progguide/functions_string_operations/store.byte.htm" class="manualLink">store.byte()</a>, <a href="../../progguide/functions_string_operations/store.double.htm" class="manualLink">store.double()</a>, <a href="../../progguide/functions_string_operations/store.float.htm" class="manualLink">store.float()</a>, <a href="../../progguide/functions_string_operations/store.long.htm" class="manualLink">store.long()</a>, <a href="../../progguide/functions_string_operations/store.short.htm" class="manualLink">store.short()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/overview.htm" class="manualLink">String operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_string_operations/synopsis.htm" class="manualLink">String operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_string_operations/load.float, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

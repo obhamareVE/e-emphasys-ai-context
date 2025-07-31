@@ -1,0 +1,142 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>XML object overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="XML object overview ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">XML object overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The purpose of this document is to define the functional
+               requirements for the XML object. The XML object is an extension
+               of the Baan VM allowing a 3GL/4GL application to exchange
+               structured data using the XML format.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Environment</div>
+            <p class="Paragraph">The XML object functionality is integrated into the Baan VM.
+               It is accessible by 3GL/4GL programs using a set of Baan 3GL
+               functions. The XML object is applied by CMF for communication
+               between a messaging service and a 4GL application. The XML
+               object is also applied by B3 for constructing and exploring
+               communication objects. The XML object functionality is not
+               restricted to CMF and B3 but may be used by other applications
+               that want to exchange structured data using the XML format.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Architecture</div>
+            <p class="Paragraph">The architecture of the XML object functionality is shown the
+               following picture:
+            </p>
+            <div class="Figure"><img src="../images/xml_architecture.gif" alt="[...]" height="409" width="301"></div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">References</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">[XMLSTD]</td>
+                     <td rowspan="1" colspan="1" class="none">Extensible Markup Language 1.0, W3C Recommendation,
+                        February 10, 1998: <a href="http://www.w3.org/TR/1998/REC-xml-19980210" class="wwwlinkLink">http://www.w3.org/TR/1998/REC-xml-19980210</a> and October 6, 2000: <a href="http://www.w3.org/TR/2000/REC-xml-20001006" class="wwwlinkLink">http://www.w3.org/TR/2000/REC-xml-20001006</a>.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">[EXPAT]</td>
+                     <td rowspan="1" colspan="1" class="none">Expat is an XML1.0 parser written in C written by
+                        James Clark. Source code and information can be found at: <a href="http://www.jclark.com/xml/expat.html" class="wwwlinkLink">http://www.jclark.com/xml/expat.html</a></td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">[CMFDS]</td>
+                     <td rowspan="1" colspan="1" class="none">Common Message Facility, Definition study, Doc.Nr:
+                        D0525 US
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">In this figure, the following components are shown:</p>
+            <ul class="List">
+               <li class="ListItem">XML Object API. A set of 3GL functions available to a
+                  3GL/4GL application to access an XML Object.
+               </li>
+               <li class="ListItem">XML Object. Baan VM in-memory structure closely
+                  representing the structure of an XML document.
+               </li>
+               <li class="ListItem">XML Parser. The XML object component which function is to
+                  convert an XML document into an XML object.
+               </li>
+               <li class="ListItem">XML generator. The XML object component which function is
+                  to convert an XML object into an XML document.
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">User characteristics</div>
+            <p class="Paragraph">The direct users of the XML object are application
+               programmers using the XML Object API. Users of CMF and B3 use
+               the XML object implicitly.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Future extensions</div>
+            <p class="Paragraph">A possible future extension is the option of using a
+               validating parser.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Performance requirements</div>
+            <p class="Paragraph">The XML parser implementation used as a basis for the XML
+               object has been optimized for performance.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Software system attributes</div>
+            <p class="Paragraph">The approximate size of this component is about 7K lines of C
+               code.
+            </p>
+            <p class="Paragraph">The XML parser is based on James's Clark free minimal XML
+               parser written in C: "expat". See [EXPAT] for source and
+               description.
+            </p>
+            <p class="Paragraph">Naming convention: all XML object functions start with the
+               prefix: "xml".
+            </p>
+            <p class="Paragraph">The following implementation decisions are made:</p>
+            <ul class="List">
+               <li class="ListItem">The XML functions is built as a library in
+                  /logic/lib/xml.
+               </li>
+               <li class="ListItem">Conversion from TSS to UTF-8 and vice-versa are
+                  built-in.
+               </li>
+               <li class="ListItem">Source code conforms to ANSI-C.</li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/constraints.htm" class="manualLink">XML object constraints</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/glossary.htm" class="manualLink">XML object glossary</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis.htm" class="manualLink">XML object synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/api.htm" class="manualLink">XML object API</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_xml/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

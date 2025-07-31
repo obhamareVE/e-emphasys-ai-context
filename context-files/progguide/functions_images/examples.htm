@@ -1,0 +1,121 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Images on Forms Examples</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Images Examples ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Images on Forms Examples</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Image bound to maintable</div>
+            <p class="Paragraph">Below a part of a 4GL-UI script is shown to illustrate the usage of the image functions.
+               In this example the image is bound to the maintable of the session through the table field <i class="Emphasis">bpmdm001.guid</i>. 
+               The image is shown in the view area of a multi-occ session.
+               The function <a href="../../progguide/functions_form_and_form_field_operations/enable.save.on.occ.change.htm" class="manualLink">enable.save.on.occ.change()</a> must be called to make sure that a possible dropped image is saved before selecting another occurrence in the grid.
+            </p><pre class="CodeBlock">
+table   tbpmdm001                           |* Employee
+extern  domain ttdyf.picture  image.field   |* image form field
+
+after.form.read:
+	bind.image("image.field", "bpmdm001.guid")
+	enable.save.on.occ.change()
+	
+after.update.db.commit:
+	if is.image.changed("image.field") then
+		if check.image.present(bpmdm001.guid) then
+			|Optionally ask user if we should override the current image.
+		endif
+		save.image.field("image.field")
+	endif
+
+
+choice.recover.set:
+after.choice:
+	discard.changed.image("image.field")
+</pre><p class="Paragraph">The image field must be assigned in the DAL of the table:</p><pre class="CodeBlock">
+function extern long before.save.object(long i.mode)
+{
+	bpmdm001.guid = uuid.generate$()
+	return(0)
+}
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Image not bound to maintable</div>
+            <p class="Paragraph">There might also be situations in which an image should be shown which is not bound to the maintable of the session.
+               This occurs for instance when in a header MMT session the image should be shown of the currently selected line in an MMT satellite
+               session.
+            </p>
+            <div class="Note">
+               <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+               <div class="NoteContent">
+                  <p class="Paragraph">In these situations no drag and drop of images is possible.</p>
+               </div>
+            </div>
+            <p class="Paragraph">Below a part of the 4GL-UI script of the MMT header session is shown</p><pre class="CodeBlock">
+table   ttdsls205                           |* Sales Order Templates
+extern  domain  ttdyf.picture   image.field |* image form field
+extern  domain  tcguid          image.guid  |* GUID of image
+
+before.program:
+	|Subscribe to PRCM messages from satellite to pass a new image GUID.
+	prcm.register("tdsls206:" &amp; str$(pid) )
+
+after.form.read:
+	|Image is linked to the lines table: tdsls206.
+	bind.image("image.field", "image.guid", "tdsls206")
+
+choice.bms:
+on.choice:
+    long node
+    if prcm.bms.is.notification() then
+        if prcm.get.subject() = "tssls206:" &amp; str$(pid) then
+		|A new GUID is sent by the satellite
+		node = prcm.get.data()
+		image.guid=xmlData$(node)
+		display("image.field")
+	  endif
+
+</pre><p class="Paragraph">In the satellite session the following code must be added to pass on the image GUID field to the header session.</p><pre class="CodeBlock">
+table   ttdsls206               |* Sales Order Template Lines
+domain  tcguid      hold.guid   |* GUID of image
+long    node
+
+before.program:
+    node = xmlNewNode("guid")   |XML node to communicate new GUID to header session
+
+choice.mark.occur:
+after.choice:
+   if is.mmt.satellite() and
+      hold.guid &lt;&gt; tdsls206.guid and
+      sel.num.selected() = 1 then
+            |Send a new GUID to the header session so the header session
+            |can update the picture field.
+            hold.guid = tdsls206.guid
+            node = xmlRewriteDataElement(node, "guid", tdsls206.guid)
+            prcm.notify("tdsls206:" &amp; str$(parent), "", node)
+   endif
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_images/overview.htm" class="manualLink">Images on Forms Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_images/synopsis.htm" class="manualLink">Images on Forms synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_images/examples, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

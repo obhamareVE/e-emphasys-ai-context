@@ -1,0 +1,109 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>prcm.notify()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions prcm.notify prcm.notify prcm.notify ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">prcm.notify()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;prcm.notify&nbsp;
+					(const string&nbsp;subject [, string&nbsp;aspect(32)] [, long&nbsp;data])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Is called by a subject process to notify other processes that
+                  it has changed. Optionally, an aspect can be specified to
+                  indicate what aspect of the subject process has changed.
+               </p>
+               <p class="Paragraph">It is also possible to pass some data to the observer
+                  processes in the form of an XML document. Observer processes
+                  then have read-only access to this XML document.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>subject</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The subject that has changed. This can be freely
+                           defined.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>aspect(32)</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional aspect of the subject that has changed.
+                           This can be freely defined.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>data</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Optional xml node containing data that observers
+                           might be interested in. The contents of the XML
+                           document can be freely defined. From <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">Tools Interface Version (TIV)</a> 2000,
+                           			the XML structure is duplicated to the PRCM process.
+                           			In older versions, only a reference to the XML is sent
+                           			to the other processes.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Note</div>
+            <div class="NoteContent">
+               <p class="Paragraph">Do not call <a href="../../progguide/functions_prcm/prcm.notify.htm" class="manualLink">prcm.notify()</a> for 
+                  the maintable in the <i class="Emphasis">after.update.db.commit</i> section or the <a href="../../progguide/functions_dal/after.commit.transaction.htm" class="manualLink">after.commit.transaction()</a> hook of the DAL of the maintable, as this interferes with the automatic notification of the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a>.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_prcm/overview.htm" class="manualLink">Process Change Manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_prcm/synopsis.htm" class="manualLink">Process Change Manager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_prcm/examples.htm" class="manualLink">Process Change Manager Code Examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_prcm/prcm.notify, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

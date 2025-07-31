@@ -1,0 +1,74 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Dynamic-link libraries</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="DLL dynamic-link libraries ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Dynamic-link libraries</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Infor ERP Enterprise Server supports the use of dynamic-link
+               libraries (DLLs). A DLL consists of a library of functions that are
+               compiled, linked, and stored separately from the processes that use
+               them. The functions are resources that can be shared by multiple
+               programs that are running concurrently. Only one copy of the DLL
+               needs to be present in memory. Each program that uses the DLL links
+               to it at runtime, at the time it calls one of the DLL&#65533;s
+               functions.
+            </p>
+            <p class="Paragraph">For example, consider the <i class="Emphasis">sprintf$()</i> function. This is a very common function,
+               used by many programs. Instead of including a copy of the
+               function in each program that uses it, you can program the
+               function in a separate DLL. Multiple programs can then share
+               this one copy of the function, by linking to the DLL at
+               runtime.
+            </p>
+            <p class="Paragraph">The following are some of the benefits of using DLLs:</p>
+            <ul class="List">
+               <li class="ListItem">Instead of programming common functions in each
+                  program that uses them, you can program the functions in
+                  one or more DLLs. The code can then be shared by all the
+                  programs that use it. By implementing DLLs in Infor ERP Enterprise
+                  applications, you can reduce the size of objects to a
+                  minimum, as the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> is not
+                  merged with each 4GL program script.
+               </li>
+               <li class="ListItem">You can upgrade a function within a DLL without
+                  recompiling all the applications that use it.
+               </li>
+               <li class="ListItem">You can upgrade an application without recompiling all
+                  the DLLs it uses.
+               </li>
+               <li class="ListItem">A DLL is loaded only when required. It is also loaded
+                  only once, though multiple programs can share its
+                  code.
+               </li>
+            </ul>
+            <p class="Paragraph">The following sections describe how you handle DLLs:</p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/dynamic_link_libraries/function_declarations.htm" class="manualLink">Function declarations</a></li>
+               <li class="ListItem"><a href="../../progguide/dynamic_link_libraries/scope_of_variables_across_dlls.htm" class="manualLink">Scope of variables across DLLs</a></li>
+               <li class="ListItem"><a href="../../progguide/dynamic_link_libraries/sharing_dll_object_code.htm" class="manualLink">Sharing DLL object code</a></li>
+               <li class="ListItem"><a href="../../progguide/dynamic_link_libraries/dynamic_linking.htm" class="manualLink">Dynamic linking</a></li>
+               <li class="ListItem"><a href="../../progguide/dynamic_link_libraries/function_overloading.htm" class="manualLink">Function overloading</a></li>
+               <li class="ListItem"><a href="../../progguide/dynamic_link_libraries/object_information_tool.htm" class="manualLink">Object information tool</a></li>
+               <li class="ListItem"><a href="../../progguide/dynamic_link_libraries/dll_compilation_and_runtime_errors.htm" class="manualLink">DLL compilation and runtime errors</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/dynamic_link_libraries/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

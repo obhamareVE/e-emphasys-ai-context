@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>IBaanVM interface</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="IBaanVM interface ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">IBaanVM interface</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">This is the main interface at the Java side. With this interface
+               	  it is possible to create new buckets, place these buckets onto a queue, install
+               	  a listener at the Java side (see IQueueListener description), and to log a
+               	  message to the Bshell log file (handy for debugging purposes!).
+            </p>
+            <p class="Paragraph">Instantiating the interface can be done as follows:</p>
+            <p class="Paragraph"><code class="Code">private static com.baan.baanvm.IBaanVM s_iBaanVm =
+                  null;
+                  s_iBaanVm = new com.baan.baanvm.BaanVMImpl();</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Interface methods</div>
+            <p class="Paragraph"><code class="Code">public IBucket createBucket();
+                  public IBucket createBucket(String p_msg);
+                  public IBucket createBucket(byte[] p_msg);
+                  public IBucket createBucket(String p_msg, String
+                  p_hdr);
+                  public IBucket createBucket(byte[] p_msg, String
+                  p_hdr);</code></p>
+            <p class="Paragraph">Creates a new bucket. It is optional to specify a message
+               	  (parameter p_msg) or a header (the p_hdr parameter). The new bucket can be
+               	  manipulated using the IBucket interface. If the bucket is ready to be send, the
+               	  function putBucket of the IBaanVM interface can be used to place the bucket
+               	  onto a queue.
+            </p>
+            <p class="Paragraph"><code class="Code">public int putBucket(int p_queueId, IBucket
+                  p_bucket);</code></p>
+            <p class="Paragraph">Places a bucket (referenced by p_bucket) onto a queue (specified
+               	  by p_queueId).
+            </p>
+            <p class="Paragraph">The return value is</p>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">upon success</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">incorrect queue ID</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;-1</th>
+                     <td rowspan="1" colspan="1" class="none">invalid bucket, or internal memory overflow</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph"><code class="Code">public void installListener(int p_queueId,
+                  IQueueListener p_listener) throws Exception;</code></p>
+            <p class="Paragraph">Installs a listener (at the Java side) on a queue. p_queueID is
+               	  the ID of a queue which was previously created within Infor ERP Enterprise. p_listener is
+               	  an instance of a custom listener, which implements the IQueueListener
+               	  interface. An exception is thrown in the following scenarios:
+            </p>
+            <ul class="List">
+               <li class="ListItem">the specified queue ID is invalid</li>
+               <li class="ListItem">a listener is already installed on this queue</li>
+            </ul>
+            <p class="Paragraph"><code class="Code">public void logMessage(String p_message, int
+                  p_error);</code></p>
+            <p class="Paragraph">Writes a message to the logfile. p_message is the message to
+               	  log. If p_error is greater than 0, the message is always written to the
+               	  logfile. If p_error is 0, the message is only written in debug
+               	  mode.
+            </p>
+            <p class="Paragraph">The logfile and debug mode can be toggled through the BW
+               	  configuration options. The grammar for these options are:
+            </p>
+            <p class="Paragraph">-- keeplog -logfile &lt;logfilename&gt; [-dbgjvmi]</p>
+            <p class="Paragraph">For example, the following line specifies a logfile and enables
+               	  debugging. All calls to LogMessage will be placed in the logfile:
+            </p>
+            <p class="Paragraph">-- keeplog -logfile /home/gstam/jvmilogging.txt
+               	  -dbgjvmi
+            </p>
+            <p class="Paragraph">To log calls to LogMessage, where p_error is greater than 0, use
+               	  the following command:
+            </p>
+            <p class="Paragraph">-- keeplog -logfile /home/gstam/jvmilogging.txt</p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_javavm/ibaanvm_interface, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

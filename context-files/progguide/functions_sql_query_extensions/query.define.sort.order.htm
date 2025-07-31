@@ -1,0 +1,218 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>query.define.sort.order()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions query.define.sort.order query.define.sort.order query.define.sort.order ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">query.define.sort.order()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;query.define.sort.order&nbsp;
+					(long&nbsp;table.index, const string&nbsp;field.var, direction.var [, const string&nbsp;..., ...])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">With this function the direction of an index-field or the whole index of an table-index can be set.</p>
+               <p class="Paragraph">The function overrides the direction of parts in the table-index only for the session.</p>
+               <div class="GeneralSection">
+                  <div class="subSectionTitle">Use of direction index-part in session</div>
+                  <table border="0" width="100%" class="none">
+                     <tbody noTR="3" class="none">
+                        <tr no="1" isLast="false" class="none">
+                           <th rowspan="1" colspan="1" class="none">first</th>
+                           <td rowspan="1" colspan="1" class="none">in the display and the process of the detail-lines (grid)</td>
+                        </tr>
+                        <tr no="2" isLast="false" class="none">
+                           <th rowspan="1" colspan="1" class="none">second</th>
+                           <td rowspan="1" colspan="1" class="none">in the navigation through the groups of the header. The sql statement first, next, prev and last are changed.</td>
+                        </tr>
+                        <tr no="3" isLast="true" class="none">
+                           <th rowspan="1" colspan="1" class="none">third</th>
+                           <td rowspan="1" colspan="1" class="none">in the session find. In the search instruction, the blank fields for a descending index are replaced at search time by high
+                              value.
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <p class="postspacer">&nbsp;</p>
+               </div>
+               <p class="Paragraph">The function don't override the field sort order of an active filter.</p>
+               <p class="Paragraph">You can use the function query.define.sort.order in the section before.program. 
+                  In other sections it will activated with the function rebuild.query().
+                  Per referenced key, one or more index fields with the direction can be set.
+               </p>
+               <div class="GeneralSection">
+                  <div class="subSectionTitle">Direction index-part in session</div>
+                  <table border="0" width="100%" class="none">
+                     <tbody noTR="4" class="none">
+                        <tr no="1" isLast="false" class="none">
+                           <th rowspan="1" colspan="1" class="none">origin \ situation</th>
+                           <td rowspan="1" colspan="1" class="none">A</td>
+                           <td rowspan="1" colspan="1" class="none">B</td>
+                           <td rowspan="1" colspan="1" class="none">C</td>
+                           <td rowspan="1" colspan="1" class="none">D</td>
+                        </tr>
+                        <tr no="2" isLast="false" class="none">
+                           <th rowspan="1" colspan="1" class="none">asc/desc in filter</th>
+                           <td rowspan="1" colspan="1" class="none">not present</td>
+                           <td rowspan="1" colspan="1" class="none">not present</td>
+                           <td rowspan="1" colspan="1" class="none">present</td>
+                           <td rowspan="1" colspan="1" class="none">present</td>
+                        </tr>
+                        <tr no="3" isLast="false" class="none">
+                           <th rowspan="1" colspan="1" class="none">define sort order</th>
+                           <td rowspan="1" colspan="1" class="none">not present</td>
+                           <td rowspan="1" colspan="1" class="none">present</td>
+                           <td rowspan="1" colspan="1" class="none">not present</td>
+                           <td rowspan="1" colspan="1" class="none">present</td>
+                        </tr>
+                        <tr no="4" isLast="true" class="none">
+                           <th rowspan="1" colspan="1" class="none">result</th>
+                           <td rowspan="1" colspan="1" class="none">from index</td>
+                           <td rowspan="1" colspan="1" class="none">from define</td>
+                           <td rowspan="1" colspan="1" class="none">from filter</td>
+                           <td rowspan="1" colspan="1" class="none">from filter</td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <p class="postspacer">&nbsp;</p>
+               </div>
+               <p class="Paragraph">Note: With this function only the direction of a key field can be changed. With the field sort order in a filter the priority
+                  of a field can be changed. By example first ascending on field A, second descending on field B.
+               </p>
+               <div class="ExampleSection">
+                  <div class="subSectionTitle">Example 1: Change direction at startup</div><pre class="CodeBlock">
+|****************************** program section ********************************
+before.program:
+	long ret
+
+	| override on table index 1 
+	ret = query.define.sort.order(1,"aabbbbnnn.fld3", "desc", "aabbbbnnn.fld5", "desc" )
+	if ( ret &lt; 0 ) then 
+		message("An error occured on query.define.sort.order index 1")
+		... 
+	endif
+
+	| override on table index 2 
+	ret = query.define.sort.order(2,"aabbbbnnn.fld5", "desc" )
+	if ( ret &lt; 0 ) then 
+		message("An error occured on query.define.sort.order index 2")
+		... 
+	endif
+
+	| override whole index on table index 3 
+	ret = query.define.sort.order(3,"aabbbbnnn._index3", "desc" )
+	if ( ret &lt; 0 ) then 
+		message("An error occured on query.define.sort.order index 3")
+		... 
+	endif
+
+					</pre></div>
+               <p class="Paragraph">NOTE: The combination of query.define.sort.order and use of combined field statement in the query.extend.where will give unpredictable
+                  results
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>table.index</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Sequence number of the referenced table-index.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>field.var, direction.var</code></td>
+                     <td class="none">
+                        <div class="GeneralSection">
+                           <div class="subSectionTitle">field order direction set</div>
+                           <p class="Paragraph">For each set, specify the order direction with the
+                              						name of the relevant field and it's direction of sorting
+                           </p>
+                        </div>
+                        <p class="Paragraph">field.var:</p>
+                        <p class="Paragraph">1) Field must exist in the table index by parameter table.index or</p>
+                        <p class="Paragraph">2) the whole of the referenced table-index with name: <i class="Emphasis">file</i>_index&lt; <i class="Emphasis">number</i> &gt;
+                        </p>
+                        <p class="Paragraph">field.var equals indexname cannot combined with another field.var.</p>
+                        <p class="Paragraph">direction.var: Presentation direction, possible values direction "ASC" or "DESC".</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[const string</td>
+                     <td class="none"><code>..., ...</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">next pair of [field.var, direction.var]. Use these optional pair of arguments to pass one or more
+                           					arguments to the specified function. Use commas (,) to
+                           					separate the arguments.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-n</th>
+                     <td rowspan="1" colspan="1" class="none">Negative value of the parameter with the wrong value.</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-9999</th>
+                     <td rowspan="1" colspan="1" class="none">To many parameters. The input exceeds the maximum number of index parts.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">TIV</div>
+            <p class="Paragraph">This function is available from TIV level 1900.</p>
+            <p class="Paragraph">field.var: is indexname is available from application TIV level 2020.</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/synopsis.htm" class="manualLink">SQL query extensions synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_sql_query_extensions/query.define.sort.order, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

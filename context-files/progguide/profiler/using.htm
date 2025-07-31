@@ -1,0 +1,178 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Using the Call Graph Profiler</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Using the Call Graph Profiler</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">All variables mentioned in this section can be used as resource
+               	  variables (in lowercase) and as environment variables (in uppercase). Setting
+               	  them as environment variables is probably the most frequently used method, as
+               	  it can be done directly from the BW Config. Setting them as resource variables
+               	  is possible in various files, with various restrictions regarding scope and
+               	  overwriting:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><code class="Code">$BSE/lib/defaults/all</code> This is for all users.
+               </li>
+               <li class="ListItem"><code class="Code">$BSE/lib/defaults/bshell</code> This is for all users; <code class="Code">bshell</code> should match with the ipc_info name of the bshell.
+               </li>
+               <li class="ListItem"><code class="Code">$BSE/lib/user/u&lt;&gt;</code> This will be overwritten during 'convert to runtime' of
+                  		userdata.
+               </li>
+            </ul>
+            <table class="default">
+               <tbody noTR="9" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <th width="20%" rowspan="1" colspan="1" class="default">Variable</th>
+                     <th width="20%" rowspan="1" colspan="1" class="default">Synopsis</th>
+                     <th rowspan="1" colspan="1" class="default">Explanation</th>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">PROFILE_ALL</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">PROFILE_ALL=[0|1]</code></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Set this variable to '1' to turn the profiler on. The
+                           			  default value is '0'.
+                        </p>
+                        <p class="Paragraph">Profiling will be enabled for all processes, except the
+                           			  processes in the following list (this is done to avoid filling the disk with
+                           			  Call Graph Profiles for these processes, because these are not important for
+                           			  performance analysis):
+                        </p>
+                        <p class="Paragraph">ttstpmsg &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; popup message</p>
+                        <p class="Paragraph">ttstpdisplay &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print output for device 'D'</p>
+                        <p class="Paragraph">ttstppollmess &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; display system message</p>
+                        <p class="Paragraph">message ttstpsplopen &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; select print device</p>
+                        <p class="Paragraph">ttstpsplclose &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print spooler close</p>
+                        <p class="Paragraph">ttstpoledaemon &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OLE Daemon</p>
+                        <p class="Paragraph">all ttdsk* programs &nbsp;&nbsp; menu  browser, etc.</p>
+                        <p class="Paragraph">Note:</p>
+                        <p class="Paragraph">The Call Graph Profiler is recording a lot of data
+                           			  about the code that is executed. This incurs some overhead. Do not expect your
+                           			  program to run as quickly as it would without the use of the Call Graph
+                           			  Profiler.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">PROF_DIR</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">PROF_DIR=&lt;&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Specify the directory for the Call Graph Profile files.
+                           			  The default value is $BSE_TMP (usually $BSE/tmp). If this variable is set with
+                           			  a relative path $HOME will be prepended.
+                        </p>
+                        <p class="Paragraph">The Call Graph Profiles are written to files with the
+                           			  following name:
+                        </p>
+                        <p class="Paragraph">profile.&lt;bshell pid&gt;.&lt;session
+                           			  name&gt;.&lt;pid&gt;.html
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">PROF_RTIME</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">PROF_RTIME=[0|1]</code></td>
+                     <td rowspan="1" colspan="1" class="default">Set this variable to add information to the Call Graph Profile
+                        			that is sorted by run time. The default value is '1'.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">PROF_CLIENT</th>
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">PROF_CLIENT=
+                           &lt;&gt;</code></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Set this variable to move the Call Graph Profiles to a
+                           			  directory on the client. The Call Graph Profile will be deleted from the ERP
+                           			  server after copying it to the client.
+                        </p>
+                        <p class="Paragraph">When</p>
+                        <p class="Paragraph">startstart</p>
+                        <p class="Paragraph">is specified the Call Graph Profile is opened in the
+                           			  default browser (this
+                        </p>
+                        <p class="Paragraph">startstart</p>
+                        <p class="Paragraph">option does not work in Webtop).</p>
+                        <p class="Paragraph">Examples:</p>
+                        <p class="Paragraph">PROF_CLIENT=save:c:\temp &nbsp;&nbsp;&nbsp;&nbsp; save on c:\temp
+			  PROF_CLIENT=start:c:\temp &nbsp;&nbsp;&nbsp; save on c:\temp &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and
+			  start browser</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">BDB_ALWAYS_FLUSH</th>
+                     <td rowspan="1" colspan="1" class="default">BDB_ALWAYS_FLUSH=[0|1]</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">This controls the flushing of the data to the database. With the Call Graph Profiler
+                           				enabled this setting is enabled by default.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">PROFFILES</th>
+                     <td rowspan="1" colspan="1" class="default">PROFFILES=&lt;file1;file2&gt;</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">This parameter allows to include file1 and file2 to be added to the System Information File that gets
+                           				generated. When the filename is relative it is relative to $BSE.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="true" class="default">
+                     <th rowspan="1" colspan="1" class="default">PROFILE_TRAMPOLINE</th>
+                     <td rowspan="1" colspan="1" class="default">PROFILE_TRAMPOLINE=bshell.fun1[,bshell.fun2[,another.*]]</td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">This parameter allows the inclusion of bshell functions into to the Call Graph Profiler output. 
+                           					For example setting this variable to xml*
+                           					will include all xml* functions into the Call Graph Profiler output.
+                           					Use only when a bshell function is suspect of being a performance problem.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Examples of lines in resource files to configure the
+               	  profiler:
+            </p>
+            <p class="Paragraph">profile_all:1 prof_dir:/home/bsp/profile
+               	  prof_client:save:c:\temp
+            </p>
+            <p class="Paragraph">Examples of bshell commands that can be configured in BECS and
+               	  Webtop:
+            </p>
+            <p class="Paragraph">-- -set PROFILE_ALL=1 -set PROF_DIR=/home/bsp/profiles</p>
+            <p class="Paragraph">-- -set PROFILE_ALL=1 -set PROF_CLIENT=save:c:\temp</p>
+            <p class="Paragraph">-- -set PROFILE_ALL=1 -set PROF_CLIENT=start:D:\PROFILES -set PROF_RTIME=1</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/profiler/output.htm" class="manualLink">The Call Graph Profile</a></li>
+               <li class="RelTopic"><a href="../../progguide/profiler/analyzing.htm" class="manualLink">Analyzing the Call Graph Profile</a></li>
+               <li class="RelTopic"><a href="../../progguide/profiler/example.htm" class="manualLink">Call Graph Profiler Example</a></li>
+               <li class="RelTopic"><a href="../../progguide/profiler/glossary.htm" class="manualLink">Call Graph Profiler Glossary</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/profiler/using, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

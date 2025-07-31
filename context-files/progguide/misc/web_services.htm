@@ -1,0 +1,169 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Web Services from ERP Enterprise</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Web Services from ERP Enterprise ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Web Services from ERP Enterprise</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Using a Web Service from ERP Enterprise comprises two steps: first generate an
+               ERP Enterprise library that provides functions to invoke the Web Service. Then, write
+               your own functions to use these functions from the generated library.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Generate ERP Enterprise library code</div>
+            <p class="Paragraph">In Application Studio (build 8.6.0.0178 or later), you can generate
+               	    ERP Enterprise library code from a WSDL (Web Service Description Language) file.
+               In the editor, select option "Generate Source from WSDL" with the right mouse
+               button. Select the WSDL file and the ERP Enterprise library code is generated.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Use the generated ERP Enterprise library code</div>
+            <p class="Paragraph">To use the generated ERP Enterprise library, you need to call the following
+               	    functions from that library to carry out the following steps:
+            </p>
+            <ul class="List">
+               <li class="ListItem">Instantiate service</li>
+               <li class="ListItem">Build the request data</li>
+               <li class="ListItem">Execute the service</li>
+               <li class="ListItem">Get the response data</li>
+               <li class="ListItem">Cleanup</li>
+            </ul>
+            <p class="Paragraph">This is illustrated by the following code example for a simple WSDL
+               (Currency Convertor from <a href="http://www.webservicex.net" class="wwwlinkLink">http://www.webservicex.net</a>):
+            </p><pre class="CodeBlock">
+long    service     | XML
+long    request     | XML
+long    response    | XML
+long    retval
+double  rate
+string  err.mess(100)
+
+| instantiate the service
+service = CurrencyConvertor.New()
+CurrencyConvertor.SetCredentials(service, "john" "Ek5%aPy") | user and password
+
+| build up request
+request = ConversionRate.parameter.New()
+ConversionRate.parameters.SetFromCurrency(request, Currency.EUR()) | uses generated wrapper for Enum domain Currency
+ConversionRate.parameters.SetToCurrency(request, Currency.USD())
+
+| executes the operation via SOAP
+retval = CurrencyConvertor.ConversionRate(service, request, response)
+
+| gets the values from response
+rate = ConversionRateResponse.parametersResponce.GetConversionRateResult(response)
+
+| if an error occurs:
+err.mess = CurrencyConvertor.GetErrorMessage(service)
+
+| cleanup
+ConversionRate.parameters.Delete(request)
+ConversionRateResponse.parametersResponse.Delete(response)
+CurrencyConvertor.Delete(service)
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Complex structures</div>
+            <p class="Paragraph">For a more sophisticated WSDL, functions are generated to build up
+               	   XML structures to be used in the request and functions to read XML
+               	   structures from the response.
+               The generated ERP Enterprise library contains sections "Functions to create XML
+               object" and "Functions to retrieve properties from XML object".
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Create XML Object</div>
+            <p class="Paragraph">To create an XML object to use it in the request (or as property
+               	   for another XML object), do the following:
+            </p>
+            <ul class="List">
+               <li class="ListItem">Call the constructor</li>
+               <li class="ListItem">Sets the properties</li>
+            </ul>
+            <p class="Paragraph">Code example:</p><pre class="CodeBlock">
+long    param   | XML
+param = ParameterValue.New()
+ParameterValue.SetName(param, "Age")
+ParameterValue.SetValue(param, "17")
+</pre><p class="Paragraph">For collections, do the following:</p>
+            <ul class="List">
+               <li class="ListItem">Call the constructor</li>
+               <li class="ListItem">Call the Add function for every instance to be added</li>
+            </ul>
+            <p class="Paragraph">Code example:</p><pre class="CodeBlock">
+long param.coll | XML
+param.coll = Parameters.New()
+Parameters.AddParameterValue(param.coll, param) | adds the parameter from the previous example
+</pre><p class="Paragraph">It is not needed to include the cleanup in your code, because the
+               XML object is automatically deleted when the request for which it is used
+               is cleaned up.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Retrieve from XML Object</div>
+            <p class="Paragraph">To retrieve data from an XML object from the response (or from
+               another XML object), call the getter for every property that is needed.
+               The getter has name <i class="Emphasis">Objectname</i>.Get <i class="Emphasis">Property</i>, e.g.
+               ValidValue.GetLabel. The getter functions come in two flavors:
+            </p>
+            <ul class="List">
+               <li class="ListItem">For mandatory fields, it only has the XML object as argument and
+                  	    returns the property value.
+               </li>
+               <li class="ListItem">For optional fields, it has the XML object as input argument and
+                  	    the property value as output argument. It returns a boolean indicating
+                  	    if the property is present within the XML structure.
+               </li>
+            </ul>
+            <p class="Paragraph">Code example:</p><pre class="CodeBlock">
+long     value      | XML containing a ValidValue
+string   name(100)
+string   label(100)
+name = ValidValue.GetName(value) | Name is mandatory
+if ValidValue.GetLabel(value, label) then | Label is optional
+        ... | do something with label
+endif
+</pre><p class="Paragraph">For collections:</p>
+            <ul class="List">
+               <li class="ListItem">Call the get first function: this will retrieve the first element
+                  	    from the collection
+               </li>
+               <li class="ListItem">Call the get next function repeatedly until the return value = 0</li>
+            </ul>
+            <p class="Paragraph">Code example</p><pre class="CodeBlock">
+long    response    | XML containing the response from ReportExecutionService
+long    value.coll  | XML
+long    value
+
+if ReportExecutionService.GetArrayOfValidValue(response, value.coll) then
+        value = ArrayOfValidValue.GetFirstValidValue(value.coll)
+        while value &lt;&gt; 0
+                ... | do something with 'value'
+	              value = ValidValue.GetNextValidValue(value)
+        endwhile
+endif
+</pre><p class="Paragraph">It is not needed to include the cleanup in your code, because the
+               XML object is automatically deleted when the response for which it is used
+               is cleaned up.
+            </p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/misc/web_services, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

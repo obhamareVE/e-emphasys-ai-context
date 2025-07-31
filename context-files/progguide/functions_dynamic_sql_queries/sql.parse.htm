@@ -1,0 +1,129 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>sql.parse()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions sql.parse sql.parse sql.parse ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">sql.parse()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;sql.parse&nbsp;
+					(string&nbsp;query(.) [, long&nbsp;mode])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This defines an SQL query that you can subsequently execute
+                  and retrieve the results of by using the other dynamic SQL
+                  functions. The query takes the form of a SELECT statement (see <a href="../../progguide/functions_database_handling/overview.htm" class="manualLink">Database handling overview</a>).
+               </p>
+               <p class="Paragraph">The optional argument <i class="Emphasis">mode</i> can be used to influence
+                  the behavior.
+               </p>
+               <table border="0" width="100%" class="none">
+                  <tbody noTR="2" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <th rowspan="1" colspan="1" class="none">PARSE.SUPPRESS</th>
+                        <td rowspan="1" colspan="1" class="none">When this flag is set, error messages are suppressed. (the
+                           			predefined variable <i class="Emphasis">e</i> contains the error number).
+                        </td>
+                     </tr>
+                     <tr no="2" isLast="true" class="none">
+                        <th rowspan="1" colspan="1" class="none">PARSE.ANSI</th>
+                        <td rowspan="1" colspan="1" class="none">
+                           <p class="Paragraph_firstAndNoTextBefore">When this flag is set:</p>
+                           <ul class="List">
+                              <li class="ListItem">The <a href="../../progguide/functions_database_handling/like_pred.htm" class="manualLink">LIKE predicate</a> defaults to ANSI patterns instead of regular
+                                 				expressions.
+                              </li>
+                              <li class="ListItem"><a href="../../progguide/functions_database_handling/refers_to_pred.htm" class="manualLink">REFERS TO</a> clauses are not allowed in a <a href="../../progguide/functions_database_handling/where.htm" class="manualLink">WHERE clause</a>. (You can use <a href="../../progguide/functions_database_handling/from.htm" class="manualLink">OUTER JOIN</a> instead.)
+                              </li>
+                           </ul>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>query(.)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>mode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Error.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&gt;0</th>
+                     <td rowspan="1" colspan="1" class="none">Query ID; this is used by the other functions to identify the
+                        			particular query.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+sql_id_1 = sql.parse( "select tccom010.cuno from tccom010" )
+</pre><pre class="CodeBlock">
+sql_id_2 = sql.parse( "select * from tccom010", PARSE.SUPPRESS+PARSE.ANSI )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dynamic_sql_queries/overview.htm" class="manualLink">Dynamic SQL queries overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dynamic_sql_queries/synopsis.htm" class="manualLink">Dynamic SQL queries synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dynamic_sql_queries/sql.parse, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

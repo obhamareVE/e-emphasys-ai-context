@@ -1,0 +1,51 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Substitute session sample program</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="substitute session sample program substitute session sample program ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Substitute session sample program</div>
+      <div class="body">
+         <div class="GeneralSection"><pre class="CodeBlock">
+    #pragma used dll "ottstpsubstproc"
+
+  function extern switch.to.other.session()       | called by Form Command
+  {
+    static long other.pid
+
+    if other.pid = 0 then
+    other.pid = parent  | we don't know whether this process is activated first or
+                | that the other process has activated this one. In the
+                | first case, the session codes (of parent session and session
+                | to be started) do not match and so the session is started.
+                | In the latter case, the session codes do match and so the
+                | other session is reactivated.
+    endif
+
+    other.pid = substitute.session(pid, "ppmmmssssm000", other.pid)
+  }
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_substitute_sessions/overview.htm" class="manualLink">Substitute session overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_substitute_sessions/synopsis.htm" class="manualLink">Synchronized sessions synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_substitute_sessions/example, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>chm.data.in()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="chm.data.in chm.data.in functions chm.data.in ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">chm.data.in()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;chm.data.in&nbsp;
+					(double&nbsp;series_value, double&nbsp;category_value, long&nbsp;data_number, double&nbsp;data_value, long&nbsp;footnote_no [, long&nbsp;duplicate_option])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This function is only supported for Baan
+                  Windows and its usage is therefore deprecated.
+               </p>
+               <p class="Paragraph">This sends a data point to the Business Chart Manager. You
+                  must call this function for each data point that you want to
+                  send.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">double</td>
+                     <td class="none"><code>series_value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This specifies the series to which the data point
+                           belongs.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">double</td>
+                     <td class="none"><code>category_value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This specifies the category to which the data point
+                           belongs.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>data_number</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">If there is more than one data point per category (a
+                           high-low graph, for example), this indicates the
+                           sequence number of the data point within the category.
+                           If there is only one data point per category, the
+                           sequence number is 1.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">double</td>
+                     <td class="none"><code>data_value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The data value for the specified series and
+                           category. The data value must lie within the scope of
+                           the data domain.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>footnote_no</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">If you want to include a footnote for the data
+                           point, specify the number of the footnote here. Use <a href="../../progguide/functions_chm/chm.footnote.in.htm" class="manualLink">chm.footnote.in()</a> to
+                           create the footnote
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>duplicate_option</code>]
+                     </td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">CHM_OK</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">CHM_ERROR</th>
+                     <td rowspan="1" colspan="1" class="none">Error.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/overview.htm" class="manualLink">Chart manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/synopsis.htm" class="manualLink">Chart manager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/creating_a_chart_manager_client_application.htm" class="manualLink">Creating a chart manager client application</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/example.htm" class="manualLink">Chart manager example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_chm/chm.data.in, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

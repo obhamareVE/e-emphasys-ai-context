@@ -1,0 +1,142 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>fieldname.check()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="field.check field.check fieldname.check functions field.check ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">fieldname.check()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;field.check&nbsp;
+					(long&nbsp;has_changed [, long&nbsp;element])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this hook to program logical integrity rules for a
+                  specified field. The function name is <i class="Emphasis">ppmmmvss.bbbb</i>.check(), where <i class="Emphasis">pp</i> is the package
+                  code, <i class="Emphasis">mmm</i> is the module code, <i class="Emphasis">vss</i> is the table
+                  number, and <i class="Emphasis">bbbb</i> is the field name.
+               </p>
+               <table border="1" class="default">
+                  <tbody noTR="2" class="default">
+                     <tr no="1" isLast="false" class="default">
+                        <td rowspan="1" colspan="1" class="default">Insert a new object</td>
+                        <td rowspan="1" colspan="1" class="default">Update an existing object</td>
+                     </tr>
+                     <tr no="2" isLast="true" class="default">
+                        <td rowspan="1" colspan="1" class="default">
+                           <p class="Paragraph_firstAndNoTextBefore">Does the property check for all fields.</p>
+                           <p class="Paragraph">The has_changed flag is <i class="Emphasis">always</i> set to DAL_NEW.
+                              Also for fields that are not changed!
+                           </p>
+                        </td>
+                        <td rowspan="1" colspan="1" class="default">
+                           <p class="Paragraph_firstAndNoTextBefore">Does the property check for all fields.</p>
+                           <p class="Paragraph">The has_changed flag is <i class="Emphasis">only</i> set to DAL_UPDATE
+                              for changed fields. For unchanged fields, the flag is
+                              cleared.
+                           </p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>has_changed</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>element</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This is set for array fields only. It indicates the
+                           index of the array element that must be checked.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">This hook returns 0 if the value of the field is accepted. It
+               returns a negative value (DALHOOKERROR) if the value is not
+               accepted.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			DAL
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">See also</div>
+            <p class="Paragraph"><a href="../../progguide/functions_dal/property_methods.htm" class="manualLink">Property methods</a></p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">With regards to <a href="../../progguide/functions_dal/dal2_overview.htm" class="manualLink">Extended DAL (DAL2)</a> it is advised to
+                  replace this property hook by the new <a href="../../progguide/functions_dal/dal2_field_hooks.htm" class="manualLink">DAL2 Field hooks</a>.
+               </p>
+               <p class="Paragraph">This hook is still supported for backward compatiblity reasons,
+                  but the consequence is that the field is not regarded as a DAL2
+                  field.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+A property hook programmed in DLL tdsls040:
+function extern long tdsls040.oqua.check(long has_changed)
+{
+    if has_changed &lt;&gt; 0 and tdsls040.stat = tdsls.stat.invoiced then
+        dal.set.error.message("tdsls44041")
+        | Order is already invoiced, cannot change
+        | quantity
+        return(DALHOOKERROR)
+    endif
+    ...
+    return(0)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_glossary.htm" class="manualLink">DAL terminology</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_hooks.htm" class="manualLink">DAL hooks</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/fieldname.check, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

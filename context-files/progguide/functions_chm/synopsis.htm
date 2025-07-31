@@ -1,0 +1,355 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Chart manager synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="chart manager synopsis ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Chart manager synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This API is only supported for Baan Windows
+               and its usage is therefore deprecated. Instead you should use
+               the chart functions in the Programmable Dialogs API.
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="38" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.axis.in.htm" class="manualLink">chm.axis.in()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long axis_name, long logarithmic, long
+                           log_base, long divisions, double divisionstep, double
+                           intersection, string division_set(16) )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.axis.out.htm" class="manualLink">chm.axis.out()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long axis_name, ref long logarithmic, ref long
+                           log_base, ref long divisions, ref double divisionstep,
+                           ref double intersection, ref string division_set()
+                           )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.chartman.htm" class="manualLink">chm.chartman()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string chart_manager(80), string
+                           title(80), string user(14), string owner(14) [,
+                           string version(4), string release(2), string cust(4)]
+                           )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.check.htm" class="manualLink">chm.check()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string chart_manager(14), string user(14),
+                           string chart_type(16) )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.data.in.htm" class="manualLink">chm.data.in()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( double series_value, double category_value,
+                           long data_number, double data_value, long footnote_no,
+                           [ long duplicate_option ] )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.data2domain.in.htm" class="manualLink">chm.data2domain.in()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( double series_value )</code></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.delete.data.htm" class="manualLink">chm.delete.data()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.delete.data2domains.htm" class="manualLink">chm.delete.data2domains()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.delete.footnotes.htm" class="manualLink">chm.delete.footnotes()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.delete.projections.htm" class="manualLink">chm.delete.projections()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.delete.sets.htm" class="manualLink">chm.delete.sets()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.disconnect.htm" class="manualLink">chm.disconnect()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( )</code></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.domain.in.htm" class="manualLink">chm.domain.in()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long domain_name, long data_type,
+                           string set_name(16), string title(16),
+                           string unit_label(16), double from_value,
+                           double to_value, double interval,
+                           string display_format(80 )</code></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.domain.out.htm" class="manualLink">chm.domain.out()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long domain_name, ref long data_type,
+                           ref string set_name(), ref string title(), ref
+                           string unit_label(), ref double from_value, ref double
+                           to_value, ref double interval, ref string
+                           display_format() )</code></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.draw.htm" class="manualLink">chm.draw()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( [ double cat_from_value ] )</code></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.first.data.out.htm" class="manualLink">chm.first.data.out()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long option, ref double series_value, ref
+                           double category_value, ref long data_number, ref double
+                           data_value, ref long footnote_no )</code></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.first.data2domain.out.htm" class="manualLink">chm.first.data2domain.out()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref double series_value )</code></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.first.footnote.out.htm" class="manualLink">chm.first.footnote.out()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref long footnote_no, ref string
+                           footnote_text() )</code></td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.first.projection.out.htm" class="manualLink">chm.first.projection.out()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref double projection_point,
+                           ref long footnote_no )</code></td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.first.set.out.htm" class="manualLink">chm.first.set.out()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string set_name(16), ref long element_number,
+                           ref string element_name() )</code></td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.footnote.in.htm" class="manualLink">chm.footnote.in()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long footnote_no, string footnote_text(80)
+                           )</code></td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.get.request.htm" class="manualLink">chm.get.request()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref long chart_no, ref double
+                           category_from_value, ref double category_to_value
+                           )</code></td>
+                  </tr>
+                  <tr no="23" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.new.htm" class="manualLink">chm.new()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string chart_name(16), ref string chart_type()
+                           )</code></td>
+                  </tr>
+                  <tr no="24" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.next.data.out.htm" class="manualLink">chm.next.data.out()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long option, ref double series_value, ref
+                           double category_value,
+                           ref long data_number, ref double data_value, ref
+                           long footnote_no )</code></td>
+                  </tr>
+                  <tr no="25" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.next.data2domain.out.htm" class="manualLink">chm.next.data2domain.out()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref double series_value )</code></td>
+                  </tr>
+                  <tr no="26" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.next.footnote.out.htm" class="manualLink">chm.next.footnote.out()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref long footnote_no, ref string
+                           footnote_text() )</code></td>
+                  </tr>
+                  <tr no="27" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.next.projection.out.htm" class="manualLink">chm.next.projection.out()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref double projection_point, ref long
+                           footnote_no )</code></td>
+                  </tr>
+                  <tr no="28" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.next.set.out.htm" class="manualLink">chm.next.set.out()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string set_name(16), ref long element_number,
+                           ref string element_name() )</code></td>
+                  </tr>
+                  <tr no="29" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.open.htm" class="manualLink">chm.open()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string chart_name(16) )</code></td>
+                  </tr>
+                  <tr no="30" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.projection.in.htm" class="manualLink">chm.projection.in()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( double projection_point, long footnote_no
+                           )</code></td>
+                  </tr>
+                  <tr no="31" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.remove.htm" class="manualLink">chm.remove()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string chart_manager(80), string
+                           owner_from(14), string owner_to(14) )</code></td>
+                  </tr>
+                  <tr no="32" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.scale.axis.htm" class="manualLink">chm.scale.axis()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( double from_value, double to_value, long
+                           divisions, double factor, ref double domain_from_value,
+                           ref double domain_to_value, ref double divisionstep
+                           )</code></td>
+                  </tr>
+                  <tr no="33" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.select.htm" class="manualLink">chm.select()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string chart_manager(80), string title(80),
+                           long mode, string user(14), string owner(14), ref
+                           string chart_name(16), ref string chart_type(16)
+                           )</code></td>
+                  </tr>
+                  <tr no="34" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.set.in.htm" class="manualLink">chm.set.in()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string set_name(16), ref long element_number,
+                           string element_name(80) )</code></td>
+                  </tr>
+                  <tr no="35" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.set.option.htm" class="manualLink">chm.set.option()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long option, long flag )</code></td>
+                  </tr>
+                  <tr no="36" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.set.timer.htm" class="manualLink">chm.set.timer()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long time )</code></td>
+                  </tr>
+                  <tr no="37" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.title.in.htm" class="manualLink">chm.title.in()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( string main_title(80), string sub_title(80)
+                           )</code></td>
+                  </tr>
+                  <tr no="38" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_chm/chm.title.out.htm" class="manualLink">chm.title.out()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( ref string main_title(), ref string sub_title()
+                           )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/overview.htm" class="manualLink">Chart manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/creating_a_chart_manager_client_application.htm" class="manualLink">Creating a chart manager client application</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_chm/example.htm" class="manualLink">Chart manager example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_chm/synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42I83 - RETRY clause not allowed in grouped query</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42I83 - RETRY clause not allowed in grouped query</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">A <a href="../../progguide/functions_database_handling/sql_glossary.htm#GroupedQuery" class="glossaryLink">grouped query</a> contains an ORDER BY clause with a RETRY clause.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+select edlevel, max(salary)
+from   dbtst120
+group  by edlevel
+order  by 1 with retry
+   </pre><p class="Paragraph">The query is a grouped query, because it contains a GROUP BY
+               clause. A grouped query may not contain a RETRY clause. This
+               query will cause the error:
+            </p>
+            <p class="Paragraph">SQLState 42I83: RETRY clause
+               not allowed in grouped query
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/order_by.htm" class="manualLink">ORDER BY clause</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42I83, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

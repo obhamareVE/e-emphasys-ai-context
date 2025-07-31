@@ -1,0 +1,78 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Domains</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="3GL domains domains 3GL ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Domains</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">When declaring temporary variables for storing values of
+               database fields, you can use normal variables of type long, double,
+               or string. But this can cause problems if the length or type of the
+               table field has been changed in the data dictionary. It is
+               preferable to use domain declarations for storing the value of a
+               database table field. When you use a domain declaration, the type
+               and length for the declared variable are read from the data
+               dictionary.
+            </p>
+            <p class="Paragraph">Variables of type enumerate or set must always be declared
+               with a domain declaration.
+            </p>
+            <p class="Paragraph">It is also possible to declare an array by using a domain.
+               In that case the number of elements must be set between the
+               brackets, the length of the elements is embedded in the data
+               dictionary.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following examples illustrate various domain
+               declarations, and the declaration of the same variables
+               without domains.
+            </p>
+            <p class="Paragraph">DOMAIN declarations</p><pre class="CodeBlock">
+DOMAIN  tst_str10   tmp_str,          | String of length 10
+                    tmp_str_arr(100)  | 100 strings of length 10
+DOMAIN  tst_long    tmp_lng1,         | A long number
+                    tmp_lng2,         | Another long number
+                    tmp_lng_matr(5,2) | A matrix 5 x 2
+DOMAIN  tst_double  tmp_dbl,          | A floating point
+                    tmp_dbl_arr(100)  | 100 floating points
+</pre><p class="Paragraph">STRING declarations</p><pre class="CodeBlock">
+#define LENG 10
+STRING  tmp_str(LENG),                | String of length 10
+        tmp_str_arr(LENG*10,10)       | 10 strings of length 100
+</pre><p class="Paragraph">LONG declarations</p><pre class="CodeBlock">
+LONG    tmp_lng1,                     | A long number
+        tmp_lng2,                     | Another long number
+        tmp_lng_matr(5,2)             | A matrix 5 x 2
+</pre><p class="Paragraph">DOUBLE declarations</p><pre class="CodeBlock">
+#define MAXLEN 1000
+DOUBLE  tmp_dbl,                      | A floating point
+        tmp_dbl_array(MAXLEN/10)      | MAXLEN/10 floating points
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/variables.htm" class="manualLink">Variables</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/domains, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

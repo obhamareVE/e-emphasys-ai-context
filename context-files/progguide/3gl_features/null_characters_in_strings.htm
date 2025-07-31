@@ -1,0 +1,72 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>NULL characters in strings</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="null characters in strings ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">NULL characters in strings</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Technically, a string is an array of characters. The internal
+               representation of a string has a NULL character [\0] at the end.
+               The NULL character represents the character with the value
+               zero.
+            </p>
+            <p class="Paragraph">Null characters can occur within strings after use of the
+               following functions:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/functions_directory_file_operations/seq.read.htm" class="manualLink">seq.read()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_memory_operations/copy.mem.htm" class="manualLink">copy.mem()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_string_operations/store.byte.htm" class="manualLink">store.byte()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_string_operations/store.short.htm" class="manualLink">store.short()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_string_operations/store.long.htm" class="manualLink">store.long()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_string_operations/store.double.htm" class="manualLink">store.double()</a></li>
+               <li class="ListItem"><a href="../../progguide/functions_string_operations/store.float.htm" class="manualLink">store.float()</a></li>
+            </ul>
+            <p class="Paragraph">When a normal string is copied into another string, it is
+               always copied up to the first NULL character. If the target
+               string is a fixed string, then it is filled up with spaces
+               from the NULL character to the end of the string. The copy
+               action can result from a normal assignment, from passing a
+               string as a call by value parameter to a function, or from
+               the use of the <a href="../../progguide/functions_variables_interprocess_transfer/import.htm" class="manualLink">import()</a> and <a href="../../progguide/functions_variables_interprocess_transfer/export.htm" class="manualLink">export()</a> functions.
+            </p>
+            <p class="Paragraph">There is one exception to this rule. When the left or
+               right side in an assignment is a record buffer (rcd.
+               &lt;table name&gt;), all bytes in the buffer will be copied.
+               For example:
+            </p><pre class="CodeBlock">
+table  tttadv999
+strbuf = rcd.ttadv999       | NULL characters are copied
+rcd.ttadv999 = strbuf       | NULL characters are copied
+strbuf2 = strbuf            | NULL characters are NOT copied
+</pre><p class="Paragraph">In all other cases, if NULL characters are meaningful, use
+               copy.mem(). This copies NULL characters as well as ordinary
+               characters.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/variables.htm" class="manualLink">Variables</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/null_characters_in_strings, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

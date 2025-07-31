@@ -1,0 +1,80 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>String constant</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Constants (literals) String String constant ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">String constant</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The string constant specifies a (TSS) string value.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;string constant&gt;
+    ::= '[&lt;non single quoted character&gt;...]'
+      | "[&lt;non double quoted character&gt;...]"
+
+&lt;non double quoted character&gt;
+    ::= !! <i class="Emphasis">any (TSS) character except " and new line</i>
+      | ""
+
+&lt;non single quoted character&gt;
+    ::= !! <i class="Emphasis">any (TSS) character except ' and new line</i>
+      | ''
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The type of a string constant is <i class="Emphasis">string</i>. The value is
+               identical to the character string enclosed in the quotes, with
+               escape quotes removed.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">When using embedded SQL <i class="Emphasis">single quoted</i> strings are
+                  converted to <i class="Emphasis">lower case</i>.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph"><i class="Emphasis">Example 1</i>:
+            </p><pre class="CodeBlock">
+"CHRISTINE"
+</pre><p class="Paragraph"><i class="Emphasis">Example 2</i>: The following string shows how to use a single quote within
+               a single quoted string.
+            </p><pre class="CodeBlock">
+'Not the 9 O''Clock News'
+</pre><p class="Paragraph"><i class="Emphasis">Example 3</i>: The next string contains a TSS multi byte character. A TSS
+               multi byte character is a 4-byte character that starts with a <i class="Emphasis">9b</i> character (or the decimal equivalent 155). Note that
+               this <i class="Emphasis">9b</i> is a <i class="Emphasis">single</i> character. The three
+               characters that follow the <i class="Emphasis">9b</i> character are taken <i class="Emphasis">literally</i>. This includes all characters, except the NULL
+               character ('\0') and the new-line character ('\n').
+            </p><pre class="CodeBlock">
+'My name is <i class="Emphasis">9b</i>'an'
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/string_constant, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

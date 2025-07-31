@@ -1,0 +1,75 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>SQL subqueries</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="SQL subqueries ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">SQL subqueries</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Infor ERP Enterprise SQL permits the use of subqueries. These are
+               SELECT statements in the WHERE clause of another SELECT
+               statement.
+            </p>
+            <p class="Paragraph">Defining nested queries can be very difficult. It is best to
+               define the subquery of the lowest level first and the main
+               question last.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div>
+            <p class="Paragraph">Select those prices from the item file that are above
+               average. When calculating the average, the system should not
+               take prices less than or equal to zero into account.
+            </p><pre class="CodeBlock">
+SELECT  tiitm001.copr                   | cost price
+FROM    tiitm001
+WHERE   tiitm001.copr &gt; 
+                ( SELECT avg(tiitm001.copr)
+                WHERE                   tiitm001.copr &gt; 0 )
+</pre><p class="Paragraph">In this case, the subquery should only produce one result
+               (here the average cost price). If the subquery produces more
+               than one result, use the operators IN and EXISTS.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2</div>
+            <p class="Paragraph">Select the numbers and names of all suppliers who have yet to
+               deliver.
+            </p><pre class="CodeBlock">
+SELECT  tccom020.suno, tccom020.nama
+FROM    tccom020                    | Suppliers
+WHERE   EXISTS
+                ( SELECT *
+                FROM   timps053     | Purchase orders
+                WHERE  timps053.suno = tccom020.suno )
+</pre><p class="Paragraph">The same query, in an alternative form:</p><pre class="CodeBlock">
+SELECT  tccom020.suno, tccom020.nama
+FROM    tccom020
+WHERE   tccom020.suno IN
+                ( SELECT   timps053.suno
+                FROM     timps053 )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/sql_subqueries, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

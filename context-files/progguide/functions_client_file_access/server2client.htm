@@ -1,0 +1,166 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>server2client()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions server2client server2client server2client ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">server2client()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_desktop&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;server2client&nbsp;
+					(string&nbsp;source, string&nbsp;dest, boolean&nbsp;text.mode [, boolean&nbsp;progress.window] [, boolean&nbsp;read.only])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This copies a specified file from the server to the
+                  client.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>source</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The source file name, on the server.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>dest</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The destination file name, on the client. When this
+                           is an empty string, this function will show the file
+                           save-as dialog through which the user can select an
+                           existing file or enter the name of a new file on the
+                           client. The function <a href="../../progguide/functions_client_file_access/get.local.filename.htm" class="manualLink">get.local.filename()</a> can be used afterwards to retrieve the actual filename
+                           on the client to which the file was copied. The dest
+                           parameter may include the string ${BSE_TMP} which
+                           indicates the ${BSE}\tmp directory in case of Baan
+                           Windows or Windows temp directory in case of
+                           WebUI.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">boolean</td>
+                     <td class="none"><code>text.mode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This argument specifies whether the file is to be copied in text or binary mode:</p>
+                        <p class="Paragraph">true text mode</p>
+                        <p class="Paragraph">false binary mode</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">[boolean</td>
+                     <td class="none"><code>progress.window</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use this optional argument to specify whether a
+                           progress indicator must be displayed to indicate the
+                           progress of the copy action:
+                        </p>
+                        <p class="Paragraph">true progress indicator is displayed</p>
+                        <p class="Paragraph">false progress indicator is not displayed this is the default</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">[boolean</td>
+                     <td class="none"><code>read.only</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">When creating a file on the client side, this
+                           attribute can be used to set the file attributes to
+                           readonly mode after the file has been transferred.
+                        </p>
+                        <p class="Paragraph">true file is set to readonly mode</p>
+                        <p class="Paragraph">false file remains in read/write mode this is the default</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">File copy success.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">1</th>
+                     <td rowspan="1" colspan="1" class="none">Error. File copy canceled by the user.</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;0</th>
+                     <td rowspan="1" colspan="1" class="none">Error. Source file not copied to the destination
+                        file.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <ul class="List">
+                  <li class="ListItem">In order to use a progress indicator, you must first create it with <a href="../../progguide/functions_progress_indicators/create.progress.indicator.htm" class="manualLink">create.progress.indicator()</a>. When you want the progress
+                     	indicator to start with another value then 0, you must use <a href="../../progguide/functions_progress_indicators/change.progress.indicator.htm" class="manualLink">change.progress.indicator()</a> to change its initial value. If
+                     	you specify the PROGRESS.STOP and/or PROGRESS.CANCEL modes when
+                     	creating the indicator, the user can stop or cancel the copy
+                     	operation before it has completed. In both cases, the
+                     	destination file is deleted.
+                  </li>
+                  <li class="ListItem">This function is not supported in HTMLUI. See the <a href="../../progguide/webtop/htmlui_adoption.htm" class="manualLink">Implementing HTML UI support</a> for more information.
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+create.progress.indicator("Title", PROGRESS.BAR + PROGRESS.STOP)
+server2client(
+      bse.tmp.dir$() &amp; "/test1.txt", "C:\Program Files\Test.txt", false, true )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_client_file_access/overview.htm" class="manualLink">Client file access overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_client_file_access/synopsis.htm" class="manualLink">Client file access synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_client_file_access/server2client, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

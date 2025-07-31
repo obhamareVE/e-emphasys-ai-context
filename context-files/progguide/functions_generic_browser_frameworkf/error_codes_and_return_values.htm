@@ -1,0 +1,291 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Generic Browser Framework error codes and return values</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="generic browser framework (GBF) error codes and return values ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Generic Browser Framework error codes and return values</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The GBF error codes must be interpreted as follows:</p>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">&gt;= 0</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Successful completion</p>
+                        <p class="Paragraph">If the function at hand has a meaningful nonzero return
+                           			  value, for example, an object identification (usually given as obj.id), or
+                           			  count of objects, then that number will be returned.
+                        </p>
+                        <p class="Paragraph">If the function only returns a status, for example,
+                           			  update successful, then 0 will be returned.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">&lt; 0</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Unsuccessful completion</p>
+                        <p class="Paragraph">The actual returned number indicates a more precise
+                           			  reason of the failure.
+                        </p>
+                        <p class="Paragraph">See also the function <a href="../../progguide/functions_generic_browser_frameworkf/gbf.error.string.htm" class="manualLink">gbf.error.string()</a> which translates any of these error
+                           			  codes and return values into its mnemonic string.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Possible successful completion return values (thus all &gt;= 0)
+               	  and their meaning:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Mnemonic</td>
+                     <td rowspan="1" colspan="1" class="none">Meaning</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">0</td>
+                     <td rowspan="1" colspan="1" class="none">Generic successful completion return value</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.CYCLE</td>
+                     <td rowspan="1" colspan="1" class="none">Cycles detected</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.NO.CHILDREN</td>
+                     <td rowspan="1" colspan="1" class="none">Given object by its obj.id does not have any children</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.NO.READ.CHILDREN</td>
+                     <td rowspan="1" colspan="1" class="none">Children of obj.id are not yet read</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.LAST</td>
+                     <td rowspan="1" colspan="1" class="none">Returned next object is last sibling</td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.TOP.LEVEL</td>
+                     <td rowspan="1" colspan="1" class="none">Returned parent is top (root) level</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Possible error return values (thus all &lt; 0) and their meaning
+               	  is:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="39" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Mnemonic</td>
+                     <td rowspan="1" colspan="1" class="none">Meaning</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ARG.ERROR</td>
+                     <td rowspan="1" colspan="1" class="none">Cannot store value in given argument</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.CHILD.ABORT</td>
+                     <td rowspan="1" colspan="1" class="none">Application requested GBF termination</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.CHILD.EXIT</td>
+                     <td rowspan="1" colspan="1" class="none">Application requested GBF exiting</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.DRAW.ERROR</td>
+                     <td rowspan="1" colspan="1" class="none">Drawing failed: bitmap, line, shadow</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.EXPR.ERROR</td>
+                     <td rowspan="1" colspan="1" class="none">Search expression error</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ICON.EMPTY</td>
+                     <td rowspan="1" colspan="1" class="none">Given icon string is empty</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ICON.LOAD.ERROR</td>
+                     <td rowspan="1" colspan="1" class="none">Icon could not be found and/or loaded</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.BITMAP</td>
+                     <td rowspan="1" colspan="1" class="none">Illegal bitmap given</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.BUTTON</td>
+                     <td rowspan="1" colspan="1" class="none">The given button is illegal.</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.DLL</td>
+                     <td rowspan="1" colspan="1" class="none">Given DLL is unknown</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.FUNCTION</td>
+                     <td rowspan="1" colspan="1" class="none">Given function is unknown</td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.ICON</td>
+                     <td rowspan="1" colspan="1" class="none">Given icon identification is unknown</td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.LENGTH</td>
+                     <td rowspan="1" colspan="1" class="none">Illegal key or description length</td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.LEVEL</td>
+                     <td rowspan="1" colspan="1" class="none">illegal level specified in <a href="../../progguide/functions_generic_browser_frameworkf/gbf.start.htm" class="manualLink">gbf.start()</a></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.MENU.ID</td>
+                     <td rowspan="1" colspan="1" class="none">Given menu.id is unknown</td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.OBJECT</td>
+                     <td rowspan="1" colspan="1" class="none">Unknown object reference given</td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.OPEN.TYPE</td>
+                     <td rowspan="1" colspan="1" class="none">Illegal open type given</td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.REFRESH.RATE</td>
+                     <td rowspan="1" colspan="1" class="none">Given refresh rate is illegal</td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.REFRESH.TYPE</td>
+                     <td rowspan="1" colspan="1" class="none">Illegal refresh type given</td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.RESOURCE.TYPE</td>
+                     <td rowspan="1" colspan="1" class="none">Unknown resource type specified</td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.RESOURCE.VALUE</td>
+                     <td rowspan="1" colspan="1" class="none">Invalid value for this resource type</td>
+                  </tr>
+                  <tr no="23" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.SEARCH.TYPE</td>
+                     <td rowspan="1" colspan="1" class="none">Illegal search type given</td>
+                  </tr>
+                  <tr no="24" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.SORT.TYPE</td>
+                     <td rowspan="1" colspan="1" class="none">Illegal sort type given</td>
+                  </tr>
+                  <tr no="25" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.ILL.STATE</td>
+                     <td rowspan="1" colspan="1" class="none">Illegal GBF state for this function</td>
+                  </tr>
+                  <tr no="26" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.INTERNAL.ERROR</td>
+                     <td rowspan="1" colspan="1" class="none">Internal error of the GBF</td>
+                  </tr>
+                  <tr no="27" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.MAX.MENU</td>
+                     <td rowspan="1" colspan="1" class="none">Too many menus or submenus defined</td>
+                  </tr>
+                  <tr no="28" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.MENU.EMPTY</td>
+                     <td rowspan="1" colspan="1" class="none">Given menu string is empty</td>
+                  </tr>
+                  <tr no="29" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.NO.BUTTONS</td>
+                     <td rowspan="1" colspan="1" class="none">The specified button does not exist</td>
+                  </tr>
+                  <tr no="30" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.NO.DEFAULT.ICONS</td>
+                     <td rowspan="1" colspan="1" class="none">GBF could not load all default icons</td>
+                  </tr>
+                  <tr no="31" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.NO.GRAPHICS</td>
+                     <td rowspan="1" colspan="1" class="none">GBF cannot run on an ASCII display</td>
+                  </tr>
+                  <tr no="32" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.NO.LABEL</td>
+                     <td rowspan="1" colspan="1" class="none">GBF configured without this label</td>
+                  </tr>
+                  <tr no="33" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.NO.MEMORY</td>
+                     <td rowspan="1" colspan="1" class="none">Not enough memory</td>
+                  </tr>
+                  <tr no="34" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.NO.MENU</td>
+                     <td rowspan="1" colspan="1" class="none">Not enough memory for menu</td>
+                  </tr>
+                  <tr no="35" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.NO.MORE.RESOURCES</td>
+                     <td rowspan="1" colspan="1" class="none">No more (free) resources available</td>
+                  </tr>
+                  <tr no="36" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.NOT.EXPECTED</td>
+                     <td rowspan="1" colspan="1" class="none">GBF did not expect this function call</td>
+                  </tr>
+                  <tr no="37" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.NOT.INTERIOR</td>
+                     <td rowspan="1" colspan="1" class="none">Given object is not an interior object</td>
+                  </tr>
+                  <tr no="38" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.SEQ.IO.ERROR</td>
+                     <td rowspan="1" colspan="1" class="none">Errors with sequential file I/O</td>
+                  </tr>
+                  <tr no="39" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">GBF.STOP.READING</td>
+                     <td rowspan="1" colspan="1" class="none">Reading stop on user request</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">There is no general recipe about what to do with these errors.
+               	  Some errors are typically development errors, such as: GBF.ILL.RESOURCE.TYPE,
+               	  GBF.ILL.LENGTH, whereas others are typically run time errors when running at
+               	  the customer site, such as: GBF.NO.MEMORY or GBF.SEQ.IO.ERROR. If an error
+               	  occurs on a user action (if the user pushed a button, selected a menu item and
+               	  so on.) a generic message should be given which tells the user that the
+               	  operation failed. Since (in general) the user is unaware of the details there
+               	  should be no detailed message given. In all cases it is advised to log these
+               	  errors. The GBF will log some of these errors into a persistent log file. This
+               	  log file is: $BSE/log.&lt;kk&gt;&lt;mmm&gt;, where the &lt;kk&gt; is the
+               	  package name of the current session and &lt;mmm&gt; the module name of the
+               	  current session (or in other words: the first 5 characters of the current
+               	  session name), where the session name is the current value of the global:
+               	  prog.name$.
+            </p>
+            <p class="Paragraph">Sample code could be:</p><pre class="CodeBlock">
+long    retval
+retval = gbf.SomeGBFFunction(arg1, arg2, …)
+if retval &lt; 0 then
+        mess("operation failed", 1)
+        return (0)      | or: return (GBF.DO.EXIT)
+endif
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/overview.htm" class="manualLink">Generic Browser Framework (GBF) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/synopsis.htm" class="manualLink">Generic Browser Framework (GBF) synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/typical_usage.htm" class="manualLink">Typical usage</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/getting_started.htm" class="manualLink">Getting started</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/example.htm" class="manualLink">Example</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/standard_menu_items_and_function_keys.htm" class="manualLink">standard menu items and function keys</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_generic_browser_frameworkf/error_codes_and_return_values, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

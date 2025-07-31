@@ -1,0 +1,474 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DsCmwindow</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dscmwindow ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DsCmwindow</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">A main window (DsCmwindow) acts as the frame window for
+               applications. It is used for starting processes and for creating
+               graphical and character windows. Typically, a main window
+               contains a border, title bar, control menu box, sizing controls,
+               menu bar, toolbar, status bar, work area, and scroll bars.
+            </p>
+            <p class="Paragraph">A main window also acts as the frame window for modal and
+               modeless dialog boxes.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Events</div>
+            <p class="Paragraph">A DsCmwindow object can generate the following events:</p>
+            <p class="Paragraph">EVTKEYPRESS</p>
+            <p class="Paragraph">EVTRESIZEWINDOW</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" class="none">
+               <tbody noTR="27" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNbarMenu</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="2" rowspan="1" class="none">The object ID of the DsCbarMenu object to be
+                        displayed across the top of a main window, below the
+                        title bar. The menu bar becomes visible after this
+                        attribute is set.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNclose</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CG]</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies whether or not the menu of a dialog window
+                           includes the Close command. It also controls the
+                           processing of ALT+F4. The default is TRUE.
+                        </p>
+                        <p class="Paragraph">This attribute affects the window only if
+                           DsNdialog=TRUE.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNcmdStateList</p>
+                        <p class="Paragraph">(long array)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[S]</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use to change the state of toolbar buttons and menu
+                           items. The array consists of one or more pairs of
+                           values. Each pair consists of the command ID of a
+                           toolbar button or menu item and the new state of the
+                           item. The possible values for the command state
+                           are:
+                        </p>
+                        <p class="Paragraph">DSCMDNORMALResets the command/button to its</p>
+                        <p class="Paragraph">default
+                           state.
+                        </p>
+                        <p class="Paragraph">DSCMDDISABLED&nbsp;&nbsp;&nbsp; Disables the command/button.</p>
+                        <p class="Paragraph">DSCMDCHECKED&nbsp;&nbsp;&nbsp; Sets the command/button to its</p>
+                        <p class="Paragraph">checked state (you
+                           can combine this with
+                        </p>
+                        <p class="Paragraph">either of the other
+                           options).
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNcommandStrings</p>
+                        <p class="Paragraph">(void data)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The status field strings and tooltip strings for
+                           commands/buttons defined in DsCbarMenu and DsCtoolBar
+                           objects.
+                        </p>
+                        <p class="Paragraph">The DsNcommandStrings data consists of a header
+                           followed by multiple entries that specify the required
+                           strings.
+                        </p>
+                        <p class="Paragraph">The header contains two longs, one specifying the
+                           version number (currently always 1), the other
+                           specifying the number of following entries.
+                        </p>
+                        <p class="Paragraph">Each entry consists of a long and two strings. The
+                           long contains the unique command ID. The strings
+                           contain the status bar text and the tooltip text
+                           respectively.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNdialog</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CG]</td>
+                     <td colspan="2" rowspan="1" class="none">Specifies whether or not the window is a dialog-type
+                        window. The default is FALSE. This attribute is often
+                        used in combination with DsNmodal.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNeventMask</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="2" rowspan="1" class="none">Specifies the events that the object can generate.
+                        See <a href="../../progguide/events/select.event.input.htm" class="manualLink">select.event.input()</a> for a list of possible masks.
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNheight</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="2" rowspan="1" class="none">The height of the object, in pixels.</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNhelpButton</p>
+                        <p class="Paragraph">(boolean)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CG]</td>
+                     <td colspan="2" rowspan="1" class="none">Use to specify whether or not a main window of
+            dialog type&nbsp; (DsNdialog = TRUE) contains a help button
+            in the title bar. This button provides
+            context-sensitive help. The default is TRUE.</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNiconic</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[C]</td>
+                     <td colspan="2" rowspan="1" class="none">Specifies whether or not the main window is realized
+                        as an icon (that is, minimized). The default is
+                        FALSE.
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNinferiorPointerCursor</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The shape of the inferior mouse pointer when
+                           positioned over the main window. A child of a main
+                           window inherits this mouse pointer, unless otherwise
+                           specified.
+                        </p>
+                        <p class="Paragraph">This attribute is overruled by a
+                           DsNsuperiorPointerCursor attribute set for the window
+                           itself or for ancestor windows. It is also overruled by
+                           a DsNinferiorPointerCursor setting in descendant
+                           windows. Possible values are:
+                        </p>
+                        <p class="Paragraph">DSCDEFAULT (default)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCPENCIL</p>
+                        <p class="Paragraph">DSCARROW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCQUESTIONARROW</p>
+                        <p class="Paragraph">DSCCROSSHAIR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCSPLITHORIZONTAL</p>
+                        <p class="Paragraph">DSCFLEUR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            DSCSPLITVERTICAL</p>
+                        <p class="Paragraph">DSCHAND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCSPRAYCAN</p>
+                        <p class="Paragraph">DSCMAGNIFY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCWATCH</p>
+                        <p class="Paragraph">DSCAPPSTARTING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCNODROP</p>
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNmaxHeight</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="2" rowspan="1" class="none">The maximum height (in pixels) of the main
+                        window.
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNmaxWidth</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="2" rowspan="1" class="none">The maximum width (in pixels) of the main
+                        window.
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNminHeight</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The minimum height (in pixels) of the main
+                           window.
+                        </p>
+                        <p class="Paragraph"></p>
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNminWidth</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="2" rowspan="1" class="none">The minimum width (in pixels) of the main
+                        window.
+                     </td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNmodal</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CG]</td>
+                     <td colspan="2" rowspan="1" class="none">This specifies whether the main window is modal or
+                        modeless. If TRUE, then the user must complete
+                        interaction with the window and close it before
+                        continuing with any further interaction outside the
+                        window. This attribute is normally used in combination
+                        with the DsNdialog attribute. The default is FALSE.
+                     </td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNobjectType</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td colspan="2" rowspan="1" class="none">The object type.</td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNparent</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td colspan="2" rowspan="1" class="none">The ID of the parent object.</td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNprocessGroup</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="2" rowspan="1" class="none">The ID of the process group to which events from the
+                        main window are sent. See <a href="../../progguide/multitasking/processes_process_groups_and_main_windows.htm" class="manualLink">Processes, process groups, and main windows</a>.
+                     </td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNresizeable</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CG]</td>
+                     <td colspan="2" rowspan="1" class="none">Indicates whether or not the main window is
+                        resizable. The default is TRUE.
+                     </td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsetState</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The state of the object. This can also be set with
+                           the corresponding functions. Possible values are:
+                        </p>
+                        <p class="Paragraph">DSMAP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Makes object
+            visible</p>
+                        <p class="Paragraph">(see
+                           also <a href="../../progguide/functions_user_interface_objects/map.object.htm" class="manualLink">map.object()</a>).
+                        </p>
+                        <p class="Paragraph">DSUNMAP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Makes object
+            invisible</p>
+                        <p class="Paragraph">(see
+                           also <a href="../../progguide/functions_user_interface_objects/unmap.object.htm" class="manualLink">unmap.object()</a>).
+                        </p>
+                        <p class="Paragraph">DSUPDATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Re)draws the
+            object</p>
+                        <p class="Paragraph">(see
+                           also <a href="../../progguide/functions_user_interface_objects/update.object.htm" class="manualLink">update.object()</a>).
+                        </p>
+                        <p class="Paragraph">DSRAISE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puts object
+            in the forefront</p>
+                        <p class="Paragraph">(see
+                           also <a href="../../progguide/functions_user_interface_objects/raise.object.htm" class="manualLink">raise.object()</a>).
+                        </p>
+                        <p class="Paragraph">DSLOWER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puts object in
+            the background</p>
+                        <p class="Paragraph">(see
+                           also <a href="../../progguide/functions_user_interface_objects/lower.object.htm" class="manualLink">lower.object()</a>).
+                        </p>
+                        <p class="Paragraph">DSCLEAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Destroys the
+            gparts on a gwindow.</p>
+                        <p class="Paragraph">DSSETSENSITIVE&nbsp;&nbsp;&nbsp; Makes object sensitive – that is
+            the</p>
+                        <p class="Paragraph">object
+                           is enabled (see also
+                        </p>
+                        <p class="Paragraph"> <a href="../../progguide/functions_user_interface_objects/set.sensitive.htm" class="manualLink">set.sensitive()</a>).
+                        </p>
+                        <p class="Paragraph">DSSETINSENSITIVE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Makes object
+            insensitive – that is</p>
+                        <p class="Paragraph">the
+                           object is disabled (see also
+                        </p>
+                        <p class="Paragraph"> <a href="../../progguide/functions_user_interface_objects/set.sensitive.htm" class="manualLink">set.sensitive()</a>).
+                        </p>
+                        <p class="Paragraph">DSSETFOCUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sets keyboard input
+            focus on the</p>
+                        <p class="Paragraph">object
+                           (see <a href="../../progguide/functions_user_interface_objects/set.focus.htm" class="manualLink">set.focus()</a>).
+                        </p>
+                        <p class="Paragraph">DSUNSETFOCUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Moves keyboard input
+            focus to the</p>
+                        <p class="Paragraph">mwindow (see <a href="../../progguide/functions_user_interface_objects/unset.focus.htm" class="manualLink">unset.focus()</a>).
+                        </p>
+                        <p class="Paragraph">Note that you cannot combine these values.</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNstartHelpMode</p>
+                        <p class="Paragraph">(boolean)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[S]</td>
+                     <td colspan="2" rowspan="1" class="none">This indicates whether or not the window is in
+                        context-sensitive help mode (that is, whether or not
+                        SHIFT+F1 is enabled).
+                     </td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsuperiorPointerCursor</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="2" rowspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The shape of the superior mouse pointer when
+                           positioned over the main window. A child of a main
+                           window always inherits this mouse pointer.
+                        </p>
+                        <p class="Paragraph">DsNsuperiorPointerCursor overrules any inferior
+                           mouse pointer (DsNinferiorPointerCursor) set for the
+                           window and all mouse pointers set for descendant
+                           windows. Possible values are:
+                        </p>
+                        <p class="Paragraph">DSCDEFAULT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCPENCIL</p>
+                        <p class="Paragraph">DSCARROW &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            DSCQUESTIONARROW</p>
+                        <p class="Paragraph">DSCCROSSHAIR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCSPLITHORIZONTAL</p>
+                        <p class="Paragraph">DSCFLEUR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            DSCSPLITVERTICAL</p>
+                        <p class="Paragraph">DSCHAND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCSPRAYCAN</p>
+                        <p class="Paragraph">DSCMAGNIFY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCWATCH</p>
+                        <p class="Paragraph">DSCAPPSTARTING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DSCNODROP</p>
+                     </td>
+                  </tr>
+                  <tr no="23" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtemplate</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td colspan="2" rowspan="1" class="none">The ID of a <a href="../../progguide/functions_user_interface_objects/dsctemplate.htm" class="manualLink">DsCtemplate</a> that defines a set of attributes to be
+                        applied to the object.
+                     </td>
+                  </tr>
+                  <tr no="24" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtitle</p>
+                        <p class="Paragraph">(string)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td colspan="2" rowspan="1" class="none">The title displayed in the title bar of the main
+                        window and as the caption for the window's icon.
+                     </td>
+                  </tr>
+                  <tr no="25" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNwidth</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="2" rowspan="1" class="none">The width of the object, in pixels.</td>
+                  </tr>
+                  <tr no="26" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNx</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="2" rowspan="1" class="none">The x-coordinate of the object's outer left edge, in
+                        pixels, relative to the inner left edge of its
+                        parent.
+                     </td>
+                  </tr>
+                  <tr no="27" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNy</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td colspan="2" rowspan="1" class="none">The y-coordinate of the object's outer top edge, in
+                        pixels, relative to the inner top edge of its
+                        parent.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">The following attributes are supported for backward
+               compatibility only. Do not use them in new applications.
+            </p>
+            <p class="Paragraph">DsNcolumns&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DsNdata&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   DsNdisplay&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DsNflags</p>
+            <p class="Paragraph">DsNmaxColumnsDsNmaxRows&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DsNminRows &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   DsNminColumns</p>
+            <p class="Paragraph">DsNmode &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DsNrows&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   DsNsize&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DsNwindow</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/dscmwindow, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

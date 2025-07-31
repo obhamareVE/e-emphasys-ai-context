@@ -1,0 +1,130 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>aud.get.field.list()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="aud.get.field.list aud.get.field.list functions aud.get.field.list ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">aud.get.field.list()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;aud.get.field.list&nbsp;
+					(long&nbsp;selection.id, long&nbsp;table.id, ref string&nbsp;field.names(,))</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this function to get the field names of all fields logged
+                  for a database table in the audit trail. This function is
+                  especially useful if the user is not aware or interested in the
+                  table fields but simply needs the names of all fields. In this
+                  case the user uses the <a href="../../progguide/functions_audtr/aud.get.number.of.fields.htm" class="manualLink">aud.get.number.of.fields()</a> to determine how many fields are available and also uses <a href="../../progguide/functions_audtr/aud.get.field.list.htm" class="manualLink">aud.get.field.list()</a> to
+                  obtain the field ids for each field. The information of these
+                  two function can be used to further retrieve field info as well
+                  as the value of the field using the functions: <a href="../../progguide/functions_audtr/aud.get.field.info.htm" class="manualLink">aud.get.field.info()</a>, <a href="../../progguide/functions_audtr/aud.get.field.status.htm" class="manualLink">aud.get.field.status()</a> and <a href="../../progguide/functions_audtr/aud.put.old.field.value.htm" class="manualLink">aud.put.old.field.value()</a> and <a href="../../progguide/functions_audtr/aud.put.old.field.value.htm" class="manualLink">aud.put.new.field.value()</a>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>selection.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Id of the selection, as provided by <a href="../../progguide/functions_audtr/aud.select.transactions.htm" class="manualLink">aud.select.transactions()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>table.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Id of the table on which the action occurred, as
+                           provided by the aud.get.next.action function. The <i class="Emphasis">table.id</i> is used to retrieve the detailed action
+                           data using function <a href="../../progguide/functions_audtr/aud.get.field.status.htm" class="manualLink">aud.get.field.status()</a>, <a href="../../progguide/functions_audtr/aud.put.old.field.value.htm" class="manualLink">aud.put.old.field.value()</a>,
+                           and <a href="../../progguide/functions_audtr/aud.put.old.field.value.htm" class="manualLink">aud.put.new.field.value()</a>.
+                           This id is also used to get the meta data information,
+                           in case it has been changed.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>field.names(,)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">An array that contains the fields of the table. 
+                           
+                           Note: the number of elements in this array is equal to the number.of.fields returned by function aud.get.number.of.fields()
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_INCORRECT_SELECTION_ID</th>
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">Selection.id</i> is invalid.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_INCORRECT_TABLE_ID</th>
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">Table.Id</i> is invalid.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">AUD_OK</th>
+                     <td rowspan="1" colspan="1" class="none">Names of all fields can be determined</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Restrictions</div>
+            <p class="Paragraph">The function <a href="../../progguide/functions_audtr/aud.get.next.action.htm" class="manualLink">aud.get.next.action()</a> has
+               to be called prior to this function so that the fields list
+               contains the dictionary information stored in the audit
+               file.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_synopsis.htm" class="manualLink">Audit management synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_audtr/audit_management_examples.htm" class="manualLink">Audit management examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_audtr/aud.get.field.list, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

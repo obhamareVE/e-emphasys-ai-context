@@ -1,0 +1,72 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>WebTop Programming Rules</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">WebTop Programming Rules</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The WebTop speaks a different "language" (protocol) with the
+               4GL Engine than BW does. The reason for this is that Web-based
+               clients (like WebTop) use a different network topology than fat
+               clients (like BW). The network connection between the BW client
+               and the Infor Enterprise Server allows the 4GL Engine to initiate
+               requests to the BW client in order to draw things on the screen
+               (see picture).
+            </p>
+            <div class="Figure"><img src="../images/ui_bw.gif" alt="[...]"></div>
+            <p class="Paragraph">A Web-based network topology does not allow the server to
+               initiate requests to the client (browser). The HTTP protocol
+               does not allow this (see
+               picture).
+            </p>
+            <div class="Figure"><img src="../images/ui_webtop.gif" alt="[...]"></div>
+            <p class="Paragraph">Because of this restriction the WebTop uses a different
+               protocol with the 4GL Engine.
+            </p>
+            <p class="Paragraph">Since not all API's (especially low-level BW API's) are
+               suitable to fit into this protocol, some API's will be
+               deprecated.
+            </p>
+            <p class="Paragraph">A general rule of thumb is that 4GL Sessions, GBF Sessions and sessions based
+               on Programmable Dialogs can (with slight modifications) be run in WebTop. In general 3GL sessions which 
+               have a User Interface cannot be run in WebTop. 3GL-Session which do not have a User Interface and which 
+               run in the background, should use the function <a href="../../progguide/functions_webtop/tc.ignore.process.htm" class="manualLink">tc.ignore.process()</a> to run
+               correctly in WebTop.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">The following sections describe the deprecated API's:</div>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/webtop/lowlevel_ui.htm" class="manualLink">Deprecated low-level UI drawing API's</a></li>
+               <li class="ListItem"><a href="../../progguide/webtop/baan_automation.htm" class="manualLink">Baan Automation is deprecated</a></li>
+               <li class="ListItem"><a href="../../progguide/webtop/other_deprecated.htm" class="manualLink">Other deprecated predefined variables / functions</a></li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">The following sections describe other attention points:</div>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/webtop/focusevents.htm" class="manualLink">Focus events</a></li>
+               <li class="ListItem"><a href="../../progguide/webtop/caution.htm" class="manualLink">Functions that should be used with caution</a></li>
+               <li class="ListItem"><a href="../../progguide/webtop/gbf_notes.htm" class="manualLink">Some notes on the Generic Browser Framework (GBF)</a></li>
+               <li class="ListItem"><a href="../../progguide/webtop/exiting_3gl.htm" class="manualLink">Exiting 3gl and messages</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/webtop/introduction, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

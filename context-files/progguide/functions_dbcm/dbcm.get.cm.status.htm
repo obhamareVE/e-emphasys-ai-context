@@ -1,0 +1,137 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dbcm.get.cm.status()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dbcm.get.cm.status dbcm.get.cm.status functions dbcm.get.cm.status ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dbcm.get.cm.status()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;enum&nbsp;dbcm.get.cm.status&nbsp;
+					(const string&nbsp;toid$)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Retrieves the Change Management status of the Object that is identified by the given
+                  				Typed Object Id.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>toid$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A Typed Object Id; this is a string of 34 characters identifying a business object.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="8" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">Constant</th>
+                     <th rowspan="1" colspan="1" class="none">Value</th>
+                     <th rowspan="1" colspan="1" class="none">Description</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">DBCM_STATUS_DRAFT</code></td>
+                     <td rowspan="1" colspan="1" class="none">1</td>
+                     <td rowspan="1" colspan="1" class="none">The Object is in the Draft state; it is checked-out, it can be modified and any changes can be submitted, 
+                        								or any changes can be undone by doing a Revert to Approved.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">DBCM_STATUS_DRAFT_REV</code></td>
+                     <td rowspan="1" colspan="1" class="none">2</td>
+                     <td rowspan="1" colspan="1" class="none">The Object is in the Draft state, for a second time; this state is equal to the DBCM_STATUS_DRAFT state, 
+                        								except that an Object can only enter this state after a Recall of any submitted changes was successful.
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">DBCM_STATUS_PENDING</code></td>
+                     <td rowspan="1" colspan="1" class="none">3</td>
+                     <td rowspan="1" colspan="1" class="none">The Object is in the Pending state; this means any changes to the Object have been submitted and the user
+                        								must wait until the changes are Approved or Rejected. The Object cannot be modified.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">DBCM_STATUS_RECALL_REQ</code></td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td rowspan="1" colspan="1" class="none">The Object is in the Recall Requested state; the user made a request to ignore any submitted changes, as he
+                        								e.g. wants to make more changes to the Object. The Object cannot be modified.
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">DBCM_STATUS_REJECTED</code></td>
+                     <td rowspan="1" colspan="1" class="none">5</td>
+                     <td rowspan="1" colspan="1" class="none">The Object is in the Rejected state; any submitted changes were not approved. The user must either make other 
+                        								changes and re-submit them, or perform a Revert to Approved. The Object can be modified.
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">DBCM_STATUS_APPR_RECVD</code></td>
+                     <td rowspan="1" colspan="1" class="none">6</td>
+                     <td rowspan="1" colspan="1" class="none">The Object is in the Approval Received state; usually this state will not be visible to the user.
+                        								It can only be visible if somehow, after receiving an Approval, the Object cannot be checked-in. In this 
+                        								situation an Admin must be involved in order to force a check-in, or to discard any changes and perform
+                        								a Revert to Approved.
+                        								The Object can be modified.
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">DBCM_STATUS_APPROVED</code></td>
+                     <td rowspan="1" colspan="1" class="none">7</td>
+                     <td rowspan="1" colspan="1" class="none">The Object is in the Approved state; any submitted changes have been Approved, and the Object has been checked-in. 
+                        								The Object can be modified.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1800.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dbcm/overview.htm" class="manualLink">Database Change Management (DBCM) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dbcm/synopsis.htm" class="manualLink">Database Change Management operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dbcm/dbcm.get.cm.status, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

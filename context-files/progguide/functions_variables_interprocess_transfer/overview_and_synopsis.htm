@@ -1,0 +1,96 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Variables (inter-process transfer) overview and synopsis</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="variables (inter-process transfer) ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Variables (inter-process transfer) overview and synopsis</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Overview</div>
+            <p class="Paragraph">Use these functions to access the variables of other
+               processes. The variables can be of any type. They must be
+               declared as external (with the keyword EXTERN).
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Synopsis</div>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_variables_interprocess_transfer/get.var.htm" class="manualLink">get.var()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long processno, "variable", ref variable
+                           )</code></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_variables_interprocess_transfer/get.indexed.var.htm" class="manualLink">get.indexed.var()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long processno, "variable", ref
+         variable,
+          &nbsp; long dim1 [, long dim2, long dim3,
+          &nbsp; long dim4 ] )</code></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_variables_interprocess_transfer/put.var.htm" class="manualLink">put.var()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long processno, "variable", expression
+                           )</code></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_variables_interprocess_transfer/put.indexed.var.htm" class="manualLink">put.indexed.var()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( long processno, "variable", expression,
+          &nbsp; long dim1 [, long dim2, long dim3,
+          &nbsp; long dim4 ] )</code></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_variables_interprocess_transfer/import.htm" class="manualLink">import()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( "variable", ref variable )</code></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_variables_interprocess_transfer/export.htm" class="manualLink">export()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( "variable", expression )</code></td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void
+            </pre></td>
+                     <td rowspan="1" colspan="1" class="none"><a href="../../progguide/functions_variables_interprocess_transfer/import.4gl.var.htm" class="manualLink">import.4gl.var()</a></td>
+                     <td rowspan="1" colspan="1" class="none"><code class="Code">( "variable", expression )</code></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_variables_interprocess_transfer/overview_and_synopsis, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Hints for using SQL</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="SQL hints for using sql hints for using sql ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Hints for using SQL</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <ol class="ProcedureList">
+               <li class="ProcedureListItem">In the WHERE clause: 
+                  <ul class="List">
+                     <li class="ListItem">use as few conditions as possible</li>
+                     <li class="ListItem">use as many conditions with indexes as
+                        possible
+                     </li>
+                     <li class="ListItem">use as many conditions with combined fields as
+                        possible
+                     </li>
+                     <li class="ListItem">use BETWEEN/INRANGE when an upper and lower
+                        boundary are specified for a field.
+                     </li>
+                  </ul>
+               </li>
+               <li class="ProcedureListItem">Use REFERS TO if references have been defined in the data
+                  dictionary.
+               </li>
+               <li class="ProcedureListItem">
+                  <p class="Paragraph">Use as few overlapping OR conditions as possible. For the
+                     following:
+                  </p><pre class="Formula">
+cpac&amp;cmod &gt;= 'ttadv' (only if there is no index to cpac&amp;cmod)
+</pre><p class="Paragraph">do not use the following construction:</p>
+                  <p class="Paragraph"><code class="Code">WHERE ttadv200.cpac &gt; 'tt' OR ttadv200.cpac &gt;= 'tt'
+                        AND ttadv200.cmod &gt;= 'adv'</code></p>
+                  <p class="Paragraph">instead use the following construction:</p>
+                  <p class="Paragraph"><code class="Code">WHERE ttadv200.cpac &gt; 'tt' OR ttadv200.cpac = 'tt'
+                        AND ttadv200.cmod &gt;= 'adv'</code></p>
+               </li>
+               <li class="ProcedureListItem">Only select fields of tables necessary in the flow of the
+                  program.
+               </li>
+               <li class="ProcedureListItem">It is not necessary to bind external variables and
+                  database fields used in the query as substitution variables.
+                  In embedded SQL local variables are bound automatically.
+               </li>
+               <li class="ProcedureListItem">The program executes the query the first time the
+                  function <a href="../../progguide/functions_dynamic_sql_queries/sql.fetch.htm" class="manualLink">sql.fetch()</a> is called. If reading in the entire set is
+                  unnecessary (so no order by, group by, and so on), the
+                  program only physically retrieves records at each <i class="Emphasis">sql.fetch()</i>. This avoids an entire set being retrieved
+                  when only part of it is used. When the set is no longer
+                  necessary call <a href="../../progguide/functions_dynamic_sql_queries/sql.break.htm" class="manualLink">sql.break()</a> to clear the remaining records.
+               </li>
+               <li class="ProcedureListItem">Use ORDER BY to ensure that the records are retrieved in
+                  the correct sequence. If an index can be used for the ORDER
+                  BY, no sort action will take place beforehand.
+               </li>
+               <li class="ProcedureListItem">The program will execute a Full Table Scan (FTS) if the
+         operators NOT INRANGE, IN, LIKE are used and if no index
+         (or part of an index) is used. This means that the system
+         checks beforehand whether all records in the table meet
+         the conditions of the query. This precludes optimization.
+         If only the first part of an index (combined or normal
+         field) is used, the system uses that index to search the
+         table. 
+
+         When GROUP BY is used, the system first determines the
+         entire set (prepared set), before producing the first
+         record. The same thing happens if the operator is preceded
+         by an expression –for example, WHERE &lt;table.field1&gt;
+         &amp; &lt;table.field2&gt; = "...........". Note that the
+         various subexpressions separated by AND or OR cannot be
+         combined for optimization.</li>
+               <li class="ProcedureListItem">It is possible to have the program carry out commits at
+                  certain points in the select loop. If retry points are
+                  included, use of ORDER BY is required to ensure that the
+                  sequence after return to the retry point is identical to the
+                  one used the first time. See also the practical
+                  examples.
+               </li>
+               <li class="ProcedureListItem">If a transaction adds or processes records, it depends on
+                  the database if the same transaction can also process new
+                  records without a select being carried out again. To ensure
+                  that new records are processed in any case, a commit and a
+                  new select are required. To ensure that new records are not
+                  processed, define the set at the point of the select
+                  (prepared set).
+               </li>
+               <li class="ProcedureListItem">When using transactions, the first priority should be
+                  that the actions within the transaction constitute a logical
+                  unit. For reasons of performance, update, insert, and delete
+                  actions can be combined up to a number of 256 (this is an
+                  average, not a limit) per transaction. For example, programs
+                  processing orders should execute one <i class="Emphasis">commit.transaction()</i> for each order.
+               </li>
+               <li class="ProcedureListItem">
+                  <p class="Paragraph">It may be necessary to know how far the program had
+                     advanced before it moved back to the retry point. If the
+                     key consists of more than one field, it is probably
+                     possible to have the program execute a <i class="Emphasis">commit.transaction()</i> when a particular key field
+                     changes. If a key consists of order number and order line,
+                     for instance, a commit by order number would be preferable
+                     to a commit by order line. Care should be taken in
+                     programs that print and process data in one run. An abort
+                     transaction restores the database but not the output to
+                     the printer. In such cases a commit must be executed for
+                     each print line to prevent lines being printed twice. 
+                     
+                     For example:
+                  </p><pre class="Formula">
+save.orno = start
+select for update orderline.orno, orderline.pono
+from orderline
+where orderline.orno &gt;= :save.orno
+selectdo
+       if ( save.orno &lt;&gt; orderline.orno ) then
+            commit.transaction()
+            save.orno = orderline.orno
+       endif
+       update actions()
+endselect
+commit.transaction()
+</pre></li>
+               <li class="ProcedureListItem">A <a href="../../progguide/functions_db_operations/db.retry.point.htm" class="manualLink">db.retry.point()</a> must be included in each update program.
+               </li>
+            </ol>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/overview.htm" class="manualLink">Database handling overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/hints_for_using_sql, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

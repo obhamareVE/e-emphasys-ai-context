@@ -1,0 +1,477 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>qss.search()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions qss.search qss.search qss.search ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">qss.search()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;qss.search&nbsp;
+					(long&nbsp;flag, void&nbsp;search, ref void&nbsp;array, ref long&nbsp;def [, long&nbsp;dept])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This searches a specified array for a particular value,
+                  which is referred to as the search key. By default, it reads
+                  the array sequentially until it finds the specified value
+                  (that is, it performs a linear search). To perform a binary
+                  search instead, you must first sort the data, for example with <a href="../../progguide/functions_searching_sorting_data/qss.sort.htm" class="manualLink">qss.sort()</a> and then call <i class="Emphasis">qss.search()</i> with the <i class="Emphasis">flag</i> argument set to
+                  QSS.SRC.IS.SORTED. If the same search key occurs more than once, then you should also specify the 
+                  QSS.SRC.DUPL.ALLOWED option, or else it is not predictable which one of the duplicate records
+                  is found.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>flag</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This specifies which array element is to be
+                           retrieved and the type of search to be performed. You
+                           can set the argument to one of the following possible
+                           	    values:
+                        </p>
+                        <table width="100%" border="0" class="none">
+                           <tbody noTR="8" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">QSS.FIRST</th>
+                                 <td valign="top" rowspan="1" colspan="1" class="none">Find the first record in the array; the <i class="Emphasis">search</i> argument is ignored.
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">QSS.LAST</th>
+                                 <td valign="top" rowspan="1" colspan="1" class="none">Find the last record in the array; the <i class="Emphasis">search</i> argument is ignored.
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">QSS.GT</th>
+                                 <td valign="top" rowspan="1" colspan="1" class="none">Find the first record greater than the
+                                    search key.
+                                 </td>
+                              </tr>
+                              <tr no="4" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">QSS.GTEQ</th>
+                                 <td valign="top" rowspan="1" colspan="1" class="none">Find the first record greater than or
+                                    				equal to the search key.
+                                 </td>
+                              </tr>
+                              <tr no="5" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">QSS.LESS</th>
+                                 <td valign="top" rowspan="1" colspan="1" class="none">Find the first record less than the
+                                    				search key.
+                                 </td>
+                              </tr>
+                              <tr no="6" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">QSS.EQLE</th>
+                                 <td valign="top" rowspan="1" colspan="1" class="none">Find the first record less than or equal
+                                    				to the search key.
+                                 </td>
+                              </tr>
+                              <tr no="7" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">QSS.EQUAL</th>
+                                 <td valign="top" rowspan="1" colspan="1" class="none">Find the first record equal to the search
+                                    				key.
+                                 </td>
+                              </tr>
+                              <tr no="8" isLast="true" class="none">
+                                 <th rowspan="1" colspan="1" class="none">QSS.NE</th>
+                                 <td valign="top" rowspan="1" colspan="1" class="none">Find the first record not equal to the
+                                    				search key.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">You can combine each of these options with one or
+                           more of the following options:
+                        </p>
+                        <table width="100%" border="0" class="none">
+                           <tbody noTR="3" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">QSS.SRC.IS.SORTED</th>
+                                 <td valign="top" rowspan="1" colspan="1" class="none">Specifies that the array is sorted according to the specifications
+                                    						in the <i class="Emphasis">def</i> argument, for example by using the <a href="../../progguide/functions_searching_sorting_data/qss.sort.htm" class="manualLink">qss.sort()</a> function. The search will be performed using a binary search.
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">QSS.LOOKUP.FOR.STRUCT</th>
+                                 <td valign="top" rowspan="1" colspan="1" class="none">When this flag is set, 
+						the function searches the array for a specified record pattern – that is, 
+						it searches for an array element that matches both the structure and value 
+						of the search key. The search argument must have the same layout and length 
+						as the elements in array. 
+                                    <p class="Paragraph">When this flag is not set, the search argument is constructed as the 
+                                       						concatenation of the key fields defined by the def argument (see Example 2).
+                                    </p>
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="true" class="none">
+                                 <th rowspan="1" colspan="1" class="none">QSS.SRC.DUPL.ALLOWED</th>
+                                 <td valign="top" rowspan="1" colspan="1" class="none">Specifies that the search key can occur more than 
+                                    						once in the source array. 
+                                    						Note that when multiple records match the search key, 
+                                    						then the index of the <i class="Emphasis">first</i> matching 
+                                    						record (in effect the one with the <i class="Emphasis">lowest</i> index) is returned.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>search</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The value that you want to search for in the
+                           specified array. This is the search key.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">ref void</td>
+                     <td class="none"><code>array</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This specifies the array that must be searched.
+                           It can be a string or an array of type string, long,
+                           or double, but it is usually an array of
+                           strings.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">ref long</td>
+                     <td class="none"><code>def</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This indicates how the system is to search the
+               array and against what conditions it must test the
+               elements of the array.&nbsp; The argument must be
+               declared as follows:</p>
+                        <p class="Paragraph">long def(x,4) | x is the number of search
+                           fields
+                        </p>
+                        <p class="Paragraph">You can define several search fields (1 to <i class="Emphasis">x</i>). For each search field, you define the four
+                           search properties by using the following functions. In
+                           each case, the <i class="Emphasis">field_number</i> argument specifies
+                           the sequence number (1 to <i class="Emphasis">x</i>) of the search
+                           field.
+                        </p>
+                        <table class="default">
+                           <tbody noTR="4" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <th rowspan="1" colspan="1" class="default"><pre class="CodeBlock">void  qss.start(
+   ref long def,
+   long     field_number,
+   long     position
+)</pre></th>
+                                 <td rowspan="1" colspan="1" class="default">This indicates the search field's start
+                                    position in the array element. For example, this
+                                    allows you to search a string array for a
+                                    character combination starting at the fourth
+                                    character of the array element.
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <th rowspan="1" colspan="1" class="default"><pre class="CodeBlock">void qss.way(
+   ref long def,
+   long     field_number,
+   long     way
+)</pre></th>
+                                 <td rowspan="1" colspan="1" class="default">This defines the search order that must be
+                                    used if the flag QSS.SRC.IS.SORTED is set. The
+                                    argument <i class="Emphasis">way</i> can be set to QSS.UP
+                                    (ascending search) or QSS.DOWN (descending
+                                    search).
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="false" class="default">
+                                 <th rowspan="1" colspan="1" class="default"><pre class="CodeBlock">void qss.type(
+   ref long def,
+   long     field_number,
+   long     type
+)</pre></th>
+                                 <td rowspan="1" colspan="1" class="default">This specifies the search field's type, for example (the list may be incomplete): 
+                                    <table class="default">
+                                       <thead noTR="1" class="default">
+                                          <tr no="1" isLast="true" class="default">
+                                             <th rowspan="1" colspan="1" class="default">type</th>
+                                             <th rowspan="1" colspan="1" class="default">byte count</th>
+                                             <th rowspan="1" colspan="1" class="default">search field</th>
+                                          </tr>
+                                       </thead>
+                                       <tbody noTR="7" class="default">
+                                          <tr no="1" isLast="false" class="default">
+                                             <td rowspan="1" colspan="1" class="default">
+                                                <table border="0" class="none">
+                                                   <tbody noTR="2" class="none">
+                                                      <tr no="1" isLast="false" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.BYTE</td>
+                                                      </tr>
+                                                      <tr no="2" isLast="true" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.ENUM</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                                <p class="postspacer">&nbsp;</p>
+                                             </td>
+                                             <td rowspan="1" colspan="1" class="default">1</td>
+                                             <td rowspan="1" colspan="1" class="default"><i class="Emphasis">unsigned</i> 8-bit integer value
+                                             </td>
+                                          </tr>
+                                          <tr no="2" isLast="false" class="default">
+                                             <td rowspan="1" colspan="1" class="default">
+                                                <table border="0" class="none">
+                                                   <tbody noTR="1" class="none">
+                                                      <tr no="1" isLast="true" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.INTEGER</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                                <p class="postspacer">&nbsp;</p>
+                                             </td>
+                                             <td rowspan="1" colspan="1" class="default">2</td>
+                                             <td rowspan="1" colspan="1" class="default">signed 16-bit integer value</td>
+                                          </tr>
+                                          <tr no="3" isLast="false" class="default">
+                                             <td rowspan="1" colspan="1" class="default">
+                                                <table border="0" class="none">
+                                                   <tbody noTR="5" class="none">
+                                                      <tr no="1" isLast="false" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.LONG</td>
+                                                      </tr>
+                                                      <tr no="2" isLast="false" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.BITSET</td>
+                                                      </tr>
+                                                      <tr no="3" isLast="false" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.DATE</td>
+                                                      </tr>
+                                                      <tr no="4" isLast="false" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.MAIL</td>
+                                                      </tr>
+                                                      <tr no="5" isLast="true" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.TEXT</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                                <p class="postspacer">&nbsp;</p>
+                                             </td>
+                                             <td rowspan="1" colspan="1" class="default">4</td>
+                                             <td rowspan="1" colspan="1" class="default">signed 32-bit integer value</td>
+                                          </tr>
+                                          <tr no="4" isLast="false" class="default">
+                                             <td rowspan="1" colspan="1" class="default">
+                                                <table border="0" class="none">
+                                                   <tbody noTR="1" class="none">
+                                                      <tr no="1" isLast="true" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.TIME</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                                <p class="postspacer">&nbsp;</p>
+                                             </td>
+                                             <td rowspan="1" colspan="1" class="default"></td>
+                                             <td rowspan="1" colspan="1" class="default"><a href="../../progguide/functions_date_time_zones/overview.htm#utc" class="commandLink">UTC</a> long format value
+                                             </td>
+                                          </tr>
+                                          <tr no="5" isLast="false" class="default">
+                                             <td rowspan="1" colspan="1" class="default">
+                                                <table border="0" class="none">
+                                                   <tbody noTR="1" class="none">
+                                                      <tr no="1" isLast="true" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.FLOAT</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                                <p class="postspacer">&nbsp;</p>
+                                             </td>
+                                             <td rowspan="1" colspan="1" class="default">4</td>
+                                             <td rowspan="1" colspan="1" class="default">32-bit floating point value</td>
+                                          </tr>
+                                          <tr no="6" isLast="false" class="default">
+                                             <td rowspan="1" colspan="1" class="default">
+                                                <table border="0" class="none">
+                                                   <tbody noTR="1" class="none">
+                                                      <tr no="1" isLast="true" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.DOUBLE</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                                <p class="postspacer">&nbsp;</p>
+                                             </td>
+                                             <td rowspan="1" colspan="1" class="default">8</td>
+                                             <td rowspan="1" colspan="1" class="default">64-bit floating point value</td>
+                                          </tr>
+                                          <tr no="7" isLast="true" class="default">
+                                             <td rowspan="1" colspan="1" class="default">
+                                                <table border="0" class="none">
+                                                   <tbody noTR="1" class="none">
+                                                      <tr no="1" isLast="true" class="none">
+                                                         <td rowspan="1" colspan="1" class="none">DB.STRING</td>
+                                                      </tr>
+                                                   </tbody>
+                                                </table>
+                                                <p class="postspacer">&nbsp;</p>
+                                             </td>
+                                             <td rowspan="1" colspan="1" class="default">set by qss.length() - see below</td>
+                                             <td rowspan="1" colspan="1" class="default">string</td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                    <p class="postspacer">&nbsp;</p>
+                                 </td>
+                              </tr>
+                              <tr no="4" isLast="true" class="default">
+                                 <th rowspan="1" colspan="1" class="default"><pre class="CodeBlock">void qss.length(
+   ref long def,
+   long     field_number,
+   long     length
+)</pre></th>
+                                 <td rowspan="1" colspan="1" class="default">This specifies the length of the search field.
+                                    This option is valid only for strings.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">If you define fewer search fields than you
+                           have declared, you must close the <i class="Emphasis">def</i> argument by calling <i class="Emphasis">qss.start()</i> with a
+                           start position of zero. For example, if you have
+                           declared three search fields, as follows: def(3,4) but then create only two search fields, you
+                           must close the definition with the following
+                           call:qss.start(def,3,0)
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>dept</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This indicates the number of array elements
+                           (starting with the first element) that must be
+                           searched if the function is not intended to search
+                           the entire array. By default, the function searches
+                           the entire array until it finds the required
+                           	       value. In that case, if the QSS.SRC.IS.SORTED option
+                           	       is specified then the <i class="Emphasis">entire</i> array
+                           	       must previously have been sorted.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="13" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&gt;0</th>
+                     <td valign="top" rowspan="1" colspan="1" class="none">index in the array where the search key was found</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td valign="top" rowspan="1" colspan="1" class="none">error; <i class="Emphasis">search</i> argument not found
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-11</th>
+                     <td valign="top" rowspan="1" colspan="1" class="none"><i class="Emphasis">search</i> argument must be of same type as array; <i class="Emphasis">def</i> is not of type long array or <i class="Emphasis">array</i> not of type array
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-12</th>
+                     <td valign="top" rowspan="1" colspan="1" class="none"><i class="Emphasis">search</i> argument not correct; string not expected
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-13</th>
+                     <td valign="top" rowspan="1" colspan="1" class="none"><i class="Emphasis">dept</i> must be positive
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-14</th>
+                     <td valign="top" rowspan="1" colspan="1" class="none"><i class="Emphasis">def</i> argument not correctly declared
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-15</th>
+                     <td valign="top" rowspan="1" colspan="1" class="none"><i class="Emphasis">search</i> argument does not fit in declared array
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-16</th>
+                     <td valign="top" rowspan="1" colspan="1" class="none">QSS.TYPE not correct</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-17</th>
+                     <td valign="top" rowspan="1" colspan="1" class="none"><i class="Emphasis">array</i> argument not correct
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-18</th>
+                     <td valign="top" rowspan="1" colspan="1" class="none">no definition found in <i class="Emphasis">def</i></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-21</th>
+                     <td valign="top" rowspan="1" colspan="1" class="none">flag LOOKUP.FOR.STRUCT is used; <i class="Emphasis">search</i> argument must be a string
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-22</th>
+                     <td valign="top" rowspan="1" colspan="1" class="none"><i class="Emphasis">search</i> argument not correct; probably a size problem 
+                        				- size of search must match size of an element in array if LOOKUP.FOR.STRUCT is set or
+                        				(if LOOKUP.FOR.STRUCT is not set) must be at least the sum of lengths 
+                        				of the key fields (set by qss.length())
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-23</th>
+                     <td valign="top" rowspan="1" colspan="1" class="none"><i class="Emphasis">search</i> argument not correct; probably a type problem
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_searching_sorting_data/overview_and_synopsis.htm" class="manualLink">Searching and sorting data overview and synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_searching_sorting_data/example.htm" class="manualLink">Table searching and sorting sample programs</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_searching_sorting_data/qss.search, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

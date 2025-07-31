@@ -1,0 +1,184 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>run.prog()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions run.prog run.prog run.prog ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">run.prog()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;run.prog&nbsp;
+					(const string&nbsp;progname, const string&nbsp;arguments, long&nbsp;mode [, string&nbsp;stdin] [, string&nbsp;stdout] [, string&nbsp;stderr])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">The function <i class="Emphasis">run.prog()</i> runs an operating system
+                  command. It is a system-dependent function. It must not be used
+                  in applications that are distributed across different
+                  platforms.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>progname</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the program or command to be executed. <i class="Emphasis">run.baan.prog()</i> expands <i class="Emphasis">progname</i> to
+                           $BSE/bin/ <i class="Emphasis">progname</i> { <i class="Emphasis">release</i>}.
+                        </p>
+                        <p class="Paragraph">If the <i class="Emphasis">progname</i> argument in <i class="Emphasis">run.prog()</i> does not supply the full path (absolute or relative),
+                           the system searches for the command using the standard
+                           facilities of the operating system platform, e.g. PATH environment variable (if set).
+                        </p>
+                        <p class="Paragraph">The argument can specify a remote host. For example,
+                           if <i class="Emphasis">progname</i> is "tahoe!sort", the function runs
+                           the sort program on the tahoe host. The maximum number
+                           of remote programs that can run concurrently depends on
+                           available system resources.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>arguments</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The function start the program or command with the
+                           parameters specified here.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>mode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This specifies the execution mode of the program or
+                           command. The possible values are:
+                        </p>
+                        <table border="0" width="100%" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">RP_WAIT</td>
+                                 <td rowspan="1" colspan="1" class="none">wait for the program to finish</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">RP_NOWAIT</td>
+                                 <td rowspan="1" colspan="1" class="none">run as a background program</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>stdin</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Reads input from the file named <i class="Emphasis">stdin</i>. (The
+                           default value is "", which gives the program no
+                           input.)
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>stdout</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Writes output to the file named <i class="Emphasis">stdout</i>. (The
+                           default value is "", which ignores all output from the
+                           program.)
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <td class="none">[string</td>
+                     <td class="none"><code>stderr</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Writes error messages to the file named <i class="Emphasis">stderr</i>. (The default value is "", which ignores
+                           all error messages from the program.)
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">0&nbsp; program executed successfully</p>
+            <p class="Paragraph">&lt;0&nbsp; program could not be started</p>
+            <p class="Paragraph">&gt;0&nbsp; program did not execute successfully</p>
+            <p class="Paragraph">Note that the return value cannot be retrieved when the <i class="Emphasis">mode</i> argument is set to RP_NOWAIT.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">Input for the program cannot be entered interactively, but it
+                  can be read from a file. There are two ways to do this:
+               </p>
+               <ul class="List">
+                  <li class="ListItem">Use the <i class="Emphasis">stdin</i> argument described above.
+                  </li>
+                  <li class="ListItem">If the program has a command line argument for input
+                     redirection, pass this in the <i class="Emphasis">arguments</i> argument to
+                     let the program read from a file.
+                  </li>
+               </ul>
+               <p class="Paragraph">Output or error messages from the program cannot be
+                  displayed, but they can be stored in a file. There are two ways
+                  to do this:
+               </p>
+               <ul class="List">
+                  <li class="ListItem">Use the <i class="Emphasis">stdout</i> and <i class="Emphasis">stderr</i> arguments
+                     described above. (Please note that the previous contents of
+                     these files is lost.)
+                  </li>
+                  <li class="ListItem">If the program has a command line argument for
+                     output/error redirection, pass this in the <i class="Emphasis">arguments</i> argument to let the program send results to a file. (For
+                     example, several Baan programs accept -q, -qo, and/or -qe
+                     arguments.)
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_starting_and_stopping_programs/overview_and_synopsis.htm" class="manualLink">Starting and stopping programs: overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_starting_and_stopping_programs/run.prog, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

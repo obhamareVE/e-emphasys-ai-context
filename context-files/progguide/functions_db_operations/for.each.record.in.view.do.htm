@@ -1,0 +1,156 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>for.each.record.in.view.do()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="for.each.record.in.view.do for.each.record.in.view.do functions for.each.record.in.view.do ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">for.each.record.in.view.do()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;for.each.record.in.view.do&nbsp;
+					(string&nbsp;callback_function)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Executes the specified UI script callback function for each
+                  record in the current view on the maintable.
+               </p>
+               <p class="Paragraph">This means that for the current view (e.g. a sales order),
+                  all records (e.g. all order lines) are fetched from the
+                  maintable one by one, and for each fetched record, the given
+                  callback function is called. In case the session has no view
+                  fields, then all records of the maintable are fetched.
+               </p>
+               <p class="Paragraph">Any filter, query extend etc. is taken into account. So e.g.
+                  a filter set by the user has influence on the number of records
+                  being fetched.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>callback_function</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the function that must be executed. The
+                           function must be of type 'extern long'.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			4GL
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1020.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <ul class="List">
+                  <li class="ListItem">This function takes any filter, query extend etc. into
+                     account. So depending on e.g. the filter set by the user, a
+                     different set of records can be fetched.
+                  </li>
+                  <li class="ListItem">The callback function must be declared in the UI script
+                     as 'extern long'.
+                  </li>
+                  <li class="ListItem">This function is performance critical, especially if
+                     there are a lot of records in the view.
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+declaration:
+    extern  domain  tfgld.amnt  total.d.amnt
+    extern  domain  tfgld.amnt  total.c.amnt
+
+choice.find.data:
+after.choice:
+    if actual.occ = filled.occ then
+        reset.total.amounts()
+        for.each.record.in.view.do("increment.total.amounts")
+        display.total.amounts()
+    endif
+
+functions:
+
+function void reset.total.amounts()
+{
+    total.d.amnt = 0
+    total.c.amnt = 0
+}
+
+function void display.total.amounts()
+{
+    display("total.d.amnt")
+    display("total.c.amnt")
+}
+
+function extern long increment.total.amounts()
+{
+    FunctionUsage
+    Desc:   Increments the total debit and credit amounts.
+    Note:   This callback function is executed by
+'for.each.record.in.view()'. 
+        It acts like the 'selectdo' clause of an Embedded SQL
+query.
+    Pre:    -
+    Post:   total.d.amnt or total.c.amnt incremented with the
+transaction amount
+    Input:  -
+    Output: -
+    Return: 0   to continue fetching the next record
+        &lt;&gt; 0  to stop fetching
+    EndFunctionUsage
+
+    if tfgld102.dbcr = tfgld.dbcr.debit then
+        total.d.amnt = total.d.amnt + tfgld102.amnt
+    else
+        total.c.amnt = total.c.amnt + tfgld102.amnt
+    endif
+
+    | Everything went fine
+    return (0)
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/for.each.record.in.view.do, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

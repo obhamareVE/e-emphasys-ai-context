@@ -1,0 +1,1028 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>DsCgraph</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dscgraph ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">DsCgraph</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">A graph is a rectangular child window that displays a graph.
+               The DsCgraph object is not part of the standard Infor ERP Enterprise
+               Server object library. It is a third-party OCX
+               control. It can be controlled from 3GL scripts in the same way
+               as standard objects. Several graphs can be displayed
+               simultaneously within the same main window. A wide range of
+               graph types is supported.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Events</div>
+            <p class="Paragraph">A DsCgraph object can generate the following events:</p>
+            <p class="Paragraph">EVTBUTTONPRESS</p>
+            <p class="Paragraph">EVTBUTTONRELEASE</p>
+            <p class="Paragraph">The parameters of these events are as described in <a href="../../progguide/events/event_array_parameters.htm" class="manualLink">Event array parameters</a>, with the following exceptions:
+            </p>
+            <p class="Paragraph">evt.button.x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The graph set selected.</p>
+            <p class="Paragraph">evt.button.y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The graph point selected.</p>
+            <p class="Paragraph">evt.button.rootx&nbsp;&nbsp;&nbsp;&nbsp; The x-coordinate (Graphic Server
+   units).</p>
+            <p class="Paragraph">evt.button.rooty&nbsp;&nbsp;&nbsp;&nbsp; The y-coordinate (Graphic Server
+   units).</p>
+            <p class="Paragraph">evt.button.state&nbsp;&nbsp;&nbsp;&nbsp; 0 when a graph set/point is
+   selected</p>
+            <p class="Paragraph">(Shift and Control states are not
+               supported).
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Attributes</div>
+            <table border="0" class="none">
+               <tbody noTR="47" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNbackgroundColor</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The background color for the graphic object
+            specified by the&nbsp; DsNbackgroundUse attribute. Possible
+            values are:</p>
+                        <p class="Paragraph">DSBLACK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Black</p>
+                        <p class="Paragraph">DSBLUE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blue</p>
+                        <p class="Paragraph">DSGREEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Green</p>
+                        <p class="Paragraph">DSCYAN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cyan</p>
+                        <p class="Paragraph">DSRED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Red</p>
+                        <p class="Paragraph">DSMAGENTA&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Magenta</p>
+                        <p class="Paragraph">DSBROWN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Brown</p>
+                        <p class="Paragraph">DSLGRAY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Light gray (default)</p>
+                        <p class="Paragraph">DSDGRAY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dark gray</p>
+                        <p class="Paragraph">DSLBLUE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Light blue</p>
+                        <p class="Paragraph">DSLGREEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Light green</p>
+                        <p class="Paragraph">DSLCYAN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Light cyan</p>
+                        <p class="Paragraph">DSLRED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Light red</p>
+                        <p class="Paragraph">DSLMAGENTA&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Light magenta</p>
+                        <p class="Paragraph">DSYELLOW&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Yellow</p>
+                        <p class="Paragraph">DSWHITE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; White</p>
+                        <p class="Paragraph">DSAUTOCOLOR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Automatic black or white
+            (whichever</p>
+                        <p class="Paragraph">provides the
+                           greatest contrast)
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNbackgroundStyle</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The background style for the graphic object
+                           specified by the DsNbackgroundUse attribute. Possible
+                           values are:
+                        </p>
+                        <p class="Paragraph">DSBGSTYLENO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No background
+            (default).</p>
+                        <p class="Paragraph">DSBGSTYLESHADOW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Drop shadow.</p>
+                        <p class="Paragraph">DSBGSTYLERAISED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sculptured raised.</p>
+                        <p class="Paragraph">DSBGSTYLELOWERED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sculptured lowered.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNbackgroundUse</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies the graphic object to which the
+                           DsNbackgroundStyle and DsNbackgroundColor attributes
+                           apply. Possible values are:
+                        </p>
+                        <p class="Paragraph">DSBGENTIRE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Entire graph
+            window (default).</p>
+                        <p class="Paragraph">DSBGGRAPHAXES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graph and axes.</p>
+                        <p class="Paragraph">DSBGGRAPHTITLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Top title.</p>
+                        <p class="Paragraph">DSBGLEFTTITLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Left title.</p>
+                        <p class="Paragraph">DSBGRIGHTTITLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Right title.</p>
+                        <p class="Paragraph">DSBGBOTTOMTITLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bottom title.</p>
+                        <p class="Paragraph">DSBGLEGEND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Legend.</p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNbottomTitle</p>
+                        <p class="Paragraph">(string)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The text of the graph title positioned at the bottom
+                        of the graph window. This can be up to 80 characters
+                        long, and can include new-line characters. Use
+                        DsNbackgroundStyle and DsNbackgroundUse to change the
+                        style of the title.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNdrawMode</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The drawing mode for the graph control. Possible
+                           values are:
+                        </p>
+                        <p class="Paragraph">DSDRAWNOACTION&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Graph not drawn – reset
+            to</p>
+                        <p class="Paragraph">DSDRAWDEFAULT to display the graph.</p>
+                        <p class="Paragraph">DSDRAWCLEAR&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graph not drawn but
+            background set to</p>
+                        <p class="Paragraph">color
+                           specified by DsNbackground.
+                        </p>
+                        <p class="Paragraph">DSDRAWDEFAULT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Redraws the graph
+            immediately</p>
+                        <p class="Paragraph">(default).</p>
+                        <p class="Paragraph">DSDRAWBLIT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graph built in
+            background, then</p>
+                        <p class="Paragraph">displayed all at once.</p>
+                        <p class="Paragraph">DSDRAWCOPY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Copies the graph image
+            as a bitmap to</p>
+                        <p class="Paragraph">the
+                           clipboard.
+                        </p>
+                        <p class="Paragraph">DSDRAWROTATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Redraws the graph itself
+            without</p>
+                        <p class="Paragraph">recalculating scales and redrawing titles</p>
+                        <p class="Paragraph">and
+                           legends (True3D graphs only).
+                        </p>
+                        <p class="Paragraph">DSDRAWUPDATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Updates a time series
+            graph with newly</p>
+                        <p class="Paragraph">added
+                           points.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNelevation</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The vertical viewing angle for true3D graphs. The
+                        value can be any angle between -60 degrees and 90
+                        degrees.
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNextraData</p>
+                        <p class="Paragraph">(long array)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A two-dimensional array that holds additional data
+                           for a graph. You fill the array in the same way as you
+                           fill the DsNgraphData array. When referencing a single
+                           data point, use DsNthisSet and DsNthisPoint to index
+                           the data point. Possible values are:
+                        </p>
+                        <p class="Paragraph">Pie charts</p>
+                        <p class="Paragraph">DSEDNORMAL&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Not exploded
+            (default).</p>
+                        <p class="Paragraph">DSEDEXTRA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exploded.</p>
+                        <p class="Paragraph">Line, Lin/log, Log/lin, Log/log, Polar, Scatter
+                           (2D), Tape
+                        </p>
+                        <p class="Paragraph">DSEDNORMAL&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Point shown
+            (default).</p>
+                        <p class="Paragraph">DSEDEXTRA&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Point not
+            shown.</p>
+                        <p class="Paragraph">Time series</p>
+                        <p class="Paragraph">DSEDNORMAL&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; No statistical lines
+            (default).</p>
+                        <p class="Paragraph">DSEDEXTRA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mean line.</p>
+                        <p class="Paragraph">DSEDSTDDEV&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Standard deviation
+            line.</p>
+                        <p class="Paragraph">DSEDEXTRA and DSEDSTDDEV can be
+                           combined.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNforegroundColor</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The foreground color for the graphic object
+                        specified by the DsNforegroundUse attribute. See
+                        DsNbackgroundColor for the list of possible values. The
+                        default is DSAUTOCOLOR.
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNforegroundUse</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies the graphic object to which the
+                           DsNforegroundColor attribute applies. Possible values
+                           are:
+                        </p>
+                        <p class="Paragraph">DSFGRAPHTITLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Top title
+            (default)</p>
+                        <p class="Paragraph">DSFGLEFTTITLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Left title</p>
+                        <p class="Paragraph">DSFGRIGHTTITLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Right title</p>
+                        <p class="Paragraph">DSFGBOTTOMTITLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bottom title</p>
+                        <p class="Paragraph">DSFGLABELS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Labels</p>
+                        <p class="Paragraph">DSFGLEGEND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Legend</p>
+                        <p class="Paragraph">DSFGAXES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Axes</p>
+                        <p class="Paragraph">DSFGGRIDS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gridlines</p>
+                        <p class="Paragraph">DSFGMEAN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mean line</p>
+                        <p class="Paragraph">DSFGMINMAX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Min and max
+            lines</p>
+                        <p class="Paragraph">DSFGSTDDEV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Standard deviation
+            lines</p>
+                        <p class="Paragraph">DSFGBESTFIT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Best-fit line</p>
+                        <p class="Paragraph">DSFGCURVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fitted curve</p>
+                        <p class="Paragraph">DSFGDATALABELS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Data labels</p>
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNgraphData</p>
+                        <p class="Paragraph">(long array)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A two-dimensional array that holds the actual data
+                           values for a graph. The array is indexed by DsNthisSet
+                           and DsNthisPoint.
+                        </p>
+                        <p class="Paragraph">For a graph with two data sets and three data points
+                           per set, the array data is filled as follows:
+                        </p>
+                        <p class="Paragraph">set1_pt1 + set1_pt2 + set1_pt3 + set2_pt1 + set2_pt2
+                           + set2_pt3
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNgraphStyle</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The graph style. This attribute is not relevant for
+                           Bubble, Candlestick, Tape, and Time series graph types.
+                           Possible values are:
+                        </p>
+                        <p class="Paragraph">Area (2D/3D)</p>
+                        <p class="Paragraph">DSAREASTACKED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stacked
+            (default).</p>
+                        <p class="Paragraph">DSAREAABSOLUTE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Absolute.</p>
+                        <p class="Paragraph">DSAREAPERCENTAGE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stacked
+            percentage.</p>
+                        <p class="Paragraph">Bar (2D/3D)</p>
+                        <p class="Paragraph">DSBARVERTICAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vertical bars
+            (default).</p>
+                        <p class="Paragraph">DSBARHORIZONTAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Horizontal
+            bars.</p>
+                        <p class="Paragraph">DSBARSTACKED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stacked.</p>
+                        <p class="Paragraph">DSBARPERCENT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Percentage.</p>
+                        <p class="Paragraph">DSBARZCLUSTERED &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Z-clustered (3D
+            bar only).</p>
+                        <p class="Paragraph">DSBARFLOATING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stacked
+            floating.</p>
+                        <p class="Paragraph">DSBARPARETO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pareto.</p>
+                        <p class="Paragraph">These values can be combined, as
+                           appropriate.
+                        </p>
+                        <p class="Paragraph">Box-whisker</p>
+                        <p class="Paragraph">DSBOXRAWSAMPLES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Raw data, samples
+            drawn</p>
+                        <p class="Paragraph">(default).</p>
+                        <p class="Paragraph">DSBOXRAWNOSAMPLES&nbsp;&nbsp; Raw data, no samples
+            drawn.</p>
+                        <p class="Paragraph">DSBOXPARAMETRIC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Parametric
+            data.</p>
+                        <p class="Paragraph">Gantt</p>
+                        <p class="Paragraph">DSGANTTADJACNTBARS&nbsp;&nbsp;&nbsp; Adjacent bars
+            (default).</p>
+                        <p class="Paragraph">DSGANTTSPACEDBARS&nbsp;&nbsp;&nbsp;&nbsp; Spaced bars.</p>
+                        <p class="Paragraph">High-low-close and Open-high-low-close</p>
+                        <p class="Paragraph">DSHLCOPEN &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Open,
+            high, low, and close bars</p>
+                        <p class="Paragraph">(default).</p>
+                        <p class="Paragraph">DSHLCNOCLOSE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No open or
+            close bars.</p>
+                        <p class="Paragraph">DSHLCNOHIGHLOW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No high or low
+            bars.</p>
+                        <p class="Paragraph">DSHLCNOBARS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No bars.</p>
+                        <p class="Paragraph">Line, log/lin, lin/log, and log/log</p>
+                        <p class="Paragraph">DSLINEONLY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lines
+            only.</p>
+                        <p class="Paragraph">DSLINESYMBOLS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Symbols.</p>
+                        <p class="Paragraph">DSLINESTICKS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sticks
+            between points and y</p>
+                        <p class="Paragraph">origin.</p>
+                        <p class="Paragraph">DSLINELINES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Lines.</p>
+                        <p class="Paragraph">These values can be combined.</p>
+                        <p class="Paragraph">Pie (2D/3D)</p>
+                        <p class="Paragraph">DSPIELINES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lines
+            join labels to graph</p>
+                        <p class="Paragraph">(default).</p>
+                        <p class="Paragraph">DSPIENOLINES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No label
+            lines.</p>
+                        <p class="Paragraph">DSPIECOLORED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Colored
+            labels.</p>
+                        <p class="Paragraph">DSPIEPERCENT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Percentage
+            labels.</p>
+                        <p class="Paragraph">These values can be combined.</p>
+                        <p class="Paragraph">Polar</p>
+                        <p class="Paragraph">DSPOLARLINE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lines only
+            (default).</p>
+                        <p class="Paragraph">DSPOLARSYMBOLS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Symbols.</p>
+                        <p class="Paragraph">DSPOLARSTICKS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sticks.</p>
+                        <p class="Paragraph">DSPOLARLINES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lines.</p>
+                        <p class="Paragraph">These values can be combined.</p>
+                        <p class="Paragraph">Scatter (2D)</p>
+                        <p class="Paragraph">DSSCATTER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Symbols
+            only (default).</p>
+                        <p class="Paragraph">DSSCATTERCURVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Curve only.</p>
+                        <p class="Paragraph">DSSCATTERSYMBOLS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Symbols only.</p>
+                        <p class="Paragraph">These values can be combined.</p>
+                        <p class="Paragraph">Scatter (3D)</p>
+                        <p class="Paragraph">DSSCATTER3DSYMBOLS&nbsp;&nbsp; Symbols only
+            (default).</p>
+                        <p class="Paragraph">DSSCATTER3DSTICKS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Symbols and
+            vertical sticks.</p>
+                        <p class="Paragraph">DSSCATTER3DLINES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Symbols and lines
+            between</p>
+                        <p class="Paragraph">points.</p>
+                        <p class="Paragraph">These values can be combined.</p>
+                        <p class="Paragraph">Surface</p>
+                        <p class="Paragraph">DSSURFACE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Filled
+            panels and boundary lines</p>
+                        <p class="Paragraph">(default).</p>
+                        <p class="Paragraph">DSSURFACEBDYONLY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Boundary lines
+            only.</p>
+                        <p class="Paragraph">DSSURFACEPANONLY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Filled panels
+            only.</p>
+                        <p class="Paragraph">DSSURFACEBDYPANWALL&nbsp; Filled panels,
+            boundary lines,</p>
+                        <p class="Paragraph">side wall.</p>
+                        <p class="Paragraph">DSSURFACEBDYWALL&nbsp;&nbsp;&nbsp; Boundary lines, side
+            wall.</p>
+                        <p class="Paragraph">DSSURFACEPANWALL&nbsp;&nbsp;&nbsp; Filled panels, side
+            wall.</p>
+                     </td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNgraphTitle</p>
+                        <p class="Paragraph">(string)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The text of the graph title positioned at the top of
+                        the graph window. This can be up to 80 characters long,
+                        and can include new-line characters. Use
+                        DsNbackgroundStyle and DsNbackgroundUse to change the
+                        style of the title.
+                     </td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNgraphType</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The graph type. Possible values are:</p>
+                        <p class="Paragraph">DSNOGRAPH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No graph</p>
+                        <p class="Paragraph">DS2DPIE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2D pie</p>
+                        <p class="Paragraph">DS3DPIE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3D pie</p>
+                        <p class="Paragraph">DS2DBAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2D bar</p>
+                        <p class="Paragraph">DS3DBAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3D bar
+            (default)</p>
+                        <p class="Paragraph">DSGANTT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gantt</p>
+                        <p class="Paragraph">DSLINE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Line</p>
+                        <p class="Paragraph">DSLIN-LOG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lin/log</p>
+                        <p class="Paragraph">DSLOG-LIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Log/lin</p>
+                        <p class="Paragraph">DSLOG-LOG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Log/log</p>
+                        <p class="Paragraph">DS2DAREA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2D area</p>
+                        <p class="Paragraph">DS3DAREA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3D area</p>
+                        <p class="Paragraph">DS2DSCATTER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2D scatter</p>
+                        <p class="Paragraph">DSTRUE3DSCATTER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True3D scatter</p>
+                        <p class="Paragraph">DSTRUE3DSURFACE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; True3D surface</p>
+                        <p class="Paragraph">DSHLC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            High-low-close</p>
+                        <p class="Paragraph">DSOHLC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Open-high-low-close</p>
+                        <p class="Paragraph">DSBUBBLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bubble</p>
+                        <p class="Paragraph">DSTAPE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tape</p>
+                        <p class="Paragraph">DSBOXWHISKER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Box-whisker</p>
+                        <p class="Paragraph">DSCANDLESTICK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Candlestick</p>
+                        <p class="Paragraph">DSPOLAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Polar</p>
+                        <p class="Paragraph">DSTIMESERIES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Time series</p>
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNgridLineStyle</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The line style applied to gridlines specified by
+                           DsNgridStyle. Possible values are:
+                        </p>
+                        <p class="Paragraph">DSGRIDSOLID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solid lines
+            (default)</p>
+                        <p class="Paragraph">DSGRIDDASHED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dashed lines</p>
+                        <p class="Paragraph">DSGRIDDOTTED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dotted lines</p>
+                        <p class="Paragraph">DSGRIDDASHDOT&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dash-dot lines</p>
+                        <p class="Paragraph">DSGRIDDASHDOTDOT&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Dash-dot-dot lines</p>
+                        <p class="Paragraph">DSGRIDNULL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Null</p>
+                     </td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNgridStyle</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Enables/disables gridlines on a graph. Possible
+                           values are:
+                        </p>
+                        <p class="Paragraph">DSGRIDOFF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No gridlines
+            (default).</p>
+                        <p class="Paragraph">DSGRIDHORIZONTA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Y (horizontal) gridlines –</p>
+                        <p class="Paragraph">concentric circles in polar graphs.</p>
+                        <p class="Paragraph">DSGRIDVERTICAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X (vertical) gridlines –</p>
+                        <p class="Paragraph">radial
+                           lines in polar graphs.
+                        </p>
+                        <p class="Paragraph">DSGRIDBOTH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Both horizontal and
+            vertical gridlines.</p>
+                     </td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNheight</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The height of the object, in pixels.</td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNlabels</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Enables/disables graph labels. Possible values
+                           are:
+                        </p>
+                        <p class="Paragraph">DSDISABLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No labels.</p>
+                        <p class="Paragraph">DSENABLEBOTH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Both X and Y labels (default).</p>
+                        <p class="Paragraph">DSENABLEX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X labels only.</p>
+                        <p class="Paragraph">DSENABLEY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Y labels only.</p>
+                     </td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNlabelEvery</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The frequency of X axis labels. You can specify any
+                        frequency from 1 (every data point is labeled) to 1000
+                        (every 1000th data point is labeled, starting with the
+                        first point).
+                     </td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNlabelStyle</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The orientation of X and Z axes labels. For
+                           horizontal bar graphs and gantt graphs, the label style
+                           applies to the Y axis rather than the X axis. For other
+                           graph types, Y axis labels are always horizontal.
+                           Possible values are:
+                        </p>
+                        <p class="Paragraph">DSLABELHORIZONTAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Horizontal (default)</p>
+                        <p class="Paragraph">DSLABELVERTICAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Vertical</p>
+                     </td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNlabelText</p>
+                        <p class="Paragraph">(void)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A one-dimensional array that holds the text for
+                           graph labels.
+                        </p>
+                        <p class="Paragraph">For graph types with X and Y axes, the labels apply
+                           to data points on the independent axis (normally the X
+                           axis). For pie charts, the labels apply to each pie
+                           slice. The default labels are the numbers of the data
+                           points.
+                        </p>
+                        <p class="Paragraph">The array strings are filled from left to right,
+                           separated by null characters. Each string can be up to
+                           80 characters long. To label one particular data point,
+                           you can index DsNlabelText using DsNthisPoint.
+                        </p>
+                        <p class="Paragraph">Use DsNyLabelText and DsNzLabelText to specify label
+                           text for the Y and Z axes of a graph.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNleftTitle</p>
+                        <p class="Paragraph">(string)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The text of the graph title positioned on the left
+                           side of the graph window. This can be up to 80
+                           characters long, and can include new-line
+                           characters.
+                        </p>
+                        <p class="Paragraph">Use DsNbackgroundStyle and DsNbackgroundUse to
+                           change the style of the title.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNleftTitleStyle</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The orientation of the graph title specified by
+                           DsNleftTitle. Possible values are:
+                        </p>
+                        <p class="Paragraph">DSTITLENORMAL&nbsp;&nbsp;&nbsp;&nbsp; Horizontal (default).</p>
+                        <p class="Paragraph">DSTITLEUP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vertical (read from bottom to
+            top).</p>
+                        <p class="Paragraph">DSTITLEDOWN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vertical (read from top to
+            bottom).</p>
+                     </td>
+                  </tr>
+                  <tr no="23" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNlegendPos</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The position of the legend in the graph window.
+                           Possible values are:
+                        </p>
+                        <p class="Paragraph">DSLEGENDRIGHT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Right</p>
+                        <p class="Paragraph">DSLEGENDTOPRIGHT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Top right</p>
+                        <p class="Paragraph">DSLEGENDTOP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Top</p>
+                        <p class="Paragraph">DSLEGENDTOPLEFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Top left</p>
+                        <p class="Paragraph">DSLEGENDLEFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Left</p>
+                        <p class="Paragraph">DSLEGENDBOTTOMLEFT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bottom left</p>
+                        <p class="Paragraph">DSLEGENDBOTTOM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bottom</p>
+                        <p class="Paragraph">DSLEGENDBOTTOMRIGHT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bottom right</p>
+                        <p class="Paragraph">DSLEGENDNO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No legend
+            (default)</p>
+                     </td>
+                  </tr>
+                  <tr no="24" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNlegendSize</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">Specifies the size of the gap between lines in the
+                        legend as a percentage of the maximum possible gap.
+                        This latter varies depending on the size of the graph
+                        window and the number of items in the legend. You can
+                        specify any value from 0% to 100% (default).
+                     </td>
+                  </tr>
+                  <tr no="25" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNlegendStyle</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Specifies the color for the legend text. Possible
+                           values are:
+                        </p>
+                        <p class="Paragraph">DSLEGENDFG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Legend text set by
+            DsNforegroundColor.</p>
+                        <p class="Paragraph">DSLEGENDCOLOR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Legend text in same colors
+            as legend</p>
+                        <p class="Paragraph">markers.</p>
+                     </td>
+                  </tr>
+                  <tr no="26" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNlegendText</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A one-dimensional array that holds text for the
+                           graph legend.
+                        </p>
+                        <p class="Paragraph">For graph based on a single data set (pie, bubble,
+                           and single-set bar graphs), the legends apply to the
+                           individual data points. For other graph types, the
+                           legends apply to the data sets.
+                        </p>
+                        <p class="Paragraph">The array strings are filled from left to right,
+                           separated by null characters. Each string can be up to
+                           80 characters long.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="27" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNlineStats</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Enables/disables statistical lines and curves. Both
+                           lines and curves are available for line, 2D scatter,
+                           high-low-close, open-high-low-close, and box-whisker
+                           parametric graphs. Only curves are available for
+                           candlestick graphs. Possible values are:
+                        </p>
+                        <p class="Paragraph">DSSTATNOLINES&nbsp;&nbsp;&nbsp;&nbsp; No statistical lines
+            (default).</p>
+                        <p class="Paragraph">DSSTATMEAN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mean (average) line.</p>
+                        <p class="Paragraph">DSSTATMINMAX&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Min/max line.</p>
+                        <p class="Paragraph">DSSTATSTDDEV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Standard deviation line.</p>
+                        <p class="Paragraph">DSSTATBESTFIT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Best-fit line.</p>
+                        <p class="Paragraph">DSSTATCURVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Curve line.</p>
+                        <p class="Paragraph">You can combine all the above values.</p>
+                     </td>
+                  </tr>
+                  <tr no="28" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNnumPoints</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The number of points in the data sets of a graph.
+                           This can be any value between 1 and 6000, provided that
+                           the total number of points in a graph does not exceed
+                           128000. That is:
+                        </p>
+                        <p class="Paragraph">DsNnumSets * DsNnumPoints &lt;= 128000</p>
+                     </td>
+                  </tr>
+                  <tr no="29" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNnumSets</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The number of data sets in the graph. For most graph
+                           types, DsNnumSets can be any value between 1 and 6000.
+                           The exceptions are:
+                        </p>
+                        <p class="Paragraph">Pie (2D/3D)&nbsp;&nbsp;&nbsp;&nbsp; 1 set</p>
+                        <p class="Paragraph">Bubble &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 sets</p>
+                        <p class="Paragraph">Gantt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;=2 sets</p>
+                        <p class="Paragraph">Surface&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;=2 sets</p>
+                        <p class="Paragraph">HLC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 sets</p>
+                        <p class="Paragraph">OHLC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 sets</p>
+                        <p class="Paragraph">Candlestick&nbsp;&nbsp;&nbsp;&nbsp; 4 sets</p>
+                        <p class="Paragraph">Box-whisker&nbsp;&nbsp;&nbsp; 7 sets for parametric data (can be
+            higher for raw data)</p>
+                        <p class="Paragraph">The total number of sets in any graph is limited to
+                           128000. That is:
+                        </p>
+                        <p class="Paragraph">DsNnumSets * DsNnumPoints &lt;= 128000</p>
+                     </td>
+                  </tr>
+                  <tr no="30" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNobjectType</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td rowspan="1" colspan="1" class="none">The object type.</td>
+                  </tr>
+                  <tr no="31" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNparent</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[G]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of the parent object.</td>
+                  </tr>
+                  <tr no="32" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNperspective</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The degree of perspective foreshortening for true3D
+                        graphs that use the perspective projection method. This
+                        represents the perceived distance from which the graph
+                        is viewed. The value must lie in the range 1 to 100
+                        (default is 50).
+                     </td>
+                  </tr>
+                  <tr no="33" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNrightTitle</p>
+                        <p class="Paragraph">(string)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The text of the graph title positioned on the right
+                           side of the graph window. This can be up to 80
+                           characters long, and can include new-line
+                           characters.
+                        </p>
+                        <p class="Paragraph">Use DsNbackgroundStyle and DsNbackgroundUse to
+                           change the style of the title.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="34" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNrightTitleStyle</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The orientation of the graph title specified by
+                           DsNrightTitle. Possible values are:
+                        </p>
+                        <p class="Paragraph">DSTITLENORMAL&nbsp;&nbsp;&nbsp;&nbsp; Horizontal (default).</p>
+                        <p class="Paragraph">DSTITLEUP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vertical (read from bottom to
+            top).</p>
+                        <p class="Paragraph">DSTITLEDOWN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vertical (read from top to
+            bottom).</p>
+                     </td>
+                  </tr>
+                  <tr no="35" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNrotation</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The horizontal viewing angle for true3D graphs. The
+                        value can be any angle between -180 degrees and 180
+                        degrees.
+                     </td>
+                  </tr>
+                  <tr no="36" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNsetState</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The state of the object. See <a href="../../progguide/functions_user_interface_objects/dscmwindow.htm" class="manualLink">DsCmwindow</a>.
+                     </td>
+                  </tr>
+                  <tr no="37" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtemplate</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">The ID of a <a href="../../progguide/functions_user_interface_objects/dsctemplate.htm" class="manualLink">DsCtemplate</a> that defines a set of attributes to be
+                        applied to the object.
+                     </td>
+                  </tr>
+                  <tr no="38" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNthisPoint</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This indexes array-based attributes by data point
+                           number. In combination with the DsNthisSet attribute,
+                           it indexes individual data points in a data set for
+                           direct access.
+                        </p>
+                        <p class="Paragraph">The following example modifies a pie graph,
+                           exploding points 3 and 5, and imploding point 4:
+                        </p>
+                        <p class="Paragraph">long&nbsp;&nbsp; extra_array(10)</p>
+                        <p class="Paragraph">extra_array(1) = DSEDEXTRA&nbsp; |* Explode point</p>
+                        <p class="Paragraph">extra_array(2) = DSEDNORMAL |* Return point</p>
+                        <p class="Paragraph">|* to normal</p>
+                        <p class="Paragraph">extra_array(3) = DSEDEXTRA &nbsp;|* Explode point</p>
+                        <p class="Paragraph">change.object( pie_graph_object,</p>
+                        <p class="Paragraph">DsNthisSet,&nbsp;&nbsp;&nbsp; 1,&nbsp;&nbsp;&nbsp; |* Pie graph has only 1
+            set</p>
+                        <p class="Paragraph">DsNthisPoint,&nbsp; 3,&nbsp;&nbsp;&nbsp; |* Start with point 3</p>
+                        <p class="Paragraph">DsNextraData, extra_array, 3&nbsp; |* Do for 3
+            points</p>
+                        <p class="Paragraph">)</p>
+                     </td>
+                  </tr>
+                  <tr no="39" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNthisSet</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This indexes array-based attributes by data set
+                           number. In combination with the DsNthisPoint attribute,
+                           it indexes individual data points for direct access.
+                           DsNthisSet can be used to index the following
+                           attributes: DsNextraData, DsNgraphData, DsNlegendText,
+                           and DsNzLabelText.
+                        </p>
+                        <p class="Paragraph">The following example changes the value of one data
+                           point, using DsNthisSet and DsNthisPoint to index the
+                           data point:
+                        </p>
+                        <p class="Paragraph">long data_array(100)</p>
+                        <p class="Paragraph">data_array(1) = 50</p>
+                        <p class="Paragraph">change.object(graph_object,</p>
+                        <p class="Paragraph">DsNthisSet, &nbsp;&nbsp;&nbsp; 3,</p>
+                        <p class="Paragraph">DsNthisPoint, &nbsp; 6,</p>
+                        <p class="Paragraph">DsNgraphData, &nbsp; data_array, 1</p>
+                        <p class="Paragraph">)</p>
+                     </td>
+                  </tr>
+                  <tr no="40" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtickFrequency</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The frequency of ticks on the X axis (or on the Y
+                        axis of horizontal bar graphs and gantt graphs). You
+                        can specify any frequency from 1 (every data point is
+                        labeled) to 1000 (every 1000th data point is labeled,
+                        starting with the first point).
+                     </td>
+                  </tr>
+                  <tr no="41" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtickStyle</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Enables/disables tick marks on the graph axes.
+                           Possible values are:
+                        </p>
+                        <p class="Paragraph">DSDISABLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No ticks</p>
+                        <p class="Paragraph">DSENABLEBOTH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Both X and Y ticks (default)</p>
+                        <p class="Paragraph">DSENABLEX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X ticks only</p>
+                        <p class="Paragraph">DSENABLEY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Y ticks only</p>
+                     </td>
+                  </tr>
+                  <tr no="42" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNtrue3D</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Enables/disables true3D graphing and sets the
+                           projection method. Possible values are:
+                        </p>
+                        <p class="Paragraph">DSTRUE3DOFF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No 3D
+            (except for scatter and</p>
+                        <p class="Paragraph">surface graphs).</p>
+                        <p class="Paragraph">DSTRUE3DPERSPECTIVE3D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Perspective projection
+            (see</p>
+                        <p class="Paragraph">DsNperspective).</p>
+                        <p class="Paragraph">DSTRUE3DISOMETRIC3D&nbsp; Isometric projection.</p>
+                        <p class="Paragraph">DSTRUE3DOFF is the default when true3D is not
+                           available for the graph type. DSTRUE3DPERSPECTIVE is
+                           the default when true3D is available for the graph
+                           type.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="43" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNwidth</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The width of the object, in pixels.</td>
+                  </tr>
+                  <tr no="44" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNx</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The x-coordinate of the object's outer left edge, in
+                        pixels, relative to the inner left edge of its
+                        parent.
+                     </td>
+                  </tr>
+                  <tr no="45" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNy</p>
+                        <p class="Paragraph">(long)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CSG]</td>
+                     <td rowspan="1" colspan="1" class="none">The y-coordinate of the object's outer top edge, in
+                        pixels, relative to the inner top edge of its
+                        parent.
+                     </td>
+                  </tr>
+                  <tr no="46" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNyLabelText</p>
+                        <p class="Paragraph">(void)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">A one-dimensional array that holds the text for Y
+                        axis labels. The default labels indicate the numeric
+                        scaling of the axis. The array strings are filled from
+                        left to right, separated by null characters. Each
+                        string can be up to 80 characters long.
+                     </td>
+                  </tr>
+                  <tr no="47" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">DsNzLabelText</p>
+                        <p class="Paragraph">(void)</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="none">[CS]</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A one-dimensional array that holds the text for Z
+                           axis labels in true3D graphs.
+                        </p>
+                        <p class="Paragraph">The default labels indicate the numeric scaling of
+                           the axis. However, no default labels are supplied for
+                           true 3D bar graphs, tape graphs, area graphs, or
+                           surface graphs. In these cases, you must set
+                           DsNzLabelText if you want to display z axis labels.
+                        </p>
+                        <p class="Paragraph">The array strings are filled from left to right,
+                           separated by null characters. Each string can be up to
+                           80 characters long. You can index DsNlabelText using
+                           DsNthisPoint.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/overview.htm" class="manualLink">User interface objects overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/synopsis.htm" class="manualLink">User interface objects synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_user_interface_objects/example.htm" class="manualLink">User interface objects: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_user_interface_objects/dscgraph, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

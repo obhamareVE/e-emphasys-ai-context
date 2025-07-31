@@ -1,0 +1,126 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Embedded SQL</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="SELECTBIND SELECTDO SELECTEMPTY SELECTEOS SELECTERROR SQL embedded SQL WHEREBIND embedded sql ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Embedded SQL</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div>
+            <p class="Paragraph">The following loop structure enables the use of SQL as part
+               of the language:
+            </p><pre class="CodeBlock">
+SELECT &lt; set definition (= actual query, see <a href="../../progguide/functions_database_handling/select_statement.htm" class="manualLink">SELECT statement</a>) &gt;
+[ SELECTBIND ( number, var) ] ...
+[ WHEREBIND (number, expression) ] ...
+[ SELECTDO
+                &lt; operation(s) on all selected records &gt; ]
+[ SELECTEOS
+                &lt; operation(s) after last selected record &gt; ]
+[ SELECTEMPTY
+                &lt; operation(s) if nothing has been selected &gt; ]
+[ SELECTERROR
+                &lt; operation(s) in case of an error condition &gt; ]
+ENDSELECT
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">Data is selected on the basis of the condition specified in
+               the SELECT statement. The operations between SELECTDO and
+               ENDSELECT are performed on each record from the selected set.
+               The loop ends either when the program has handled the entire set
+               or the program encounters a BREAK command.
+            </p>
+            <p class="Paragraph">In the case of an error, the program executes the SELECTERROR
+               part. A CONTINUE statement in the SELECTERROR part causes the
+               next record to be processed. If there is no SELECTERROR section,
+               the program generates a BREAK as the default action. Note that
+               errors are returned only if the shell variable ERROR.BYPASS =
+               1 by calling <a href="../../progguide/functions_db_operations/db.set.error.bypass.on.htm" class="manualLink">db.set.error.bypass.on()</a>.
+            </p>
+            <p class="Paragraph">The SELECTEOS part is executed after the SELECTDO of the last
+               selected record. The intention of the SELECTEOS part is that
+               before the program encounters a 'break' from the loop you can
+               give a <a href="../../progguide/functions_db_operations/commit.transaction.htm" class="manualLink">commit.transaction()</a>, while a <i class="Emphasis">commit.transaction()</i> may cause a retry. If a <i class="Emphasis">commit.transaction()</i>, given after
+               the ENDSELECT part, causes a retry, then the whole query must be
+               regenerated.
+            </p>
+            <p class="Paragraph">If the SELECTDO part is suppressed, the program encounters a
+               'break' from the loop after the first selected record. If the
+               SELECTDO part is suppressed but the SELECTEOS part occurs, the
+               program will select the whole set of records.
+            </p>
+            <p class="Paragraph">In order to bind pseudo variables, the functions SELECTBIND
+               and WHEREBIND have been added. Pseudo variables have the form
+               ':&lt;number&gt;'. A special bind function is then used to link
+               a program variable to the pseudo variable. For example:
+            </p><pre class="CodeBlock">
+SELECT ppmod123.field1:5, ppmod123.field2:6
+SELECTBIND(5, my_val1)
+SELECTBIND(6, my_val2)
+SELECTDO
+                ....
+ENDSELECT
+</pre><p class="Paragraph">This is equal to 'SELECT ppmod123.field1:my_val1', but using
+               a bind function.
+            </p>
+            <p class="Paragraph">It is also possible to use a pseudo variable in the WHERE
+               clause. The WHEREBIND function is then used to link a value to
+               the pseudo variable. For example:
+            </p><pre class="CodeBlock">
+SELECT ....
+WHERE ppmod123.field1 = :1
+WHEREBIND(1, 10 + sqrt(a+b))
+SELECTDO
+       ....
+ENDSELECT
+</pre><p class="Paragraph">Used BAAN 4GL variables (with ':') are 'bound'
+               automatically.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+table   tppmod090
+long    total, m_val
+m_val = 25
+SELECT ppmod090.fld1, count(*):1
+FROM ppmod090, ppmod091
+WHERE ppmod090.fld2 = ppmod091.fld5 AND
+                ppmod091.fld3 &gt; :m_val
+GROUP BY ppmod090.fld1
+ORDER BY 2
+SELECTBIND(1,total)
+SELECTDO
+                print_info(ppmod090.fld1, total)
+SELECTERROR
+                message("Error %d occurred", db.error)
+                break
+ENDSELECT
+</pre><p class="Paragraph">See <a href="../../progguide/functions_database_handling/dynamic_sql.htm" class="manualLink">Dynamic SQL</a> for an example
+               of the same query executed using dynamic SQL.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/embedded_sql, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

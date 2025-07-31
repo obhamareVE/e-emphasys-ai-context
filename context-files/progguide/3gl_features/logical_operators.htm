@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Logical operators</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="logical operators ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Logical operators</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Logical operators perform logical operations on their operands.
+               The operator NOT is unary, so it has only one operand. The operands
+               of logical operators can be logical expressions, relational
+               expressions, variables or constants of type boolean.
+            </p>
+            <p class="Paragraph">The following table illustrates the results of logical
+               expressions:
+            </p>
+            <table width="70%" border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">A</th>
+                     <th rowspan="1" colspan="1" class="none">B</th>
+                     <th rowspan="1" colspan="1" class="none">NOT A</th>
+                     <th rowspan="1" colspan="1" class="none">A AND B</th>
+                     <th rowspan="1" colspan="1" class="none">A OR B</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">FALSE</td>
+                     <td rowspan="1" colspan="1" class="none">FALSE</td>
+                     <td rowspan="1" colspan="1" class="none">TRUE</td>
+                     <td rowspan="1" colspan="1" class="none">FALSE</td>
+                     <td rowspan="1" colspan="1" class="none">FALSE</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">FALSE</td>
+                     <td rowspan="1" colspan="1" class="none">TRUE</td>
+                     <td rowspan="1" colspan="1" class="none">TRUE</td>
+                     <td rowspan="1" colspan="1" class="none">FALSE</td>
+                     <td rowspan="1" colspan="1" class="none">TRUE</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">TRUE</td>
+                     <td rowspan="1" colspan="1" class="none">FALSE</td>
+                     <td rowspan="1" colspan="1" class="none">FALSE</td>
+                     <td rowspan="1" colspan="1" class="none">FALSE</td>
+                     <td rowspan="1" colspan="1" class="none">TRUE</td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">TRUE</td>
+                     <td rowspan="1" colspan="1" class="none">TRUE</td>
+                     <td rowspan="1" colspan="1" class="none">FALSE</td>
+                     <td rowspan="1" colspan="1" class="none">TRUE</td>
+                     <td rowspan="1" colspan="1" class="none">TRUE</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Variabeles of type BOOLEAN should be used.</p>
+            <p class="Paragraph">In the past variables or expressions of type LONG could be
+               used as boolean. If a long expression resulted in the value
+               zero, it was evaluated as FALSE. If the result was not equal
+               to zero, it was evaluated as TRUE.
+            </p>
+            <p class="Paragraph">Usage of a long in this way will cause a warning, in the
+               future it will cause an error.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/expressions_and_operators.htm" class="manualLink">Expressions and operators</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/logical_operators, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

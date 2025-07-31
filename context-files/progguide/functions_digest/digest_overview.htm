@@ -1,0 +1,62 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Secure Digest Functions overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="secure hash functions ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Secure Digest Functions overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">These functions are availabe from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">Tools Interface Version (TIV)</a> 2000.
+            </p>
+            <p class="Paragraph">Digest (or hash) algorithms are meant
+               to compute a condensed representation of a message or a data
+               file. For an arbitrary length message, the algorithm produces a
+               fixed-length output called a message-digest. These functions can be used
+               to digitally sign data, as a minimal change in the input produces
+               a significantly different output. The Bshell has provided
+               the <a href="../../progguide/functions_sha/sha_synopsis.htm" class="manualLink">Secure Hash Algorithm synopsis</a> for many years, but those functions are superseded by the functions described here.
+               They provide a simple, modern, consistent and extensible interface to the standard OpenSSL implementations of these
+               digest algorithms.
+            </p>
+            <p class="Paragraph">The provided digest alorithms are:</p>
+            <ul class="List">
+               <li class="ListItem">DIGEST_MD5</li>
+               <li class="ListItem">DIGEST_SHA</li>
+               <li class="ListItem">DIGEST_SHA1</li>
+               <li class="ListItem">DIGEST_SHA224</li>
+               <li class="ListItem">DIGEST_SHA256</li>
+               <li class="ListItem">DIGEST_SHA512</li>
+               <li class="ListItem">DIGEST_MDC2</li>
+            </ul>
+            <p class="Paragraph">As an example:</p><pre class="CodeBlock">
+long id
+string result(100)
+
+id = digest.initialize(DIGEST_MD5)
+digest.update(id,"The quick brown fox jumps over the lazy dog")
+digest.finalize(id, result)	| Result is now "9E107D9D372BB6826BD81D3542A419D6"
+ </pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_digest/digest_synopsis.htm" class="manualLink">Secure Digest Functions synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_digest/digest_overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

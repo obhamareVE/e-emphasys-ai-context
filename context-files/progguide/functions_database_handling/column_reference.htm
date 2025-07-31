@@ -1,0 +1,114 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Column reference</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Column reference ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Column reference</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The column reference references a column.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;column reference&gt;
+    ::= &lt;table name&gt;.&lt;column name&gt;
+      | &lt;correlation name&gt;.&lt;column name&gt;
+      | &lt;column name&gt;
+
+&lt;table name&gt;
+    ::= !! <i class="Emphasis">a valid table name</i>
+
+&lt;column name&gt;
+    ::= !! <i class="Emphasis">a valid column name</i>
+         
+&lt;correlation name&gt;
+    ::= <a href="../../progguide/functions_database_handling/identifier.htm" class="manualLink">Identifier</a>
+      </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The data type of the column reference is the data type of the
+               column that it references. The following table shows the
+               correspondence between database types and SQL types.
+            </p>
+            <table width="50%" border="1" class="default">
+               <tbody noTR="7" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Database type</th>
+                     <th rowspan="1" colspan="1" class="default">SQL type</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">char</p>
+                        <p class="Paragraph">int</p>
+                        <p class="Paragraph">long</p>
+                        <p class="Paragraph">enum</p>
+                        <p class="Paragraph">bitset</p>
+                        <p class="Paragraph">mail</p>
+                        <p class="Paragraph">text</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">integer</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">float</p>
+                        <p class="Paragraph">double</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">real</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">date</td>
+                     <td rowspan="1" colspan="1" class="default">date</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">time (UTC)</td>
+                     <td rowspan="1" colspan="1" class="default">timestamp</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">string</p>
+                        <p class="Paragraph">multibyte string</p>
+                     </td>
+                     <td rowspan="1" colspan="1" class="default">string</td>
+                  </tr>
+                  <tr no="7" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">raw</td>
+                     <td rowspan="1" colspan="1" class="default">raw</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div><pre class="CodeBlock">
+dbtst120.bonus
+</pre><pre class="CodeBlock">
+employees.lastname
+</pre><pre class="CodeBlock">
+salary
+</pre><pre class="CodeBlock">
+employees."phoneno(1)"
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/column_reference, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>NOT boolean operator</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="NOT Search condition NOT boolean operator NOT ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">NOT boolean operator</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The NOT boolean operator evaluates to True if the search
+               condition evaluates to Unknown or False.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;not boolean operator&gt;
+    ::= NOT <a href="../../progguide/functions_database_handling/search_condition.htm" class="manualLink">Search condition</a>
+      </pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">The truth table below shows the semantics of the NOT boolean
+               operator.
+            </p>
+            <table width="50%" border="1" class="default">
+               <tbody noTR="2" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">NOT</th>
+                     <th rowspan="1" colspan="1" class="default">True</th>
+                     <th rowspan="1" colspan="1" class="default">Unknown</th>
+                     <th rowspan="1" colspan="1" class="default">False</th>
+                  </tr>
+                  <tr no="2" isLast="true" class="default">
+                     <th rowspan="1" colspan="1" class="default"></th>
+                     <td rowspan="1" colspan="1" class="default">False</td>
+                     <td rowspan="1" colspan="1" class="default">Unknown</td>
+                     <td rowspan="1" colspan="1" class="default">True</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following search condition evaluates to True if <i class="Emphasis">firstnme</i> is anything but 'CHRISTINE'. If <i class="Emphasis">firstnme</i> is
+               NULL it evaluates to Unknown.
+            </p><pre class="CodeBlock">
+NOT ( firstnme = 'CHRISTINE' )
+</pre><p class="Paragraph">The following search condition evaluates to True if there is
+               no employee with a salary larger than 50000.
+            </p><pre class="CodeBlock">
+NOT EXISTS( select * from dbtst120 where salary &gt; 50000 )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/and_sc.htm" class="manualLink">AND boolean operator</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/or_sc.htm" class="manualLink">OR boolean operator</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/not_sc, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

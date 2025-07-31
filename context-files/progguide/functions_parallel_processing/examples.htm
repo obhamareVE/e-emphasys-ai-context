@@ -1,0 +1,131 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Parallel Application Processing Examples</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Parallel Application Processing Examples ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Parallel Application Processing Examples</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Parallel Processing Client</div>
+            <p class="Paragraph">Below an example script is shown of a client which can run both in normal mode and in parallel processing mode.</p><pre class="CodeBlock"> 
+table     tttmmm000
+long      group.id
+
+#include &lt;bic_parallel&gt;		| Needed for parallel processing functions
+#include "ippmmm0000"
+
+#define SERVER.SESS     "ttmmm0000s000"
+#pragma used    session "ttmmm0000s000"
+
+function main()
+{
+    long    nr.of.server
+
+    |* Read Configuration
+    nr.of.server = par.get.no.of.server()
+    if nr.of.server &gt; 0 then
+        |* Start communication
+        group.id = par.init.client.to.server(nr.of.server, SERVER.SESS)
+        |* Start the servers 
+        if group.id &lt; 1 or
+           not par.client.start.servers(group.id) then
+            return
+        endif
+    endif
+
+    select  ttmmm000.*
+    from    ttmmm000
+    where   ...
+    selectdo
+        if nr.of.server &gt; 0 then
+            |* Send job to free server
+            if not start.process.external() then
+                break
+            endif
+        else
+            |* Process job internally
+            start.process.internal()
+        endif
+    endselect
+    if nr.of.server &gt; 0 then
+    	|* Wait until all servers are ready
+    	par.client.wait.read(group.id)
+    	
+        |* Close the communication and stop the servers
+        par.client.close.servers(group.id)
+    endif
+}
+
+function boolean start.process.external()
+{
+    return(par.client.send.message(group.id, edit$(ttmmm000.yrun, "9999")))
+}
+
+function start.process.internal()
+{
+    db.retry.point()
+    ippmmm000.process.termination.per.docn() |* include function
+    commit.transaction()
+}
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Parallel Processing Server</div>
+            <p class="Paragraph">Below an example script is shown of the server script which corresponds with the client shown in the previous example.</p><pre class="CodeBlock">
+#include &lt;bic_parallel&gt;		| Needed for parallel processing functions
+#include "ippmmm0000"
+
+function main()
+{
+   long    group.number
+   long    server.number
+   string  messg(20)
+
+   if not par.init.server.to.client(group.number, server.number) then
+   	message("not started in server mode")
+   	return
+   endif
+   
+   while par.server.get.message(messg) &gt; 0
+        terminate.document(messg)
+   endwhile 
+}
+
+function terminate.document(const string i.messg)
+{
+    ttmmm000.yrun = lval(i.messg(1;4))
+
+    par.server.retry.point()
+    db.retry.point()
+    if db.retry.hit() then
+        par.server.retry.hit()
+    endif
+    ippmmm0000.process.termination.per.docn()
+    commit.transaction()
+}
+
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/overview.htm" class="manualLink">Parallel Application Processing Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/synopsis.htm" class="manualLink">Parallel Application Processing synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_parallel_processing/examples, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

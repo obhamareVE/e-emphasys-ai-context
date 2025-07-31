@@ -1,0 +1,389 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>edit$()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="edit$ edit$ functions edit$ ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">edit$()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;edit$&nbsp;
+					(void&nbsp;expression, string&nbsp;format)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This formats an expression according to a specified
+                  format.
+               </p>
+               <p class="Paragraph">Typical usage of this function is
+                  (but is not restricted to)
+                  the computation of a formatted decimal representation of an integer or floating point input value.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>expression</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The expression that must be formatted.</p>
+                        <p class="Paragraph"><a href="../../progguide/3gl_features/type_conversions.htm#implicit_type_conversion" class="manualLink">Implicit conversion</a> of the input value from its original type to type string is performed.
+                           The resulting string value is formatted according to the format argument.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>format</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A string that defines the required format. The
+                           following formatting characters are available:
+                        </p>
+                        <table border="0" class="none">
+                           <tbody noTR="8" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">9</td>
+                                 <td rowspan="1" colspan="1" class="none">Use to reserve a position for a digit. Inserts a
+                                    0 if there is no significant digit in that
+                                    position.
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">Z</td>
+                                 <td rowspan="1" colspan="1" class="none">Use to reserve a position for a digit. Inserts a
+                                    space if there is no significant digit in that
+                                    position. You can use this both before and after the
+                                    decimal sign.
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">V</td>
+                                 <td rowspan="1" colspan="1" class="none">Use to indicate the position of the decimal sign.
+               No decimal sign is displayed. To display a decimal
+               sign, you must enter ‘D’, a period [.], or a comma
+               [,] immediately after this character, depending on
+               which decimal sign you wish to use.</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">D</td>
+                                 <td rowspan="1" colspan="1" class="none">Use to display the decimal sign as defined in the
+                                    data dictionary.
+                                 </td>
+                              </tr>
+                              <tr no="5" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">T</td>
+                                 <td rowspan="1" colspan="1" class="none">Displays a thousand sign. The representation of
+                                    the thousand sign is defined in the data
+                                    dictionary.
+                                 </td>
+                              </tr>
+                              <tr no="6" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">-</td>
+                                 <td rowspan="1" colspan="1" class="none">If this is the first or last character in a
+               format string, a negative value is prefixed or
+               suffixed by a minus sign [-] and a positive value is
+               prefixed or suffixed by a space. Minus signs in
+               other positions have the same meaning as ‘Z’.</td>
+                              </tr>
+                              <tr no="7" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">+</td>
+                                 <td rowspan="1" colspan="1" class="none">If this is the first or last character in a
+               format string, a negative value is prefixed or
+               suffixed by a minus sign [-] and a positive value is
+               prefixed or suffixed by a plus sign [+]. Plus signs
+               in other positions have the same meaning as ‘Z’.</td>
+                              </tr>
+                              <tr no="8" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">*</td>
+                                 <td rowspan="1" colspan="1" class="none">If this is the first character in a format
+                                    string, all spaces to the left of the most
+                                    significant digit are filled with asterisks [*].
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">All characters other than those described above
+                           are copied directly to the output string. Periods
+                           [.] and commas [,] are exceptions. These are
+                           reserved for use as decimal signs and thousand
+                           signs.
+                        </p>
+                        <p class="Paragraph">If the format expression is enclosed by
+                           parentheses, these are displayed only if the result
+                           is negative.
+                        </p>
+                        <p class="Paragraph">Starting with TIV level 1640 the thousend separator and decimal sign can be overruled with
+                           the function set.numformat.symbols( string decimal(1), string grouping(1) ).
+                           The function reset.numformat.symbols() reverts to the normal behavior.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The function returns the formatted expression. If the
+               specified expression does not fit in the format string, the
+               result is filled with the overflow characters defined in the
+               data dictionary.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">To include currency symbols or to use formats defined in
+                  the data dictionary, use <a href="../../progguide/functions_formatting_io/sprintf.htm" class="manualLink">sprintf$()</a>.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">These examples assume that the decimal sign, thousand
+               sign, and overflow character are defined in the data
+               dictionary as a period [.], comma [,] and hash sign [#]
+               respectively
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="33" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Expression</td>
+                     <td rowspan="1" colspan="1" class="none">Format</td>
+                     <td rowspan="1" colspan="1" class="none">Result</td>
+                     <td rowspan="1" colspan="1" class="none">Remarks</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">5286.45</td>
+                     <td rowspan="1" colspan="1" class="none">9999VD99</td>
+                     <td rowspan="1" colspan="1" class="none">5286.45</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">463.897</td>
+                     <td rowspan="1" colspan="1" class="none">9999VD99</td>
+                     <td rowspan="1" colspan="1" class="none">0463.89</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">34.65</td>
+                     <td rowspan="1" colspan="1" class="none">9999VD99</td>
+                     <td rowspan="1" colspan="1" class="none">0034.65</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-3.1</td>
+                     <td rowspan="1" colspan="1" class="none">9999VD99</td>
+                     <td rowspan="1" colspan="1" class="none">#######</td>
+                     <td rowspan="1" colspan="1" class="none">overflow</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">5286.45</td>
+                     <td rowspan="1" colspan="1" class="none">ZZZZVD99</td>
+                     <td rowspan="1" colspan="1" class="none">5286.45</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">463.897</td>
+                     <td rowspan="1" colspan="1" class="none">ZZZZVD99</td>
+                     <td rowspan="1" colspan="1" class="none">463.89</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">34.65</td>
+                     <td rowspan="1" colspan="1" class="none">ZZZZVD99</td>
+                     <td rowspan="1" colspan="1" class="none">34.65</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-3.1</td>
+                     <td rowspan="1" colspan="1" class="none">ZZZZVD99</td>
+                     <td rowspan="1" colspan="1" class="none">-3.10</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">5286.45</td>
+                     <td rowspan="1" colspan="1" class="none">----VD99</td>
+                     <td rowspan="1" colspan="1" class="none">5286.45</td>
+                     <td rowspan="1" colspan="1" class="none">no space for -</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">463.897</td>
+                     <td rowspan="1" colspan="1" class="none">----VD99</td>
+                     <td rowspan="1" colspan="1" class="none">463.89</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">34.65</td>
+                     <td rowspan="1" colspan="1" class="none">----VD99</td>
+                     <td rowspan="1" colspan="1" class="none">34.65</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-3.1</td>
+                     <td rowspan="1" colspan="1" class="none">----VD99</td>
+                     <td rowspan="1" colspan="1" class="none">-3.10</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">5286.45</td>
+                     <td rowspan="1" colspan="1" class="none">++++VD99</td>
+                     <td rowspan="1" colspan="1" class="none">5286.45</td>
+                     <td rowspan="1" colspan="1" class="none">no space for +</td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">463.897</td>
+                     <td rowspan="1" colspan="1" class="none">++++VD99</td>
+                     <td rowspan="1" colspan="1" class="none">+463.89</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">34.65</td>
+                     <td rowspan="1" colspan="1" class="none">++++VD99</td>
+                     <td rowspan="1" colspan="1" class="none">+34.65</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-3.1</td>
+                     <td rowspan="1" colspan="1" class="none">++++VD99</td>
+                     <td rowspan="1" colspan="1" class="none">-3.10</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">34.65</td>
+                     <td rowspan="1" colspan="1" class="none">+ZZZVD99</td>
+                     <td rowspan="1" colspan="1" class="none">+34.65</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-3.1</td>
+                     <td rowspan="1" colspan="1" class="none">+ZZZVD99</td>
+                     <td rowspan="1" colspan="1" class="none">-3.10</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">5286.45</td>
+                     <td rowspan="1" colspan="1" class="none">ZZZZVD99-</td>
+                     <td rowspan="1" colspan="1" class="none">5286.45</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-3.1</td>
+                     <td rowspan="1" colspan="1" class="none">ZZZZVD99-</td>
+                     <td rowspan="1" colspan="1" class="none">3.10-</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">5286.45</td>
+                     <td rowspan="1" colspan="1" class="none">ZZZZVD99+</td>
+                     <td rowspan="1" colspan="1" class="none">5286.45+</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="23" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-3.1</td>
+                     <td rowspan="1" colspan="1" class="none">ZZZZVD99+</td>
+                     <td rowspan="1" colspan="1" class="none">3.10-</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="24" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">5286.45</td>
+                     <td rowspan="1" colspan="1" class="none">*ZZZVD99</td>
+                     <td rowspan="1" colspan="1" class="none">######</td>
+                     <td rowspan="1" colspan="1" class="none">overflow</td>
+                  </tr>
+                  <tr no="25" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">463.897</td>
+                     <td rowspan="1" colspan="1" class="none">*ZZZVD99</td>
+                     <td rowspan="1" colspan="1" class="none">463.89</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="26" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">34.65</td>
+                     <td rowspan="1" colspan="1" class="none">*ZZZVD99</td>
+                     <td rowspan="1" colspan="1" class="none">*34.65</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="27" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-3.1</td>
+                     <td rowspan="1" colspan="1" class="none">*ZZZVD99</td>
+                     <td rowspan="1" colspan="1" class="none">*-3.10</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="28" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">5286.45</td>
+                     <td rowspan="1" colspan="1" class="none">ZTZZZVD99</td>
+                     <td rowspan="1" colspan="1" class="none">5,286.45</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="29" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">463.897</td>
+                     <td rowspan="1" colspan="1" class="none">ZTZZZVD99</td>
+                     <td rowspan="1" colspan="1" class="none">463.89</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="30" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">5286.45</td>
+                     <td rowspan="1" colspan="1" class="none">ZDZZZVD99</td>
+                     <td rowspan="1" colspan="1" class="none">5.286.45</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="31" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">463.8970</td>
+                     <td rowspan="1" colspan="1" class="none">ZZZVD99ZZ</td>
+                     <td rowspan="1" colspan="1" class="none">463.897</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="32" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">-3.1</td>
+                     <td rowspan="1" colspan="1" class="none">(ZZZVD99)</td>
+                     <td rowspan="1" colspan="1" class="none">(3.10)</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+                  <tr no="33" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">3.1</td>
+                     <td rowspan="1" colspan="1" class="none">(ZZZVD99)</td>
+                     <td rowspan="1" colspan="1" class="none">3.10</td>
+                     <td rowspan="1" colspan="1" class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_formatting_io/overview_and_synopsis.htm" class="manualLink">Formatting input and output - overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_formatting_io/edit, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

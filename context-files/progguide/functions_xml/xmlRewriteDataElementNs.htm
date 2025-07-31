@@ -1,0 +1,156 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>xmlRewriteDataElementNs()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions xmlRewriteDataElementNs xmlRewriteDataElementNs xmlRewriteDataElementNs ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">xmlRewriteDataElementNs()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;xmlRewriteDataElementNs&nbsp;
+					(long&nbsp;node, void&nbsp;namespaceOrURI, const string&nbsp;name, void&nbsp;data)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">If <i class="Emphasis">node</i> has no child node of type XML_ELEMENT whose <i class="Emphasis">local name</i> equals <i class="Emphasis">name</i> and whose
+                  			URI equals the URI specified by <i class="Emphasis">namespaceOrURI</i>, then a
+                  			new XML node of type XML_ELEMENT is created, with an XML node of type XML_DATA
+                  			with the specified <i class="Emphasis">data</i>.
+               </p>
+               <p class="Paragraph">Otherwise, for each child node of type XML_ELEMENT whose <i class="Emphasis">local name</i> equals <i class="Emphasis">name</i> and whose
+                  			URI equals the URI specified by <i class="Emphasis">namespaceOrURI</i> do the
+                  			following: if the child node has no child node of type XML_DATA, then create
+                  			such a node with the specified <i class="Emphasis">data</i>; otherwise, all
+                  			child nodes of type XML_DATA are replaced by a single child node of type 
+                  			XML_DATA with the specified <i class="Emphasis">data</i>.
+               </p>
+               <p class="Paragraph">The function fails if <i class="Emphasis">node</i> is invalid or <i class="Emphasis">namespaceOrURI</i> is invalid.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>node</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">node</i> is a reference to an XML node.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>namespaceOrURI</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">namespaceOrURI</i> is either a reference to an XML namespace, or it is a URI.
+                           				If the <i class="Emphasis">namespaceOrURI</i> parameter is of type <i class="Emphasis">long</i> then
+                           				it is a reference to an XML namespace; if it is of type <i class="Emphasis">string</i> then it
+                           				is a URI; otherwise the function fails.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">name</i> is the <i class="Emphasis">local name</i> of the child node(s) of type XML_ELEMENT.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">void</td>
+                     <td class="none"><code>data</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"><i class="Emphasis">data</i> is the new data of the node(s) of type XML_DATA.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">&lt;&gt;0</th>
+                     <td rowspan="1" colspan="1" class="none">Success; The value of <i class="Emphasis">node</i>.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Error.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1700.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long xml_envelope, xml_body, xml_stockprice, xmlns_soap, xmlns_m
+xml_envelope = xmlNewNode("Envelope")
+xmlns_soap = xmlNewNamespace( xml_envelope, "soap", "http://www.w3.org/2001/12/soap-envelope" )
+xmlSetNamespace( xml_envelope, xmlns_soap )
+xmlSetAttributeNs( xml_envelope, xmlns_soap, "EncodingStyle", "http://www.w3.org/2001/12/soap-encoding" )
+xml_body = xmlNewNodeNs( xmlns_soap, "Body", XML_ELEMENT, xml_envelope )
+xmlns_m = xmlNewNamespace( xml_body, "m", "http://www.example.org/stock" )
+xml_stockprice = xmlNewNodeNs( xmlns_m, "GetStockPrice", XML_ELEMENT, xml_body )
+
+long ret
+ret = xmlNewDataElementNs( xmlns_m, "StockName", "IBM", xml_stockprice )
+ret = xmlRewriteDataElementNs( xml_stockprice, xmlns_m, "StockName", "SUN" )
+| ret now contains the value of xml_stockprice</pre><p class="Paragraph">The <i class="Emphasis">xml_envelope</i> node would serialize to the following XML. Note that the 
+               	call to xmlRewriteDataElementNs() has updated the data of the element <i class="Emphasis">StockName</i> with the supplied data.
+            </p><pre class="CodeBlock">
+&lt;soap:Envelope
+	xmlns:soap="http://www.w3.org/2001/12/soap-envelope"
+	soap:EncodingStyle="http://www.w3.org/2001/12/soap-encoding"&gt;
+	&lt;soap:Body
+		xmlns:m="http://www.example.org/stock"&gt;
+		&lt;m:GetStockPrice&gt;
+			&lt;m:StockName&gt;SUN&lt;/m:StockName&gt;
+		&lt;/m:GetStockPrice&gt;
+	&lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt; </pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/overview.htm" class="manualLink">XML object overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis.htm" class="manualLink">XML object synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_xml/synopsis_namespace.htm" class="manualLink">XML object synopsis (namespace support)</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_xml/xmlRewriteDataElementNs, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

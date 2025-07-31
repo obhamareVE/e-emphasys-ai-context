@@ -1,0 +1,121 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>at.base()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="at.base at.base functions at.base ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">at.base()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;at.base&nbsp;
+					(string&nbsp;basic_variable[,arg...], string&nbsp;based_variable[,arg...])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this function to base one variable (the based variable)
+                  on another variable (the basic variable). The two variables then
+                  use the same memory area.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>basic_variable[,arg...]</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The variable on which the <i class="Emphasis">based_variable</i> is
+                           to be based. You can pass arguments to this variable.
+                           These specify the start position of the based variable
+                           within the basic variable. The default start position
+                           is 1.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>based_variable[,arg...]</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The based variable. You can pass arguments to this
+                           variable. These specify the length of the based
+                           variable. The length plus the start position must not
+                           exceed the length reserved for the basic variable.
+                        </p>
+                        <p class="Paragraph">If you pass the argument -1 to the variable, the
+                           based variable uses the memory space of the basic
+                           variable from the specified start position to the end
+                           position. If this argument is 0, the variable uses the
+                           memory space of the basic variable from the specified
+                           start position for the declared length of the based
+                           variable.
+                        </p>
+                        <p class="Paragraph">This variable must be declared as BASED.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">See also</div>
+            <p class="Paragraph"><a href="../../progguide/functions_variables_based/at.base2.htm" class="manualLink">at.base()</a></p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">If the variables are multidimensional long or double arrays,
+                  only the first element can differ in the declarations. This is
+                  because the array values are stored column by column.
+               </p>
+               <p class="Paragraph">Do not reallocate <i class="Emphasis">basic_variable</i> (with <i class="Emphasis">alloc.mem()</i>). Doing this can cause serious problems, such
+                  as a core dump or corrupted memory.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">In this example, the contents of the variable
+               long_to_be_based(1, 1) are equal to the value of basic_long(4,
+               1). That is, a matrix of 2 by 5 longs.
+            </p><pre class="CodeBlock">
+long basic_long(5, 5)
+long long_to_be_based(3, 5) based
+
+at.base(basic_long, 4, 1, long_to_be_based, -1, 0)
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_variables_based/overview_and_synopsis.htm" class="manualLink">Variables (based) overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_variables_based/at.base1, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

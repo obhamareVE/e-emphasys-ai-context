@@ -1,0 +1,155 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>bms.send()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="bms.send bms.send functions bms.send ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">bms.send()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;bms.send&nbsp;
+					(string&nbsp;broadcast, long&nbsp;level_or_evt, string&nbsp;mask, long&nbsp;processno [, long&nbsp;no.bytes])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this to send a broadcast message to one or more
+                  processes.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>broadcast</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The message that must be sent.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>level_or_evt</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Use this either to specify a level for the
+                           message (1 or 2, for example) or to specify an event
+                           array with the following information:
+                        </p>
+                        <p class="Paragraph">evt.type( event ) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this is
+               always EVTBUCKETMESSAGE</p>
+                        <p class="Paragraph">evt.bms.sender( event )&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; sender ID
+               (this is filled automatically)</p>
+                        <p class="Paragraph">evt.bms.command( event )&nbsp;&nbsp;&nbsp; command ID</p>
+                        <p class="Paragraph">evt.bms.argument( event )&nbsp;&nbsp;&nbsp;&nbsp; some
+               argument</p>
+                        <p class="Paragraph">The specified event is sent to each process to
+                           which the broadcast message is sent.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>mask</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">If you specify a mask in this argument, the message
+                           is sent to all processes to which that mask has been
+                           added. If you also specify a process ID in the <i class="Emphasis">processno</i> argument, the process is sent only to
+                           the specified process.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>processno</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">If you specify a process ID in this argument, the
+                           broadcast message is sent only to that process. If
+                           you specify 0 for this argument, the 
+                           argument is used to indicate the
+                           processes to which the message is sent.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>no.bytes</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The size of the broadcast message, in bytes.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; error</p>
+            <p class="Paragraph">&gt;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the process ID of the last process to
+      which the broadcast message was sent</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">If <i class="Emphasis">bms.send()</i> specifies a mask and no processes have that
+      mask set, the file ‘$BSE/lib/bms_mask’ is searched for a line
+      beginning with the mask name. Lines in this file have the
+      following syntax:
+               </p>
+               <p class="Paragraph"><code class="Code">&lt;mask&gt;:&lt;process&gt;:&lt;y/n&gt;:[boot]</code></p>
+               <p class="Paragraph">When a line is found that begins with the specified mask,
+      the process specified in that line is started. If the line
+      contains ‘y’, the mask is automatically added to the process.
+      The broadcast message and event are then sent to the process.
+      If the line contains ‘n’, the mask is not added to the
+      process and so the process does not receive the message and
+      event. If the line ends with the word ‘boot’, the specified
+      process is always started automatically before any other
+      process when the bshell starts. For example:</p><pre class="CodeBlock">
+| suppose the file '$BSE/lib/bms_mask' contains the following line:
+    
+| calculator:ottstpcalc:y
+
+long event(EVTMAXSIZE), bms_id
+
+bms_id = bms.send( "", event, "calculator", 0 )
+</pre></div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/events/overview.htm" class="manualLink">Events overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_interprocess_communication_os_level/overview.htm" class="manualLink">Interprocess communication (OS level) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_interprocess_communication_bshell/overview.htm" class="manualLink">Interprocess communication (bshell) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_interprocess_communication_bshell/synopsis.htm" class="manualLink">Interprocess communication (bshell) synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_interprocess_communication_bshell/bms.send, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

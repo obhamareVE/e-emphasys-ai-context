@@ -1,0 +1,58 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42I57 - Table selected for update in grouped query</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42I57 - Table selected for update in grouped query</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">A grouped query contains a table that is marked FOR UPDATE. A
+               query is a grouped query if it contains a GROUP BY clause or if
+               its SELECT clause contains set function specifications.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div><pre class="CodeBlock">
+select max(salary)
+from   dbtst120 for update
+group  by edlevel
+   </pre><p class="Paragraph">This query has a GROUP BY clause and it therefore a grouped
+               query. The tables in the FROM clause of a grouped query may not
+               be marked FOR UPDATE. This query will cause the error:
+            </p>
+            <p class="Paragraph">SQLState 42I57: Table
+               'dbtst120' selected for update in grouped query
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2</div><pre class="CodeBlock">
+select max(salary)
+from   dbtst120 for update
+   </pre><p class="Paragraph">Even though this query does not have an explicit GROUP BY
+               clause, it is still a grouped query, because it has the set
+               function specification max(salary) in its SELECT clause. Because
+               it is grouped, table dbtst120 cannot be marked FOR UPDATE. This
+               query will cause the error:
+            </p>
+            <p class="Paragraph">SQLState 42I57: Table
+               'dbtst120' selected for update in grouped query
+            </p>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42I57, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Application Response Time Measurement (ARTM) Debugging</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="application response time measurement debugging ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Application Response Time Measurement (ARTM) Debugging</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The <a href="../../progguide/misc/bshell_resources.htm" class="manualLink">bshell resource</a> <i class="Emphasis">art_trace</i> can be set for debugging the ARTM code
+               in the application scripts. One can trace access and results of calling the loaded 
+               ARM shared library, supplied by third party or one can emulate results. The latter is useful 
+               for developing ARTM when no ARM shared libraries are avaiable. Trace information is written to 
+               $BSE/tmp/bshell.pid, unless overruled by -tracefile file option (see IBaanVM interface).
+            </p>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="5" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Tracing disabled.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">1</th>
+                     <td rowspan="1" colspan="1" class="none">Tracing enabled for access to loaded ARM shared library.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">3</th>
+                     <td rowspan="1" colspan="1" class="none">Detailed tracing enabled for access to loaded ARM shared library.</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">5</th>
+                     <td rowspan="1" colspan="1" class="none">Tracing enabled with emulation of ARM shared library via stubs.</td>
+                  </tr>
+                  <tr no="5" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">5</th>
+                     <td rowspan="1" colspan="1" class="none">The trace information is send to the file <i class="Emphasis">$BSE/tmp/bshell.pid</i>.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_overview.htm" class="manualLink">Application Response Time Measurement (ARTM) Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_synopsis.htm" class="manualLink">Application Response Time Measurement (ARTM) Synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_error_codes.htm" class="manualLink">Application Response Time Measurement (ARTM) Error Codes</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_artm/artm_examples.htm" class="manualLink">Application Response Time Measurement (ARTM) Examples</a></li>
+               <li class="RelTopic"><a href="../../progguide/misc/bshell_resources.htm" class="manualLink">Bshell resource "art_trace"</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_artm/artm_debugging, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>mb.char.info()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions mb.char.info mb.char.info mb.char.info ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">mb.char.info()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;mb.char.info&nbsp;
+					(string&nbsp;ch$)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function identifies the character set to which a <a href="../../progguide/misc/tss.htm" class="manualLink">TSS Encoding</a> character belongs. It
+                  returns the character set ID for the first character in the
+                  specified string.
+               </p>
+               <p class="Paragraph">In TSS, due to the phenomenon of unification, it is not in
+                  all cases clear to which character set a character belongs.
+                  This functions tries all available character sets in a
+                  certain order and returns the ID of the first encountered
+                  character set containing a character that reasonably might
+                  have been mapped to the first character of the supplied
+                  string.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>ch$</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The ID of the character set for the first character in the
+               specified string. Or -1 if <i class="Emphasis">ch$</i> is an empty string or if
+               the TSS character could not be found in one of the TSS character
+               sets.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/misc/tss.htm" class="manualLink">TSS Encoding</a>, especially the
+                  items about Unification and Unicode
+               </li>
+               <li class="RelTopic"><a href="../../progguide/functions_multibyte_strings/mb.locale.enumerate.htm" class="manualLink">mb.locale.enumerate()</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_multibyte_strings/overview_and_synopsis.htm" class="manualLink">Multibyte strings overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_multibyte_strings/mb.char.info, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

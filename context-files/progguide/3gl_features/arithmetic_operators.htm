@@ -1,0 +1,263 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Arithmetic operators</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="arithmetic operators ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Arithmetic operators</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The arithmetic operations are:</p>
+            <table border="0" class="none">
+               <tbody noTR="8" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">Operator</th>
+                     <th rowspan="1" colspan="1" class="none">Description</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">-</td>
+                     <td rowspan="1" colspan="1" class="none">negation (unary minus operator)</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">+</td>
+                     <td rowspan="1" colspan="1" class="none">addition</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">-</td>
+                     <td rowspan="1" colspan="1" class="none">subtraction (binary minus operator)</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">*</td>
+                     <td rowspan="1" colspan="1" class="none">multiplication</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">/</td>
+                     <td rowspan="1" colspan="1" class="none">division</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">\</td>
+                     <td rowspan="1" colspan="1" class="none">remainder after division</td>
+                  </tr>
+                  <tr no="8" isLast="true" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">&amp;</td>
+                     <td rowspan="1" colspan="1" class="none">string concatenation</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">Arithmetic operators perform arithmetic operations on the
+               operands. Arithmetic operations on booleans are not allowed. All
+               arithmetic operators, except string concatenation, must have
+               operands of numerical type.
+            </p>
+            <p class="Paragraph">If one operand of a binary arithmetic operator is of type long and the other of type double,
+               then implicit <a href="../../progguide/3gl_features/type_conversions.htm#long_to_double_type_conversion" class="manualLink">long to double type conversion</a> is performed on the long operand
+               and the result of the expression is of double type.
+            </p>
+            <p class="Paragraph">For example:</p><pre class="CodeBlock">
+ 45/30 is equal to 1 
+             | 45 and 30 are both LONG so the result is LONG
+ 45/30.0 is equal to 1.5
+             | 30.0 is a DOUBLE so the result is a DOUBLE
+</pre><p class="Paragraph">The concatenation operator concatenates expressions,
+               variables, or constants of string type.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Unspecified behavior</div>
+            <p class="Paragraph">When the result of an arithmetic operation on integer valued operands is outside the integer value range supported by the
+               bshell,
+               then the behavior of the bshell is unspecified.
+            </p>
+            <p class="Paragraph">In practice,
+               when the exact result of such an operation is outside the supported value range,
+               a wrap-around effect takes place:
+               the exact value is converted by repeatedly adding or subtracting
+               2^ <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a> until the value is in the supported signed <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-bit
+               value range.
+               But notice:
+               this behavior is not part of the official specification.
+               Do not rely on it!
+               Different versions of the bshell may behave differently
+               and the same bshell version may behave differently on different platforms!
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="compile_time_constants"></a><div class="subSectionTitle">Compile time evaluation of constant integer expressions</div>
+            <p class="Paragraph">The bic compiler has some functionality to evaluate expressions at compile time.
+               For integer arithmetic,
+               this is restricted to the following binary operations:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="6" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">Operator</th>
+                     <th rowspan="1" colspan="1" class="none">Description</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">+</td>
+                     <td rowspan="1" colspan="1" class="none">addition</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">-</td>
+                     <td rowspan="1" colspan="1" class="none">subtraction (binary minus operator)</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">*</td>
+                     <td rowspan="1" colspan="1" class="none">multiplication</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">/</td>
+                     <td rowspan="1" colspan="1" class="none">division</td>
+                  </tr>
+                  <tr no="6" isLast="true" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">\</td>
+                     <td rowspan="1" colspan="1" class="none">remainder after division</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">So, no compile time evaluation of integer expressions is done for:</p>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">Operator</th>
+                     <th rowspan="1" colspan="1" class="none">Description</th>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td align="center" rowspan="1" colspan="1" class="none">-</td>
+                     <td rowspan="1" colspan="1" class="none">negation (unary minus operator)</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">It is important to realize
+      that integer expressions evaluated by bic at compile time
+      are evaluated independent of the evaluation mechanism used by the bshell.
+      Internally,
+      bic does not even use signed arithmetic, but unsigned 32-bit arithmetic.
+      Unsigned 32-bit arithmetic is well-defined
+      in the sense that overflow is defined to cause wrap around back to the unsigned 32-bit range
+      [0 … 2^32 - 1].
+      The only place where bic prevents such a wrap around is in the case of subtractions:
+      when bic detects that the result of a subtraction will be negative,
+      then the subtraction is not done by bic at compile time,
+      but is postponed in order to be done by the bshell at run time.</p>
+            <p class="Paragraph">The resulting unsigned 32-bit value of the compile time evaluation is interpreted at run time by the bshell.
+               The value is wrapped from the unsigned 32-bit value range
+               to the signed <a href="../../progguide/3gl_features/data_types.htm#BitCountOfLong" class="commandLink">BitCountOfLong</a>-bit
+               value range
+               supported by the bshell.
+            </p>
+            <p class="Paragraph"><a href="../../progguide/3gl_features/compiler.htm" class="manualLink">Bic compiler option -W32</a> may be used to generate warnings for constant integer arithmetic expressions
+               of which any intermediate exact <i class="Emphasis">unsigned</i> 32-bit result is outside the signed 32-bit value range,
+         so it is in the range [2^31 … 2^32 - 1].
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div><pre class="CodeBlock">
+       LONG lng_1, lng_2
+       DOUBLE doub
+       STRING strg_1(16), strg_2(50), strg_3(10), strg_4(20)
+</pre><table border="1" class="default">
+               <tbody noTR="11" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">Expression</th>
+                     <th rowspan="1" colspan="1" class="default">Result</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">lng_2 = 8\3</code></td>
+                     <td rowspan="1" colspan="1" class="default">The variable lng_2 contains 2, which is the
+                        remainder after dividing 8 by 3..
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">lng_1 = lng_2 + 3</code></td>
+                     <td rowspan="1" colspan="1" class="default">The variable lng_1 now contains 5.</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">doub = lng_1 * 2.0</code></td>
+                     <td rowspan="1" colspan="1" class="default">The variable lng_1 is multiplied by 2.0; the result
+                        (10.0) is stored in doub.
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">doub = 45 / 30</code></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">The variable doub now equals 1.0.</p>
+                        <p class="Paragraph">Note that 45 and 30 are both longs, so the result
+                           of the expression is 1. Converted to double for storing
+                           in the result, this becomes 1.0.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">doub = 45 / 30.0</code></td>
+                     <td rowspan="1" colspan="1" class="default">The variable doub now contains 1.5.</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">strg_1 = "hel" &amp; "lo"</code></td>
+                     <td rowspan="1" colspan="1" class="default">The variable strg_1 now contains the value
+                        "hello".
+                     </td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">strg_2 = strg_3 &amp; strg_4</code></td>
+                     <td rowspan="1" colspan="1" class="default">The contents of strg_3 and strg_4 are
+                        concatenated and placed in strg_2.
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">0x7b000000 + 0x20012345</code></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Compile time evaluation to <code class="Code">0x9b012345</code>,
+                           which is greater than <code class="Code">2^31 - 1</code> (i.e. <code class="Code">0x7fffffff</code>)
+                        </p>
+                        <p class="Paragraph">Wrapping this value to the signed 32-bit value range results in negative value <code class="Code">-0x64fedcbb</code> (i.e. <code class="Code">0x9b012345 - 2^32</code>).
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-0x65000000 + 0x012345</code></td>
+                     <td rowspan="1" colspan="1" class="default">Run time addition to same negative value <code class="Code">-0x64fedcbb</code> (i.e. <code class="Code">0x9b012345 - 2^32</code>)
+                        as in previous example.
+                     </td>
+                  </tr>
+                  <tr no="11" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><code class="Code">-(0x65000000 - 0x012345)</code></td>
+                     <td rowspan="1" colspan="1" class="default">
+                        <p class="Paragraph_firstAndNoTextBefore">Compile time subtraction <code class="Code">0x65000000 - 0x012345</code> results in positive value <code class="Code">0x64fedcbb</code>.
+                        </p>
+                        <p class="Paragraph">Unary negation is done at run time,
+                           resulting in same negative value <code class="Code">-0x64fedcbb</code> (i.e. <code class="Code">0x9b012345 - 2^32</code>)
+                           as in previous examples.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/expressions_and_operators.htm" class="manualLink">Expressions and operators</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/arithmetic_operators, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

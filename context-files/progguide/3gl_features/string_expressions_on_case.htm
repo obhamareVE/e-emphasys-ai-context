@@ -1,0 +1,56 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>String expressions (ON CASE)</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="string expressions (ON CASE) ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">String expressions (ON CASE)</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The expression of type STRING after ON CASE is evaluated and compared with the
+               various CASE expressions that follow. All expressions in the case
+               labels must be of type STRING. 
+               For example:
+            </p><pre class="CodeBlock">
+ON CASE choice_char
+CASE "A":
+CASE "E":
+        abort()
+CASE "N":
+        next_screen()
+        BREAK
+CASE "P":
+        last_screen()
+        BREAK
+CASE chr$(27):
+        escape()
+        BREAK
+DEFAULT:
+        message("unknown choice")
+ENDCASE
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/the_on_case_statement.htm" class="manualLink">The ON CASE statement</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/overview.htm" class="manualLink">3GL programming language features: overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/3gl_features/transfer_of_control.htm" class="manualLink">Transfer of control</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/3gl_features/string_expressions_on_case, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>gbf.menu.selected()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions gbf.menu.selected gbf.menu.selected gbf.menu.selected ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">gbf.menu.selected()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_gbf&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;gbf.menu.selected&nbsp;
+					(long&nbsp;obj.id, const string&nbsp;object.key(), long&nbsp;object.value, long&nbsp;menu.option)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function will be called when the object has been
+                  selected followed by a menu selection or a keystroke.
+               </p>
+               <p class="Paragraph">obj.id</p>
+               <p class="Paragraph">There are three possibilities for obj.id:</p>
+               <table border="0" class="none">
+                  <tbody noTR="3" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">obj.id &lt; 0</td>
+                        <td rowspan="1" colspan="1" class="none">
+                           <p class="Paragraph_firstAndNoTextBefore">More that one object was currently selected when
+                              this menu item was chosen and obj.id contains the
+                              negative number of selected objects, that is: -obj.id
+                              is the actual number of selected objects. So obj.id in
+                              this case is NO valid object identification, but on the
+                              other hand object.key and object.value contain the
+                              identification of the first selected object. All
+                              currently selected objects can be obtained using a <a href="../../progguide/functions_generic_browser_frameworkf/gbf.get.selected.htm" class="manualLink">gbf.get.selected()</a> for each selected object.
+                           </p>
+                           <p class="Paragraph">This case will only happen if the GBF is configured to
+                              support multiple select (see <a href="../../progguide/functions_generic_browser_frameworkf/gbf.init.htm" class="manualLink">gbf.init()</a>)
+                           </p>
+                        </td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">obj.id = 0</td>
+                        <td rowspan="1" colspan="1" class="none">No object was currently selected when this menu
+                           entry was chosen, and object.key will be an empty
+                           string, that is isspace(object.key) is true.
+                        </td>
+                     </tr>
+                     <tr no="3" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">obj.id &gt; 0</td>
+                        <td rowspan="1" colspan="1" class="none">Precisely one object was currently selected when
+                           this menu item was chosen and that object is
+                           identified by obj.id as well as by the object.key
+                           and object.value, which have been given to the GBF
+                           on a preceding <a href="../../progguide/functions_generic_browser_frameworkf/gbf.add.object.htm" class="manualLink">gbf.add.object()</a> call. The given obj.id identifies the object for the
+                           GBF and should be used only as object identification
+                           for other GBF functions like <a href="../../progguide/functions_generic_browser_frameworkf/gbf.get.parent.htm" class="manualLink">gbf.get.parent()</a>, <a href="../../progguide/functions_generic_browser_frameworkf/gbf.get.first.child.htm" class="manualLink">gbf.get.first.child()</a>, <a href="../../progguide/functions_generic_browser_frameworkf/gbf.get.next.htm" class="manualLink">gbf.get.next()</a> and
+                           gbf.update.object().
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+               <p class="Paragraph"></p>
+               <p class="Paragraph">menu.option</p>
+               <p class="Paragraph">The selected menu item or keystroke is identified by the
+                  given menu.option, which has been returned by the GBF on a
+                  preceding gbd.set.menu.item() call or is one of the standard
+                  GBF buttons and menu items which are supported by the
+                  application (see argument standard.button of <a href="../../progguide/functions_generic_browser_frameworkf/gbf.init.htm" class="manualLink">gbf.init()</a>). The following table
+                  suggests what the application should do on these standard
+                  buttons:
+               </p>
+               <table border="0" class="none">
+                  <tbody noTR="9" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">Menu option</td>
+                        <td rowspan="1" colspan="1" class="none">Description</td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">GBF.BUTTON.COPY</td>
+                        <td rowspan="1" colspan="1" class="none">Copy the current selected object(s)</td>
+                     </tr>
+                     <tr no="3" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">GBF.BUTTON.CUT</td>
+                        <td rowspan="1" colspan="1" class="none">Cut (delete) the current selected object(s)</td>
+                     </tr>
+                     <tr no="4" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">
+                           <p class="Paragraph_firstAndNoTextBefore">GBF.BUTTON.</p>
+                           <p class="Paragraph">DELETE</p>
+                        </td>
+                        <td rowspan="1" colspan="1" class="none">Delete the current selected object(s)</td>
+                     </tr>
+                     <tr no="5" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">
+                           <p class="Paragraph_firstAndNoTextBefore">GBF.BUTTON.GRP.</p>
+                           <p class="Paragraph">NEW</p>
+                        </td>
+                        <td rowspan="1" colspan="1" class="none">Insert a new group object</td>
+                     </tr>
+                     <tr no="6" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">GBF.BUTTON.INSERT</td>
+                        <td rowspan="1" colspan="1" class="none">Insert a new object</td>
+                     </tr>
+                     <tr no="7" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">GBF.BUTTON.PASTE</td>
+                        <td rowspan="1" colspan="1" class="none">Paste the contents of the cut/copy buffers into
+                           the current selected object
+                        </td>
+                     </tr>
+                     <tr no="8" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">GBF.BUTTON.TEXT</td>
+                        <td rowspan="1" colspan="1" class="none">Start the text editor for the current selected
+                           object(s)
+                        </td>
+                     </tr>
+                     <tr no="9" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">GBF.BUTTON.UNDO</td>
+                        <td rowspan="1" colspan="1" class="none">Undo the last operation</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+               <p class="Paragraph">Note that the GBF will never delete objects by itself. So
+                  even after a GBF.BUTTON.CUT and/or GBF.BUTTON.DELETE action
+                  still a GBF.DO.DELETE.CURRENT (see below) must be returned.
+                  When the menu.option is GBF.BUTTON.COPY or GBF.BUTTON.CUT
+                  then the current selected object(s) are already stored in the
+                  so called Cut, Copy &amp; Paste buffers, so there is no need
+                  to return a GBF.DO.CUTCOPY.INSERT return flag in these cases.
+                  Of course a return value of GBF.DO.CUTCOPY.CLEAR will indeed
+                  clear this buffer, even on this Cut or Copy operation.
+               </p>
+               <p class="Paragraph">After the application has been finished, the return value
+      of this function to GBF will inform GBF what to do. There are
+      a number of return categories defined, each having a number
+      of different options. One flag of each group should be used
+      to construct the full return value. These flags can be added
+      (‘+’) or bitwise ‘or’ed.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>obj.id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">See above.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>object.key()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>object.value</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>menu.option</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" class="none">
+               <tbody noTR="23" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">category</td>
+                     <td rowspan="1" colspan="1" class="none">define</td>
+                     <td rowspan="1" colspan="1" class="none">description</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">redraw</td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.REDRAW.TREE</td>
+                     <td rowspan="1" colspan="1" class="none">redraw the whole tree</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">refresh</td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.REFRESH.NONE</td>
+                     <td rowspan="1" colspan="1" class="none">no refresh needed</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.REFRESH.CURRENT</td>
+                     <td rowspan="1" colspan="1" class="none">refresh everything under the current selected
+                        object
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.REFRESH.LEVEL</td>
+                     <td rowspan="1" colspan="1" class="none">refresh level on which current selected object
+                        resides
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.REFRESH.TREE</td>
+                     <td rowspan="1" colspan="1" class="none">refresh the whole tree</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">restart</td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.RESTART.NONE</td>
+                     <td rowspan="1" colspan="1" class="none">no restart needed</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.RESTART.CURRENT</td>
+                     <td rowspan="1" colspan="1" class="none">restart everything under the current selected
+                        object
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.RESTART.LEVEL</td>
+                     <td rowspan="1" colspan="1" class="none">restart level or which current selected object
+                        resides
+                     </td>
+                  </tr>
+                  <tr no="10" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.RESTART.TREE</td>
+                     <td rowspan="1" colspan="1" class="none">restart the whole tree</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">cut,. copy</td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.CUTCOPY.NONE</td>
+                     <td rowspan="1" colspan="1" class="none">do nothing with the cut, copy paste buffers</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">&amp; paste</td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.CUTCOPY.CLEAR</td>
+                     <td rowspan="1" colspan="1" class="none">clear the cut, copy and paste buffers</td>
+                  </tr>
+                  <tr no="13" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.CUTCOPY.INSERT</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">replace the contents of the cut, copy and clear
+                           buffers with the current selected objects
+                        </p>
+                        <p class="Paragraph">Note: not needed after a GBF.BUTTON.CUT or
+                           GBF.BUTTON.COPY menu.option.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="14" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">delete</td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.DELETE.NONE</td>
+                     <td rowspan="1" colspan="1" class="none">do not delete object</td>
+                  </tr>
+                  <tr no="15" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.DELETE.CURRENT</td>
+                     <td rowspan="1" colspan="1" class="none">delete this occurrence of object, and if interior
+                        node all underlying nodes in this tree only
+                     </td>
+                  </tr>
+                  <tr no="16" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.DELETE.GLOBAL</td>
+                     <td rowspan="1" colspan="1" class="none">delete all occurrences of object from tree, and
+                        if interior node all underlying nodes in these trees
+                        only
+                     </td>
+                  </tr>
+                  <tr no="17" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">level</td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.LEVEL.NONE</td>
+                     <td rowspan="1" colspan="1" class="none">do not open or close anything</td>
+                  </tr>
+                  <tr no="18" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.LEVEL.OPEN</td>
+                     <td rowspan="1" colspan="1" class="none">open level only done for closed interior node, no
+                        operation in all other cases
+                     </td>
+                  </tr>
+                  <tr no="19" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.LEVEL.CLOSE</td>
+                     <td rowspan="1" colspan="1" class="none">close level only done for open interior node, no
+                        operation in all other cases
+                     </td>
+                  </tr>
+                  <tr no="20" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">terminate</td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.CONTINUE</td>
+                     <td rowspan="1" colspan="1" class="none">continue normal processing</td>
+                  </tr>
+                  <tr no="21" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.ABORT</td>
+                     <td rowspan="1" colspan="1" class="none">abort GBF, which will end the GBF and return with
+                        an error, see <a href="../../progguide/functions_generic_browser_frameworkf/gbf.start.htm" class="manualLink">gbf.start()</a></td>
+                  </tr>
+                  <tr no="22" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.EXIT</td>
+                     <td rowspan="1" colspan="1" class="none">finish GBF, which will end the GBF and return
+                        with 0, see <a href="../../progguide/functions_generic_browser_frameworkf/gbf.start.htm" class="manualLink">gbf.start()</a></td>
+                  </tr>
+                  <tr no="23" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"></td>
+                     <td rowspan="1" colspan="1" class="none">GBF.DO.NOT.EXIT</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">continue with processing (do NOT stop the GBF)
+                           rather than stopping. This should only be used when:
+                        </p>
+                        <p class="Paragraph">gbf.save(…,…,…, GBF.MENU.FILE.QUIT) has been
+               called.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">The defines will be chosen such that a value of 0 means: do
+               nothing special (not even a redraw or refresh of current
+               object). In general all the above groups are mutual exclusive,
+               that is using a member of one group does not affect using
+               members from any other group. The only exception is that a
+               member of the <i class="Emphasis">refresh</i> group is ignored when a member of
+               the <i class="Emphasis">restart</i> group (other than GBF.DO.RESTART.NONE) is
+               used.
+            </p>
+            <p class="Paragraph">In case of a multiple select, these options apply to all
+               currently selected items except when one of the <i class="Emphasis">refresh</i> or <i class="Emphasis">restart</i> categories is used, as in this case always
+               GBF.DO.REFRESH.TREE or GBF.DO.RESTART.TREE is used.
+            </p>
+            <p class="Paragraph">The difference between GBF.DO.RESTART.TREE and
+               GBF.DO.REFRESH.TREE is that a
+            </p>
+            <ul class="List">
+               <li class="ListItem">GBF.DO.REFRESH.TREE tries to keep the current view
+                  as similar as it is now on the screen. This is merge
+                  the (new) data from the application with which is
+                  already available in the GBF, and delete unretrieved
+                  data
+               </li>
+               <li class="ListItem">GBF.DO.RESTART.TREE restarts the GBF from fresh,
+                  that is as if a <a href="../../progguide/functions_generic_browser_frameworkf/gbf.start.htm" class="manualLink">gbf.start()</a> has been
+                  executed, but see also: gbf.get.read.level() and
+                  gbf.set.read.level().
+               </li>
+            </ul>
+            <p class="Paragraph">When no object is currently selected then also the
+               GBF.DO.REFRESH.CURRENT and GBF.DO.REFRESH.LEVEL behave the
+               same as a GBF.DO.REFRESH.TREE (refresh the whole tree).
+               Similar when no object is currently selected then also the
+               GBF.DO.RESTART.CURRENT and GBF.DO.RESTART.LEVEL behave the
+               same as a GBF.DO.RESTART.TREE (restart the whole tree).
+            </p>
+            <p class="Paragraph">The difference between GBF.DO.REFRESH.CURRENT (or
+               GBF.DO.REFRESH.LEVEL) is that the first one refreshes (or
+               restarts) everything under the current selected object,
+               excluding the current object, and the latter does a refresh
+               (or restarts) on the parent object of the current selected
+               object. So a GBF.DO.REFRESH.LEVEL does not refresh that
+               parent, but refreshes all of its children, which includes the
+               current selected object and all of its brother objects. Note
+               that the current selected object can be updated using
+               gbf.update() functions. The same applies to
+               GBF.DO.RESTART.CURRENT and GBF.DO.RESTART.LEVEL.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/overview.htm" class="manualLink">Generic Browser Framework (GBF) overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/synopsis.htm" class="manualLink">Generic Browser Framework (GBF) synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/typical_usage.htm" class="manualLink">Typical usage</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/getting_started.htm" class="manualLink">Getting started</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/example.htm" class="manualLink">Example</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/error_codes_and_return_values.htm" class="manualLink">Generic Browser Framework error codes and return values</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/standard_menu_items_and_function_keys.htm" class="manualLink">standard menu items and function keys</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_generic_browser_frameworkf/messages_and_questions.htm" class="manualLink">Messages and questions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_generic_browser_frameworkf/gbf.menu.selected, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

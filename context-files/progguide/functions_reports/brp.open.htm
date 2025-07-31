@@ -1,0 +1,133 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>brp.open()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="brp.open brp.open functions brp.open ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">brp.open()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long &nbsp;brp.open&nbsp;
+					(string&nbsp;rep_name(16), string&nbsp;device(14), long&nbsp;mode)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This activates a specified report and opens a specified spooler
+                  	  device (if it is not already open). Several reports can be active
+                  	  simultaneously. In a 4GL script, the name of the current report is stored in
+                  	  the predefined variable <i class="Emphasis">spool.report</i>. This variable is
+                  	  available in the <i class="Emphasis">on.choice</i> subsection of a <i class="Emphasis">choice.print.data</i> section.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>rep_name(16)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the report. Do not include a language code. The
+                           			language of the user is automatically used.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>device(14)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The code of the device on which the report must be printed. This
+                           			code must be defined in the data dictionary. If you specify an empty string
+                           			here, you can use the mode argument to display a window in which the user can
+                           			select the required device.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>mode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; User is not prompted to select a spooler
+			  device.</p>
+                        <p class="Paragraph">1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A window is displayed in which the user can
+			  select a spooler device. A</p>
+                        <p class="Paragraph">Cancel button enables the user to cancel the
+                           			  operation.
+                        </p>
+                        <p class="Paragraph">2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A window is displayed in which the user can
+			  select a spooler device. There</p>
+                        <p class="Paragraph">is no option for canceling the
+                           			  operation.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">&gt;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; an ID for the activated report</p>
+            <p class="Paragraph">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; report could not be activated</p>
+            <p class="Paragraph">-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; spooler could not be opened</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 1</div><pre class="CodeBlock">
+brp_id1 = brp.open( "rtccom040101000", "F", 0 )
+       | Spooler is opened automatically
+brp.ready( brp_id1 )
+brp.close( brp_id1 )
+</pre></div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example 2</div><pre class="CodeBlock">
+spool.open( "", spool.device, 1 )         
+        | Open spooler in script
+brp_id1 = brp.open( "rtccom040101000", "D", 1 )
+        | Spooler is not opened by report writer
+brp_id2 = brp.open.language( "rtccom0401010003", spool.device, 1 )
+        | Open next report in language code 3
+...
+&lt;store values&gt;
+brp.ready( brp_id1 )
+brp.ready( brp_id2 )
+...
+brp.close( brp_id1 )         | Close reports
+brp.close( brp_id2 )
+spool.close()                | Close spooler in script
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_reports/overview_and_synopsis.htm" class="manualLink">Reports overview and synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_spooling/overview_and_synopsis.htm" class="manualLink">Spooling overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_reports/brp.open, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

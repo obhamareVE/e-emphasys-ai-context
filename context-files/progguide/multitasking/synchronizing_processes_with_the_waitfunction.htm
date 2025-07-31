@@ -1,0 +1,68 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Synchronizing processes with the wait() function</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="synchronizing processes with the wait() function wait(), synchronizing processes with ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Synchronizing processes with the wait() function</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The <a href="../../progguide/functions_processes/wait.htm" class="manualLink">wait()</a> function enables synchronization of parent and child processes.
+               It causes the parent process to wait for one or all of its
+               children to exit before continuing. Each child process sends an
+               exit signal to the parent process when it ends.
+            </p>
+            <p class="Paragraph">The parent can choose to ignore child signals or not. If it
+               wants to ignore child signals, the parent process calls:
+            </p><pre class="CodeBlock">
+signal(SIGCHLD, SIGIGN)
+</pre><p class="Paragraph">If it does not want to ignore child signals, it calls:</p><pre class="CodeBlock">
+signal(SIGCHLD, SIGNOIGN)
+</pre><p class="Paragraph">When a parent process issues a <a href="../../progguide/functions_processes/wait.htm" class="manualLink">wait()</a> call
+               but is ignoring child signals, child processes exit without any
+               action by the parent. They exit, send an exit signal to the
+               parent, and are removed. The parent process blocks until it
+               receives an exit signal from the last process. The exit value
+               and process ID of the last child are returned in the return
+               value and <i class="Emphasis">prodess_id</i> argument respectively of the <i class="Emphasis">wait()</i> function. The following diagram illustrates this
+               situation.
+            </p>
+            <div class="Figure"><img src="../images/multitasking_004.gif" alt="[...]" height="400" width="400"></div>
+            <p class="Paragraph">When a parent process issues a <a href="../../progguide/functions_processes/wait.htm" class="manualLink">wait()</a> call
+               and is not ignoring child signals, the exit signal of every
+               child process is caught by the <i class="Emphasis">wait()</i> function (including
+               exit signals from children in other process groups). So, each
+               child waits after exiting until its parent process calls the <i class="Emphasis">wait()</i> function. While it is waiting for the parent
+               process to catch its exit value, the child process becomes a
+               zombie process. It is placed in the terminating process queue,
+               but is not removed until the parent catches its exit signal. The
+               following diagram illustrates this situation.
+            </p>
+            <div class="Figure"><img src="../images/multitasking_005.gif" alt="[...]" height="395" width="300"></div>
+            <p class="Paragraph">Note that if a parent ends while some of its children are
+               zombie process, those children are removed automatically.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/multitasking/multitasking_and_the_gui.htm" class="manualLink">Multitasking and the GUI</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/multitasking/synchronizing_processes_with_the_waitfunction, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

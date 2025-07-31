@@ -1,0 +1,157 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>aud_get_fld_values()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="aud_get_fld_values aud_get_fld_values functions aud_get_fld_values ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">aud_get_fld_values()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Warning</div>
+            <p class="Paragraph"><i class="Emphasis">The functions and macros listed below must not be used
+                  anymore.</i> Using them in BaanERP 5.0c or higher releases
+               may result in less reliable data. Know that there is a new
+               set of functions that you can use for retrieval of audit
+               information. Refer to <a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;aud_get_fld_values&nbsp;
+					(long&nbsp;colno, const long&nbsp;colinfo, const string&nbsp;rec_buff(), ref string&nbsp;values(,))</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This retrieves the values of a specified field from an
+                  audit record. You can use this for records of type insert,
+                  delete, and update only. For records of type insert and
+                  delete, you can retrieve the values of any field. For records
+                  of type update, you can retrieve the values of changed fields
+                  and primary key fields only.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>colno</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The column number.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">const long</td>
+                     <td class="none"><code>colinfo</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">An array containing the audit DD of the sequence
+                           file that contains the audit record. You fill this
+                           by calling <a href="../../progguide/functions_aud/aud_get_audit_dd.htm" class="manualLink">aud_get_audit_dd()</a></p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>rec_buff()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The buffer containing the audit record. You fill
+                           this by calling <a href="../../progguide/functions_aud/aud_read_audit_rec.htm" class="manualLink">aud_read_audit_rec()</a> or <a href="../../progguide/functions_aud/aud_read_next_audit_rec.htm" class="manualLink">aud_read_next_audit_rec()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>values(,)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">An array containing the field values in string
+                           format. There are two string elements, the first
+                           containing the old value of the field, the second
+                           containing the new value. For example:
+                        </p>
+                        <p class="Paragraph">values(1,1) old value</p>
+                        <p class="Paragraph">values(2,1) new value</p>
+                        <p class="Paragraph">The size of the both elements is determined by
+                           the predefined constant AUD_MAX_FLD_SIZE.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Record of type insert or delete. In these cases,
+                        there is no new value. Only <i class="Emphasis">values</i> (1,1) is
+                        relevant.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">1</td>
+                     <td rowspan="1" colspan="1" class="none">Record of type update. Both old and new values
+                        are relevant.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">Error. Possibly invalid column number or record
+                        not of type insert, delete, or update.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+| For a column of type DB.FLOAT
+
+long    colno, coltype, coldept
+string  rec_buff(AUD_MAX_REC_SIZE)
+string  values(AUD_MAX_FLD_SIZE,2)
+float   new_value, old_value
+
+if ( aud_get_fld_values(colno, colinfo, rec_buff, values) = 1 ) then
+                new_value = load.float( values(1,1) )
+                old_value = load.float( values(2,1) )
+endif
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_overview.htm" class="manualLink">Audit Information Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_synopsis.htm" class="manualLink">Audit Information Synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_sample_program.htm" class="manualLink">Audit Information Sample Program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_aud/aud_get_fld_values, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

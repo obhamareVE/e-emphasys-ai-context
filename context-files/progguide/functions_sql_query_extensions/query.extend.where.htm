@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>query.extend.where()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions query.extend.where query.extend.where query.extend.where ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">query.extend.where()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;query.extend.where&nbsp;
+					(string&nbsp;extension_string [, long&nbsp;mode])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Use this to construct a query extension for the WHERE clause of a database query. 
+                  Use this function for non-zoom sessions. Use <a href="../../progguide/functions_sql_query_extensions/query.extend.where.in.zoom.htm" class="manualLink">query.extend.where.in.zoom()</a> for defining query filters for zoom sessions.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>extension_string</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A string containing conditions to be included in the WHERE statement.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>mode</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This optional argument can have one of the following values:</p>
+                        <table border="0" class="none">
+                           <tbody noTR="2" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">EXTEND_OVERWRITE</th>
+                                 <td rowspan="1" colspan="1" class="none">replaces any existing query extension (this is the default mode)</td>
+                              </tr>
+                              <tr no="2" isLast="true" class="none">
+                                 <th rowspan="1" colspan="1" class="none">EXTEND_APPEND</th>
+                                 <td rowspan="1" colspan="1" class="none">appends this extension to the existing extension</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			4GL
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">In Infor ERP Enterprise, this function replaces the predefined variable <i class="Emphasis">query.extension</i> that was used in earlier versions of the software.
+               </p>
+               <p class="Paragraph">The combination of query.define.sort.order and use of combined field statement in the query.extend.where will give unpredictable
+                  results
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/overview.htm" class="manualLink">SQL query extensions overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/synopsis.htm" class="manualLink">SQL query extensions synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_sql_query_extensions/example.htm" class="manualLink">Query extensions sample program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_sql_query_extensions/query.extend.where, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

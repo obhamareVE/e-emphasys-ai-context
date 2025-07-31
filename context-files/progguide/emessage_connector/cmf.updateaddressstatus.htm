@@ -1,0 +1,177 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>cmf.updateAddressStatus()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="cmf.updateaddressstatus cmf.updateaddressstatus functions cmf.updateaddressstatus ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">cmf.updateAddressStatus()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_cmf&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;cmf.updateaddressstatus&nbsp;
+					(long&nbsp;entry_id, long&nbsp;errorcode)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Updates the error status of an address entry. Entry_id is
+      obtained from the function cmf.getNextAddress(). The possible
+      values of errorcode are subdivided into two categories:
+      errors which can&nbsp; also occur when the addresslist object is
+      empty (global error variables used) and errors which only
+      occur when the addresslist object is filled with one or more
+      recipients: then the errorcode of the recipient is set to
+      indicate the nature of the error. Possible values:</p>
+               <div class="GeneralSection">
+                  <div class="subSectionTitle">Errors indicated by global variables</div>
+                  <table border="1" class="default">
+                     <tbody noTR="4" class="default">
+                        <tr no="1" isLast="false" class="default">
+                           <td rowspan="1" colspan="1" class="default">0</td>
+                           <td rowspan="1" colspan="1" class="default">OK</td>
+                           <td rowspan="1" colspan="1" class="default">No errors for this recipient</td>
+                        </tr>
+                        <tr no="2" isLast="false" class="default">
+                           <td rowspan="1" colspan="1" class="default">-1</td>
+                           <td rowspan="1" colspan="1" class="default">SERVICE_NOT_STARTED</td>
+                           <td rowspan="1" colspan="1" class="default">Service could not be started: cmf.startService
+                              returned error
+                           </td>
+                        </tr>
+                        <tr no="3" isLast="false" class="default">
+                           <td rowspan="1" colspan="1" class="default">-2</td>
+                           <td rowspan="1" colspan="1" class="default">SEND_ERROR</td>
+                           <td rowspan="1" colspan="1" class="default">Cmf.send returned error</td>
+                        </tr>
+                        <tr no="4" isLast="true" class="default">
+                           <td rowspan="1" colspan="1" class="default">-3</td>
+                           <td rowspan="1" colspan="1" class="default">SERVICE_DISABLED</td>
+                           <td rowspan="1" colspan="1" class="default">Service for current address type disabled in the
+                              Services (ttcmf030) table
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <p class="postspacer">&nbsp;</p>
+               </div>
+               <div class="GeneralSection">
+                  <div class="subSectionTitle">Errors indicated by errorcode</div>
+                  <table border="1" class="default">
+                     <tbody noTR="5" class="default">
+                        <tr no="1" isLast="false" class="default">
+                           <td rowspan="1" colspan="1" class="default">-10</td>
+                           <td rowspan="1" colspan="1" class="default">ADDRTYPE_NOT_SUPPORTED</td>
+                           <td rowspan="1" colspan="1" class="default">Current addresstype not supported by any
+                              service.
+                           </td>
+                        </tr>
+                        <tr no="2" isLast="false" class="default">
+                           <td rowspan="1" colspan="1" class="default">-11</td>
+                           <td rowspan="1" colspan="1" class="default">NO_SITA_SENDER_ADDRESS</td>
+                           <td rowspan="1" colspan="1" class="default">From-recipient has no SITA-address in Address
+                              Book (ttcmf200), so all recipients with addresstype
+                              SITA could not be reached.
+                           </td>
+                        </tr>
+                        <tr no="3" isLast="false" class="default">
+                           <td rowspan="1" colspan="1" class="default">-12</td>
+                           <td rowspan="1" colspan="1" class="default">MORE_SENDERS_FOUND</td>
+                           <td rowspan="1" colspan="1" class="default">More than one from-recipient found. Message not
+                              send to all recipients
+                           </td>
+                        </tr>
+                        <tr no="4" isLast="false" class="default">
+                           <td rowspan="1" colspan="1" class="default">-13</td>
+                           <td rowspan="1" colspan="1" class="default">NO_ADDRESS</td>
+                           <td rowspan="1" colspan="1" class="default">No address found or set for this recipient.
+                              Message not sent to the intended recipient.
+                           </td>
+                        </tr>
+                        <tr no="5" isLast="true" class="default">
+                           <td rowspan="1" colspan="1" class="default">-14</td>
+                           <td rowspan="1" colspan="1" class="default">LIST_MEMBER_NOT_ADDED</td>
+                           <td rowspan="1" colspan="1" class="default">A member of a distribution list could not be
+                              added to the addresslist object.
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <p class="postspacer">&nbsp;</p>
+               </div>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>entry_id</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The address list entry identification.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>errorcode</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">See tables above.</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table border="0" width="100%" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">Error updating entry (most likely invalid address
+                        entry id).
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/emessage_connector/overview.htm" class="manualLink">eMessage Connector overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/emessage_connector/synopsis.htm" class="manualLink">eMessage Connector synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/emessage_connector/examples.htm" class="manualLink">eMessage Connector examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/emessage_connector/cmf.updateaddressstatus, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

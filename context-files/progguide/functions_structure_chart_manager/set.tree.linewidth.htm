@@ -1,0 +1,114 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>set.tree.linewidth()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions set.tree.linewidth set.tree.linewidth set.tree.linewidth ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">set.tree.linewidth()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;set.tree.linewidth&nbsp;
+					(string&nbsp;tree_name, long&nbsp;visible_level, long&nbsp;linewidth [, long&nbsp;process_id])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph"><i class="Emphasis">Deprecated.</i> This function is only supported for Baan
+                  Windows and its usage is therefore deprecated.
+               </p>
+               <p class="Paragraph">This changes the line width (in pixels) used for nodes at a
+                  particular level in a specified tree. The default line widths
+                  are:
+               </p>
+               <p class="Paragraph">level 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; –&nbsp;&nbsp;&nbsp; 4 pixels</p>
+               <p class="Paragraph">level 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; –&nbsp;&nbsp;&nbsp; 2 pixels</p>
+               <p class="Paragraph">level 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; –&nbsp;&nbsp;&nbsp; 1 pixel</p>
+               <p class="Paragraph">level 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; –&nbsp;&nbsp;&nbsp; 1 pixel</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>tree_name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the tree for which you want to change
+                           the line width.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>visible_level</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This is a number, in the range 1 to 3, that
+                           specifies the node level to which the new line width is
+                           to be applied. Visible level 1 specifies the highest
+                           level currently visible in the tree. Visible level 3
+                           specifies levels three and below. See <a href="../../progguide/functions_structure_chart_manager/view.tree.htm" class="manualLink">view.tree()</a>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>linewidth</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The new line width (in pixels) to be applied to the
+                           specified node level.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>process_id</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This optional argument indicates the process ID of
+                           the tree for which the line width must be changed. If
+                           you do not include this argument, the new line width is
+                           applied to the specified level in all trees with the
+                           name <i class="Emphasis">tree_name</i>.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			4GL
+               			script types.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_structure_chart_manager/overview.htm" class="manualLink">Structure Chart Manager overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_structure_chart_manager/synopsis.htm" class="manualLink">Structure ChartManager synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_structure_chart_manager/example.htm" class="manualLink">Tree structures: example</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_structure_chart_manager/set.tree.linewidth, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

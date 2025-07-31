@@ -1,0 +1,116 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Company numbers</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="company numbers ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Company numbers</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The company number used during execution of a BAAN 4GL query
+               is the current company number. The current company number is
+               always inherited from the parent session. The root session
+               (Worktop/Webtop) reads the company number from the default
+               company number ( defined in the session "Maintain User Data" ).
+               This company number can be changed by calling the function <a href="../../progguide/functions_company_operations/compnr.check.htm" class="manualLink">compnr.check()</a></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">The &lt;table&gt;._compnr field</div>
+            <p class="Paragraph">The &lt;table&gt;._compnr field enables the use of different
+               company numbers. This field specifies the actual company number
+               of the table. When this field is undefined, the current company
+               number is taken as the default. 'Undefined' is denoted by the
+               value -1.
+            </p>
+            <p class="Paragraph">When a record is selected with 'select &lt;table&gt;.*', the
+               field &lt;table&gt;._compnr in the record contains the company
+               number of the table. When inserting a record in a table with a
+               specific company number, you must fill &lt;table&gt;._compnr
+               with the corresponding company number. The function <a href="../../progguide/functions_db_operations/db.insert.htm" class="manualLink">db.insert()</a> takes care of this and writes the record in the correct
+               (physical) table. No special file pointers are necessary (for
+               example, by using <a href="../../progguide/functions_db_operations/db.bind.htm" class="manualLink">db.bind()</a>).
+            </p>
+            <div class="subExampleSection">
+               <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+The record where the field ttadv100._compnr = 000 belongs to the
+(physical) table ttadv100000
+The record where the field ttadv100._compnr = 200 belongs to the
+(physical) table ttadv100200
+</pre></div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Using &lt;table&gt;._compnr in the WHERE clause</div>
+            <p class="Paragraph">You can also use &lt;table&gt;._compnr in the WHERE clause of
+               a Infor ERP Enterprise SQL statement. In this case it is used as a search
+               condition. For example:
+            </p><pre class="CodeBlock">
+SELECT  ttadv100.*
+FROM    ttadv100
+WHERE   ttadv100._compnr = 200 AND ttadv100.cpac = 'tt'
+</pre><p class="Paragraph">This query lists all records from table ttadv100200 where
+               ttadv100.cpac has the value 'tt'.
+            </p>
+            <p class="Paragraph">You can use &lt;table&gt;._compnr in the following ways:</p>
+            <ul class="List">
+               <li class="ListItem">&lt;table&gt;._compnr = &lt;number&gt; or &lt;number&gt;
+                  = &lt;table&gt;._compnr where &lt;number&gt; specifies an
+                  integer number. The value of &lt;number&gt; is taken as the
+                  company number. It must be a 3-digit number.
+               </li>
+               <li class="ListItem">&lt;table&gt;._compnr = &lt;bind variable&gt; or &lt;bind
+                  variable&gt; = &lt;table&gt;._compnr where &lt;bind
+                  variable&gt; specifies an integer number. When the query is
+                  executed the value of &lt;bind variable&gt; is taken as the
+                  company number. It must be a 3-digit number.
+               </li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Combining &lt;table&gt;._compnr conditions</div>
+            <ul class="List">
+               <li class="ListItem">
+                  <p class="Paragraph">A list of AND conditions can contain only one condition
+                     that includes &lt;table&gt;._compnr. So, the following
+                     construction is possible:
+                  </p>
+                  <p class="Paragraph"><code class="Code">WHERE &lt;table&gt;._compnr = 100 AND
+                        &lt;condition&gt;</code></p>
+                  <p class="Paragraph">but the following is not possible:</p>
+                  <p class="Paragraph"><code class="Code">WHERE &lt;table&gt;._compnr = 100 AND
+                        &lt;table&gt;._compnr = 200</code></p>
+                  <p class="Paragraph">It is possible to include multiple
+                     &lt;table&gt;._compnr._compnr conditions that specify the
+                     company number of different table references. For example,
+                     the following construction is possible:
+                  </p>
+                  <p class="Paragraph"><code class="Code">WHERE &lt;table1&gt;._compnr = 100 AND
+                        &lt;table2&gt;._compnr = 200</code></p>
+               </li>
+               <li class="ListItem">In a list of OR conditions, none of the conditions may
+                  contain a condition on &lt;table&gt;._compnr.
+               </li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/company_numbers, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

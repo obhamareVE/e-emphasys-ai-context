@@ -1,0 +1,76 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Expanding text variables</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="expanding text variables ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Expanding text variables</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Variables or expressions that are included in text lines can
+               be expanded or substituted for report purposes. You must set the
+               variable <i class="Emphasis">lattr.textexpand=TRUE</i> if you want this to
+               happen. Expressions are internally evaluated by the function <a href="../../progguide/functions_expressions_runtime/expr.compile.htm" class="manualLink">expr.compile()</a>.
+            </p>
+            <p class="Paragraph">Customers can use variables in texts. For example, "address",
+               "city", "salary" and so on. Customers must be informed about
+               these variables so that they can use them.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div>
+            <p class="Paragraph">The following is the syntax for variables and expressions
+               included in text lines:
+            </p>
+            <p class="Paragraph"><code class="Code">$ <i class="Emphasis">variable</i> or&nbsp;&nbsp;&nbsp; # <i class="Emphasis">variable</i></code></p>
+            <p class="Paragraph"><code class="Code">${ <i class="Emphasis">expression</i>}&nbsp; or&nbsp;&nbsp;
+   #{ <i class="Emphasis">expression</i>}</code></p>
+            <p class="Paragraph">When the $ symbol if used, the text moves over to accommodate
+               the expanded variable or expression. When the # symbol is used,
+               the expanded variable or expression overwrites existing
+               text.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">The following is an example of text created by using the text
+               manager. The text includes both variables and expressions that
+               can be expanded/substituted for report purposes.
+            </p><pre class="CodeBlock">
+To:     $surname $christian name        #date   , Ede
+        $address
+        $ZIP code  $city
+
+Dear $christian name:
+We have the pleasure of informing you that, as of $date, your salary has been 
+raised by 5%. For you this implies a gross amount of
+${edit( salary + ( salary * 0.05 ), "ZZZZ9,ZZ" )} per month.
+
+                                Kind regards,  $Mgr.
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/overview.htm" class="manualLink">Report scripts overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/sections.htm" class="manualLink">Report script sections</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/predefined_variables.htm" class="manualLink">Predefined variables</a></li>
+               <li class="RelTopic"><a href="../../progguide/report_scripts/functions_in_report_scripts.htm" class="manualLink">Report script functions</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/report_scripts/expanding_text_variables, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

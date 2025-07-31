@@ -1,0 +1,162 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>cmf.sendToPerson()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="cmf.sendtoperson cmf.sendtoperson functions cmf.sendtoperson ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">cmf.sendToPerson()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;cmf.sendtoperson&nbsp;
+					(long&nbsp;mid, long&nbsp;aid, long&nbsp;display, long&nbsp;show.progress, ref string&nbsp;message_string(), long&nbsp;convert, string&nbsp;filename1 ...)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Takes the message object and sends it to the recipients in
+                  the addresslist object that is identified by aid.
+               </p>
+               <p class="Paragraph">Recipients are separated into groups by address type (fax,
+                  SMTP, telex, SITA, and so on). For each group a separate
+                  message object is built with the recipients in that group
+                  attached to it. The Infor ERP Enterprise eMessage Connector service for
+                  that address type is started and the message sent to it.
+               </p>
+               <p class="Paragraph">If no sender information is available, it will
+                  automatically be added. This holds also for the notify
+                  recipient (who, for example, gets the delivery reports). Also
+                  it's checked that the addresslist object contains only one
+                  sender (from-recipient).
+               </p>
+               <p class="Paragraph">Any errors encountered are stored for each recipient in
+                  the addresslist object. Infor ERP Enterprise eMessage Connector
+                  services opened by this function are not stopped. This is for
+                  efficiency purposes. It is expensive to start and stop
+                  services. This allows applications to make multiple calls to
+                  cmf.sendToPerson without incurring the overhead of service
+                  startup and shutdown. Instead another function will be
+                  provided to stop all services opened by this function
+                  (cmf.stopAllServices).
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="7" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>mid</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Message object identification.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>aid</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Identification of the address list.</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>display</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>show.progress</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td class="none">ref string</td>
+                     <td class="none"><code>message_string()</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Constructed error message which contains the
+                           number of recipients that could not be reached, and
+                           the error details. If no errors, message_string
+                           contains a success message
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>convert</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="7" isLast="true" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>filename1 ...</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success for all recipients.</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">Failure for some or all recipients (Check
+                        recipient list object).
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <ul class="List">
+                  <li class="ListItem">Object id's can be negative</li>
+                  <li class="ListItem">The calling application is responsible for deleting
+                     message and address list object after this function has
+                     finished.
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/emessage_connector/overview.htm" class="manualLink">eMessage Connector overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/emessage_connector/synopsis.htm" class="manualLink">eMessage Connector synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/emessage_connector/examples.htm" class="manualLink">eMessage Connector examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/emessage_connector/cmf.sendtoperson, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

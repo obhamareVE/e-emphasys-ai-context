@@ -1,0 +1,125 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>to.form()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions to.form to.form to.form ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">to.form()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void &nbsp;to.form&nbsp;
+					(long&nbsp;form_number)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This forces a switch from the current form to the specified
+                  form. The <i class="Emphasis">form_number</i> argument must specify an existing
+                  form in the session, and must be in the range one to the value
+                  of the predefined variable <i class="Emphasis">number.forms</i>. During the
+                  switch operation, the <a href="../../progguide/4gl_features/4gl_form_sections.htm" class="manualLink">4GL form sections</a> subsection of the current form is executed and the <a href="../../progguide/4gl_features/4gl_form_sections.htm" class="manualLink">4GL form sections</a> and <a href="../../progguide/4gl_features/4gl_form_sections.htm" class="manualLink">4GL form sections</a> subsections of the new form are executed. The <i class="Emphasis">init.form</i> subsection is executed only the first time a form becomes
+                  current.
+               </p>
+               <p class="Paragraph">The following predefined variables are relevant to this
+                  function:
+               </p>
+               <table border="0" class="none">
+                  <tbody noTR="4" class="none">
+                     <tr no="1" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">number.forms</td>
+                        <td rowspan="1" colspan="1" class="none">indicates the total number of forms in the
+                           session
+                        </td>
+                     </tr>
+                     <tr no="2" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">form.prev</td>
+                        <td rowspan="1" colspan="1" class="none">indicates the previous form number</td>
+                     </tr>
+                     <tr no="3" isLast="false" class="none">
+                        <td rowspan="1" colspan="1" class="none">form.curr</td>
+                        <td rowspan="1" colspan="1" class="none">indicates the current form number</td>
+                     </tr>
+                     <tr no="4" isLast="true" class="none">
+                        <td rowspan="1" colspan="1" class="none">form.next</td>
+                        <td rowspan="1" colspan="1" class="none">indicates the next form number</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <p class="postspacer">&nbsp;</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>form_number</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore"></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">In a well-designed GUI, users (and not the application)
+                  select and initiate the actions to be performed. Using <i class="Emphasis">to.form()</i> removes control from the user. Therefore it
+                  does not conform to good GUI design principles.
+               </p>
+               <p class="Paragraph">This function is not relevant for dynamic forms.</p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+| Suppose there is a special form (form 4) for a form command.
+| When the user chooses this command, form 4 is started.
+
+declaration:
+        long old_curr_form
+
+function extern my.form.command()
+{
+        old_curr_form = form.curr
+        to.form( 4 )
+. . .   | perform some action(s)
+        to.form( old_curr_form )
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/overview.htm" class="manualLink">Form and form field operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_form_and_form_field_operations/synopsis.htm" class="manualLink">Form and form field operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_form_and_form_field_operations/to.form, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

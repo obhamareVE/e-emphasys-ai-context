@@ -1,0 +1,83 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Simplest comparison predicate</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Comparison operator ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Simplest comparison predicate</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The simplest comparison predicate compares two value
+               expressions. It is used to define the semantics of the general <a href="../../progguide/functions_database_handling/comparison_pred.htm" class="manualLink">Comparison predicate</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax</div><pre class="CodeBlock">
+&lt;simplest comparison predicate&gt;
+    ::= <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a> &lt;comparison operator&gt; <a href="../../progguide/functions_database_handling/value_expression.htm" class="manualLink">Value expression</a>
+
+&lt;comparison operator&gt;
+    ::= &lt; | &lt;= | = | &gt;= | &gt; | &lt;&gt; | !=
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Semantics</div>
+            <p class="Paragraph">If one of the value expressions is NULL then the comparison
+               predicate evaluates to Unknown.
+            </p>
+            <p class="Paragraph">If the value expressions are of type <i class="Emphasis">string</i> and the
+               values are of unequal length, then, for the purpose of
+               comparison, the shorter string is right padded with spaces so
+               that its length equals the length of the longer string.
+            </p>
+            <p class="Paragraph">If the value expressions are of type <i class="Emphasis">raw</i> and the
+               values are of unequal length, then <i class="Emphasis">no</i> padding is used for
+               the purpose of comparison.
+            </p>
+            <p class="Paragraph">The values of the value expressions are compared using the
+               normal semantics of the relational operators.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntactical restrictions</div>
+            <p class="Paragraph">The types of the left value expression and the right value
+               expression must be <a href="../../progguide/functions_database_handling/comparable_datatypes.htm" class="manualLink">comparable</a>.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following comparison predicate evaluates to True.</p><pre class="CodeBlock">
+2 &gt; 1
+</pre><p class="Paragraph">The following comparison predicate evaluates to True.</p><pre class="CodeBlock">
+'S' = 'S              '
+</pre><p class="Paragraph">The following comparison predicate evaluates to True if empno
+               is 10. It evaluate to Unknown if empno is NULL. It evaluates to
+               False otherwise.
+            </p><pre class="CodeBlock">
+empno = 10
+</pre><p class="Paragraph">The following comparison predicate evaluates to False.</p><pre class="CodeBlock">
+x'ab' = x'abc'
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/comparison_pred.htm" class="manualLink">Comparison predicate</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/simplest_comparison_predicate, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

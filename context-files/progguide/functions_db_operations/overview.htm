@@ -1,0 +1,215 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Database operations overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="database operations ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Database operations overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Use these functions for handling database input and output.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">New features in Infor ERP Enterprise</div>
+            <p class="Paragraph">In Infor ERP Enterprise, the functions <i class="Emphasis">db.curr()</i>, <i class="Emphasis">db.first()</i>, <i class="Emphasis">db.last()</i>, <i class="Emphasis">db.next()</i>, <i class="Emphasis">db.prev()</i>, <i class="Emphasis">db.gt()</i>, <i class="Emphasis">db.ge()</i>, <i class="Emphasis">db.lt()</i> and <i class="Emphasis">db.le()</i> are implemented internally as SELECT statements.
+               They are supported for backward compatibility only. In new
+               applications, use queries instead.
+            </p>
+            <p class="Paragraph">In Infor ERP Enterprise, certain 4GL functions have Data Access Layer
+               (DAL) equivalents. The following table lists these functions and
+               their DAL equivalents.
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="9" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">4GL function</th>
+                     <th rowspan="1" colspan="1" class="none">DAL function</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">on.main.table()</td>
+                     <td rowspan="1" colspan="1" class="none">with.object.set.do()</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">on.old.occ()</td>
+                     <td rowspan="1" colspan="1" class="none">with.old.object.values.do()</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">set.input.error()</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">dal.set.error.message()</p>
+                        <p class="Paragraph">return(DALHOOKERROR)</p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">skip.io()</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">dal.set.error.message()</p>
+                        <p class="Paragraph">return(DALHOOKERROR)</p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">abort.io()</td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">dal.set.error.message()</p>
+                        <p class="Paragraph">return(DALHOOKERROR)</p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">db.update()</td>
+                     <td rowspan="1" colspan="1" class="none">dal.update()</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">db.delete()</td>
+                     <td rowspan="1" colspan="1" class="none">dal.destroy()</td>
+                  </tr>
+                  <tr no="9" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">db.insert()</td>
+                     <td rowspan="1" colspan="1" class="none">dal.new()</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">If a DAL exists for a particular table, it is preferable to
+               use the DAL functions. The older functions access the database
+               directly. When you make changes to the database with these
+               functions, logic integrity checks programmed in the DAL are not
+               executed. When you make changes to the database with the DAL
+               functions, the relevant DAL hooks are executed automatically.
+               This ensures the logic integrity of the database.
+            </p>
+            <p class="Paragraph">For further information about database handling in general
+               and about the Data Access Layer, see <a href="../../progguide/functions_database_handling/overview.htm" class="manualLink">Database handling overview</a> and <a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Table names and declarations</div>
+            <p class="Paragraph">The naming syntax for tables, record buffers, and fields
+               is:
+            </p><pre class="Formula">
+table tppmmmxxx        | table declaration
+rcd.tppmmmxxx          | record buffer of table
+ppmmmxxx.ffffffff      | logical field of table
+</pre><p class="Paragraph">where t stands for table, <code class="Code">pp</code> is the package code, mmm is the module code, <code class="Code">xxx</code> is the table number, and <code class="Code">ffffffff</code> is a field name.
+            </p>
+            <p class="Paragraph">If a table is used in a script, it must be declared with the
+               statement: <code class="Code">table tppmmmxxx</code></p>
+            <p class="Paragraph">Declaration of a table implies declaration of all its fields
+               and its record buffer. These do not need to be declared
+               separately.
+            </p>
+            <p class="Paragraph">There are no functions for opening or closing a table. A
+               table is automatically opened the first time it is accessed. It
+               is automatically closed when the program ends.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Error handling</div>
+            <p class="Paragraph">In Infor ERP Enterprise, there are two main categories of errors:
+               operating system errors and database system errors. For an
+               explanation of the error codes, consult your operating system or
+               database system documentation, or see <a href="../../progguide/errors/overview.htm" class="manualLink">Infor ES errors and messages</a>.
+            </p>
+            <p class="Paragraph">Normally, a program can detect only four of the database
+               errors: EDUPL, EENDFILE, ENOREC, and EROWCHANGED. When other
+               errors occur, an error message is displayed on screen. However,
+               you can call the function <a href="../../progguide/functions_db_operations/db.set.error.bypass.on.htm" class="manualLink">db.set.error.bypass.on()</a> to set the predefined variable <i class="Emphasis">error.bypass</i> to suppress error messages and enable a
+               program to detect some or all errors instead. This variable can
+               have the following values:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">false</th>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">This is the default value. The program can detect
+                           the following database errors: EDUPL, EENDFILE, ENOREC,
+                           and EROWCHANGED.
+                        </p>
+                        <p class="Paragraph">Some fatal errors cause a direct abort of the
+                           application. When this happens, the message 'Cannot
+                           continue' is displayed.
+                        </p>
+                        <p class="Paragraph">If you attempt to lock a record or table that is
+                           already locked by another process, the program returns
+                           to the retry point automatically a number of times (by
+                           default, 10 times) before stopping the session and
+                           displaying the error message.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">true</th>
+                     <td rowspan="1" colspan="1" class="none">The program can detect all errors, except those listed below. If the error can
+                        		       be detected no database error messages are displayed on screen, and the 
+                        		       application must handle the error. 
+                        <table class="default">
+                           <tbody noTR="3" class="default">
+                              <tr no="1" isLast="false" class="default">
+                                 <th rowspan="1" colspan="1" class="default">EABORT</th>
+                                 <td rowspan="1" colspan="1" class="default">If a db.retry.point() is set, the application returns
+                                    						automatically to it for a number of times. If this number
+                                    						is exceeded or no db.retry.point() is set, the application
+                                    						is aborted. Other applications in the same bshell are 
+                                    						unaffected.
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="default">
+                                 <th rowspan="1" colspan="1" class="default">EDBCONNECTIONLOST</th>
+                                 <td rowspan="1" colspan="1" class="default">All applications in the bshell are terminated, followed
+                                    						by termination of the bshell itself.
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="true" class="default">
+                                 <th rowspan="1" colspan="1" class="default">EMEMORY</th>
+                                 <td rowspan="1" colspan="1" class="default">The application is aborted. Other applications in the same
+                                    						bshell are unaffected.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">A program can detect database errors in the following
+               ways:
+            </p>
+            <ul class="List">
+               <li class="ListItem">Test return values. For example: <code class="Code">if db.insert( tpctst999 ) = EENDFILE then
+                     ...</code></li>
+               <li class="ListItem">Use <a href="../../progguide/functions_db_operations/db.error.htm" class="manualLink">db.error()</a>. For example: <code class="Code">db.insert( tpctst999 )
+                     if db.error( tpctst999 ) = EENDFILE then
+                     ...</code></li>
+               <li class="ListItem">Use the predefined variable <i class="Emphasis">e</i>. For example: <code class="Code">db.insert( tpctst999 )
+                     if e = EENDFILE then ...</code></li>
+               <li class="ListItem">The ENDSELECT and SELECTEMPTY statements automatically
+                  detect the EENDFILE and ENOREC errors respectively.
+               </li>
+            </ul>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_db_operations/synopsis.htm" class="manualLink">Database operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_db_operations/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>The Call Graph Profiler</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">The Call Graph Profiler</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">The Call Graph Profiler is a performance profiler for Baan 3GL
+               	  and 4GL programs. It is designed to give information about the bottlenecks in
+               	  the profiled application.
+            </p>
+            <p class="Paragraph">The Call Graph Profiler collects statistics about the execution
+               	  of the profiled program. The data is presented in a HTML browser. The Call
+               	  Graph Profile provides hierarchical information for each function in the
+               	  program. It reports the time that is spent in the function itself and the time
+               	  spent in the functions called by the function (children). This makes it easy to
+               	  relate execution time to the high-level activities of the application (e.g.
+               	  sections in the UI, sections in the DAL, functions in DLLs) and understand
+               	  where the time is spent.
+            </p>
+            <p class="Paragraph">The Call Graph Profile also provides information about SQL
+               	  statements (parse, exec and fetch times) and other functions that are related
+               	  to the database (e.g. db.update, commit.transaction, abort.transaction). This
+               	  makes it easy to find which database operations are executed too often or are
+               	  running too long.
+            </p>
+            <p class="Paragraph">The Call Graph Profiler does not require profiled objects in
+               	  the Baan environment (these are objects compiled in profile mode, used in the
+               	  'old' profiling mechanism). The Call Graph Profiler does not require source
+               	  code in the Baan environment.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/profiler/using.htm" class="manualLink">Using the Call Graph Profiler</a></li>
+               <li class="RelTopic"><a href="../../progguide/profiler/output.htm" class="manualLink">The Call Graph Profile</a></li>
+               <li class="RelTopic"><a href="../../progguide/profiler/analyzing.htm" class="manualLink">Analyzing the Call Graph Profile</a></li>
+               <li class="RelTopic"><a href="../../progguide/profiler/example.htm" class="manualLink">Call Graph Profiler Example</a></li>
+               <li class="RelTopic"><a href="../../progguide/profiler/glossary.htm" class="manualLink">Call Graph Profiler Glossary</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/profiler/introduction, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

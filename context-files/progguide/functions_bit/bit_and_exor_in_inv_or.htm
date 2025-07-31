@@ -1,0 +1,500 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>bit.and(), bit.exor(), bit.in(), bit.inv(), bit.or()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="bit.and bit.and bit.exor bit.exor bit.in bit.in bit.inv bit.inv bit.or bit.or functions bit.and functions bit.exor functions bit.in functions bit.inv functions bit.or ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">bit.and(), bit.exor(), bit.in(), bit.inv(), bit.or()</div>
+      <div class="body">
+         <div class="GeneralSection"><a name="bit_and"></a><div class="subSectionTitle">bit.and</div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;bit.and&nbsp;
+					(long&nbsp;pattern1, long&nbsp;pattern2)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Bitwise AND function</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>pattern1</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>pattern2</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The function bit.and returns the bitwise AND of the supplied input values.</p>
+            <p class="Paragraph">Each bit in the two’s complement representation of the result is set
+            if and only if
+            each of the corresponding bits
+            in the two’s complement representation of the supplied input values is set.</p>
+            <p class="Paragraph">Notice that the behavior of this function does not depend on the width of the used two’s complement representation.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="bit_exor"></a><div class="subSectionTitle">bit.exor</div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;bit.exor&nbsp;
+					(long&nbsp;pattern1, long&nbsp;pattern2)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Bitwise exclusive OR function</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>pattern1</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>pattern2</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The function bit.exor returns the bitwise exclusive OR of the supplied input values.</p>
+            <p class="Paragraph">Each bit in the two’s complement representation of the result is set
+            if and only if
+            exactly one of the corresponding bits
+            in the two’s complement representation of the supplied input values is set.</p>
+            <p class="Paragraph">Notice that the behavior of this function does not depend on the width of the used two’s complement representation.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="bit_in"></a><div class="subSectionTitle">bit.in</div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;boolean&nbsp;bit.in&nbsp;
+					(long&nbsp;pattern1, long&nbsp;pattern2)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Bitwise IN function</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>pattern1</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>pattern2</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The function bit.in returns
+               whether the bitset represented by the first input value
+               is a subset of
+               the bitset represented by the second input value.
+            </p>
+            <p class="Paragraph">Boolean value true is returned
+            if and only if
+            each bit in the two’s complement representation of the first input value
+            is set only if also
+            the corresponding bit in the two’s complement representation of the second input value is set;
+            otherwise,
+            boolean value false is returned,
+            indicating that at least one bit in the two’s complement representation of the first input value is set
+            while the corresponding bit in the two’s complement representation of the second input value is not set.</p>
+            <p class="Paragraph">The function call <code class="Code">bit.in(pattern1, pattern2)</code> returns the same boolean value as the expression <code class="Code">bit.and(pattern1, bit.inv(pattern2)) = 0</code></p>
+            <p class="Paragraph">Notice that the behavior of this function does not depend on the width of the used two’s complement representation.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="bit_or"></a><div class="subSectionTitle">bit.or</div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;bit.or&nbsp;
+					(long&nbsp;pattern1, long&nbsp;pattern2)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Bitwise OR function</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>pattern1</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>pattern2</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The function bit.or returns the bitwise OR of the supplied input values.</p>
+            <p class="Paragraph">Each bit in the two’s complement representation of the result is set
+            if and only if
+            at least one of the corresponding bits
+            in the two’s complement representation of the supplied input values is set.</p>
+            <p class="Paragraph">Notice that the behavior of this function does not depend on the width of the used two’s complement representation.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="GeneralSection"><a name="bit_inv"></a><div class="subSectionTitle">bit.inv</div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;bit.inv&nbsp;
+					(long&nbsp;value)</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Bitwise inversion.</p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="1" class="none">
+                  <tr no="1" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>value</code></td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The function bit.inv returns the two’s complement inversion of the input value.</p>
+            <p class="Paragraph">Each bit in the two’s complement representation of the result is set
+            if and only if
+            the corresponding bit
+            in the two’s complement representation of the supplied input value is not set.</p>
+            <p class="Paragraph">The sum of the input value and the return value will be -1
+            (two’s complement: all bits set).</p>
+            <p class="Paragraph">A much simpler specification of this function might be:
+               it returns -1 - value.
+            </p>
+            <p class="Paragraph">Notice that this function is its own inverse: bit.inv(bit.inv(value)) = -1 - (-1 - value) = value.</p>
+            <p class="Paragraph">Notice that the behavior of this function does not depend on the width of the used two’s complement representation.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle">Notes</div>
+            <div class="NoteContent">
+               <p class="Paragraph">You can also use the mathematical operators +, -, and / for
+                  	  computing bit operations. The operands must be declared as variables of type
+                  	  SET. You can declare such a variable only with a domain declaration where the
+                  	  domain is of database type SET.
+               </p>
+               <ul class="List">
+                  <li class="ListItem">The operator + equates to the function <i class="Emphasis">bit.or()</i>.
+                  </li>
+                  <li class="ListItem">The operator * equates to the function <i class="Emphasis">bit.and()</i>.
+                  </li>
+                  <li class="ListItem">The operator / equates to the function <i class="Emphasis">bit.exor()</i>.
+                  </li>
+                  <li class="ListItem">The operator - equates to a special form of the function <i class="Emphasis">bit.and()</i>. That is, <code class="Code">a-b</code> for sets equates to <code class="Code">bit.and(a, bit.inv(b))</code> for longs. If the SET variables are represented as longs, the following
+                     		example explains the - operator: <code class="Code">0101
+                        0110
+                        ----
+                        0001</code></li>
+               </ul>
+               <ul class="List">
+                  <li class="ListItem">When using SET constants as operands, the keyword IN equates to
+                     		the function <i class="Emphasis">bit.in()</i>. The following example illustrates
+                     		the use of bit operations on SET constants. Note that EMPTY is a keyword for
+                     		the empty set; all bits are zero (set value 0).
+                  </li>
+               </ul><pre class="CodeBlock">
+    domain cf a,b        | domain declaration: cf, a, and b are of type SET
+                         | see also the function cf$()
+    a = empty            | clear a
+    a = cf.dim           | set a to dim
+    a = a + cf.reverse   | add/enable reverse
+    a = a - cf.dim       | delete/disable dim
+    a = a / cf.underline | toggle underline
+
+    a in b               
+    if ( a in b ) then
+         message( "All elements of a are in b" )
+    endif
+    if ( cf.reverse * a ) then
+         message( "a contains reverse" )
+    endif
+    if ( a ) then
+         message( "a contains at least one argument" )
+    endif
+    if ( a=empty ) then
+         message( "a is an empty set" )
+    endif
+</pre><p class="Paragraph">The following diagrams illustrate how set operations work (a
+                  	  and b are sets):
+               </p>
+               <div class="Figure"><img src="../images/bit_set.gif" alt="[...]" height="173" width="449"></div>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Examples</div>
+            <p class="Paragraph">The following examples illustrate how these functions
+	  work,
+	  using 5-bit two’s complement representation of integer values.</p>
+            <table class="default">
+               <tbody noTR="19" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">integer value</th>
+                     <th rowspan="1" colspan="1" class="default">5-bit two’s complement representation</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">-16 … -9</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">10xyz</pre></td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">-8</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">11000</pre></td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">-7</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">11001</pre></td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">-6</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">11010</pre></td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">-5</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">11011</pre></td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">-4</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">11100</pre></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">-3</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">11101</pre></td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">-2</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">11110</pre></td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">-1</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">11111</pre></td>
+                  </tr>
+                  <tr no="11" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">0</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">00000</pre></td>
+                  </tr>
+                  <tr no="12" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">1</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">00001</pre></td>
+                  </tr>
+                  <tr no="13" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">2</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">00010</pre></td>
+                  </tr>
+                  <tr no="14" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">3</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">00011</pre></td>
+                  </tr>
+                  <tr no="15" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">4</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">00100</pre></td>
+                  </tr>
+                  <tr no="16" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">5</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">00101</pre></td>
+                  </tr>
+                  <tr no="17" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">6</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">00110</pre></td>
+                  </tr>
+                  <tr no="18" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">7</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">00111</pre></td>
+                  </tr>
+                  <tr no="19" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">8 … 15</td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">01xyz</pre></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <table class="default">
+               <tbody noTR="2" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default"><pre class="Formula">
+bit.and(5,-4) = 4
+</pre></th>
+                     <th rowspan="1" colspan="1" class="default"><pre class="Formula">
+bit.exor(5,-4) = -7
+</pre></th>
+                     <th rowspan="1" colspan="1" class="default"><pre class="Formula">
+bit.or(5,-4) = -3
+</pre></th>
+                  </tr>
+                  <tr no="2" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+00101
+11100
+-----
+00100
+</pre></td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+00101
+11100
+-----
+11001
+</pre></td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+00101
+11100
+-----
+11101
+</pre></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <table class="default">
+               <tbody noTR="2" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default"><pre class="Formula">
+bit.inv(6) = -7
+</pre></th>
+                     <th rowspan="1" colspan="1" class="default"><pre class="Formula">
+bit.in(5,-4) = false
+</pre></th>
+                     <th rowspan="1" colspan="1" class="default"><pre class="Formula">
+bit.in(4,-4) = true
+</pre></th>
+                  </tr>
+                  <tr no="2" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+00110
+-----
+11001
+</pre></td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+00101 
+11100
+-----
+11110
+</pre></td>
+                     <td rowspan="1" colspan="1" class="default"><pre class="Formula">
+00100 
+11100
+-----
+11111
+</pre></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_bit/bit_operations_overview_and_synopsis.htm" class="manualLink">Bit operations: overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_bit/bit_and_exor_in_inv_or, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

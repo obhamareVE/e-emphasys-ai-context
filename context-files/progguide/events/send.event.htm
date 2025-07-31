@@ -1,0 +1,109 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>send.event()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions send.event send.event send.event ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">send.event()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;send.event&nbsp;
+					(long&nbsp;proc_grp, long&nbsp;event(EVTMAXSIZE))</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This sends an event from the current process to the
+                  specified process group. It enables event-driven
+                  communication between processes. A process can send any event
+                  type using this function. Note that this is the only way to
+                  send events of type EVTCLIENTMESSAGE.
+               </p>
+               <p class="Paragraph">If the sending process requires an immediate response, use <i class="Emphasis">suspend(0)</i> to force a context switch; that is, to
+                  force the system to give processor time to the destination
+                  process.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>proc_grp</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The ID of the process group.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">long</td>
+                     <td class="none"><code>event(EVTMAXSIZE)</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Long array containing the <a href="../../progguide/events/event_array_parameters.htm" class="manualLink">event array parameters</a> of the event that must be sent to the process group.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">TRUE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; success</p>
+            <p class="Paragraph">FALSE&nbsp;&nbsp; &nbsp;&nbsp; error</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">This example sends a message that indicates the start of
+               sending.
+            </p><pre class="CodeBlock">
+#define START_SEND      1
+long process, event(EVTMAXSIZE)
+
+evt.type( event )                                       =
+EVTCLIENTMESSAGE
+evt.client.sender( event )      = pid
+evt.client.command( event )     = START_SEND
+
+if not send.event( get.pgrp(process), event ) then
+                message( "Process %d is not responding", process )
+endif
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/events/overview.htm" class="manualLink">Events overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/synopsis.htm" class="manualLink">Events synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/event_types.htm" class="manualLink">Event types</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/event_array_parameters.htm" class="manualLink">Event array parameters</a></li>
+               <li class="RelTopic"><a href="../../progguide/events/sample_program.htm" class="manualLink">Events sample program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/events/send.event, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

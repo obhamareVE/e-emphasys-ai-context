@@ -1,0 +1,136 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>dal.require.field()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="dal.require.field dal.require.field functions dal.require.field ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">dal.require.field()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>#include &lt;bic_dal&gt;</code></p>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;dal.require.field&nbsp;
+					(const string&nbsp;fieldname [, long&nbsp;element] [, ref boolean&nbsp;field.changed])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This function can be used to determine a specific order for the calls to the update hooks.
+                  	The function only works properly if update hooks are triggered by the 4GL engine (amdll), and not called from the application
+                  itself.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>fieldname</code></td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>element</code>]
+                     </td>
+                     <td class="none"></td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td class="none">[ref boolean</td>
+                     <td class="none"><code>field.changed</code>]
+                     </td>
+                     <td class="none"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Engine
+               			and can be used in 
+               			DAL
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1300.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">This function can only be called in the <a href="../../progguide/functions_dal/field.update.htm" class="manualLink">field.update()</a> hook.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div>
+            <p class="Paragraph">As in the example below, the value for "b" depends upon "c" but "c" also depends upon "b".
+               	As programmed in the example, when "a" changes (and "a" &lt;= 10) then b.update() is called, and from there the c.update() function
+               is called.
+               	In c.update() the value for "c" is determined. Based upon the new "c", "b" can be determined.
+               	
+               	When "a" changes (and "a" &gt; 10), then b.update() is called. Then c.update() is called, which requires b. The value for "b"
+               is however just calculated, so there is no need to recalculate and c can be determined upon the current value for b.
+               	 
+               	In both cases a dal.require.field("a") is programmed which in fact does not do anything, because the trigger for this all
+               was a change for "a".
+            </p><pre class="CodeBlock">
+function extern long before.open.object.set()
+{
+    ...
+
+    dal.field.depends.on("b",
+        HOOK_UPDATE,   "a", "c")
+    dal.field.depends.on("c",
+        HOOK_UPDATE,   "a", "b")
+
+    ...
+
+    return(0)
+}
+      
+function extern void b.update()
+{
+    dal.require.field("a")
+    if a &lt;= 10 then
+        dal.require.field("c")
+        if dal.any.parent.changed() then
+            b = c
+        endif
+    else
+        b = 0
+    endif
+}
+
+function extern void c.update()
+{
+    dal.require.field("a")
+    if a &lt;= 10 then
+        c = 6
+    else
+        dal.require.field("b")
+        if dal.any.parent.changed() then
+            c = b
+        endif
+    endif
+}</pre></div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/dal.require.field, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

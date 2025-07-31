@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Parallel Application Processing Overview</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Parallel Application Processing Overview ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Parallel Application Processing Overview</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Parallel processing is used to spread workload of a certain functionality over multiple application servers (bshells).
+               The aim of parallel processing is to reduce the throughput time (total duration) of batch sessions. It will utilize the full
+               system power.
+               The performance of a parallel application is not in linear proportion to the number of CPUs in a system.
+               Because the scalability depends on many factors, one cannot give a formula to determine the optimal number of servers.
+               The optimal number of servers must be determined by practical experience.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Technique</div>
+            <p class="Paragraph">Parallel processing can be used by an application by including &lt;bic_parallel&gt;. 
+               This include will make sure that the library "ottstppardll" is used.
+               Communication between client and server bshells is based upon TCP/IP sockets.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">History</div>
+            <p class="Paragraph">This functionality supersedes the "Parallel Application Processing" functionality which is implemented in "tccomdll0200".
+               This implementation has some drawbacks with respect to stability. The main factors which make the parallel processing implementation
+               in tccomdll0200 instable are:
+            </p>
+            <ul class="List">
+               <li class="ListItem">Based on message queues (on Unix) and Mail slots (Windows).
+                  Both technologies are not self cleaning. So when a process which creates/owns these objects exits abnormally,
+                  these objects are not automatically removed
+               </li>
+               <li class="ListItem">Messages placed in message queues are limited in size.</li>
+               <li class="ListItem">Using timers to check if all participants are still alive. 
+                   When the system is very busy, timeout’s might occur, which are unjustified.
+                   Also when the system clock is not stable (e.g. moved back or forth because of a time synchronization),
+                   incorrect timeouts can occur.</li>
+            </ul>
+            <p class="Paragraph">This new implementation of parallel processing is not replacing the existing functionality but can live side by side with
+               the
+               existing parallel processing functionality.
+            </p>
+            <p class="Paragraph">In the section <a href="../../progguide/functions_parallel_processing/crossreference.htm" class="manualLink">Parallel Application Processing Cross Reference</a> a table is shown which can be used to migrate an application from the existing parallel processing implementation to the
+               new implementation.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Topology</div>
+            <p class="Paragraph">In the next figure a general topology for parallel processing is shown.</p>
+            <div class="Figure"><img src="../images/parallel_processing.gif" alt="[...]" height="494" width="560"></div>
+            <p class="Paragraph">One client can define one or more server groups. Within each server group, one or more bshells can be running.
+               All bshells in a server group must run the same server session.
+               A client session can send messages to a server group or to a specific server. 
+               A message usually represents a request to a server to perform a portion of work. 
+               When a message is sent to a server group, it will be dispatched to a session within this group which is currently free. 
+               When there is currently no free server, the send function will wait until a server becomes ready. 
+               	  A message can also be sent to a specific server session within a group. 
+               	  When this server is currently busy, the send function will wait until this specific server becomes ready.
+            </p>
+            <p class="Paragraph">A server session can optionally send some data back to the client session.
+               	  In the client session a specific get.message call must be programmed to handle this response data.
+            </p>
+            <p class="Paragraph">Optionally a server session can send requests to a dedicated support session in the client.
+               	  This can be useful for a central handling of first free numbers to prevent contention on a single table from several servers.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/configuration.htm" class="manualLink">Parallel Application Processing Configuration</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/debugging.htm" class="manualLink">Parallel Application Processing Debugging</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/tracing.htm" class="manualLink">Parallel Application Processing Tracing</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/crossreference.htm" class="manualLink">Parallel Application Processing Cross Reference</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/sequence.htm" class="manualLink">Sequence Diagrams</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/retries.htm" class="manualLink">Parallel Application Processing Database Retries</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/synopsis.htm" class="manualLink">Parallel Application Processing synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/examples.htm" class="manualLink">Parallel Application Processing Examples</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_parallel_processing/overview, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

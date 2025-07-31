@@ -1,0 +1,321 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>References</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="References database handling References ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">References</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Retrieving references to a record</div>
+            <p class="Paragraph">In the standard SQL interface, you can retrieve references to
+               a record as follows:
+            </p><pre class="CodeBlock">
+| Suppose that tiitm001 has a reference to tccom010 (field 'cuno'),
+| and to tccom011 (field 'suno')
+table           ttiitm001
+table           ttccom010
+table           ttccom011
+SELECT tiitm001.*, tccom010.*, tccom011.*
+FROM tiitm001, tccom010, tccom011
+WHERE tiitm001.cuno = tccom010.cuno AND
+                tiitm001.suno = tccom011.suno
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Retrieving references using REFERS TO</div>
+            <p class="Paragraph">To simplify the retrieval of references, you can specify
+               references (using the keyword REFERS TO) in the WHERE clause.
+               Apart from simplifying the query, this also optimizes query
+               handling. As references always refer to a primary key, they can
+               be found immediately. Moreover, the program fills a field with
+               reference characters if it does not find a reference. The
+               following implements the previous example by using REFERS
+               TO:
+            </p><pre class="CodeBlock">
+table           ttiitm001
+table           ttccom010
+table           ttccom011
+SELECT tiitm001.*, tccom010.*, tccom011.*
+WHERE tiitm001.cuno REFERS TO tccom010 AND tiitm001.suno REFERS TO tccom011
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">REFERS TO syntax</div>
+            <p class="Paragraph">A REFERS TO statement has the following form:</p><pre class="CodeBlock">
+&lt;from&gt; REFERS TO &lt;to&gt; [PATH &lt;path&gt; [,&lt;path&gt;...]] [UNREF&lt;mode&gt;]
+</pre><p class="Paragraph">The following table explains the various parts of the
+               statement:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+&lt;from&gt;
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none">The referring table field.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+&lt;to&gt;
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none">The table referred to.</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+&lt;path&gt;
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The path via which reference is reached (always
+                           table fields). If PATH is specified, specifying a table
+                           field for &lt;from&gt; is mandatory. For example:
+                        </p><pre class="CodeBlock">
+WHERE table1.field REFERS TO table4.field
+PATH table2.field, table3.field
+</pre></td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+&lt;mode&gt;
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A mode indicating system action if reference does
+                           not exist; possible values are:
+                        </p>
+                        <table width="100%" border="0" class="none">
+                           <tbody noTR="4" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">SKIP</th>
+                                 <td rowspan="1" colspan="1" class="none">If a reference cannot be found, the record is
+                                    skipped.
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">CLEAR</th>
+                                 <td rowspan="1" colspan="1" class="none">If a reference is empty or absent, the
+                                    referring record is filled with spaces or 0
+                                    (numeric).
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">SETUNREF</th>
+                                 <td rowspan="1" colspan="1" class="none">The value of an undefined reference is filled
+                                    with an 'undefined reference' sign, defined in
+                                    the data dictionary, or with 0 (numeric).
+                                 </td>
+                              </tr>
+                              <tr no="4" isLast="true" class="none">
+                                 <th rowspan="1" colspan="1" class="none">CLEARUNREF</th>
+                                 <td rowspan="1" colspan="1" class="none">The referred record is filled with spaces or
+                                    0 (zero) when reference fields are empty. When
+                                    the reference is undefined the referred record is
+                                    filled with an 'undefined reference' sign.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">Depending on the reference definition in the data
+                           dictionary, the default reference mode is:
+                        </p>
+                        <table width="50%" border="0" class="none">
+                           <tbody noTR="4" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">reference mode in DD</th>
+                                 <th rowspan="1" colspan="1" class="none">UNREF mode</th>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">mandatory</td>
+                                 <td rowspan="1" colspan="1" class="none">SETUNREF</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">mandatory unless empty</td>
+                                 <td rowspan="1" colspan="1" class="none">CLEARUNREF</td>
+                              </tr>
+                              <tr no="4" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">not mandatory</td>
+                                 <td rowspan="1" colspan="1" class="none">CLEAR</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+SELECT  ttadv100.*
+FROM    ttadv100, ttadv101
+WHERE   ttadv101.cmod BETWEEN "aaa" and "azz"
+AND     ttadv101 REFERS TO ttadv100 UNREF &lt;UNREF_mode&gt;
+AND     ttadv100.cpac BETWEEN "  " and "zz"
+</pre><p class="Paragraph">The evaluation order of this query may be as follows:</p>
+            <ol class="ProcedureList">
+               <li class="ProcedureListItem">Find all rows / records in ttadv101 that match the
+                  BETWEEN "aaa" and "azz" condition.
+               </li>
+               <li class="ProcedureListItem">Find all references from each row from step 1 in table
+                  ttadv100.
+               </li>
+               <li class="ProcedureListItem">Find all rows selected in step 2 which match the BETWEEN
+                  " " and "zz" condition
+               </li>
+            </ol>
+            <p class="Paragraph">When some reference does not exist in ttadv100 (step 2
+               fails), because of the condition on the referenced table, the
+               whole row is rejected.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Using aliases with REFERS TO</div>
+            <p class="Paragraph">You can use aliases to refer from one table to another with
+               two references. In the following example, there are two
+               references from ttadv300 to ttaad110, via ttadv300.lanl and via
+               ttadv300.clan. Both are searched for in the following
+               construction:
+            </p><pre class="CodeBlock">
+string desc.clan(20), desc.lanl(20)
+table  tttadv300
+SELECT ttadv300.desi, ttadv300.cfrm, ttadv300.clan,
+       tclan.dsca:desc.clan, ttadv300.lanl, tlanl.dsca:desc.lanl
+FROM   ttadv300, ttaad110 tlanl, ttaad110 tclan
+WHERE  ttadv300.desi = :designer AND
+       ttadv300.clan REFERS TO tclan UNREF SETUNREF AND
+       ttadv300.lanl REFERS TO tlanl UNREF SETUNREF
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Using program variables or constants with REFERS TO</div>
+            <p class="Paragraph">You can also retrieve references by using a program variable
+               or a constant. This avoids the program first reading the
+               &lt;from&gt; table. In the following example tiitm001 has a
+               reference to tccom010 (field 'cuno'), and a reference to
+               tccom011 (field 'suno') and the value of tiitm001 is known:
+            </p><pre class="CodeBlock">
+Table           ttccom010
+Table           ttccom011
+
+SELECT tccom010.*, tccom011.*
+FROM tccom010, tccom011
+WHERE    :tiitm001.cuno = tccom010.cuno AND
+         :tiitm001.suno = tccom011.suno
+</pre><p class="Paragraph">In the following example, the REFERS TO clause is used to
+               achieve the same result. If the program does not find the
+               reference, it fills the field with reference characters.
+            </p><pre class="CodeBlock">
+Table   ttccom010
+Table   ttccom011
+
+SELECT tccom010.*, tccom011.*
+WHERE   :tiitm001.cuno REFERS TO tccom010 AND
+        :tiitm001.suno REFERS TO tccom011
+</pre><p class="Paragraph">In this case the REFERS TO statement has the following
+               from:
+            </p><pre class="Formula">
+&lt;from&gt; REFERS TO &lt;to&gt; [UNREF &lt;mode&gt;]
+</pre><p class="Paragraph">The following table explains the various parts of the
+               statement:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+&lt;from&gt;
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none">The referring program variable or constant. If a
+                        combined constant is used, all fields must be
+                        filled.
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+&lt;to&gt;
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none">The table referred to (refers to primary key of the
+                        table). This can also be a field provided that a unique
+                        index to this field exists.
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+&lt;mode&gt;
+</pre></td>
+                     <td rowspan="1" colspan="1" class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">A mode indicating system action if reference does
+                           not exist; possible values are:
+                        </p>
+                        <table width="100%" border="0" class="none">
+                           <tbody noTR="4" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">SKIP</th>
+                                 <td rowspan="1" colspan="1" class="none">If a reference cannot be found, the record is
+                                    skipped.
+                                 </td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">CLEAR</th>
+                                 <td rowspan="1" colspan="1" class="none">If a reference is empty or absent, the
+                                    referring record is filled with spaces or 0
+                                    (numeric).
+                                 </td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <th rowspan="1" colspan="1" class="none">SETUNREF</th>
+                                 <td rowspan="1" colspan="1" class="none">The value of an undefined reference is filled
+                                    with an 'undefined reference' sign, defined in
+                                    the data dictionary, or with 0 (numeric).
+                                 </td>
+                              </tr>
+                              <tr no="4" isLast="true" class="none">
+                                 <th rowspan="1" colspan="1" class="none">CLEARUNREF</th>
+                                 <td rowspan="1" colspan="1" class="none">The referred record is filled with spaces or
+                                    0 (zero) when reference fields are empty. When
+                                    the reference is undefined the referred record is
+                                    filled with an 'undefined reference' sign.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                        <p class="Paragraph">As no dictionary default is available, SETUNREF has
+                           been defined as the default action.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+SELECT  tccom010.*
+FROM    tccom010, tiitm001
+WHERE   tiitm001.cuno = :tiitm001.cuno AND
+        tiitm001.cuno REFERS TO tccom010
+</pre><p class="Paragraph">This is equal to the following:</p><pre class="CodeBlock">
+SELECT  tccom010.*
+WHERE       :tiitm001.cuno REFERS TO tccom010
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/references, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

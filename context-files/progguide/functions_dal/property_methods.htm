@@ -1,0 +1,54 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Property methods</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="data access layer property methods property methods ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Property methods</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Setting properties</div>
+            <p class="Paragraph">In order to notify the DAL about a change in the value of a
+               property, you must use the <a href="../../progguide/functions_db_operations/dal.set.property.htm" class="manualLink">dal.set.property()</a> function to change the value. Using this function ensures that
+               the relevant property hooks are executed when the value is
+               changed. If you use an assignment or the <a href="../../progguide/functions_db_operations/overview.htm" class="manualLink">Database operations overview</a> functions to change a property value, the DAL is not notified of
+               the change. Consequently, the property checks in the DAL are not
+               executed.
+            </p>
+            <p class="Paragraph">You can call this function from both UI and DAL scripts.</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Retrieving properties</div>
+            <p class="Paragraph">You can retrieve the value of the 
+               flag (see <a href="../../progguide/functions_dal/property_hooks.htm" class="manualLink">Property hooks</a>) for any
+               property by calling <a href="../../progguide/functions_db_operations/dal.get.property.flag.htm" class="manualLink">dal.get.property.flag()</a>. The property must have been changed
+               by the <i class="Emphasis">dal.set.property()</i> function.
+            </p>
+            <p class="Paragraph">You can call this function from both UI and DAL scripts.</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_glossary.htm" class="manualLink">DAL terminology</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/dal_hooks.htm" class="manualLink">DAL hooks</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_dal/transition_issues_baan_iv_to_baanerp.htm" class="manualLink">Transition issues (BAAN IV to Infor ERP Enterprise)</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dal/property_methods, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

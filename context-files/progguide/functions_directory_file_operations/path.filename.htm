@@ -1,0 +1,121 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>path.filename()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="functions path.filename path.filename path.filename ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">path.filename()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;string&nbsp;path.filename&nbsp;
+					(const string&nbsp;path [, long&nbsp;os.type])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">Returns the filename and extension of the specified path string.</p>
+               <p class="Paragraph">If ERP Enterprise is running on UNIX, the given path is interpreted as a Unix path; if ERP Enterprise is running on Windows,
+                  the path is interpreted as a Windows path.
+                  				Optionally, this can be overridden, by supplying the OS type. When dealing with paths for the client 
+                  				(e.g. when using <a href="../../progguide/functions_client_file_access/seq.open.local.htm" class="manualLink">seq.open.local()</a>, 
+                  				it is advised to always specify <code class="Code">OS_WINDOWS_NT</code>.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">const string</td>
+                     <td class="none"><code>path</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">the path string from which to obtain the filename and the extension</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <td class="none">[long</td>
+                     <td class="none"><code>os.type</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">when specified, the path is interpreted according to the given OS type; 
+                           					specify one of the following values: <code class="Code">OS_WINDOWS_NT</code>, <code class="Code">OS_UNIX</code></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <p class="Paragraph">The characters after the last directory character in path. If the last character of path is a directory or volume separator
+               character, 
+               					this method returns an empty string. If path is an empty string, this function returns an empty string as well.
+            </p>
+            <p class="Paragraph">The separator character used to determine the start of the file name is <code class="Code"> <a href="../../progguide/functions_directory_file_operations/path.dir.separator.htm" class="manualLink">path.dir.separator()</a></code>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			all
+               			script types.
+               
+               		
+               			This function is available from <a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">TIV</a> level 1700.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+string path(1024)
+
+| Suppose ERP Enterprise is running on Unix
+path = path.filename("/home/user/test.txt")
+| path = "test.txt"
+
+path = path.filename("test.txt")
+| path = "test.txt"
+
+path = path.filename("")
+| path = ""
+
+| Dealing with Windows paths
+path = path.filename("c:\temp\test.txt", OS_WINDOWS_NT)
+| path = "test.txt"
+
+path = path.filename("c:\test.txt", OS_WINDOWS_NT)
+| path = "test.txt"
+
+path = path.filename("test.txt", OS_WINDOWS_NT)
+| path = "test.txt"
+
+path = path.filename("", OS_WINDOWS_NT)
+| path = ""
+		</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/overview.htm" class="manualLink">Directory and file operations overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_directory_file_operations/synopsis.htm" class="manualLink">Directory and file operations synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_directory_file_operations/path.filename, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

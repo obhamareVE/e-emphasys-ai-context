@@ -1,0 +1,62 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Comparison of doubles in queries</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Comparison of doubles in queries</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Problem description</div>
+            <p class="Paragraph">The comparison of two doubles or floats inside queries is
+               unreliable. For example, if a query contains the expression
+               "double.col &gt; 1.23" then a value may be returned which is
+               equal to, or even slightly less than, 1.23. If an expression
+               "double.col = 1.23" is in a query, and the database contains
+               the value 1.23 it may, or may not be returned. This can lead
+               to programs taking wrong decisions.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Rewriting comparisons</div>
+            <p class="Paragraph">If a query contains a construction like</p>
+            <p class="Paragraph">where double.col = 0.0</p>
+            <p class="Paragraph">and the tolerance of the
+               comparison is known, it can be rewritten into
+            </p>
+            <p class="Paragraph">where double.col &gt; 0.0 - :tolerance and double.col
+               &lt; 0.0 + :tolerance
+            </p>
+            <p class="Paragraph">Similarly, the expression</p>
+            <p class="Paragraph">double.col &gt; 0.0</p>
+            <p class="Paragraph">can be rewritten into</p>
+            <p class="Paragraph">double.col &gt; 0.0 - :tolerance</p>
+            <p class="Paragraph">If the absolute difference between two doubles is
+               (approximately) equal to the tolerance, the result is still
+               unpredictable.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/considerations_on_doubles/reliability.of.double.cmp.htm" class="manualLink">Reliability of double.cmp()</a></li>
+               <li class="RelTopic"><a href="../../progguide/considerations_on_doubles/comparison.of.doubles.in.queries.htm" class="manualLink">Comparison of doubles in queries</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/considerations_on_doubles/comparison.of.doubles.in.queries, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

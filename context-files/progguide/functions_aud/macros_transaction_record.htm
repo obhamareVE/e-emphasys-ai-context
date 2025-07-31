@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Macros - transaction record</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="macros - transaction record ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Macros - transaction record</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Warning</div>
+            <p class="Paragraph"><i class="Emphasis">The functions and macros listed below must not be used
+                  anymore.</i> Using them in BaanERP 5.0c or higher releases
+               may result in less reliable data. Know that there is a new
+               set of functions that you can use for retrieval of audit
+               information. Refer to <a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></p>
+            <p class="Paragraph">Use these macros for mapping transaction records. All the
+               macros take <i class="Emphasis">rec_buff</i> as their input. This is filled by
+               calling <a href="../../progguide/functions_aud/aud_read_audit_rec.htm" class="manualLink">aud_read_audit_rec()</a> or <a href="../../progguide/functions_aud/aud_read_next_audit_rec.htm" class="manualLink">aud_read_next_audit_rec()</a>.
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_rec_app_info()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+void aud_get_rec_app_info( string appinfo(4), 
+                 string rec_buff() )
+</pre><p class="Paragraph">This reads the application-specific information of
+                           the record into <i class="Emphasis">appinfo</i>.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_rec_op_type()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string aud_get_rec_op_type( string rec_buff() )
+</pre><p class="Paragraph">This returns the type of action of the record.
+                           Possible values are:
+                        </p>
+                        <table width="30%" border="0" class="none">
+                           <tbody noTR="6" class="none">
+                              <tr no="1" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">I</td>
+                                 <td rowspan="1" colspan="1" class="none">insert record</td>
+                              </tr>
+                              <tr no="2" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">D</td>
+                                 <td rowspan="1" colspan="1" class="none">delete record</td>
+                              </tr>
+                              <tr no="3" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">U</td>
+                                 <td rowspan="1" colspan="1" class="none">update record</td>
+                              </tr>
+                              <tr no="4" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">L</td>
+                                 <td rowspan="1" colspan="1" class="none">clear table</td>
+                              </tr>
+                              <tr no="5" isLast="false" class="none">
+                                 <td rowspan="1" colspan="1" class="none">R</td>
+                                 <td rowspan="1" colspan="1" class="none">drop table</td>
+                              </tr>
+                              <tr no="6" isLast="true" class="none">
+                                 <td rowspan="1" colspan="1" class="none">C</td>
+                                 <td rowspan="1" colspan="1" class="none">create table</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <p class="postspacer">&nbsp;</p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_rec_seqno()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_rec_seqno( string rec_buff() )
+</pre><p class="Paragraph">This retrieves the sequence number of the record
+                           within the transaction.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_overview.htm" class="manualLink">Audit Information Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_synopsis.htm" class="manualLink">Audit Information Synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_sample_program.htm" class="manualLink">Audit Information Sample Program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_aud/macros_transaction_record, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

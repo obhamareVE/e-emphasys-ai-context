@@ -1,0 +1,137 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Macros - transaction header</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="macros - transaction header ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Macros - transaction header</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Warning</div>
+            <p class="Paragraph"><i class="Emphasis">The functions and macros listed below must not be used
+                  anymore.</i> Using them in BaanERP 5.0c or higher releases
+               may result in less reliable data. Know that there is a new
+               set of functions that you can use for retrieval of audit
+               information. Refer to <a href="../../progguide/functions_audtr/audit_management_overview.htm" class="manualLink">Audit management overview</a></p>
+            <p class="Paragraph">Use these macros for mapping transaction header
+               information. All the macros take 
+               as their input. This is filled by calling <a href="../../progguide/functions_aud/aud_read_tran.htm" class="manualLink">aud_read_tran()</a> or <a href="../../progguide/functions_aud/aud_read_next_tran.htm" class="manualLink">aud_read_next_tran()</a>.
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="9" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_tran_bytes()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_tran_bytes( string tran_hdr() )
+</pre><p class="Paragraph">This returns the total size in bytes of the
+                           transaction data.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_tran_commit_date()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string aud_get_tran_commit_date( string tran_hdr() )
+</pre><p class="Paragraph">This returns the UTC commit date from the
+                           transaction header.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_tran_commit_time()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string aud_get_tran_commit_time( string tran_hdr() )
+</pre><p class="Paragraph">This returns the UTC commit time from the
+                           transaction header.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_tran_entries()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_tran_entries( string tran_hdr() )
+</pre><p class="Paragraph">This returns the number of audited actions in the
+                           transaction.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="5" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_tran_id()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_tran_id( string tran_hdr(), long g1, long g2)
+</pre><p class="Paragraph">This reads the transaction id from the
+                           transaction header. The transaction id consists of
+                           two longs which together form a unique
+                           identification.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="6" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_tran_sess()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string aud_get_tran_sess( string tran_hdr() )
+</pre><p class="Paragraph">This returns the name of the session that
+                           committed the transaction.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="7" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_tran_status()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_tran_status( string tran_hdr() )
+</pre><p class="Paragraph">This returns the commit status of the
+                           transaction. Possible values are:
+                        </p><pre class="Formula">
+AUD_COMMITTED   transaction committed
+AUD_ABORTED     transaction canceled
+AUD_PREPARED    it is not certain whether the transaction has
+                   been committed or aborted
+</pre></td>
+                  </tr>
+                  <tr no="8" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_tran_tuname()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+string aud_get_tran_tuname( string tran_hdr() )
+</pre><p class="Paragraph">This returns the BAAN user name of the user who
+                           performed the transaction.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="9" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none"><i class="Emphasis">aud_get_tran_uuid()</i></td>
+                     <td rowspan="1" colspan="1" class="none"><pre class="Formula">
+long aud_get_tran_uuid( string tran_hdr() )
+</pre><p class="Paragraph">This returns the UNIX user id of the user who
+                           performed the transaction.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_overview.htm" class="manualLink">Audit Information Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_synopsis.htm" class="manualLink">Audit Information Synopsis</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_aud/audit_information_sample_program.htm" class="manualLink">Audit Information Sample Program</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_aud/macros_transaction_header, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

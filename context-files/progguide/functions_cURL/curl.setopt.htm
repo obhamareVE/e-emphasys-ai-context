@@ -1,0 +1,241 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>curl.setopt</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="cURL curl.setopt curl.setopt curl.setopt functions curl.setopt ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">curl.setopt</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;curl.setopt&nbsp;
+					()</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This isn't the actual function. This help topic lists all curl.setopt functions.</p>
+               <p class="Paragraph">See <a href="http://curl.haxx.se/" class="wwwlinkLink">curl website</a> for more information on these functions
+               </p><pre class="Formula">
+	long curl.setopt.append(long OptionValue)
+	long curl.setopt.autoreferer(long OptionValue)
+	long curl.setopt.buffersize(long OptionValue)
+	long curl.setopt.connect_only(long OptionValue)
+	long curl.setopt.connecttimeout(long OptionValue)
+	long curl.setopt.connecttimeout_ms(long OptionValue)
+	long curl.setopt.cookiesession(long OptionValue)
+	long curl.setopt.crlf(long OptionValue)
+	long curl.setopt.dirlistonly(long OptionValue)
+	long curl.setopt.dns_cache_timeout(long OptionValue)
+	long curl.setopt.dns_use_global_cache(long OptionValue)
+	long curl.setopt.failonerror(long OptionValue)
+	long curl.setopt.filetime(long OptionValue)
+	long curl.setopt.followlocation(long OptionValue)
+	long curl.setopt.forbid_reuse(long OptionValue)
+	long curl.setopt.fresh_connect(long OptionValue)
+	long curl.setopt.ftp_create_missing_dirs(long OptionValue)
+	long curl.setopt.ftp_filemethod(long OptionValue)
+	long curl.setopt.ftp_response_timeout(long OptionValue)
+	long curl.setopt.ftp_skip_pasv_ip(long OptionValue)
+	long curl.setopt.ftp_ssl_ccc(long OptionValue)
+	long curl.setopt.ftp_use_eprt(long OptionValue)
+	long curl.setopt.ftp_use_epsv(long OptionValue)
+	long curl.setopt.ftpsslauth(long OptionValue)
+	long curl.setopt.header(long OptionValue)
+	long curl.setopt.http_content_decoding(long OptionValue)
+	long curl.setopt.http_transfer_decoding(long OptionValue)
+	long curl.setopt.http_version(long OptionValue)
+	long curl.setopt.httpauth(long OptionValue)
+	long curl.setopt.httpget(long OptionValue)
+	long curl.setopt.httpproxytunnel(long OptionValue)
+	long curl.setopt.ignore_content_length(long OptionValue)
+	long curl.setopt.infilesize(long OptionValue)
+	long curl.setopt.ipresolve(long OptionValue)
+	long curl.setopt.localport(long OptionValue)
+	long curl.setopt.localportrange(long OptionValue)
+	long curl.setopt.low_speed_limit(long OptionValue)
+	long curl.setopt.low_speed_time(long OptionValue)
+	long curl.setopt.maxconnects(long OptionValue)
+	long curl.setopt.maxfilesize(long OptionValue)
+	long curl.setopt.maxredirs(long OptionValue)
+	long curl.setopt.netrc(long OptionValue)
+	long curl.setopt.new_directory_perms(long OptionValue)
+	long curl.setopt.new_file_perms(long OptionValue)
+	long curl.setopt.nobody(long OptionValue)
+	long curl.setopt.noprogress(long OptionValue)
+	long curl.setopt.nosignal(long OptionValue)
+	long curl.setopt.port(long OptionValue)
+	long curl.setopt.post(long OptionValue)
+	long curl.setopt.post301(long OptionValue)
+	long curl.setopt.postfieldsize(long OptionValue)
+	long curl.setopt.protocols(long OptionValue)
+	long curl.setopt.proxy_transfer_mode(long OptionValue)
+	long curl.setopt.proxyauth(long OptionValue)
+	long curl.setopt.proxyport(long OptionValue)
+	long curl.setopt.proxytype(long OptionValue)
+	long curl.setopt.put(long OptionValue)
+	long curl.setopt.resume_from(long OptionValue)
+	long curl.setopt.ssh_auth_types(long OptionValue)
+	long curl.setopt.ssl_sessionid_cache(long OptionValue)
+	long curl.setopt.ssl_verifyhost(long OptionValue)
+	long curl.setopt.ssl_verifypeer(long OptionValue)
+	long curl.setopt.sslengine_default(long OptionValue)
+	long curl.setopt.sslversion(long OptionValue)
+	long curl.setopt.tcp_nodelay(long OptionValue)
+	long curl.setopt.timecondition(long OptionValue)
+	long curl.setopt.timeout(long OptionValue)
+	long curl.setopt.timeout_ms(long OptionValue)
+	long curl.setopt.timevalue(long OptionValue)
+	long curl.setopt.transfertext(long OptionValue)
+	long curl.setopt.unrestricted_auth(long OptionValue)
+	long curl.setopt.upload(long OptionValue)
+	long curl.setopt.use_ssl(long OptionValue)
+	long curl.setopt.verbose(long OptionValue)
+	
+	long curl.setopt.cainfo(const string aString)
+	long curl.setopt.capath(const string aString)
+	long curl.setopt.cookie(const string aString)
+	long curl.setopt.cookiefile(const string aString)
+	long curl.setopt.cookiejar(const string aString)
+	long curl.setopt.cookielist(const string aString)
+	long curl.setopt.copypostfields(const string aString)
+	long curl.setopt.customrequest(const string aString)
+	long curl.setopt.egdsocket(const string aString)
+	long curl.setopt.encoding(const string aString)
+	long curl.setopt.ftp_account(const string aString)
+	long curl.setopt.ftp_alternative_to_user(const string aString)
+	long curl.setopt.ftpport(const string aString)
+	long curl.setopt.interface(const string aString)
+	long curl.setopt.keypasswd(const string aString)
+	long curl.setopt.krblevel(const string aString)
+	long curl.setopt.netrc_file(const string aString)
+	long curl.setopt.postfields(const string aString)
+	long curl.setopt.proxy(const string aString)
+	long curl.setopt.proxyuserpwd(const string aString)
+	long curl.setopt.random_file(const string aString)
+	long curl.setopt.range(const string aString)
+	long curl.setopt.referer(const string aString)
+	long curl.setopt.ssh_host_public_key_md5(const string aString)
+	long curl.setopt.ssh_private_keyfile(const string aString)
+	long curl.setopt.ssh_public_keyfile(const string aString)
+	long curl.setopt.ssl_cipher_list(const string aString)
+	long curl.setopt.sslcert(const string aString)
+	long curl.setopt.sslcerttype(const string aString)
+	long curl.setopt.sslengine(const string aString)
+	long curl.setopt.sslkey(const string aString)
+	long curl.setopt.sslkeytype(const string aString)
+	long curl.setopt.url(const string aString)
+	long curl.setopt.useragent(const string aString)
+	long curl.setopt.userpwd(const string aString)
+	
+	long curl.setopt.writedata(long sioId)
+	long curl.setopt.writeheader(long sioId)
+	
+	long curl.setopt.httpheader(long listId)
+	</pre><p class="Paragraph">Available from TIV &gt;= 1700</p><pre class="Formula">
+	long curl.setopt.ftp_use_pret(long OptionValue)
+	long curl.setopt.postredir(long OptionValue)
+	long curl.setopt.redir_protocols(long OptionValue)
+	long curl.setopt.wildcardmatch(long OptionValue)
+	
+	long curl.setopt.noproxy(const string aString)
+	long curl.setopt.password(const string aString)
+	long curl.setopt.proxypassword(const string aString)
+	long curl.setopt.proxyusername(const string aString)
+	long curl.setopt.username(const string aString)
+	
+	long curl.setopt.readdata(long sioId)		
+	</pre><p class="Paragraph">Available from TIV &gt;= 1724</p><pre class="Formula">
+	long curl.setopt.issuercert(const string aString)			
+	long curl.setopt.crlfile(const string aString)				
+	
+	</pre><p class="Paragraph">Available from TIV &gt;= 1903</p><pre class="Formula">
+	long curl.setopt.quote(long listId)							
+	long curl.setopt.prequote(long listId)						
+	long curl.setopt.postquote(long listId)						
+	</pre><p class="Paragraph">Available from TIV &gt;= 2010</p><pre class="Formula">
+	long curl.setopt.mail_from(const string mailaddress)
+	long curl.setopt.mail_auth(const string mailaddress)
+	long curl.setopt.mail_rcpt(long listId)  
+	</pre><p class="Paragraph">Bit options for setopt.httpauth and setopt.proxyauth. Multiple options can be or'ed with bit.or().</p><pre class="Formula">
+	CURLAUTH_NONE		
+	CURLAUTH_BASIC		
+	CURLAUTH_DIGEST	
+	CURLAUTH_GSSNEGOTIATE
+	CURLAUTH_NTLM	
+	CURLAUTH_DIGEST_IE
+	CURLAUTH_NTLM_WB
+	CURLAUTH_ONLY
+	</pre><p class="Paragraph">Combined options</p><pre class="Formula">
+	CURLAUTH_ANY
+	CURLAUTH_ANYSAFE (=all except BASIC and DIGIST_IE)
+	</pre><p class="Paragraph">Bit options for setopt.postredir. Multiple options can be or'ed with bit.or().</p><pre class="Formula">
+	CURL_REDIR_POST_301	
+	CURL_REDIR_POST_302		
+	CURL_REDIR_POST_303	
+	</pre><p class="Paragraph">Combined options</p><pre class="Formula">
+	CURL_REDIR_POST_ALL
+	</pre><p class="Paragraph">Options for curl.setopt.http_version.</p><pre class="Formula">
+	CURL_HTTP_VERSION_NONE
+	CURL_HTTP_VERSION_1_0
+	CURL_HTTP_VERSION_1_1
+	</pre></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="2" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Option set</td>
+                  </tr>
+                  <tr no="2" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">1</th>
+                     <td rowspan="1" colspan="1" class="none">Illegal option value</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">The use of the function curl.setopt.sslversion() is discouraged.
+                  			By default the most secure protocol will be used (TLSv1.2 or higher).
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_cURL/overview.htm" class="manualLink">cURL handling overview</a></li>
+               <li class="RelTopic"><a href="http://curl.haxx.se/" class="wwwlinkLink">cURL website</a></li>
+               <li class="RelTopic"><a href="../../progguide/tiv/tiv_overview.htm" class="manualLink">Tools Interface Version (TIV)</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_cURL/curl.setopt, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

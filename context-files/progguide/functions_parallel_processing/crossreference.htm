@@ -1,0 +1,142 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Parallel Application Processing Cross Reference</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="Parallel Application Processing Cross Reference ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Parallel Application Processing Cross Reference</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">In the table below a cross reference is shown with the functions available in tccomdll0200.
+               This table should help in migrating sessions which used tccomdll0200 for parallel bshell processing
+            </p>
+            <table width="100%" border="1" class="default">
+               <tbody noTR="25" class="default">
+                  <tr no="1" isLast="false" class="default">
+                     <th rowspan="1" colspan="1" class="default">tccomdll0200 function</th>
+                     <th rowspan="1" colspan="1" class="default">Tools par.* function</th>
+                  </tr>
+                  <tr no="2" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.init.client.to.server</td>
+                     <td rowspan="1" colspan="1" class="default">par.init.client.to.server</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.client.start.servers</td>
+                     <td rowspan="1" colspan="1" class="default">par.client.start.servers</td>
+                  </tr>
+                  <tr no="4" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.client.server.exec</td>
+                     <td rowspan="1" colspan="1" class="default">par.client.send.message</td>
+                  </tr>
+                  <tr no="5" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.client.server.ready</td>
+                     <td rowspan="1" colspan="1" class="default">par.client.get.status</td>
+                  </tr>
+                  <tr no="6" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.client.disable.server</td>
+                     <td rowspan="1" colspan="1" class="default">Not implemented</td>
+                  </tr>
+                  <tr no="7" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.client.enable.server</td>
+                     <td rowspan="1" colspan="1" class="default">Not implemented</td>
+                  </tr>
+                  <tr no="8" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.client.get.message</td>
+                     <td rowspan="1" colspan="1" class="default">par.client.get.message</td>
+                  </tr>
+                  <tr no="9" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom dll0200.client.send.message</td>
+                     <td rowspan="1" colspan="1" class="default">par.client.send.message</td>
+                  </tr>
+                  <tr no="10" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.client.wait.for.all.ready</td>
+                     <td rowspan="1" colspan="1" class="default">par.client.wait.ready</td>
+                  </tr>
+                  <tr no="11" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom dll0200.client.close.servers</td>
+                     <td rowspan="1" colspan="1" class="default">par.client.close.servers</td>
+                  </tr>
+                  <tr no="12" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.client.export.mbox</td>
+                     <td rowspan="1" colspan="1" class="default">Not implemented</td>
+                  </tr>
+                  <tr no="13" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.abort.client.server</td>
+                     <td rowspan="1" colspan="1" class="default">par.abort.client.server</td>
+                  </tr>
+                  <tr no="14" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.init.server.to.client</td>
+                     <td rowspan="1" colspan="1" class="default">par.init.server.to.client</td>
+                  </tr>
+                  <tr no="15" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom dll0200.server.send.ready</td>
+                     <td rowspan="1" colspan="1" class="default">Implicit by par.server.get.message</td>
+                  </tr>
+                  <tr no="16" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom dll0200.server.send.message</td>
+                     <td rowspan="1" colspan="1" class="default">par.server.send.message</td>
+                  </tr>
+                  <tr no="17" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.server.get.message</td>
+                     <td rowspan="1" colspan="1" class="default">par.server.get.message</td>
+                  </tr>
+                  <tr no="18" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.server.retry.point</td>
+                     <td rowspan="1" colspan="1" class="default">par.server.retry.point</td>
+                  </tr>
+                  <tr no="19" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.server.retry.hit</td>
+                     <td rowspan="1" colspan="1" class="default">par.server.retry.hit</td>
+                  </tr>
+                  <tr no="20" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.server.end</td>
+                     <td rowspan="1" colspan="1" class="default">exit</td>
+                  </tr>
+                  <tr no="21" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.get.no.of.server</td>
+                     <td rowspan="1" colspan="1" class="default">par.get.no.of.server</td>
+                  </tr>
+                  <tr no="22" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.server.id</td>
+                     <td rowspan="1" colspan="1" class="default">par.server.id</td>
+                  </tr>
+                  <tr no="23" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.client.running</td>
+                     <td rowspan="1" colspan="1" class="default">par.client.running</td>
+                  </tr>
+                  <tr no="24" isLast="false" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.server.running</td>
+                     <td rowspan="1" colspan="1" class="default">par.server.running</td>
+                  </tr>
+                  <tr no="25" isLast="true" class="default">
+                     <td rowspan="1" colspan="1" class="default">tccom.dll0200.set.attribute</td>
+                     <td rowspan="1" colspan="1" class="default">Not implemented</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/overview.htm" class="manualLink">Parallel Application Processing Overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_parallel_processing/synopsis.htm" class="manualLink">Parallel Application Processing synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_parallel_processing/crossreference, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

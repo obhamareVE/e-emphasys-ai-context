@@ -1,0 +1,55 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>42T21 - Incompatible types for UNION column</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">42T21 - Incompatible types for UNION column</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">An SQL statement contains a UNION operator and in the two
+               queries that are combined by this UNION operator there are two
+               corresponding select items that do not have comparable
+               datatypes.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+select firstnme
+from   dbtst120
+union  all
+select salary
+from   dbtst120
+   </pre><p class="Paragraph">In this UNION the columns firstnme and salary are
+               corresponding select items. These columns do not have comparable
+               datatypes because column firstnme is of type string and column
+               salary is of type real. This will cause the error:
+            </p>
+            <p class="Paragraph">SQLState 42T21: Incompatible
+               types for UNION column 1
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/union.htm" class="manualLink">UNION operator</a></li>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/sql_data_types.htm" class="manualLink">SQL data types</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/sql_states_and_messages/42T21, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>4GL field sections</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="4GL field sections sections field sections ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">4GL field sections</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">You use field sections to program actions that you want to be
+               	  executed for a variety of field events. Field sections consist of a main
+               	  section and a subsection. The main section specifies the field(s) for which the
+               	  actions must be executed. The subsections specify when the actions must be
+               	  executed.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Main sections</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">field.&lt;field name&gt;:</div>
+               <p class="Paragraph">The subsections associated with this main section are executed
+                  		for the specified field. The field name you specify must correspond with the
+                  		name on the form.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">field.all:</div>
+               <p class="Paragraph">The subsections associated with this main section are executed
+                  		for all fields on the form
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">field.other:</div>
+               <p class="Paragraph">A subsection associated with this section is executed for all
+                  		fields for which the particular subsection has not been programmed in a <i class="Emphasis">field.&lt;field name&gt;</i> section.
+               </p>
+            </div>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Subsections</div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">init.field:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed the
+                  		first time that the form on which the field occurs becomes current. The
+                  		subsection is executed immediately before the <i class="Emphasis">init.form</i> section of the form. You can use this section to change field
+                  		attributes.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.field:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed each
+                  		time the focus moves to the specified field. The subsection is executed
+                  		immediately before the <i class="Emphasis">before.input</i> or <i class="Emphasis">before.display</i> subsections.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.input:</div>
+               <p class="Paragraph">This section is supported for backward compatibility only. The
+                  		actions programmed in this subsection are executed immediately before input to
+                  		an input field commences. In Infor ERP Enterprise programs, use <a href="../../progguide/functions_form_and_form_field_operations/enable.fields.htm" class="manualLink">enable.fields()</a> and <a href="../../progguide/functions_form_and_form_field_operations/disable.fields.htm" class="manualLink">disable.fields()</a> in the when.field.changes of another
+                  		field to enable and disable fields.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.display:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed each
+                  		time that the specified field is displayed. You can use this subsection, for
+                  		example, to set the value of a display field or to change the output format of
+                  		currencies and dates (by using <i class="Emphasis">attr.oformat$</i>).
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">selection.filter:</div>
+               <p class="Paragraph">In this section you can set the query extensions for filtering
+                  		the selection. (See <a href="../../progguide/functions_sql_query_extensions/query.extend.where.htm" class="manualLink">query.extend.where()</a>). This section is triggerd
+                  		when a zoom process is started or when autocomplete is started on the specified
+                  		field. If this section was triggered by the start of a zoom process, the
+                  		before.zoom section is called hereafter immediately.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.zoom:</div>
+               <p class="Paragraph">When a zoom process is started on the specified field, the
+                  		actions programmed in this subsection are executed immediately before the zoom
+                  		process is executed. You can use this subsection to change the zoom attributes.
+                  		For example, in the field definition in the form manager, a default zoom code
+                  		can be specified. You can then use this subsection to change the zoom code (by
+                  		setting the predefined variable <i class="Emphasis">attr.zoomcode</i>). In order
+                  		to cancel the zoom, use the <a href="../../progguide/functions_form_and_form_field_operations/input.again.htm" class="manualLink">input.again()</a> function.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">before.checks:</div>
+               <p class="Paragraph">For non-enum fields the actions programmed in this subsection
+                  		are executed when the field looses focus. I.e.: the TAB key has been pressed or
+                  		the user clicked on another field. The subsection is executed immediately
+                  		before the domain and references are checked. You can use this section, for
+                  		example, to change the value of the field before the domain and reference
+                  		checks.
+               </p>
+               <p class="Paragraph">For enum fields (type DB.ENUM or DB.BITSET) the actions
+                  		programmed in this subsection are executed in two cases:
+               </p>
+               <ul class="List">
+                  <li class="ListItem">when the user changes the value of the field; in this case
+                     		  the subsection is executed just before the <i class="Emphasis">when.field.changes</i> subsection
+                  </li>
+                  <li class="ListItem">when the field looses focus, but only in case the field's
+                     		  value was not changed
+                  </li>
+               </ul>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">domain.error:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed if the
+                  		domain check causes an error after data has been entered in the field. You can
+                  		use this section to provide your own error message instead of the standard
+                  		message.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">ref.input:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed if a
+                  		reference error occurs. If you program this section, the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="glossaryLink">4GL engine</a> does not display a message.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">ref.display:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed if
+                  		there is an error in the reference display.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">check.input:</div>
+               <p class="Paragraph">This section is replaced by <a href="../../progguide/functions_dal/overview.htm" class="manualLink">Data Access Layer</a> functionality (if a DAL exists for the table).
+               </p>
+               <p class="Paragraph">The actions programmed in this subsection are executed
+                  		immediately after the domain and reference checks. You can use this section to
+                  		test for errors that are not detected automatically. If the <a href="../../progguide/glossary/glossary.htm#fourgl_engine" class="manualLink">4GL engine</a> detects an error, the focus remains on the field. In a script,
+                  		you can use <a href="../../progguide/functions_message_handling/set.input.error.htm" class="manualLink">set.input.error()</a> to display an error message and start
+                  		input again.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">on.input:</div>
+               <p class="Paragraph">This section is supported for backward compatibility.
+                  		Functionality has been replaced by Form Commands.
+               </p>
+               <p class="Paragraph">The actions programmed in this subsection are executed
+                  		immediately after the <i class="Emphasis">check.input</i> subsection. You can use
+                  		this section, for example, to perform some appropriate action when the user
+                  		enters a special character or to display a warning message in certain
+                  		cases.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">when.field.changes:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed when
+                  		the new value entered in the specified field differs from the old
+                  		value.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.zoom:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed when
+                  		the zoom process on a specified field ends. You can use this subsection, for
+                  		example, to redisplay any field that has changed as a result of the zoom
+                  		process.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.input:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed after
+                  		all checks have been performed on input to the specified field and after the <i class="Emphasis">when.field.changes</i> subsection has been executed. In this
+                  		subsection, you can use the <i class="Emphasis">to.field()</i> function if the
+                  		sequence deviates from the default.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.display:</div>
+               <p class="Paragraph">The actions programmed in this subsection are executed just
+                  		after display of the specified field. You can use this subsection, for example,
+                  		to read reference tables.
+               </p>
+            </div>
+            <div class="subGeneralSection">
+               <div class="subSectionTitle">after.field:</div>
+               <p class="Paragraph">This is the last subsection for a field. The actions
+                  		programmed in this subsection are executed after input to or display of the
+                  		specified field. This section is always executed, even if the user left the
+                  		field by pressing ESC, one of the arrow keys, or a mouse button. You can use
+                  		this subsection to perform special actions before leaving the
+                  		field.
+               </p>
+            </div>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+field.ttgfd500.cmnd:
+before.zoom:
+    ttadv470.type = ttadv.type.standard.commands
+
+
+field.ttgfd500.wint:
+when.field.changes:
+    on case ttgfd500.wint
+    case ttgfd.wint.overview:
+        set.enum.values.for.field(.......)
+        break
+    .....
+    endcase
+
+field.ttadv470.optc:
+before.display:
+    on case ttgfd500.optn
+    case CMD.CASCADE:
+        ttadv470.optc = "CASCADE"
+        break
+    case CMD.SEPARATOR:
+        ttadv470.optc = "--------"
+        break
+    endcase
+    for i = 2 to ttgfd500.levl
+        ttadv470.optc = "   " &amp; ttadv470.optc
+    endfor
+
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/overview.htm" class="manualLink">Programming a UI Script overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/4gl_event_sections.htm" class="manualLink">4GL event sections</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/flow_of_standard_program.htm" class="manualLink">Flow of 4GL engine</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/4gl_features/4gl_field_sections, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

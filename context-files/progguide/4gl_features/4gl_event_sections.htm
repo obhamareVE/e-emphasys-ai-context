@@ -1,0 +1,87 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>4GL event sections</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="4GL event sections event sections event sections sections event sections ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">4GL event sections</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">A 4GL script can contain one or more of the following types of
+               sections:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/4gl_features/4gl_program_sections.htm" class="manualLink">program sections</a></li>
+               <li class="ListItem"><a href="../../progguide/4gl_features/4gl_zoomfrom_sections.htm" class="manualLink">4GL zoom.from sections</a></li>
+               <li class="ListItem"><a href="../../progguide/4gl_features/4gl_form_sections.htm" class="manualLink">4GL form sections</a></li>
+               <li class="ListItem"><a href="../../progguide/4gl_features/4gl_group_sections.htm" class="manualLink">4GL group sections</a></li>
+               <li class="ListItem"><a href="../../progguide/4gl_features/4gl_choice_sections.htm" class="manualLink">4GL choice sections</a></li>
+               <li class="ListItem"><a href="../../progguide/4gl_features/4gl_field_sections.htm" class="manualLink">4GL field sections</a></li>
+               <li class="ListItem"><a href="../../progguide/4gl_features/4gl_main_table_io_sections.htm" class="manualLink">4GL main table i/o sections</a></li>
+            </ul>
+            <p class="Paragraph">With the exception of program sections, each section consists
+               of a main section and one or more subsections. A main section
+               indicates the object for which the programmed actions must be
+               executed. A subsection specifies when the actions must be
+               executed. Program sections consist of a main section only.
+            </p>
+            <p class="Paragraph">If you do not include a main section immediately before a
+               subsection, the subsection is assigned to the previous main
+               section in the script. For example:
+            </p><pre class="CodeBlock">
+choice.print.data:      | main section
+before.choice:          | subsection of print.data
+    ...
+    ...
+after.choice:           | subsection of print.data
+    ...
+    ...
+</pre><p class="Paragraph">The following rules apply to the ordering of sections within
+               a script:
+            </p>
+            <ul class="List">
+               <li class="ListItem">The <i class="Emphasis">declaration</i> section (a program sections) must be the
+                  first section in the script.
+               </li>
+               <li class="ListItem">The <i class="Emphasis">functions</i> section (also a program section) must be the
+                  last section in the script.
+               </li>
+               <li class="ListItem">Other sections can occur in any order, but the preferred
+                  order is: program sections, zoom.from sections, form
+                  sections, group sections, choice sections, field sections,
+                  main table sections.
+               </li>
+               <li class="ListItem">Do not mix sections of different types. For example, do
+                  not define a choice section, followed by a field section, and
+                  then a choice section again.
+               </li>
+            </ul>
+            <p class="Paragraph">Variables declared in the <i class="Emphasis">declaration</i> section are global variables that you can use
+               in all sections. Variables declared within any other section are
+               local variables that you can use in that section only.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/overview.htm" class="manualLink">Programming a UI Script overview</a></li>
+               <li class="RelTopic"><a href="../../progguide/4gl_features/flow_of_standard_program.htm" class="manualLink">Flow of 4GL engine</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/4gl_features/4gl_event_sections, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

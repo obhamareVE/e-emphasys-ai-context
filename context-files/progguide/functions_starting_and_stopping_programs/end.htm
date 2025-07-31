@@ -1,0 +1,70 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>end()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="end end functions end ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">end()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;void&nbsp;end&nbsp;
+					()</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">When used in a 3GL script, this ends the program and returns
+                  control to the application. The database is not updated.
+               </p>
+               <p class="Paragraph">When used in a 4GL script, the function has the same effect
+                  as the <i class="Emphasis">end.program</i> standard command. When a 4GL script
+                  calls <i class="Emphasis">end()</i> or execute(end.program), changes are stored
+   in the database and&nbsp; the program ends. Before the program ends,
+   any <a href="../../progguide/4gl_features/4gl_choice_sections.htm" class="manualLink">before.choice</a> subsections in a <a href="../../progguide/4gl_features/4gl_choice_sections.htm" class="manualLink">choice.end.program</a> section are executed. The <a href="../../progguide/4gl_features/4gl_program_sections.htm" class="manualLink">after.program</a> section is also executed, if present.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			4GL Tools
+               			and can be used in 
+               			4GL
+               			script types.
+            </p>
+         </div>
+         <div class="Note">
+            <div class="NoteSectionTitle"><strong class="GUIRef">Note</strong></div>
+            <div class="NoteContent">
+               <p class="Paragraph">The functions <i class="Emphasis">end()</i>, <a href="../../progguide/functions_starting_and_stopping_programs/stop.htm" class="manualLink">stop()</a>,
+                  and <a href="../../progguide/functions_starting_and_stopping_programs/exit.htm" class="manualLink">exit()</a> (without an <i class="Emphasis">exitvalue</i> argument) in 3GL programs, and the function <i class="Emphasis">stop()</i> in 4GL
+   programs, all have the&nbsp; same effect. That is, the program ends
+   and returns control to the application. The database is not
+   updated.
+               </p>
+            </div>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_starting_and_stopping_programs/overview_and_synopsis.htm" class="manualLink">Starting and stopping programs: overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_starting_and_stopping_programs/end, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

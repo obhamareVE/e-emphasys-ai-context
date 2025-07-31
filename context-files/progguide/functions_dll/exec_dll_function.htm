@@ -1,0 +1,141 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>exec_dll_function()</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="exec_dll_function exec_dll_function functions exec_dll_function ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">exec_dll_function()</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Syntax:</div>
+            <p class="Paragraph"><code>function&nbsp;long&nbsp;exec_dll_function&nbsp;
+					(string&nbsp;dll_name, function_name&nbsp;function_name [, ref void&nbsp;return_value] [, void&nbsp;...])</code></p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Description</div>
+            <p class="Paragraph">
+               <p class="Paragraph">This loads a specified DLL and executes a specified
+                  function within that DLL. It provides a fast algorithm for
+                  executing a DLL function that is to be executed only once. If
+                  the DLL is already loaded, the identification number of the
+                  loaded DLL is used to search for the specified function.
+                  Otherwise, a load_dll(dll_name, 0) call is executed
+                  automatically. If a function is to be called more than once,
+                  it is faster to use the <a href="../../progguide/functions_dll/load_dll.htm" class="manualLink">load_dll()</a>, <a href="../../progguide/functions_dll/get_function.htm" class="manualLink">get_function()</a>, and <a href="../../progguide/functions_dll/exec_function.htm" class="manualLink">exec_function()</a> combination.
+               </p>
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Arguments</div>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td class="none">string</td>
+                     <td class="none"><code>dll_name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the DLL that must be loaded.</p>
+                     </td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td class="none">function_name</td>
+                     <td class="none"><code>function_name</code></td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The name of the function that must be
+                           executed.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td class="none">[ref void</td>
+                     <td class="none"><code>return_value</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">Reference argument to which the return value of the function call must be assigned.</p>
+                        <p class="Paragraph"><a href="../../progguide/3gl_features/type_conversions.htm#implicit_type_conversion" class="manualLink">Implicit conversion</a> of the return value of the function call from its original type
+                           to the type of the reference argument is performed.
+                        </p>
+                        <p class="Paragraph">If the function to be called is of type void
+                           (this means that no value is returned),
+                           then this argument must be omitted.
+                        </p>
+                     </td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td class="none">[void</td>
+                     <td class="none"><code>...</code>]
+                     </td>
+                     <td class="none">
+                        <p class="Paragraph_firstAndNoTextBefore">The values to be passed as arguments to the function call.</p>
+                        <p class="Paragraph">An error occurs when any of the supplied values is of a different type than
+                           the required type of the corresponding argument of the function to be called.
+                        </p>
+                        <p class="Paragraph">If the function to be called is not of type void
+                           (this means that a value is returned),
+                           then first the return_value argument must be supplied.
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Return values</div>
+            <table width="100%" border="0" class="none">
+               <tbody noTR="3" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">0</th>
+                     <td rowspan="1" colspan="1" class="none">Success.</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <th rowspan="1" colspan="1" class="none">-1</th>
+                     <td rowspan="1" colspan="1" class="none">Error; DLL not found.</td>
+                  </tr>
+                  <tr no="3" isLast="true" class="none">
+                     <th rowspan="1" colspan="1" class="none">-2</th>
+                     <td rowspan="1" colspan="1" class="none">Error; Function not found.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Context</div>
+            <p class="Paragraph">This function is implemented in the 
+               			porting set
+               			and can be used in 
+               			all
+               			script types.
+            </p>
+         </div>
+         <div class="ExampleSection">
+            <div class="subSectionTitle">Example</div><pre class="CodeBlock">
+long ret, ret2
+
+ret=exec_dll_function("otisfc0220", "ptisfc0220.store.quantities",
+                       ret2, tibom010.noun, tibom010.qana,
+tibom010.scpf )
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_dll/overview_and_synopsis.htm" class="manualLink">DLL functions (executing) overview and synopsis</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_dll/exec_dll_function, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

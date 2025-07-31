@@ -1,0 +1,43 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Managed Execution</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="managed execution ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Managed Execution</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Trusting object files</div>
+            <p class="Paragraph">In a traditional installation all sessions essentially run under the same authorization. This
+               changes drastically in e.g. a multi-tenant environment, where the landlord has a very different authorization compared 
+               to the tenants. Tenants may under no circumstance be able to execute a session which might influence another tenant.
+            </p>
+            <p class="Paragraph">Therefore a differentation is made between trusted and non-trusted object files. A trusted object file may still do everything,
+               just like
+               in a traditional installation. A non-trusted object, however, is limited in the functions it may execute. Some bshell functions
+               
+               are not allowed in non-trusted objects (such as 'shell'), nor are calls to functions in trusted objects allowed (unless these
+               are explicitly 
+               allowed by adding 
+               the '@trusted' keyword). Typical examples of trusted objects are the applications as provided by Infor. Typical examples of
+               non-trusted objects
+               are objects compiled by the user, based upon user generated sources, such as reports.
+            </p><pre class="CodeBlock">tools
+application</pre></div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/misc/managed_execution, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

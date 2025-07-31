@@ -1,0 +1,203 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Hints for using db.retry.point</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="SQL hints for using db.retry.point hints for using db.retry.point ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Hints for using db.retry.point</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">For programs of type 1, 2 or 3, this is generally the
+               retry.point of the 4GL engine which has a retry just after
+               'before choice' of update.db and in the read section where also
+               the references are read.
+            </p>
+            <p class="Paragraph">To have clearly structured sources, never use more than one
+               level <i class="Emphasis">db.retry.point()</i>. Only one above the first level of
+               select. Use retry in the following situations:
+            </p>
+            <table border="0" class="none">
+               <tbody noTR="4" class="none">
+                  <tr no="1" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Situation for Select</td>
+                     <td rowspan="1" colspan="1" class="none">Commit per fetch</td>
+                     <td rowspan="1" colspan="1" class="none">Commit over multiple fetch</td>
+                  </tr>
+                  <tr no="2" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">db.update/db.insert/db.delete</td>
+                     <td rowspan="1" colspan="1" class="none">1</td>
+                     <td rowspan="1" colspan="1" class="none">2</td>
+                  </tr>
+                  <tr no="3" isLast="false" class="none">
+                     <td rowspan="1" colspan="1" class="none">Collecting</td>
+                     <td rowspan="1" colspan="1" class="none">3</td>
+                     <td rowspan="1" colspan="1" class="none">3</td>
+                  </tr>
+                  <tr no="4" isLast="true" class="none">
+                     <td rowspan="1" colspan="1" class="none">Combination</td>
+                     <td rowspan="1" colspan="1" class="none">4</td>
+                     <td rowspan="1" colspan="1" class="none">5</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p class="postspacer">&nbsp;</p>
+            <p class="Paragraph">A skip back to a retry point can be indicated by a problem
+               in:
+            </p>
+            <ul class="List">
+               <li class="ListItem">db.update(), db.delete() or db.insert() with argument
+                  db.retry
+               </li>
+               <li class="ListItem">commit.transaction()</li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Situation 1: Only update actions, commit per fetch</div>
+            <p class="Paragraph">The function 'with retry' can be used here. For example:</p><pre class="CodeBlock">
+db.retry.point()
+select  tisfc001.*
+from    tisfc001 for update
+where   tisfc001.pdno inrange :pdno.f and :pdno.t
+order by tisfc001._index1 with retry
+selectdo
+        tisfc001.proc = tcyesno.yes
+        db.update(ttisfc001,db.retry)
+        commit.transaction()
+endselect
+</pre><p class="Paragraph">In this case REPEAT LAST ROW is not used, because when retry
+               is done, the value which was present at the stage of <i class="Emphasis">commit.transaction()</i> has certainly been saved.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Situation 2: Only update actions, commits over fetches</div>
+            <p class="Paragraph">In this case we can also use the 'with retry' option. For
+               example:(commit per order and not per fetch !):
+            </p><pre class="CodeBlock">
+save.pdno = 0
+db.retry.point()
+select  ticst001.*
+from    ticst001 for update
+where   ticst001.pdno inrange :pdno.f and :pdno.t
+order by ticst001._index1 with retry repeat last row
+selectdo
+        if ticst001.pdno &lt;&gt; save.pdno then
+                if save.pdno &lt;&gt; 0 then
+                        commit.transaction()
+                endif
+                save.pdno = ticst001.pdno
+        endif
+        ticst001.proc = tcyesno.yes
+        db.update(ticst001,db.retry)
+selecteos
+        commit.transaction()
+endselect
+</pre><p class="Paragraph">Both <i class="Emphasis">db.update()</i> and <i class="Emphasis">commit.transaction()</i> can
+               result in a retry. So selecteos is used. Notice that REPEAT LAST
+               ROW is used because the present value at the time of doing the
+               save is already the value of the next order.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Situation 3: only print / collect actions (no commit)</div>
+            <p class="Paragraph">There is no transaction or dependency between records /
+               fetches. For example:
+            </p><pre class="CodeBlock">
+total.quant = 0
+select  ticst001.*
+from        ticst001
+where   ticst001.pdno inrange :pdno.f and :pdno.t
+order by ticst001._index1
+selectdo
+        total.quant = total.quant + ticst001.quan
+        print.row(1)
+endselect
+</pre></div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Situation 4: Update actions plus print/collect with commit per fetch</div>
+            <p class="Paragraph">For example, update of print status plus print and
+               collect:
+            </p><pre class="CodeBlock">
+db.retry.point()
+select  ticst001.*
+from    ticst001 for update
+where   ticst001.pdno inrange :pdno.f and :pdno.t
+order by ticst001._index1 with retry
+selectdo
+                ticst001.proc = tcyesno.yes
+                db.update(ticst001,db.retry)
+                commit.transaction()
+                total.quant = total.quant + ticst001.quan
+                print.row()
+endselect
+</pre><p class="Paragraph">Notice that this works only when the <i class="Emphasis">db.update()</i> and <i class="Emphasis">commit.transaction()</i> are done before the print and the
+               collect statement. An alternative to this solution is described
+               in situation 5.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Situation 5: Update actions plus print/collect with commit over fetches</div>
+            <p class="Paragraph">For example, update of print status plus print and collect
+               per order:
+            </p><pre class="CodeBlock">
+save.pdno = 0
+save.pono = 0
+total.select.quan = 0
+db.retry.point()
+total.order.quan = 0
+select  ticst001.*
+from    ticst001 for update
+where   ticst001.pdno inrange :pdno.f and :pdno.t
+order by ticst001._index1 with retry repeat last row
+selectdo
+        if ticst001.pdno &lt;&gt; save.pdno then
+                if save.pdno &lt;&gt; 0 then
+                        total.order.quan = 0
+                        commit.transaction()
+                endif
+                save.pdno = ticst001.pdno
+    endif
+    if ticst001.pdno &gt; lsp.pdno or
+                        (ticst001.pdno = lsp.pdno and
+                        ticst001.pono &gt; lsp.pono ) then
+                print.row()
+                total.select.quan = total.select.quan + ticst001.quan
+                lsp.pdno = ticst001.pdno
+                lsp.pono = ticst001.pono
+        endif
+        total.order.quan = total.order.quan + ticst001.quan
+        ticst001.proc = tcyesno.yes
+        db.update(ticst001,db.retry)
+selecteos
+        commit.transaction()
+endselect
+</pre><p class="Paragraph"><i class="Emphasis">lsp</i> stands for last processed. pdno and pono are
+               together the index of cst001. The 'lsp.' variables should always
+               be used for this kind of saving within selects. These variables
+               save which record has already been printed/collected. The
+               total.order.quan can always be added because setting to zero is
+               done for each retry again.
+            </p>
+         </div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/functions_database_handling/baan_sql.htm" class="manualLink">Infor ERP Enterprise SQL</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/functions_database_handling/hints_for_using_db.retry.point, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

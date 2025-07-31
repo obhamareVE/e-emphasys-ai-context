@@ -1,0 +1,147 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Events</title>
+      <link rel="stylesheet" type="text/css" href="../../skin/General.css">
+      <link rel="stylesheet" type="text/css" href="../../skin/MSHtmlHelp.css">
+      <meta name="keywords" content="events ">
+      <meta name="author" content="Infor">
+      <meta name="ROBOTS" content="ALL">
+   </head>
+   <body id="body">
+      <div class="TopicTitle">Events</div>
+      <div class="body">
+         <div class="GeneralSection">
+            <p class="Paragraph">Infor ERP Enterprise programs are designed to respond to events.
+               Usually, they consist of a main loop that waits for events to
+               occur. When an event occurs, the program performs the
+               appropriate actions to process the event. It then returns to its
+               waiting state.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Event types</div>
+            <p class="Paragraph">There are four broad categories of events, as listed below.
+               For a full list of event types, see <a href="../../progguide/events/event_types.htm" class="manualLink">Event types</a>.
+            </p>
+            <ul class="List">
+               <li class="ListItem"><i class="Emphasis">User action events.</i> Most of the events that occur in a BAAN application
+                  relate to user interaction. When a user performs an action
+                  in the user interface (for example, clicking the mouse or
+                  pressing a keyboard key), this generates an event.
+               </li>
+               <li class="ListItem"><i class="Emphasis">Timer events.</i> A process can start a timer that sends an event to the
+                  calling process at specified intervals. See <a href="../../progguide/functions_timers/overview_and_synopsis.htm" class="manualLink">Timers overview and synopsis</a>.
+               </li>
+               <li class="ListItem"><i class="Emphasis">Client events.</i> A process can send client events to another process by
+                  using the <a href="../../progguide/events/send.event.htm" class="manualLink">send.event()</a> function. The sending and receiving processes can
+                  determine their own protocol.
+               </li>
+               <li class="ListItem"><i class="Emphasis">Bucket message events.</i> A process can broadcast bucket message events to other
+                  processes by using the <a href="../../progguide/functions_interprocess_communication_bshell/bms.send.htm" class="manualLink">bms.send()</a> function.
+               </li>
+            </ul>
+            <p class="Paragraph">Note that functions such as <a href="../../progguide/functions_char_b_win/keyin.htm" class="manualLink">keyin$()</a> and <a href="../../progguide/functions_char_b_win/data.input.htm" class="manualLink">data.input()</a> are based internally on events.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Event flow</div>
+            <p class="Paragraph">When a UI object generates an event, the display server sends
+               that event to the bshell. The bshell distributes received events
+               to the event queues of the appropriate process groups; note that
+               events are sent to process groups and not individual processes.
+               The bshell never requests events; the display server always acts
+               independently.
+            </p>
+            <p class="Paragraph">When one of the processes in the bshell requires input, the
+               bshell checks whether any event is present in the event queue of
+               the process group to which the process belongs. If there are no
+               events in the event queue, it checks the connection between the
+               bshell and the display server. If it finds events there, it
+               distributes them to the appropriate process groups.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Event masks</div>
+            <p class="Paragraph">A process can set the event mask of a UI object in order to
+               specify the types of events in which it is interested; the
+               object then generates only events of these types (see <a href="../../progguide/events/select.event.input.htm" class="manualLink">select.event.input()</a>).
+               Normally, event masks are automatically set for keyboard and
+               mouse events. However, programmers should not assume any default
+               settings for an event mask. Note that the following event types
+               are always selected and cannot be masked: client events, timer
+               events, bucket message events.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Event functions</div>
+            <p class="Paragraph">BAAN Tools provides the following functions for handling
+               events:
+            </p>
+            <ul class="List">
+               <li class="ListItem"><a href="../../progguide/events/next.event.htm" class="manualLink">next.event()</a></li>
+               <li class="ListItem"><a href="../../progguide/events/peek.event.htm" class="manualLink">peek.event()</a></li>
+               <li class="ListItem"><a href="../../progguide/events/pending.events.htm" class="manualLink">pending.events()</a></li>
+               <li class="ListItem"><a href="../../progguide/events/send.event.htm" class="manualLink">send.event()</a></li>
+               <li class="ListItem"><a href="../../progguide/events/select.event.input.htm" class="manualLink">select.event.input()</a></li>
+            </ul>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Event arrays</div>
+            <p class="Paragraph">The event argument included in the <i class="Emphasis">next.event()</i>, <i class="Emphasis">peek.event()</i>, and <i class="Emphasis">send.event()</i> functions consists
+               of an array of longs (of size EVTMAXSIZE) that contains details
+               of the incoming or outgoing event. You retrieve the contents of
+               an event array by using the set of parameters defined for the
+               particular event type. See <a href="../../progguide/events/event_array_parameters.htm" class="manualLink">Event array parameters</a>.
+            </p>
+         </div>
+         <div class="GeneralSection">
+            <div class="subSectionTitle">Sample code</div>
+            <p class="Paragraph">The following example illustrates the basic principle of
+               event handling that is used by almost every event driven
+               program.
+            </p><pre class="CodeBlock">
+#include &lt;bic_event&gt;
+
+function main_event_loop()
+{
+        long event( EVTMAXSIZE )
+
+        while next.event( event )
+                on case evt.type( event )
+                case EVTBUTTONPRESS:
+                case EVTBUTTONRELEASE:
+                        x = evt.button.x( event )
+                        y = evt.button.y( event )
+                        button = evt.button.button( event ) 
+                        if button = EVTBUTTON1 then
+                                print "left button pressed"
+                                refresh()
+                        endif
+                        break
+                default: 
+                        print "not a button press/release" 
+                        refresh()
+                        return
+                endcase
+        endwhile
+}
+</pre></div>
+         <div class="RelatedTopics">
+            <p class="RelatedTopicsSectionTitle">Related topics</p>
+            <ul>
+               <li class="RelTopic"><a href="../../progguide/multitasking/multitasking_and_the_gui.htm" class="manualLink">Multitasking and the GUI</a></li>
+            </ul>
+         </div>
+         <p>&nbsp;</p>
+         <table class="noborder" border="0" cellpadding="0" cellspacing="5">
+            <tr>
+               <td class="noborder"><img src="../../skin/mail.gif" alt="Send Us Your Feedback About this Help Page"></td>
+               <td class="noborder"><a class="FeedbackLink" href="mailto:documentation@infor.com?Subject=Feedback on /progguide/multitasking/events, 10.4.2, en">Send Us Your Feedback About this Help Page</a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>
